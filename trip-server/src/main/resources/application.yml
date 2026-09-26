@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: trip-server
+  profiles:
+    active: dev
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+  tomcat:
+    max-swallow-size: -1
+

@@ -1,0 +1,174 @@
+{
+  "time": "2026-09-26T12:44:34.382Z",
+  "rows": [
+    {
+      "name": "浏览器登录跳转首页",
+      "actual": "/",
+      "expected": "/",
+      "passed": true
+    },
+    {
+      "name": "编辑器出行人数上限",
+      "actual": "10",
+      "expected": "10",
+      "passed": true
+    },
+    {
+      "name": "跨天目标可见",
+      "actual": 5,
+      "expected": 5,
+      "passed": true
+    },
+    {
+      "name": "保存保留住宿",
+      "actual": "酒店0",
+      "expected": "酒店0",
+      "passed": true
+    },
+    {
+      "name": "保存保留用餐",
+      "actual": "餐食0",
+      "expected": "餐食0",
+      "passed": true
+    },
+    {
+      "name": "保存保留摘要",
+      "actual": "摘要0",
+      "expected": "摘要0",
+      "passed": true
+    },
+    {
+      "name": "鼠标跨天拖拽后首日剩一项",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "跨天保存到第二天",
+      "actual": [
+        "景点2",
+        "景点1"
+      ],
+      "expected": [
+        "景点2",
+        "景点1"
+      ],
+      "passed": true
+    },
+    {
+      "name": "五天预算保持500",
+      "actual": 500,
+      "expected": 500,
+      "passed": true
+    },
+    {
+      "name": "刷新重开首日顺序",
+      "actual": "同日第二项",
+      "expected": "同日第二项",
+      "passed": true
+    },
+    {
+      "name": "景点抽屉真实数据",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "页面点赞回显",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "页面收藏回显",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "页面发表评论",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "unknown不显示中评",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "页面回复评论",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "回复展示父评论",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "页面删除本人评论",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "页面删除本人评论",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "预约人数上限",
+      "actual": "10",
+      "expected": "10",
+      "passed": true
+    },
+    {
+      "name": "浏览器预约接口成功",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "页面取消预约",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "浏览器空天草稿保存",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "空草稿三天持久化",
+      "actual": 3,
+      "expected": 3,
+      "passed": true
+    },
+    {
+      "name": "模板创建后规范URL",
+      "actual": "http://127.0.0.1:5173/plan/287/edit",
+      "expected": "http://127.0.0.1:5173/plan/287/edit",
+      "passed": true
+    },
+    {
+      "name": "刷新不重复创建规划",
+      "actual": 3,
+      "expected": 3,
+      "passed": true
+    },
+    {
+      "name": "浏览器运行时异常",
+      "actual": [],
+      "expected": [],
+      "passed": true
+    }
+  ],
+  "errors": []
+}

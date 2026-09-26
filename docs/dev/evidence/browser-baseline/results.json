@@ -1,0 +1,49 @@
+{
+  "time": "2026-09-26T12:35:26.376Z",
+  "rows": [
+    {
+      "name": "浏览器登录跳转首页",
+      "actual": "/",
+      "expected": "/",
+      "passed": true
+    },
+    {
+      "name": "编辑器出行人数上限",
+      "actual": "50",
+      "expected": "10",
+      "passed": false
+    },
+    {
+      "name": "跨天目标可见",
+      "actual": 0,
+      "expected": 5,
+      "passed": false
+    },
+    {
+      "name": "保存保留住宿",
+      "actual": "",
+      "expected": "酒店0",
+      "passed": false
+    },
+    {
+      "name": "保存保留用餐",
+      "actual": "",
+      "expected": "餐食0",
+      "passed": false
+    },
+    {
+      "name": "保存保留摘要",
+      "actual": "",
+      "expected": "摘要0",
+      "passed": false
+    },
+    {
+      "name": "browser runner",
+      "passed": false,
+      "actual": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '立即预约', exact: true }) to be visible\u001b[22m\n\n    at D:\\demo_series\\Trip-AI\\trip-web\\scripts\\batch2_browser.cjs:69:59"
+    }
+  ],
+  "errors": [
+    "detail.value.tags.split is not a function"
+  ]
+}

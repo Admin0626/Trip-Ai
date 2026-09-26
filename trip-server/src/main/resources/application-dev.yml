@@ -1,0 +1,52 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/trip_llm?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: ${MYSQL_PASSWORD:123456}
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      database: 0
+      timeout: 5000ms
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 50MB
+  jackson:
+    time-zone: Asia/Shanghai
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto               # ★ 对应 schema.sql 的 AUTO_INCREMENT（已 SHOW CREATE TABLE sys_user 核实）
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+trip:
+  jwt:
+    secret: ${JWT_SECRET:dev-only-secret-please-change-in-prod-at-least-32-bytes}
+    access-token-expire: 7200      # 秒
+    refresh-token-expire: 604800
+  upload:
+    mode: local
+    local-path: ./uploads
+    url-prefix: http://localhost:8080/api/files/
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: default
+      paths-to-match: /**
+      packages-to-scan: com.trip
+
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
