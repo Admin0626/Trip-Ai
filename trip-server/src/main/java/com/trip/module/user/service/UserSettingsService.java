@@ -1,10 +1,10 @@
 package com.trip.module.user.service;
 
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.trip.common.exception.BizException;
 import com.trip.module.user.entity.SysUser;
 import com.trip.module.user.mapper.SysUserMapper;
 import com.trip.module.user.vo.UserVO;
-import jakarta.validation.Validation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -46,8 +46,13 @@ public class UserSettingsService {
         if (email != null && !email.isEmpty() && !email.matches("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$")) throw bad("邮箱格式不正确");
         if (avatar != null && !safeAvatar(avatar)) throw bad("头像必须为本站上传路径或 http/https 图片地址");
         try {
-            jdbc.update("UPDATE sys_user SET nickname=?,city=?,avatar=?,phone=?,email=? WHERE id=? AND deleted=0",
-                    nickname, city, avatar, blankToNull(phone), blankToNull(email), id);
+            // Mapper writes invalidate the transaction's MyBatis local read cache.
+            // Explicit sets also preserve the ability to clear nullable profile fields.
+            users.update(null, new LambdaUpdateWrapper<SysUser>()
+                    .eq(SysUser::getId, id)
+                    .set(SysUser::getNickname, nickname).set(SysUser::getCity, city)
+                    .set(SysUser::getAvatar, avatar).set(SysUser::getPhone, blankToNull(phone))
+                    .set(SysUser::getEmail, blankToNull(email)));
         } catch (DuplicateKeyException e) { throw new BizException(409, "手机号或邮箱已被使用"); }
         return profile(id);
     }
@@ -125,7 +130,8 @@ public class UserSettingsService {
     }
     static boolean safeAvatar(String value) {
         if (value.isEmpty()) return true;
-        if (value.matches("/api/files/[a-fA-F0-9-]{36}\\.(png|jpg|jpeg)")) return true;
+        // Match the names generated and served by FileController (hyphenless UUID).
+        if (value.matches("/api/files/[a-f0-9]{32}\\.(png|jpg)")) return true;
         try {
             URI uri = URI.create(value);
             return Set.of("http", "https").contains(uri.getScheme()) && uri.getHost() != null && uri.getUserInfo() == null;
