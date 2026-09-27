@@ -1,0 +1,105 @@
+{
+  "mode": "REAL_EDGE_FEEDBACK_ADMIN_USER",
+  "label": "baseline",
+  "checks": [
+    {
+      "name": "empty form gives explanation",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "feedback screenshot uploaded",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "feedback submitted from page",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "user sees submitted screenshot",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "admin pagination available",
+      "actual": 0,
+      "expected": 1,
+      "passed": false
+    },
+    {
+      "name": "pending dialog defaults to processing",
+      "actual": false,
+      "expected": true,
+      "passed": false
+    },
+    {
+      "name": "admin sees contact",
+      "actual": false,
+      "expected": true,
+      "passed": false
+    },
+    {
+      "name": "admin sees attachment",
+      "actual": 0,
+      "expected": 1,
+      "passed": false
+    },
+    {
+      "name": "script text is displayed literally",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "default processing reply succeeds",
+      "actual": 400,
+      "expected": 200,
+      "passed": false
+    },
+    {
+      "name": "browser completed",
+      "actual": "Cannot continue after pending reply rejection",
+      "expected": "no error",
+      "passed": false
+    },
+    {
+      "name": "fixture rows removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "fixture sessions removed",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "fixture rows removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "fixture sessions removed",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "uploaded image removed",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    }
+  ],
+  "errors": [
+    "status 最小不能小于1"
+  ]
+}

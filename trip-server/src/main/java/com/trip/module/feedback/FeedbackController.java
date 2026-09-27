@@ -21,8 +21,10 @@ public class FeedbackController {
     public record Create(@NotBlank @Pattern(regexp="FUNCTION|BUG|CONTENT|OTHER") String type,
             @NotBlank @Size(max=100) @JsonDeserialize(using=StrictPlannerJson.Text.class) String title,
             @NotBlank @Size(max=2000) @JsonDeserialize(using=StrictPlannerJson.Text.class) String content,
-            @Size(max=100) String contact, @Size(max=3) List<@NotBlank @Size(max=255) String> images) {}
-    public record Reply(@NotNull @Min(1) @Max(3) @JsonDeserialize(using=StrictPlannerJson.IntegerNumber.class) Integer status,
+            @Size(max=100) @JsonDeserialize(using=StrictPlannerJson.Text.class) String contact,
+            @Size(max=3) List<@NotBlank @Size(max=255) String> images) {}
+    public record Reply(@NotNull @Min(0) @Max(3) @JsonDeserialize(using=StrictPlannerJson.IntegerNumber.class) Integer expectedStatus,
+            @NotNull @Min(1) @Max(3) @JsonDeserialize(using=StrictPlannerJson.IntegerNumber.class) Integer status,
             @NotBlank @Size(max=2000) @JsonDeserialize(using=StrictPlannerJson.Text.class) String replyContent) {}
     @PostMapping("/feedback")
     public R<Long> create(@AuthenticationPrincipal Long userId,@Valid @RequestBody Create data) {
@@ -59,7 +61,10 @@ public class FeedbackController {
         var states=jdbc.queryForList("SELECT status FROM feedback WHERE id=? AND deleted=0",Integer.class,id);
         if(states.isEmpty()) throw new BizException(404,"反馈不存在");
         int previous=states.get(0);
-        if(previous>=2 && previous!=data.status()) throw new BizException(400,"已结束的反馈不能重新流转状态");
+        if(previous!=data.expectedStatus()) throw new BizException(409,"反馈状态已变化，请关闭弹窗并刷新后重试");
+        boolean allowed = (previous==0 && (data.status()==1 || data.status()==3))
+                || (previous==1 && (data.status()==2 || data.status()==3));
+        if(!allowed) throw new BizException(400,"仅允许待处理转处理中或关闭、处理中转已解决或关闭；已结束的反馈不可修改");
         int changed=jdbc.update("UPDATE feedback SET status=?,reply_content=?,reply_by=?,reply_time=NOW() WHERE id=? AND deleted=0 AND status=?",data.status(),data.replyContent().strip(),adminId,id,previous);
         if(changed!=1) throw new BizException(409,"反馈状态已变化，请刷新后重试");
         return R.ok();

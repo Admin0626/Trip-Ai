@@ -1,0 +1,91 @@
+{
+  "mode": "REAL_EDGE_FEEDBACK_ADMIN_USER",
+  "label": "final",
+  "checks": [
+    {
+      "name": "empty form gives explanation",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "feedback screenshot uploaded",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "feedback submitted from page",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "user sees submitted screenshot",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "admin pagination available",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "pending dialog defaults to processing",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "admin sees contact",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "admin sees attachment",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "script text is displayed literally",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "default processing reply succeeds",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "stale tab receives conflict",
+      "actual": 409,
+      "expected": 409,
+      "passed": true
+    },
+    {
+      "name": "conflict keeps typed reply",
+      "actual": "Stale administrator reply",
+      "expected": "Stale administrator reply",
+      "passed": true
+    },
+    {
+      "name": "owner sees processing reply",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "browser completed",
+      "actual": "locator.click: Error: strict mode violation: getByLabel('筛选反馈状态', { exact: true }) resolved to 2 elements:\n    1) <input readonly value=\"\" type=\"text\" tabindex=\"0\" role=\"combobox\" autocomplete=\"off\" spellcheck=\"false\" id=\"el-id-3984-23\" aria-label=\"筛选反馈状态\" aria-expanded=\"false\" aria-haspopup=\"listbox\" class=\"el-select__input\" aria-activedescendant=\"\" aria-autocomplete=\"none\" aria-controls=\"el-id-3984-14\"/> aka getByRole('combobox', { name: '筛选反馈状态' })\n    2) <ul role=\"listbox\" id=\"el-id-3984-14\" aria-label=\"筛选反馈状态\" aria-orientation=\"vertical\" class=\"el-scrollbar__view el-select-dropdown__list\">…</ul> aka getByText('全部状态待处理处理中已解决已关闭')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('筛选反馈状态', { exact: true })\u001b[22m\n",
+      "expected": "no error",
+      "passed": false
+    }
+  ],
+  "errors": []
+}

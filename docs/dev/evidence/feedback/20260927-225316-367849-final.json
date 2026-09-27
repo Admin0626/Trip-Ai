@@ -1,0 +1,2667 @@
+{
+  "mode": "REAL_LOCAL_FEEDBACK_HTTP_MYSQL_REDIS",
+  "label": "final",
+  "startedAt": "2026-09-27T22:53:16.367785+08:00",
+  "checks": [
+    {
+      "name": "anonymous create denied",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/feedback",
+        "body": {}
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "请先登录",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "anonymous mine denied",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/feedback/my/page",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "请先登录",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "anonymous admin denied",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/feedback/page",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "请先登录",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "register fa",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_964da70ac7fa",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "id": 10105,
+            "nickname": "pw_964da70ac7fa",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_964da70ac7fa"
+          },
+          "timestamp": 1790520797044
+        }
+      }
+    },
+    {
+      "name": "register fb",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_db6e3a7cc2fb",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "id": 10106,
+            "nickname": "pw_db6e3a7cc2fb",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_db6e3a7cc2fb"
+          },
+          "timestamp": 1790520797391
+        }
+      }
+    },
+    {
+      "name": "register fc",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_336f897ca0fc",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "id": 10107,
+            "nickname": "pw_336f897ca0fc",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_336f897ca0fc"
+          },
+          "timestamp": 1790520797541
+        }
+      }
+    },
+    {
+      "name": "owner login",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_964da70ac7fa",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-27T22:53:17",
+              "email": null,
+              "id": 10105,
+              "nickname": "pw_964da70ac7fa",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_964da70ac7fa"
+            }
+          },
+          "timestamp": 1790520798173
+        }
+      }
+    },
+    {
+      "name": "other owner login",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_db6e3a7cc2fb",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-27T22:53:17",
+              "email": null,
+              "id": 10106,
+              "nickname": "pw_db6e3a7cc2fb",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_db6e3a7cc2fb"
+            }
+          },
+          "timestamp": 1790520798262
+        }
+      }
+    },
+    {
+      "name": "admin login",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_336f897ca0fc",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-27T22:53:17",
+              "email": null,
+              "id": 10107,
+              "nickname": "pw_336f897ca0fc",
+              "phone": null,
+              "role": "ADMIN",
+              "username": "pw_336f897ca0fc"
+            }
+          },
+          "timestamp": 1790520798355
+        }
+      }
+    },
+    {
+      "name": "owner feedback",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/feedback",
+        "body": {
+          "type": "BUG",
+          "title": "  Fixture feedback  ",
+          "content": "  Actual issue details  ",
+          "contact": "fixture@example.com",
+          "images": []
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": 39,
+          "timestamp": 1790520798454
+        }
+      }
+    },
+    {
+      "name": "other feedback",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/feedback",
+        "body": {
+          "type": "BUG",
+          "title": "other feedback",
+          "content": "Test feedback details",
+          "contact": "fixture@example.com",
+          "images": []
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": 40,
+          "timestamp": 1790520798479
+        }
+      }
+    },
+    {
+      "name": "owner and initial state in SQL",
+      "actual": "10105:0:Fixture feedback",
+      "expected": "10105:0:Fixture feedback",
+      "passed": true
+    },
+    {
+      "name": "owner list",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/feedback/my/page",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "current": 1,
+            "pages": 1,
+            "records": [
+              {
+                "id": 39,
+                "userId": 10105,
+                "type": "BUG",
+                "title": "Fixture feedback",
+                "content": "Actual issue details",
+                "images": [],
+                "contact": "fixture@example.com",
+                "status": 0,
+                "replyContent": null,
+                "replyTime": null,
+                "createTime": "2026-09-27T22:53:18"
+              }
+            ],
+            "size": 10,
+            "total": 1
+          },
+          "timestamp": 1790520798576
+        }
+      }
+    },
+    {
+      "name": "owner sees only own feedback",
+      "actual": [
+        39
+      ],
+      "expected": [
+        39
+      ],
+      "passed": true
+    },
+    {
+      "name": "query userId cannot select another user",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/feedback/my/page?userId=10106",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "current": 1,
+            "pages": 1,
+            "records": [
+              {
+                "id": 39,
+                "userId": 10105,
+                "type": "BUG",
+                "title": "Fixture feedback",
+                "content": "Actual issue details",
+                "images": [],
+                "contact": "fixture@example.com",
+                "status": 0,
+                "replyContent": null,
+                "replyTime": null,
+                "createTime": "2026-09-27T22:53:18"
+              }
+            ],
+            "size": 10,
+            "total": 1
+          },
+          "timestamp": 1790520798617
+        }
+      }
+    },
+    {
+      "name": "forged query remains scoped",
+      "actual": [
+        39
+      ],
+      "expected": [
+        39
+      ],
+      "passed": true
+    },
+    {
+      "name": "user cannot list admin feedback",
+      "actual": [
+        403,
+        403
+      ],
+      "expected": [
+        403,
+        403
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/feedback/page",
+        "body": null
+      },
+      "response": {
+        "status": 403,
+        "body": {
+          "code": 403,
+          "message": "无权访问",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "user cannot reply to other feedback",
+      "actual": [
+        403,
+        403
+      ],
+      "expected": [
+        403,
+        403
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/40/reply",
+        "body": {
+          "expectedStatus": 0,
+          "status": 1,
+          "replyContent": "forged reply"
+        }
+      },
+      "response": {
+        "status": 403,
+        "body": {
+          "code": 403,
+          "message": "无权访问",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "unauthorized reply made no change",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "zero page rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/feedback/my/page?current=0",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "分页参数不合法",
+          "data": null,
+          "timestamp": 1790520798727
+        }
+      }
+    },
+    {
+      "name": "negative page size rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/feedback/my/page?size=-1",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "分页参数不合法",
+          "data": null,
+          "timestamp": 1790520798756
+        }
+      }
+    },
+    {
+      "name": "oversized page rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/feedback/my/page?size=101",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "分页参数不合法",
+          "data": null,
+          "timestamp": 1790520798788
+        }
+      }
+    },
+    {
+      "name": "noninteger page rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/feedback/my/page?current=1.5",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求参数缺失或格式不正确",
+          "data": null,
+          "timestamp": 1790520798821
+        }
+      }
+    },
+    {
+      "name": "bad admin filter rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/feedback/page?status=4",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "反馈状态不合法",
+          "data": null,
+          "timestamp": 1790520798849
+        }
+      }
+    },
+    {
+      "name": "blank title rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/feedback",
+        "body": {
+          "type": "BUG",
+          "title": "   ",
+          "content": "Valid body",
+          "contact": "",
+          "images": []
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "title 不能为空",
+          "data": null,
+          "timestamp": 1790520798937
+        }
+      }
+    },
+    {
+      "name": "blank content rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/feedback",
+        "body": {
+          "type": "BUG",
+          "title": "Valid title",
+          "content": "\n\t",
+          "contact": "",
+          "images": []
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "content 不能为空",
+          "data": null,
+          "timestamp": 1790520798960
+        }
+      }
+    },
+    {
+      "name": "long title rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/feedback",
+        "body": {
+          "type": "BUG",
+          "title": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "content": "Valid body",
+          "contact": "",
+          "images": []
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "title 个数必须在0和100之间",
+          "data": null,
+          "timestamp": 1790520798969
+        }
+      }
+    },
+    {
+      "name": "long content rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/feedback",
+        "body": {
+          "type": "BUG",
+          "title": "Valid title",
+          "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "contact": "",
+          "images": []
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "content 个数必须在0和2000之间",
+          "data": null,
+          "timestamp": 1790520798989
+        }
+      }
+    },
+    {
+      "name": "long contact rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/feedback",
+        "body": {
+          "type": "BUG",
+          "title": "Valid title",
+          "content": "Valid body",
+          "contact": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "images": []
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "contact 个数必须在0和100之间",
+          "data": null,
+          "timestamp": 1790520798997
+        }
+      }
+    },
+    {
+      "name": "numeric contact rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/feedback",
+        "body": {
+          "type": "BUG",
+          "title": "Valid title",
+          "content": "Valid body",
+          "contact": 123,
+          "images": []
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求体格式错误",
+          "data": null,
+          "timestamp": 1790520799021
+        }
+      }
+    },
+    {
+      "name": "numeric title rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/feedback",
+        "body": {
+          "type": "BUG",
+          "title": 123,
+          "content": "Valid body",
+          "contact": "",
+          "images": []
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求体格式错误",
+          "data": null,
+          "timestamp": 1790520799051
+        }
+      }
+    },
+    {
+      "name": "unsupported type rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/feedback",
+        "body": {
+          "type": "ADMIN",
+          "title": "Valid title",
+          "content": "Valid body",
+          "contact": "",
+          "images": []
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "type 需要匹配正则表达式\"FUNCTION|BUG|CONTENT|OTHER\"",
+          "data": null,
+          "timestamp": 1790520799060
+        }
+      }
+    },
+    {
+      "name": "external image rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/feedback",
+        "body": {
+          "type": "BUG",
+          "title": "Valid title",
+          "content": "Valid body",
+          "contact": "",
+          "images": [
+            "https://example.com/test.png"
+          ]
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请使用本站上传的反馈图片",
+          "data": null,
+          "timestamp": 1790520799067
+        }
+      }
+    },
+    {
+      "name": "traversal image rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/feedback",
+        "body": {
+          "type": "BUG",
+          "title": "Valid title",
+          "content": "Valid body",
+          "contact": "",
+          "images": [
+            "/api/files/../test.png"
+          ]
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请使用本站上传的反馈图片",
+          "data": null,
+          "timestamp": 1790520799074
+        }
+      }
+    },
+    {
+      "name": "null image rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/feedback",
+        "body": {
+          "type": "BUG",
+          "title": "Valid title",
+          "content": "Valid body",
+          "contact": "",
+          "images": [
+            null
+          ]
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "images[0] 不能为空",
+          "data": null,
+          "timestamp": 1790520799081
+        }
+      }
+    },
+    {
+      "name": "too many images rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/feedback",
+        "body": {
+          "type": "BUG",
+          "title": "Valid title",
+          "content": "Valid body",
+          "contact": "",
+          "images": [
+            "/api/files/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.png",
+            "/api/files/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.png",
+            "/api/files/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.png",
+            "/api/files/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.png"
+          ]
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "images 个数必须在0和3之间",
+          "data": null,
+          "timestamp": 1790520799089
+        }
+      }
+    },
+    {
+      "name": "valid type FUNCTION",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/feedback",
+        "body": {
+          "type": "FUNCTION",
+          "title": "valid type FUNCTION",
+          "content": "Test feedback details",
+          "contact": "fixture@example.com",
+          "images": []
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": 41,
+          "timestamp": 1790520799115
+        }
+      }
+    },
+    {
+      "name": "valid type CONTENT",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/feedback",
+        "body": {
+          "type": "CONTENT",
+          "title": "valid type CONTENT",
+          "content": "Test feedback details",
+          "contact": "fixture@example.com",
+          "images": []
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": 42,
+          "timestamp": 1790520799146
+        }
+      }
+    },
+    {
+      "name": "valid type OTHER",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/feedback",
+        "body": {
+          "type": "OTHER",
+          "title": "valid type OTHER",
+          "content": "Test feedback details",
+          "contact": "fixture@example.com",
+          "images": []
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": 43,
+          "timestamp": 1790520799155
+        }
+      }
+    },
+    {
+      "name": "maximum lengths accepted",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/feedback",
+        "body": {
+          "type": "BUG",
+          "title": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "content": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "contact": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "images": []
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": 44,
+          "timestamp": 1790520799176
+        }
+      }
+    },
+    {
+      "name": "state transition probe",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/feedback",
+        "body": {
+          "type": "BUG",
+          "title": "state transition probe",
+          "content": "Test feedback details",
+          "contact": "fixture@example.com",
+          "images": []
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": 45,
+          "timestamp": 1790520799208
+        }
+      }
+    },
+    {
+      "name": "pending cannot jump to solved",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/45/reply",
+        "body": {
+          "expectedStatus": 0,
+          "status": 2,
+          "replyContent": "must process first"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "仅允许待处理转处理中或关闭、处理中转已解决或关闭；已结束的反馈不可修改",
+          "data": null,
+          "timestamp": 1790520799284
+        }
+      }
+    },
+    {
+      "name": "invalid transition unchanged",
+      "actual": "0:",
+      "expected": "0:",
+      "passed": true
+    },
+    {
+      "name": "missing precondition rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/39/reply",
+        "body": {
+          "status": 1,
+          "replyContent": "missing expected state"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "expectedStatus 不能为null",
+          "data": null,
+          "timestamp": 1790520799379
+        }
+      }
+    },
+    {
+      "name": "empty reply rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/45/reply",
+        "body": {
+          "expectedStatus": 0,
+          "status": 1,
+          "replyContent": " "
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "replyContent 不能为空",
+          "data": null,
+          "timestamp": 1790520799455
+        }
+      }
+    },
+    {
+      "name": "long reply rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/45/reply",
+        "body": {
+          "expectedStatus": 0,
+          "status": 1,
+          "replyContent": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "replyContent 个数必须在0和2000之间",
+          "data": null,
+          "timestamp": 1790520799485
+        }
+      }
+    },
+    {
+      "name": "string status rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/45/reply",
+        "body": {
+          "expectedStatus": 0,
+          "status": "1",
+          "replyContent": "valid reply"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求体格式错误",
+          "data": null,
+          "timestamp": 1790520799518
+        }
+      }
+    },
+    {
+      "name": "float status rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/45/reply",
+        "body": {
+          "expectedStatus": 0,
+          "status": 1.5,
+          "replyContent": "valid reply"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求体格式错误",
+          "data": null,
+          "timestamp": 1790520799524
+        }
+      }
+    },
+    {
+      "name": "status zero rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/45/reply",
+        "body": {
+          "expectedStatus": 0,
+          "status": 0,
+          "replyContent": "valid reply"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "status 最小不能小于1",
+          "data": null,
+          "timestamp": 1790520799550
+        }
+      }
+    },
+    {
+      "name": "status four rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/45/reply",
+        "body": {
+          "expectedStatus": 0,
+          "status": 4,
+          "replyContent": "valid reply"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "status 最大不能超过3",
+          "data": null,
+          "timestamp": 1790520799557
+        }
+      }
+    },
+    {
+      "name": "string precondition rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/45/reply",
+        "body": {
+          "expectedStatus": "0",
+          "status": 1,
+          "replyContent": "valid reply"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求体格式错误",
+          "data": null,
+          "timestamp": 1790520799565
+        }
+      }
+    },
+    {
+      "name": "invalid precondition rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/45/reply",
+        "body": {
+          "expectedStatus": 4,
+          "status": 1,
+          "replyContent": "valid reply"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "expectedStatus 最大不能超过3",
+          "data": null,
+          "timestamp": 1790520799596
+        }
+      }
+    },
+    {
+      "name": "pending to processing",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/39/reply",
+        "body": {
+          "expectedStatus": 0,
+          "status": 1,
+          "replyContent": "  Investigating  "
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790520799606
+        }
+      }
+    },
+    {
+      "name": "processing stored with admin and reply time",
+      "actual": "1:Investigating:10107:1",
+      "expected": "1:Investigating:10107:1",
+      "passed": true
+    },
+    {
+      "name": "stale administrator cannot close updated feedback",
+      "actual": [
+        200,
+        409
+      ],
+      "expected": [
+        200,
+        409
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/39/reply",
+        "body": {
+          "expectedStatus": 0,
+          "status": 3,
+          "replyContent": "stale tab"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 409,
+          "message": "反馈状态已变化，请关闭弹窗并刷新后重试",
+          "data": null,
+          "timestamp": 1790520799675
+        }
+      }
+    },
+    {
+      "name": "stale reply did not overwrite processing",
+      "actual": "1:Investigating",
+      "expected": "1:Investigating",
+      "passed": true
+    },
+    {
+      "name": "processing cannot stay processing",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/39/reply",
+        "body": {
+          "expectedStatus": 1,
+          "status": 1,
+          "replyContent": "overwrite note"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "仅允许待处理转处理中或关闭、处理中转已解决或关闭；已结束的反馈不可修改",
+          "data": null,
+          "timestamp": 1790520799812
+        }
+      }
+    },
+    {
+      "name": "processing to solved",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/39/reply",
+        "body": {
+          "expectedStatus": 1,
+          "status": 2,
+          "replyContent": "Issue fixed"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790520799833
+        }
+      }
+    },
+    {
+      "name": "solved rejects target 1",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/39/reply",
+        "body": {
+          "expectedStatus": 2,
+          "status": 1,
+          "replyContent": "overwrite terminal"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "仅允许待处理转处理中或关闭、处理中转已解决或关闭；已结束的反馈不可修改",
+          "data": null,
+          "timestamp": 1790520799910
+        }
+      }
+    },
+    {
+      "name": "solved rejects target 2",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/39/reply",
+        "body": {
+          "expectedStatus": 2,
+          "status": 2,
+          "replyContent": "overwrite terminal"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "仅允许待处理转处理中或关闭、处理中转已解决或关闭；已结束的反馈不可修改",
+          "data": null,
+          "timestamp": 1790520799918
+        }
+      }
+    },
+    {
+      "name": "solved rejects target 3",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/39/reply",
+        "body": {
+          "expectedStatus": 2,
+          "status": 3,
+          "replyContent": "overwrite terminal"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "仅允许待处理转处理中或关闭、处理中转已解决或关闭；已结束的反馈不可修改",
+          "data": null,
+          "timestamp": 1790520799942
+        }
+      }
+    },
+    {
+      "name": "terminal reply immutable",
+      "actual": "2:Issue fixed",
+      "expected": "2:Issue fixed",
+      "passed": true
+    },
+    {
+      "name": "closure from 0",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/feedback",
+        "body": {
+          "type": "BUG",
+          "title": "closure from 0",
+          "content": "Test feedback details",
+          "contact": "fixture@example.com",
+          "images": []
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": 46,
+          "timestamp": 1790520800037
+        }
+      }
+    },
+    {
+      "name": "state 0 to closed",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/46/reply",
+        "body": {
+          "expectedStatus": 0,
+          "status": 3,
+          "replyContent": "Closed by admin"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790520800051
+        }
+      }
+    },
+    {
+      "name": "closed from 0 rejects target 1",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/46/reply",
+        "body": {
+          "expectedStatus": 3,
+          "status": 1,
+          "replyContent": "overwrite closed"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "仅允许待处理转处理中或关闭、处理中转已解决或关闭；已结束的反馈不可修改",
+          "data": null,
+          "timestamp": 1790520800083
+        }
+      }
+    },
+    {
+      "name": "closed from 0 rejects target 2",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/46/reply",
+        "body": {
+          "expectedStatus": 3,
+          "status": 2,
+          "replyContent": "overwrite closed"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "仅允许待处理转处理中或关闭、处理中转已解决或关闭；已结束的反馈不可修改",
+          "data": null,
+          "timestamp": 1790520800092
+        }
+      }
+    },
+    {
+      "name": "closed from 0 rejects target 3",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/46/reply",
+        "body": {
+          "expectedStatus": 3,
+          "status": 3,
+          "replyContent": "overwrite closed"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "仅允许待处理转处理中或关闭、处理中转已解决或关闭；已结束的反馈不可修改",
+          "data": null,
+          "timestamp": 1790520800102
+        }
+      }
+    },
+    {
+      "name": "closure from 1",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/feedback",
+        "body": {
+          "type": "BUG",
+          "title": "closure from 1",
+          "content": "Test feedback details",
+          "contact": "fixture@example.com",
+          "images": []
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": 47,
+          "timestamp": 1790520800133
+        }
+      }
+    },
+    {
+      "name": "begin processing before close",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/47/reply",
+        "body": {
+          "expectedStatus": 0,
+          "status": 1,
+          "replyContent": "Checking"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790520800147
+        }
+      }
+    },
+    {
+      "name": "state 1 to closed",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/47/reply",
+        "body": {
+          "expectedStatus": 1,
+          "status": 3,
+          "replyContent": "Closed by admin"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790520800180
+        }
+      }
+    },
+    {
+      "name": "closed from 1 rejects target 1",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/47/reply",
+        "body": {
+          "expectedStatus": 3,
+          "status": 1,
+          "replyContent": "overwrite closed"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "仅允许待处理转处理中或关闭、处理中转已解决或关闭；已结束的反馈不可修改",
+          "data": null,
+          "timestamp": 1790520800209
+        }
+      }
+    },
+    {
+      "name": "closed from 1 rejects target 2",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/47/reply",
+        "body": {
+          "expectedStatus": 3,
+          "status": 2,
+          "replyContent": "overwrite closed"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "仅允许待处理转处理中或关闭、处理中转已解决或关闭；已结束的反馈不可修改",
+          "data": null,
+          "timestamp": 1790520800217
+        }
+      }
+    },
+    {
+      "name": "closed from 1 rejects target 3",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/47/reply",
+        "body": {
+          "expectedStatus": 3,
+          "status": 3,
+          "replyContent": "overwrite closed"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "仅允许待处理转处理中或关闭、处理中转已解决或关闭；已结束的反馈不可修改",
+          "data": null,
+          "timestamp": 1790520800225
+        }
+      }
+    },
+    {
+      "name": "missing feedback returns 404",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/100047/reply",
+        "body": {
+          "expectedStatus": 0,
+          "status": 1,
+          "replyContent": "Missing"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "反馈不存在",
+          "data": null,
+          "timestamp": 1790520800304
+        }
+      }
+    },
+    {
+      "name": "deleted fixture",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/feedback",
+        "body": {
+          "type": "BUG",
+          "title": "deleted fixture",
+          "content": "Test feedback details",
+          "contact": "fixture@example.com",
+          "images": []
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": 48,
+          "timestamp": 1790520800335
+        }
+      }
+    },
+    {
+      "name": "deleted feedback cannot be replied",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/feedback/48/reply",
+        "body": {
+          "expectedStatus": 0,
+          "status": 1,
+          "replyContent": "Deleted"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "反馈不存在",
+          "data": null,
+          "timestamp": 1790520800427
+        }
+      }
+    },
+    {
+      "name": "owner first page",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/feedback/my/page?size=2&current=1",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "current": 1,
+            "pages": 4,
+            "records": [
+              {
+                "id": 47,
+                "userId": 10105,
+                "type": "BUG",
+                "title": "closure from 1",
+                "content": "Test feedback details",
+                "images": [],
+                "contact": "fixture@example.com",
+                "status": 3,
+                "replyContent": "Closed by admin",
+                "replyTime": "2026-09-27T22:53:20",
+                "createTime": "2026-09-27T22:53:20"
+              },
+              {
+                "id": 46,
+                "userId": 10105,
+                "type": "BUG",
+                "title": "closure from 0",
+                "content": "Test feedback details",
+                "images": [],
+                "contact": "fixture@example.com",
+                "status": 3,
+                "replyContent": "Closed by admin",
+                "replyTime": "2026-09-27T22:53:20",
+                "createTime": "2026-09-27T22:53:20"
+              }
+            ],
+            "size": 2,
+            "total": 8
+          },
+          "timestamp": 1790520800458
+        }
+      }
+    },
+    {
+      "name": "owner second page",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/feedback/my/page?size=2&current=2",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "current": 2,
+            "pages": 4,
+            "records": [
+              {
+                "id": 45,
+                "userId": 10105,
+                "type": "BUG",
+                "title": "state transition probe",
+                "content": "Test feedback details",
+                "images": [],
+                "contact": "fixture@example.com",
+                "status": 0,
+                "replyContent": null,
+                "replyTime": null,
+                "createTime": "2026-09-27T22:53:19"
+              },
+              {
+                "id": 44,
+                "userId": 10105,
+                "type": "BUG",
+                "title": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "content": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+                "images": [],
+                "contact": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+                "status": 0,
+                "replyContent": null,
+                "replyTime": null,
+                "createTime": "2026-09-27T22:53:19"
+              }
+            ],
+            "size": 2,
+            "total": 8
+          },
+          "timestamp": 1790520800488
+        }
+      }
+    },
+    {
+      "name": "owner pagination has no overlap",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "owner sees admin reply",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/feedback/my/page?size=100",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "current": 1,
+            "pages": 1,
+            "records": [
+              {
+                "id": 47,
+                "userId": 10105,
+                "type": "BUG",
+                "title": "closure from 1",
+                "content": "Test feedback details",
+                "images": [],
+                "contact": "fixture@example.com",
+                "status": 3,
+                "replyContent": "Closed by admin",
+                "replyTime": "2026-09-27T22:53:20",
+                "createTime": "2026-09-27T22:53:20"
+              },
+              {
+                "id": 46,
+                "userId": 10105,
+                "type": "BUG",
+                "title": "closure from 0",
+                "content": "Test feedback details",
+                "images": [],
+                "contact": "fixture@example.com",
+                "status": 3,
+                "replyContent": "Closed by admin",
+                "replyTime": "2026-09-27T22:53:20",
+                "createTime": "2026-09-27T22:53:20"
+              },
+              {
+                "id": 45,
+                "userId": 10105,
+                "type": "BUG",
+                "title": "state transition probe",
+                "content": "Test feedback details",
+                "images": [],
+                "contact": "fixture@example.com",
+                "status": 0,
+                "replyContent": null,
+                "replyTime": null,
+                "createTime": "2026-09-27T22:53:19"
+              },
+              {
+                "id": 44,
+                "userId": 10105,
+                "type": "BUG",
+                "title": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "content": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+                "images": [],
+                "contact": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+                "status": 0,
+                "replyContent": null,
+                "replyTime": null,
+                "createTime": "2026-09-27T22:53:19"
+              },
+              {
+                "id": 43,
+                "userId": 10105,
+                "type": "OTHER",
+                "title": "valid type OTHER",
+                "content": "Test feedback details",
+                "images": [],
+                "contact": "fixture@example.com",
+                "status": 0,
+                "replyContent": null,
+                "replyTime": null,
+                "createTime": "2026-09-27T22:53:19"
+              },
+              {
+                "id": 42,
+                "userId": 10105,
+                "type": "CONTENT",
+                "title": "valid type CONTENT",
+                "content": "Test feedback details",
+                "images": [],
+                "contact": "fixture@example.com",
+                "status": 0,
+                "replyContent": null,
+                "replyTime": null,
+                "createTime": "2026-09-27T22:53:19"
+              },
+              {
+                "id": 41,
+                "userId": 10105,
+                "type": "FUNCTION",
+                "title": "valid type FUNCTION",
+                "content": "Test feedback details",
+                "images": [],
+                "contact": "fixture@example.com",
+                "status": 0,
+                "replyContent": null,
+                "replyTime": null,
+                "createTime": "2026-09-27T22:53:19"
+              },
+              {
+                "id": 39,
+                "userId": 10105,
+                "type": "BUG",
+                "title": "Fixture feedback",
+                "content": "Actual issue details",
+                "images": [],
+                "contact": "fixture@example.com",
+                "status": 2,
+                "replyContent": "Issue fixed",
+                "replyTime": "2026-09-27T22:53:19",
+                "createTime": "2026-09-27T22:53:18"
+              }
+            ],
+            "size": 100,
+            "total": 8
+          },
+          "timestamp": 1790520800520
+        }
+      }
+    },
+    {
+      "name": "owner receives solved reply and timestamp",
+      "actual": [
+        2,
+        "Issue fixed",
+        true
+      ],
+      "expected": [
+        2,
+        "Issue fixed",
+        true
+      ],
+      "passed": true
+    },
+    {
+      "name": "deleted feedback excluded from mine",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "admin status filter",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/feedback/page?status=2&size=100",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "current": 1,
+            "pages": 1,
+            "records": [
+              {
+                "id": 39,
+                "userId": 10105,
+                "type": "BUG",
+                "title": "Fixture feedback",
+                "content": "Actual issue details",
+                "images": [],
+                "contact": "fixture@example.com",
+                "status": 2,
+                "replyContent": "Issue fixed",
+                "replyTime": "2026-09-27T22:53:19",
+                "createTime": "2026-09-27T22:53:18"
+              }
+            ],
+            "size": 100,
+            "total": 1
+          },
+          "timestamp": 1790520800551
+        }
+      }
+    },
+    {
+      "name": "admin filter contains only solved",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "deleted feedback excluded from admin",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "concurrent admin reply",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/feedback",
+        "body": {
+          "type": "BUG",
+          "title": "concurrent admin reply",
+          "content": "Test feedback details",
+          "contact": "fixture@example.com",
+          "images": []
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": 49,
+          "timestamp": 1790520800583
+        }
+      }
+    },
+    {
+      "name": "concurrent stale replies have exactly one winner",
+      "actual": [
+        200,
+        409
+      ],
+      "expected": [
+        200,
+        409
+      ],
+      "passed": true,
+      "responses": [
+        {
+          "status": 200,
+          "body": {
+            "code": 200,
+            "message": "success",
+            "data": null,
+            "timestamp": 1790520800594
+          }
+        },
+        {
+          "status": 200,
+          "body": {
+            "code": 409,
+            "message": "反馈状态已变化，请关闭弹窗并刷新后重试",
+            "data": null,
+            "timestamp": 1790520800611
+          }
+        }
+      ]
+    },
+    {
+      "name": "concurrent winner persisted",
+      "actual": "1:winner 1",
+      "expected": "1:winner 1",
+      "passed": true
+    },
+    {
+      "name": "temporary account and feedback removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "temporary session keys removed",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "temporary account and feedback removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "temporary session keys removed",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "temporary account and feedback removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "temporary session keys removed",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    }
+  ],
+  "summary": {
+    "total": 94,
+    "passed": 94,
+    "failed": 0
+  }
+}

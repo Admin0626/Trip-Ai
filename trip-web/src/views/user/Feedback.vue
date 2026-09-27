@@ -6,8 +6,37 @@ import ImageUploader from '@/components/common/ImageUploader.vue'
 const form=reactive({type:'FUNCTION',title:'',content:'',contact:'',images:[] as string[]})
 const rows=ref<Feedback[]>([]),current=ref(1),total=ref(0),saving=ref(false),loading=ref(false)
 const states=['待处理','处理中','已解决','已关闭']
-async function load(){loading.value=true;try{const data=await feedbackPage(current.value);rows.value=data.records;total.value=data.total}finally{loading.value=false}}
-async function submit(){if(!form.title.trim()||!form.content.trim()){ElMessage.warning('请填写标题和具体内容');return}saving.value=true;try{await createFeedback({...form});ElMessage.success('反馈已提交');form.title='';form.content='';form.images=[];current.value=1;await load()}finally{saving.value=false}}
+let loadVersion = 0
+async function load() {
+  const version = ++loadVersion
+  loading.value = true
+  try {
+    const data = await feedbackPage(current.value)
+    if (version !== loadVersion) return
+    rows.value = data.records
+    total.value = data.total
+  } catch {
+    // Shared request interceptor displays the error.
+  } finally {
+    if (version === loadVersion) loading.value = false
+  }
+}
+async function submit() {
+  if (saving.value) return
+  if (!form.title.trim() || !form.content.trim()) { ElMessage.warning('请填写标题和具体内容'); return }
+  saving.value = true
+  try {
+    await createFeedback({ ...form, images: [...form.images] })
+    ElMessage.success('反馈已提交')
+    form.title = ''; form.content = ''; form.images = []
+    current.value = 1
+    await load()
+  } catch {
+    // Keep the submitted fields for retry, without an unhandled page rejection.
+  } finally {
+    saving.value = false
+  }
+}
 onMounted(load)
 </script>
 <template><main class="feedback-page"><h1>意见与反馈</h1><p>告诉我们遇到的问题或改进建议，可在下方查看处理进度。</p><el-form class="card form" label-position="top" :disabled="saving">

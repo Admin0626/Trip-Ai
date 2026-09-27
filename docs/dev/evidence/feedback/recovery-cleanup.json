@@ -1,0 +1,23 @@
+{
+  "mode": "RECOVERY_AFTER_BROWSER_SCRIPT_FAILURE",
+  "checks": [
+    {
+      "name": "recovered fixture 10108 cleanup",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "recovered fixture 10109 cleanup",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "recovered upload cleanup",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    }
+  ]
+}

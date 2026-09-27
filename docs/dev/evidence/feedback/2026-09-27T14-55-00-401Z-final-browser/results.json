@@ -1,0 +1,136 @@
+{
+  "mode": "REAL_EDGE_FEEDBACK_ADMIN_USER",
+  "label": "final",
+  "fixtures": {
+    "users": [
+      {
+        "name": "fbui_b00e74ea04",
+        "id": 10110
+      },
+      {
+        "name": "fbui_916c1ce59b",
+        "id": 10111
+      }
+    ],
+    "uploads": [
+      "bbf4e88ec88f47a2a6529556ce0cab93.png"
+    ]
+  },
+  "checks": [
+    {
+      "name": "empty form gives explanation",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "feedback screenshot uploaded",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "feedback submitted from page",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "user sees submitted screenshot",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "admin pagination available",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "pending dialog defaults to processing",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "admin sees contact",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "admin sees attachment",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "script text is displayed literally",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "default processing reply succeeds",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "stale tab receives conflict",
+      "actual": 409,
+      "expected": 409,
+      "passed": true
+    },
+    {
+      "name": "conflict keeps typed reply",
+      "actual": "Stale administrator reply",
+      "expected": "Stale administrator reply",
+      "passed": true
+    },
+    {
+      "name": "owner sees processing reply",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "browser completed",
+      "actual": "page.waitForResponse: Timeout 10000ms exceeded while waiting for event \"response\"",
+      "expected": "no error",
+      "passed": false
+    },
+    {
+      "name": "fixture rows removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "fixture sessions removed",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "fixture rows removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "fixture sessions removed",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "uploaded image removed",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    }
+  ],
+  "errors": []
+}
