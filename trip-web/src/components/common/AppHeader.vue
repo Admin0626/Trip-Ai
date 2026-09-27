@@ -42,6 +42,8 @@ function handleCommand(cmd: string): void {
         <router-link to="/" class="nav-link">首页</router-link>
         <router-link to="/routes" class="nav-link">路线</router-link>
         <router-link to="/destinations" class="nav-link">目的地</router-link>
+        <router-link to="/recommend" class="nav-link">旅行推荐</router-link>
+        <router-link to="/ai-planner" class="nav-link">AI规划</router-link>
       </nav>
 
       <div class="app-header__user">
@@ -148,5 +150,16 @@ function handleCommand(cmd: string): void {
   margin: 0 auto;
   padding: 0 16px;
   width: 100%;
+}
+
+@media (max-width: 640px) {
+  .app-header {
+    &__inner { height: auto; min-height: 60px; flex-wrap: wrap; gap: 8px; padding-top: 10px; padding-bottom: 10px; }
+    &__logo { flex-shrink: 0; white-space: nowrap; }
+    &__user { margin-left: auto; }
+    &__nav { order: 3; flex: 0 0 100%; justify-content: space-between;
+      .nav-link { padding: 6px 6px; white-space: nowrap; }
+    }
+  }
 }
 </style>

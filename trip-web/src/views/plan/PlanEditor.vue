@@ -416,7 +416,7 @@ onMounted(async () => {
         <div class="side-panel__actions">
           <el-button :loading="saving" style="width: 100%" @click="save(0)">保存草稿</el-button>
           <el-button type="primary" :loading="saving" style="width: 100%" @click="save(1)">保存规划</el-button>
-          <el-button disabled style="width: 100%" title="AI 优化将在第 3 批接入">✨ AI 优化（即将上线）</el-button>
+          <el-button style="width: 100%" @click="router.push('/ai-planner')">✨ 用自己的AI生成新规划</el-button>
         </div>
       </div>
     </div>

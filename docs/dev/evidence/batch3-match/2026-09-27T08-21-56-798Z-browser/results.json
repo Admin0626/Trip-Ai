@@ -1,0 +1,12 @@
+{
+  "mode": "REAL_BROWSER_HTTP",
+  "checks": [
+    {
+      "name": "browser script completed",
+      "actual": "spawnSync mysql EPERM",
+      "expected": "no error",
+      "passed": false
+    }
+  ],
+  "errors": []
+}

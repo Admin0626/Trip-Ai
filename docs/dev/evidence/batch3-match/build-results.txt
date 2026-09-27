@@ -1,0 +1,15 @@
+Actual command output excerpts, 2026-09-27
+mvn test
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.108 s -- in com.trip.module.ai.RuleIntentParserTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.325 s -- in com.trip.TripServerApplicationTests
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[INFO] Total time:  22.230 s
+npm run build (final, exit code 0)
+> vue-tsc -b && vite build
+vite v8.3.0 building client environment for production...
+✓ 1727 modules transformed.
+dist/assets/index-aJRV4JUc.css              362.56 kB │ gzip:  48.60 kB
+dist/assets/index-CRzwXHe_.js             1,120.61 kB │ gzip: 368.15 kB
+✓ built in 766ms
+(!) Some chunks are larger than 500 kB after minification. Consider:

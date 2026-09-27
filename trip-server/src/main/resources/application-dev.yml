@@ -29,6 +29,10 @@ mybatis-plus:
       logic-not-delete-value: 0
 
 trip:
+  ai:
+    allowed-hosts: ${TRIP_AI_ALLOWED_HOSTS:api.deepseek.com,api.openai.com}
+    allow-loopback: ${TRIP_AI_ALLOW_LOOPBACK:true}
+    timeout-seconds: ${TRIP_AI_TIMEOUT_SECONDS:45}
   jwt:
     secret: ${JWT_SECRET:dev-only-secret-please-change-in-prod-at-least-32-bytes}
     access-token-expire: 7200      # 秒

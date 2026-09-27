@@ -32,6 +32,8 @@ onMounted(async () => {
         <div class="hero__actions">
           <el-button type="primary" size="large" round @click="router.push('/routes')">浏览路线</el-button>
           <el-button size="large" round plain @click="router.push('/plan/create')">开始规划</el-button>
+          <el-button size="large" round plain @click="router.push('/recommend')">按需求找路线</el-button>
+          <el-button size="large" round plain @click="router.push('/ai-planner')">AI帮我规划</el-button>
         </div>
       </div>
     </section>

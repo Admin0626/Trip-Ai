@@ -1,0 +1,1435 @@
+{
+  "mode": "REAL_APP_HTTP_WITH_CONTROLLED_PROVIDER_NOT_REAL_LLM",
+  "checks": [
+    {
+      "name": "register fixture",
+      "path": "/auth/register",
+      "request": {
+        "username": "up_68a464ecc21b",
+        "password": "<redacted>"
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": 200,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "avatar": null,
+          "city": "",
+          "id": 10054,
+          "nickname": "up_68a464ecc21b",
+          "role": "USER",
+          "username": "up_68a464ecc21b"
+        },
+        "timestamp": 1790499703827
+      },
+      "passed": true
+    },
+    {
+      "name": "login fixture",
+      "path": "/auth/login",
+      "request": {
+        "username": "up_68a464ecc21b",
+        "password": "<redacted>"
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": 200,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "accessToken": "<redacted>",
+          "expiresIn": 7200,
+          "refreshToken": "<redacted>",
+          "userInfo": {
+            "avatar": "",
+            "city": "",
+            "id": 10054,
+            "nickname": "up_68a464ecc21b",
+            "role": "USER",
+            "username": "up_68a464ecc21b"
+          }
+        },
+        "timestamp": 1790499703987
+      },
+      "passed": true
+    },
+    {
+      "name": "anonymous denied",
+      "path": "/ai/planner/generate",
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63684/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        },
+        "query": "去大理旅行，喜欢美食，不要太赶",
+        "days": 2,
+        "budget": 3000,
+        "peopleNum": 2
+      },
+      "http": 401,
+      "expectedCode": 401,
+      "expectedHttp": 401,
+      "response": {
+        "code": 401,
+        "message": "请先登录",
+        "data": null
+      },
+      "passed": true
+    },
+    {
+      "name": "endpoint options",
+      "path": "/ai/planner/options",
+      "request": null,
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": 200,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "allowedHosts": [
+            "api.deepseek.com",
+            "api.openai.com"
+          ],
+          "allowLoopback": true
+        },
+        "timestamp": 1790499704016
+      },
+      "passed": true
+    },
+    {
+      "name": "local development endpoint available",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "connection actually reaches provider",
+      "path": "/ai/planner/test",
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63684/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        }
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": 200,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "model": "fixture-valid",
+          "connected": true
+        },
+        "timestamp": 1790499704036
+      },
+      "passed": true
+    },
+    {
+      "name": "key forwarded only to selected fixture",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "path appended once",
+      "actual": "/v1/chat/completions",
+      "expected": "/v1/chat/completions",
+      "passed": true
+    },
+    {
+      "name": "generate valid preview",
+      "path": "/ai/planner/generate",
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63684/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        },
+        "query": "去大理旅行，喜欢美食，不要太赶",
+        "days": 2,
+        "budget": 3000,
+        "peopleNum": 2
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": 200,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "draft": {
+            "title": "可控服务生成的测试行程",
+            "dayList": [
+              {
+                "dayIndex": 1,
+                "items": [
+                  {
+                    "activity": "散步与休息",
+                    "attractionId": 0,
+                    "cost": null,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": null,
+                    "sortNo": 1,
+                    "timePoint": "09:00",
+                    "tips": null,
+                    "title": "古城散步",
+                    "transport": null
+                  },
+                  {
+                    "activity": null,
+                    "attractionId": 0,
+                    "cost": 120,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": "特色餐饮",
+                    "sortNo": 2,
+                    "timePoint": null,
+                    "tips": null,
+                    "title": "体验当地美食",
+                    "transport": null
+                  }
+                ],
+                "summary": "仅为协议验收夹具，非真实模型内容",
+                "title": "测试第1天"
+              },
+              {
+                "dayIndex": 2,
+                "items": [
+                  {
+                    "activity": "散步与休息",
+                    "attractionId": 0,
+                    "cost": null,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": null,
+                    "sortNo": 1,
+                    "timePoint": "09:00",
+                    "tips": null,
+                    "title": "古城散步",
+                    "transport": null
+                  },
+                  {
+                    "activity": null,
+                    "attractionId": 0,
+                    "cost": 120,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": "特色餐饮",
+                    "sortNo": 2,
+                    "timePoint": null,
+                    "tips": null,
+                    "title": "体验当地美食",
+                    "transport": null
+                  }
+                ],
+                "summary": "仅为协议验收夹具，非真实模型内容",
+                "title": "测试第2天"
+              }
+            ]
+          },
+          "source": "USER_MODEL",
+          "model": "fixture-valid",
+          "attempts": 1
+        },
+        "timestamp": 1790499704048
+      },
+      "passed": true
+    },
+    {
+      "name": "number of days",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "untrusted attraction id removed",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "unknown cost remains null",
+      "actual": null,
+      "expected": null,
+      "passed": true
+    },
+    {
+      "name": "preview does not auto-save",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "invalid JSON retries once",
+      "path": "/ai/planner/generate",
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63684/v1",
+          "model": "fixture-retry",
+          "apiKey": "<redacted>"
+        },
+        "query": "去大理旅行，喜欢美食，不要太赶",
+        "days": 2,
+        "budget": 3000,
+        "peopleNum": 2
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": 200,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "draft": {
+            "title": "可控服务生成的测试行程",
+            "dayList": [
+              {
+                "dayIndex": 1,
+                "items": [
+                  {
+                    "activity": "散步与休息",
+                    "attractionId": 0,
+                    "cost": null,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": null,
+                    "sortNo": 1,
+                    "timePoint": "09:00",
+                    "tips": null,
+                    "title": "古城散步",
+                    "transport": null
+                  },
+                  {
+                    "activity": null,
+                    "attractionId": 0,
+                    "cost": 120,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": "特色餐饮",
+                    "sortNo": 2,
+                    "timePoint": null,
+                    "tips": null,
+                    "title": "体验当地美食",
+                    "transport": null
+                  }
+                ],
+                "summary": "仅为协议验收夹具，非真实模型内容",
+                "title": "测试第1天"
+              },
+              {
+                "dayIndex": 2,
+                "items": [
+                  {
+                    "activity": "散步与休息",
+                    "attractionId": 0,
+                    "cost": null,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": null,
+                    "sortNo": 1,
+                    "timePoint": "09:00",
+                    "tips": null,
+                    "title": "古城散步",
+                    "transport": null
+                  },
+                  {
+                    "activity": null,
+                    "attractionId": 0,
+                    "cost": 120,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": "特色餐饮",
+                    "sortNo": 2,
+                    "timePoint": null,
+                    "tips": null,
+                    "title": "体验当地美食",
+                    "transport": null
+                  }
+                ],
+                "summary": "仅为协议验收夹具，非真实模型内容",
+                "title": "测试第2天"
+              }
+            ]
+          },
+          "source": "USER_MODEL",
+          "model": "fixture-retry",
+          "attempts": 2
+        },
+        "timestamp": 1790499704167
+      },
+      "passed": true
+    },
+    {
+      "name": "retry count returned",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "exactly two upstream retry requests",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "fixture-invalid",
+      "path": "/ai/planner/generate",
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63684/v1",
+          "model": "fixture-invalid",
+          "apiKey": "<redacted>"
+        },
+        "query": "去大理旅行，喜欢美食，不要太赶",
+        "days": 2,
+        "budget": 3000,
+        "peopleNum": 2
+      },
+      "http": 200,
+      "expectedCode": 3004,
+      "expectedHttp": 200,
+      "response": {
+        "code": 3004,
+        "message": "模型两次返回的行程结构均不合格，请换用支持JSON输出的模型或减少天数",
+        "data": null,
+        "timestamp": 1790499704197
+      },
+      "passed": true
+    },
+    {
+      "name": "fixture-invalid hides upstream secret/error body",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "fixture-auth",
+      "path": "/ai/planner/generate",
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63684/v1",
+          "model": "fixture-auth",
+          "apiKey": "<redacted>"
+        },
+        "query": "去大理旅行，喜欢美食，不要太赶",
+        "days": 2,
+        "budget": 3000,
+        "peopleNum": 2
+      },
+      "http": 200,
+      "expectedCode": 3004,
+      "expectedHttp": 200,
+      "response": {
+        "code": 3004,
+        "message": "模型服务拒绝认证，请检查API Key与模型权限",
+        "data": null,
+        "timestamp": 1790499704224
+      },
+      "passed": true
+    },
+    {
+      "name": "fixture-auth hides upstream secret/error body",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "fixture-redirect",
+      "path": "/ai/planner/generate",
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63684/v1",
+          "model": "fixture-redirect",
+          "apiKey": "<redacted>"
+        },
+        "query": "去大理旅行，喜欢美食，不要太赶",
+        "days": 2,
+        "budget": 3000,
+        "peopleNum": 2
+      },
+      "http": 200,
+      "expectedCode": 3004,
+      "expectedHttp": 200,
+      "response": {
+        "code": 3004,
+        "message": "模型服务请求失败（HTTP 302），请检查API地址与模型名称",
+        "data": null,
+        "timestamp": 1790499704258
+      },
+      "passed": true
+    },
+    {
+      "name": "fixture-redirect hides upstream secret/error body",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "fixture-big",
+      "path": "/ai/planner/generate",
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63684/v1",
+          "model": "fixture-big",
+          "apiKey": "<redacted>"
+        },
+        "query": "去大理旅行，喜欢美食，不要太赶",
+        "days": 2,
+        "budget": 3000,
+        "peopleNum": 2
+      },
+      "http": 200,
+      "expectedCode": 3004,
+      "expectedHttp": 200,
+      "response": {
+        "code": 3004,
+        "message": "无法读取模型响应，请检查服务连接、响应大小与兼容协议",
+        "data": null,
+        "timestamp": 1790499704294
+      },
+      "passed": true
+    },
+    {
+      "name": "fixture-big hides upstream secret/error body",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "invalid JSON capped at two",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "auth error not retried",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "days over limit",
+      "path": "/ai/planner/generate",
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63684/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        },
+        "query": "去大理旅行，喜欢美食，不要太赶",
+        "days": 15,
+        "budget": 3000,
+        "peopleNum": 2
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": 200,
+      "response": {
+        "code": 400,
+        "message": "days 最大不能超过14",
+        "data": null,
+        "timestamp": 1790499704302
+      },
+      "passed": true
+    },
+    {
+      "name": "blank query",
+      "path": "/ai/planner/generate",
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63684/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        },
+        "query": "     ",
+        "days": 2,
+        "budget": 3000,
+        "peopleNum": 2
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": 200,
+      "response": {
+        "code": 400,
+        "message": "query 不能为空",
+        "data": null,
+        "timestamp": 1790499704327
+      },
+      "passed": true
+    },
+    {
+      "name": "budget invalid",
+      "path": "/ai/planner/generate",
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63684/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        },
+        "query": "去大理旅行，喜欢美食，不要太赶",
+        "days": 2,
+        "budget": -1,
+        "peopleNum": 2
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": 200,
+      "response": {
+        "code": 400,
+        "message": "budget 必须大于或等于0.01",
+        "data": null,
+        "timestamp": 1790499704343
+      },
+      "passed": true
+    },
+    {
+      "name": "invalid people",
+      "path": "/ai/planner/generate",
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63684/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        },
+        "query": "去大理旅行，喜欢美食，不要太赶",
+        "days": 2,
+        "budget": 3000,
+        "peopleNum": 11
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": 200,
+      "response": {
+        "code": 400,
+        "message": "peopleNum 最大不能超过10",
+        "data": null,
+        "timestamp": 1790499704347
+      },
+      "passed": true
+    },
+    {
+      "name": "fractional days rejected",
+      "path": "/ai/planner/generate",
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63684/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        },
+        "query": "去大理旅行，喜欢美食，不要太赶",
+        "days": 1.5,
+        "budget": 3000,
+        "peopleNum": 2
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": 200,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "draft": {
+            "title": "可控服务生成的测试行程",
+            "dayList": [
+              {
+                "dayIndex": 1,
+                "items": [
+                  {
+                    "activity": "散步与休息",
+                    "attractionId": 0,
+                    "cost": null,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": null,
+                    "sortNo": 1,
+                    "timePoint": "09:00",
+                    "tips": null,
+                    "title": "古城散步",
+                    "transport": null
+                  },
+                  {
+                    "activity": null,
+                    "attractionId": 0,
+                    "cost": 120,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": "特色餐饮",
+                    "sortNo": 2,
+                    "timePoint": null,
+                    "tips": null,
+                    "title": "体验当地美食",
+                    "transport": null
+                  }
+                ],
+                "summary": "仅为协议验收夹具，非真实模型内容",
+                "title": "测试第1天"
+              }
+            ]
+          },
+          "source": "USER_MODEL",
+          "model": "fixture-valid",
+          "attempts": 1
+        },
+        "timestamp": 1790499704380
+      },
+      "passed": false
+    },
+    {
+      "name": "numeric string days rejected",
+      "path": "/ai/planner/generate",
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63684/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        },
+        "query": "去大理旅行，喜欢美食，不要太赶",
+        "days": "2",
+        "budget": 3000,
+        "peopleNum": 2
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": 200,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "draft": {
+            "title": "可控服务生成的测试行程",
+            "dayList": [
+              {
+                "dayIndex": 1,
+                "items": [
+                  {
+                    "activity": "散步与休息",
+                    "attractionId": 0,
+                    "cost": null,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": null,
+                    "sortNo": 1,
+                    "timePoint": "09:00",
+                    "tips": null,
+                    "title": "古城散步",
+                    "transport": null
+                  },
+                  {
+                    "activity": null,
+                    "attractionId": 0,
+                    "cost": 120,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": "特色餐饮",
+                    "sortNo": 2,
+                    "timePoint": null,
+                    "tips": null,
+                    "title": "体验当地美食",
+                    "transport": null
+                  }
+                ],
+                "summary": "仅为协议验收夹具，非真实模型内容",
+                "title": "测试第1天"
+              },
+              {
+                "dayIndex": 2,
+                "items": [
+                  {
+                    "activity": "散步与休息",
+                    "attractionId": 0,
+                    "cost": null,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": null,
+                    "sortNo": 1,
+                    "timePoint": "09:00",
+                    "tips": null,
+                    "title": "古城散步",
+                    "transport": null
+                  },
+                  {
+                    "activity": null,
+                    "attractionId": 0,
+                    "cost": 120,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": "特色餐饮",
+                    "sortNo": 2,
+                    "timePoint": null,
+                    "tips": null,
+                    "title": "体验当地美食",
+                    "transport": null
+                  }
+                ],
+                "summary": "仅为协议验收夹具，非真实模型内容",
+                "title": "测试第2天"
+              }
+            ]
+          },
+          "source": "USER_MODEL",
+          "model": "fixture-valid",
+          "attempts": 1
+        },
+        "timestamp": 1790499704415
+      },
+      "passed": false
+    },
+    {
+      "name": "numeric query rejected",
+      "path": "/ai/planner/generate",
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63684/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        },
+        "query": 12345,
+        "days": 2,
+        "budget": 3000,
+        "peopleNum": 2
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": 200,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "draft": {
+            "title": "可控服务生成的测试行程",
+            "dayList": [
+              {
+                "dayIndex": 1,
+                "items": [
+                  {
+                    "activity": "散步与休息",
+                    "attractionId": 0,
+                    "cost": null,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": null,
+                    "sortNo": 1,
+                    "timePoint": "09:00",
+                    "tips": null,
+                    "title": "古城散步",
+                    "transport": null
+                  },
+                  {
+                    "activity": null,
+                    "attractionId": 0,
+                    "cost": 120,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": "特色餐饮",
+                    "sortNo": 2,
+                    "timePoint": null,
+                    "tips": null,
+                    "title": "体验当地美食",
+                    "transport": null
+                  }
+                ],
+                "summary": "仅为协议验收夹具，非真实模型内容",
+                "title": "测试第1天"
+              },
+              {
+                "dayIndex": 2,
+                "items": [
+                  {
+                    "activity": "散步与休息",
+                    "attractionId": 0,
+                    "cost": null,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": null,
+                    "sortNo": 1,
+                    "timePoint": "09:00",
+                    "tips": null,
+                    "title": "古城散步",
+                    "transport": null
+                  },
+                  {
+                    "activity": null,
+                    "attractionId": 0,
+                    "cost": 120,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": "特色餐饮",
+                    "sortNo": 2,
+                    "timePoint": null,
+                    "tips": null,
+                    "title": "体验当地美食",
+                    "transport": null
+                  }
+                ],
+                "summary": "仅为协议验收夹具，非真实模型内容",
+                "title": "测试第2天"
+              }
+            ]
+          },
+          "source": "USER_MODEL",
+          "model": "fixture-valid",
+          "attempts": 1
+        },
+        "timestamp": 1790499704441
+      },
+      "passed": false
+    },
+    {
+      "name": "string budget rejected",
+      "path": "/ai/planner/generate",
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63684/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        },
+        "query": "去大理旅行，喜欢美食，不要太赶",
+        "days": 2,
+        "budget": "3000",
+        "peopleNum": 2
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": 200,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "draft": {
+            "title": "可控服务生成的测试行程",
+            "dayList": [
+              {
+                "dayIndex": 1,
+                "items": [
+                  {
+                    "activity": "散步与休息",
+                    "attractionId": 0,
+                    "cost": null,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": null,
+                    "sortNo": 1,
+                    "timePoint": "09:00",
+                    "tips": null,
+                    "title": "古城散步",
+                    "transport": null
+                  },
+                  {
+                    "activity": null,
+                    "attractionId": 0,
+                    "cost": 120,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": "特色餐饮",
+                    "sortNo": 2,
+                    "timePoint": null,
+                    "tips": null,
+                    "title": "体验当地美食",
+                    "transport": null
+                  }
+                ],
+                "summary": "仅为协议验收夹具，非真实模型内容",
+                "title": "测试第1天"
+              },
+              {
+                "dayIndex": 2,
+                "items": [
+                  {
+                    "activity": "散步与休息",
+                    "attractionId": 0,
+                    "cost": null,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": null,
+                    "sortNo": 1,
+                    "timePoint": "09:00",
+                    "tips": null,
+                    "title": "古城散步",
+                    "transport": null
+                  },
+                  {
+                    "activity": null,
+                    "attractionId": 0,
+                    "cost": 120,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": "特色餐饮",
+                    "sortNo": 2,
+                    "timePoint": null,
+                    "tips": null,
+                    "title": "体验当地美食",
+                    "transport": null
+                  }
+                ],
+                "summary": "仅为协议验收夹具，非真实模型内容",
+                "title": "测试第2天"
+              }
+            ]
+          },
+          "source": "USER_MODEL",
+          "model": "fixture-valid",
+          "attempts": 1
+        },
+        "timestamp": 1790499704477
+      },
+      "passed": false
+    },
+    {
+      "name": "reject endpoint http://169.254.169.254/latest",
+      "path": "/ai/planner/test",
+      "request": {
+        "connection": {
+          "baseUrl": "http://169.254.169.254/latest",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        }
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": 200,
+      "response": {
+        "code": 400,
+        "message": "API地址不被允许或无法解析：公网需HTTPS及可信主机；本机需启用本地模式并使用1024以上端口",
+        "data": null,
+        "timestamp": 1790499704481
+      },
+      "passed": true
+    },
+    {
+      "name": "reject endpoint http://localhost:80/v1",
+      "path": "/ai/planner/test",
+      "request": {
+        "connection": {
+          "baseUrl": "http://localhost:80/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        }
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": 200,
+      "response": {
+        "code": 400,
+        "message": "API地址不被允许或无法解析：公网需HTTPS及可信主机；本机需启用本地模式并使用1024以上端口",
+        "data": null,
+        "timestamp": 1790499704498
+      },
+      "passed": true
+    },
+    {
+      "name": "reject endpoint https://untrusted.example/v1",
+      "path": "/ai/planner/test",
+      "request": {
+        "connection": {
+          "baseUrl": "https://untrusted.example/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        }
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": 200,
+      "response": {
+        "code": 400,
+        "message": "API地址不被允许或无法解析：公网需HTTPS及可信主机；本机需启用本地模式并使用1024以上端口",
+        "data": null,
+        "timestamp": 1790499704515
+      },
+      "passed": true
+    },
+    {
+      "name": "reject endpoint http://127.0.0.1:63684/v1/chat/completions",
+      "path": "/ai/planner/test",
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63684/v1/chat/completions",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        }
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": 200,
+      "response": {
+        "code": 400,
+        "message": "请填写API基础地址，例如https://api.deepseek.com/v1，不要附加/chat/completions",
+        "data": null,
+        "timestamp": 1790499704520
+      },
+      "passed": true
+    },
+    {
+      "name": "reject endpoint http://127.0.0.1:63684/v1?key=abc",
+      "path": "/ai/planner/test",
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63684/v1?key=abc",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        }
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": 200,
+      "response": {
+        "code": 400,
+        "message": "API地址不被允许或无法解析：公网需HTTPS及可信主机；本机需启用本地模式并使用1024以上端口",
+        "data": null,
+        "timestamp": 1790499704546
+      },
+      "passed": true
+    },
+    {
+      "name": "header injection rejected",
+      "path": "/ai/planner/test",
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63684/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        }
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": 200,
+      "response": {
+        "code": 400,
+        "message": "connection.apiKey 需要匹配正则表达式\"[\\x20-\\x7E]*\"",
+        "data": null,
+        "timestamp": 1790499704562
+      },
+      "passed": true
+    },
+    {
+      "name": "generate for confirmed save",
+      "path": "/ai/planner/generate",
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63684/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        },
+        "query": "去大理旅行，喜欢美食，不要太赶",
+        "days": 2,
+        "budget": 3000,
+        "peopleNum": 2
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": 200,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "draft": {
+            "title": "可控服务生成的测试行程",
+            "dayList": [
+              {
+                "dayIndex": 1,
+                "items": [
+                  {
+                    "activity": "散步与休息",
+                    "attractionId": 0,
+                    "cost": null,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": null,
+                    "sortNo": 1,
+                    "timePoint": "09:00",
+                    "tips": null,
+                    "title": "古城散步",
+                    "transport": null
+                  },
+                  {
+                    "activity": null,
+                    "attractionId": 0,
+                    "cost": 120,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": "特色餐饮",
+                    "sortNo": 2,
+                    "timePoint": null,
+                    "tips": null,
+                    "title": "体验当地美食",
+                    "transport": null
+                  }
+                ],
+                "summary": "仅为协议验收夹具，非真实模型内容",
+                "title": "测试第1天"
+              },
+              {
+                "dayIndex": 2,
+                "items": [
+                  {
+                    "activity": "散步与休息",
+                    "attractionId": 0,
+                    "cost": null,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": null,
+                    "sortNo": 1,
+                    "timePoint": "09:00",
+                    "tips": null,
+                    "title": "古城散步",
+                    "transport": null
+                  },
+                  {
+                    "activity": null,
+                    "attractionId": 0,
+                    "cost": 120,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": "特色餐饮",
+                    "sortNo": 2,
+                    "timePoint": null,
+                    "tips": null,
+                    "title": "体验当地美食",
+                    "transport": null
+                  }
+                ],
+                "summary": "仅为协议验收夹具，非真实模型内容",
+                "title": "测试第2天"
+              }
+            ]
+          },
+          "source": "USER_MODEL",
+          "model": "fixture-valid",
+          "attempts": 1
+        },
+        "timestamp": 1790499704582
+      },
+      "passed": true
+    },
+    {
+      "name": "confirm draft save",
+      "path": "/plan",
+      "request": {
+        "title": "可控服务生成的测试行程",
+        "dayList": [
+          {
+            "dayIndex": 1,
+            "items": [
+              {
+                "activity": "散步与休息",
+                "attractionId": 0,
+                "cost": null,
+                "durationMin": null,
+                "hotel": null,
+                "meal": null,
+                "sortNo": 1,
+                "timePoint": "09:00",
+                "tips": null,
+                "title": "古城散步",
+                "transport": null
+              },
+              {
+                "activity": null,
+                "attractionId": 0,
+                "cost": 120,
+                "durationMin": null,
+                "hotel": null,
+                "meal": "特色餐饮",
+                "sortNo": 2,
+                "timePoint": null,
+                "tips": null,
+                "title": "体验当地美食",
+                "transport": null
+              }
+            ],
+            "summary": "仅为协议验收夹具，非真实模型内容",
+            "title": "测试第1天"
+          },
+          {
+            "dayIndex": 2,
+            "items": [
+              {
+                "activity": "散步与休息",
+                "attractionId": 0,
+                "cost": null,
+                "durationMin": null,
+                "hotel": null,
+                "meal": null,
+                "sortNo": 1,
+                "timePoint": "09:00",
+                "tips": null,
+                "title": "古城散步",
+                "transport": null
+              },
+              {
+                "activity": null,
+                "attractionId": 0,
+                "cost": 120,
+                "durationMin": null,
+                "hotel": null,
+                "meal": "特色餐饮",
+                "sortNo": 2,
+                "timePoint": null,
+                "tips": null,
+                "title": "体验当地美食",
+                "transport": null
+              }
+            ],
+            "summary": "仅为协议验收夹具，非真实模型内容",
+            "title": "测试第2天"
+          }
+        ],
+        "days": 2,
+        "destinationIds": [],
+        "startDate": "2026-09-27",
+        "budget": 3000,
+        "peopleNum": 2,
+        "status": 0
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": 200,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": 290,
+        "timestamp": 1790499704603
+      },
+      "passed": true
+    },
+    {
+      "name": "read own saved plan",
+      "path": "/plan/290",
+      "request": null,
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": 200,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "budget": 3000.0,
+          "createTime": "2026-09-27 17:01:45",
+          "dayCount": null,
+          "dayList": [
+            {
+              "dayIndex": 1,
+              "id": 238,
+              "items": [
+                {
+                  "activity": "散步与休息",
+                  "attractionId": 0,
+                  "cost": 0.0,
+                  "durationMin": 0,
+                  "hotel": "",
+                  "id": 384,
+                  "meal": "",
+                  "sortNo": 1,
+                  "timePoint": "09:00",
+                  "tips": "",
+                  "title": "古城散步",
+                  "transport": ""
+                },
+                {
+                  "activity": "",
+                  "attractionId": 0,
+                  "cost": 120.0,
+                  "durationMin": 0,
+                  "hotel": "",
+                  "id": 385,
+                  "meal": "特色餐饮",
+                  "sortNo": 2,
+                  "timePoint": "",
+                  "tips": "",
+                  "title": "体验当地美食",
+                  "transport": ""
+                }
+              ],
+              "summary": "仅为协议验收夹具，非真实模型内容",
+              "title": "测试第1天"
+            },
+            {
+              "dayIndex": 2,
+              "id": 239,
+              "items": [
+                {
+                  "activity": "散步与休息",
+                  "attractionId": 0,
+                  "cost": 0.0,
+                  "durationMin": 0,
+                  "hotel": "",
+                  "id": 386,
+                  "meal": "",
+                  "sortNo": 1,
+                  "timePoint": "09:00",
+                  "tips": "",
+                  "title": "古城散步",
+                  "transport": ""
+                },
+                {
+                  "activity": "",
+                  "attractionId": 0,
+                  "cost": 120.0,
+                  "durationMin": 0,
+                  "hotel": "",
+                  "id": 387,
+                  "meal": "特色餐饮",
+                  "sortNo": 2,
+                  "timePoint": "",
+                  "tips": "",
+                  "title": "体验当地美食",
+                  "transport": ""
+                }
+              ],
+              "summary": "仅为协议验收夹具，非真实模型内容",
+              "title": "测试第2天"
+            }
+          ],
+          "days": 2,
+          "destinationIds": [],
+          "id": 290,
+          "peopleNum": 2,
+          "sourceRouteId": 0,
+          "startDate": "2026-09-27",
+          "status": 0,
+          "title": "可控服务生成的测试行程",
+          "updateTime": "2026-09-27 17:01:45"
+        },
+        "timestamp": 1790499704631
+      },
+      "passed": true
+    },
+    {
+      "name": "saved days preserved",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "save creates one draft",
+      "actual": "1",
+      "expected": "1",
+      "passed": true
+    },
+    {
+      "name": "audit never stores key or query",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "provider failures recorded",
+      "actual": "4",
+      "expected": "4",
+      "passed": true
+    },
+    {
+      "name": "fixtures cleaned",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+Final local runtime check, 2026-09-27
+redis-cli ping
+PONG
+GET http://localhost:8080/api/actuator/health
+{"groups":["liveness","readiness"],"status":"UP"}
+GET http://127.0.0.1:5173/recommend HTTP status
+200

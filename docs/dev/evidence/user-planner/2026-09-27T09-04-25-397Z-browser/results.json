@@ -1,0 +1,78 @@
+{
+  "mode": "REAL_BROWSER_WITH_CONTROLLED_PROVIDER_NOT_REAL_LLM",
+  "checks": [
+    {
+      "name": "key masked",
+      "actual": "password",
+      "expected": "password",
+      "passed": true
+    },
+    {
+      "name": "only endpoint and model remembered",
+      "actual": [
+        "baseUrl",
+        "model"
+      ],
+      "expected": [
+        "baseUrl",
+        "model"
+      ],
+      "passed": true
+    },
+    {
+      "name": "key absent from persistent storage",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "connection test uses actual compatible fixture",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "generate succeeds",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "preview shows two days",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "preview not saved automatically",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "save disabled until acknowledgement",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "mobile no horizontal overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "browser completed",
+      "actual": "locator.check: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('checkbox', { name: '我已查看行程，保存为可编辑草稿', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <input type=\"checkbox\" class=\"el-checkbox__original\"/>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    59 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "expected": "no error",
+      "passed": false
+    },
+    {
+      "name": "both fixture accounts removed",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,18 @@
+Actual build output, 2026-09-27
+mvn test
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.117 s -- in com.trip.module.ai.RuleIntentParserTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.712 s -- in com.trip.module.ai.UserPlannerTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.24 s -- in com.trip.TripServerApplicationTests
+[INFO] Tests run: 16, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[INFO] Total time:  31.366 s
+npm run build (exit code 0)
+> vue-tsc -b && vite build
+vite v8.3.0 building client environment for production...
+✓ 1731 modules transformed.
+dist/assets/index-BU4HDqFQ.css              362.55 kB │ gzip:  48.60 kB
+dist/assets/index-CdXQ9gJ_.js             1,120.92 kB │ gzip: 368.24 kB
+✓ built in 987ms
+(!) Some chunks are larger than 500 kB after minification. Consider:
+Final backend health
+{"groups":["liveness","readiness"],"status":"UP"}
