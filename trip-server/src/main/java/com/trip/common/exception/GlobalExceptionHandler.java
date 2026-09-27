@@ -18,6 +18,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    @ExceptionHandler({org.springframework.web.multipart.MaxUploadSizeExceededException.class,
+            org.springframework.web.multipart.support.MissingServletRequestPartException.class})
+    public R<Void> handleUpload(Exception e) { return R.fail(400, "请选择PNG/JPEG图片，单张不超过5MB"); }
+
     @ExceptionHandler({org.springframework.web.bind.MissingServletRequestParameterException.class,
             org.springframework.web.method.annotation.MethodArgumentTypeMismatchException.class,
             org.springframework.web.method.annotation.HandlerMethodValidationException.class})

@@ -53,6 +53,10 @@ public class RouteServiceImpl implements RouteService {
                                         Integer difficulty, String tag, String sortBy, Integer status) {
         LambdaQueryWrapper<Route> w = new LambdaQueryWrapper<>();
         w.eq(Route::getStatus, status != null ? status : 1);
+        List<Long> activeDestinationIds = destinationMapper.selectList(new LambdaQueryWrapper<Destination>().eq(Destination::getStatus, 1))
+                .stream().map(Destination::getId).toList();
+        if (activeDestinationIds.isEmpty()) return new PageResult<>();
+        w.in(Route::getDestinationId, activeDestinationIds);
         if (StringUtils.hasText(keyword)) {
             w.and(q -> q.like(Route::getTitle, keyword).or().like(Route::getSubtitle, keyword));
         }
@@ -141,9 +145,12 @@ public class RouteServiceImpl implements RouteService {
 
     @Override
     public List<RoutePageVO> hot(int limit) {
+        Set<Long> active = activeDestinationIds();
+        if (active.isEmpty()) return Collections.emptyList();
         List<Route> list = routeMapper.selectList(
                 new LambdaQueryWrapper<Route>()
                         .eq(Route::getStatus, 1)
+                        .in(!active.isEmpty(), Route::getDestinationId, active)
                         .orderByDesc(Route::getViewCount)
                         .last("LIMIT " + Math.max(1, limit)));
         return toPageVOList(list);
@@ -151,9 +158,12 @@ public class RouteServiceImpl implements RouteService {
 
     @Override
     public List<RoutePageVO> recommendHome() {
+        Set<Long> active = activeDestinationIds();
+        if (active.isEmpty()) return Collections.emptyList();
         List<Route> list = routeMapper.selectList(
                 new LambdaQueryWrapper<Route>()
                         .eq(Route::getStatus, 1)
+                        .in(!active.isEmpty(), Route::getDestinationId, active)
                         .orderByDesc(Route::getIsTop)
                         .orderByDesc(Route::getRecommendWeight)
                         .orderByDesc(Route::getViewCount)
@@ -166,9 +176,12 @@ public class RouteServiceImpl implements RouteService {
         if (!StringUtils.hasText(keyword)) {
             return Collections.emptyList();
         }
+        Set<Long> active = activeDestinationIds();
+        if (active.isEmpty()) return Collections.emptyList();
         List<Route> list = routeMapper.selectList(
                 new LambdaQueryWrapper<Route>()
                         .eq(Route::getStatus, 1)
+                        .in(Route::getDestinationId, active)
                         .and(q -> q.like(Route::getTitle, keyword).or().like(Route::getSubtitle, keyword))
                         .orderByDesc(Route::getViewCount)
                         .last("LIMIT 10"));
@@ -179,10 +192,16 @@ public class RouteServiceImpl implements RouteService {
 
     private Route loadOnShelfRoute(Long id) {
         Route route = routeMapper.selectById(id);
-        if (route == null || (route.getStatus() != null && route.getStatus() == 0)) {
+        Destination parent = route == null ? null : destinationMapper.selectById(route.getDestinationId());
+        if (route == null || !Integer.valueOf(1).equals(route.getStatus()) || parent == null || !Integer.valueOf(1).equals(parent.getStatus())) {
             throw new BizException(ResultCode.ROUTE_NOT_FOUND);
         }
         return route;
+    }
+
+    private Set<Long> activeDestinationIds() {
+        return destinationMapper.selectList(new LambdaQueryWrapper<Destination>().eq(Destination::getStatus, 1))
+                .stream().map(Destination::getId).collect(Collectors.toSet());
     }
 
     private void applySort(LambdaQueryWrapper<Route> w, String sortBy) {

@@ -65,7 +65,7 @@ public class DestinationServiceImpl implements DestinationService {
     @Override
     public DestinationVO detail(Long id) {
         Destination d = destinationMapper.selectById(id);
-        if (d == null) {
+        if (d == null || !Integer.valueOf(1).equals(d.getStatus())) {
             throw new BizException(ResultCode.NOT_FOUND);
         }
         return DestinationVO.from(d);
@@ -95,6 +95,8 @@ public class DestinationServiceImpl implements DestinationService {
 
     @Override
     public List<AttractionVO> attractions(Long destinationId) {
+        Destination destination = destinationMapper.selectById(destinationId);
+        if (destination == null || !Integer.valueOf(1).equals(destination.getStatus())) throw new BizException(ResultCode.NOT_FOUND);
         List<Attraction> list = attractionMapper.selectList(
                 new LambdaQueryWrapper<Attraction>()
                         .eq(Attraction::getDestinationId, destinationId)

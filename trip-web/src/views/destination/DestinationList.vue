@@ -46,7 +46,7 @@ onMounted(load)
     <div v-loading="loading">
       <el-row v-if="list.length" :gutter="16">
         <el-col v-for="d in list" :key="d.id" :xs="12" :sm="8" :md="6">
-          <div class="dest-card card" @click="router.push('/destinations')">
+          <div class="dest-card card" role="link" tabindex="0" @click="router.push(`/destination/${d.id}`)" @keydown.enter="router.push(`/destination/${d.id}`)">
             <img :src="d.coverImg" :alt="d.name" loading="lazy" />
             <div class="dest-card__body">
               <div class="dest-card__name">{{ d.name }}</div>

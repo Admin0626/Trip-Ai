@@ -33,7 +33,8 @@ public class DestinationController {
             @RequestParam(required = false) String tag,
             @RequestParam(required = false) Integer status) {
         size = Math.min(size, 100);
-        return R.ok(destinationService.page(current, size, keyword, province, tag, status));
+        // Public clients may never select下架内容; status is reserved for future admin queries.
+        return R.ok(destinationService.page(current, size, keyword, province, tag, 1));
     }
 
     @GetMapping("/list")

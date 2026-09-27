@@ -43,7 +43,7 @@ onMounted(async () => {
       <h2 class="section__title">热门目的地</h2>
       <el-row :gutter="16">
         <el-col v-for="d in hotDests" :key="d.id" :xs="12" :sm="8" :md="6">
-          <div class="dest-card card" @click="router.push('/destinations')">
+          <div class="dest-card card" role="link" tabindex="0" @click="router.push(`/destination/${d.id}`)" @keydown.enter="router.push(`/destination/${d.id}`)">
             <img :src="d.coverImg" :alt="d.name" loading="lazy" />
             <div class="dest-card__name">{{ d.name }}</div>
             <div class="dest-card__meta">{{ d.province }} {{ d.city }}</div>

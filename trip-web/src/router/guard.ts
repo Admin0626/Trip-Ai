@@ -14,6 +14,7 @@ export function setupGuard(router: Router): void {
     if (!userStore.isLoggedIn) {
       return { path: '/login', query: { redirect: to.fullPath } }
     }
+    if (to.meta.admin && !userStore.isAdmin) return { path: '/' }
 
     return true
   })

@@ -11,6 +11,7 @@ import com.trip.module.user.mapper.SysUserMapper;
 import com.trip.module.user.service.UserService;
 import com.trip.module.user.vo.LoginVO;
 import com.trip.module.user.vo.UserVO;
+import com.trip.security.AuthSessionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ public class UserServiceImpl implements UserService {
     private static final Pattern USERNAME_PATTERN = Pattern.compile("^[a-zA-Z0-9_]{4,20}$");
 
     private final SysUserMapper sysUserMapper;
-    private final JwtUtil jwtUtil;
+    private final AuthSessionService sessions;
     private final PasswordEncoder passwordEncoder;
 
     @Override
@@ -50,14 +51,7 @@ public class UserServiceImpl implements UserService {
         update.setLastLoginTime(LocalDateTime.now());
         sysUserMapper.updateById(update);
 
-        String accessToken = jwtUtil.createAccessToken(user.getId(), user.getRole());
-        String refreshToken = jwtUtil.createRefreshToken(user.getId(), user.getRole());
-        return LoginVO.builder()
-                .accessToken(accessToken)
-                .refreshToken(refreshToken)
-                .expiresIn(jwtUtil.getAccessTokenExpire())
-                .userInfo(UserVO.from(user))
-                .build();
+        return sessions.create(user);
     }
 
     @Override

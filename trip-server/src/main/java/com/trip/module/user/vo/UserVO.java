@@ -15,6 +15,9 @@ public class UserVO {
     private String avatar;
     private String role;
     private String city;
+    private String phone;
+    private String email;
+    private java.time.LocalDateTime createTime;
 
     public static UserVO from(SysUser user) {
         UserVO vo = new UserVO();
@@ -24,6 +27,9 @@ public class UserVO {
         vo.setAvatar(user.getAvatar());
         vo.setRole(user.getRole());
         vo.setCity(user.getCity());
+        vo.setPhone(user.getPhone());
+        vo.setEmail(user.getEmail());
+        vo.setCreateTime(user.getCreateTime());
         return vo;
     }
 }

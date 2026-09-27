@@ -13,8 +13,8 @@ const nickname = computed(() => userStore.userInfo?.nickname ?? '未登录')
 function handleCommand(cmd: string): void {
   if (cmd === 'logout') {
     ElMessageBox.confirm('确定退出登录吗？', '提示', { type: 'warning' })
-      .then(() => {
-        userStore.logout()
+      .then(async () => {
+        await userStore.logout()
         void router.push('/login')
       })
       .catch(() => {})
@@ -25,7 +25,13 @@ function handleCommand(cmd: string): void {
   } else if (cmd === 'plans') {
     void router.push('/plan')
   } else if (cmd === 'profile') {
-    void router.push('/login')
+    void router.push('/user/profile')
+  } else if (cmd === 'preference') {
+    void router.push('/user/preference')
+  } else if (cmd === 'feedback') {
+    void router.push('/user/feedback')
+  } else if (cmd === 'admin' && userStore.isAdmin) {
+    void router.push('/admin')
   }
 }
 </script>
@@ -56,9 +62,13 @@ function handleCommand(cmd: string): void {
             </span>
             <template #dropdown>
               <el-dropdown-menu>
+                <el-dropdown-item command="profile">个人资料</el-dropdown-item>
+                <el-dropdown-item command="preference">旅行偏好</el-dropdown-item>
                 <el-dropdown-item command="plans">我的规划</el-dropdown-item>
                 <el-dropdown-item command="favorites">我的收藏</el-dropdown-item>
                 <el-dropdown-item command="bookings">我的预约</el-dropdown-item>
+                <el-dropdown-item command="feedback">系统反馈</el-dropdown-item>
+                <el-dropdown-item v-if="userStore.isAdmin" command="admin">管理后台</el-dropdown-item>
                 <el-dropdown-item divided command="logout">退出登录</el-dropdown-item>
               </el-dropdown-menu>
             </template>

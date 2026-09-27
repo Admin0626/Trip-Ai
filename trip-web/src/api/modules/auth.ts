@@ -17,3 +17,7 @@ export function registerApi(payload: {
 export function fetchProfileApi(): Promise<UserInfo> {
   return request.get<ApiResponse<UserInfo>>('/auth/me').then((r) => r.data.data)
 }
+
+export function logoutApi(): Promise<void> {
+  return request.post<ApiResponse<void>>('/auth/logout').then(r => r.data.data)
+}

@@ -26,6 +26,9 @@ interface UserInfo {
   avatar?: string
   role: 'USER' | 'ADMIN'
   city?: string
+  phone?: string
+  email?: string
+  createTime?: string
 }
 
 interface LoginResult {
@@ -44,8 +47,13 @@ interface DestinationVO {
   city?: string
   intro?: string
   heat?: number
-  tags?: string
+  tags?: string[]
   routeCount?: number
+  longitude?: number
+  latitude?: number
+  bestSeason?: string
+  avgCost?: number
+  status?: number
 }
 
 interface AttractionVO {
@@ -58,7 +66,10 @@ interface AttractionVO {
   ticketPrice?: number
   openTime?: string
   durationMin?: number
-  tags?: string
+  tags?: string[]
+  longitude?: number
+  latitude?: number
+  status?: number
 }
 
 // ---------- 路线 ----------

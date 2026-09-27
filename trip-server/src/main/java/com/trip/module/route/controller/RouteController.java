@@ -41,7 +41,7 @@ public class RouteController {
             @RequestParam(required = false) Integer status) {
         size = Math.min(size, 100);
         return R.ok(routeService.page(current, size, keyword, destinationId, days,
-                priceMin, priceMax, difficulty, tag, sortBy, status));
+                priceMin, priceMax, difficulty, tag, sortBy, 1));
     }
 
     @GetMapping("/{id}")

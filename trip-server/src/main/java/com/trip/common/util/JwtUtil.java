@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * JWT 工具（JJWT 0.12.x，API 与 0.11 完全不同）。
@@ -36,17 +37,31 @@ public class JwtUtil {
     }
 
     public String createAccessToken(Long userId, String role) {
-        return createToken(userId, role, accessTokenExpire);
+        return createAccessToken(userId, role, UUID.randomUUID().toString(), UUID.randomUUID().toString());
     }
 
     public String createRefreshToken(Long userId, String role) {
-        return createToken(userId, role, refreshTokenExpire);
+        return createRefreshToken(userId, role, UUID.randomUUID().toString(), UUID.randomUUID().toString());
     }
 
-    private String createToken(Long userId, String role, long expireSeconds) {
+    public long getRefreshTokenExpire() { return refreshTokenExpire; }
+
+    public String createAccessToken(Long userId, String role, String sessionId, String version) {
+        return createToken(userId, role, accessTokenExpire, "access", sessionId, version);
+    }
+
+    public String createRefreshToken(Long userId, String role, String sessionId, String version) {
+        return createToken(userId, role, refreshTokenExpire, "refresh", sessionId, version);
+    }
+
+    private String createToken(Long userId, String role, long expireSeconds, String type, String sessionId, String version) {
         return Jwts.builder()
                 .subject(String.valueOf(userId))
                 .claim("role", role)
+                .claim("type", type)
+                .claim("sid", sessionId)
+                .claim("version", version)
+                .id(UUID.randomUUID().toString())
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + expireSeconds * 1000))
                 .signWith(key)

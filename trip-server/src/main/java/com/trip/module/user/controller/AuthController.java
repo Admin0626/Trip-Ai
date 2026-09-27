@@ -7,6 +7,10 @@ import com.trip.module.user.dto.RegisterDTO;
 import com.trip.module.user.service.UserService;
 import com.trip.module.user.vo.LoginVO;
 import com.trip.module.user.vo.UserVO;
+import com.trip.common.exception.BizException;
+import com.trip.security.AuthSessionService;
+import com.trip.common.util.JwtUtil;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -26,6 +30,22 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     private final UserService userService;
+    private final AuthSessionService sessions;
+
+    @PostMapping("/refresh")
+    public R<LoginVO> refresh(@RequestBody java.util.Map<String, Object> body) {
+        if (body.size() != 1 || !(body.get("refreshToken") instanceof String token) || token.isBlank() || token.length() > 4096)
+            throw new BizException(400, "refreshToken 必须为有效字符串");
+        return R.ok(sessions.refresh(token));
+    }
+
+    @PostMapping("/logout")
+    public R<Void> logout(HttpServletRequest request) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth == null || !(auth.getPrincipal() instanceof Long)) throw new BizException(401, "请先登录");
+        sessions.logout(request.getHeader("Authorization").substring(JwtUtil.TOKEN_PREFIX.length()));
+        return R.ok();
+    }
 
     @PostMapping("/register")
     public R<UserVO> register(@Valid @RequestBody RegisterDTO dto) {
