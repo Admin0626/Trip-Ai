@@ -1,0 +1,72 @@
+{
+  "mode": "REAL_BROWSER_API_REDIS_WITH_CONTROLLED_PROVIDER",
+  "checks": [
+    {
+      "name": "initial remaining 20",
+      "actual": "20",
+      "expected": "20",
+      "passed": true
+    },
+    {
+      "name": "call refreshes usage from real API",
+      "actual": 19,
+      "expected": 19,
+      "passed": true
+    },
+    {
+      "name": "page shows success count",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "exhausted connection disabled",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "exhausted generation disabled",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "exhaustion still links basic recommendations",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "mobile no horizontal overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "refresh after simulated reset enables generation",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "daily use retained through simulated hourly reset",
+      "actual": "199",
+      "expected": "199",
+      "passed": true
+    },
+    {
+      "name": "no browser errors",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "fixture removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

@@ -3,6 +3,14 @@ import request from '@/api/request'
 export interface ModelConnection { baseUrl: string; model: string; apiKey: string }
 export interface PlannerInput { connection: ModelConnection; query: string; days: number; budget: number; peopleNum: number; startDate: string }
 export interface PlannerPreview { draft: { title: string; dayList: PlanDayDTO[] }; source: string; model: string; attempts: number }
+export interface QuotaBucket { limit: number; used: number; remaining: number; resetAt: string }
+export interface PlannerUsage {
+  quota: { hourly: QuotaBucket; daily: QuotaBucket; globalDaily: QuotaBucket; timeZone: string }
+  today: { operations: number; succeeded: number; failed: number; averageCostMs: number }
+}
+export function plannerUsage() {
+  return request.get<ApiResponse<PlannerUsage>>('/ai/planner/usage').then(r => r.data.data)
+}
 export function plannerOptions() {
   return request.get<ApiResponse<{ allowedHosts: string[]; allowLoopback: boolean }>>('/ai/planner/options').then(r => r.data.data)
 }

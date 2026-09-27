@@ -6,7 +6,7 @@ import { useUserStore } from '@/store/user'
 import { today } from '@/utils/format'
 import { createPlanApi } from '@/api/modules/plan'
 import { destinationListApi } from '@/api/modules/destination'
-import { plannerOptions, testModel, generatePlan, type PlannerPreview } from '@/api/modules/planner'
+import { plannerOptions, plannerUsage, testModel, generatePlan, type PlannerPreview, type PlannerUsage } from '@/api/modules/planner'
 
 const router = useRouter(), user = useUserStore()
 const connection = reactive({ baseUrl: '', model: '', apiKey: '' })
@@ -19,12 +19,16 @@ const connected = ref(false)
 const preview = ref<PlannerPreview | null>(null)
 const title = ref('')
 const acknowledged = ref(false)
+const usage = ref<PlannerUsage | null>(null)
+const usageError = ref(false)
+const refreshingUsage = ref(false)
+const exhausted = computed(() => !!usage.value && [usage.value.quota.hourly, usage.value.quota.daily, usage.value.quota.globalDaily].some(q => q.remaining === 0))
 const storageKey = computed(() => `trip_ai_connection_${user.userInfo?.id ?? 'none'}`)
 let revision = 0
 function invalidate() { revision++; preview.value = null; acknowledged.value = false; error.value = '' }
 watch(connection, () => { invalidate(); connected.value = false }, { deep: true, flush: 'sync' })
 watch(form, invalidate, { deep: true, flush: 'sync' })
-watch(storageKey, () => { connection.apiKey = ''; loadSettings() })
+watch(storageKey, () => { connection.apiKey = ''; usage.value = null; loadSettings(); void refreshUsage() })
 onBeforeUnmount(() => { revision++; connection.apiKey = '' })
 
 function loadSettings() {
@@ -56,13 +60,21 @@ function clearSettings() {
   connection.baseUrl = ''; connection.model = ''; connection.apiKey = ''
 }
 function config() { return { baseUrl: connection.baseUrl.trim(), model: connection.model.trim(), apiKey: connection.apiKey.trim() } }
+async function refreshUsage() {
+  refreshingUsage.value = true
+  const account = storageKey.value
+  try { const result = await plannerUsage(); if (account === storageKey.value) { usage.value = result; usageError.value = false } }
+  catch { if (account === storageKey.value) { usage.value = null; usageError.value = true } }
+  finally { refreshingUsage.value = false }
+}
+function resetTime(value: string) { return new Date(value).toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai', hour12: false }) }
 async function test() {
   if (!validConnection()) return
   busy.value = 'test'; error.value = ''; connected.value = false
   const version = revision
   try { await testModel(config()); if (version === revision) connected.value = true }
   catch (e) { if (version === revision) error.value = e instanceof Error ? e.message : '连接测试失败' }
-  finally { busy.value = '' }
+  finally { busy.value = ''; await refreshUsage() }
 }
 async function generate() {
   if (!validConnection()) return
@@ -76,7 +88,7 @@ async function generate() {
     if (version !== revision) return
     preview.value = data; title.value = data.draft.title
   } catch (e) { if (version === revision) error.value = e instanceof Error ? e.message : '生成失败，请重试' }
-  finally { busy.value = '' }
+  finally { busy.value = ''; await refreshUsage() }
 }
 async function save() {
   if (!preview.value || !acknowledged.value) return
@@ -93,6 +105,7 @@ async function save() {
 }
 onMounted(async () => {
   loadSettings()
+  void refreshUsage()
   try { const [policy, list] = await Promise.all([plannerOptions(), destinationListApi()]); options.value = policy; destinations.value = list }
   catch { error.value = '无法加载服务配置，请刷新重试' }
 })
@@ -102,6 +115,21 @@ onMounted(async () => {
   <main class="ai-planner">
     <h1>让 AI 帮你规划旅程</h1>
     <p class="hint">连接自己的模型服务，生成行程预览，确认后保存并继续编辑。</p>
+    <section class="panel quota-panel" data-testid="ai-usage" aria-live="polite">
+      <div class="usage-heading"><h2>我的AI额度</h2><el-button :loading="refreshingUsage" :disabled="!!busy" @click="refreshUsage">刷新额度</el-button></div>
+      <template v-if="usage">
+        <div class="fields">
+          <p data-testid="hourly-remaining">本小时剩余 <strong>{{ usage.quota.hourly.remaining }}</strong> / {{ usage.quota.hourly.limit }} 次</p>
+          <p data-testid="daily-remaining">今日剩余 <strong>{{ usage.quota.daily.remaining }}</strong> / {{ usage.quota.daily.limit }} 次</p>
+        </div>
+        <p class="hint">今日操作 {{ usage.today.operations }} 次：成功 {{ usage.today.succeeded }}，失败 {{ usage.today.failed }}；平均耗时 {{ Math.round(usage.today.averageCostMs) }} ms。</p>
+        <p class="hint">北京时间：小时额度重置于 {{ resetTime(usage.quota.hourly.resetAt) }}，日额度重置于 {{ resetTime(usage.quota.daily.resetAt) }}。全站今日剩余 {{ usage.quota.globalDaily.remaining }} 次。</p>
+        <el-alert v-if="exhausted" title="AI额度已用尽。到重置时间后点击刷新额度，可继续使用基础旅行推荐。" type="warning" :closable="false" />
+      </template>
+      <el-alert v-else-if="usageError" title="暂时无法读取额度，请刷新重试；模型调用仍由服务端校验额度。" type="warning" :closable="false" />
+      <p class="hint">连接测试和每次模型生成尝试各用1次额度，结构重试另用1次；已发起的失败请求不退还。操作统计按一次测试或生成计数，可能与额度用量不同。基础旅行推荐不消耗模型额度。</p>
+      <router-link to="/recommend">使用基础旅行推荐</router-link>
+    </section>
     <el-form label-position="top" :disabled="!!busy">
       <section class="panel">
         <h2>1. 你的模型服务</h2>
@@ -117,7 +145,7 @@ onMounted(async () => {
         <p v-if="options.allowLoopback" class="hint">支持 localhost / 127.0.0.1 的1024以上端口。这里指运行后端的电脑；远程部署后不代表你的个人电脑。</p>
         <p class="hint">API Key只存在当前页面内存，离开或刷新需重新填写。需求和密钥将经后端转发到你指定的服务，连接测试与生成可能消耗该服务额度。</p>
         <div class="actions">
-          <el-button :loading="busy === 'test'" @click="test">测试连接</el-button>
+          <el-button :loading="busy === 'test'" :disabled="exhausted" @click="test">测试连接</el-button>
           <el-button @click="saveSettings">记住地址与模型</el-button>
           <el-button @click="clearSettings">清除设置与密钥</el-button>
         </div>
@@ -137,7 +165,7 @@ onMounted(async () => {
             <el-select v-model="form.destinationIds" multiple aria-label="关联目的地"><el-option v-for="d in destinations" :key="d.id" :value="d.id" :label="d.name" /></el-select>
           </el-form-item>
         </div>
-        <el-button type="primary" :loading="busy === 'generate'" @click="generate">生成AI行程</el-button>
+        <el-button type="primary" :loading="busy === 'generate'" :disabled="exhausted" @click="generate">生成AI行程</el-button>
         <p v-if="busy === 'generate'" class="hint" role="status">正在生成完整行程，结构不合格时会自动重试一次，请稍候。</p>
       </section>
     </el-form>
@@ -169,6 +197,7 @@ h1 { font-size: 30px; } h2 { margin: 0 0 20px; font-size: 20px; }
 .hint { color: #64748b; font-size: 14px; line-height: 1.7; }
 .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }.wide { grid-column: 1 / -1; }
 .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }.actions .el-button { margin: 0; }
+.usage-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }.usage-heading h2 { margin: 0; }
 .day { border-bottom: 1px solid #e2e8f0; padding: 16px 0; line-height: 1.7; }.day li { margin: 16px 0; }.day p { margin: 4px 0; }
 .preview > div:last-child { margin-top: 14px; }
 @media(max-width:640px) { .fields { grid-template-columns: 1fr; }.panel { padding: 18px; }.ai-planner { padding: 24px 12px; } }

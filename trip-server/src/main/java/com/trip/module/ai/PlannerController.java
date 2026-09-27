@@ -16,6 +16,7 @@ import tools.jackson.databind.annotation.JsonDeserialize;
 public class PlannerController {
     private final PlannerService service;
     private final PlannerEndpointPolicy policy;
+    private final AiQuotaService quota;
     public record Test(@Valid @NotNull PlannerConnection connection) {}
     public record Generate(@Valid @NotNull PlannerConnection connection,
                            @NotBlank @Size(min=5,max=1000) @JsonDeserialize(using=StrictPlannerJson.Text.class) String query,
@@ -24,6 +25,7 @@ public class PlannerController {
                            @NotNull @Min(1) @Max(10) @JsonDeserialize(using=StrictPlannerJson.IntegerNumber.class) Integer peopleNum,
                            @JsonDeserialize(using=StrictPlannerJson.Text.class) String startDate) {}
     @GetMapping("options") public R<PlannerEndpointPolicy.Options> options() { return R.ok(policy.options()); }
+    @GetMapping("usage") public R<AiQuotaService.Usage> usage(@AuthenticationPrincipal Long userId) { return R.ok(quota.usage(userId)); }
     @PostMapping("test") public R<Object> test(@AuthenticationPrincipal Long userId, @Valid @RequestBody Test request) {
         return R.ok(service.execute(userId, new Generate(request.connection(), null, null, null, null, null), true));
     }

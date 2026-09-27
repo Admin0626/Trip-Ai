@@ -16,6 +16,7 @@ public class PlannerService {
     private final PlannerOutputValidator validator;
     private final JdbcTemplate jdbc;
     private final ObjectMapper json;
+    private final AiQuotaService quota;
     private final Set<Long> running = ConcurrentHashMap.newKeySet();
     private final Semaphore capacity = new Semaphore(8);
     public record Preview(PlannerOutputValidator.Draft draft, String source, String model, int attempts) {}
@@ -26,9 +27,11 @@ public class PlannerService {
         if (!capacity.tryAcquire()) { running.remove(userId); throw new BizException(429, "AI服务繁忙，请稍后再试"); }
         long start = System.nanoTime();
         boolean success = false;
+        boolean attempted = false;
         String error = "FAILED";
         try {
             if (test) {
+                quota.acquire(userId); attempted = true;
                 client.call(endpoint, request.connection(), "Reply with OK only.", "Connection test", false);
                 success = true;
                 return Map.of("connected", true, "model", request.connection().model());
@@ -39,6 +42,7 @@ public class PlannerService {
             String user = json.writeValueAsString(Map.of("query", request.query().strip(), "days", request.days(), "budget", request.budget(), "peopleNum", request.peopleNum(),
                     "startDate", request.startDate() == null ? java.time.LocalDate.now().toString() : request.startDate()));
             for (int attempt = 1; attempt <= 2; attempt++) {
+                quota.acquire(userId); attempted = true;
                 String text = client.call(endpoint, request.connection(), prompt, user + (attempt == 2 ? "\n上次输出结构无效，请严格按要求重新输出完整JSON。" : ""), true);
                 try {
                     var draft = validator.validate(text, request.days());
@@ -51,7 +55,7 @@ public class PlannerService {
         finally {
             running.remove(userId); capacity.release();
             // No endpoint, key, prompt or provider response is persisted in this audit row.
-            jdbc.update("INSERT INTO llm_call_log(user_id,scene,model,cost_ms,success,is_fallback,error_msg) VALUES (?,?,?,?,?,0,?)",
+            if (attempted) jdbc.update("INSERT INTO llm_call_log(user_id,scene,model,cost_ms,success,is_fallback,error_msg) VALUES (?,?,?,?,?,0,?)",
                     userId, test ? "USER_MODEL_TEST" : "USER_PLANNER", request.connection().model(),
                     (System.nanoTime()-start)/1000000, success ? 1 : 0, success ? "" : error);
         }
