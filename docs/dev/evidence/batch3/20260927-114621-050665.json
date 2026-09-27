@@ -1,0 +1,21 @@
+{
+  "time": "20260927-114621-050665",
+  "baseUrl": "http://localhost:8080/api",
+  "mode": "REAL_HTTP_RULE_ONLY",
+  "checks": [
+    {
+      "name": "register fixture",
+      "path": "/auth/register",
+      "request": "<redacted>",
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 200,
+      "response": {
+        "code": 400
+      },
+      "passed": false,
+      "checkError": "",
+      "durationMs": 435
+    }
+  ]
+}

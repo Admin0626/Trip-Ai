@@ -1,21 +1,35 @@
 """Render the real saved responses as Markdown; never fabricate test results."""
 import json
+import argparse
 from pathlib import Path
 
 root=Path(__file__).resolve().parents[2]
 dev=root/'docs/dev'
-before=json.loads((dev/'evidence/baseline/responses.json').read_text(encoding='utf-8'))
-after=json.loads((dev/'evidence/regression/responses.json').read_text(encoding='utf-8'))
-browser=json.loads((dev/'evidence/browser-regression/results.json').read_text(encoding='utf-8'))
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--evidence-dir', type=Path, default=dev/'evidence')
+parser.add_argument('--output', type=Path, default=dev/'第2批接口实测与缺陷修复记录.md')
+args = parser.parse_args()
+before=json.loads((args.evidence_dir/'baseline/responses.json').read_text(encoding='utf-8'))
+after=json.loads((args.evidence_dir/'regression/responses.json').read_text(encoding='utf-8'))
+browser=json.loads((args.evidence_dir/'browser-regression/results.json').read_text(encoding='utf-8'))
+for source, records in [('baseline', before.get('cases')), ('regression', after.get('cases')), ('browser', browser.get('rows'))]:
+    if not isinstance(records, list) or not records or any(not isinstance(c, dict) or type(c.get('passed')) is not bool for c in records):
+        raise ValueError(f'{source}: non-empty evidence with boolean passed flags required; existing report not overwritten')
+
+def summary(records):
+    passed = sum(c['passed'] for c in records)
+    failed = len(records) - passed
+    return f'{len(records)} 项检查，{passed} 项通过，{failed} 项未达预期'
+
 cases=after['cases']
-lines=['# 第2批接口实测与缺陷修复记录', '', '> 测试日期：2026-09-26（Asia/Shanghai）。本文由真实 HTTP 响应、SQL 断言和真实 Edge 浏览器运行结果整理。不是设计示例，也不是仅阅读代码后的推断。', '',
+lines=['# 第2批接口实测与缺陷修复记录', '', f'> 接口证据时间：{after["time"]}；浏览器证据时间：{browser["time"]}。本文读取保存的真实响应与断言生成，生成报告本身不会重新执行测试。', '',
 '## 1. 结论与证据', '',
-f'- 修复前：{len(before["cases"])} 项检查，{sum(x["passed"] for x in before["cases"])} 项通过，21 项未达预期。失败检查数不等于独立缺陷数，同一个根因可能触发多项失败。',
-f'- 修复后：{len(cases)} 项接口/数据检查全部通过（包含注册、登录、夹具清理、并发结果和 SQL 断言；不是 {len(cases)} 个不同接口）。新增专项回归未在旧版本执行，不能据此声称它们旧版必然失败。',
-f'- 浏览器：{len(browser["rows"])} 项检查全部通过。真实 Vite 代理 + 后端 + MySQL，没有拦截替换接口响应。',
-'- `mvn test`：1 个应用上下文测试通过。它不是业务覆盖率证明；业务证据来自本报告 HTTP/SQL 和浏览器测试。',
-'- `npm run build`：类型检查与生产构建通过；仍有主包约 1.12 MB 的体积警告。',
+f'- 修复前：{summary(before["cases"])}。失败检查数不等于独立缺陷数，同一个根因可能触发多项失败。',
+f'- 最终接口/数据证据：{summary(cases)}（包含注册、登录、夹具清理、并发结果和 SQL 断言；不是 {len(cases)} 个不同接口）。新增专项回归未在旧版本执行，不能据此声称它们旧版必然失败。',
+f'- 浏览器：{summary(browser["rows"])}；运行时异常 {len(browser.get("errors", []))} 条。真实 Vite 代理 + 后端 + MySQL，没有拦截替换接口响应。',
+'- 历史验证（2026-09-26）：`mvn test` 的1个上下文测试、`npm run build` 的类型检查和生产构建通过，主包约1.12 MB有体积警告。本生成器不会执行或重新验证这些命令。',
 '- 原始数据：[修复前](evidence/baseline/responses.json)、[最终回归](evidence/regression/responses.json)、[浏览器修复前](evidence/browser-baseline/results.json)、[浏览器最终回归](evidence/browser-regression/results.json)。JWT 和密码已在落盘时脱敏。',
+ '- 下方缺陷台账是2026-09-26修复过程的历史记录；本次读取证据的通过/失败结论以上方动态统计和第4、6节逐项结果为准。',
 f'- 最终接口运行时间：`{after["time"]}`；浏览器运行时间（UTC）：`{browser["time"]}`。', '',
 '## 2. 环境、请求约定与数据保护', '',
 '- 本机 Windows；Spring Boot 4.0.8；Maven 3.9.14 实际使用 JDK 21.0.2（项目编译目标 Java 17）；MySQL 8；Vue 3/Vite 8。',
@@ -84,5 +98,5 @@ lines += ['', '修复前编辑器：', '', '![修复前](evidence/browser-baseli
 '- 本次是本机功能/边界/小规模并发验收，不是高并发性能、跨浏览器兼容或生产安全审计。并发测试通过不意味着所有调度均被穷举。',
 '- 评论接口三张图片URL存储/回显已实测；前端可展示已有图片，文件选择上传入口尚不在此次交付内。管理端接口已测，完整后台页面仍在后续批次。AI优化按约定返回3001占位，不算已实现AI。',
 '- 前端主包体积警告、JDK动态Agent提示以及旧MyBatis-Plus弃用提示不影响本轮验收，后续按需处理。没有通过调高告警阈值隐藏体积问题。', '']
-(dev/'第2批接口实测与缺陷修复记录.md').write_text('\n'.join(lines),encoding='utf-8')
+args.output.write_text('\n'.join(lines),encoding='utf-8')
 print('Generated report from',len(cases),'real records')
