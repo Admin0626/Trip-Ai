@@ -1,0 +1,2144 @@
+{
+  "mode": "REAL_LOCAL_PASSWORD_HTTP_MYSQL_REDIS",
+  "label": "baseline",
+  "startedAt": "2026-09-27T22:15:45.260464+08:00",
+  "checks": [
+    {
+      "name": "anonymous password change denied",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/password",
+        "body": {}
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "请先登录",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "register a",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_c60f0b9894a",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "id": 10090,
+            "nickname": "pw_c60f0b9894a",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_c60f0b9894a"
+          },
+          "timestamp": 1790518545483
+        }
+      }
+    },
+    {
+      "name": "register b",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_37dad66f2db",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "id": 10091,
+            "nickname": "pw_37dad66f2db",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_37dad66f2db"
+          },
+          "timestamp": 1790518545622
+        }
+      }
+    },
+    {
+      "name": "register c",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_dda68a7913c",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "id": 10092,
+            "nickname": "pw_dda68a7913c",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_dda68a7913c"
+          },
+          "timestamp": 1790518545765
+        }
+      }
+    },
+    {
+      "name": "login first device",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_c60f0b9894a",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-27T22:15:45",
+              "email": null,
+              "id": 10090,
+              "nickname": "pw_c60f0b9894a",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_c60f0b9894a"
+            }
+          },
+          "timestamp": 1790518545942
+        }
+      }
+    },
+    {
+      "name": "login second device",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_c60f0b9894a",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-27T22:15:45",
+              "email": null,
+              "id": 10090,
+              "nickname": "pw_c60f0b9894a",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_c60f0b9894a"
+            }
+          },
+          "timestamp": 1790518546046
+        }
+      }
+    },
+    {
+      "name": "login unrelated user",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_37dad66f2db",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-27T22:15:45",
+              "email": null,
+              "id": 10091,
+              "nickname": "pw_37dad66f2db",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_37dad66f2db"
+            }
+          },
+          "timestamp": 1790518546144
+        }
+      }
+    },
+    {
+      "name": "database uses BCrypt",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "refresh token cannot authorize password change",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/password",
+        "body": {
+          "oldPassword": "<redacted>",
+          "newPassword": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期",
+          "data": null,
+          "timestamp": 1790518546227
+        }
+      }
+    },
+    {
+      "name": "wrong old password rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/password",
+        "body": {
+          "oldPassword": "<redacted>",
+          "newPassword": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "原密码不正确",
+          "data": null,
+          "timestamp": 1790518546339
+        }
+      }
+    },
+    {
+      "name": "same password rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/password",
+        "body": {
+          "oldPassword": "<redacted>",
+          "newPassword": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "新密码不能与原密码相同",
+          "data": null,
+          "timestamp": 1790518546434
+        }
+      }
+    },
+    {
+      "name": "short password rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/password",
+        "body": {
+          "oldPassword": "<redacted>",
+          "newPassword": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "新密码须为 8-20 位并同时包含字母与数字",
+          "data": null,
+          "timestamp": 1790518546444
+        }
+      }
+    },
+    {
+      "name": "long password rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/password",
+        "body": {
+          "oldPassword": "<redacted>",
+          "newPassword": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "newPassword 格式或长度不正确",
+          "data": null,
+          "timestamp": 1790518546454
+        }
+      }
+    },
+    {
+      "name": "digits only rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/password",
+        "body": {
+          "oldPassword": "<redacted>",
+          "newPassword": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "新密码须为 8-20 位并同时包含字母与数字",
+          "data": null,
+          "timestamp": 1790518546470
+        }
+      }
+    },
+    {
+      "name": "letters only rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/password",
+        "body": {
+          "oldPassword": "<redacted>",
+          "newPassword": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "新密码须为 8-20 位并同时包含字母与数字",
+          "data": null,
+          "timestamp": 1790518546487
+        }
+      }
+    },
+    {
+      "name": "blank password rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/password",
+        "body": {
+          "oldPassword": "<redacted>",
+          "newPassword": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "newPassword 格式或长度不正确",
+          "data": null,
+          "timestamp": 1790518546496
+        }
+      }
+    },
+    {
+      "name": "missing old password rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/password",
+        "body": {
+          "newPassword": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求字段缺失或包含不支持的字段",
+          "data": null,
+          "timestamp": 1790518546507
+        }
+      }
+    },
+    {
+      "name": "missing new password rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/password",
+        "body": {
+          "oldPassword": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求字段缺失或包含不支持的字段",
+          "data": null,
+          "timestamp": 1790518546518
+        }
+      }
+    },
+    {
+      "name": "numeric old password rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/password",
+        "body": {
+          "oldPassword": "<redacted>",
+          "newPassword": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "oldPassword 格式或长度不正确",
+          "data": null,
+          "timestamp": 1790518546529
+        }
+      }
+    },
+    {
+      "name": "numeric new password rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/password",
+        "body": {
+          "oldPassword": "<redacted>",
+          "newPassword": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "newPassword 格式或长度不正确",
+          "data": null,
+          "timestamp": 1790518546544
+        }
+      }
+    },
+    {
+      "name": "null new password rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/password",
+        "body": {
+          "oldPassword": "<redacted>",
+          "newPassword": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "newPassword 格式或长度不正确",
+          "data": null,
+          "timestamp": 1790518546555
+        }
+      }
+    },
+    {
+      "name": "array new password rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/password",
+        "body": {
+          "oldPassword": "<redacted>",
+          "newPassword": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "newPassword 格式或长度不正确",
+          "data": null,
+          "timestamp": 1790518546567
+        }
+      }
+    },
+    {
+      "name": "other user ID rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/password",
+        "body": {
+          "oldPassword": "<redacted>",
+          "newPassword": "<redacted>",
+          "userId": 10091
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求字段缺失或包含不支持的字段",
+          "data": null,
+          "timestamp": 1790518546600
+        }
+      }
+    },
+    {
+      "name": "invalid attempts leave password unchanged",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "invalid attempts preserve first session",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/profile",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": "",
+            "city": "",
+            "createTime": "2026-09-27T22:15:45",
+            "email": null,
+            "id": 10090,
+            "nickname": "pw_c60f0b9894a",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_c60f0b9894a"
+          },
+          "timestamp": 1790518546681
+        }
+      }
+    },
+    {
+      "name": "invalid attempts preserve second session",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/profile",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": "",
+            "city": "",
+            "createTime": "2026-09-27T22:15:45",
+            "email": null,
+            "id": 10090,
+            "nickname": "pw_c60f0b9894a",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_c60f0b9894a"
+          },
+          "timestamp": 1790518546706
+        }
+      }
+    },
+    {
+      "name": "refresh second device before change",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/refresh",
+        "body": {
+          "refreshToken": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-27T22:15:45",
+              "email": null,
+              "id": 10090,
+              "nickname": "pw_c60f0b9894a",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_c60f0b9894a"
+            }
+          },
+          "timestamp": 1790518546737
+        }
+      }
+    },
+    {
+      "name": "rotation invalidates second old pair access rejected",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/profile",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期",
+          "data": null,
+          "timestamp": 1790518546767
+        }
+      }
+    },
+    {
+      "name": "rotation invalidates second old pair refresh rejected",
+      "actual": [
+        200,
+        401
+      ],
+      "expected": [
+        200,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/refresh",
+        "body": {
+          "refreshToken": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期，请重新登录",
+          "data": null,
+          "timestamp": 1790518546775
+        }
+      }
+    },
+    {
+      "name": "8 character new password accepted",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/password",
+        "body": {
+          "oldPassword": "<redacted>",
+          "newPassword": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790518546930
+        }
+      }
+    },
+    {
+      "name": "successful change replaces BCrypt hash",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "first device after change access rejected",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/profile",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期",
+          "data": null,
+          "timestamp": 1790518547010
+        }
+      }
+    },
+    {
+      "name": "first device after change refresh rejected",
+      "actual": [
+        200,
+        401
+      ],
+      "expected": [
+        200,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/refresh",
+        "body": {
+          "refreshToken": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期，请重新登录",
+          "data": null,
+          "timestamp": 1790518547017
+        }
+      }
+    },
+    {
+      "name": "second rotated device after change access rejected",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/profile",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期",
+          "data": null,
+          "timestamp": 1790518547044
+        }
+      }
+    },
+    {
+      "name": "second rotated device after change refresh rejected",
+      "actual": [
+        200,
+        401
+      ],
+      "expected": [
+        200,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/refresh",
+        "body": {
+          "refreshToken": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期，请重新登录",
+          "data": null,
+          "timestamp": 1790518547077
+        }
+      }
+    },
+    {
+      "name": "second old device after change access rejected",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/profile",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期",
+          "data": null,
+          "timestamp": 1790518547105
+        }
+      }
+    },
+    {
+      "name": "second old device after change refresh rejected",
+      "actual": [
+        200,
+        401
+      ],
+      "expected": [
+        200,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/refresh",
+        "body": {
+          "refreshToken": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期，请重新登录",
+          "data": null,
+          "timestamp": 1790518547123
+        }
+      }
+    },
+    {
+      "name": "unrelated user access unaffected",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/profile",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": "",
+            "city": "",
+            "createTime": "2026-09-27T22:15:45",
+            "email": null,
+            "id": 10091,
+            "nickname": "pw_37dad66f2db",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_37dad66f2db"
+          },
+          "timestamp": 1790518547157
+        }
+      }
+    },
+    {
+      "name": "unrelated user refresh unaffected",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/refresh",
+        "body": {
+          "refreshToken": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-27T22:15:45",
+              "email": null,
+              "id": 10091,
+              "nickname": "pw_37dad66f2db",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_37dad66f2db"
+            }
+          },
+          "timestamp": 1790518547166
+        }
+      }
+    },
+    {
+      "name": "old password login rejected",
+      "actual": [
+        200,
+        1001
+      ],
+      "expected": [
+        200,
+        1001
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_c60f0b9894a",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 1001,
+          "message": "用户名或密码错误",
+          "data": null,
+          "timestamp": 1790518547237
+        }
+      }
+    },
+    {
+      "name": "new password login succeeds",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_c60f0b9894a",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-27T22:15:45",
+              "email": null,
+              "id": 10090,
+              "nickname": "pw_c60f0b9894a",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_c60f0b9894a"
+            }
+          },
+          "timestamp": 1790518547322
+        }
+      }
+    },
+    {
+      "name": "new session profile works",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/profile",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": "",
+            "city": "",
+            "createTime": "2026-09-27T22:15:45",
+            "email": null,
+            "id": 10090,
+            "nickname": "pw_c60f0b9894a",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_c60f0b9894a"
+          },
+          "timestamp": 1790518547355
+        }
+      }
+    },
+    {
+      "name": "new session refresh works",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/refresh",
+        "body": {
+          "refreshToken": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-27T22:15:45",
+              "email": null,
+              "id": 10090,
+              "nickname": "pw_c60f0b9894a",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_c60f0b9894a"
+            }
+          },
+          "timestamp": 1790518547386
+        }
+      }
+    },
+    {
+      "name": "20 character new password accepted",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/password",
+        "body": {
+          "oldPassword": "<redacted>",
+          "newPassword": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790518547527
+        }
+      }
+    },
+    {
+      "name": "new pair invalid after second change access rejected",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/profile",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期",
+          "data": null,
+          "timestamp": 1790518547534
+        }
+      }
+    },
+    {
+      "name": "new pair invalid after second change refresh rejected",
+      "actual": [
+        200,
+        401
+      ],
+      "expected": [
+        200,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/refresh",
+        "body": {
+          "refreshToken": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期，请重新登录",
+          "data": null,
+          "timestamp": 1790518547558
+        }
+      }
+    },
+    {
+      "name": "20 character password login",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_c60f0b9894a",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-27T22:15:45",
+              "email": null,
+              "id": 10090,
+              "nickname": "pw_c60f0b9894a",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_c60f0b9894a"
+            }
+          },
+          "timestamp": 1790518547664
+        }
+      }
+    },
+    {
+      "name": "change back to original password",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/password",
+        "body": {
+          "oldPassword": "<redacted>",
+          "newPassword": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790518547829
+        }
+      }
+    },
+    {
+      "name": "original password does not revive original pair access rejected",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/profile",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期",
+          "data": null,
+          "timestamp": 1790518547838
+        }
+      }
+    },
+    {
+      "name": "original password does not revive original pair refresh rejected",
+      "actual": [
+        200,
+        401
+      ],
+      "expected": [
+        200,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/refresh",
+        "body": {
+          "refreshToken": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期，请重新登录",
+          "data": null,
+          "timestamp": 1790518547847
+        }
+      }
+    },
+    {
+      "name": "same plaintext still produces new salt",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "restored password fresh login",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_c60f0b9894a",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-27T22:15:45",
+              "email": null,
+              "id": 10090,
+              "nickname": "pw_c60f0b9894a",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_c60f0b9894a"
+            }
+          },
+          "timestamp": 1790518548042
+        }
+      }
+    },
+    {
+      "name": "race device A login",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_dda68a7913c",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-27T22:15:45",
+              "email": null,
+              "id": 10092,
+              "nickname": "pw_dda68a7913c",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_dda68a7913c"
+            }
+          },
+          "timestamp": 1790518548118
+        }
+      }
+    },
+    {
+      "name": "race device B login",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_dda68a7913c",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-27T22:15:45",
+              "email": null,
+              "id": 10092,
+              "nickname": "pw_dda68a7913c",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_dda68a7913c"
+            }
+          },
+          "timestamp": 1790518548204
+        }
+      }
+    },
+    {
+      "name": "concurrent change has exactly one winner",
+      "actual": 1,
+      "expected": 1,
+      "passed": true,
+      "responses": [
+        {
+          "status": 200,
+          "body": {
+            "code": 200,
+            "message": "success",
+            "data": null,
+            "timestamp": 1790518548395
+          }
+        },
+        {
+          "status": 200,
+          "body": {
+            "code": 409,
+            "message": "账号已发生变化，请重新登录后重试",
+            "data": null,
+            "timestamp": 1790518548397
+          }
+        }
+      ]
+    },
+    {
+      "name": "concurrent loser rejected safely",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "winning password authenticates",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_dda68a7913c",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-27T22:15:45",
+              "email": null,
+              "id": 10092,
+              "nickname": "pw_dda68a7913c",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_dda68a7913c"
+            }
+          },
+          "timestamp": 1790518548483
+        }
+      }
+    },
+    {
+      "name": "losing password rejected",
+      "actual": [
+        200,
+        1001
+      ],
+      "expected": [
+        200,
+        1001
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_dda68a7913c",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 1001,
+          "message": "用户名或密码错误",
+          "data": null,
+          "timestamp": 1790518548576
+        }
+      }
+    },
+    {
+      "name": "race old pair A access rejected",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/profile",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期",
+          "data": null,
+          "timestamp": 1790518548604
+        }
+      }
+    },
+    {
+      "name": "race old pair A refresh rejected",
+      "actual": [
+        200,
+        401
+      ],
+      "expected": [
+        200,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/refresh",
+        "body": {
+          "refreshToken": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期，请重新登录",
+          "data": null,
+          "timestamp": 1790518548615
+        }
+      }
+    },
+    {
+      "name": "race old pair B access rejected",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/profile",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期",
+          "data": null,
+          "timestamp": 1790518548623
+        }
+      }
+    },
+    {
+      "name": "race old pair B refresh rejected",
+      "actual": [
+        200,
+        401
+      ],
+      "expected": [
+        200,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/refresh",
+        "body": {
+          "refreshToken": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期，请重新登录",
+          "data": null,
+          "timestamp": 1790518548650
+        }
+      }
+    },
+    {
+      "name": "concurrent refresh has one success and one rejection",
+      "actual": [
+        200,
+        401
+      ],
+      "expected": [
+        200,
+        401
+      ],
+      "passed": true,
+      "responses": [
+        {
+          "status": 200,
+          "body": {
+            "code": 200,
+            "message": "success",
+            "data": {
+              "accessToken": "<redacted>",
+              "expiresIn": 7200,
+              "refreshToken": "<redacted>",
+              "userInfo": {
+                "avatar": "",
+                "city": "",
+                "createTime": "2026-09-27T22:15:45",
+                "email": null,
+                "id": 10092,
+                "nickname": "pw_dda68a7913c",
+                "phone": null,
+                "role": "USER",
+                "username": "pw_dda68a7913c"
+              }
+            },
+            "timestamp": 1790518548659
+          }
+        },
+        {
+          "status": 200,
+          "body": {
+            "code": 401,
+            "message": "未登录或登录已过期，请重新登录",
+            "data": null,
+            "timestamp": 1790518548659
+          }
+        }
+      ]
+    },
+    {
+      "name": "winning refresh access works",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/profile",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": "",
+            "city": "",
+            "createTime": "2026-09-27T22:15:45",
+            "email": null,
+            "id": 10092,
+            "nickname": "pw_dda68a7913c",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_dda68a7913c"
+          },
+          "timestamp": 1790518548683
+        }
+      }
+    },
+    {
+      "name": "race refresh old pair access rejected",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/profile",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期",
+          "data": null,
+          "timestamp": 1790518548692
+        }
+      }
+    },
+    {
+      "name": "race refresh old pair refresh rejected",
+      "actual": [
+        200,
+        401
+      ],
+      "expected": [
+        200,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/refresh",
+        "body": {
+          "refreshToken": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期，请重新登录",
+          "data": null,
+          "timestamp": 1790518548714
+        }
+      }
+    },
+    {
+      "name": "logout new session",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/logout",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790518548744
+        }
+      }
+    },
+    {
+      "name": "logged out new pair access rejected",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/profile",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期",
+          "data": null,
+          "timestamp": 1790518548773
+        }
+      }
+    },
+    {
+      "name": "logged out new pair refresh rejected",
+      "actual": [
+        200,
+        401
+      ],
+      "expected": [
+        200,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/refresh",
+        "body": {
+          "refreshToken": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期，请重新登录",
+          "data": null,
+          "timestamp": 1790518548812
+        }
+      }
+    },
+    {
+      "name": "temporary user removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "temporary session keys removed",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "temporary user removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "temporary session keys removed",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "temporary user removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "temporary session keys removed",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    }
+  ],
+  "summary": {
+    "total": 75,
+    "passed": 75,
+    "failed": 0
+  },
+  "finishedAt": "2026-09-27T22:15:49.403886+08:00"
+}

@@ -1,0 +1,88 @@
+{
+  "mode": "REAL_EDGE_PASSWORD_MULTI_DEVICE",
+  "label": "baseline",
+  "checks": [
+    {
+      "name": "temporary user registered",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "first device login",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "second device login",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "mismatch blocked before HTTP request",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "wrong old password API rejection",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "failure remains on profile",
+      "actual": "/user/profile",
+      "expected": "/user/profile",
+      "passed": true
+    },
+    {
+      "name": "failure keeps login",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "same password API rejection",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "mobile no horizontal overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "browser run completed",
+      "actual": "response.json: Protocol error (Network.getResponseBody): No resource with given identifier found\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+      "expected": "no error",
+      "passed": false
+    },
+    {
+      "name": "temporary user removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "temporary sessions removed",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    }
+  ],
+  "errors": [
+    {
+      "page": "changing device",
+      "message": "原密码不正确"
+    },
+    {
+      "page": "changing device",
+      "message": "新密码不能与原密码相同"
+    }
+  ]
+}

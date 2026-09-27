@@ -18,15 +18,17 @@ const rules: FormRules = {
 }
 
 async function onSubmit(): Promise<void> {
-  if (!formRef.value) return
+  if (!formRef.value || loading.value) return
   const valid = await formRef.value.validate().catch(() => false)
-  if (!valid) return
+  if (!valid || loading.value) return
   loading.value = true
   try {
     await userStore.login({ ...form })
     ElMessage.success('登录成功')
     const redirect = (route.query.redirect as string) || '/'
     void router.push(redirect)
+  } catch {
+    // The request interceptor has shown the failure; allow another login attempt.
   } finally {
     loading.value = false
   }

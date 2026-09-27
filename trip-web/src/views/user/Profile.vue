@@ -1,13 +1,44 @@
 <script setup lang="ts">
 import { onMounted, reactive, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { profileApi, updateProfileApi, changePasswordApi, uploadImageApi, type UserProfile } from '@/api/modules/user'
 import { useUserStore } from '@/store/user'
 const store=useUserStore(), loading=ref(false),saving=ref(false),passwordSaving=ref(false),uploading=ref(false)
+const router = useRouter()
 const profile=reactive({nickname:'',avatar:'',phone:'',email:'',city:''}), password=reactive({oldPassword:'',newPassword:'',confirm:''})
-async function load(){loading.value=true;try{const data:UserProfile=await profileApi();Object.assign(profile,{nickname:data.nickname||'',avatar:data.avatar||'',phone:data.phone||'',email:data.email||'',city:data.city||''});store.updateProfile(data)}finally{loading.value=false}}
+async function load() {
+  loading.value = true
+  try {
+    const data: UserProfile = await profileApi()
+    Object.assign(profile, { nickname: data.nickname || '', avatar: data.avatar || '', phone: data.phone || '', email: data.email || '', city: data.city || '' })
+    store.updateProfile(data)
+  } catch {
+    // The request interceptor already reports errors and handles expired sessions.
+  } finally {
+    loading.value = false
+  }
+}
 async function save(){if(!profile.nickname.trim()){ElMessage.warning('昵称不能为空');return} saving.value=true;try{const data=await updateProfileApi({...profile,nickname:profile.nickname.trim()});store.updateProfile(data);ElMessage.success('资料已保存')}finally{saving.value=false}}
-async function changePassword(){if(password.newPassword!==password.confirm){ElMessage.warning('两次新密码不一致');return}passwordSaving.value=true;try{await changePasswordApi({oldPassword:password.oldPassword,newPassword:password.newPassword});ElMessage.success('密码已修改，请重新登录');store.resetSession();location.href='/login'}finally{passwordSaving.value=false}}
+async function changePassword() {
+  if (passwordSaving.value) return
+  if (password.newPassword !== password.confirm) {
+    ElMessage.warning('两次新密码不一致')
+    return
+  }
+  passwordSaving.value = true
+  try {
+    await changePasswordApi({ oldPassword: password.oldPassword, newPassword: password.newPassword })
+    Object.assign(password, { oldPassword: '', newPassword: '', confirm: '' })
+    store.resetSession()
+    ElMessage.success('密码已修改，请重新登录')
+    await router.replace('/login')
+  } catch {
+    // Keep the form and session on validation failure; the interceptor shows why.
+  } finally {
+    passwordSaving.value = false
+  }
+}
 async function upload(event:Event){const file=(event.target as HTMLInputElement).files?.[0];if(!file)return;if(!['image/png','image/jpeg'].includes(file.type)||file.size>5*1024*1024){ElMessage.warning('请选择5MB以内PNG/JPEG图片');return}uploading.value=true;try{profile.avatar=(await uploadImageApi(file)).url;ElMessage.success('头像上传成功')}finally{uploading.value=false;(event.target as HTMLInputElement).value=''}}
 onMounted(load)
 </script>

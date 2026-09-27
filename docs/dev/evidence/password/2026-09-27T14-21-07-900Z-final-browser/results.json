@@ -1,0 +1,145 @@
+{
+  "mode": "REAL_EDGE_PASSWORD_MULTI_DEVICE",
+  "label": "final",
+  "checks": [
+    {
+      "name": "temporary user registered",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "first device login",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "second device login",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "mismatch blocked before HTTP request",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "wrong old password API rejection",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "failure remains on profile",
+      "actual": "/user/profile",
+      "expected": "/user/profile",
+      "passed": true
+    },
+    {
+      "name": "failure keeps login",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "same password API rejection",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "mobile no horizontal overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "password change HTTP response",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "changing device clears all auth storage",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "same browser tab observes cleared login",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "same browser tab cannot reopen protected page",
+      "actual": "/login",
+      "expected": "/login",
+      "passed": true
+    },
+    {
+      "name": "other device old access rejected",
+      "actual": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "name": "other device refresh rejected",
+      "actual": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "name": "other device clears its storage",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "old password login rejected",
+      "actual": 1001,
+      "expected": 1001,
+      "passed": true
+    },
+    {
+      "name": "new password login succeeds",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "new login opens protected profile",
+      "actual": "/user/profile",
+      "expected": "/user/profile",
+      "passed": true
+    },
+    {
+      "name": "password fields empty after login",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "no unhandled browser errors",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "temporary user removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "temporary sessions removed",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    }
+  ],
+  "errors": []
+}
