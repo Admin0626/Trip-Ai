@@ -6,7 +6,7 @@ import { useUserStore } from '@/store/user'
 import { today } from '@/utils/format'
 import { createPlanApi } from '@/api/modules/plan'
 import { destinationListApi } from '@/api/modules/destination'
-import { plannerOptions, plannerUsage, testModel, generatePlan, type PlannerPreview, type PlannerUsage } from '@/api/modules/planner'
+import { plannerOptions, plannerUsage, plannerCircuit, testModel, generatePlan, type PlannerCircuit, type PlannerPreview, type PlannerUsage } from '@/api/modules/planner'
 
 const router = useRouter(), user = useUserStore()
 const connection = reactive({ baseUrl: '', model: '', apiKey: '' })
@@ -22,14 +22,23 @@ const acknowledged = ref(false)
 const usage = ref<PlannerUsage | null>(null)
 const usageError = ref(false)
 const refreshingUsage = ref(false)
+const circuit = ref<PlannerCircuit | null>(null)
+const circuitError = ref(false), refreshingCircuit = ref(false), clockTick = ref(0)
+let circuitRevision = 0, circuitDeadline = 0, mounted = true
+const ticker = window.setInterval(() => { clockTick.value = performance.now() }, 1000)
+const circuitWait = computed(() => Math.max(0, Math.ceil((circuitDeadline - clockTick.value) / 1000)))
+const circuitBlocked = computed(() => circuit.value?.phase === 'HALF_OPEN' || (circuit.value?.phase === 'OPEN' && circuitWait.value > 0))
 const exhausted = computed(() => !!usage.value && [usage.value.quota.hourly, usage.value.quota.daily, usage.value.quota.globalDaily].some(q => q.remaining === 0))
 const storageKey = computed(() => `trip_ai_connection_${user.userInfo?.id ?? 'none'}`)
 let revision = 0
 function invalidate() { revision++; preview.value = null; acknowledged.value = false; error.value = '' }
-watch(connection, () => { invalidate(); connected.value = false }, { deep: true, flush: 'sync' })
+watch(connection, () => {
+  invalidate(); connected.value = false; circuitRevision++; circuit.value = null
+  circuitError.value = false; refreshingCircuit.value = false; circuitDeadline = 0
+}, { deep: true, flush: 'sync' })
 watch(form, invalidate, { deep: true, flush: 'sync' })
 watch(storageKey, () => { connection.apiKey = ''; usage.value = null; loadSettings(); void refreshUsage() })
-onBeforeUnmount(() => { revision++; connection.apiKey = '' })
+onBeforeUnmount(() => { mounted = false; revision++; circuitRevision++; window.clearInterval(ticker); connection.apiKey = '' })
 
 function loadSettings() {
   connection.baseUrl = ''; connection.model = ''; connection.apiKey = ''
@@ -60,6 +69,20 @@ function clearSettings() {
   connection.baseUrl = ''; connection.model = ''; connection.apiKey = ''
 }
 function config() { return { baseUrl: connection.baseUrl.trim(), model: connection.model.trim(), apiKey: connection.apiKey.trim() } }
+async function refreshCircuit() {
+  if (!connection.baseUrl.trim() || !connection.model.trim()) return
+  const version = ++circuitRevision
+  refreshingCircuit.value = true
+  try {
+    const result = await plannerCircuit(config())
+    if (mounted && version === circuitRevision) {
+      circuit.value = result; circuitError.value = false
+      clockTick.value = performance.now(); circuitDeadline = clockTick.value + result.retryAfterSeconds * 1000
+    }
+  } catch {
+    if (mounted && version === circuitRevision) { circuit.value = null; circuitError.value = true }
+  } finally { if (mounted && version === circuitRevision) refreshingCircuit.value = false }
+}
 async function refreshUsage() {
   refreshingUsage.value = true
   const account = storageKey.value
@@ -74,7 +97,7 @@ async function test() {
   const version = revision
   try { await testModel(config()); if (version === revision) connected.value = true }
   catch (e) { if (version === revision) error.value = e instanceof Error ? e.message : '连接测试失败' }
-  finally { busy.value = ''; await refreshUsage() }
+  finally { await Promise.allSettled([refreshUsage(), refreshCircuit()]); busy.value = '' }
 }
 async function generate() {
   if (!validConnection()) return
@@ -88,7 +111,7 @@ async function generate() {
     if (version !== revision) return
     preview.value = data; title.value = data.draft.title
   } catch (e) { if (version === revision) error.value = e instanceof Error ? e.message : '生成失败，请重试' }
-  finally { busy.value = ''; await refreshUsage() }
+  finally { await Promise.allSettled([refreshUsage(), refreshCircuit()]); busy.value = '' }
 }
 async function save() {
   if (!preview.value || !acknowledged.value) return
@@ -145,9 +168,21 @@ onMounted(async () => {
         <p v-if="options.allowLoopback" class="hint">支持 localhost / 127.0.0.1 的1024以上端口。这里指运行后端的电脑；远程部署后不代表你的个人电脑。</p>
         <p class="hint">API Key只存在当前页面内存，离开或刷新需重新填写。需求和密钥将经后端转发到你指定的服务，连接测试与生成可能消耗该服务额度。</p>
         <div class="actions">
-          <el-button :loading="busy === 'test'" :disabled="exhausted" @click="test">测试连接</el-button>
+          <el-button :loading="busy === 'test'" :disabled="exhausted || circuitBlocked || refreshingCircuit" @click="test">测试连接</el-button>
           <el-button @click="saveSettings">记住地址与模型</el-button>
           <el-button @click="clearSettings">清除设置与密钥</el-button>
+          <el-button :loading="refreshingCircuit" :disabled="!connection.baseUrl.trim() || !connection.model.trim()" @click="refreshCircuit">刷新模型状态</el-button>
+        </div>
+        <div data-testid="ai-circuit" aria-live="polite">
+          <template v-if="circuit">
+            <el-alert v-if="circuit.phase === 'OPEN'" :title="circuitWait > 0 ? `模型服务因故障暂停，约${circuitWait}秒后可尝试恢复。` : '等待已结束，可测试连接或生成行程进行一次恢复探测。'" type="warning" :closable="false" />
+            <el-alert v-else-if="circuit.phase === 'HALF_OPEN'" title="模型服务正在恢复探测，请稍后刷新状态。" type="warning" :closable="false" />
+            <p v-else class="hint">当前模型可尝试调用；连接测试成功不代表行程质量已验证。</p>
+            <p class="hint">最近{{ circuit.windowSeconds }}秒实际调用{{ circuit.total }}次，失败{{ circuit.failed }}次。等待或恢复探测期间可继续使用基础旅行推荐。</p>
+            <router-link v-if="circuit.phase !== 'CLOSED'" to="/recommend">改用基础旅行推荐</router-link>
+          </template>
+          <p v-else-if="circuitError" class="hint" role="status">暂时无法读取模型状态，请刷新重试；调用仍由服务端检查。</p>
+          <p v-else class="hint">点击刷新可查看当前连接的故障状态，不调用模型、不消耗AI额度。</p>
         </div>
         <el-alert v-if="connected" title="连接成功，模型返回了有效响应" type="success" :closable="false" />
       </section>
@@ -165,7 +200,7 @@ onMounted(async () => {
             <el-select v-model="form.destinationIds" multiple aria-label="关联目的地"><el-option v-for="d in destinations" :key="d.id" :value="d.id" :label="d.name" /></el-select>
           </el-form-item>
         </div>
-        <el-button type="primary" :loading="busy === 'generate'" :disabled="exhausted" @click="generate">生成AI行程</el-button>
+        <el-button type="primary" :loading="busy === 'generate'" :disabled="exhausted || circuitBlocked || refreshingCircuit" @click="generate">生成AI行程</el-button>
         <p v-if="busy === 'generate'" class="hint" role="status">正在生成完整行程，结构不合格时会自动重试一次，请稍候。</p>
       </section>
     </el-form>

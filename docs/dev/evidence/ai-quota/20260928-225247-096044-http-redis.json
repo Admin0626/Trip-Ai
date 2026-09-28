@@ -1,0 +1,1492 @@
+{
+  "mode": "REAL_HTTP_MYSQL_REDIS_CONTROLLED_PROVIDER_NOT_REAL_LLM",
+  "checks": [
+    {
+      "name": "40 concurrent Lua requests admit exactly 7",
+      "actual": 7,
+      "expected": 7,
+      "passed": true
+    },
+    {
+      "name": "all dimensions equal accepted calls",
+      "actual": [
+        "7",
+        "7",
+        "7"
+      ],
+      "expected": [
+        "7",
+        "7",
+        "7"
+      ],
+      "passed": true
+    },
+    {
+      "name": "counter expiry bounded",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "deny dimension 2",
+      "actual": [
+        "0",
+        "2"
+      ],
+      "expected": [
+        "0",
+        "2"
+      ],
+      "passed": true
+    },
+    {
+      "name": "denial never charges other dimensions 2",
+      "actual": [
+        "7",
+        "7",
+        "7"
+      ],
+      "expected": [
+        "7",
+        "7",
+        "7"
+      ],
+      "passed": true
+    },
+    {
+      "name": "deny dimension 3",
+      "actual": [
+        "0",
+        "3"
+      ],
+      "expected": [
+        "0",
+        "3"
+      ],
+      "passed": true
+    },
+    {
+      "name": "denial never charges other dimensions 3",
+      "actual": [
+        "7",
+        "7",
+        "7"
+      ],
+      "expected": [
+        "7",
+        "7",
+        "7"
+      ],
+      "passed": true
+    },
+    {
+      "name": "corrupt counter rejected before increments 1.5",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "corrupt counter does not partially charge 1.5",
+      "actual": "7",
+      "expected": "7",
+      "passed": true
+    },
+    {
+      "name": "corrupt counter rejected before increments 1.0",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "corrupt counter does not partially charge 1.0",
+      "actual": "7",
+      "expected": "7",
+      "passed": true
+    },
+    {
+      "name": "corrupt counter rejected before increments 01",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "corrupt counter does not partially charge 01",
+      "actual": "7",
+      "expected": "7",
+      "passed": true
+    },
+    {
+      "name": "register USER",
+      "path": "/auth/register",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "username": "aq_e5482bac89a9",
+        "password": "<redacted>"
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "avatar": null,
+          "city": "",
+          "createTime": null,
+          "email": null,
+          "id": 10227,
+          "nickname": "aq_e5482bac89a9",
+          "phone": null,
+          "role": "USER",
+          "username": "aq_e5482bac89a9"
+        },
+        "timestamp": 1790607167847
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "login USER",
+      "path": "/auth/login",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "username": "aq_e5482bac89a9",
+        "password": "<redacted>"
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "accessToken": "<redacted>",
+          "expiresIn": 7200,
+          "refreshToken": "<redacted>",
+          "userInfo": {
+            "avatar": "",
+            "city": "",
+            "createTime": "2026-09-28T22:52:47",
+            "email": null,
+            "id": 10227,
+            "nickname": "aq_e5482bac89a9",
+            "phone": null,
+            "role": "USER",
+            "username": "aq_e5482bac89a9"
+          }
+        },
+        "timestamp": 1790607168004
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "register USER",
+      "path": "/auth/register",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "username": "aq_d4a535479314",
+        "password": "<redacted>"
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "avatar": null,
+          "city": "",
+          "createTime": null,
+          "email": null,
+          "id": 10228,
+          "nickname": "aq_d4a535479314",
+          "phone": null,
+          "role": "USER",
+          "username": "aq_d4a535479314"
+        },
+        "timestamp": 1790607168095
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "login USER",
+      "path": "/auth/login",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "username": "aq_d4a535479314",
+        "password": "<redacted>"
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "accessToken": "<redacted>",
+          "expiresIn": 7200,
+          "refreshToken": "<redacted>",
+          "userInfo": {
+            "avatar": "",
+            "city": "",
+            "createTime": "2026-09-28T22:52:48",
+            "email": null,
+            "id": 10228,
+            "nickname": "aq_d4a535479314",
+            "phone": null,
+            "role": "USER",
+            "username": "aq_d4a535479314"
+          }
+        },
+        "timestamp": 1790607168246
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "register ADMIN",
+      "path": "/auth/register",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "username": "aq_67d0dd384369",
+        "password": "<redacted>"
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "avatar": null,
+          "city": "",
+          "createTime": null,
+          "email": null,
+          "id": 10229,
+          "nickname": "aq_67d0dd384369",
+          "phone": null,
+          "role": "USER",
+          "username": "aq_67d0dd384369"
+        },
+        "timestamp": 1790607168335
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "login ADMIN",
+      "path": "/auth/login",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "username": "aq_67d0dd384369",
+        "password": "<redacted>"
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "accessToken": "<redacted>",
+          "expiresIn": 7200,
+          "refreshToken": "<redacted>",
+          "userInfo": {
+            "avatar": "",
+            "city": "",
+            "createTime": "2026-09-28T22:52:48",
+            "email": null,
+            "id": 10229,
+            "nickname": "aq_67d0dd384369",
+            "phone": null,
+            "role": "ADMIN",
+            "username": "aq_67d0dd384369"
+          }
+        },
+        "timestamp": 1790607168597
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "anonymous usage denied",
+      "path": "/ai/planner/usage",
+      "http": 401,
+      "expectedHttp": 401,
+      "request": null,
+      "response": {
+        "code": 401,
+        "message": "请先登录",
+        "data": null
+      },
+      "expectedCode": 401,
+      "passed": true
+    },
+    {
+      "name": "normal user cannot read audit",
+      "path": "/admin/ai/recommend/log",
+      "http": 403,
+      "expectedHttp": 403,
+      "request": null,
+      "response": {
+        "code": 403,
+        "message": "无权访问",
+        "data": null
+      },
+      "expectedCode": 403,
+      "passed": true
+    },
+    {
+      "name": "initial usage",
+      "path": "/ai/planner/usage",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "quota": {
+            "hourly": {
+              "limit": 20,
+              "used": 0,
+              "remaining": 20,
+              "resetAt": "2026-09-28T23:00+08:00"
+            },
+            "daily": {
+              "limit": 200,
+              "used": 0,
+              "remaining": 200,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "globalDaily": {
+              "limit": 2000,
+              "used": 15,
+              "remaining": 1985,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "timeZone": "Asia/Shanghai"
+          },
+          "today": {
+            "operations": 0,
+            "succeeded": 0,
+            "failed": 0,
+            "averageCostMs": 0.0
+          }
+        },
+        "timestamp": 1790607168671
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "defaults hourly daily global",
+      "actual": [
+        20,
+        200,
+        2000
+      ],
+      "expected": [
+        20,
+        200,
+        2000
+      ],
+      "passed": true
+    },
+    {
+      "name": "own initial usage",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "one connection attempt",
+      "path": "/ai/planner/test",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63120/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        }
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "connected": true,
+          "model": "fixture-valid"
+        },
+        "timestamp": 1790607168697
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "retry consumes two",
+      "path": "/ai/planner/generate",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63120/v1",
+          "model": "fixture-retry",
+          "apiKey": "<redacted>"
+        },
+        "query": "去大理旅行，喜欢美食和散步",
+        "days": 2,
+        "budget": 3000,
+        "peopleNum": 2
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "draft": {
+            "title": "可控服务生成的测试行程",
+            "dayList": [
+              {
+                "dayIndex": 1,
+                "items": [
+                  {
+                    "activity": "散步与休息",
+                    "attractionId": 0,
+                    "cost": null,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": null,
+                    "sortNo": 1,
+                    "timePoint": "09:00",
+                    "tips": null,
+                    "title": "古城散步",
+                    "transport": null
+                  },
+                  {
+                    "activity": null,
+                    "attractionId": 0,
+                    "cost": 120,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": "特色餐饮",
+                    "sortNo": 2,
+                    "timePoint": null,
+                    "tips": null,
+                    "title": "体验当地美食",
+                    "transport": null
+                  }
+                ],
+                "summary": "仅为协议验收夹具，非真实模型内容",
+                "title": "测试第1天"
+              },
+              {
+                "dayIndex": 2,
+                "items": [
+                  {
+                    "activity": "散步与休息",
+                    "attractionId": 0,
+                    "cost": null,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": null,
+                    "sortNo": 1,
+                    "timePoint": "09:00",
+                    "tips": null,
+                    "title": "古城散步",
+                    "transport": null
+                  },
+                  {
+                    "activity": null,
+                    "attractionId": 0,
+                    "cost": 120,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": "特色餐饮",
+                    "sortNo": 2,
+                    "timePoint": null,
+                    "tips": null,
+                    "title": "体验当地美食",
+                    "transport": null
+                  }
+                ],
+                "summary": "仅为协议验收夹具，非真实模型内容",
+                "title": "测试第2天"
+              }
+            ]
+          },
+          "source": "USER_MODEL",
+          "model": "fixture-retry",
+          "attempts": 2
+        },
+        "timestamp": 1790607168750
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "failed provider attempt charged",
+      "path": "/ai/planner/test",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63120/v1",
+          "model": "fixture-auth",
+          "apiKey": "<redacted>"
+        }
+      },
+      "response": {
+        "code": 3004,
+        "message": "模型服务拒绝认证，请检查API Key与模型权限",
+        "data": null,
+        "timestamp": 1790607168790
+      },
+      "expectedCode": 3004,
+      "passed": true
+    },
+    {
+      "name": "attempts versus operations",
+      "path": "/ai/planner/usage",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "quota": {
+            "hourly": {
+              "limit": 20,
+              "used": 4,
+              "remaining": 16,
+              "resetAt": "2026-09-28T23:00+08:00"
+            },
+            "daily": {
+              "limit": 200,
+              "used": 4,
+              "remaining": 196,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "globalDaily": {
+              "limit": 2000,
+              "used": 19,
+              "remaining": 1981,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "timeZone": "Asia/Shanghai"
+          },
+          "today": {
+            "operations": 3,
+            "succeeded": 2,
+            "failed": 1,
+            "averageCostMs": 15.3333
+          }
+        },
+        "timestamp": 1790607168800
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "4 attempts charged",
+      "actual": 4,
+      "expected": 4,
+      "passed": true
+    },
+    {
+      "name": "3 operations including failed call",
+      "actual": [
+        3,
+        2,
+        1
+      ],
+      "expected": [
+        3,
+        2,
+        1
+      ],
+      "passed": true
+    },
+    {
+      "name": "free rule parsing",
+      "path": "/ai/recommend/intent",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "query": "大理两天预算3000元"
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "intent": {
+            "destinations": [
+              "大理"
+            ],
+            "days": null,
+            "budget": 3000,
+            "budgetLevel": "medium",
+            "preferenceTags": [],
+            "companions": null,
+            "pace": null,
+            "travelMonth": null,
+            "mustVisit": [],
+            "avoid": []
+          },
+          "confidence": 0.3,
+          "source": "RULE_FALLBACK"
+        },
+        "timestamp": 1790607168847
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "free route matching",
+      "path": "/ai/recommend/match",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "intent": {},
+        "topN": 3
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "totalCandidates": 20,
+          "recallDetail": {
+            "content": 20,
+            "behavior": 0,
+            "cf": 0,
+            "hot": 0
+          },
+          "costMs": 4,
+          "source": "RULE_BASED",
+          "unsupportedCriteria": [],
+          "list": [
+            {
+              "routeId": 202,
+              "title": "云南西双版纳 4 日雨林探秘",
+              "coverImg": "https://oss.example.com/trip/route/202.jpg",
+              "destinationName": "云南",
+              "days": 4,
+              "price": 2680.0,
+              "tags": [
+                "亲子",
+                "探险",
+                "美食"
+              ],
+              "recallScore": 0.0,
+              "llmScore": null,
+              "reason": "在架路线，按用户评分排序",
+              "highlightMatch": []
+            },
+            {
+              "routeId": 204,
+              "title": "大理苍山洱海 6 日深度游",
+              "coverImg": "https://oss.example.com/trip/route/204.jpg",
+              "destinationName": "大理",
+              "days": 6,
+              "price": 3980.0,
+              "tags": [
+                "自然风光",
+                "历史文化",
+                "徒步"
+              ],
+              "recallScore": 0.0,
+              "llmScore": null,
+              "reason": "在架路线，按用户评分排序",
+              "highlightMatch": []
+            },
+            {
+              "routeId": 210,
+              "title": "三亚 4 日浪漫海岛游",
+              "coverImg": "https://oss.example.com/trip/route/210.jpg",
+              "destinationName": "三亚",
+              "days": 4,
+              "price": 4280.0,
+              "tags": [
+                "海边",
+                "情侣",
+                "度假"
+              ],
+              "recallScore": 0.0,
+              "llmScore": null,
+              "reason": "在架路线，按用户评分排序",
+              "highlightMatch": []
+            }
+          ],
+          "effectiveCriteria": {
+            "destinations": [],
+            "days": null,
+            "budgetMin": null,
+            "budgetMax": null,
+            "preferenceTags": [],
+            "avoid": []
+          },
+          "savedPreferenceFields": []
+        },
+        "timestamp": 1790607168890
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "usage after rules",
+      "path": "/ai/planner/usage",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "quota": {
+            "hourly": {
+              "limit": 20,
+              "used": 4,
+              "remaining": 16,
+              "resetAt": "2026-09-28T23:00+08:00"
+            },
+            "daily": {
+              "limit": 200,
+              "used": 4,
+              "remaining": 196,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "globalDaily": {
+              "limit": 2000,
+              "used": 19,
+              "remaining": 1981,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "timeZone": "Asia/Shanghai"
+          },
+          "today": {
+            "operations": 3,
+            "succeeded": 2,
+            "failed": 1,
+            "averageCostMs": 15.3333
+          }
+        },
+        "timestamp": 1790607168909
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "rules do not consume quota",
+      "actual": 4,
+      "expected": 4,
+      "passed": true
+    },
+    {
+      "name": "fill hour 1",
+      "path": "/ai/planner/test",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63120/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        }
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "connected": true,
+          "model": "fixture-valid"
+        },
+        "timestamp": 1790607168955
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "fill hour 2",
+      "path": "/ai/planner/test",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63120/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        }
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "connected": true,
+          "model": "fixture-valid"
+        },
+        "timestamp": 1790607168976
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "fill hour 3",
+      "path": "/ai/planner/test",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63120/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        }
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "connected": true,
+          "model": "fixture-valid"
+        },
+        "timestamp": 1790607168998
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "fill hour 4",
+      "path": "/ai/planner/test",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63120/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        }
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "connected": true,
+          "model": "fixture-valid"
+        },
+        "timestamp": 1790607169036
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "fill hour 5",
+      "path": "/ai/planner/test",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63120/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        }
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "connected": true,
+          "model": "fixture-valid"
+        },
+        "timestamp": 1790607169062
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "fill hour 6",
+      "path": "/ai/planner/test",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63120/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        }
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "connected": true,
+          "model": "fixture-valid"
+        },
+        "timestamp": 1790607169098
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "fill hour 7",
+      "path": "/ai/planner/test",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63120/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        }
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "connected": true,
+          "model": "fixture-valid"
+        },
+        "timestamp": 1790607169123
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "fill hour 8",
+      "path": "/ai/planner/test",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63120/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        }
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "connected": true,
+          "model": "fixture-valid"
+        },
+        "timestamp": 1790607169147
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "fill hour 9",
+      "path": "/ai/planner/test",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63120/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        }
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "connected": true,
+          "model": "fixture-valid"
+        },
+        "timestamp": 1790607169196
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "fill hour 10",
+      "path": "/ai/planner/test",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63120/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        }
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "connected": true,
+          "model": "fixture-valid"
+        },
+        "timestamp": 1790607169247
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "fill hour 11",
+      "path": "/ai/planner/test",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63120/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        }
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "connected": true,
+          "model": "fixture-valid"
+        },
+        "timestamp": 1790607169273
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "fill hour 12",
+      "path": "/ai/planner/test",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63120/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        }
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "connected": true,
+          "model": "fixture-valid"
+        },
+        "timestamp": 1790607169313
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "fill hour 13",
+      "path": "/ai/planner/test",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63120/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        }
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "connected": true,
+          "model": "fixture-valid"
+        },
+        "timestamp": 1790607169333
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "fill hour 14",
+      "path": "/ai/planner/test",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63120/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        }
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "connected": true,
+          "model": "fixture-valid"
+        },
+        "timestamp": 1790607169379
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "fill hour 15",
+      "path": "/ai/planner/test",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63120/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        }
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "connected": true,
+          "model": "fixture-valid"
+        },
+        "timestamp": 1790607169400
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "only one remaining: retry denied",
+      "path": "/ai/planner/generate",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63120/v1",
+          "model": "fixture-invalid",
+          "apiKey": "<redacted>"
+        },
+        "query": "去大理旅行，喜欢美食和散步",
+        "days": 2,
+        "budget": 3000,
+        "peopleNum": 2
+      },
+      "response": {
+        "code": 429,
+        "message": "本小时AI调用额度已用尽，请在额度重置后重试",
+        "data": null,
+        "timestamp": 1790607169450
+      },
+      "expectedCode": 429,
+      "passed": true
+    },
+    {
+      "name": "retry cannot bypass quota",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "hourly limit rejects test",
+      "path": "/ai/planner/test",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63120/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        }
+      },
+      "response": {
+        "code": 429,
+        "message": "本小时AI调用额度已用尽，请在额度重置后重试",
+        "data": null,
+        "timestamp": 1790607169469
+      },
+      "expectedCode": 429,
+      "passed": true
+    },
+    {
+      "name": "hourly limit rejects generation",
+      "path": "/ai/planner/generate",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63120/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        },
+        "query": "去大理旅行，喜欢美食和散步",
+        "days": 2,
+        "budget": 3000,
+        "peopleNum": 2
+      },
+      "response": {
+        "code": 429,
+        "message": "本小时AI调用额度已用尽，请在额度重置后重试",
+        "data": null,
+        "timestamp": 1790607169488
+      },
+      "expectedCode": 429,
+      "passed": true
+    },
+    {
+      "name": "quota rejection never reaches provider",
+      "actual": 20,
+      "expected": 20,
+      "passed": true
+    },
+    {
+      "name": "exhausted usage",
+      "path": "/ai/planner/usage",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "quota": {
+            "hourly": {
+              "limit": 20,
+              "used": 20,
+              "remaining": 0,
+              "resetAt": "2026-09-28T23:00+08:00"
+            },
+            "daily": {
+              "limit": 200,
+              "used": 20,
+              "remaining": 180,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "globalDaily": {
+              "limit": 2000,
+              "used": 35,
+              "remaining": 1965,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "timeZone": "Asia/Shanghai"
+          },
+          "today": {
+            "operations": 19,
+            "succeeded": 17,
+            "failed": 2,
+            "averageCostMs": 12.4737
+          }
+        },
+        "timestamp": 1790607169500
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "zero remaining",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "counted 20 provider attempts",
+      "actual": 20,
+      "expected": 20,
+      "passed": true
+    },
+    {
+      "name": "19 operations, no phantom denied calls",
+      "actual": [
+        19,
+        17,
+        2
+      ],
+      "expected": [
+        19,
+        17,
+        2
+      ],
+      "passed": true
+    },
+    {
+      "name": "other user isolated",
+      "path": "/ai/planner/usage?userId=10227",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "quota": {
+            "hourly": {
+              "limit": 20,
+              "used": 0,
+              "remaining": 20,
+              "resetAt": "2026-09-28T23:00+08:00"
+            },
+            "daily": {
+              "limit": 200,
+              "used": 0,
+              "remaining": 200,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "globalDaily": {
+              "limit": 2000,
+              "used": 35,
+              "remaining": 1965,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "timeZone": "Asia/Shanghai"
+          },
+          "today": {
+            "operations": 0,
+            "succeeded": 0,
+            "failed": 0,
+            "averageCostMs": 0.0
+          }
+        },
+        "timestamp": 1790607169521
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "query userId cannot select another account",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "global count shared",
+      "actual": 35,
+      "expected": 35,
+      "passed": true
+    },
+    {
+      "name": "daily limit denies unused hour",
+      "path": "/ai/planner/test",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": {
+        "connection": {
+          "baseUrl": "http://127.0.0.1:63120/v1",
+          "model": "fixture-valid",
+          "apiKey": "<redacted>"
+        }
+      },
+      "response": {
+        "code": 429,
+        "message": "今日AI调用额度已用尽，请在额度重置后重试",
+        "data": null,
+        "timestamp": 1790607169590
+      },
+      "expectedCode": 429,
+      "passed": true
+    },
+    {
+      "name": "daily denial leaves hour unused",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "daily denial never reaches provider",
+      "actual": 20,
+      "expected": 20,
+      "passed": true
+    },
+    {
+      "name": "admin paginated own fixture logs",
+      "path": "/admin/ai/recommend/log?userId=10227&size=2",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "current": 1,
+          "pages": 10,
+          "records": [
+            {
+              "id": 254,
+              "userId": 10227,
+              "scene": "USER_PLANNER",
+              "model": "fixture-invalid",
+              "costMs": 18,
+              "success": 0,
+              "isFallback": 0,
+              "createTime": "2026-09-28T22:52:49"
+            },
+            {
+              "id": 253,
+              "userId": 10227,
+              "scene": "USER_MODEL_TEST",
+              "model": "fixture-valid",
+              "costMs": 8,
+              "success": 1,
+              "isFallback": 0,
+              "createTime": "2026-09-28T22:52:49"
+            }
+          ],
+          "size": 2,
+          "total": 20
+        },
+        "timestamp": 1790607169634
+      },
+      "expectedCode": 200,
+      "passed": true
+    },
+    {
+      "name": "admin page size",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "admin total includes free rule audit",
+      "actual": 20,
+      "expected": 20,
+      "passed": true
+    },
+    {
+      "name": "admin fields do not expose provider data",
+      "actual": [
+        "costMs",
+        "createTime",
+        "id",
+        "isFallback",
+        "model",
+        "scene",
+        "success",
+        "userId"
+      ],
+      "expected": [
+        "costMs",
+        "createTime",
+        "id",
+        "isFallback",
+        "model",
+        "scene",
+        "success",
+        "userId"
+      ],
+      "passed": true
+    },
+    {
+      "name": "admin invalid page rejected",
+      "path": "/admin/ai/recommend/log?size=101",
+      "http": 200,
+      "expectedHttp": 200,
+      "request": null,
+      "response": {
+        "code": 400,
+        "message": "分页或用户参数超出范围",
+        "data": null,
+        "timestamp": 1790607169662
+      },
+      "expectedCode": 400,
+      "passed": true
+    },
+    {
+      "name": "fixture sessions removed 10227",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "fixture AI state cleaned 10227",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "fixture sessions removed 10228",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "fixture AI state cleaned 10228",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    }
+  ]
+}

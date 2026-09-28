@@ -33,6 +33,12 @@ trip:
     allowed-hosts: ${TRIP_AI_ALLOWED_HOSTS:api.deepseek.com,api.openai.com}
     allow-loopback: ${TRIP_AI_ALLOW_LOOPBACK:true}
     timeout-seconds: ${TRIP_AI_TIMEOUT_SECONDS:45}
+    circuit:
+      window-seconds: ${TRIP_AI_CIRCUIT_WINDOW_SECONDS:300}
+      cooldown-seconds: ${TRIP_AI_CIRCUIT_COOLDOWN_SECONDS:600}
+      minimum-calls: ${TRIP_AI_CIRCUIT_MINIMUM_CALLS:10}
+      failure-percent: ${TRIP_AI_CIRCUIT_FAILURE_PERCENT:30}
+      probe-lease-seconds: ${TRIP_AI_CIRCUIT_PROBE_LEASE_SECONDS:90}
   jwt:
     secret: ${JWT_SECRET:dev-only-secret-please-change-in-prod-at-least-32-bytes}
     access-token-expire: 7200      # 秒

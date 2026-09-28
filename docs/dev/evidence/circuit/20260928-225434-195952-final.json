@@ -1,0 +1,3343 @@
+{
+  "mode": "REAL_HTTP_MYSQL_REDIS_CONTROLLED_MODEL",
+  "label": "final",
+  "startedAt": "2026-09-28T22:54:34.185518+08:00",
+  "checks": [
+    {
+      "name": "register a",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_9dc8f17d13a",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "id": 10231,
+            "nickname": "pw_9dc8f17d13a",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_9dc8f17d13a"
+          },
+          "timestamp": 1790607274338
+        }
+      }
+    },
+    {
+      "name": "login fixture",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_9dc8f17d13a",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-28T22:54:34",
+              "email": null,
+              "id": 10231,
+              "nickname": "pw_9dc8f17d13a",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_9dc8f17d13a"
+            }
+          },
+          "timestamp": 1790607274562
+        }
+      }
+    },
+    {
+      "name": "actual provider failure 1",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790607274593
+        }
+      }
+    },
+    {
+      "name": "actual provider failure 2",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790607274611
+        }
+      }
+    },
+    {
+      "name": "actual provider failure 3",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790607274654
+        }
+      }
+    },
+    {
+      "name": "actual provider failure 4",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790607274673
+        }
+      }
+    },
+    {
+      "name": "circuit state is available",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "OPEN",
+            "total": 4,
+            "failed": 4,
+            "failurePercent": 100.0,
+            "minimumCalls": 4,
+            "windowSeconds": 60,
+            "cooldownSeconds": 4,
+            "retryAt": "2026-09-28T14:54:38.671Z",
+            "retryAfterSeconds": 4
+          },
+          "timestamp": 1790607274682
+        }
+      }
+    },
+    {
+      "name": "open breaker rejects next call",
+      "actual": [
+        200,
+        503
+      ],
+      "expected": [
+        200,
+        503
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 503,
+          "message": "模型服务因连续故障暂时暂停，请在约4秒后重试，也可使用基础旅行推荐",
+          "data": null,
+          "timestamp": 1790607274692
+        }
+      }
+    },
+    {
+      "name": "blocked request has no upstream call",
+      "actual": 4,
+      "expected": 4,
+      "passed": true
+    },
+    {
+      "name": "four failures open circuit",
+      "actual": "OPEN",
+      "expected": "OPEN",
+      "passed": true
+    },
+    {
+      "name": "outbound failure samples",
+      "actual": 4,
+      "expected": 4,
+      "passed": true
+    },
+    {
+      "name": "configured shortened integration times",
+      "actual": [
+        60,
+        4,
+        4
+      ],
+      "expected": [
+        60,
+        4,
+        4
+      ],
+      "passed": true
+    },
+    {
+      "name": "actual usage",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/planner/usage",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "quota": {
+              "hourly": {
+                "limit": 20,
+                "used": 4,
+                "remaining": 16,
+                "resetAt": "2026-09-28T23:00+08:00"
+              },
+              "daily": {
+                "limit": 200,
+                "used": 4,
+                "remaining": 196,
+                "resetAt": "2026-09-29T00:00+08:00"
+              },
+              "globalDaily": {
+                "limit": 2000,
+                "used": 50,
+                "remaining": 1950,
+                "resetAt": "2026-09-29T00:00+08:00"
+              },
+              "timeZone": "Asia/Shanghai"
+            },
+            "today": {
+              "operations": 4,
+              "succeeded": 0,
+              "failed": 4,
+              "averageCostMs": 8.5
+            }
+          },
+          "timestamp": 1790607274706
+        }
+      }
+    },
+    {
+      "name": "normalized connection shares open circuit",
+      "actual": [
+        200,
+        503
+      ],
+      "expected": [
+        200,
+        503
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://localhost:51695/v1/",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 503,
+          "message": "模型服务因连续故障暂时暂停，请在约4秒后重试，也可使用基础旅行推荐",
+          "data": null,
+          "timestamp": 1790607274716
+        }
+      }
+    },
+    {
+      "name": "generation shares test circuit",
+      "actual": [
+        200,
+        503
+      ],
+      "expected": [
+        200,
+        503
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/generate",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          },
+          "query": "希望轻松体验当地美食",
+          "days": 2,
+          "budget": 3000,
+          "peopleNum": 2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 503,
+          "message": "模型服务因连续故障暂时暂停，请在约4秒后重试，也可使用基础旅行推荐",
+          "data": null,
+          "timestamp": 1790607274726
+        }
+      }
+    },
+    {
+      "name": "actual usage",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/planner/usage",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "quota": {
+              "hourly": {
+                "limit": 20,
+                "used": 4,
+                "remaining": 16,
+                "resetAt": "2026-09-28T23:00+08:00"
+              },
+              "daily": {
+                "limit": 200,
+                "used": 4,
+                "remaining": 196,
+                "resetAt": "2026-09-29T00:00+08:00"
+              },
+              "globalDaily": {
+                "limit": 2000,
+                "used": 50,
+                "remaining": 1950,
+                "resetAt": "2026-09-29T00:00+08:00"
+              },
+              "timeZone": "Asia/Shanghai"
+            },
+            "today": {
+              "operations": 4,
+              "succeeded": 0,
+              "failed": 4,
+              "averageCostMs": 8.5
+            }
+          },
+          "timestamp": 1790607274734
+        }
+      }
+    },
+    {
+      "name": "blocked requests consume no quota or audit",
+      "actual": [
+        4,
+        4,
+        4
+      ],
+      "expected": [
+        4,
+        4,
+        4
+      ],
+      "passed": true
+    },
+    {
+      "name": "anonymous state denied",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "请先登录",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "unsafe state address rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://169.254.169.254",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "API地址不被允许或无法解析：公网需HTTPS及可信主机；本机需启用本地模式并使用1024以上端口",
+          "data": null,
+          "timestamp": 1790607274769
+        }
+      }
+    },
+    {
+      "name": "read model state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "CLOSED",
+            "total": 0,
+            "failed": 0,
+            "failurePercent": 0.0,
+            "minimumCalls": 4,
+            "windowSeconds": 60,
+            "cooldownSeconds": 4,
+            "retryAt": null,
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790607274780
+        }
+      }
+    },
+    {
+      "name": "changed key has fresh state",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "changed key can call",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "model": "circuit-main",
+            "connected": true
+          },
+          "timestamp": 1790607274827
+        }
+      }
+    },
+    {
+      "name": "read model state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "other-model",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "CLOSED",
+            "total": 0,
+            "failed": 0,
+            "failurePercent": 0.0,
+            "minimumCalls": 4,
+            "windowSeconds": 60,
+            "cooldownSeconds": 4,
+            "retryAt": null,
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790607274837
+        }
+      }
+    },
+    {
+      "name": "changed model has fresh state",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "changed model can call",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "other-model",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "model": "other-model",
+            "connected": true
+          },
+          "timestamp": 1790607274859
+        }
+      }
+    },
+    {
+      "name": "read model state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v2",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "CLOSED",
+            "total": 0,
+            "failed": 0,
+            "failurePercent": 0.0,
+            "minimumCalls": 4,
+            "windowSeconds": 60,
+            "cooldownSeconds": 4,
+            "retryAt": null,
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790607274890
+        }
+      }
+    },
+    {
+      "name": "changed path has fresh state",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "changed path can call",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v2",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "model": "circuit-main",
+            "connected": true
+          },
+          "timestamp": 1790607274933
+        }
+      }
+    },
+    {
+      "name": "read model state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51696/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "CLOSED",
+            "total": 0,
+            "failed": 0,
+            "failurePercent": 0.0,
+            "minimumCalls": 4,
+            "windowSeconds": 60,
+            "cooldownSeconds": 4,
+            "retryAt": null,
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790607274946
+        }
+      }
+    },
+    {
+      "name": "another actual provider port isolated",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "another provider port can call",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51696/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "model": "circuit-main",
+            "connected": true
+          },
+          "timestamp": 1790607274996
+        }
+      }
+    },
+    {
+      "name": "register b",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_990c0b0b43b",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "id": 10233,
+            "nickname": "pw_990c0b0b43b",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_990c0b0b43b"
+          },
+          "timestamp": 1790607275084
+        }
+      }
+    },
+    {
+      "name": "login isolated user",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_990c0b0b43b",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-28T22:54:35",
+              "email": null,
+              "id": 10233,
+              "nickname": "pw_990c0b0b43b",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_990c0b0b43b"
+            }
+          },
+          "timestamp": 1790607275257
+        }
+      }
+    },
+    {
+      "name": "read model state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "CLOSED",
+            "total": 0,
+            "failed": 0,
+            "failurePercent": 0.0,
+            "minimumCalls": 4,
+            "windowSeconds": 60,
+            "cooldownSeconds": 4,
+            "retryAt": null,
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790607275267
+        }
+      }
+    },
+    {
+      "name": "other user isolated",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "other user reaches healthy provider",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "model": "circuit-main",
+            "connected": true
+          },
+          "timestamp": 1790607275302
+        }
+      }
+    },
+    {
+      "name": "half-open healthy probe recovers",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "model": "circuit-main",
+            "connected": true
+          },
+          "timestamp": 1790607279421
+        }
+      }
+    },
+    {
+      "name": "read model state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "CLOSED",
+            "total": 1,
+            "failed": 0,
+            "failurePercent": 0.0,
+            "minimumCalls": 4,
+            "windowSeconds": 60,
+            "cooldownSeconds": 4,
+            "retryAt": null,
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790607279449
+        }
+      }
+    },
+    {
+      "name": "probe closes circuit",
+      "actual": "CLOSED",
+      "expected": "CLOSED",
+      "passed": true
+    },
+    {
+      "name": "recovery starts fresh window",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "reopen after recovery 0",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790607279477
+        }
+      }
+    },
+    {
+      "name": "reopen after recovery 1",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790607279500
+        }
+      }
+    },
+    {
+      "name": "reopen after recovery 2",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790607279535
+        }
+      }
+    },
+    {
+      "name": "read model state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "OPEN",
+            "total": 4,
+            "failed": 3,
+            "failurePercent": 75.0,
+            "minimumCalls": 4,
+            "windowSeconds": 60,
+            "cooldownSeconds": 4,
+            "retryAt": "2026-09-28T14:54:43.534Z",
+            "retryAfterSeconds": 4
+          },
+          "timestamp": 1790607279547
+        }
+      }
+    },
+    {
+      "name": "failed window reopens",
+      "actual": "OPEN",
+      "expected": "OPEN",
+      "passed": true
+    },
+    {
+      "name": "failed half-open probe",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790607283674
+        }
+      }
+    },
+    {
+      "name": "read model state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "OPEN",
+            "total": 5,
+            "failed": 4,
+            "failurePercent": 80.0,
+            "minimumCalls": 4,
+            "windowSeconds": 60,
+            "cooldownSeconds": 4,
+            "retryAt": "2026-09-28T14:54:47.672Z",
+            "retryAfterSeconds": 4
+          },
+          "timestamp": 1790607283710
+        }
+      }
+    },
+    {
+      "name": "probe failure restarts cooldown",
+      "actual": "OPEN",
+      "expected": "OPEN",
+      "passed": true
+    },
+    {
+      "name": "actual usage",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/planner/usage",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "quota": {
+              "hourly": {
+                "limit": 20,
+                "used": 13,
+                "remaining": 7,
+                "resetAt": "2026-09-28T23:00+08:00"
+              },
+              "daily": {
+                "limit": 200,
+                "used": 13,
+                "remaining": 187,
+                "resetAt": "2026-09-29T00:00+08:00"
+              },
+              "globalDaily": {
+                "limit": 2000,
+                "used": 60,
+                "remaining": 1940,
+                "resetAt": "2026-09-29T00:00+08:00"
+              },
+              "timeZone": "Asia/Shanghai"
+            },
+            "today": {
+              "operations": 13,
+              "succeeded": 5,
+              "failed": 8,
+              "averageCostMs": 8.7692
+            }
+          },
+          "timestamp": 1790607283725
+        }
+      }
+    },
+    {
+      "name": "failed probe blocks another call",
+      "actual": [
+        200,
+        503
+      ],
+      "expected": [
+        200,
+        503
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 503,
+          "message": "模型服务因连续故障暂时暂停，请在约4秒后重试，也可使用基础旅行推荐",
+          "data": null,
+          "timestamp": 1790607283740
+        }
+      }
+    },
+    {
+      "name": "actual usage",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/planner/usage",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "quota": {
+              "hourly": {
+                "limit": 20,
+                "used": 13,
+                "remaining": 7,
+                "resetAt": "2026-09-28T23:00+08:00"
+              },
+              "daily": {
+                "limit": 200,
+                "used": 13,
+                "remaining": 187,
+                "resetAt": "2026-09-29T00:00+08:00"
+              },
+              "globalDaily": {
+                "limit": 2000,
+                "used": 60,
+                "remaining": 1940,
+                "resetAt": "2026-09-29T00:00+08:00"
+              },
+              "timeZone": "Asia/Shanghai"
+            },
+            "today": {
+              "operations": 13,
+              "succeeded": 5,
+              "failed": 8,
+              "averageCostMs": 8.7692
+            }
+          },
+          "timestamp": 1790607283750
+        }
+      }
+    },
+    {
+      "name": "no phantom outbound after failed probe",
+      "actual": [
+        13,
+        13,
+        13
+      ],
+      "expected": [
+        13,
+        13,
+        13
+      ],
+      "passed": true
+    },
+    {
+      "name": "only one of eight independent clients probes",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "read model state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "HALF_OPEN",
+            "total": 5,
+            "failed": 4,
+            "failurePercent": 80.0,
+            "minimumCalls": 4,
+            "windowSeconds": 60,
+            "cooldownSeconds": 4,
+            "retryAt": "2026-09-28T14:54:51.915Z",
+            "retryAfterSeconds": 4
+          },
+          "timestamp": 1790607287968
+        }
+      }
+    },
+    {
+      "name": "live probe visible through HTTP",
+      "actual": "HALF_OPEN",
+      "expected": "HALF_OPEN",
+      "passed": true
+    },
+    {
+      "name": "actual usage",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/planner/usage",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "quota": {
+              "hourly": {
+                "limit": 20,
+                "used": 13,
+                "remaining": 7,
+                "resetAt": "2026-09-28T23:00+08:00"
+              },
+              "daily": {
+                "limit": 200,
+                "used": 13,
+                "remaining": 187,
+                "resetAt": "2026-09-29T00:00+08:00"
+              },
+              "globalDaily": {
+                "limit": 2000,
+                "used": 60,
+                "remaining": 1940,
+                "resetAt": "2026-09-29T00:00+08:00"
+              },
+              "timeZone": "Asia/Shanghai"
+            },
+            "today": {
+              "operations": 13,
+              "succeeded": 5,
+              "failed": 8,
+              "averageCostMs": 8.7692
+            }
+          },
+          "timestamp": 1790607287998
+        }
+      }
+    },
+    {
+      "name": "live probe rejects HTTP",
+      "actual": [
+        200,
+        503
+      ],
+      "expected": [
+        200,
+        503
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 503,
+          "message": "模型服务正在恢复探测，请稍后重试，也可使用基础旅行推荐",
+          "data": null,
+          "timestamp": 1790607288009
+        }
+      }
+    },
+    {
+      "name": "actual usage",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/planner/usage",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "quota": {
+              "hourly": {
+                "limit": 20,
+                "used": 13,
+                "remaining": 7,
+                "resetAt": "2026-09-28T23:00+08:00"
+              },
+              "daily": {
+                "limit": 200,
+                "used": 13,
+                "remaining": 187,
+                "resetAt": "2026-09-29T00:00+08:00"
+              },
+              "globalDaily": {
+                "limit": 2000,
+                "used": 60,
+                "remaining": 1940,
+                "resetAt": "2026-09-29T00:00+08:00"
+              },
+              "timeZone": "Asia/Shanghai"
+            },
+            "today": {
+              "operations": 13,
+              "succeeded": 5,
+              "failed": 8,
+              "averageCostMs": 8.7692
+            }
+          },
+          "timestamp": 1790607288025
+        }
+      }
+    },
+    {
+      "name": "busy probe no quota or audit",
+      "actual": [
+        13,
+        13,
+        13
+      ],
+      "expected": [
+        13,
+        13,
+        13
+      ],
+      "passed": true
+    },
+    {
+      "name": "read model state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "OPEN",
+            "total": 5,
+            "failed": 4,
+            "failurePercent": 80.0,
+            "minimumCalls": 4,
+            "windowSeconds": 60,
+            "cooldownSeconds": 4,
+            "retryAt": "2026-09-28T14:54:56.137Z",
+            "retryAfterSeconds": 4
+          },
+          "timestamp": 1790607292136
+        }
+      }
+    },
+    {
+      "name": "expired lease reopens safely",
+      "actual": "OPEN",
+      "expected": "OPEN",
+      "passed": true
+    },
+    {
+      "name": "read model state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "OPEN",
+            "total": 5,
+            "failed": 4,
+            "failurePercent": 80.0,
+            "minimumCalls": 4,
+            "windowSeconds": 60,
+            "cooldownSeconds": 4,
+            "retryAt": "2026-09-28T14:54:56.137Z",
+            "retryAfterSeconds": 4
+          },
+          "timestamp": 1790607292209
+        }
+      }
+    },
+    {
+      "name": "late expired result cannot close",
+      "actual": "OPEN",
+      "expected": "OPEN",
+      "passed": true
+    },
+    {
+      "name": "real HTTP recovers after crashed probe",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "model": "circuit-main",
+            "connected": true
+          },
+          "timestamp": 1790607296356
+        }
+      }
+    },
+    {
+      "name": "read model state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "CLOSED",
+            "total": 1,
+            "failed": 0,
+            "failurePercent": 0.0,
+            "minimumCalls": 4,
+            "windowSeconds": 60,
+            "cooldownSeconds": 4,
+            "retryAt": null,
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790607296396
+        }
+      }
+    },
+    {
+      "name": "stale failure cannot reopen recovered circuit",
+      "actual": "CLOSED",
+      "expected": "CLOSED",
+      "passed": true
+    },
+    {
+      "name": "register q",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_bef3d923f7q",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "id": 10236,
+            "nickname": "pw_bef3d923f7q",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_bef3d923f7q"
+          },
+          "timestamp": 1790607296487
+        }
+      }
+    },
+    {
+      "name": "login quota fixture",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_bef3d923f7q",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-28T22:54:56",
+              "email": null,
+              "id": 10236,
+              "nickname": "pw_bef3d923f7q",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_bef3d923f7q"
+            }
+          },
+          "timestamp": 1790607296675
+        }
+      }
+    },
+    {
+      "name": "quota denies reserved probe",
+      "actual": [
+        200,
+        429
+      ],
+      "expected": [
+        200,
+        429
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "quota-fixture",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 429,
+          "message": "本小时AI调用额度已用尽，请在额度重置后重试",
+          "data": null,
+          "timestamp": 1790607301136
+        }
+      }
+    },
+    {
+      "name": "read model state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "quota-fixture",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "OPEN",
+            "total": 4,
+            "failed": 4,
+            "failurePercent": 100.0,
+            "minimumCalls": 4,
+            "windowSeconds": 60,
+            "cooldownSeconds": 4,
+            "retryAt": "2026-09-28T14:55:01.135Z",
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790607301161
+        }
+      }
+    },
+    {
+      "name": "quota release is immediately eligible",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "read model state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "quota-fixture",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "OPEN",
+            "total": 4,
+            "failed": 4,
+            "failurePercent": 100.0,
+            "minimumCalls": 4,
+            "windowSeconds": 60,
+            "cooldownSeconds": 4,
+            "retryAt": "2026-09-28T14:55:01.135Z",
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790607301185
+        }
+      }
+    },
+    {
+      "name": "quota rejection adds no sample",
+      "actual": 4,
+      "expected": 4,
+      "passed": true
+    },
+    {
+      "name": "released probe can recover",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "quota-fixture",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "model": "quota-fixture",
+            "connected": true
+          },
+          "timestamp": 1790607301238
+        }
+      }
+    },
+    {
+      "name": "register t",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_65b3e4a4det",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "id": 10237,
+            "nickname": "pw_65b3e4a4det",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_65b3e4a4det"
+          },
+          "timestamp": 1790607301324
+        }
+      }
+    },
+    {
+      "name": "login threshold fixture",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_65b3e4a4det",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-28T22:55:01",
+              "email": null,
+              "id": 10237,
+              "nickname": "pw_65b3e4a4det",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_65b3e4a4det"
+            }
+          },
+          "timestamp": 1790607301496
+        }
+      }
+    },
+    {
+      "name": "threshold success 0",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "threshold-fixture",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "model": "threshold-fixture",
+            "connected": true
+          },
+          "timestamp": 1790607301520
+        }
+      }
+    },
+    {
+      "name": "threshold success 1",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "threshold-fixture",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "model": "threshold-fixture",
+            "connected": true
+          },
+          "timestamp": 1790607301537
+        }
+      }
+    },
+    {
+      "name": "threshold success 2",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "threshold-fixture",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "model": "threshold-fixture",
+            "connected": true
+          },
+          "timestamp": 1790607301570
+        }
+      }
+    },
+    {
+      "name": "threshold success 3",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "threshold-fixture",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "model": "threshold-fixture",
+            "connected": true
+          },
+          "timestamp": 1790607301591
+        }
+      }
+    },
+    {
+      "name": "threshold success 4",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "threshold-fixture",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "model": "threshold-fixture",
+            "connected": true
+          },
+          "timestamp": 1790607301610
+        }
+      }
+    },
+    {
+      "name": "threshold success 5",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "threshold-fixture",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "model": "threshold-fixture",
+            "connected": true
+          },
+          "timestamp": 1790607301624
+        }
+      }
+    },
+    {
+      "name": "threshold success 6",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "threshold-fixture",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "model": "threshold-fixture",
+            "connected": true
+          },
+          "timestamp": 1790607301635
+        }
+      }
+    },
+    {
+      "name": "threshold failure 0",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "threshold-fixture",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790607301647
+        }
+      }
+    },
+    {
+      "name": "threshold failure 1",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "threshold-fixture",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790607301660
+        }
+      }
+    },
+    {
+      "name": "threshold failure 2",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "threshold-fixture",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790607301673
+        }
+      }
+    },
+    {
+      "name": "read model state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "threshold-fixture",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "CLOSED",
+            "total": 10,
+            "failed": 3,
+            "failurePercent": 30.0,
+            "minimumCalls": 4,
+            "windowSeconds": 60,
+            "cooldownSeconds": 4,
+            "retryAt": null,
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790607301683
+        }
+      }
+    },
+    {
+      "name": "exactly thirty percent stays closed",
+      "actual": "CLOSED",
+      "expected": "CLOSED",
+      "passed": true
+    },
+    {
+      "name": "greater than thirty percent failure",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "threshold-fixture",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790607301710
+        }
+      }
+    },
+    {
+      "name": "read model state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "threshold-fixture",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "OPEN",
+            "total": 11,
+            "failed": 4,
+            "failurePercent": 36.36363636363637,
+            "minimumCalls": 4,
+            "windowSeconds": 60,
+            "cooldownSeconds": 4,
+            "retryAt": "2026-09-28T14:55:05.707Z",
+            "retryAfterSeconds": 4
+          },
+          "timestamp": 1790607301732
+        }
+      }
+    },
+    {
+      "name": "four of eleven opens",
+      "actual": "OPEN",
+      "expected": "OPEN",
+      "passed": true
+    },
+    {
+      "name": "register f",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_6f5e6278f4f",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "id": 10238,
+            "nickname": "pw_6f5e6278f4f",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_6f5e6278f4f"
+          },
+          "timestamp": 1790607301823
+        }
+      }
+    },
+    {
+      "name": "login fault matrix",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_6f5e6278f4f",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-28T22:55:01",
+              "email": null,
+              "id": 10238,
+              "nickname": "pw_6f5e6278f4f",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_6f5e6278f4f"
+            }
+          },
+          "timestamp": 1790607302013
+        }
+      }
+    },
+    {
+      "name": "real fault auth",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/generate",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "fault-auth",
+            "apiKey": "<redacted>"
+          },
+          "query": "希望轻松体验当地美食",
+          "days": 2,
+          "budget": 3000,
+          "peopleNum": 2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务拒绝认证，请检查API Key与模型权限",
+          "data": null,
+          "timestamp": 1790607302038
+        }
+      }
+    },
+    {
+      "name": "read model state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "fault-auth",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "CLOSED",
+            "total": 1,
+            "failed": 1,
+            "failurePercent": 100.0,
+            "minimumCalls": 4,
+            "windowSeconds": 60,
+            "cooldownSeconds": 4,
+            "retryAt": null,
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790607302050
+        }
+      }
+    },
+    {
+      "name": "auth counted by attempt",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "read model state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "fault-auth",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "CLOSED",
+            "total": 1,
+            "failed": 1,
+            "failurePercent": 100.0,
+            "minimumCalls": 4,
+            "windowSeconds": 60,
+            "cooldownSeconds": 4,
+            "retryAt": null,
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790607302064
+        }
+      }
+    },
+    {
+      "name": "auth below minimum does not open",
+      "actual": "CLOSED",
+      "expected": "CLOSED",
+      "passed": true
+    },
+    {
+      "name": "real fault rate",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/generate",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "fault-rate",
+            "apiKey": "<redacted>"
+          },
+          "query": "希望轻松体验当地美食",
+          "days": 2,
+          "budget": 3000,
+          "peopleNum": 2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务限流或额度不足，请稍后重试",
+          "data": null,
+          "timestamp": 1790607302089
+        }
+      }
+    },
+    {
+      "name": "read model state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "fault-rate",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "CLOSED",
+            "total": 1,
+            "failed": 1,
+            "failurePercent": 100.0,
+            "minimumCalls": 4,
+            "windowSeconds": 60,
+            "cooldownSeconds": 4,
+            "retryAt": null,
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790607302120
+        }
+      }
+    },
+    {
+      "name": "rate counted by attempt",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "read model state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "fault-rate",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "CLOSED",
+            "total": 1,
+            "failed": 1,
+            "failurePercent": 100.0,
+            "minimumCalls": 4,
+            "windowSeconds": 60,
+            "cooldownSeconds": 4,
+            "retryAt": null,
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790607302135
+        }
+      }
+    },
+    {
+      "name": "rate below minimum does not open",
+      "actual": "CLOSED",
+      "expected": "CLOSED",
+      "passed": true
+    },
+    {
+      "name": "real fault error",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/generate",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "fault-error",
+            "apiKey": "<redacted>"
+          },
+          "query": "希望轻松体验当地美食",
+          "days": 2,
+          "budget": 3000,
+          "peopleNum": 2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790607302170
+        }
+      }
+    },
+    {
+      "name": "read model state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "fault-error",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "CLOSED",
+            "total": 1,
+            "failed": 1,
+            "failurePercent": 100.0,
+            "minimumCalls": 4,
+            "windowSeconds": 60,
+            "cooldownSeconds": 4,
+            "retryAt": null,
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790607302200
+        }
+      }
+    },
+    {
+      "name": "error counted by attempt",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "read model state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "fault-error",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "CLOSED",
+            "total": 1,
+            "failed": 1,
+            "failurePercent": 100.0,
+            "minimumCalls": 4,
+            "windowSeconds": 60,
+            "cooldownSeconds": 4,
+            "retryAt": null,
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790607302216
+        }
+      }
+    },
+    {
+      "name": "error below minimum does not open",
+      "actual": "CLOSED",
+      "expected": "CLOSED",
+      "passed": true
+    },
+    {
+      "name": "real fault timeout",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/generate",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "fault-timeout",
+            "apiKey": "<redacted>"
+          },
+          "query": "希望轻松体验当地美食",
+          "days": 2,
+          "budget": 3000,
+          "peopleNum": 2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型请求超时，请稍后重试或减少行程天数",
+          "data": null,
+          "timestamp": 1790607304248
+        }
+      }
+    },
+    {
+      "name": "read model state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:51695/v1",
+            "model": "fault-timeout",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "CLOSED",
+            "total": 1,
+            "failed": 1,
+            "failurePercent": 100.0,
+            "minimumCalls": 4,
+            "windowSeconds": 60,
+            "cooldownSeconds": 4,
+            "retryAt": null,
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790607304261
+        }
+      }
+    },
+    {
+      "name": "fixture user and sessions cleaned 10231",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "fixture user and sessions cleaned 10233",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "fixture user and sessions cleaned 10236",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "fixture user and sessions cleaned 10237",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "fixture user and sessions cleaned 10238",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ],
+  "base": "http://localhost:8081/api",
+  "circuitPrefix": "trip:test:circuit:batch20260928",
+  "fixtures": [
+    {
+      "id": 10231,
+      "name": "pw_9dc8f17d13a"
+    },
+    {
+      "id": 10233,
+      "name": "pw_990c0b0b43b"
+    },
+    {
+      "id": 10236,
+      "name": "pw_bef3d923f7q"
+    },
+    {
+      "id": 10237,
+      "name": "pw_65b3e4a4det"
+    },
+    {
+      "id": 10238,
+      "name": "pw_6f5e6278f4f"
+    }
+  ],
+  "summary": {
+    "total": 115,
+    "passed": 115,
+    "failed": 0
+  }
+}

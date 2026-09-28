@@ -3,6 +3,7 @@
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'C:/Users/wlky0/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
 const fs = require('node:fs'), path = require('node:path');
 const { execFileSync } = require('node:child_process');
+const {cleanSessions,cleanModelState}=require('./redis_fixture.cjs');
 const base = 'http://127.0.0.1:5173';
 const out = path.resolve(__dirname, '../../docs/dev/evidence/user-planner', new Date().toISOString().replace(/[:.]/g, '-') + '-browser');
 fs.mkdirSync(out, { recursive: true });
@@ -94,6 +95,8 @@ async function clickRequest(name, endpoint) {
   finally {
     if (browser) await browser.close();
     for (const user of users) {
+      check('fixture sessions cleaned '+user.id,cleanSessions(user.id)>=1,true);
+      check('fixture model state cleaned '+user.id,cleanModelState(user.id)>=0,true);
       sql(`DELETE i FROM user_plan_item i JOIN user_plan_day d ON d.id=i.plan_day_id JOIN user_plan p ON p.id=d.user_plan_id WHERE p.user_id=${user.id}; DELETE d FROM user_plan_day d JOIN user_plan p ON p.id=d.user_plan_id WHERE p.user_id=${user.id}; DELETE FROM user_plan WHERE user_id=${user.id}; DELETE FROM llm_call_log WHERE user_id=${user.id}; DELETE FROM user_preference WHERE user_id=${user.id}; DELETE FROM sys_user WHERE id=${user.id}`);
     }
     check('both fixture accounts removed', users.every(u => sql(`SELECT COUNT(*) FROM sys_user WHERE id=${u.id}`) === '0'), true);

@@ -1,0 +1,30 @@
+{
+  "issue": "Windows evidence write OSError22 interrupted quota runner cleanup",
+  "source": "ai-quota/20260928-225247-096044-http-redis.json",
+  "checks": [
+    {
+      "id": 10219,
+      "sessionsRemoved": 0,
+      "aiKeysRemoved": 2,
+      "userRemoved": true
+    },
+    {
+      "id": 10227,
+      "sessionsRemoved": 0,
+      "aiKeysRemoved": 0,
+      "userRemoved": true
+    },
+    {
+      "id": 10228,
+      "sessionsRemoved": 0,
+      "aiKeysRemoved": 0,
+      "userRemoved": true
+    },
+    {
+      "id": 10229,
+      "sessionsRemoved": 0,
+      "aiKeysRemoved": 0,
+      "userRemoved": true
+    }
+  ]
+}

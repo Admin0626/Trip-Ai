@@ -11,15 +11,24 @@ import urllib.request
 import urllib.error
 import uuid
 import user_planner_acceptance as p
+from redis_fixture import clean_sessions,clean_ai_state
 
 t = p.t
 rows, users, owned_keys = [], [], set()
+phase='RUNNING'
 out = t.ROOT / 'docs/dev/evidence/ai-quota' / (dt.datetime.now().strftime('%Y%m%d-%H%M%S-%f') + '-http-redis.json')
 zone = dt.timezone(dt.timedelta(hours=8))
 
 def save():
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps({'mode':'REAL_HTTP_MYSQL_REDIS_CONTROLLED_PROVIDER_NOT_REAL_LLM','checks':rows},ensure_ascii=False,indent=2),encoding='utf-8')
+    payload=json.dumps({'mode':'REAL_HTTP_MYSQL_REDIS_CONTROLLED_PROVIDER_NOT_REAL_LLM','phase':phase,'fixtures':users,'checks':rows},ensure_ascii=False,indent=2)
+    # Preserve the last complete JSON if Windows temporarily denies an output handle.
+    pending=out.with_suffix('.writing')
+    for attempt in range(3):
+        try: pending.write_text(payload,encoding='utf-8'); pending.replace(out); return
+        except OSError:
+            if attempt==2: raise
+            time.sleep(0.05)
 
 def check(name, actual, expected):
     rows.append({'name':name,'actual':actual,'expected':expected,'passed':actual==expected}); save()
@@ -65,6 +74,7 @@ def lua_checks():
         check('corrupt counter does not partially charge '+corrupt,redis('GET',keys[0]),'7')
 
 def main():
+    global phase
     server=p.start_provider()
     connection={'baseUrl':f'http://127.0.0.1:{server.server_port}/v1','model':'fixture-valid','apiKey':'fixture-key-not-a-real-secret'}
     body={'connection':connection,'query':'去大理旅行，喜欢美食和散步','days':2,'budget':3000,'peopleNum':2}
@@ -121,11 +131,13 @@ def main():
         check('script completed',str(error),'no error')
     finally:
         for uid in users:
+            check('fixture sessions removed '+str(uid),clean_sessions(uid)>=1,True)
+            check('fixture AI state cleaned '+str(uid),clean_ai_state(uid)>=0,True)
             owned_keys.update(user_keys(uid))
             t.sql(f'DELETE FROM llm_call_log WHERE user_id={uid}; DELETE FROM user_preference WHERE user_id={uid}; DELETE FROM sys_user WHERE id={uid}')
         if owned_keys: redis('DEL',*sorted(owned_keys))
         check('temporary users cleaned',t.sql('SELECT COUNT(*) FROM sys_user WHERE id IN ('+','.join(map(str,users))+')') if users else '0','0')
-        server.shutdown(); server.server_close(); save()
+        server.shutdown(); server.server_close(); phase='COMPLETE'; save()
     failed=sum(not row['passed'] for row in rows)
     print(f'{len(rows)-failed}/{len(rows)} passed; {out}')
     return bool(failed)

@@ -14,6 +14,7 @@ import urllib.request
 import urllib.error
 import uuid
 import batch3_intent_acceptance as t
+from redis_fixture import clean_sessions,clean_ai_state
 
 counts = collections.Counter()
 received = []
@@ -77,7 +78,7 @@ def acceptance():
 
     def save():
         out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(json.dumps({'mode': 'REAL_APP_HTTP_WITH_CONTROLLED_PROVIDER_NOT_REAL_LLM', 'checks': rows}, ensure_ascii=False, indent=2), encoding='utf-8')
+        out.write_text(json.dumps({'mode': 'REAL_APP_HTTP_WITH_CONTROLLED_PROVIDER_NOT_REAL_LLM', 'fixtures':[] if uid is None else [{'id':uid}], 'checks': rows}, ensure_ascii=False, indent=2), encoding='utf-8')
 
     def verify(name, actual, expected):
         rows.append({'name': name, 'actual': actual, 'expected': expected, 'passed': actual == expected}); save()
@@ -140,6 +141,8 @@ def acceptance():
         if plan_id:
             t.sql(f'DELETE i FROM user_plan_item i JOIN user_plan_day d ON d.id=i.plan_day_id WHERE d.user_plan_id={plan_id}; DELETE FROM user_plan_day WHERE user_plan_id={plan_id}; DELETE FROM user_plan WHERE id={plan_id}')
         if uid:
+            verify('fixture sessions removed',clean_sessions(uid)>=1,True)
+            verify('fixture AI state removed',clean_ai_state(uid)>=1,True)
             t.sql(f'DELETE FROM llm_call_log WHERE user_id={uid}; DELETE FROM user_preference WHERE user_id={uid}; DELETE FROM sys_user WHERE id={uid}')
             verify('fixtures cleaned', t.sql(f'SELECT COUNT(*) FROM sys_user WHERE id={uid}'), '0')
         server.shutdown(); server.server_close(); save()

@@ -1,4 +1,47 @@
-# Session：用户侧收尾完成
+# Session：用户模型熔断与恢复完成
+
+更新时间：2026-09-28（北京时间），最新指令“继续下一批”，起点9a2f2f5。本批按SESSION优先项完成用户自定义模型故障熔断及恢复；整体第3批仍有SSE/RAG等后续能力。
+
+## 本批完成
+
+- Redis共享滑动窗口及CLOSED/OPEN/HALF_OPEN，按认证用户、规范化地址、模型和Key摘要隔离；不存明文Key/地址/需求/上游正文。
+- 默认300秒窗口、最小10次、失败率严格>30%、600秒冷却，90秒单次探测租约；探测成功恢复新窗口、失败/过期重新冷却，generation/ticket阻止过期响应破坏恢复。最小10次是对BR-AIC-07的明确实施补充。
+- 每次实际外呼（含结构重试）计样本，熔断在quota前准入，拦截不外呼/扣次/伪造模型日志；未外呼配额拒绝释放探测，半开结构失败阻止下一轮重试。
+- 登录POST /ai/planner/circuit，页面状态/相对倒计时、恢复提示、基础推荐入口；连接变更清旧状态/预览，异步版本保护及离页清Key/计时器。
+- 测试工具补所属AI状态清理，Windows高频证据写入中断改为临时替换/有限重试/运行状态。全部失败与恢复核对保留。
+
+## 实际验证
+
+| 检查 | 结果 |
+|---|---|
+| HTTP缺口基线 | [6/9](docs/dev/evidence/circuit/20260928-224049-454120-baseline.json)：无状态接口且故障继续外呼 |
+| 真实HTTP/Redis最终 | [150/150](docs/dev/evidence/circuit/20260928-225733-243042-final.json)，隔离8081短冷却，全部fixture清理 |
+| 默认配置8080 | [26/26](docs/dev/evidence/circuit/20260928-225922-578452-production-defaults.json)，九失败CLOSED、十失败OPEN/600秒，基础推荐实际可用 |
+| 最终Edge页面 | [34/34](docs/dev/evidence/circuit/2026-09-28T14-56-37-806Z-browser/results.json)，pageerror=0；倒计时、半开/过期、恢复、生成、切Key旧响应及手机 |
+| 原规划回归 | [52/52接口](docs/dev/evidence/user-planner/20260928-225243-946662-http.json)、[26/26页面](docs/dev/evidence/user-planner/2026-09-28T14-55-15-445Z-browser/results.json) |
+| 原配额回归 | [76/76](docs/dev/evidence/ai-quota/20260928-225433-939350-http-redis.json) |
+| 编译 | [Maven25/25及vue-tsc/Vite通过](docs/dev/evidence/circuit/build-verification.json)，主包1127.22kB原警告保留 |
+| 清理 | [所属用户/会话/AI状态最终核对](docs/dev/evidence/circuit/final-cleanup.json)，本批8081/11435/11436进程停止，隔离全局key清理；现有8080健康UP |
+
+真实应用与受控兼容服务，不能据此宣称真实AI质量。默认600秒返回状态已实测；实际等待恢复使用4秒隔离冷却，不称为等了完整默认10分钟。八个独立Redis客户端仅一个探测，验证共享门禁，未做八实例或集群压测。Redis故障连接用单测注入，不停止现有共享Redis。
+
+首次Edge标题定位25/26、配额73项片段和扩展HTTP115项片段的Windows OSError22中断、默认脚本模型名超长3/5均保留；最终均修正复测，恢复确认临时数据清理。未提交密码/Key/JWT/散列或原始运行日志，不重建数据库，不清现有用户会话或生产全站quota。
+
+文档：[全部问题与实测](docs/dev/模型熔断接口与页面实测.md)、[开发与答辩复盘](docs/dev/模型熔断开发与答辩复盘.md)、[进度/目标/问题](docs/dev/模型熔断进度.md)。README、AI接口、索引、完成项及第3批清单已同步。
+
+## Git与下一批
+
+远程`https://github.com/Admin0626/Trip-Ai.git`、main；本批标题`feat: add isolated model circuit breaker and recovery`，代码/脚本/证据/文档一并交付，提交号及同步以git log -1/git status/远程main核对。推送中断保留本地提交继续推送，不重新实现。
+
+无SQL迁移，沿用MySQL3306/Redis6379/后端8080/api/前端5173。启动见README；隔离验收命令和清理范围见本批实测，先编译等健康UP再跑HTTP/Edge，防止DevTools重启影响结果。
+
+下一批优先用户自定义AI规划SSE进度、取消与完成事件契约，保留完整输出校验及非流式回退。随后RAG、多路召回/重排、评论情感及已有规划就地AI优化；真实模型质量仍需用户配置服务。全局供应商熔断、Redis集群/故障转移/负载、跨节点并发上限、邮箱验证/找回密码、生产云存储、高级运营和主包优化尚未完成。
+
+---
+
+## 以下是用户侧收尾历史快照，接续以本批为准
+
+# Session：用户侧收尾完成（历史）
 
 更新时间：2026-09-28（北京时间），最新指令“继续吧”，起点783b0e4。接续基础后台之后的个人统计、偏好推荐、跨标签页会话协调及用户页面验收；本批功能和实际验收已完成，整体项目仍有后续AI与高级运营功能。
 

@@ -1,0 +1,1233 @@
+{
+  "mode": "REAL_EDGE_HTTP_8081_CONTROLLED_PROVIDER",
+  "checks": [
+    {
+      "name": "state refresh is free",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "empty state visible",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "state reads do not call provider",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "real failed connection 0",
+      "actual": 3004,
+      "expected": 3004,
+      "passed": true
+    },
+    {
+      "name": "real failed connection 1",
+      "actual": 3004,
+      "expected": 3004,
+      "passed": true
+    },
+    {
+      "name": "real failed connection 2",
+      "actual": 3004,
+      "expected": 3004,
+      "passed": true
+    },
+    {
+      "name": "real failed connection 3",
+      "actual": 3004,
+      "expected": 3004,
+      "passed": true
+    },
+    {
+      "name": "open state visible",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "open disables connection test",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "open disables generation",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "rule fallback link present",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "no preview fabricated",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "exactly four actual failures",
+      "actual": 4,
+      "expected": 4,
+      "passed": true
+    },
+    {
+      "name": "phone has no horizontal overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "cooldown reenables real probe",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "actual half-open recovery",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "closed state after recovery",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "real generation after recovery",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "two generated days",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "no automatic save",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "changed connection discards stale state",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "changing key clears old preview",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "new key has empty isolated circuit",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "independent client owns probe",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "half-open message visible",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "half-open test disabled",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "half-open generation disabled",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "expired probe shown as cooldown",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "UI recovers after expired probe",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "Key never persisted",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "basic recommendation remains accessible",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "key cleared on navigation",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "no unhandled page errors",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "owned fixtures cleaned",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "responses": [
+    {
+      "path": "/api/ai/planner/options",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "allowedHosts": [
+            "api.openai.com",
+            "api.deepseek.com"
+          ],
+          "allowLoopback": true
+        },
+        "timestamp": 1790607399227
+      }
+    },
+    {
+      "path": "/api/ai/planner/usage",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "quota": {
+            "hourly": {
+              "limit": 20,
+              "used": 0,
+              "remaining": 20,
+              "resetAt": "2026-09-28T23:00+08:00"
+            },
+            "daily": {
+              "limit": 200,
+              "used": 0,
+              "remaining": 200,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "globalDaily": {
+              "limit": 2000,
+              "used": 77,
+              "remaining": 1923,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "timeZone": "Asia/Shanghai"
+          },
+          "today": {
+            "operations": 0,
+            "succeeded": 0,
+            "failed": 0,
+            "averageCostMs": 0
+          }
+        },
+        "timestamp": 1790607399229
+      }
+    },
+    {
+      "path": "/api/ai/planner/circuit",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "phase": "CLOSED",
+          "total": 0,
+          "failed": 0,
+          "failurePercent": 0,
+          "minimumCalls": 4,
+          "windowSeconds": 60,
+          "cooldownSeconds": 4,
+          "retryAt": null,
+          "retryAfterSeconds": 0
+        },
+        "timestamp": 1790607399321
+      }
+    },
+    {
+      "path": "/api/ai/planner/test",
+      "status": 200,
+      "body": {
+        "code": 3004,
+        "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+        "data": null,
+        "timestamp": 1790607399402
+      }
+    },
+    {
+      "path": "/api/ai/planner/usage",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "quota": {
+            "hourly": {
+              "limit": 20,
+              "used": 1,
+              "remaining": 19,
+              "resetAt": "2026-09-28T23:00+08:00"
+            },
+            "daily": {
+              "limit": 200,
+              "used": 1,
+              "remaining": 199,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "globalDaily": {
+              "limit": 2000,
+              "used": 78,
+              "remaining": 1922,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "timeZone": "Asia/Shanghai"
+          },
+          "today": {
+            "operations": 1,
+            "succeeded": 0,
+            "failed": 1,
+            "averageCostMs": 16
+          }
+        },
+        "timestamp": 1790607399420
+      }
+    },
+    {
+      "path": "/api/ai/planner/circuit",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "phase": "CLOSED",
+          "total": 1,
+          "failed": 1,
+          "failurePercent": 100,
+          "minimumCalls": 4,
+          "windowSeconds": 60,
+          "cooldownSeconds": 4,
+          "retryAt": null,
+          "retryAfterSeconds": 0
+        },
+        "timestamp": 1790607399420
+      }
+    },
+    {
+      "path": "/api/ai/planner/test",
+      "status": 200,
+      "body": {
+        "code": 3004,
+        "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+        "data": null,
+        "timestamp": 1790607399470
+      }
+    },
+    {
+      "path": "/api/ai/planner/usage",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "quota": {
+            "hourly": {
+              "limit": 20,
+              "used": 2,
+              "remaining": 18,
+              "resetAt": "2026-09-28T23:00+08:00"
+            },
+            "daily": {
+              "limit": 200,
+              "used": 2,
+              "remaining": 198,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "globalDaily": {
+              "limit": 2000,
+              "used": 79,
+              "remaining": 1921,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "timeZone": "Asia/Shanghai"
+          },
+          "today": {
+            "operations": 2,
+            "succeeded": 0,
+            "failed": 2,
+            "averageCostMs": 11.5
+          }
+        },
+        "timestamp": 1790607399486
+      }
+    },
+    {
+      "path": "/api/ai/planner/circuit",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "phase": "CLOSED",
+          "total": 2,
+          "failed": 2,
+          "failurePercent": 100,
+          "minimumCalls": 4,
+          "windowSeconds": 60,
+          "cooldownSeconds": 4,
+          "retryAt": null,
+          "retryAfterSeconds": 0
+        },
+        "timestamp": 1790607399486
+      }
+    },
+    {
+      "path": "/api/ai/planner/test",
+      "status": 200,
+      "body": {
+        "code": 3004,
+        "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+        "data": null,
+        "timestamp": 1790607399537
+      }
+    },
+    {
+      "path": "/api/ai/planner/usage",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "quota": {
+            "hourly": {
+              "limit": 20,
+              "used": 3,
+              "remaining": 17,
+              "resetAt": "2026-09-28T23:00+08:00"
+            },
+            "daily": {
+              "limit": 200,
+              "used": 3,
+              "remaining": 197,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "globalDaily": {
+              "limit": 2000,
+              "used": 80,
+              "remaining": 1920,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "timeZone": "Asia/Shanghai"
+          },
+          "today": {
+            "operations": 3,
+            "succeeded": 0,
+            "failed": 3,
+            "averageCostMs": 10
+          }
+        },
+        "timestamp": 1790607399551
+      }
+    },
+    {
+      "path": "/api/ai/planner/circuit",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "phase": "CLOSED",
+          "total": 3,
+          "failed": 3,
+          "failurePercent": 100,
+          "minimumCalls": 4,
+          "windowSeconds": 60,
+          "cooldownSeconds": 4,
+          "retryAt": null,
+          "retryAfterSeconds": 0
+        },
+        "timestamp": 1790607399552
+      }
+    },
+    {
+      "path": "/api/ai/planner/test",
+      "status": 200,
+      "body": {
+        "code": 3004,
+        "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+        "data": null,
+        "timestamp": 1790607399607
+      }
+    },
+    {
+      "path": "/api/ai/planner/usage",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "quota": {
+            "hourly": {
+              "limit": 20,
+              "used": 4,
+              "remaining": 16,
+              "resetAt": "2026-09-28T23:00+08:00"
+            },
+            "daily": {
+              "limit": 200,
+              "used": 4,
+              "remaining": 196,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "globalDaily": {
+              "limit": 2000,
+              "used": 81,
+              "remaining": 1919,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "timeZone": "Asia/Shanghai"
+          },
+          "today": {
+            "operations": 4,
+            "succeeded": 0,
+            "failed": 4,
+            "averageCostMs": 9.25
+          }
+        },
+        "timestamp": 1790607399621
+      }
+    },
+    {
+      "path": "/api/ai/planner/circuit",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "phase": "OPEN",
+          "total": 4,
+          "failed": 4,
+          "failurePercent": 100,
+          "minimumCalls": 4,
+          "windowSeconds": 60,
+          "cooldownSeconds": 4,
+          "retryAt": "2026-09-28T14:56:43.605Z",
+          "retryAfterSeconds": 4
+        },
+        "timestamp": 1790607399621
+      }
+    },
+    {
+      "path": "/api/ai/planner/test",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "model": "circuit-ui-error-1790607397807",
+          "connected": true
+        },
+        "timestamp": 1790607404198
+      }
+    },
+    {
+      "path": "/api/ai/planner/usage",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "quota": {
+            "hourly": {
+              "limit": 20,
+              "used": 5,
+              "remaining": 15,
+              "resetAt": "2026-09-28T23:00+08:00"
+            },
+            "daily": {
+              "limit": 200,
+              "used": 5,
+              "remaining": 195,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "globalDaily": {
+              "limit": 2000,
+              "used": 82,
+              "remaining": 1918,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "timeZone": "Asia/Shanghai"
+          },
+          "today": {
+            "operations": 5,
+            "succeeded": 1,
+            "failed": 4,
+            "averageCostMs": 9.4
+          }
+        },
+        "timestamp": 1790607404224
+      }
+    },
+    {
+      "path": "/api/ai/planner/circuit",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "phase": "CLOSED",
+          "total": 1,
+          "failed": 0,
+          "failurePercent": 0,
+          "minimumCalls": 4,
+          "windowSeconds": 60,
+          "cooldownSeconds": 4,
+          "retryAt": null,
+          "retryAfterSeconds": 0
+        },
+        "timestamp": 1790607404227
+      }
+    },
+    {
+      "path": "/api/ai/planner/generate",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "draft": {
+            "title": "熔断协议夹具",
+            "dayList": [
+              {
+                "dayIndex": 1,
+                "items": [
+                  {
+                    "activity": null,
+                    "attractionId": 0,
+                    "cost": 0,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": null,
+                    "sortNo": 1,
+                    "timePoint": null,
+                    "tips": null,
+                    "title": "散步",
+                    "transport": null
+                  }
+                ],
+                "summary": "受控服务非真实AI",
+                "title": "第1天"
+              },
+              {
+                "dayIndex": 2,
+                "items": [
+                  {
+                    "activity": null,
+                    "attractionId": 0,
+                    "cost": 0,
+                    "durationMin": null,
+                    "hotel": null,
+                    "meal": null,
+                    "sortNo": 1,
+                    "timePoint": null,
+                    "tips": null,
+                    "title": "散步",
+                    "transport": null
+                  }
+                ],
+                "summary": "受控服务非真实AI",
+                "title": "第2天"
+              }
+            ]
+          },
+          "source": "USER_MODEL",
+          "model": "circuit-ui-error-1790607397807",
+          "attempts": 1
+        },
+        "timestamp": 1790607404369
+      }
+    },
+    {
+      "path": "/api/ai/planner/usage",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "quota": {
+            "hourly": {
+              "limit": 20,
+              "used": 6,
+              "remaining": 14,
+              "resetAt": "2026-09-28T23:00+08:00"
+            },
+            "daily": {
+              "limit": 200,
+              "used": 6,
+              "remaining": 194,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "globalDaily": {
+              "limit": 2000,
+              "used": 83,
+              "remaining": 1917,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "timeZone": "Asia/Shanghai"
+          },
+          "today": {
+            "operations": 6,
+            "succeeded": 2,
+            "failed": 4,
+            "averageCostMs": 9.5
+          }
+        },
+        "timestamp": 1790607404409
+      }
+    },
+    {
+      "path": "/api/ai/planner/circuit",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "phase": "CLOSED",
+          "total": 2,
+          "failed": 0,
+          "failurePercent": 0,
+          "minimumCalls": 4,
+          "windowSeconds": 60,
+          "cooldownSeconds": 4,
+          "retryAt": null,
+          "retryAfterSeconds": 0
+        },
+        "timestamp": 1790607404408
+      }
+    },
+    {
+      "path": "/api/ai/planner/circuit",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "phase": "CLOSED",
+          "total": 2,
+          "failed": 0,
+          "failurePercent": 0,
+          "minimumCalls": 4,
+          "windowSeconds": 60,
+          "cooldownSeconds": 4,
+          "retryAt": null,
+          "retryAfterSeconds": 0
+        },
+        "timestamp": 1790607404556
+      }
+    },
+    {
+      "path": "/api/ai/planner/circuit",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "phase": "CLOSED",
+          "total": 0,
+          "failed": 0,
+          "failurePercent": 0,
+          "minimumCalls": 4,
+          "windowSeconds": 60,
+          "cooldownSeconds": 4,
+          "retryAt": null,
+          "retryAfterSeconds": 0
+        },
+        "timestamp": 1790607405705
+      }
+    },
+    {
+      "path": "/api/ai/planner/test",
+      "status": 200,
+      "body": {
+        "code": 3004,
+        "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+        "data": null,
+        "timestamp": 1790607405769
+      }
+    },
+    {
+      "path": "/api/ai/planner/usage",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "quota": {
+            "hourly": {
+              "limit": 20,
+              "used": 7,
+              "remaining": 13,
+              "resetAt": "2026-09-28T23:00+08:00"
+            },
+            "daily": {
+              "limit": 200,
+              "used": 7,
+              "remaining": 193,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "globalDaily": {
+              "limit": 2000,
+              "used": 84,
+              "remaining": 1916,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "timeZone": "Asia/Shanghai"
+          },
+          "today": {
+            "operations": 7,
+            "succeeded": 2,
+            "failed": 5,
+            "averageCostMs": 9.4286
+          }
+        },
+        "timestamp": 1790607405791
+      }
+    },
+    {
+      "path": "/api/ai/planner/circuit",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "phase": "CLOSED",
+          "total": 1,
+          "failed": 1,
+          "failurePercent": 100,
+          "minimumCalls": 4,
+          "windowSeconds": 60,
+          "cooldownSeconds": 4,
+          "retryAt": null,
+          "retryAfterSeconds": 0
+        },
+        "timestamp": 1790607405792
+      }
+    },
+    {
+      "path": "/api/ai/planner/test",
+      "status": 200,
+      "body": {
+        "code": 3004,
+        "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+        "data": null,
+        "timestamp": 1790607405854
+      }
+    },
+    {
+      "path": "/api/ai/planner/usage",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "quota": {
+            "hourly": {
+              "limit": 20,
+              "used": 8,
+              "remaining": 12,
+              "resetAt": "2026-09-28T23:00+08:00"
+            },
+            "daily": {
+              "limit": 200,
+              "used": 8,
+              "remaining": 192,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "globalDaily": {
+              "limit": 2000,
+              "used": 85,
+              "remaining": 1915,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "timeZone": "Asia/Shanghai"
+          },
+          "today": {
+            "operations": 8,
+            "succeeded": 2,
+            "failed": 6,
+            "averageCostMs": 9.25
+          }
+        },
+        "timestamp": 1790607405873
+      }
+    },
+    {
+      "path": "/api/ai/planner/circuit",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "phase": "CLOSED",
+          "total": 2,
+          "failed": 2,
+          "failurePercent": 100,
+          "minimumCalls": 4,
+          "windowSeconds": 60,
+          "cooldownSeconds": 4,
+          "retryAt": null,
+          "retryAfterSeconds": 0
+        },
+        "timestamp": 1790607405875
+      }
+    },
+    {
+      "path": "/api/ai/planner/test",
+      "status": 200,
+      "body": {
+        "code": 3004,
+        "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+        "data": null,
+        "timestamp": 1790607405941
+      }
+    },
+    {
+      "path": "/api/ai/planner/usage",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "quota": {
+            "hourly": {
+              "limit": 20,
+              "used": 9,
+              "remaining": 11,
+              "resetAt": "2026-09-28T23:00+08:00"
+            },
+            "daily": {
+              "limit": 200,
+              "used": 9,
+              "remaining": 191,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "globalDaily": {
+              "limit": 2000,
+              "used": 86,
+              "remaining": 1914,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "timeZone": "Asia/Shanghai"
+          },
+          "today": {
+            "operations": 9,
+            "succeeded": 2,
+            "failed": 7,
+            "averageCostMs": 9.5556
+          }
+        },
+        "timestamp": 1790607405963
+      }
+    },
+    {
+      "path": "/api/ai/planner/circuit",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "phase": "CLOSED",
+          "total": 3,
+          "failed": 3,
+          "failurePercent": 100,
+          "minimumCalls": 4,
+          "windowSeconds": 60,
+          "cooldownSeconds": 4,
+          "retryAt": null,
+          "retryAfterSeconds": 0
+        },
+        "timestamp": 1790607405964
+      }
+    },
+    {
+      "path": "/api/ai/planner/test",
+      "status": 200,
+      "body": {
+        "code": 3004,
+        "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+        "data": null,
+        "timestamp": 1790607406034
+      }
+    },
+    {
+      "path": "/api/ai/planner/usage",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "quota": {
+            "hourly": {
+              "limit": 20,
+              "used": 10,
+              "remaining": 10,
+              "resetAt": "2026-09-28T23:00+08:00"
+            },
+            "daily": {
+              "limit": 200,
+              "used": 10,
+              "remaining": 190,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "globalDaily": {
+              "limit": 2000,
+              "used": 87,
+              "remaining": 1913,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "timeZone": "Asia/Shanghai"
+          },
+          "today": {
+            "operations": 10,
+            "succeeded": 2,
+            "failed": 8,
+            "averageCostMs": 9.3
+          }
+        },
+        "timestamp": 1790607406059
+      }
+    },
+    {
+      "path": "/api/ai/planner/circuit",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "phase": "OPEN",
+          "total": 4,
+          "failed": 4,
+          "failurePercent": 100,
+          "minimumCalls": 4,
+          "windowSeconds": 60,
+          "cooldownSeconds": 4,
+          "retryAt": "2026-09-28T14:56:50.032Z",
+          "retryAfterSeconds": 4
+        },
+        "timestamp": 1790607406060
+      }
+    },
+    {
+      "path": "/api/ai/planner/circuit",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "phase": "HALF_OPEN",
+          "total": 4,
+          "failed": 4,
+          "failurePercent": 100,
+          "minimumCalls": 4,
+          "windowSeconds": 60,
+          "cooldownSeconds": 4,
+          "retryAt": "2026-09-28T14:56:54.232Z",
+          "retryAfterSeconds": 4
+        },
+        "timestamp": 1790607410270
+      }
+    },
+    {
+      "path": "/api/ai/planner/circuit",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "phase": "OPEN",
+          "total": 4,
+          "failed": 4,
+          "failurePercent": 100,
+          "minimumCalls": 4,
+          "windowSeconds": 60,
+          "cooldownSeconds": 4,
+          "retryAt": "2026-09-28T14:56:58.432Z",
+          "retryAfterSeconds": 4
+        },
+        "timestamp": 1790607414431
+      }
+    },
+    {
+      "path": "/api/ai/planner/test",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "model": "circuit-ui-error-1790607397807",
+          "connected": true
+        },
+        "timestamp": 1790607419377
+      }
+    },
+    {
+      "path": "/api/ai/planner/usage",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "quota": {
+            "hourly": {
+              "limit": 20,
+              "used": 11,
+              "remaining": 9,
+              "resetAt": "2026-09-28T23:00+08:00"
+            },
+            "daily": {
+              "limit": 200,
+              "used": 11,
+              "remaining": 189,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "globalDaily": {
+              "limit": 2000,
+              "used": 88,
+              "remaining": 1912,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "timeZone": "Asia/Shanghai"
+          },
+          "today": {
+            "operations": 11,
+            "succeeded": 3,
+            "failed": 8,
+            "averageCostMs": 9.7273
+          }
+        },
+        "timestamp": 1790607419392
+      }
+    },
+    {
+      "path": "/api/ai/planner/circuit",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "phase": "CLOSED",
+          "total": 1,
+          "failed": 0,
+          "failurePercent": 0,
+          "minimumCalls": 4,
+          "windowSeconds": 60,
+          "cooldownSeconds": 4,
+          "retryAt": null,
+          "retryAfterSeconds": 0
+        },
+        "timestamp": 1790607419393
+      }
+    },
+    {
+      "path": "/api/ai/planner/options",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "allowedHosts": [
+            "api.openai.com",
+            "api.deepseek.com"
+          ],
+          "allowLoopback": true
+        },
+        "timestamp": 1790607420232
+      }
+    },
+    {
+      "path": "/api/ai/planner/usage",
+      "status": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "quota": {
+            "hourly": {
+              "limit": 20,
+              "used": 11,
+              "remaining": 9,
+              "resetAt": "2026-09-28T23:00+08:00"
+            },
+            "daily": {
+              "limit": 200,
+              "used": 11,
+              "remaining": 189,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "globalDaily": {
+              "limit": 2000,
+              "used": 88,
+              "remaining": 1912,
+              "resetAt": "2026-09-29T00:00+08:00"
+            },
+            "timeZone": "Asia/Shanghai"
+          },
+          "today": {
+            "operations": 11,
+            "succeeded": 3,
+            "failed": 8,
+            "averageCostMs": 9.7273
+          }
+        },
+        "timestamp": 1790607420234
+      }
+    }
+  ],
+  "fixtures": [
+    {
+      "name": "cb_1790607397807",
+      "id": 10241
+    }
+  ],
+  "summary": {
+    "total": 34,
+    "passed": 34
+  }
+}

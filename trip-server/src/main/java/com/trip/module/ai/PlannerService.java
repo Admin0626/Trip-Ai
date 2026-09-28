@@ -17,6 +17,7 @@ public class PlannerService {
     private final JdbcTemplate jdbc;
     private final ObjectMapper json;
     private final AiQuotaService quota;
+    private final PlannerCircuitService circuit;
     private final Set<Long> running = ConcurrentHashMap.newKeySet();
     private final Semaphore capacity = new Semaphore(8);
     public record Preview(PlannerOutputValidator.Draft draft, String source, String model, int attempts) {}
@@ -31,8 +32,12 @@ public class PlannerService {
         String error = "FAILED";
         try {
             if (test) {
-                quota.acquire(userId); attempted = true;
-                client.call(endpoint, request.connection(), "Reply with OK only.", "Connection test", false);
+                var permit=circuit.acquire(userId,endpoint,request.connection());
+                try { quota.acquire(userId); } catch(RuntimeException e) { circuit.abandon(permit); throw e; }
+                attempted = true;
+                try { client.call(endpoint, request.connection(), "Reply with OK only.", "Connection test", false); }
+                catch(RuntimeException e) { circuit.complete(permit,false); throw e; }
+                circuit.complete(permit,true);
                 success = true;
                 return Map.of("connected", true, "model", request.connection().model());
             }
@@ -42,13 +47,23 @@ public class PlannerService {
             String user = json.writeValueAsString(Map.of("query", request.query().strip(), "days", request.days(), "budget", request.budget(), "peopleNum", request.peopleNum(),
                     "startDate", request.startDate() == null ? java.time.LocalDate.now().toString() : request.startDate()));
             for (int attempt = 1; attempt <= 2; attempt++) {
-                quota.acquire(userId); attempted = true;
-                String text = client.call(endpoint, request.connection(), prompt, user + (attempt == 2 ? "\n上次输出结构无效，请严格按要求重新输出完整JSON。" : ""), true);
+                var permit=circuit.acquire(userId,endpoint,request.connection());
+                try { quota.acquire(userId); } catch(RuntimeException e) { circuit.abandon(permit); throw e; }
+                attempted = true;
+                String text;
+                try { text = client.call(endpoint, request.connection(), prompt, user + (attempt == 2 ? "\n上次输出结构无效，请严格按要求重新输出完整JSON。" : ""), true); }
+                catch(RuntimeException e) { circuit.complete(permit,false); throw e; }
+                PlannerOutputValidator.Draft draft;
                 try {
-                    var draft = validator.validate(text, request.days());
-                    success = true;
-                    return new Preview(draft, "USER_MODEL", request.connection().model(), attempt);
-                } catch (IllegalArgumentException e) { if (attempt == 2) throw new BizException(3004, "模型两次返回的行程结构均不合格，请换用支持JSON输出的模型或减少天数"); }
+                    draft = validator.validate(text, request.days());
+                } catch (IllegalArgumentException e) {
+                    circuit.complete(permit,false);
+                    if (attempt == 2) throw new BizException(3004, "模型两次返回的行程结构均不合格，请换用支持JSON输出的模型或减少天数");
+                    continue;
+                }
+                circuit.complete(permit,true);
+                success = true;
+                return new Preview(draft, "USER_MODEL", request.connection().model(), attempt);
             }
             throw new IllegalStateException();
         } catch (BizException e) { error = "BUSINESS_" + e.getCode(); throw e; }

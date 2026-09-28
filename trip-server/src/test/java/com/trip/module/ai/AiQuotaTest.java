@@ -54,9 +54,13 @@ class AiQuotaTest {
     @Test void quotaFailurePreventsProviderAndPhantomAuditAndReleasesCapacity() {
         var quota=mock(AiQuotaService.class); var client=mock(CompatiblePlannerClient.class); var jdbc=mock(JdbcTemplate.class);
         doThrow(new BizException(503,"Redis unavailable")).when(quota).acquire(1);
-        var planner=new PlannerService(new PlannerEndpointPolicy("",true),client,new PlannerOutputValidator(new ObjectMapper()),jdbc,new ObjectMapper(),quota);
+        var circuit=mock(PlannerCircuitService.class);
+        var permit=new PlannerCircuitService.Permit(List.of("fixture"),"ticket","generation");
+        when(circuit.acquire(eq(1L),any(),any())).thenReturn(permit);
+        var planner=new PlannerService(new PlannerEndpointPolicy("",true),client,new PlannerOutputValidator(new ObjectMapper()),jdbc,new ObjectMapper(),quota,circuit);
         var request=new PlannerController.Generate(new PlannerConnection("http://localhost:11435/v1","fixture",""),null,null,null,null,null);
         for(int i=0;i<2;i++) assertEquals(503,assertThrows(BizException.class,()->planner.execute(1,request,true)).getCode());
         verify(quota,times(2)).acquire(1); verifyNoInteractions(client,jdbc);
+        verify(circuit,times(2)).abandon(permit); verify(circuit,never()).complete(any(),anyBoolean());
     }
 }

@@ -1,0 +1,293 @@
+{
+  "mode": "REAL_HTTP_MYSQL_REDIS_CONTROLLED_MODEL",
+  "label": "baseline",
+  "startedAt": "2026-09-28T22:40:49.454268+08:00",
+  "checks": [
+    {
+      "name": "register a",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_fba5f7be99a",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "id": 10219,
+            "nickname": "pw_fba5f7be99a",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_fba5f7be99a"
+          },
+          "timestamp": 1790606449610
+        }
+      }
+    },
+    {
+      "name": "login fixture",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_fba5f7be99a",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-28T22:40:49",
+              "email": null,
+              "id": 10219,
+              "nickname": "pw_fba5f7be99a",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_fba5f7be99a"
+            }
+          },
+          "timestamp": 1790606449818
+        }
+      }
+    },
+    {
+      "name": "actual provider failure 1",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:58213/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790606449989
+        }
+      }
+    },
+    {
+      "name": "actual provider failure 2",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:58213/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790606450007
+        }
+      }
+    },
+    {
+      "name": "actual provider failure 3",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:58213/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790606450027
+        }
+      }
+    },
+    {
+      "name": "actual provider failure 4",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:58213/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790606450040
+        }
+      }
+    },
+    {
+      "name": "circuit state is available",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": false,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:58213/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "资源不存在",
+          "data": null,
+          "timestamp": 1790606450055
+        }
+      }
+    },
+    {
+      "name": "open breaker rejects next call",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        503
+      ],
+      "passed": false,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:58213/v1",
+            "model": "circuit-main",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790606450068
+        }
+      }
+    },
+    {
+      "name": "blocked request has no upstream call",
+      "actual": 5,
+      "expected": 4,
+      "passed": false
+    }
+  ],
+  "summary": {
+    "total": 9,
+    "passed": 6,
+    "failed": 3
+  }
+}

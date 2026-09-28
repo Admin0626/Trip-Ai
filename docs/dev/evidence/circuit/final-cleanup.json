@@ -1,0 +1,183 @@
+{
+  "checkedAt": "2026-09-28T23:04:15.003902+08:00",
+  "fixtureChecks": [
+    {
+      "id": 10219,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10220,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10221,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10222,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10223,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10224,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10225,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10226,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10227,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10228,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10229,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10230,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10231,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10233,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10236,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10237,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10238,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10241,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10242,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10243,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10244,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10245,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10246,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10247,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10248,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10232,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10234,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    },
+    {
+      "id": 10235,
+      "userRows": 0,
+      "remainingOwnedKeys": 0,
+      "passed": true
+    }
+  ],
+  "removedOnlyIsolatedKeys": [
+    "trip:test:quota:circuit20260928:{ai-quota}:global:day:1790524800"
+  ],
+  "checks": [
+    {
+      "name": "isolated prefixes empty",
+      "passed": true
+    }
+  ],
+  "productionGlobalCounterReset": false
+}

@@ -1,0 +1,887 @@
+{
+  "mode": "REAL_HTTP_PRODUCTION_DEFAULTS_CONTROLLED_PROVIDER",
+  "label": "production-defaults",
+  "startedAt": "2026-09-28T22:59:22.578412+08:00",
+  "checks": [
+    {
+      "name": "register d",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_e7b9c495efd",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "id": 10248,
+            "nickname": "pw_e7b9c495efd",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_e7b9c495efd"
+          },
+          "timestamp": 1790607562689
+        }
+      }
+    },
+    {
+      "name": "login default fixture",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_e7b9c495efd",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-28T22:59:22",
+              "email": null,
+              "id": 10248,
+              "nickname": "pw_e7b9c495efd",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_e7b9c495efd"
+            }
+          },
+          "timestamp": 1790607562850
+        }
+      }
+    },
+    {
+      "name": "production status",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://localhost:11436/v1",
+            "model": "circuit-ui-error-prod-6f0cb3efbc654bf7",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "CLOSED",
+            "total": 0,
+            "failed": 0,
+            "failurePercent": 0.0,
+            "minimumCalls": 10,
+            "windowSeconds": 300,
+            "cooldownSeconds": 600,
+            "retryAt": null,
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790607562874
+        }
+      }
+    },
+    {
+      "name": "production default values",
+      "actual": [
+        300,
+        600,
+        10
+      ],
+      "expected": [
+        300,
+        600,
+        10
+      ],
+      "passed": true
+    },
+    {
+      "name": "actual failure 1",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://localhost:11436/v1",
+            "model": "circuit-ui-error-prod-6f0cb3efbc654bf7",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790607562897
+        }
+      }
+    },
+    {
+      "name": "actual failure 2",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://localhost:11436/v1",
+            "model": "circuit-ui-error-prod-6f0cb3efbc654bf7",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790607562931
+        }
+      }
+    },
+    {
+      "name": "actual failure 3",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://localhost:11436/v1",
+            "model": "circuit-ui-error-prod-6f0cb3efbc654bf7",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790607562947
+        }
+      }
+    },
+    {
+      "name": "actual failure 4",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://localhost:11436/v1",
+            "model": "circuit-ui-error-prod-6f0cb3efbc654bf7",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790607562975
+        }
+      }
+    },
+    {
+      "name": "actual failure 5",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://localhost:11436/v1",
+            "model": "circuit-ui-error-prod-6f0cb3efbc654bf7",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790607563013
+        }
+      }
+    },
+    {
+      "name": "actual failure 6",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://localhost:11436/v1",
+            "model": "circuit-ui-error-prod-6f0cb3efbc654bf7",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790607563035
+        }
+      }
+    },
+    {
+      "name": "actual failure 7",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://localhost:11436/v1",
+            "model": "circuit-ui-error-prod-6f0cb3efbc654bf7",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790607563074
+        }
+      }
+    },
+    {
+      "name": "actual failure 8",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://localhost:11436/v1",
+            "model": "circuit-ui-error-prod-6f0cb3efbc654bf7",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790607563093
+        }
+      }
+    },
+    {
+      "name": "actual failure 9",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://localhost:11436/v1",
+            "model": "circuit-ui-error-prod-6f0cb3efbc654bf7",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790607563113
+        }
+      }
+    },
+    {
+      "name": "production status",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://localhost:11436/v1",
+            "model": "circuit-ui-error-prod-6f0cb3efbc654bf7",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "CLOSED",
+            "total": 9,
+            "failed": 9,
+            "failurePercent": 100.0,
+            "minimumCalls": 10,
+            "windowSeconds": 300,
+            "cooldownSeconds": 600,
+            "retryAt": null,
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790607563132
+        }
+      }
+    },
+    {
+      "name": "nine failures below default minimum",
+      "actual": "CLOSED",
+      "expected": "CLOSED",
+      "passed": true
+    },
+    {
+      "name": "tenth actual failure",
+      "actual": [
+        200,
+        3004
+      ],
+      "expected": [
+        200,
+        3004
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://localhost:11436/v1",
+            "model": "circuit-ui-error-prod-6f0cb3efbc654bf7",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 3004,
+          "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+          "data": null,
+          "timestamp": 1790607563164
+        }
+      }
+    },
+    {
+      "name": "production status",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://localhost:11436/v1",
+            "model": "circuit-ui-error-prod-6f0cb3efbc654bf7",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "OPEN",
+            "total": 10,
+            "failed": 10,
+            "failurePercent": 100.0,
+            "minimumCalls": 10,
+            "windowSeconds": 300,
+            "cooldownSeconds": 600,
+            "retryAt": "2026-09-28T15:09:23.158Z",
+            "retryAfterSeconds": 600
+          },
+          "timestamp": 1790607563175
+        }
+      }
+    },
+    {
+      "name": "ten failures open default circuit",
+      "actual": [
+        "OPEN",
+        10,
+        10
+      ],
+      "expected": [
+        "OPEN",
+        10,
+        10
+      ],
+      "passed": true
+    },
+    {
+      "name": "actual default cooldown",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "production usage",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/planner/usage",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "quota": {
+              "hourly": {
+                "limit": 20,
+                "used": 10,
+                "remaining": 10,
+                "resetAt": "2026-09-28T23:00+08:00"
+              },
+              "daily": {
+                "limit": 200,
+                "used": 10,
+                "remaining": 190,
+                "resetAt": "2026-09-29T00:00+08:00"
+              },
+              "globalDaily": {
+                "limit": 2000,
+                "used": 68,
+                "remaining": 1932,
+                "resetAt": "2026-09-29T00:00+08:00"
+              },
+              "timeZone": "Asia/Shanghai"
+            },
+            "today": {
+              "operations": 10,
+              "succeeded": 0,
+              "failed": 10,
+              "averageCostMs": 8.5
+            }
+          },
+          "timestamp": 1790607563209
+        }
+      }
+    },
+    {
+      "name": "production open denies outbound",
+      "actual": [
+        200,
+        503
+      ],
+      "expected": [
+        200,
+        503
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "http://localhost:11436/v1",
+            "model": "circuit-ui-error-prod-6f0cb3efbc654bf7",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 503,
+          "message": "模型服务因连续故障暂时暂停，请在约600秒后重试，也可使用基础旅行推荐",
+          "data": null,
+          "timestamp": 1790607563219
+        }
+      }
+    },
+    {
+      "name": "free rule intent works during outage",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/recommend/intent",
+        "body": {
+          "query": "大理两天预算3000元"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "intent": {
+              "destinations": [
+                "大理"
+              ],
+              "days": null,
+              "budget": 3000,
+              "budgetLevel": "medium",
+              "preferenceTags": [],
+              "companions": null,
+              "pace": null,
+              "travelMonth": null,
+              "mustVisit": [],
+              "avoid": []
+            },
+            "confidence": 0.3,
+            "source": "RULE_FALLBACK"
+          },
+          "timestamp": 1790607563239
+        }
+      }
+    },
+    {
+      "name": "free route matching works during outage",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/recommend/match",
+        "body": {
+          "intent": {},
+          "topN": 3
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "totalCandidates": 20,
+            "recallDetail": {
+              "content": 20,
+              "behavior": 0,
+              "cf": 0,
+              "hot": 0
+            },
+            "costMs": 1,
+            "source": "RULE_BASED",
+            "unsupportedCriteria": [],
+            "list": [
+              {
+                "routeId": 202,
+                "title": "云南西双版纳 4 日雨林探秘",
+                "coverImg": "https://oss.example.com/trip/route/202.jpg",
+                "destinationName": "云南",
+                "days": 4,
+                "price": 2680.0,
+                "tags": [
+                  "亲子",
+                  "探险",
+                  "美食"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 204,
+                "title": "大理苍山洱海 6 日深度游",
+                "coverImg": "https://oss.example.com/trip/route/204.jpg",
+                "destinationName": "大理",
+                "days": 6,
+                "price": 3980.0,
+                "tags": [
+                  "自然风光",
+                  "历史文化",
+                  "徒步"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 210,
+                "title": "三亚 4 日浪漫海岛游",
+                "coverImg": "https://oss.example.com/trip/route/210.jpg",
+                "destinationName": "三亚",
+                "days": 4,
+                "price": 4280.0,
+                "tags": [
+                  "海边",
+                  "情侣",
+                  "度假"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              }
+            ],
+            "effectiveCriteria": {
+              "destinations": [],
+              "days": null,
+              "budgetMin": null,
+              "budgetMax": null,
+              "preferenceTags": [],
+              "avoid": []
+            },
+            "savedPreferenceFields": []
+          },
+          "timestamp": 1790607563270
+        }
+      }
+    },
+    {
+      "name": "production usage",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/planner/usage",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "quota": {
+              "hourly": {
+                "limit": 20,
+                "used": 10,
+                "remaining": 10,
+                "resetAt": "2026-09-28T23:00+08:00"
+              },
+              "daily": {
+                "limit": 200,
+                "used": 10,
+                "remaining": 190,
+                "resetAt": "2026-09-29T00:00+08:00"
+              },
+              "globalDaily": {
+                "limit": 2000,
+                "used": 68,
+                "remaining": 1932,
+                "resetAt": "2026-09-29T00:00+08:00"
+              },
+              "timeZone": "Asia/Shanghai"
+            },
+            "today": {
+              "operations": 10,
+              "succeeded": 0,
+              "failed": 10,
+              "averageCostMs": 8.5
+            }
+          },
+          "timestamp": 1790607563278
+        }
+      }
+    },
+    {
+      "name": "blocked and rule calls do not consume quota or model audit",
+      "actual": [
+        10,
+        10
+      ],
+      "expected": [
+        10,
+        10
+      ],
+      "passed": true
+    },
+    {
+      "name": "default fixture removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ],
+  "phase": "COMPLETE",
+  "summary": {
+    "total": 26,
+    "passed": 26,
+    "failed": 0
+  }
+}

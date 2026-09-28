@@ -17,6 +17,7 @@ public class PlannerController {
     private final PlannerService service;
     private final PlannerEndpointPolicy policy;
     private final AiQuotaService quota;
+    private final PlannerCircuitService circuit;
     public record Test(@Valid @NotNull PlannerConnection connection) {}
     public record Generate(@Valid @NotNull PlannerConnection connection,
                            @NotBlank @Size(min=5,max=1000) @JsonDeserialize(using=StrictPlannerJson.Text.class) String query,
@@ -26,6 +27,9 @@ public class PlannerController {
                            @JsonDeserialize(using=StrictPlannerJson.Text.class) String startDate) {}
     @GetMapping("options") public R<PlannerEndpointPolicy.Options> options() { return R.ok(policy.options()); }
     @GetMapping("usage") public R<AiQuotaService.Usage> usage(@AuthenticationPrincipal Long userId) { return R.ok(quota.usage(userId)); }
+    @PostMapping("circuit") public R<PlannerCircuitService.Snapshot> circuit(@AuthenticationPrincipal Long userId, @Valid @RequestBody Test request) {
+        return R.ok(circuit.status(userId,policy.endpoint(request.connection().baseUrl()),request.connection()));
+    }
     @PostMapping("test") public R<Object> test(@AuthenticationPrincipal Long userId, @Valid @RequestBody Test request) {
         return R.ok(service.execute(userId, new Generate(request.connection(), null, null, null, null, null), true));
     }

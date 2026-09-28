@@ -1,0 +1,42 @@
+{
+  "source": "20260928-225434-195952-final.json",
+  "completed": false,
+  "reason": "OSError22 writing valid evidence path during repeated direct overwrite; cleanup finally did run",
+  "recordedChecks": {
+    "total": 115,
+    "passed": 115,
+    "failed": 0
+  },
+  "cleanup": [
+    {
+      "id": 10231,
+      "userRemoved": true,
+      "sessionsRemovedNow": 0,
+      "remainingAIKeysRemoved": 0
+    },
+    {
+      "id": 10233,
+      "userRemoved": true,
+      "sessionsRemovedNow": 0,
+      "remainingAIKeysRemoved": 0
+    },
+    {
+      "id": 10236,
+      "userRemoved": true,
+      "sessionsRemovedNow": 0,
+      "remainingAIKeysRemoved": 0
+    },
+    {
+      "id": 10237,
+      "userRemoved": true,
+      "sessionsRemovedNow": 0,
+      "remainingAIKeysRemoved": 0
+    },
+    {
+      "id": 10238,
+      "userRemoved": true,
+      "sessionsRemovedNow": 0,
+      "remainingAIKeysRemoved": 0
+    }
+  ]
+}
