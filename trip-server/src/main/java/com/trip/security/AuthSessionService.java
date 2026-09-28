@@ -10,6 +10,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ScanOptions;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.stereotype.Service;
 
@@ -67,6 +68,17 @@ public class AuthSessionService {
         Claims claims = claims(token, "access");
         try { redis.delete(key(Long.valueOf(claims.getSubject()), claims.get("sid", String.class))); }
         catch (Exception e) { throw unavailable(); }
+    }
+
+    public void revokeAll(Long userId) {
+        String prefix="trip:auth:session:{"+userId+"}:";
+        try(var cursor=redis.scan(ScanOptions.scanOptions().match(prefix+"*").count(100).build())) {
+            while(cursor.hasNext()) {
+                String key=cursor.next();
+                if(!key.startsWith(prefix))throw new IllegalStateException("Unexpected session key");
+                redis.delete(key);
+            }
+        } catch(Exception e) {throw unavailable();}
     }
 
     private SysUser activeUser(Long id) {

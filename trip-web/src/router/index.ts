@@ -18,7 +18,6 @@ export const userRoutes: RouteRecordRaw[] = [
       { path: 'user/profile', name: 'Profile', component: () => import('@/views/user/Profile.vue'), meta: { title: '个人资料' } },
       { path: 'user/preference', name: 'Preference', component: () => import('@/views/user/Preference.vue'), meta: { title: '旅行偏好' } },
       { path: 'user/feedback', name: 'Feedback', component: () => import('@/views/user/Feedback.vue'), meta: { title: '意见反馈' } },
-      { path: 'admin', name: 'Admin', component: () => import('@/views/Admin.vue'), meta: { title: '运营后台', admin: true } },
       { path: 'recommend', name: 'Recommend', component: () => import('@/views/recommend/Recommend.vue'), meta: { title: '旅行推荐' } },
       { path: 'ai-planner', name: 'AiPlanner', component: () => import('@/views/plan/AiPlanner.vue'), meta: { title: 'AI规划' } },
       { path: 'plan', name: 'PlanList', component: () => import('@/views/plan/PlanList.vue'), meta: { title: '我的规划' } },
@@ -26,6 +25,16 @@ export const userRoutes: RouteRecordRaw[] = [
       { path: 'plan/:id/edit', name: 'PlanEdit', component: () => import('@/views/plan/PlanEditor.vue'), meta: { title: '编辑规划' } },
       { path: 'user/favorites', name: 'Favorites', component: () => import('@/views/user/Favorites.vue'), meta: { title: '我的收藏' } },
       { path: 'user/bookings', name: 'Bookings', component: () => import('@/views/user/Bookings.vue'), meta: { title: '我的预约' } },
+    ],
+  },
+  {
+    path: '/admin', component: () => import('@/layouts/AdminLayout.vue'), meta: { admin: true },
+    children: [
+      { path: '', name: 'Admin', component: () => import('@/views/Admin.vue'), meta: { title: '概览与反馈' } },
+      { path: 'destinations', component: () => import('@/views/admin/Destinations.vue'), meta: { title: '目的地与景点' } },
+      { path: 'routes', component: () => import('@/views/admin/Routes.vue'), meta: { title: '路线与行程' } },
+      { path: 'banners', component: () => import('@/views/admin/Banners.vue'), meta: { title: '首页轮播' } },
+      ...(['bookings','comments','users','logs'] as const).map(kind=>({path:kind,component:()=>import('@/views/admin/Operations.vue'),props:{kind},meta:{title:{bookings:'预约管理',comments:'评论管理',users:'用户管理',logs:'AI调用日志'}[kind]}})),
     ],
   },
   {

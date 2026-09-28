@@ -36,8 +36,8 @@ public class AdminInteractionController {
             @RequestParam(defaultValue = "10") long size,
             @RequestParam(required = false) Integer status,
             @RequestParam(required = false) Long routeId) {
-        if (current < 1 || size < 1) throw new com.trip.common.exception.BizException(400, "分页参数须大于0");
-        size = Math.min(size, 100);
+        if (current < 1 || current > 1000000 || size < 1 || size > 100 || status != null && (status < 0 || status > 3) || routeId != null && routeId < 1)
+            throw new com.trip.common.exception.BizException(400, "分页或筛选参数不合法");
         return R.ok(interactionService.adminBookingPage(current, size, status, routeId));
     }
 
@@ -56,8 +56,8 @@ public class AdminInteractionController {
             @RequestParam(defaultValue = "10") long size,
             @RequestParam(required = false) Integer status,
             @RequestParam(required = false) Long routeId) {
-        if (current < 1 || size < 1) throw new com.trip.common.exception.BizException(400, "分页参数须大于0");
-        size = Math.min(size, 100);
+        if (current < 1 || current > 1000000 || size < 1 || size > 100 || status != null && status != 0 && status != 1 || routeId != null && routeId < 1)
+            throw new com.trip.common.exception.BizException(400, "分页或筛选参数不合法");
         return R.ok(interactionService.adminCommentPage(current, size, status, routeId));
     }
 

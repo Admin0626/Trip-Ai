@@ -4,13 +4,22 @@ import { useRouter } from 'vue-router'
 import { routeHotApi, routeRecommendHomeApi } from '@/api/modules/route'
 import { destinationHotApi } from '@/api/modules/destination'
 import RouteCard from '@/components/common/RouteCard.vue'
+import { activeBanners, type Banner } from '@/api/modules/catalog'
 
 const router = useRouter()
 const hotRoutes = ref<RoutePageVO[]>([])
 const recommendRoutes = ref<RoutePageVO[]>([])
 const hotDests = ref<DestinationVO[]>([])
+const banners = ref<Banner[]>([])
+function bannerLink(b:Banner):string|null {
+  if(b.linkType==='ROUTE' && /^[1-9]\d*$/.test(b.linkValue))return `/route/${b.linkValue}`
+  if(b.linkType==='DESTINATION' && /^[1-9]\d*$/.test(b.linkValue))return `/destination/${b.linkValue}`
+  if(b.linkType==='URL')try{const u=new URL(b.linkValue);if(['http:','https:'].includes(u.protocol)&&!u.username&&!u.password)return u.href}catch{}
+  return null
+}
 
 onMounted(async () => {
+  void activeBanners().then(data=>banners.value=data).catch(()=>{})
   try {
     const [r1, r2, d] = await Promise.all([routeHotApi(5), routeRecommendHomeApi(), destinationHotApi(8)])
     hotRoutes.value = r1
@@ -36,6 +45,15 @@ onMounted(async () => {
           <el-button size="large" round plain @click="router.push('/ai-planner')">AI帮我规划</el-button>
         </div>
       </div>
+    </section>
+
+    <section v-if="banners.length" class="container section home-banners" aria-label="首页轮播">
+      <el-carousel height="280px" :interval="6000" :autoplay="banners.length>1" arrow="hover">
+        <el-carousel-item v-for="b in banners" :key="b.id">
+          <a v-if="bannerLink(b)" :href="bannerLink(b)!" :target="b.linkType==='URL'?'_blank':undefined" rel="noopener noreferrer" class="banner-slide"><img :src="b.imageUrl" :alt="b.title"/><span>{{b.title}}</span></a>
+          <div v-else class="banner-slide"><img :src="b.imageUrl" :alt="b.title"/><span>{{b.title}}</span></div>
+        </el-carousel-item>
+      </el-carousel>
     </section>
 
     <!-- 热门目的地 -->
@@ -97,6 +115,7 @@ onMounted(async () => {
     gap: 12px;
   }
 }
+.hero__actions{flex-wrap:wrap}.banner-slide{position:relative;display:block;height:100%;color:white}.banner-slide img{width:100%;height:100%;object-fit:cover}.banner-slide span{position:absolute;bottom:0;left:0;right:0;padding:24px;background:linear-gradient(transparent,rgba(0,0,0,.7));font-size:22px}.home-banners :deep(.el-carousel){border-radius:12px}@media(max-width:600px){.hero{padding:36px 0}.hero__title{font-size:26px}.banner-slide span{font-size:18px;padding:18px}.home-banners :deep(.el-carousel__container){height:200px!important}}
 
 .section {
   padding-top: 32px;

@@ -14,5 +14,6 @@ public class CommentStatusDTO {
     @NotNull(message = "评论状态不能为空")
     @Min(value = 0, message = "评论状态仅支持 0 隐藏 / 1 显示")
     @Max(value = 1, message = "评论状态仅支持 0 隐藏 / 1 显示")
+    @tools.jackson.databind.annotation.JsonDeserialize(using=com.trip.module.catalog.StrictCatalogJson.IntegerNumber.class)
     private Integer status;
 }

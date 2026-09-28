@@ -1,0 +1,4145 @@
+{
+  "time": "2026-09-28T20:55:27.406419",
+  "baseUrl": "http://localhost:8080/api",
+  "mode": "admin-regression-20260928",
+  "cases": [
+    {
+      "name": "注册测试账号 a",
+      "method": "POST",
+      "path": "/auth/register",
+      "user": null,
+      "request": {
+        "username": "b2_1790600118a",
+        "password": "<redacted>",
+        "nickname": "验收a"
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "avatar": null,
+          "city": "",
+          "createTime": null,
+          "email": null,
+          "id": 10139,
+          "nickname": "验收a",
+          "phone": null,
+          "role": "USER",
+          "username": "b2_1790600118a"
+        },
+        "timestamp": 1790600118451
+      },
+      "passed": true,
+      "durationMs": 186,
+      "checkError": ""
+    },
+    {
+      "name": "登录 a",
+      "method": "POST",
+      "path": "/auth/login",
+      "user": null,
+      "request": {
+        "username": "b2_1790600118a",
+        "password": "<redacted>"
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "accessToken": "<redacted>",
+          "expiresIn": 7200,
+          "refreshToken": "<redacted>",
+          "userInfo": {
+            "avatar": "",
+            "city": "",
+            "createTime": "2026-09-28T20:55:18",
+            "email": null,
+            "id": 10139,
+            "nickname": "验收a",
+            "phone": null,
+            "role": "USER",
+            "username": "b2_1790600118a"
+          }
+        },
+        "timestamp": 1790600118669
+      },
+      "passed": true,
+      "durationMs": 110,
+      "checkError": ""
+    },
+    {
+      "name": "注册测试账号 b",
+      "method": "POST",
+      "path": "/auth/register",
+      "user": null,
+      "request": {
+        "username": "b2_1790600118b",
+        "password": "<redacted>",
+        "nickname": "验收b"
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "avatar": null,
+          "city": "",
+          "createTime": null,
+          "email": null,
+          "id": 10140,
+          "nickname": "验收b",
+          "phone": null,
+          "role": "USER",
+          "username": "b2_1790600118b"
+        },
+        "timestamp": 1790600118771
+      },
+      "passed": true,
+      "durationMs": 101,
+      "checkError": ""
+    },
+    {
+      "name": "登录 b",
+      "method": "POST",
+      "path": "/auth/login",
+      "user": null,
+      "request": {
+        "username": "b2_1790600118b",
+        "password": "<redacted>"
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "accessToken": "<redacted>",
+          "expiresIn": 7200,
+          "refreshToken": "<redacted>",
+          "userInfo": {
+            "avatar": "",
+            "city": "",
+            "createTime": "2026-09-28T20:55:18",
+            "email": null,
+            "id": 10140,
+            "nickname": "验收b",
+            "phone": null,
+            "role": "USER",
+            "username": "b2_1790600118b"
+          }
+        },
+        "timestamp": 1790600118968
+      },
+      "passed": true,
+      "durationMs": 98,
+      "checkError": ""
+    },
+    {
+      "name": "注册测试账号 c",
+      "method": "POST",
+      "path": "/auth/register",
+      "user": null,
+      "request": {
+        "username": "b2_1790600118c",
+        "password": "<redacted>",
+        "nickname": "验收c"
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "avatar": null,
+          "city": "",
+          "createTime": null,
+          "email": null,
+          "id": 10141,
+          "nickname": "验收c",
+          "phone": null,
+          "role": "USER",
+          "username": "b2_1790600118c"
+        },
+        "timestamp": 1790600119061
+      },
+      "passed": true,
+      "durationMs": 93,
+      "checkError": ""
+    },
+    {
+      "name": "登录 c",
+      "method": "POST",
+      "path": "/auth/login",
+      "user": null,
+      "request": {
+        "username": "b2_1790600118c",
+        "password": "<redacted>"
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "accessToken": "<redacted>",
+          "expiresIn": 7200,
+          "refreshToken": "<redacted>",
+          "userInfo": {
+            "avatar": "",
+            "city": "",
+            "createTime": "2026-09-28T20:55:19",
+            "email": null,
+            "id": 10141,
+            "nickname": "验收c",
+            "phone": null,
+            "role": "USER",
+            "username": "b2_1790600118c"
+          }
+        },
+        "timestamp": 1790600119275
+      },
+      "passed": true,
+      "durationMs": 108,
+      "checkError": ""
+    },
+    {
+      "name": "管理员登录",
+      "method": "POST",
+      "path": "/auth/login",
+      "user": null,
+      "request": {
+        "username": "admin",
+        "password": "<redacted>"
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "accessToken": "<redacted>",
+          "expiresIn": 7200,
+          "refreshToken": "<redacted>",
+          "userInfo": {
+            "avatar": "",
+            "city": "北京",
+            "createTime": "2026-08-01T00:00:00",
+            "email": "admin@trip.ai",
+            "id": 1,
+            "nickname": "系统管理员",
+            "phone": "13800000001",
+            "role": "ADMIN",
+            "username": "admin"
+          }
+        },
+        "timestamp": 1790600119386
+      },
+      "passed": true,
+      "durationMs": 111,
+      "checkError": ""
+    },
+    {
+      "name": "匿名规划应401",
+      "method": "GET",
+      "path": "/plan/page",
+      "user": null,
+      "request": null,
+      "http": 401,
+      "expectedCode": 401,
+      "expectedHttp": 401,
+      "response": {
+        "code": 401,
+        "message": "请先登录",
+        "data": null
+      },
+      "passed": true,
+      "durationMs": 21,
+      "checkError": ""
+    },
+    {
+      "name": "USER不能管理预约",
+      "method": "GET",
+      "path": "/admin/interaction/booking/page",
+      "user": "a",
+      "request": null,
+      "http": 403,
+      "expectedCode": 403,
+      "expectedHttp": 403,
+      "response": {
+        "code": 403,
+        "message": "无权访问",
+        "data": null
+      },
+      "passed": true,
+      "durationMs": 18,
+      "checkError": ""
+    },
+    {
+      "name": "公开评论",
+      "method": "GET",
+      "path": "/interaction/comment/page?routeId=249",
+      "user": null,
+      "request": null,
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "current": 1,
+          "pages": 0,
+          "records": [],
+          "size": 10,
+          "total": 0
+        },
+        "timestamp": 1790600119745
+      },
+      "passed": true,
+      "durationMs": 11,
+      "checkError": ""
+    },
+    {
+      "name": "缺少routeId",
+      "method": "GET",
+      "path": "/interaction/comment/page",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": null,
+      "response": {
+        "code": 400,
+        "message": "请求参数缺失或格式不正确",
+        "data": null,
+        "timestamp": 1790600119757
+      },
+      "passed": true,
+      "durationMs": 12,
+      "checkError": ""
+    },
+    {
+      "name": "非法路径参数",
+      "method": "GET",
+      "path": "/plan/abc",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": null,
+      "response": {
+        "code": 400,
+        "message": "请求参数缺失或格式不正确",
+        "data": null,
+        "timestamp": 1790600119767
+      },
+      "passed": true,
+      "durationMs": 10,
+      "checkError": ""
+    },
+    {
+      "name": "负分页大小",
+      "method": "GET",
+      "path": "/plan/page?size=-1",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": null,
+      "response": {
+        "code": 400,
+        "message": "分页参数须大于0",
+        "data": null,
+        "timestamp": 1790600119775
+      },
+      "passed": true,
+      "durationMs": 6,
+      "checkError": ""
+    },
+    {
+      "name": "点赞缺参数",
+      "method": "POST",
+      "path": "/interaction/like",
+      "user": "a",
+      "request": {},
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": null,
+      "response": {
+        "code": 400,
+        "message": "routeId 路线ID不能为空",
+        "data": null,
+        "timestamp": 1790600119781
+      },
+      "passed": true,
+      "durationMs": 7,
+      "checkError": ""
+    },
+    {
+      "name": "点赞不存在路线",
+      "method": "POST",
+      "path": "/interaction/like",
+      "user": "a",
+      "request": {
+        "routeId": 99999999
+      },
+      "http": 200,
+      "expectedCode": 2001,
+      "expectedHttp": null,
+      "response": {
+        "code": 2001,
+        "message": "路线不存在或已下架",
+        "data": null,
+        "timestamp": 1790600119790
+      },
+      "passed": true,
+      "durationMs": 9,
+      "checkError": ""
+    },
+    {
+      "name": "点赞",
+      "method": "POST",
+      "path": "/interaction/like",
+      "user": "a",
+      "request": {
+        "routeId": 249
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "likeCount": 1,
+          "liked": true
+        },
+        "timestamp": 1790600119808
+      },
+      "passed": true,
+      "durationMs": 18,
+      "checkError": ""
+    },
+    {
+      "name": "点赞状态",
+      "method": "GET",
+      "path": "/interaction/like/249/status",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "likeCount": 1,
+          "liked": true
+        },
+        "timestamp": 1790600119819
+      },
+      "passed": true,
+      "durationMs": 11,
+      "checkError": ""
+    },
+    {
+      "name": "详情点赞回显",
+      "method": "GET",
+      "path": "/route/249",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "avgScore": 0.0,
+          "bookingCount": 0,
+          "commentCount": 0,
+          "coverImg": "",
+          "dayList": [],
+          "days": 1,
+          "destination": {
+            "id": 1,
+            "name": "云南",
+            "province": "云南省"
+          },
+          "difficulty": 1,
+          "favoriteCount": 0,
+          "favorited": false,
+          "highlights": null,
+          "id": 249,
+          "likeCount": 1,
+          "liked": true,
+          "notice": null,
+          "price": 0.0,
+          "subtitle": "",
+          "tags": [],
+          "title": "b2_1790600118_0",
+          "viewCount": 0
+        },
+        "timestamp": 1790600119834
+      },
+      "passed": true,
+      "durationMs": 15,
+      "checkError": ""
+    },
+    {
+      "name": "并发取消点赞2",
+      "method": "POST",
+      "path": "/interaction/like",
+      "user": "a",
+      "request": {
+        "routeId": 249
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "likeCount": 0,
+          "liked": false
+        },
+        "timestamp": 1790600119858
+      },
+      "passed": true,
+      "durationMs": 16,
+      "checkError": ""
+    },
+    {
+      "name": "并发取消点赞1",
+      "method": "POST",
+      "path": "/interaction/like",
+      "user": "a",
+      "request": {
+        "routeId": 249
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "likeCount": 1,
+          "liked": true
+        },
+        "timestamp": 1790600119867
+      },
+      "passed": true,
+      "durationMs": 24,
+      "checkError": ""
+    },
+    {
+      "name": "并发toggle计数一致",
+      "method": "SQL/assert",
+      "path": "",
+      "request": null,
+      "response": "1",
+      "expected": "1",
+      "passed": true
+    },
+    {
+      "name": "收藏",
+      "method": "POST",
+      "path": "/interaction/favorite",
+      "user": "a",
+      "request": {
+        "routeId": 249
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "favoriteCount": 1,
+          "favorited": true
+        },
+        "timestamp": 1790600119997
+      },
+      "passed": true,
+      "durationMs": 21,
+      "checkError": ""
+    },
+    {
+      "name": "收藏列表",
+      "method": "GET",
+      "path": "/interaction/favorite/page",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "current": 1,
+          "pages": 1,
+          "records": [
+            {
+              "avgScore": 0.0,
+              "bookingCount": 0,
+              "commentCount": 0,
+              "coverImg": "",
+              "days": 1,
+              "destinationName": "云南",
+              "difficulty": 1,
+              "favoriteCount": 1,
+              "favorited": true,
+              "id": 249,
+              "isTop": 0,
+              "likeCount": 1,
+              "liked": true,
+              "price": 0.0,
+              "subtitle": "",
+              "tags": [],
+              "title": "b2_1790600118_0",
+              "viewCount": 0
+            }
+          ],
+          "size": 10,
+          "total": 1
+        },
+        "timestamp": 1790600120013
+      },
+      "passed": true,
+      "durationMs": 16,
+      "checkError": ""
+    },
+    {
+      "name": "取消收藏",
+      "method": "POST",
+      "path": "/interaction/favorite",
+      "user": "a",
+      "request": {
+        "routeId": 249
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "favoriteCount": 0,
+          "favorited": false
+        },
+        "timestamp": 1790600120028
+      },
+      "passed": true,
+      "durationMs": 15,
+      "checkError": ""
+    },
+    {
+      "name": "预约今天拒绝",
+      "method": "POST",
+      "path": "/interaction/booking",
+      "user": "a",
+      "request": {
+        "routeId": 249,
+        "travelDate": "2026-09-28",
+        "peopleNum": 1,
+        "contactName": "收尾测试",
+        "contactPhone": "13800000000",
+        "remark": "b2_1790600118"
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": null,
+      "response": {
+        "code": 400,
+        "message": "出行日期须为明天及以后",
+        "data": null,
+        "timestamp": 1790600120035
+      },
+      "passed": true,
+      "durationMs": 7,
+      "checkError": ""
+    },
+    {
+      "name": "预约人数0",
+      "method": "POST",
+      "path": "/interaction/booking",
+      "user": "a",
+      "request": {
+        "routeId": 249,
+        "travelDate": "2026-11-27",
+        "peopleNum": 0,
+        "contactName": "收尾测试",
+        "contactPhone": "13800000000",
+        "remark": "b2_1790600118"
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": null,
+      "response": {
+        "code": 400,
+        "message": "peopleNum 人数 1-10 人",
+        "data": null,
+        "timestamp": 1790600120061
+      },
+      "passed": true,
+      "durationMs": 26,
+      "checkError": ""
+    },
+    {
+      "name": "预约3人",
+      "method": "POST",
+      "path": "/interaction/booking",
+      "user": "a",
+      "request": {
+        "routeId": 249,
+        "travelDate": "2026-11-27",
+        "peopleNum": 3,
+        "contactName": "收尾测试",
+        "contactPhone": "13800000000",
+        "remark": "b2_1790600118"
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "bookingId": 9118,
+          "bookingNo": "20ff7f10308a4d9b80e3d12be6124024",
+          "contactName": "收尾测试",
+          "contactPhone": "13800000000",
+          "createTime": "2026-09-28 20:55:20",
+          "peopleNum": 3,
+          "remark": "b2_1790600118",
+          "routeId": 249,
+          "routeTitle": "b2_1790600118_0",
+          "status": 0,
+          "travelDate": "2026-11-27"
+        },
+        "timestamp": 1790600120080
+      },
+      "passed": true,
+      "durationMs": 18,
+      "checkError": ""
+    },
+    {
+      "name": "预约重复",
+      "method": "POST",
+      "path": "/interaction/booking",
+      "user": "a",
+      "request": {
+        "routeId": 249,
+        "travelDate": "2026-11-27",
+        "peopleNum": 3,
+        "contactName": "收尾测试",
+        "contactPhone": "13800000000",
+        "remark": "b2_1790600118"
+      },
+      "http": 200,
+      "expectedCode": 2004,
+      "expectedHttp": null,
+      "response": {
+        "code": 2004,
+        "message": "同一路线同一出行日期已预约，请勿重复提交",
+        "data": null,
+        "timestamp": 1790600120092
+      },
+      "passed": true,
+      "durationMs": 12,
+      "checkError": ""
+    },
+    {
+      "name": "预约列表",
+      "method": "GET",
+      "path": "/interaction/booking/page",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "current": 1,
+          "pages": 1,
+          "records": [
+            {
+              "bookingId": 9118,
+              "bookingNo": "20ff7f10308a4d9b80e3d12be6124024",
+              "contactName": "收尾测试",
+              "contactPhone": "13800000000",
+              "createTime": "2026-09-28 20:55:20",
+              "peopleNum": 3,
+              "remark": "b2_1790600118",
+              "routeId": 249,
+              "routeTitle": "b2_1790600118_0",
+              "status": 0,
+              "travelDate": "2026-11-27"
+            }
+          ],
+          "size": 10,
+          "total": 1
+        },
+        "timestamp": 1790600120106
+      },
+      "passed": true,
+      "durationMs": 14,
+      "checkError": ""
+    },
+    {
+      "name": "越权取消预约",
+      "method": "PUT",
+      "path": "/interaction/booking/9118/cancel",
+      "user": "b",
+      "request": null,
+      "http": 200,
+      "expectedCode": 403,
+      "expectedHttp": null,
+      "response": {
+        "code": 403,
+        "message": "无权限访问",
+        "data": null,
+        "timestamp": 1790600120115
+      },
+      "passed": true,
+      "durationMs": 10,
+      "checkError": ""
+    },
+    {
+      "name": "确认3人",
+      "method": "PUT",
+      "path": "/admin/interaction/booking/9118/status",
+      "user": "admin",
+      "request": {
+        "status": 1
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": null,
+        "timestamp": 1790600120133
+      },
+      "passed": true,
+      "durationMs": 17,
+      "checkError": ""
+    },
+    {
+      "name": "人数已满拒绝新预约",
+      "method": "POST",
+      "path": "/interaction/booking",
+      "user": "b",
+      "request": {
+        "routeId": 249,
+        "travelDate": "2026-11-27",
+        "peopleNum": 1,
+        "contactName": "收尾测试",
+        "contactPhone": "13800000000",
+        "remark": "b2_1790600118"
+      },
+      "http": 200,
+      "expectedCode": 2002,
+      "expectedHttp": null,
+      "response": {
+        "code": 2002,
+        "message": "预约人数已满",
+        "data": null,
+        "timestamp": 1790600120146
+      },
+      "passed": true,
+      "durationMs": 13,
+      "checkError": ""
+    },
+    {
+      "name": "已确认不能再次确认",
+      "method": "PUT",
+      "path": "/admin/interaction/booking/9118/status",
+      "user": "admin",
+      "request": {
+        "status": 1
+      },
+      "http": 200,
+      "expectedCode": 409,
+      "expectedHttp": null,
+      "response": {
+        "code": 409,
+        "message": "非法状态流转：当前状态不可变更为目标状态",
+        "data": null,
+        "timestamp": 1790600120174
+      },
+      "passed": true,
+      "durationMs": 28,
+      "checkError": ""
+    },
+    {
+      "name": "取消已确认预约",
+      "method": "PUT",
+      "path": "/interaction/booking/9118/cancel",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": null,
+        "timestamp": 1790600120208
+      },
+      "passed": true,
+      "durationMs": 34,
+      "checkError": ""
+    },
+    {
+      "name": "重复取消预约",
+      "method": "PUT",
+      "path": "/interaction/booking/9118/cancel",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 409,
+      "expectedHttp": null,
+      "response": {
+        "code": 409,
+        "message": "该预约已取消",
+        "data": null,
+        "timestamp": 1790600120218
+      },
+      "passed": true,
+      "durationMs": 10,
+      "checkError": ""
+    },
+    {
+      "name": "取消后重约",
+      "method": "POST",
+      "path": "/interaction/booking",
+      "user": "a",
+      "request": {
+        "routeId": 249,
+        "travelDate": "2026-11-27",
+        "peopleNum": 1,
+        "contactName": "收尾测试",
+        "contactPhone": "13800000000",
+        "remark": "b2_1790600118"
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "bookingId": 9119,
+          "bookingNo": "35c0d57ba329410b9f10014a290502f7",
+          "contactName": "收尾测试",
+          "contactPhone": "13800000000",
+          "createTime": "2026-09-28 20:55:20",
+          "peopleNum": 1,
+          "remark": "b2_1790600118",
+          "routeId": 249,
+          "routeTitle": "b2_1790600118_0",
+          "status": 0,
+          "travelDate": "2026-11-27"
+        },
+        "timestamp": 1790600120235
+      },
+      "passed": true,
+      "durationMs": 17,
+      "checkError": ""
+    },
+    {
+      "name": "管理员拒绝预约",
+      "method": "PUT",
+      "path": "/admin/interaction/booking/9119/status",
+      "user": "admin",
+      "request": {
+        "status": 2
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": null,
+        "timestamp": 1790600120272
+      },
+      "passed": true,
+      "durationMs": 36,
+      "checkError": ""
+    },
+    {
+      "name": "管理员取消同步预约计数",
+      "method": "SQL/assert",
+      "path": "",
+      "request": null,
+      "response": "1",
+      "expected": "1",
+      "passed": true
+    },
+    {
+      "name": "待审2人A",
+      "method": "POST",
+      "path": "/interaction/booking",
+      "user": "a",
+      "request": {
+        "routeId": 250,
+        "travelDate": "2026-11-27",
+        "peopleNum": 2,
+        "contactName": "收尾测试",
+        "contactPhone": "13800000000",
+        "remark": "b2_1790600118"
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "bookingId": 9120,
+          "bookingNo": "cecc8c9fd5b04823b5a3b080c7f04e8a",
+          "contactName": "收尾测试",
+          "contactPhone": "13800000000",
+          "createTime": "2026-09-28 20:55:20",
+          "peopleNum": 2,
+          "remark": "b2_1790600118",
+          "routeId": 250,
+          "routeTitle": "b2_1790600118_1",
+          "status": 0,
+          "travelDate": "2026-11-27"
+        },
+        "timestamp": 1790600120400
+      },
+      "passed": true,
+      "durationMs": 20,
+      "checkError": ""
+    },
+    {
+      "name": "待审2人B",
+      "method": "POST",
+      "path": "/interaction/booking",
+      "user": "b",
+      "request": {
+        "routeId": 250,
+        "travelDate": "2026-11-27",
+        "peopleNum": 2,
+        "contactName": "收尾测试",
+        "contactPhone": "13800000000",
+        "remark": "b2_1790600118"
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "bookingId": 9121,
+          "bookingNo": "73a2552921344b47a2e31ec3af8d8214",
+          "contactName": "收尾测试",
+          "contactPhone": "13800000000",
+          "createTime": "2026-09-28 20:55:20",
+          "peopleNum": 2,
+          "remark": "b2_1790600118",
+          "routeId": 250,
+          "routeTitle": "b2_1790600118_1",
+          "status": 0,
+          "travelDate": "2026-11-27"
+        },
+        "timestamp": 1790600120420
+      },
+      "passed": true,
+      "durationMs": 19,
+      "checkError": ""
+    },
+    {
+      "name": "并发审核B",
+      "method": "PUT",
+      "path": "/admin/interaction/booking/9121/status",
+      "user": "admin",
+      "request": {
+        "status": 1
+      },
+      "http": 200,
+      "expectedCode": null,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": null,
+        "timestamp": 1790600120437
+      },
+      "passed": true,
+      "durationMs": 16,
+      "checkError": ""
+    },
+    {
+      "name": "并发审核A",
+      "method": "PUT",
+      "path": "/admin/interaction/booking/9120/status",
+      "user": "admin",
+      "request": {
+        "status": 1
+      },
+      "http": 200,
+      "expectedCode": null,
+      "expectedHttp": null,
+      "response": {
+        "code": 2002,
+        "message": "预约人数已满",
+        "data": null,
+        "timestamp": 1790600120457
+      },
+      "passed": true,
+      "durationMs": 37,
+      "checkError": ""
+    },
+    {
+      "name": "并发审核仅一单通过",
+      "method": "SQL/assert",
+      "path": "",
+      "request": null,
+      "response": [
+        200,
+        2002
+      ],
+      "expected": [
+        200,
+        2002
+      ],
+      "passed": true
+    },
+    {
+      "name": "确认人数不超3",
+      "method": "SQL/assert",
+      "path": "",
+      "request": null,
+      "response": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "发表评论",
+      "method": "POST",
+      "path": "/interaction/comment",
+      "user": "a",
+      "request": {
+        "routeId": 249,
+        "score": 5,
+        "content": "实际接口验收评论"
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "content": null,
+          "createTime": null,
+          "id": 5286,
+          "images": null,
+          "likeCount": null,
+          "liked": null,
+          "parentId": null,
+          "routeId": null,
+          "score": null,
+          "sentiment": "unknown",
+          "sentimentScore": null,
+          "status": null,
+          "userAvatar": null,
+          "userId": null,
+          "userNickname": null
+        },
+        "timestamp": 1790600120587
+      },
+      "passed": true,
+      "durationMs": 21,
+      "checkError": ""
+    },
+    {
+      "name": "评论短文本",
+      "method": "POST",
+      "path": "/interaction/comment",
+      "user": "a",
+      "request": {
+        "routeId": 249,
+        "score": 5,
+        "content": "短"
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": null,
+      "response": {
+        "code": 400,
+        "message": "content 评论内容 5-500 字",
+        "data": null,
+        "timestamp": 1790600120619
+      },
+      "passed": true,
+      "durationMs": 34,
+      "checkError": ""
+    },
+    {
+      "name": "图片超过3张",
+      "method": "POST",
+      "path": "/interaction/comment",
+      "user": "a",
+      "request": {
+        "routeId": 249,
+        "score": 5,
+        "content": "实际接口验收评论",
+        "images": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ]
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": null,
+      "response": {
+        "code": 400,
+        "message": "images 评论图片最多 3 张",
+        "data": null,
+        "timestamp": 1790600120628
+      },
+      "passed": true,
+      "durationMs": 8,
+      "checkError": ""
+    },
+    {
+      "name": "跨路线回复应拒绝",
+      "method": "POST",
+      "path": "/interaction/comment",
+      "user": "b",
+      "request": {
+        "routeId": 251,
+        "score": 5,
+        "content": "实际接口验收评论",
+        "parentId": 5286
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": null,
+      "response": {
+        "code": 400,
+        "message": "仅支持对顶级评论进行回复",
+        "data": null,
+        "timestamp": 1790600120669
+      },
+      "passed": true,
+      "durationMs": 42,
+      "checkError": ""
+    },
+    {
+      "name": "正常回复",
+      "method": "POST",
+      "path": "/interaction/comment",
+      "user": "b",
+      "request": {
+        "routeId": 249,
+        "score": 5,
+        "content": "实际接口验收评论",
+        "parentId": 5286
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "content": null,
+          "createTime": null,
+          "id": 5287,
+          "images": null,
+          "likeCount": null,
+          "liked": null,
+          "parentId": null,
+          "routeId": null,
+          "score": null,
+          "sentiment": "unknown",
+          "sentimentScore": null,
+          "status": null,
+          "userAvatar": null,
+          "userId": null,
+          "userNickname": null
+        },
+        "timestamp": 1790600120719
+      },
+      "passed": true,
+      "durationMs": 49,
+      "checkError": ""
+    },
+    {
+      "name": "拒绝第三层回复",
+      "method": "POST",
+      "path": "/interaction/comment",
+      "user": "c",
+      "request": {
+        "routeId": 249,
+        "score": 5,
+        "content": "实际接口验收评论",
+        "parentId": 5287
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": null,
+      "response": {
+        "code": 400,
+        "message": "仅支持对顶级评论进行回复",
+        "data": null,
+        "timestamp": 1790600120753
+      },
+      "passed": true,
+      "durationMs": 34,
+      "checkError": ""
+    },
+    {
+      "name": "评论点赞",
+      "method": "POST",
+      "path": "/interaction/comment/5286/like",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "likeCount": 1,
+          "liked": true
+        },
+        "timestamp": 1790600120782
+      },
+      "passed": true,
+      "durationMs": 30,
+      "checkError": ""
+    },
+    {
+      "name": "评论取消点赞",
+      "method": "POST",
+      "path": "/interaction/comment/5286/like",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "likeCount": 0,
+          "liked": false
+        },
+        "timestamp": 1790600120804
+      },
+      "passed": true,
+      "durationMs": 21,
+      "checkError": ""
+    },
+    {
+      "name": "越权删除评论",
+      "method": "DELETE",
+      "path": "/interaction/comment/5286",
+      "user": "b",
+      "request": null,
+      "http": 200,
+      "expectedCode": 403,
+      "expectedHttp": null,
+      "response": {
+        "code": 403,
+        "message": "无权限访问",
+        "data": null,
+        "timestamp": 1790600120819
+      },
+      "passed": true,
+      "durationMs": 14,
+      "checkError": ""
+    },
+    {
+      "name": "隐藏缺status",
+      "method": "PUT",
+      "path": "/admin/interaction/comment/5286/status",
+      "user": "admin",
+      "request": {},
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": null,
+      "response": {
+        "code": 400,
+        "message": "status 评论状态不能为空",
+        "data": null,
+        "timestamp": 1790600120826
+      },
+      "passed": true,
+      "durationMs": 8,
+      "checkError": ""
+    },
+    {
+      "name": "低分评论",
+      "method": "POST",
+      "path": "/interaction/comment",
+      "user": "c",
+      "request": {
+        "routeId": 249,
+        "score": 1,
+        "content": "实际接口验收评论"
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "content": null,
+          "createTime": null,
+          "id": 5288,
+          "images": null,
+          "likeCount": null,
+          "liked": null,
+          "parentId": null,
+          "routeId": null,
+          "score": null,
+          "sentiment": "unknown",
+          "sentimentScore": null,
+          "status": null,
+          "userAvatar": null,
+          "userId": null,
+          "userNickname": null
+        },
+        "timestamp": 1790600120849
+      },
+      "passed": true,
+      "durationMs": 22,
+      "checkError": ""
+    },
+    {
+      "name": "管理员隐藏评论",
+      "method": "PUT",
+      "path": "/admin/interaction/comment/5288/status",
+      "user": "admin",
+      "request": {
+        "status": 0
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": null,
+        "timestamp": 1790600120865
+      },
+      "passed": true,
+      "durationMs": 18,
+      "checkError": ""
+    },
+    {
+      "name": "隐藏后均分重算",
+      "method": "GET",
+      "path": "/admin/interaction/stat/249",
+      "user": "admin",
+      "request": null,
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "avgScore": 5.0,
+          "bookingCount": 0,
+          "commentCount": 3,
+          "favoriteCount": 0,
+          "likeCount": 1,
+          "routeId": 249,
+          "viewCount": 0
+        },
+        "timestamp": 1790600120888
+      },
+      "passed": true,
+      "durationMs": 23,
+      "checkError": ""
+    },
+    {
+      "name": "拒绝回复隐藏评论",
+      "method": "POST",
+      "path": "/interaction/comment",
+      "user": "b",
+      "request": {
+        "routeId": 249,
+        "score": 5,
+        "content": "实际接口验收评论",
+        "parentId": 5288
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": null,
+      "response": {
+        "code": 400,
+        "message": "仅支持对顶级评论进行回复",
+        "data": null,
+        "timestamp": 1790600120906
+      },
+      "passed": true,
+      "durationMs": 16,
+      "checkError": ""
+    },
+    {
+      "name": "显示评论",
+      "method": "PUT",
+      "path": "/admin/interaction/comment/5288/status",
+      "user": "admin",
+      "request": {
+        "status": 1
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": null,
+        "timestamp": 1790600120927
+      },
+      "passed": true,
+      "durationMs": 22,
+      "checkError": ""
+    },
+    {
+      "name": "管理评论列表",
+      "method": "GET",
+      "path": "/admin/interaction/comment/page?routeId=249",
+      "user": "admin",
+      "request": null,
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "current": 1,
+          "pages": 1,
+          "records": [
+            {
+              "content": "实际接口验收评论",
+              "createTime": "2026-09-28 20:55:20",
+              "id": 5286,
+              "images": [],
+              "likeCount": 0,
+              "liked": false,
+              "parentId": 0,
+              "routeId": 249,
+              "score": 5,
+              "sentiment": "unknown",
+              "sentimentScore": 0.0,
+              "status": 1,
+              "userAvatar": "",
+              "userId": 10139,
+              "userNickname": "验收a"
+            },
+            {
+              "content": "实际接口验收评论",
+              "createTime": "2026-09-28 20:55:20",
+              "id": 5287,
+              "images": [],
+              "likeCount": 0,
+              "liked": false,
+              "parentId": 5286,
+              "routeId": 249,
+              "score": 5,
+              "sentiment": "unknown",
+              "sentimentScore": 0.0,
+              "status": 1,
+              "userAvatar": "",
+              "userId": 10140,
+              "userNickname": "验收b"
+            },
+            {
+              "content": "实际接口验收评论",
+              "createTime": "2026-09-28 20:55:20",
+              "id": 5288,
+              "images": [],
+              "likeCount": 0,
+              "liked": false,
+              "parentId": 0,
+              "routeId": 249,
+              "score": 1,
+              "sentiment": "unknown",
+              "sentimentScore": 0.0,
+              "status": 1,
+              "userAvatar": "",
+              "userId": 10141,
+              "userNickname": "验收c"
+            }
+          ],
+          "size": 10,
+          "total": 3
+        },
+        "timestamp": 1790600120954
+      },
+      "passed": true,
+      "durationMs": 26,
+      "checkError": ""
+    },
+    {
+      "name": "并发评论3",
+      "method": "POST",
+      "path": "/interaction/comment",
+      "user": "c",
+      "request": {
+        "routeId": 250,
+        "score": 5,
+        "content": "实际接口验收评论"
+      },
+      "http": 200,
+      "expectedCode": null,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "content": null,
+          "createTime": null,
+          "id": 5289,
+          "images": null,
+          "likeCount": null,
+          "liked": null,
+          "parentId": null,
+          "routeId": null,
+          "score": null,
+          "sentiment": "unknown",
+          "sentimentScore": null,
+          "status": null,
+          "userAvatar": null,
+          "userId": null,
+          "userNickname": null
+        },
+        "timestamp": 1790600120976
+      },
+      "passed": true,
+      "durationMs": 19,
+      "checkError": ""
+    },
+    {
+      "name": "并发评论2",
+      "method": "POST",
+      "path": "/interaction/comment",
+      "user": "c",
+      "request": {
+        "routeId": 250,
+        "score": 5,
+        "content": "实际接口验收评论"
+      },
+      "http": 200,
+      "expectedCode": null,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "content": null,
+          "createTime": null,
+          "id": 5290,
+          "images": null,
+          "likeCount": null,
+          "liked": null,
+          "parentId": null,
+          "routeId": null,
+          "score": null,
+          "sentiment": "unknown",
+          "sentimentScore": null,
+          "status": null,
+          "userAvatar": null,
+          "userId": null,
+          "userNickname": null
+        },
+        "timestamp": 1790600120986
+      },
+      "passed": true,
+      "durationMs": 30,
+      "checkError": ""
+    },
+    {
+      "name": "并发评论4",
+      "method": "POST",
+      "path": "/interaction/comment",
+      "user": "c",
+      "request": {
+        "routeId": 250,
+        "score": 5,
+        "content": "实际接口验收评论"
+      },
+      "http": 200,
+      "expectedCode": null,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "content": null,
+          "createTime": null,
+          "id": 5291,
+          "images": null,
+          "likeCount": null,
+          "liked": null,
+          "parentId": null,
+          "routeId": null,
+          "score": null,
+          "sentiment": "unknown",
+          "sentimentScore": null,
+          "status": null,
+          "userAvatar": null,
+          "userId": null,
+          "userNickname": null
+        },
+        "timestamp": 1790600120996
+      },
+      "passed": true,
+      "durationMs": 42,
+      "checkError": ""
+    },
+    {
+      "name": "并发评论0",
+      "method": "POST",
+      "path": "/interaction/comment",
+      "user": "c",
+      "request": {
+        "routeId": 250,
+        "score": 5,
+        "content": "实际接口验收评论"
+      },
+      "http": 200,
+      "expectedCode": null,
+      "expectedHttp": null,
+      "response": {
+        "code": 2005,
+        "message": "每人每路线每天最多评论 3 条",
+        "data": null,
+        "timestamp": 1790600121001
+      },
+      "passed": true,
+      "durationMs": 46,
+      "checkError": ""
+    },
+    {
+      "name": "并发评论1",
+      "method": "POST",
+      "path": "/interaction/comment",
+      "user": "c",
+      "request": {
+        "routeId": 250,
+        "score": 5,
+        "content": "实际接口验收评论"
+      },
+      "http": 200,
+      "expectedCode": null,
+      "expectedHttp": null,
+      "response": {
+        "code": 2005,
+        "message": "每人每路线每天最多评论 3 条",
+        "data": null,
+        "timestamp": 1790600121006
+      },
+      "passed": true,
+      "durationMs": 49,
+      "checkError": ""
+    },
+    {
+      "name": "并发评论每天最多3条",
+      "method": "SQL/assert",
+      "path": "",
+      "request": null,
+      "response": "3",
+      "expected": "3",
+      "passed": true
+    },
+    {
+      "name": "删除自己的评论",
+      "method": "DELETE",
+      "path": "/interaction/comment/5286",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": null,
+        "timestamp": 1790600121128
+      },
+      "passed": true,
+      "durationMs": 21,
+      "checkError": ""
+    },
+    {
+      "name": "创建五天规划",
+      "method": "POST",
+      "path": "/plan",
+      "user": "a",
+      "request": {
+        "title": "b2_1790600118五日规划",
+        "destinationIds": [
+          1
+        ],
+        "startDate": "2026-09-28",
+        "days": 5,
+        "budget": 3000,
+        "peopleNum": 2,
+        "status": 1,
+        "dayList": [
+          {
+            "dayIndex": 9,
+            "title": "第1天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点1",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 8,
+            "title": "第2天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点2",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 7,
+            "title": "第3天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点3",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 6,
+            "title": "第4天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点4",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 5,
+            "title": "第5天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点5",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          }
+        ]
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": 298,
+        "timestamp": 1790600121188
+      },
+      "passed": true,
+      "durationMs": 60,
+      "checkError": ""
+    },
+    {
+      "name": "读取五天重排",
+      "method": "GET",
+      "path": "/plan/298",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "budget": 3000.0,
+          "createTime": "2026-09-28 20:55:21",
+          "dayCount": null,
+          "dayList": [
+            {
+              "dayIndex": 1,
+              "id": 254,
+              "items": [
+                {
+                  "activity": "",
+                  "attractionId": 0,
+                  "cost": 100.0,
+                  "durationMin": 0,
+                  "hotel": "测试住宿",
+                  "id": 416,
+                  "meal": "测试餐食",
+                  "sortNo": 1,
+                  "timePoint": "09:00",
+                  "tips": "",
+                  "title": "景点1",
+                  "transport": ""
+                }
+              ],
+              "summary": "保留摘要",
+              "title": "第1天"
+            },
+            {
+              "dayIndex": 2,
+              "id": 255,
+              "items": [
+                {
+                  "activity": "",
+                  "attractionId": 0,
+                  "cost": 100.0,
+                  "durationMin": 0,
+                  "hotel": "测试住宿",
+                  "id": 417,
+                  "meal": "测试餐食",
+                  "sortNo": 1,
+                  "timePoint": "09:00",
+                  "tips": "",
+                  "title": "景点2",
+                  "transport": ""
+                }
+              ],
+              "summary": "保留摘要",
+              "title": "第2天"
+            },
+            {
+              "dayIndex": 3,
+              "id": 256,
+              "items": [
+                {
+                  "activity": "",
+                  "attractionId": 0,
+                  "cost": 100.0,
+                  "durationMin": 0,
+                  "hotel": "测试住宿",
+                  "id": 418,
+                  "meal": "测试餐食",
+                  "sortNo": 1,
+                  "timePoint": "09:00",
+                  "tips": "",
+                  "title": "景点3",
+                  "transport": ""
+                }
+              ],
+              "summary": "保留摘要",
+              "title": "第3天"
+            },
+            {
+              "dayIndex": 4,
+              "id": 257,
+              "items": [
+                {
+                  "activity": "",
+                  "attractionId": 0,
+                  "cost": 100.0,
+                  "durationMin": 0,
+                  "hotel": "测试住宿",
+                  "id": 419,
+                  "meal": "测试餐食",
+                  "sortNo": 1,
+                  "timePoint": "09:00",
+                  "tips": "",
+                  "title": "景点4",
+                  "transport": ""
+                }
+              ],
+              "summary": "保留摘要",
+              "title": "第4天"
+            },
+            {
+              "dayIndex": 5,
+              "id": 258,
+              "items": [
+                {
+                  "activity": "",
+                  "attractionId": 0,
+                  "cost": 100.0,
+                  "durationMin": 0,
+                  "hotel": "测试住宿",
+                  "id": 420,
+                  "meal": "测试餐食",
+                  "sortNo": 1,
+                  "timePoint": "09:00",
+                  "tips": "",
+                  "title": "景点5",
+                  "transport": ""
+                }
+              ],
+              "summary": "保留摘要",
+              "title": "第5天"
+            }
+          ],
+          "days": 5,
+          "destinationIds": [
+            1
+          ],
+          "id": 298,
+          "peopleNum": 2,
+          "sourceRouteId": 0,
+          "startDate": "2026-09-28",
+          "status": 1,
+          "title": "b2_1790600118五日规划",
+          "updateTime": "2026-09-28 20:55:21"
+        },
+        "timestamp": 1790600121221
+      },
+      "passed": true,
+      "durationMs": 35,
+      "checkError": ""
+    },
+    {
+      "name": "规划越权 GET/plan/298",
+      "method": "GET",
+      "path": "/plan/298",
+      "user": "b",
+      "request": null,
+      "http": 200,
+      "expectedCode": 403,
+      "expectedHttp": null,
+      "response": {
+        "code": 403,
+        "message": "无权限访问",
+        "data": null,
+        "timestamp": 1790600121232
+      },
+      "passed": true,
+      "durationMs": 7,
+      "checkError": ""
+    },
+    {
+      "name": "规划越权 PUT/plan/298",
+      "method": "PUT",
+      "path": "/plan/298",
+      "user": "b",
+      "request": {
+        "title": "b2_1790600118五日规划",
+        "destinationIds": [
+          1
+        ],
+        "startDate": "2026-09-28",
+        "days": 5,
+        "budget": 3000,
+        "peopleNum": 2,
+        "status": 1,
+        "dayList": [
+          {
+            "dayIndex": 9,
+            "title": "第1天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点1",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 8,
+            "title": "第2天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点2",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 7,
+            "title": "第3天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点3",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 6,
+            "title": "第4天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点4",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 5,
+            "title": "第5天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点5",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          }
+        ]
+      },
+      "http": 200,
+      "expectedCode": 403,
+      "expectedHttp": null,
+      "response": {
+        "code": 403,
+        "message": "无权限访问",
+        "data": null,
+        "timestamp": 1790600121244
+      },
+      "passed": true,
+      "durationMs": 14,
+      "checkError": ""
+    },
+    {
+      "name": "规划越权 DELETE/plan/298",
+      "method": "DELETE",
+      "path": "/plan/298",
+      "user": "b",
+      "request": null,
+      "http": 200,
+      "expectedCode": 403,
+      "expectedHttp": null,
+      "response": {
+        "code": 403,
+        "message": "无权限访问",
+        "data": null,
+        "timestamp": 1790600121255
+      },
+      "passed": true,
+      "durationMs": 9,
+      "checkError": ""
+    },
+    {
+      "name": "规划越权 POST/plan/298/copy",
+      "method": "POST",
+      "path": "/plan/298/copy",
+      "user": "b",
+      "request": null,
+      "http": 200,
+      "expectedCode": 403,
+      "expectedHttp": null,
+      "response": {
+        "code": 403,
+        "message": "无权限访问",
+        "data": null,
+        "timestamp": 1790600121262
+      },
+      "passed": true,
+      "durationMs": 8,
+      "checkError": ""
+    },
+    {
+      "name": "规划越权 POST/plan/298/export",
+      "method": "POST",
+      "path": "/plan/298/export",
+      "user": "b",
+      "request": null,
+      "http": 200,
+      "expectedCode": 403,
+      "expectedHttp": null,
+      "response": {
+        "code": 403,
+        "message": "无权限访问",
+        "data": null,
+        "timestamp": 1790600121271
+      },
+      "passed": true,
+      "durationMs": 8,
+      "checkError": ""
+    },
+    {
+      "name": "跨天重排保存",
+      "method": "PUT",
+      "path": "/plan/298",
+      "user": "a",
+      "request": {
+        "title": "b2_1790600118五日规划",
+        "destinationIds": [
+          1
+        ],
+        "startDate": "2026-09-28",
+        "days": 5,
+        "budget": 3000,
+        "peopleNum": 2,
+        "status": 1,
+        "dayList": [
+          {
+            "dayIndex": 9,
+            "title": "第1天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "title": "额外景点",
+                "cost": 50
+              }
+            ]
+          },
+          {
+            "dayIndex": 8,
+            "title": "第2天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点1",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              },
+              {
+                "sortNo": 99,
+                "title": "景点2",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 7,
+            "title": "第3天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点3",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 6,
+            "title": "第4天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点4",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 5,
+            "title": "第5天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点5",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          }
+        ]
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": null,
+        "timestamp": 1790600121323
+      },
+      "passed": true,
+      "durationMs": 52,
+      "checkError": ""
+    },
+    {
+      "name": "重开顺序和预算",
+      "method": "GET",
+      "path": "/plan/298",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "budget": 3000.0,
+          "createTime": "2026-09-28 20:55:21",
+          "dayCount": null,
+          "dayList": [
+            {
+              "dayIndex": 1,
+              "id": 259,
+              "items": [
+                {
+                  "activity": "",
+                  "attractionId": 0,
+                  "cost": 50.0,
+                  "durationMin": 0,
+                  "hotel": "",
+                  "id": 421,
+                  "meal": "",
+                  "sortNo": 1,
+                  "timePoint": "",
+                  "tips": "",
+                  "title": "额外景点",
+                  "transport": ""
+                }
+              ],
+              "summary": "保留摘要",
+              "title": "第1天"
+            },
+            {
+              "dayIndex": 2,
+              "id": 260,
+              "items": [
+                {
+                  "activity": "",
+                  "attractionId": 0,
+                  "cost": 100.0,
+                  "durationMin": 0,
+                  "hotel": "测试住宿",
+                  "id": 422,
+                  "meal": "测试餐食",
+                  "sortNo": 1,
+                  "timePoint": "09:00",
+                  "tips": "",
+                  "title": "景点1",
+                  "transport": ""
+                },
+                {
+                  "activity": "",
+                  "attractionId": 0,
+                  "cost": 100.0,
+                  "durationMin": 0,
+                  "hotel": "测试住宿",
+                  "id": 423,
+                  "meal": "测试餐食",
+                  "sortNo": 2,
+                  "timePoint": "09:00",
+                  "tips": "",
+                  "title": "景点2",
+                  "transport": ""
+                }
+              ],
+              "summary": "保留摘要",
+              "title": "第2天"
+            },
+            {
+              "dayIndex": 3,
+              "id": 261,
+              "items": [
+                {
+                  "activity": "",
+                  "attractionId": 0,
+                  "cost": 100.0,
+                  "durationMin": 0,
+                  "hotel": "测试住宿",
+                  "id": 424,
+                  "meal": "测试餐食",
+                  "sortNo": 1,
+                  "timePoint": "09:00",
+                  "tips": "",
+                  "title": "景点3",
+                  "transport": ""
+                }
+              ],
+              "summary": "保留摘要",
+              "title": "第3天"
+            },
+            {
+              "dayIndex": 4,
+              "id": 262,
+              "items": [
+                {
+                  "activity": "",
+                  "attractionId": 0,
+                  "cost": 100.0,
+                  "durationMin": 0,
+                  "hotel": "测试住宿",
+                  "id": 425,
+                  "meal": "测试餐食",
+                  "sortNo": 1,
+                  "timePoint": "09:00",
+                  "tips": "",
+                  "title": "景点4",
+                  "transport": ""
+                }
+              ],
+              "summary": "保留摘要",
+              "title": "第4天"
+            },
+            {
+              "dayIndex": 5,
+              "id": 263,
+              "items": [
+                {
+                  "activity": "",
+                  "attractionId": 0,
+                  "cost": 100.0,
+                  "durationMin": 0,
+                  "hotel": "测试住宿",
+                  "id": 426,
+                  "meal": "测试餐食",
+                  "sortNo": 1,
+                  "timePoint": "09:00",
+                  "tips": "",
+                  "title": "景点5",
+                  "transport": ""
+                }
+              ],
+              "summary": "保留摘要",
+              "title": "第5天"
+            }
+          ],
+          "days": 5,
+          "destinationIds": [
+            1
+          ],
+          "id": 298,
+          "peopleNum": 2,
+          "sourceRouteId": 0,
+          "startDate": "2026-09-28",
+          "status": 1,
+          "title": "b2_1790600118五日规划",
+          "updateTime": "2026-09-28 20:55:21"
+        },
+        "timestamp": 1790600121336
+      },
+      "passed": true,
+      "durationMs": 13,
+      "checkError": ""
+    },
+    {
+      "name": "导出文本",
+      "method": "POST",
+      "path": "/plan/298/export",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": "【b2_1790600118五日规划】\n出发日期：2026-09-28 · 5 天 · 预算 ¥3000.00 · 2 人\n\n第 1 天 · 第1天\n    额外景点  ¥50.00\n\n第 2 天 · 第2天\n  09:00  景点1  ¥100.00\n  09:00  景点2  ¥100.00\n\n第 3 天 · 第3天\n  09:00  景点3  ¥100.00\n\n第 4 天 · 第4天\n  09:00  景点4  ¥100.00\n\n第 5 天 · 第5天\n  09:00  景点5  ¥100.00\n\n",
+        "timestamp": 1790600121350
+      },
+      "passed": true,
+      "durationMs": 14,
+      "checkError": ""
+    },
+    {
+      "name": "深复制",
+      "method": "POST",
+      "path": "/plan/298/copy",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": 299,
+        "timestamp": 1790600121392
+      },
+      "passed": true,
+      "durationMs": 42,
+      "checkError": ""
+    },
+    {
+      "name": "副本草稿及内容",
+      "method": "GET",
+      "path": "/plan/299",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "budget": 3000.0,
+          "createTime": "2026-09-28 20:55:21",
+          "dayCount": null,
+          "dayList": [
+            {
+              "dayIndex": 1,
+              "id": 264,
+              "items": [
+                {
+                  "activity": "",
+                  "attractionId": 0,
+                  "cost": 50.0,
+                  "durationMin": 0,
+                  "hotel": "",
+                  "id": 427,
+                  "meal": "",
+                  "sortNo": 1,
+                  "timePoint": "",
+                  "tips": "",
+                  "title": "额外景点",
+                  "transport": ""
+                }
+              ],
+              "summary": "保留摘要",
+              "title": "第1天"
+            },
+            {
+              "dayIndex": 2,
+              "id": 265,
+              "items": [
+                {
+                  "activity": "",
+                  "attractionId": 0,
+                  "cost": 100.0,
+                  "durationMin": 0,
+                  "hotel": "测试住宿",
+                  "id": 428,
+                  "meal": "测试餐食",
+                  "sortNo": 1,
+                  "timePoint": "09:00",
+                  "tips": "",
+                  "title": "景点1",
+                  "transport": ""
+                },
+                {
+                  "activity": "",
+                  "attractionId": 0,
+                  "cost": 100.0,
+                  "durationMin": 0,
+                  "hotel": "测试住宿",
+                  "id": 429,
+                  "meal": "测试餐食",
+                  "sortNo": 2,
+                  "timePoint": "09:00",
+                  "tips": "",
+                  "title": "景点2",
+                  "transport": ""
+                }
+              ],
+              "summary": "保留摘要",
+              "title": "第2天"
+            },
+            {
+              "dayIndex": 3,
+              "id": 266,
+              "items": [
+                {
+                  "activity": "",
+                  "attractionId": 0,
+                  "cost": 100.0,
+                  "durationMin": 0,
+                  "hotel": "测试住宿",
+                  "id": 430,
+                  "meal": "测试餐食",
+                  "sortNo": 1,
+                  "timePoint": "09:00",
+                  "tips": "",
+                  "title": "景点3",
+                  "transport": ""
+                }
+              ],
+              "summary": "保留摘要",
+              "title": "第3天"
+            },
+            {
+              "dayIndex": 4,
+              "id": 267,
+              "items": [
+                {
+                  "activity": "",
+                  "attractionId": 0,
+                  "cost": 100.0,
+                  "durationMin": 0,
+                  "hotel": "测试住宿",
+                  "id": 431,
+                  "meal": "测试餐食",
+                  "sortNo": 1,
+                  "timePoint": "09:00",
+                  "tips": "",
+                  "title": "景点4",
+                  "transport": ""
+                }
+              ],
+              "summary": "保留摘要",
+              "title": "第4天"
+            },
+            {
+              "dayIndex": 5,
+              "id": 268,
+              "items": [
+                {
+                  "activity": "",
+                  "attractionId": 0,
+                  "cost": 100.0,
+                  "durationMin": 0,
+                  "hotel": "测试住宿",
+                  "id": 432,
+                  "meal": "测试餐食",
+                  "sortNo": 1,
+                  "timePoint": "09:00",
+                  "tips": "",
+                  "title": "景点5",
+                  "transport": ""
+                }
+              ],
+              "summary": "保留摘要",
+              "title": "第5天"
+            }
+          ],
+          "days": 5,
+          "destinationIds": [
+            1
+          ],
+          "id": 299,
+          "peopleNum": 2,
+          "sourceRouteId": 0,
+          "startDate": "2026-09-28",
+          "status": 0,
+          "title": "b2_1790600118五日规划（副本）",
+          "updateTime": "2026-09-28 20:55:21"
+        },
+        "timestamp": 1790600121405
+      },
+      "passed": true,
+      "durationMs": 12,
+      "checkError": ""
+    },
+    {
+      "name": "模板生成",
+      "method": "POST",
+      "path": "/plan/from-route/201",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": 300,
+        "timestamp": 1790600121482
+      },
+      "passed": true,
+      "durationMs": 79,
+      "checkError": ""
+    },
+    {
+      "name": "AI占位",
+      "method": "POST",
+      "path": "/plan/298/ai-optimize",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 3001,
+      "expectedHttp": null,
+      "response": {
+        "code": 3001,
+        "message": "AI 优化能力将于第 3 批开放，敬请期待",
+        "data": null,
+        "timestamp": 1790600121491
+      },
+      "passed": true,
+      "durationMs": 8,
+      "checkError": ""
+    },
+    {
+      "name": "草稿空天",
+      "method": "POST",
+      "path": "/plan",
+      "user": "a",
+      "request": {
+        "title": "b2_1790600118五日规划",
+        "destinationIds": [
+          1
+        ],
+        "startDate": "2026-09-28",
+        "days": 1,
+        "budget": 3000,
+        "peopleNum": 2,
+        "status": 0,
+        "dayList": [
+          {
+            "title": "空天",
+            "items": []
+          }
+        ]
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": 301,
+        "timestamp": 1790600121517
+      },
+      "passed": true,
+      "durationMs": 25,
+      "checkError": ""
+    },
+    {
+      "name": "天数不一致",
+      "method": "POST",
+      "path": "/plan",
+      "user": "a",
+      "request": {
+        "title": "b2_1790600118五日规划",
+        "destinationIds": [
+          1
+        ],
+        "startDate": "2026-09-28",
+        "days": 2,
+        "budget": 3000,
+        "peopleNum": 2,
+        "status": 1,
+        "dayList": [
+          {
+            "dayIndex": 9,
+            "title": "第1天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "title": "额外景点",
+                "cost": 50
+              }
+            ]
+          },
+          {
+            "dayIndex": 8,
+            "title": "第2天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点1",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              },
+              {
+                "sortNo": 99,
+                "title": "景点2",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 7,
+            "title": "第3天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点3",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 6,
+            "title": "第4天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点4",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 5,
+            "title": "第5天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点5",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          }
+        ]
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": null,
+      "response": {
+        "code": 400,
+        "message": "天数须与行程天列表一致",
+        "data": null,
+        "timestamp": 1790600121525
+      },
+      "passed": true,
+      "durationMs": 9,
+      "checkError": ""
+    },
+    {
+      "name": "非法status",
+      "method": "POST",
+      "path": "/plan",
+      "user": "a",
+      "request": {
+        "title": "b2_1790600118五日规划",
+        "destinationIds": [
+          1
+        ],
+        "startDate": "2026-09-28",
+        "days": 5,
+        "budget": 3000,
+        "peopleNum": 2,
+        "status": 9,
+        "dayList": [
+          {
+            "dayIndex": 9,
+            "title": "第1天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "title": "额外景点",
+                "cost": 50
+              }
+            ]
+          },
+          {
+            "dayIndex": 8,
+            "title": "第2天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点1",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              },
+              {
+                "sortNo": 99,
+                "title": "景点2",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 7,
+            "title": "第3天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点3",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 6,
+            "title": "第4天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点4",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 5,
+            "title": "第5天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点5",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          }
+        ]
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": null,
+      "response": {
+        "code": 400,
+        "message": "status 最大不能超过1",
+        "data": null,
+        "timestamp": 1790600121533
+      },
+      "passed": true,
+      "durationMs": 7,
+      "checkError": ""
+    },
+    {
+      "name": "过去日期",
+      "method": "POST",
+      "path": "/plan",
+      "user": "a",
+      "request": {
+        "title": "b2_1790600118五日规划",
+        "destinationIds": [
+          1
+        ],
+        "startDate": "2026-09-27",
+        "days": 5,
+        "budget": 3000,
+        "peopleNum": 2,
+        "status": 1,
+        "dayList": [
+          {
+            "dayIndex": 9,
+            "title": "第1天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "title": "额外景点",
+                "cost": 50
+              }
+            ]
+          },
+          {
+            "dayIndex": 8,
+            "title": "第2天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点1",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              },
+              {
+                "sortNo": 99,
+                "title": "景点2",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 7,
+            "title": "第3天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点3",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 6,
+            "title": "第4天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点4",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 5,
+            "title": "第5天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点5",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          }
+        ]
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": null,
+      "response": {
+        "code": 400,
+        "message": "出发日期须为今天及以后",
+        "data": null,
+        "timestamp": 1790600121540
+      },
+      "passed": true,
+      "durationMs": 8,
+      "checkError": ""
+    },
+    {
+      "name": "预算0",
+      "method": "POST",
+      "path": "/plan",
+      "user": "a",
+      "request": {
+        "title": "b2_1790600118五日规划",
+        "destinationIds": [
+          1
+        ],
+        "startDate": "2026-09-28",
+        "days": 5,
+        "budget": 0,
+        "peopleNum": 2,
+        "status": 1,
+        "dayList": [
+          {
+            "dayIndex": 9,
+            "title": "第1天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "title": "额外景点",
+                "cost": 50
+              }
+            ]
+          },
+          {
+            "dayIndex": 8,
+            "title": "第2天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点1",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              },
+              {
+                "sortNo": 99,
+                "title": "景点2",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 7,
+            "title": "第3天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点3",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 6,
+            "title": "第4天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点4",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 5,
+            "title": "第5天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点5",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          }
+        ]
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": null,
+      "response": {
+        "code": 400,
+        "message": "budget 预算必须大于 0",
+        "data": null,
+        "timestamp": 1790600121547
+      },
+      "passed": true,
+      "durationMs": 6,
+      "checkError": ""
+    },
+    {
+      "name": "null天",
+      "method": "POST",
+      "path": "/plan",
+      "user": "a",
+      "request": {
+        "title": "b2_1790600118五日规划",
+        "destinationIds": [
+          1
+        ],
+        "startDate": "2026-09-28",
+        "days": 5,
+        "budget": 3000,
+        "peopleNum": 2,
+        "status": 1,
+        "dayList": [
+          null
+        ]
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": null,
+      "response": {
+        "code": 400,
+        "message": "dayList[0] 不能为null",
+        "data": null,
+        "timestamp": 1790600121555
+      },
+      "passed": true,
+      "durationMs": 7,
+      "checkError": ""
+    },
+    {
+      "name": "null项",
+      "method": "POST",
+      "path": "/plan",
+      "user": "a",
+      "request": {
+        "title": "b2_1790600118五日规划",
+        "destinationIds": [
+          1
+        ],
+        "startDate": "2026-09-28",
+        "days": 1,
+        "budget": 3000,
+        "peopleNum": 2,
+        "status": 1,
+        "dayList": [
+          {
+            "items": [
+              null
+            ]
+          }
+        ]
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": null,
+      "response": {
+        "code": 400,
+        "message": "dayList[0].items[0] 不能为null",
+        "data": null,
+        "timestamp": 1790600121570
+      },
+      "passed": true,
+      "durationMs": 16,
+      "checkError": ""
+    },
+    {
+      "name": "天标题过长",
+      "method": "POST",
+      "path": "/plan",
+      "user": "a",
+      "request": {
+        "title": "b2_1790600118五日规划",
+        "destinationIds": [
+          1
+        ],
+        "startDate": "2026-09-28",
+        "days": 1,
+        "budget": 3000,
+        "peopleNum": 2,
+        "status": 1,
+        "dayList": [
+          {
+            "title": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "items": [
+              {
+                "title": "景点"
+              }
+            ]
+          }
+        ]
+      },
+      "http": 200,
+      "expectedCode": 400,
+      "expectedHttp": null,
+      "response": {
+        "code": 400,
+        "message": "dayList[0].title 个数必须在0和100之间",
+        "data": null,
+        "timestamp": 1790600121602
+      },
+      "passed": true,
+      "durationMs": 31,
+      "checkError": ""
+    },
+    {
+      "name": "规划列表",
+      "method": "GET",
+      "path": "/plan/page?status=1",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "current": 1,
+          "pages": 1,
+          "records": [
+            {
+              "budget": 3000.0,
+              "createTime": "2026-09-28 20:55:21",
+              "dayCount": 5,
+              "dayList": null,
+              "days": 5,
+              "destinationIds": [
+                1
+              ],
+              "id": 298,
+              "peopleNum": 2,
+              "sourceRouteId": 0,
+              "startDate": "2026-09-28",
+              "status": 1,
+              "title": "b2_1790600118五日规划",
+              "updateTime": "2026-09-28 20:55:21"
+            }
+          ],
+          "size": 10,
+          "total": 1
+        },
+        "timestamp": 1790600121617
+      },
+      "passed": true,
+      "durationMs": 15,
+      "checkError": ""
+    },
+    {
+      "name": "删除规划",
+      "method": "DELETE",
+      "path": "/plan/298",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": null,
+        "timestamp": 1790600121628
+      },
+      "passed": true,
+      "durationMs": 11,
+      "checkError": ""
+    },
+    {
+      "name": "删除后不可读取",
+      "method": "GET",
+      "path": "/plan/298",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 403,
+      "expectedHttp": null,
+      "response": {
+        "code": 403,
+        "message": "无权限访问",
+        "data": null,
+        "timestamp": 1790600121636
+      },
+      "passed": true,
+      "durationMs": 8,
+      "checkError": ""
+    },
+    {
+      "name": "并发规划上限B",
+      "method": "POST",
+      "path": "/plan",
+      "user": "a",
+      "request": {
+        "title": "b2_1790600118五日规划",
+        "destinationIds": [
+          1
+        ],
+        "startDate": "2026-09-28",
+        "days": 5,
+        "budget": 3000,
+        "peopleNum": 2,
+        "status": 1,
+        "dayList": [
+          {
+            "dayIndex": 9,
+            "title": "第1天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点1",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 8,
+            "title": "第2天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点2",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 7,
+            "title": "第3天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点3",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 6,
+            "title": "第4天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点4",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 5,
+            "title": "第5天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点5",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          }
+        ]
+      },
+      "http": 200,
+      "expectedCode": null,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": 348,
+        "timestamp": 1790600126731
+      },
+      "passed": true,
+      "durationMs": 36,
+      "checkError": ""
+    },
+    {
+      "name": "并发规划上限A",
+      "method": "POST",
+      "path": "/plan",
+      "user": "a",
+      "request": {
+        "title": "b2_1790600118五日规划",
+        "destinationIds": [
+          1
+        ],
+        "startDate": "2026-09-28",
+        "days": 5,
+        "budget": 3000,
+        "peopleNum": 2,
+        "status": 1,
+        "dayList": [
+          {
+            "dayIndex": 9,
+            "title": "第1天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点1",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 8,
+            "title": "第2天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点2",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 7,
+            "title": "第3天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点3",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 6,
+            "title": "第4天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点4",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 5,
+            "title": "第5天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点5",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          }
+        ]
+      },
+      "http": 200,
+      "expectedCode": null,
+      "expectedHttp": null,
+      "response": {
+        "code": 2006,
+        "message": "规划数量已达上限（50 条），请先删除旧规划",
+        "data": null,
+        "timestamp": 1790600126740
+      },
+      "passed": true,
+      "durationMs": 46,
+      "checkError": ""
+    },
+    {
+      "name": "规划上限严格50",
+      "method": "SQL/assert",
+      "path": "",
+      "request": null,
+      "response": "50",
+      "expected": "50",
+      "passed": true
+    },
+    {
+      "name": "超过50条",
+      "method": "POST",
+      "path": "/plan",
+      "user": "a",
+      "request": {
+        "title": "b2_1790600118五日规划",
+        "destinationIds": [
+          1
+        ],
+        "startDate": "2026-09-28",
+        "days": 5,
+        "budget": 3000,
+        "peopleNum": 2,
+        "status": 1,
+        "dayList": [
+          {
+            "dayIndex": 9,
+            "title": "第1天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点1",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 8,
+            "title": "第2天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点2",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 7,
+            "title": "第3天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点3",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 6,
+            "title": "第4天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点4",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          },
+          {
+            "dayIndex": 5,
+            "title": "第5天",
+            "summary": "保留摘要",
+            "items": [
+              {
+                "sortNo": 99,
+                "title": "景点5",
+                "timePoint": "09:00",
+                "cost": 100,
+                "hotel": "测试住宿",
+                "meal": "测试餐食"
+              }
+            ]
+          }
+        ]
+      },
+      "http": 200,
+      "expectedCode": 2006,
+      "expectedHttp": null,
+      "response": {
+        "code": 2006,
+        "message": "规划数量已达上限（50 条），请先删除旧规划",
+        "data": null,
+        "timestamp": 1790600126869
+      },
+      "passed": true,
+      "durationMs": 19,
+      "checkError": ""
+    },
+    {
+      "name": "上限时模板创建拒绝",
+      "method": "POST",
+      "path": "/plan/from-route/201",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 2006,
+      "expectedHttp": null,
+      "response": {
+        "code": 2006,
+        "message": "规划数量已达上限（50 条），请先删除旧规划",
+        "data": null,
+        "timestamp": 1790600126884
+      },
+      "passed": true,
+      "durationMs": 16,
+      "checkError": ""
+    },
+    {
+      "name": "上限时复制拒绝",
+      "method": "POST",
+      "path": "/plan/299/copy",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 2006,
+      "expectedHttp": null,
+      "response": {
+        "code": 2006,
+        "message": "规划数量已达上限（50 条），请先删除旧规划",
+        "data": null,
+        "timestamp": 1790600126899
+      },
+      "passed": true,
+      "durationMs": 15,
+      "checkError": ""
+    },
+    {
+      "name": "跨路线并发订单A",
+      "method": "POST",
+      "path": "/interaction/booking",
+      "user": "b",
+      "request": {
+        "routeId": 249,
+        "travelDate": "2026-12-07",
+        "peopleNum": 1,
+        "contactName": "收尾测试",
+        "contactPhone": "13800000000",
+        "remark": "b2_1790600118"
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "bookingId": 9122,
+          "bookingNo": "8aeed8ab21e34d0e9cd7bbd1ca216a1b",
+          "contactName": "收尾测试",
+          "contactPhone": "13800000000",
+          "createTime": "2026-09-28 20:55:26",
+          "peopleNum": 1,
+          "remark": "b2_1790600118",
+          "routeId": 249,
+          "routeTitle": "b2_1790600118_0",
+          "status": 0,
+          "travelDate": "2026-12-07"
+        },
+        "timestamp": 1790600126917
+      },
+      "passed": true,
+      "durationMs": 17,
+      "checkError": ""
+    },
+    {
+      "name": "跨路线并发订单B",
+      "method": "POST",
+      "path": "/interaction/booking",
+      "user": "b",
+      "request": {
+        "routeId": 251,
+        "travelDate": "2026-12-07",
+        "peopleNum": 1,
+        "contactName": "收尾测试",
+        "contactPhone": "13800000000",
+        "remark": "b2_1790600118"
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "bookingId": 9123,
+          "bookingNo": "3d6cb62fda9340ba8fbdb729ae228ee3",
+          "contactName": "收尾测试",
+          "contactPhone": "13800000000",
+          "createTime": "2026-09-28 20:55:26",
+          "peopleNum": 1,
+          "remark": "b2_1790600118",
+          "routeId": 251,
+          "routeTitle": "b2_1790600118_2",
+          "status": 0,
+          "travelDate": "2026-12-07"
+        },
+        "timestamp": 1790600126925
+      },
+      "passed": true,
+      "durationMs": 24,
+      "checkError": ""
+    },
+    {
+      "name": "跨路线订单号不重复",
+      "method": "SQL/assert",
+      "path": "",
+      "request": null,
+      "response": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "同账号重复预约竞争B",
+      "method": "POST",
+      "path": "/interaction/booking",
+      "user": "a",
+      "request": {
+        "routeId": 251,
+        "travelDate": "2026-12-08",
+        "peopleNum": 1,
+        "contactName": "收尾测试",
+        "contactPhone": "13800000000",
+        "remark": "b2_1790600118"
+      },
+      "http": 200,
+      "expectedCode": null,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "bookingId": 9124,
+          "bookingNo": "0c6616a08e6343b988c787e98b150c48",
+          "contactName": "收尾测试",
+          "contactPhone": "13800000000",
+          "createTime": "2026-09-28 20:55:26",
+          "peopleNum": 1,
+          "remark": "b2_1790600118",
+          "routeId": 251,
+          "routeTitle": "b2_1790600118_2",
+          "status": 0,
+          "travelDate": "2026-12-08"
+        },
+        "timestamp": 1790600126943
+      },
+      "passed": true,
+      "durationMs": 17,
+      "checkError": ""
+    },
+    {
+      "name": "同账号重复预约竞争A",
+      "method": "POST",
+      "path": "/interaction/booking",
+      "user": "a",
+      "request": {
+        "routeId": 251,
+        "travelDate": "2026-12-08",
+        "peopleNum": 1,
+        "contactName": "收尾测试",
+        "contactPhone": "13800000000",
+        "remark": "b2_1790600118"
+      },
+      "http": 200,
+      "expectedCode": null,
+      "expectedHttp": null,
+      "response": {
+        "code": 2004,
+        "message": "同一路线同一出行日期已预约，请勿重复提交",
+        "data": null,
+        "timestamp": 1790600126947
+      },
+      "passed": true,
+      "durationMs": 22,
+      "checkError": ""
+    },
+    {
+      "name": "并发重复预约一成一拒",
+      "method": "SQL/assert",
+      "path": "",
+      "request": null,
+      "response": [
+        200,
+        2004
+      ],
+      "expected": [
+        200,
+        2004
+      ],
+      "passed": true
+    },
+    {
+      "name": "并发点赞用评论",
+      "method": "POST",
+      "path": "/interaction/comment",
+      "user": "c",
+      "request": {
+        "routeId": 251,
+        "score": 5,
+        "content": "实际接口验收评论"
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "content": null,
+          "createTime": null,
+          "id": 5292,
+          "images": null,
+          "likeCount": null,
+          "liked": null,
+          "parentId": null,
+          "routeId": null,
+          "score": null,
+          "sentiment": "unknown",
+          "sentimentScore": null,
+          "status": null,
+          "userAvatar": null,
+          "userId": null,
+          "userNickname": null
+        },
+        "timestamp": 1790600126967
+      },
+      "passed": true,
+      "durationMs": 20,
+      "checkError": ""
+    },
+    {
+      "name": "评论点赞竞争A",
+      "method": "POST",
+      "path": "/interaction/comment/5292/like",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "likeCount": 1,
+          "liked": true
+        },
+        "timestamp": 1790600126985
+      },
+      "passed": true,
+      "durationMs": 20,
+      "checkError": ""
+    },
+    {
+      "name": "评论点赞竞争B",
+      "method": "POST",
+      "path": "/interaction/comment/5292/like",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "likeCount": 0,
+          "liked": false
+        },
+        "timestamp": 1790600126996
+      },
+      "passed": true,
+      "durationMs": 28,
+      "checkError": ""
+    },
+    {
+      "name": "评论点赞两次恢复0",
+      "method": "SQL/assert",
+      "path": "",
+      "request": null,
+      "response": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "合法三张图片评论",
+      "method": "POST",
+      "path": "/interaction/comment",
+      "user": "b",
+      "request": {
+        "routeId": 251,
+        "score": 5,
+        "content": "实际接口验收评论",
+        "images": [
+          "https://example.invalid/a.jpg",
+          "https://example.invalid/b.jpg",
+          "https://example.invalid/c.jpg"
+        ]
+      },
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "content": null,
+          "createTime": null,
+          "id": 5293,
+          "images": null,
+          "likeCount": null,
+          "liked": null,
+          "parentId": null,
+          "routeId": null,
+          "score": null,
+          "sentiment": "unknown",
+          "sentimentScore": null,
+          "status": null,
+          "userAvatar": null,
+          "userId": null,
+          "userNickname": null
+        },
+        "timestamp": 1790600127144
+      },
+      "passed": true,
+      "durationMs": 37,
+      "checkError": ""
+    },
+    {
+      "name": "图片列表回显",
+      "method": "GET",
+      "path": "/interaction/comment/page?routeId=251",
+      "user": "a",
+      "request": null,
+      "http": 200,
+      "expectedCode": 200,
+      "expectedHttp": null,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "current": 1,
+          "pages": 1,
+          "records": [
+            {
+              "content": "实际接口验收评论",
+              "createTime": "2026-09-28 20:55:27",
+              "id": 5293,
+              "images": [
+                "https://example.invalid/a.jpg",
+                "https://example.invalid/b.jpg",
+                "https://example.invalid/c.jpg"
+              ],
+              "likeCount": 0,
+              "liked": false,
+              "parentId": 0,
+              "routeId": 251,
+              "score": 5,
+              "sentiment": "unknown",
+              "sentimentScore": 0.0,
+              "status": 1,
+              "userAvatar": "",
+              "userId": 10140,
+              "userNickname": "验收b"
+            },
+            {
+              "content": "实际接口验收评论",
+              "createTime": "2026-09-28 20:55:26",
+              "id": 5292,
+              "images": [],
+              "likeCount": 0,
+              "liked": false,
+              "parentId": 0,
+              "routeId": 251,
+              "score": 5,
+              "sentiment": "unknown",
+              "sentimentScore": 0.0,
+              "status": 1,
+              "userAvatar": "",
+              "userId": 10141,
+              "userNickname": "验收c"
+            }
+          ],
+          "size": 10,
+          "total": 2
+        },
+        "timestamp": 1790600127172
+      },
+      "passed": true,
+      "durationMs": 28,
+      "checkError": ""
+    },
+    {
+      "name": "测试夹具清理",
+      "method": "SQL/assert",
+      "path": "",
+      "request": null,
+      "response": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ]
+}

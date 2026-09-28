@@ -31,6 +31,9 @@ public class CommentVO {
     /** 评分 1-5 */
     private Integer score;
 
+    /** 0 hidden / 1 visible, used by administrator moderation. */
+    private Integer status;
+
     private String content;
 
     /** 图片 URL 列表（实体里逗号分隔，VO 转数组） */

@@ -243,7 +243,7 @@ public class InteractionServiceImpl implements InteractionService {
         if (booking == null || !booking.getUserId().equals(userId)) {
             throw new BizException(ResultCode.FORBIDDEN);
         }
-        requireRouteForUpdate(booking.getRouteId());
+        lockExistingRoute(booking.getRouteId());
         booking = routeBookingMapper.selectOne(new LambdaQueryWrapper<RouteBooking>()
                 .eq(RouteBooking::getId, bookingId).last("FOR UPDATE"));
         // 08 §2.3 状态机：仅 0 待确认 / 1 已确认 可取消
@@ -283,7 +283,7 @@ public class InteractionServiceImpl implements InteractionService {
         if (booking == null) {
             throw new BizException(ResultCode.NOT_FOUND);
         }
-        requireRouteForUpdate(booking.getRouteId());
+        Route lockedRoute = lockExistingRoute(booking.getRouteId());
         booking = routeBookingMapper.selectOne(new LambdaQueryWrapper<RouteBooking>()
                 .eq(RouteBooking::getId, bookingId).last("FOR UPDATE"));
         // 08 §2.3 状态机：0 待确认 → 1 已确认 / 2 已取消；1 → 3 已完成；已取消不可再变更
@@ -299,7 +299,7 @@ public class InteractionServiceImpl implements InteractionService {
                     "非法状态流转：当前状态不可变更为目标状态");
         }
         if (status == 1) {
-            checkBookingCapacity(requireRouteForUpdate(booking.getRouteId()),
+            checkBookingCapacity(lockedRoute,
                     booking.getTravelDate(), booking.getPeopleNum());
         }
         if (status == 2) {
@@ -364,6 +364,7 @@ public class InteractionServiceImpl implements InteractionService {
     @Override
     public PageResult<CommentVO> commentPage(Long routeId, long current, long size,
                                              String sortBy, String sentiment, Long currentUserId) {
+        requireRoute(routeId);
         LambdaQueryWrapper<RouteComment> w = new LambdaQueryWrapper<RouteComment>()
                 .eq(RouteComment::getRouteId, routeId)
                 .eq(RouteComment::getStatus, 1);
@@ -387,7 +388,7 @@ public class InteractionServiceImpl implements InteractionService {
             throw new BizException(ResultCode.NOT_FOUND);
         }
 
-        requireRouteForUpdate(comment.getRouteId());
+        lockExistingRoute(comment.getRouteId());
         comment = routeCommentMapper.selectOne(new LambdaQueryWrapper<RouteComment>()
                 .eq(RouteComment::getId, commentId).last("FOR UPDATE"));
         if (comment == null) throw new BizException(ResultCode.NOT_FOUND);
@@ -457,7 +458,7 @@ public class InteractionServiceImpl implements InteractionService {
             throw new BizException(ResultCode.NOT_FOUND);
         }
 
-        requireRouteForUpdate(comment.getRouteId());
+        lockExistingRoute(comment.getRouteId());
         comment = routeCommentMapper.selectOne(new LambdaQueryWrapper<RouteComment>()
                 .eq(RouteComment::getId, commentId).last("FOR UPDATE"));
         if (comment == null) throw new BizException(ResultCode.NOT_FOUND);
@@ -491,7 +492,8 @@ public class InteractionServiceImpl implements InteractionService {
 
     private Route requireRoute(Long routeId) {
         Route route = routeMapper.selectById(routeId);
-        if (route == null || (route.getStatus() != null && route.getStatus() == 0)) {
+        Destination parent = route == null ? null : destinationMapper.selectById(route.getDestinationId());
+        if (route == null || !Integer.valueOf(1).equals(route.getStatus()) || parent == null || !Integer.valueOf(1).equals(parent.getStatus())) {
             throw new BizException(ResultCode.ROUTE_NOT_FOUND);
         }
         return route;
@@ -499,11 +501,21 @@ public class InteractionServiceImpl implements InteractionService {
 
     /** 行锁读路线（BR-INT-04 防超卖）：本事务内该行被锁，其他并发预约等待 */
     private Route requireRouteForUpdate(Long routeId) {
+        Route route = lockExistingRoute(routeId);
+        Destination parent = destinationMapper.selectOne(new LambdaQueryWrapper<Destination>()
+                .eq(Destination::getId, route.getDestinationId()).last("FOR UPDATE"));
+        if (!Integer.valueOf(1).equals(route.getStatus()) || parent == null || !Integer.valueOf(1).equals(parent.getStatus()))
+            throw new BizException(ResultCode.ROUTE_NOT_FOUND);
+        return route;
+    }
+
+    /** Historical records remain manageable when the route or its destination is offline. */
+    private Route lockExistingRoute(Long routeId) {
         List<Route> list = routeMapper.selectList(
                 new LambdaQueryWrapper<Route>()
                         .eq(Route::getId, routeId)
                         .last("FOR UPDATE"));
-        if (list == null || list.isEmpty() || list.get(0).getStatus() == 0) {
+        if (list == null || list.isEmpty()) {
             throw new BizException(ResultCode.ROUTE_NOT_FOUND);
         }
         return list.get(0);
@@ -638,6 +650,7 @@ public class InteractionServiceImpl implements InteractionService {
         vo.setUserAvatar(user != null ? user.getAvatar() : null);
         vo.setParentId(c.getParentId());
         vo.setScore(c.getScore());
+        vo.setStatus(c.getStatus());
         vo.setContent(c.getContent());
         vo.setImages(c.getImages() == null || c.getImages().isBlank()
                 ? Collections.emptyList()

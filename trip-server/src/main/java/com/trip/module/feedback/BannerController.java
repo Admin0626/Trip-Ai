@@ -20,8 +20,10 @@ import java.util.*;
 @RequiredArgsConstructor
 public class BannerController {
     private final JdbcTemplate jdbc;
-    public record Save(@NotBlank @Size(max=100) String title,@NotBlank @Size(max=255) String imageUrl,
-            @NotNull @Pattern(regexp="NONE|ROUTE|DESTINATION|URL") String linkType,@Size(max=255) String linkValue,
+    public record Save(@NotBlank @Size(max=100) @JsonDeserialize(using=com.trip.module.catalog.StrictCatalogJson.Text.class) String title,
+            @NotBlank @Size(max=255) @JsonDeserialize(using=com.trip.module.catalog.StrictCatalogJson.Text.class) String imageUrl,
+            @NotNull @Pattern(regexp="NONE|ROUTE|DESTINATION|URL") @JsonDeserialize(using=com.trip.module.catalog.StrictCatalogJson.Text.class) String linkType,
+            @Size(max=255) @JsonDeserialize(using=com.trip.module.catalog.StrictCatalogJson.Text.class) String linkValue,
             @NotNull @Min(0) @Max(10000) @JsonDeserialize(using=StrictPlannerJson.IntegerNumber.class) Integer sortNo,
             @NotNull @Min(0) @Max(1) @JsonDeserialize(using=StrictPlannerJson.IntegerNumber.class) Integer status,
             LocalDateTime startTime,LocalDateTime endTime) {}

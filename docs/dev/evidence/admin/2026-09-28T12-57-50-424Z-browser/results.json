@@ -1,0 +1,324 @@
+{
+  "mode": "REAL_EDGE_ADMIN_HTTP_MYSQL_REDIS",
+  "stage": "/admin/banners",
+  "fixtures": {
+    "users": [
+      {
+        "name": "adm_ui_e21033f304",
+        "id": 10144
+      },
+      {
+        "name": "adm_ui_49a16ae781",
+        "id": 10145
+      }
+    ],
+    "destIds": [
+      20
+    ],
+    "routeIds": [
+      253
+    ],
+    "bannerIds": [
+      14
+    ],
+    "files": [
+      "1a9102bda6f846c9861b5cb9e170771e.png"
+    ]
+  },
+  "checks": [
+    {
+      "name": "admin navigation contains all sections",
+      "actual": 8,
+      "expected": 8,
+      "passed": true
+    },
+    {
+      "name": "empty destination form explained",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "admin cover real upload",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "destination created from UI",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "new destination defaults offline",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "destination publish from UI",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "destination edit from UI",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "destination edit stored",
+      "actual": "Updated by admin browser",
+      "expected": "Updated by admin browser",
+      "passed": true
+    },
+    {
+      "name": "attraction created from UI",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "attraction edit from UI",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "day reorder on UI",
+      "actual": "Day two",
+      "expected": "Day two",
+      "passed": true
+    },
+    {
+      "name": "route created from UI",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "day ordering stored",
+      "actual": "Day two\r\nDay one",
+      "expected": "Day two\r\nDay one",
+      "passed": true
+    },
+    {
+      "name": "route editor reloads saved day",
+      "actual": "Day two",
+      "expected": "Day two",
+      "passed": true
+    },
+    {
+      "name": "route edit from UI",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "route top from UI",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "banner created from UI",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "homepage displays configured banner",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "homepage banner has route link",
+      "actual": "/route/253",
+      "expected": "/route/253",
+      "passed": true
+    },
+    {
+      "name": "real booking fixture",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real comment fixture",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "route offline from UI",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "offline route hidden from public",
+      "actual": 2001,
+      "expected": 2001,
+      "passed": true
+    },
+    {
+      "name": "offline banner hidden",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "offline historical booking confirmed",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "confirmed booking completed",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "comment script remains literal",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "offline comment hidden from UI",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "comment restored from UI",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "disable account from UI",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "disabled token denied",
+      "actual": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "name": "enable account from UI",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "old session remains revoked",
+      "actual": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "name": "logs empty state",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "ordinary user cannot enter nested admin route",
+      "actual": "/",
+      "expected": "/",
+      "passed": true
+    },
+    {
+      "name": "mobile destination dialog fits",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "mobile page has no horizontal overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "mobile destination dialog is opaque",
+      "actual": "rgb(255, 255, 255)",
+      "expected": "rgb(255, 255, 255)",
+      "passed": true
+    },
+    {
+      "name": "mobile route editor fits",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "banner edit from UI",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "banner stopped from UI",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "banner deleted from UI",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "temporary route removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "temporary user removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "temporary user removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "temporary image removed",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "fixture cleanup completed",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "no unhandled page errors",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    }
+  ],
+  "pageErrors": [],
+  "summary": {
+    "total": 48,
+    "passed": 48,
+    "failed": 0
+  }
+}

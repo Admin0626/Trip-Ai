@@ -15,5 +15,6 @@ public class BookingStatusDTO {
     @NotNull(message = "审核状态不能为空")
     @Min(value = 1, message = "仅支持 1 已确认 / 2 已取消 / 3 已完成")
     @Max(value = 3, message = "仅支持 1 已确认 / 2 已取消 / 3 已完成")
+    @tools.jackson.databind.annotation.JsonDeserialize(using=com.trip.module.catalog.StrictCatalogJson.IntegerNumber.class)
     private Integer status;
 }

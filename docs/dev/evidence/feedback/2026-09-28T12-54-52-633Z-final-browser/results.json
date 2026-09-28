@@ -1,0 +1,215 @@
+{
+  "mode": "REAL_EDGE_FEEDBACK_ADMIN_USER",
+  "label": "final",
+  "fixtures": {
+    "users": [
+      {
+        "name": "fbui_cda00313da",
+        "id": 10137
+      },
+      {
+        "name": "fbui_aaf26291e5",
+        "id": 10138
+      }
+    ],
+    "uploads": [
+      "2c6f9372286e4fb8989e69f0b7924150.png"
+    ]
+  },
+  "diagnostics": {
+    "stage": "selected 全部状态",
+    "adminRequests": [
+      "/api/admin/feedback/page?current=1&size=20",
+      "/api/admin/feedback/page?current=1&size=20",
+      "/api/admin/feedback/page?current=1&size=20&status=1",
+      "/api/admin/feedback/page?current=1&size=20&status=1",
+      "/api/admin/feedback/page?current=1&size=20&status=2",
+      "/api/admin/feedback/page?current=1&size=20",
+      "/api/admin/feedback/page?current=2&size=20"
+    ],
+    "expanded": "true"
+  },
+  "checks": [
+    {
+      "name": "empty form gives explanation",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "feedback screenshot uploaded",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "feedback submitted from page",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "user sees submitted screenshot",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "admin pagination available",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "pending dialog defaults to processing",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "admin sees contact",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "admin sees attachment",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "script text is displayed literally",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "default processing reply succeeds",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "stale tab receives conflict",
+      "actual": 409,
+      "expected": 409,
+      "passed": true
+    },
+    {
+      "name": "conflict keeps typed reply",
+      "actual": "Stale administrator reply",
+      "expected": "Stale administrator reply",
+      "passed": true
+    },
+    {
+      "name": "owner sees processing reply",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "processing dialog defaults to solved",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "admin resolves feedback",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "terminal dialog has no save button",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "terminal reply read only",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "mobile dialog fits viewport",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "mobile dialog is above page content",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "admin second page fetched",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "owner sees final reply",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "user mobile has no horizontal overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "user second page fetched",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "ordinary user route blocked",
+      "actual": "/",
+      "expected": "/",
+      "passed": true
+    },
+    {
+      "name": "no page errors",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "fixture rows removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "fixture sessions removed",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "fixture rows removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "fixture sessions removed",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "uploaded image removed",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    }
+  ],
+  "errors": []
+}

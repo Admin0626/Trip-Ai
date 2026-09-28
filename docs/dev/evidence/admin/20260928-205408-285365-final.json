@@ -1,0 +1,4073 @@
+{
+  "mode": "REAL_LOCAL_BASIC_ADMIN_HTTP_MYSQL_REDIS",
+  "label": "final",
+  "startedAt": "2026-09-28T20:54:08.283933+08:00",
+  "checks": [
+    {
+      "name": "register user",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_be2c8473fbuser",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "id": 10135,
+            "nickname": "pw_be2c8473fbuser",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_be2c8473fbuser"
+          },
+          "timestamp": 1790600048457
+        }
+      }
+    },
+    {
+      "name": "register admin",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_78037a2120admin",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "id": 10136,
+            "nickname": "pw_78037a2120admin",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_78037a2120admin"
+          },
+          "timestamp": 1790600048733
+        }
+      }
+    },
+    {
+      "name": "user login",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_be2c8473fbuser",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-28T20:54:08",
+              "email": null,
+              "id": 10135,
+              "nickname": "pw_be2c8473fbuser",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_be2c8473fbuser"
+            }
+          },
+          "timestamp": 1790600049087
+        }
+      }
+    },
+    {
+      "name": "admin login",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_78037a2120admin",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-28T20:54:08",
+              "email": null,
+              "id": 10136,
+              "nickname": "pw_78037a2120admin",
+              "phone": null,
+              "role": "ADMIN",
+              "username": "pw_78037a2120admin"
+            }
+          },
+          "timestamp": 1790600049204
+        }
+      }
+    },
+    {
+      "name": "anonymous denied /admin/catalog/destinations",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/catalog/destinations",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "请先登录",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "ordinary user denied /admin/catalog/destinations",
+      "actual": [
+        403,
+        403
+      ],
+      "expected": [
+        403,
+        403
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/catalog/destinations",
+        "body": null
+      },
+      "response": {
+        "status": 403,
+        "body": {
+          "code": 403,
+          "message": "无权访问",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "anonymous denied /admin/catalog/routes",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/catalog/routes",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "请先登录",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "ordinary user denied /admin/catalog/routes",
+      "actual": [
+        403,
+        403
+      ],
+      "expected": [
+        403,
+        403
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/catalog/routes",
+        "body": null
+      },
+      "response": {
+        "status": 403,
+        "body": {
+          "code": 403,
+          "message": "无权访问",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "anonymous denied /admin/banner/page",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/banner/page",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "请先登录",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "ordinary user denied /admin/banner/page",
+      "actual": [
+        403,
+        403
+      ],
+      "expected": [
+        403,
+        403
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/banner/page",
+        "body": null
+      },
+      "response": {
+        "status": 403,
+        "body": {
+          "code": 403,
+          "message": "无权访问",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "anonymous denied /admin/interaction/booking/page",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/interaction/booking/page",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "请先登录",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "ordinary user denied /admin/interaction/booking/page",
+      "actual": [
+        403,
+        403
+      ],
+      "expected": [
+        403,
+        403
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/interaction/booking/page",
+        "body": null
+      },
+      "response": {
+        "status": 403,
+        "body": {
+          "code": 403,
+          "message": "无权访问",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "anonymous denied /admin/interaction/comment/page",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/interaction/comment/page",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "请先登录",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "ordinary user denied /admin/interaction/comment/page",
+      "actual": [
+        403,
+        403
+      ],
+      "expected": [
+        403,
+        403
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/interaction/comment/page",
+        "body": null
+      },
+      "response": {
+        "status": 403,
+        "body": {
+          "code": 403,
+          "message": "无权访问",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "anonymous denied /admin/user/page",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/user/page",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "请先登录",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "ordinary user denied /admin/user/page",
+      "actual": [
+        403,
+        403
+      ],
+      "expected": [
+        403,
+        403
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/user/page",
+        "body": null
+      },
+      "response": {
+        "status": 403,
+        "body": {
+          "code": 403,
+          "message": "无权访问",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "anonymous denied /admin/ai/recommend/log",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/recommend/log",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "请先登录",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "ordinary user denied /admin/ai/recommend/log",
+      "actual": [
+        403,
+        403
+      ],
+      "expected": [
+        403,
+        403
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/recommend/log",
+        "body": null
+      },
+      "response": {
+        "status": 403,
+        "body": {
+          "code": 403,
+          "message": "无权访问",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "ordinary user cannot create destination",
+      "actual": [
+        403,
+        403
+      ],
+      "expected": [
+        403,
+        403
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/catalog/destinations",
+        "body": {}
+      },
+      "response": {
+        "status": 403,
+        "body": {
+          "code": 403,
+          "message": "无权访问",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "ordinary user cannot write /admin/banner/1",
+      "actual": [
+        403,
+        403
+      ],
+      "expected": [
+        403,
+        403
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/banner/1",
+        "body": {
+          "status": 0
+        }
+      },
+      "response": {
+        "status": 403,
+        "body": {
+          "code": 403,
+          "message": "无权访问",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "ordinary user cannot write /admin/interaction/booking/1/status",
+      "actual": [
+        403,
+        403
+      ],
+      "expected": [
+        403,
+        403
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/interaction/booking/1/status",
+        "body": {
+          "status": 0
+        }
+      },
+      "response": {
+        "status": 403,
+        "body": {
+          "code": 403,
+          "message": "无权访问",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "ordinary user cannot write /admin/interaction/comment/1/status",
+      "actual": [
+        403,
+        403
+      ],
+      "expected": [
+        403,
+        403
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/interaction/comment/1/status",
+        "body": {
+          "status": 0
+        }
+      },
+      "response": {
+        "status": 403,
+        "body": {
+          "code": 403,
+          "message": "无权访问",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "ordinary user cannot write /admin/user/1/status",
+      "actual": [
+        403,
+        403
+      ],
+      "expected": [
+        403,
+        403
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/user/1/status",
+        "body": {
+          "status": 0
+        }
+      },
+      "response": {
+        "status": 403,
+        "body": {
+          "code": 403,
+          "message": "无权访问",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "invalid booking filter",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/interaction/booking/page?status=4",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "分页或筛选参数不合法",
+          "data": null,
+          "timestamp": 1790600049414
+        }
+      }
+    },
+    {
+      "name": "invalid comment filter",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/interaction/comment/page?status=2",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "分页或筛选参数不合法",
+          "data": null,
+          "timestamp": 1790600049445
+        }
+      }
+    },
+    {
+      "name": "invalid user pagination",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/user/page?size=101",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "分页或状态参数不合法",
+          "data": null,
+          "timestamp": 1790600049477
+        }
+      }
+    },
+    {
+      "name": "create destination",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/catalog/destinations",
+        "body": {
+          "name": "pw_78037a2120admin",
+          "province": "TestProvince",
+          "city": "TestCity",
+          "longitude": 120,
+          "latitude": 30,
+          "coverImg": "https://example.com/admin-test.jpg",
+          "intro": "Updated description",
+          "tags": [
+            "nature"
+          ],
+          "bestSeason": "spring",
+          "avgCost": 120,
+          "status": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": 18,
+          "timestamp": 1790600049494
+        }
+      }
+    },
+    {
+      "name": "duplicate destination rejected",
+      "actual": [
+        200,
+        409
+      ],
+      "expected": [
+        200,
+        409
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/catalog/destinations",
+        "body": {
+          "name": "pw_78037a2120admin",
+          "province": "TestProvince",
+          "city": "TestCity",
+          "longitude": 120,
+          "latitude": 30,
+          "coverImg": "https://example.com/admin-test.jpg",
+          "intro": "Updated description",
+          "tags": [
+            "nature"
+          ],
+          "bestSeason": "spring",
+          "avgCost": 120,
+          "status": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 409,
+          "message": "同省份已存在该名称的目的地（含已删除记录）",
+          "data": null,
+          "timestamp": 1790600049507
+        }
+      }
+    },
+    {
+      "name": "strict destination text",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/catalog/destinations",
+        "body": {
+          "name": 123,
+          "province": "TestProvince",
+          "city": "TestCity",
+          "longitude": 120,
+          "latitude": 30,
+          "coverImg": "https://example.com/admin-test.jpg",
+          "intro": "Admin fixture",
+          "tags": [
+            "nature"
+          ],
+          "bestSeason": "spring",
+          "avgCost": 120,
+          "status": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求体格式错误",
+          "data": null,
+          "timestamp": 1790600049515
+        }
+      }
+    },
+    {
+      "name": "invalid destination coordinates",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/catalog/destinations",
+        "body": {
+          "name": "pw_78037a2120admin",
+          "province": "TestProvince",
+          "city": "TestCity",
+          "longitude": 0,
+          "latitude": 30,
+          "coverImg": "https://example.com/admin-test.jpg",
+          "intro": "Admin fixture",
+          "tags": [
+            "nature"
+          ],
+          "bestSeason": "spring",
+          "avgCost": 120,
+          "status": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "longitude 必须大于或等于73",
+          "data": null,
+          "timestamp": 1790600049532
+        }
+      }
+    },
+    {
+      "name": "update destination",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/catalog/destinations/18",
+        "body": {
+          "name": "pw_78037a2120admin",
+          "province": "TestProvince",
+          "city": "TestCity",
+          "longitude": 120,
+          "latitude": 30,
+          "coverImg": "https://example.com/admin-test.jpg",
+          "intro": "Updated description",
+          "tags": [
+            "nature"
+          ],
+          "bestSeason": "spring",
+          "avgCost": 120,
+          "status": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790600049553
+        }
+      }
+    },
+    {
+      "name": "destination update stored",
+      "actual": "Updated description",
+      "expected": "Updated description",
+      "passed": true
+    },
+    {
+      "name": "search destination",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/catalog/destinations?keyword=pw_78037a2120admin",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "current": 1,
+            "pages": 1,
+            "records": [
+              {
+                "avgCost": 120.0,
+                "bestSeason": "spring",
+                "city": "TestCity",
+                "coverImg": "https://example.com/admin-test.jpg",
+                "heat": 0,
+                "id": 18,
+                "intro": "Updated description",
+                "latitude": 30.0,
+                "longitude": 120.0,
+                "name": "pw_78037a2120admin",
+                "province": "TestProvince",
+                "routeCount": 0,
+                "status": 1,
+                "tags": [
+                  "nature"
+                ]
+              }
+            ],
+            "size": 20,
+            "total": 1
+          },
+          "timestamp": 1790600049674
+        }
+      }
+    },
+    {
+      "name": "destination search contains fixture",
+      "actual": [
+        18
+      ],
+      "expected": [
+        18
+      ],
+      "passed": true
+    },
+    {
+      "name": "invalid catalog pagination",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/catalog/destinations?current=0",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "分页或状态参数不正确",
+          "data": null,
+          "timestamp": 1790600049710
+        }
+      }
+    },
+    {
+      "name": "create attraction",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/catalog/destinations/18/attractions",
+        "body": {
+          "name": "Admin attraction",
+          "coverImg": "",
+          "intro": "Attraction fixture",
+          "address": "Test address",
+          "longitude": 120,
+          "latitude": 30,
+          "ticketPrice": 25,
+          "openTime": "09:00-17:00",
+          "durationMin": 60,
+          "tags": [
+            "nature"
+          ],
+          "status": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": 185,
+          "timestamp": 1790600049727
+        }
+      }
+    },
+    {
+      "name": "update attraction",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/catalog/attractions/185",
+        "body": {
+          "name": "Admin attraction",
+          "coverImg": "",
+          "intro": "Attraction fixture",
+          "address": "Test address",
+          "longitude": 120,
+          "latitude": 30,
+          "ticketPrice": 25,
+          "openTime": "09:00-17:00",
+          "durationMin": 60,
+          "tags": [
+            "nature"
+          ],
+          "status": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790600049764
+        }
+      }
+    },
+    {
+      "name": "attraction price stored",
+      "actual": "25.00",
+      "expected": "25.00",
+      "passed": true
+    },
+    {
+      "name": "invalid attraction status",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/catalog/attractions/185",
+        "body": {
+          "name": "Admin attraction",
+          "coverImg": "",
+          "intro": "Attraction fixture",
+          "address": "Test address",
+          "longitude": 120,
+          "latitude": 30,
+          "ticketPrice": 25,
+          "openTime": "09:00-17:00",
+          "durationMin": 60,
+          "tags": [
+            "nature"
+          ],
+          "status": 2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "status 最大不能超过1",
+          "data": null,
+          "timestamp": 1790600049942
+        }
+      }
+    },
+    {
+      "name": "create route",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/catalog/routes",
+        "body": {
+          "title": "pw_78037a2120admin-route",
+          "subtitle": "test",
+          "coverImg": "https://example.com/admin-test.jpg",
+          "destinationId": 18,
+          "days": 2,
+          "price": 250,
+          "difficulty": 1,
+          "tags": [
+            "nature"
+          ],
+          "highlights": "test highlight",
+          "notice": "test notice",
+          "recommendWeight": 0.8,
+          "isTop": 0,
+          "quotaPerDay": 20,
+          "status": 1,
+          "dayList": [
+            {
+              "title": "Day one",
+              "summary": "Morning walk",
+              "items": [
+                {
+                  "title": "Visit attraction",
+                  "timePoint": "09:00",
+                  "attractionId": 185,
+                  "activity": "walking",
+                  "transport": "",
+                  "hotel": "",
+                  "meal": "",
+                  "durationMin": 60,
+                  "cost": 25,
+                  "tips": "Bring water"
+                }
+              ]
+            },
+            {
+              "title": "Day two",
+              "summary": "",
+              "items": [
+                {
+                  "title": "Custom visit",
+                  "timePoint": "09:00",
+                  "attractionId": 0,
+                  "activity": "walking",
+                  "transport": "",
+                  "hotel": "",
+                  "meal": "",
+                  "durationMin": 60,
+                  "cost": 25,
+                  "tips": "Bring water"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": 248,
+          "timestamp": 1790600049982
+        }
+      }
+    },
+    {
+      "name": "route admin detail",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/catalog/routes/248",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "bookingCount": 0,
+            "coverImg": "https://example.com/admin-test.jpg",
+            "dayList": [
+              {
+                "dayIndex": 1,
+                "items": [
+                  {
+                    "activity": "walking",
+                    "attractionId": 185,
+                    "cost": 25.0,
+                    "durationMin": 60,
+                    "hotel": "",
+                    "meal": "",
+                    "sortNo": 1,
+                    "timePoint": "09:00",
+                    "tips": "Bring water",
+                    "title": "Visit attraction",
+                    "transport": ""
+                  }
+                ],
+                "summary": "Morning walk",
+                "title": "Day one"
+              }
+            ],
+            "days": 1,
+            "destinationId": 18,
+            "destinationName": "pw_78037a2120admin",
+            "difficulty": 1,
+            "highlights": "test highlight",
+            "id": 248,
+            "isTop": 0,
+            "notice": "test notice",
+            "price": 250.0,
+            "quotaPerDay": 20,
+            "recommendWeight": 0.8,
+            "status": 1,
+            "subtitle": "test",
+            "tags": [
+              "nature"
+            ],
+            "title": "pw_78037a2120admin-route",
+            "viewCount": 0
+          },
+          "timestamp": 1790600050001
+        }
+      }
+    },
+    {
+      "name": "day and item roundtrip",
+      "actual": "Visit attraction",
+      "expected": "Visit attraction",
+      "passed": true
+    },
+    {
+      "name": "reject day count mismatch",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/catalog/routes/248",
+        "body": {
+          "title": "pw_78037a2120admin-route",
+          "subtitle": "test",
+          "coverImg": "https://example.com/admin-test.jpg",
+          "destinationId": 18,
+          "days": 2,
+          "price": 250,
+          "difficulty": 1,
+          "tags": [
+            "nature"
+          ],
+          "highlights": "test highlight",
+          "notice": "test notice",
+          "recommendWeight": 0.8,
+          "isTop": 0,
+          "quotaPerDay": 20,
+          "status": 1,
+          "dayList": [
+            {
+              "title": "Day one",
+              "summary": "Morning walk",
+              "items": [
+                {
+                  "title": "Visit attraction",
+                  "timePoint": "09:00",
+                  "attractionId": 185,
+                  "activity": "walking",
+                  "transport": "",
+                  "hotel": "",
+                  "meal": "",
+                  "durationMin": 60,
+                  "cost": 25,
+                  "tips": "Bring water"
+                }
+              ]
+            },
+            {
+              "title": "Day two",
+              "summary": "",
+              "items": [
+                {
+                  "title": "Custom visit",
+                  "timePoint": "09:00",
+                  "attractionId": 0,
+                  "activity": "walking",
+                  "transport": "",
+                  "hotel": "",
+                  "meal": "",
+                  "durationMin": 60,
+                  "cost": 25,
+                  "tips": "Bring water"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "路线天数必须等于行程天数",
+          "data": null,
+          "timestamp": 1790600050015
+        }
+      }
+    },
+    {
+      "name": "reject malformed time",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/catalog/routes/248",
+        "body": {
+          "title": "pw_78037a2120admin-route",
+          "subtitle": "test",
+          "coverImg": "https://example.com/admin-test.jpg",
+          "destinationId": 18,
+          "days": 1,
+          "price": 250,
+          "difficulty": 1,
+          "tags": [
+            "nature"
+          ],
+          "highlights": "test highlight",
+          "notice": "test notice",
+          "recommendWeight": 0.8,
+          "isTop": 0,
+          "quotaPerDay": 20,
+          "status": 1,
+          "dayList": [
+            {
+              "title": "Day one",
+              "summary": "Morning walk",
+              "items": [
+                {
+                  "title": "Visit attraction",
+                  "timePoint": "25:00",
+                  "attractionId": 185,
+                  "activity": "walking",
+                  "transport": "",
+                  "hotel": "",
+                  "meal": "",
+                  "durationMin": 60,
+                  "cost": 25,
+                  "tips": "Bring water"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "dayList[0].items[0].timePoint 时间点格式应为 HH:mm",
+          "data": null,
+          "timestamp": 1790600050026
+        }
+      }
+    },
+    {
+      "name": "strict route price",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/catalog/routes/248",
+        "body": {
+          "title": "pw_78037a2120admin-route",
+          "subtitle": "test",
+          "coverImg": "https://example.com/admin-test.jpg",
+          "destinationId": 18,
+          "days": 1,
+          "price": "250",
+          "difficulty": 1,
+          "tags": [
+            "nature"
+          ],
+          "highlights": "test highlight",
+          "notice": "test notice",
+          "recommendWeight": 0.8,
+          "isTop": 0,
+          "quotaPerDay": 20,
+          "status": 1,
+          "dayList": [
+            {
+              "title": "Day one",
+              "summary": "Morning walk",
+              "items": [
+                {
+                  "title": "Visit attraction",
+                  "timePoint": "09:00",
+                  "attractionId": 185,
+                  "activity": "walking",
+                  "transport": "",
+                  "hotel": "",
+                  "meal": "",
+                  "durationMin": 60,
+                  "cost": 25,
+                  "tips": "Bring water"
+                }
+              ]
+            },
+            {
+              "title": "Day two",
+              "summary": "",
+              "items": [
+                {
+                  "title": "Custom visit",
+                  "timePoint": "09:00",
+                  "attractionId": 0,
+                  "activity": "walking",
+                  "transport": "",
+                  "hotel": "",
+                  "meal": "",
+                  "durationMin": 60,
+                  "cost": 25,
+                  "tips": "Bring water"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求体格式错误",
+          "data": null,
+          "timestamp": 1790600050035
+        }
+      }
+    },
+    {
+      "name": "protected route fields ignored",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/catalog/routes/248",
+        "body": {
+          "title": "pw_78037a2120admin-route",
+          "subtitle": "test",
+          "coverImg": "https://example.com/admin-test.jpg",
+          "destinationId": 18,
+          "days": 1,
+          "price": 250,
+          "difficulty": 1,
+          "tags": [
+            "nature"
+          ],
+          "highlights": "test highlight",
+          "notice": "test notice",
+          "recommendWeight": 0.8,
+          "isTop": 0,
+          "quotaPerDay": 20,
+          "status": 1,
+          "dayList": [
+            {
+              "title": "Day one",
+              "summary": "Morning walk",
+              "items": [
+                {
+                  "title": "Visit attraction",
+                  "timePoint": "09:00",
+                  "attractionId": 185,
+                  "activity": "walking",
+                  "transport": "",
+                  "hotel": "",
+                  "meal": "",
+                  "durationMin": 60,
+                  "cost": 25,
+                  "tips": "Bring water"
+                }
+              ]
+            },
+            {
+              "title": "Day two",
+              "summary": "",
+              "items": [
+                {
+                  "title": "Custom visit",
+                  "timePoint": "09:00",
+                  "attractionId": 0,
+                  "activity": "walking",
+                  "transport": "",
+                  "hotel": "",
+                  "meal": "",
+                  "durationMin": 60,
+                  "cost": 25,
+                  "tips": "Bring water"
+                }
+              ]
+            }
+          ],
+          "createBy": 10135,
+          "likeCount": 900,
+          "bookingCount": 900,
+          "id": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790600050082
+        }
+      }
+    },
+    {
+      "name": "creator and counters remain server owned",
+      "actual": "10136:0:0",
+      "expected": "10136:0:0",
+      "passed": true
+    },
+    {
+      "name": "replace itinerary",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/catalog/routes/248",
+        "body": {
+          "title": "pw_78037a2120admin-route",
+          "subtitle": "test",
+          "coverImg": "https://example.com/admin-test.jpg",
+          "destinationId": 18,
+          "days": 2,
+          "price": 250,
+          "difficulty": 1,
+          "tags": [
+            "nature"
+          ],
+          "highlights": "test highlight",
+          "notice": "test notice",
+          "recommendWeight": 0.8,
+          "isTop": 0,
+          "quotaPerDay": 20,
+          "status": 1,
+          "dayList": [
+            {
+              "title": "Day one",
+              "summary": "Morning walk",
+              "items": [
+                {
+                  "title": "Visit attraction",
+                  "timePoint": "09:00",
+                  "attractionId": 185,
+                  "activity": "walking",
+                  "transport": "",
+                  "hotel": "",
+                  "meal": "",
+                  "durationMin": 60,
+                  "cost": 25,
+                  "tips": "Bring water"
+                }
+              ]
+            },
+            {
+              "title": "Day two",
+              "summary": "",
+              "items": [
+                {
+                  "title": "Custom visit",
+                  "timePoint": "09:00",
+                  "attractionId": 0,
+                  "activity": "walking",
+                  "transport": "",
+                  "hotel": "",
+                  "meal": "",
+                  "durationMin": 60,
+                  "cost": 25,
+                  "tips": "Bring water"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790600050241
+        }
+      }
+    },
+    {
+      "name": "itinerary day count stored",
+      "actual": "2",
+      "expected": "2",
+      "passed": true
+    },
+    {
+      "name": "set route top",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/catalog/routes/248/top",
+        "body": {
+          "isTop": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790600050372
+        }
+      }
+    },
+    {
+      "name": "set recommendation weight",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/catalog/routes/248/weight",
+        "body": {
+          "recommendWeight": 0.9
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790600050390
+        }
+      }
+    },
+    {
+      "name": "weight stored",
+      "actual": "0.9000",
+      "expected": "0.9000",
+      "passed": true
+    },
+    {
+      "name": "reject invalid weight",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/catalog/routes/248/weight",
+        "body": {
+          "recommendWeight": 2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "recommendWeight 必须小于或等于1",
+          "data": null,
+          "timestamp": 1790600050502
+        }
+      }
+    },
+    {
+      "name": "public route detail",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/route/248",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avgScore": 0.0,
+            "bookingCount": 0,
+            "commentCount": 0,
+            "coverImg": "https://example.com/admin-test.jpg",
+            "dayList": [
+              {
+                "dayIndex": 1,
+                "id": 96,
+                "items": [
+                  {
+                    "activity": "walking",
+                    "attractionId": 185,
+                    "cost": 25.0,
+                    "durationMin": 60,
+                    "hotel": "",
+                    "id": 293,
+                    "meal": "",
+                    "sortNo": 1,
+                    "timePoint": "09:00",
+                    "tips": "Bring water",
+                    "title": "Visit attraction",
+                    "transport": ""
+                  }
+                ],
+                "summary": "Morning walk",
+                "title": "Day one"
+              },
+              {
+                "dayIndex": 2,
+                "id": 97,
+                "items": [
+                  {
+                    "activity": "walking",
+                    "attractionId": 0,
+                    "cost": 25.0,
+                    "durationMin": 60,
+                    "hotel": "",
+                    "id": 294,
+                    "meal": "",
+                    "sortNo": 1,
+                    "timePoint": "09:00",
+                    "tips": "Bring water",
+                    "title": "Custom visit",
+                    "transport": ""
+                  }
+                ],
+                "summary": "",
+                "title": "Day two"
+              }
+            ],
+            "days": 2,
+            "destination": {
+              "id": 18,
+              "name": "pw_78037a2120admin",
+              "province": "TestProvince"
+            },
+            "difficulty": 1,
+            "favoriteCount": 0,
+            "favorited": false,
+            "highlights": "test highlight",
+            "id": 248,
+            "likeCount": 0,
+            "liked": false,
+            "notice": "test notice",
+            "price": 250.0,
+            "subtitle": "test",
+            "tags": [
+              "nature"
+            ],
+            "title": "pw_78037a2120admin-route",
+            "viewCount": 0
+          },
+          "timestamp": 1790600050514
+        }
+      }
+    },
+    {
+      "name": "public route days",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/route/248/days",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": [
+            {
+              "dayIndex": 1,
+              "id": 96,
+              "items": [
+                {
+                  "activity": "walking",
+                  "attractionId": 185,
+                  "cost": 25.0,
+                  "durationMin": 60,
+                  "hotel": "",
+                  "id": 293,
+                  "meal": "",
+                  "sortNo": 1,
+                  "timePoint": "09:00",
+                  "tips": "Bring water",
+                  "title": "Visit attraction",
+                  "transport": ""
+                }
+              ],
+              "summary": "Morning walk",
+              "title": "Day one"
+            },
+            {
+              "dayIndex": 2,
+              "id": 97,
+              "items": [
+                {
+                  "activity": "walking",
+                  "attractionId": 0,
+                  "cost": 25.0,
+                  "durationMin": 60,
+                  "hotel": "",
+                  "id": 294,
+                  "meal": "",
+                  "sortNo": 1,
+                  "timePoint": "09:00",
+                  "tips": "Bring water",
+                  "title": "Custom visit",
+                  "transport": ""
+                }
+              ],
+              "summary": "",
+              "title": "Day two"
+            }
+          ],
+          "timestamp": 1790600050528
+        }
+      }
+    },
+    {
+      "name": "create banner",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/banner",
+        "body": {
+          "title": "pw_78037a2120admin-banner",
+          "imageUrl": "https://example.com/admin-test.jpg",
+          "linkType": "ROUTE",
+          "linkValue": "248",
+          "sortNo": 0,
+          "status": 1,
+          "startTime": null,
+          "endTime": null
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": 9,
+          "timestamp": 1790600050561
+        }
+      }
+    },
+    {
+      "name": "banner unsafe URL rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/banner/9",
+        "body": {
+          "title": "pw_78037a2120admin-banner",
+          "imageUrl": "https://example.com/admin-test.jpg",
+          "linkType": "URL",
+          "linkValue": "javascript:alert(1)",
+          "sortNo": 0,
+          "status": 0,
+          "startTime": null,
+          "endTime": null
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "跳转地址须为HTTP(S)地址",
+          "data": null,
+          "timestamp": 1790600050585
+        }
+      }
+    },
+    {
+      "name": "banner strict title",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/banner/9",
+        "body": {
+          "title": 123,
+          "imageUrl": "https://example.com/admin-test.jpg",
+          "linkType": "ROUTE",
+          "linkValue": "248",
+          "sortNo": 0,
+          "status": 0,
+          "startTime": null,
+          "endTime": null
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求体格式错误",
+          "data": null,
+          "timestamp": 1790600050594
+        }
+      }
+    },
+    {
+      "name": "banner invalid schedule",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/banner/9",
+        "body": {
+          "title": "pw_78037a2120admin-banner",
+          "imageUrl": "https://example.com/admin-test.jpg",
+          "linkType": "ROUTE",
+          "linkValue": "248",
+          "sortNo": 0,
+          "status": 0,
+          "startTime": "2026-10-02T00:00:00",
+          "endTime": "2026-10-01T00:00:00"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "结束时间须晚于开始时间",
+          "data": null,
+          "timestamp": 1790600050607
+        }
+      }
+    },
+    {
+      "name": "enable banner",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/banner/9",
+        "body": {
+          "title": "pw_78037a2120admin-banner",
+          "imageUrl": "https://example.com/admin-test.jpg",
+          "linkType": "ROUTE",
+          "linkValue": "248",
+          "sortNo": 0,
+          "status": 1,
+          "startTime": null,
+          "endTime": null
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790600050743
+        }
+      }
+    },
+    {
+      "name": "active banner list",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/banner/list",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": [
+            {
+              "id": 9,
+              "title": "pw_78037a2120admin-banner",
+              "imageUrl": "https://example.com/admin-test.jpg",
+              "linkType": "ROUTE",
+              "linkValue": "248",
+              "sortNo": 0,
+              "status": 1,
+              "startTime": null,
+              "endTime": null
+            },
+            {
+              "id": 1,
+              "title": "国庆云南专线 立减 500",
+              "imageUrl": "https://oss.example.com/trip/banner/b1.jpg",
+              "linkType": "ROUTE",
+              "linkValue": "201",
+              "sortNo": 1,
+              "status": 1,
+              "startTime": "2026-09-20T00:00:00",
+              "endTime": "2026-10-08T23:59:59"
+            },
+            {
+              "id": 2,
+              "title": "三亚亲子季 酒店买二送一",
+              "imageUrl": "https://oss.example.com/trip/banner/b2.jpg",
+              "linkType": "ROUTE",
+              "linkValue": "209",
+              "sortNo": 2,
+              "status": 1,
+              "startTime": "2026-09-01T00:00:00",
+              "endTime": "2026-12-31T23:59:59"
+            },
+            {
+              "id": 3,
+              "title": "稻城亚丁 纯玩五日",
+              "imageUrl": "https://oss.example.com/trip/banner/b3.jpg",
+              "linkType": "URL",
+              "linkValue": "/destinations/1",
+              "sortNo": 3,
+              "status": 1,
+              "startTime": null,
+              "endTime": null
+            },
+            {
+              "id": 4,
+              "title": "成都美食地图更新",
+              "imageUrl": "https://oss.example.com/trip/banner/b4.jpg",
+              "linkType": "DESTINATION",
+              "linkValue": "8",
+              "sortNo": 4,
+              "status": 1,
+              "startTime": null,
+              "endTime": null
+            },
+            {
+              "id": 5,
+              "title": "厦门鼓浪屿轮渡攻略",
+              "imageUrl": "https://oss.example.com/trip/banner/b5.jpg",
+              "linkType": "DESTINATION",
+              "linkValue": "10",
+              "sortNo": 5,
+              "status": 1,
+              "startTime": null,
+              "endTime": null
+            }
+          ],
+          "timestamp": 1790600050752
+        }
+      }
+    },
+    {
+      "name": "linked route banner visible",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "scheduled future banner",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/banner/9",
+        "body": {
+          "title": "pw_78037a2120admin-banner",
+          "imageUrl": "https://example.com/admin-test.jpg",
+          "linkType": "ROUTE",
+          "linkValue": "248",
+          "sortNo": 0,
+          "status": 1,
+          "startTime": "2026-09-29T20:54:10",
+          "endTime": null
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790600050769
+        }
+      }
+    },
+    {
+      "name": "scheduled public list",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/banner/list",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": [
+            {
+              "id": 1,
+              "title": "国庆云南专线 立减 500",
+              "imageUrl": "https://oss.example.com/trip/banner/b1.jpg",
+              "linkType": "ROUTE",
+              "linkValue": "201",
+              "sortNo": 1,
+              "status": 1,
+              "startTime": "2026-09-20T00:00:00",
+              "endTime": "2026-10-08T23:59:59"
+            },
+            {
+              "id": 2,
+              "title": "三亚亲子季 酒店买二送一",
+              "imageUrl": "https://oss.example.com/trip/banner/b2.jpg",
+              "linkType": "ROUTE",
+              "linkValue": "209",
+              "sortNo": 2,
+              "status": 1,
+              "startTime": "2026-09-01T00:00:00",
+              "endTime": "2026-12-31T23:59:59"
+            },
+            {
+              "id": 3,
+              "title": "稻城亚丁 纯玩五日",
+              "imageUrl": "https://oss.example.com/trip/banner/b3.jpg",
+              "linkType": "URL",
+              "linkValue": "/destinations/1",
+              "sortNo": 3,
+              "status": 1,
+              "startTime": null,
+              "endTime": null
+            },
+            {
+              "id": 4,
+              "title": "成都美食地图更新",
+              "imageUrl": "https://oss.example.com/trip/banner/b4.jpg",
+              "linkType": "DESTINATION",
+              "linkValue": "8",
+              "sortNo": 4,
+              "status": 1,
+              "startTime": null,
+              "endTime": null
+            },
+            {
+              "id": 5,
+              "title": "厦门鼓浪屿轮渡攻略",
+              "imageUrl": "https://oss.example.com/trip/banner/b5.jpg",
+              "linkType": "DESTINATION",
+              "linkValue": "10",
+              "sortNo": 5,
+              "status": 1,
+              "startTime": null,
+              "endTime": null
+            }
+          ],
+          "timestamp": 1790600050800
+        }
+      }
+    },
+    {
+      "name": "future banner hidden",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "restore banner schedule",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/banner/9",
+        "body": {
+          "title": "pw_78037a2120admin-banner",
+          "imageUrl": "https://example.com/admin-test.jpg",
+          "linkType": "ROUTE",
+          "linkValue": "248",
+          "sortNo": 0,
+          "status": 1,
+          "startTime": null,
+          "endTime": null
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790600050816
+        }
+      }
+    },
+    {
+      "name": "create booking",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/interaction/booking",
+        "body": {
+          "routeId": 248,
+          "travelDate": "2026-10-03",
+          "peopleNum": 1,
+          "contactName": "Fixture",
+          "contactPhone": "13800000000",
+          "remark": "Test booking"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "bookingId": 9116,
+            "bookingNo": "559abfeccd6b4fe6a356c2e9d1ab646d",
+            "contactName": "Fixture",
+            "contactPhone": "13800000000",
+            "createTime": "2026-09-28 20:54:10",
+            "peopleNum": 1,
+            "remark": "Test booking",
+            "routeId": 248,
+            "routeTitle": "pw_78037a2120admin-route",
+            "status": 0,
+            "travelDate": "2026-10-03"
+          },
+          "timestamp": 1790600050846
+        }
+      }
+    },
+    {
+      "name": "create comment",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/interaction/comment",
+        "body": {
+          "routeId": 248,
+          "score": 5,
+          "content": "Admin acceptance comment",
+          "images": []
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "content": null,
+            "createTime": null,
+            "id": 5284,
+            "images": null,
+            "likeCount": null,
+            "liked": null,
+            "parentId": null,
+            "routeId": null,
+            "score": null,
+            "sentiment": "unknown",
+            "sentimentScore": null,
+            "status": null,
+            "userAvatar": null,
+            "userId": null,
+            "userNickname": null
+          },
+          "timestamp": 1790600050876
+        }
+      }
+    },
+    {
+      "name": "admin comment listing",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/interaction/comment/page?routeId=248",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "current": 1,
+            "pages": 1,
+            "records": [
+              {
+                "content": "Admin acceptance comment",
+                "createTime": "2026-09-28 20:54:10",
+                "id": 5284,
+                "images": [],
+                "likeCount": 0,
+                "liked": false,
+                "parentId": 0,
+                "routeId": 248,
+                "score": 5,
+                "sentiment": "unknown",
+                "sentimentScore": 0.0,
+                "status": 1,
+                "userAvatar": "",
+                "userId": 10135,
+                "userNickname": "pw_be2c8473fbuser"
+              }
+            ],
+            "size": 10,
+            "total": 1
+          },
+          "timestamp": 1790600050894
+        }
+      }
+    },
+    {
+      "name": "comment exposes moderation status",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "destination deletion with route blocked",
+      "actual": [
+        200,
+        409
+      ],
+      "expected": [
+        200,
+        409
+      ],
+      "passed": true,
+      "request": {
+        "method": "DELETE",
+        "path": "/admin/catalog/destinations/18",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 409,
+          "message": "目的地仍有关联路线，请先处理路线",
+          "data": null,
+          "timestamp": 1790600050917
+        }
+      }
+    },
+    {
+      "name": "route deletion with booking blocked",
+      "actual": [
+        200,
+        409
+      ],
+      "expected": [
+        200,
+        409
+      ],
+      "passed": true,
+      "request": {
+        "method": "DELETE",
+        "path": "/admin/catalog/routes/248",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 409,
+          "message": "已有预约记录的路线只能下架，不能删除",
+          "data": null,
+          "timestamp": 1790600050933
+        }
+      }
+    },
+    {
+      "name": "take route offline",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/catalog/routes/248/status",
+        "body": {
+          "status": 0
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790600050969
+        }
+      }
+    },
+    {
+      "name": "offline route detail hidden",
+      "actual": [
+        200,
+        2001
+      ],
+      "expected": [
+        200,
+        2001
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/route/248",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 2001,
+          "message": "路线不存在或已下架",
+          "data": null,
+          "timestamp": 1790600050982
+        }
+      }
+    },
+    {
+      "name": "offline route days hidden",
+      "actual": [
+        200,
+        2001
+      ],
+      "expected": [
+        200,
+        2001
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/route/248/days",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 2001,
+          "message": "路线不存在或已下架",
+          "data": null,
+          "timestamp": 1790600050999
+        }
+      }
+    },
+    {
+      "name": "admin can confirm offline route historical booking",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/interaction/booking/9116/status",
+        "body": {
+          "status": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790600051038
+        }
+      }
+    },
+    {
+      "name": "admin can hide offline route comment",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/interaction/comment/5284/status",
+        "body": {
+          "status": 0
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790600051067
+        }
+      }
+    },
+    {
+      "name": "offline route comments inaccessible",
+      "actual": [
+        200,
+        2001
+      ],
+      "expected": [
+        200,
+        2001
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/interaction/comment/page?routeId=248",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 2001,
+          "message": "路线不存在或已下架",
+          "data": null,
+          "timestamp": 1790600051081
+        }
+      }
+    },
+    {
+      "name": "restore route",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/catalog/routes/248/status",
+        "body": {
+          "status": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790600051115
+        }
+      }
+    },
+    {
+      "name": "restore comment",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/interaction/comment/5284/status",
+        "body": {
+          "status": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790600051142
+        }
+      }
+    },
+    {
+      "name": "take parent offline",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/catalog/destinations/18/status",
+        "body": {
+          "status": 0
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790600051175
+        }
+      }
+    },
+    {
+      "name": "offline parent detail hidden",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/destination/18",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "资源不存在",
+          "data": null,
+          "timestamp": 1790600051187
+        }
+      }
+    },
+    {
+      "name": "offline parent attractions hidden",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/destination/18/attractions",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "资源不存在",
+          "data": null,
+          "timestamp": 1790600051199
+        }
+      }
+    },
+    {
+      "name": "offline parent route hidden",
+      "actual": [
+        200,
+        2001
+      ],
+      "expected": [
+        200,
+        2001
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/route/248",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 2001,
+          "message": "路线不存在或已下架",
+          "data": null,
+          "timestamp": 1790600051222
+        }
+      }
+    },
+    {
+      "name": "offline parent comments hidden",
+      "actual": [
+        200,
+        2001
+      ],
+      "expected": [
+        200,
+        2001
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/interaction/comment/page?routeId=248",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 2001,
+          "message": "路线不存在或已下架",
+          "data": null,
+          "timestamp": 1790600051240
+        }
+      }
+    },
+    {
+      "name": "offline parent like blocked",
+      "actual": [
+        200,
+        2001
+      ],
+      "expected": [
+        200,
+        2001
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/interaction/like",
+        "body": {
+          "routeId": 248
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 2001,
+          "message": "路线不存在或已下架",
+          "data": null,
+          "timestamp": 1790600051259
+        }
+      }
+    },
+    {
+      "name": "offline parent booking blocked",
+      "actual": [
+        200,
+        2001
+      ],
+      "expected": [
+        200,
+        2001
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/interaction/booking",
+        "body": {
+          "routeId": 248,
+          "travelDate": "2026-10-04",
+          "peopleNum": 1,
+          "contactName": "Fixture",
+          "contactPhone": "13800000000",
+          "remark": "Test booking"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 2001,
+          "message": "路线不存在或已下架",
+          "data": null,
+          "timestamp": 1790600051293
+        }
+      }
+    },
+    {
+      "name": "offline parent public route page",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/route/page?destinationId=18&status=0",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "current": 1,
+            "pages": 0,
+            "records": [],
+            "size": 10,
+            "total": 0
+          },
+          "timestamp": 1790600051310
+        }
+      }
+    },
+    {
+      "name": "offline parent route excluded",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "offline linked banners",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/banner/list",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": [
+            {
+              "id": 1,
+              "title": "国庆云南专线 立减 500",
+              "imageUrl": "https://oss.example.com/trip/banner/b1.jpg",
+              "linkType": "ROUTE",
+              "linkValue": "201",
+              "sortNo": 1,
+              "status": 1,
+              "startTime": "2026-09-20T00:00:00",
+              "endTime": "2026-10-08T23:59:59"
+            },
+            {
+              "id": 2,
+              "title": "三亚亲子季 酒店买二送一",
+              "imageUrl": "https://oss.example.com/trip/banner/b2.jpg",
+              "linkType": "ROUTE",
+              "linkValue": "209",
+              "sortNo": 2,
+              "status": 1,
+              "startTime": "2026-09-01T00:00:00",
+              "endTime": "2026-12-31T23:59:59"
+            },
+            {
+              "id": 3,
+              "title": "稻城亚丁 纯玩五日",
+              "imageUrl": "https://oss.example.com/trip/banner/b3.jpg",
+              "linkType": "URL",
+              "linkValue": "/destinations/1",
+              "sortNo": 3,
+              "status": 1,
+              "startTime": null,
+              "endTime": null
+            },
+            {
+              "id": 4,
+              "title": "成都美食地图更新",
+              "imageUrl": "https://oss.example.com/trip/banner/b4.jpg",
+              "linkType": "DESTINATION",
+              "linkValue": "8",
+              "sortNo": 4,
+              "status": 1,
+              "startTime": null,
+              "endTime": null
+            },
+            {
+              "id": 5,
+              "title": "厦门鼓浪屿轮渡攻略",
+              "imageUrl": "https://oss.example.com/trip/banner/b5.jpg",
+              "linkType": "DESTINATION",
+              "linkValue": "10",
+              "sortNo": 5,
+              "status": 1,
+              "startTime": null,
+              "endTime": null
+            }
+          ],
+          "timestamp": 1790600051332
+        }
+      }
+    },
+    {
+      "name": "offline linked banner hidden",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "cannot publish route under offline parent",
+      "actual": [
+        200,
+        409
+      ],
+      "expected": [
+        200,
+        409
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/catalog/routes/248/status",
+        "body": {
+          "status": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 409,
+          "message": "目的地未上架，路线不能上架",
+          "data": null,
+          "timestamp": 1790600051363
+        }
+      }
+    },
+    {
+      "name": "admin can read offline destination",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/catalog/destinations/18",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avgCost": 120.0,
+            "bestSeason": "spring",
+            "city": "TestCity",
+            "coverImg": "https://example.com/admin-test.jpg",
+            "heat": 0,
+            "id": 18,
+            "intro": "Updated description",
+            "latitude": 30.0,
+            "longitude": 120.0,
+            "name": "pw_78037a2120admin",
+            "province": "TestProvince",
+            "routeCount": 1,
+            "status": 0,
+            "tags": [
+              "nature"
+            ]
+          },
+          "timestamp": 1790600051377
+        }
+      }
+    },
+    {
+      "name": "restore parent",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/catalog/destinations/18/status",
+        "body": {
+          "status": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790600051404
+        }
+      }
+    },
+    {
+      "name": "hide attraction",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/catalog/attractions/185",
+        "body": {
+          "name": "Admin attraction",
+          "coverImg": "",
+          "intro": "Attraction fixture",
+          "address": "Test address",
+          "longitude": 120,
+          "latitude": 30,
+          "ticketPrice": 25,
+          "openTime": "09:00-17:00",
+          "durationMin": 60,
+          "tags": [
+            "nature"
+          ],
+          "status": 0
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790600051425
+        }
+      }
+    },
+    {
+      "name": "public attractions list",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/destination/18/attractions",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": [],
+          "timestamp": 1790600051438
+        }
+      }
+    },
+    {
+      "name": "hidden attraction not public",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "reject route with hidden attraction",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/catalog/routes/248",
+        "body": {
+          "title": "pw_78037a2120admin-route",
+          "subtitle": "test",
+          "coverImg": "https://example.com/admin-test.jpg",
+          "destinationId": 18,
+          "days": 2,
+          "price": 250,
+          "difficulty": 1,
+          "tags": [
+            "nature"
+          ],
+          "highlights": "test highlight",
+          "notice": "test notice",
+          "recommendWeight": 0.8,
+          "isTop": 0,
+          "quotaPerDay": 20,
+          "status": 1,
+          "dayList": [
+            {
+              "title": "Day one",
+              "summary": "Morning walk",
+              "items": [
+                {
+                  "title": "Visit attraction",
+                  "timePoint": "09:00",
+                  "attractionId": 185,
+                  "activity": "walking",
+                  "transport": "",
+                  "hotel": "",
+                  "meal": "",
+                  "durationMin": 60,
+                  "cost": 25,
+                  "tips": "Bring water"
+                }
+              ]
+            },
+            {
+              "title": "Day two",
+              "summary": "",
+              "items": [
+                {
+                  "title": "Custom visit",
+                  "timePoint": "09:00",
+                  "attractionId": 0,
+                  "activity": "walking",
+                  "transport": "",
+                  "hotel": "",
+                  "meal": "",
+                  "durationMin": 60,
+                  "cost": 25,
+                  "tips": "Bring water"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "行程关联景点必须属于当前目的地且已上架",
+          "data": null,
+          "timestamp": 1790600051464
+        }
+      }
+    },
+    {
+      "name": "restore attraction",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/catalog/attractions/185",
+        "body": {
+          "name": "Admin attraction",
+          "coverImg": "",
+          "intro": "Attraction fixture",
+          "address": "Test address",
+          "longitude": 120,
+          "latitude": 30,
+          "ticketPrice": 25,
+          "openTime": "09:00-17:00",
+          "durationMin": 60,
+          "tags": [
+            "nature"
+          ],
+          "status": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790600051485
+        }
+      }
+    },
+    {
+      "name": "user management search",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/user/page?keyword=pw_be2c8473fbuser",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "current": 1,
+            "pages": 1,
+            "records": [
+              {
+                "id": 10135,
+                "username": "pw_be2c8473fbuser",
+                "nickname": "pw_be2c8473fbuser",
+                "city": "",
+                "role": "USER",
+                "status": 1,
+                "createTime": "2026-09-28T20:54:08",
+                "lastLoginTime": "2026-09-28T20:54:09"
+              }
+            ],
+            "size": 20,
+            "total": 1
+          },
+          "timestamp": 1790600051499
+        }
+      }
+    },
+    {
+      "name": "user management status",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "user list has no sensitive fields",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "disable user",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/user/10135/status",
+        "body": {
+          "status": 0
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790600051528
+        }
+      }
+    },
+    {
+      "name": "disabled access rejected",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/profile",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期",
+          "data": null,
+          "timestamp": 1790600051543
+        }
+      }
+    },
+    {
+      "name": "disabled login denied",
+      "actual": [
+        200,
+        1002
+      ],
+      "expected": [
+        200,
+        1002
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_be2c8473fbuser",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 1002,
+          "message": "账号已被禁用",
+          "data": null,
+          "timestamp": 1790600051556
+        }
+      }
+    },
+    {
+      "name": "enable user",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/user/10135/status",
+        "body": {
+          "status": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790600051572
+        }
+      }
+    },
+    {
+      "name": "reenabling does not revive old access",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/profile",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期",
+          "data": null,
+          "timestamp": 1790600051608
+        }
+      }
+    },
+    {
+      "name": "new login after enable",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_be2c8473fbuser",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-28T20:54:08",
+              "email": null,
+              "id": 10135,
+              "nickname": "pw_be2c8473fbuser",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_be2c8473fbuser"
+            }
+          },
+          "timestamp": 1790600051725
+        }
+      }
+    },
+    {
+      "name": "protect admin account",
+      "actual": [
+        200,
+        409
+      ],
+      "expected": [
+        200,
+        409
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/user/10136/status",
+        "body": {
+          "status": 0
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 409,
+          "message": "管理员账号受保护，不能在此启停",
+          "data": null,
+          "timestamp": 1790600051741
+        }
+      }
+    },
+    {
+      "name": "strict user status",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/user/10135/status",
+        "body": {
+          "status": "0"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求体格式错误",
+          "data": null,
+          "timestamp": 1790600051754
+        }
+      }
+    },
+    {
+      "name": "fresh session before concurrent disable",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_be2c8473fbuser",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-28T20:54:08",
+              "email": null,
+              "id": 10135,
+              "nickname": "pw_be2c8473fbuser",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_be2c8473fbuser"
+            }
+          },
+          "timestamp": 1790600051867
+        }
+      }
+    },
+    {
+      "name": "concurrent disable succeeds",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "concurrent login accepted or disabled",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "concurrent issued access revoked",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/profile",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期",
+          "data": null,
+          "timestamp": 1790600052006
+        }
+      }
+    },
+    {
+      "name": "concurrent disabled refresh denied",
+      "actual": [
+        200,
+        401
+      ],
+      "expected": [
+        200,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/refresh",
+        "body": {
+          "refreshToken": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期，请重新登录",
+          "data": null,
+          "timestamp": 1790600052017
+        }
+      }
+    },
+    {
+      "name": "reenable after race",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/user/10135/status",
+        "body": {
+          "status": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790600052034
+        }
+      }
+    },
+    {
+      "name": "reenable does not revive refresh",
+      "actual": [
+        200,
+        401
+      ],
+      "expected": [
+        200,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/refresh",
+        "body": {
+          "refreshToken": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期，请重新登录",
+          "data": null,
+          "timestamp": 1790600052048
+        }
+      }
+    },
+    {
+      "name": "admin sanitized logs",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/recommend/log?userId=10135",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "current": 1,
+            "pages": 0,
+            "records": [],
+            "size": 20,
+            "total": 0
+          },
+          "timestamp": 1790600052061
+        }
+      }
+    },
+    {
+      "name": "delete banner",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "DELETE",
+        "path": "/admin/banner/9",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790600052075
+        }
+      }
+    },
+    {
+      "name": "delete attraction",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "DELETE",
+        "path": "/admin/catalog/attractions/185",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790600052097
+        }
+      }
+    },
+    {
+      "name": "attraction soft deleted",
+      "actual": "1",
+      "expected": "1",
+      "passed": true
+    },
+    {
+      "name": "delete route with no booking",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "DELETE",
+        "path": "/admin/catalog/routes/248",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790600052389
+        }
+      }
+    },
+    {
+      "name": "route soft deleted",
+      "actual": "1",
+      "expected": "1",
+      "passed": true
+    },
+    {
+      "name": "delete destination with no route",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "DELETE",
+        "path": "/admin/catalog/destinations/18",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790600052556
+        }
+      }
+    },
+    {
+      "name": "destination soft deleted",
+      "actual": "1",
+      "expected": "1",
+      "passed": true
+    },
+    {
+      "name": "fixture route and days cleaned",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "fixture account and session cleaned",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "fixture account and session cleaned",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "fixture cleanup completed",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    }
+  ],
+  "summary": {
+    "total": 129,
+    "passed": 129,
+    "failed": 0
+  }
+}

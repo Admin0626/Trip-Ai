@@ -15,6 +15,7 @@ import com.trip.security.AuthSessionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.regex.Pattern;
@@ -34,8 +35,10 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
+    @Transactional
     public LoginVO login(LoginDTO dto) {
-        SysUser user = findByName(dto.getUsername());
+        SysUser user = sysUserMapper.selectOne(new LambdaQueryWrapper<SysUser>()
+                .eq(SysUser::getUsername, dto.getUsername()).last("FOR UPDATE"));
         if (user == null) {
             throw new BizException(ResultCode.LOGIN_FAILED);
         }
