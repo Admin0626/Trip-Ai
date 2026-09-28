@@ -1,0 +1,1393 @@
+{
+  "mode": "REAL_LOCAL_AVATAR_HTTP_MYSQL_REDIS",
+  "label": "fixed",
+  "startedAt": "2026-09-28T22:02:30.624887+08:00",
+  "checks": [
+    {
+      "name": "anonymous upload denied",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/file/upload",
+        "body": null,
+        "binaryBytes": null
+      },
+      "response": {
+        "status": 401,
+        "headers": {
+          "Content-Type": "application/json;charset=UTF-8",
+          "Content-Length": "49",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 401,
+          "message": "请先登录",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "register",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "avatar_c232c4feaddf",
+          "password": "<redacted>",
+          "nickname": "头像验收"
+        },
+        "binaryBytes": null
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "219",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "id": 10205,
+            "nickname": "头像验收",
+            "phone": null,
+            "role": "USER",
+            "username": "avatar_c232c4feaddf"
+          },
+          "timestamp": 1790604150865
+        }
+      }
+    },
+    {
+      "name": "login",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "avatar_c232c4feaddf",
+          "password": "<redacted>",
+          "nickname": "头像验收"
+        },
+        "binaryBytes": null
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "1054",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-28T22:02:30",
+              "email": null,
+              "id": 10205,
+              "nickname": "头像验收",
+              "phone": null,
+              "role": "USER",
+              "username": "avatar_c232c4feaddf"
+            }
+          },
+          "timestamp": 1790604151068
+        }
+      }
+    },
+    {
+      "name": "PNG upload",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/file/upload",
+        "body": null,
+        "binaryBytes": 262
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "169",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "name": "7e1cb7ae10c74e6593e6584e83a8c243.png",
+            "url": "/api/files/7e1cb7ae10c74e6593e6584e83a8c243.png"
+          },
+          "timestamp": 1790604151090
+        }
+      }
+    },
+    {
+      "name": "PNG upload generated path",
+      "actual": "/api/files/7e1cb7ae10c74e6593e6584e83a8c243.png",
+      "expected": "/api/files/7e1cb7ae10c74e6593e6584e83a8c243.png",
+      "passed": true
+    },
+    {
+      "name": "PNG save avatar",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/profile",
+        "body": {
+          "avatar": "/api/files/7e1cb7ae10c74e6593e6584e83a8c243.png"
+        },
+        "binaryBytes": null
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "281",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": "/api/files/7e1cb7ae10c74e6593e6584e83a8c243.png",
+            "city": "",
+            "createTime": "2026-09-28T22:02:30",
+            "email": null,
+            "id": 10205,
+            "nickname": "头像验收",
+            "phone": null,
+            "role": "USER",
+            "username": "avatar_c232c4feaddf"
+          },
+          "timestamp": 1790604151114
+        }
+      }
+    },
+    {
+      "name": "PNG save response avatar",
+      "actual": "/api/files/7e1cb7ae10c74e6593e6584e83a8c243.png",
+      "expected": "/api/files/7e1cb7ae10c74e6593e6584e83a8c243.png",
+      "passed": true
+    },
+    {
+      "name": "PNG reread profile",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/profile",
+        "body": null,
+        "binaryBytes": null
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "281",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": "/api/files/7e1cb7ae10c74e6593e6584e83a8c243.png",
+            "city": "",
+            "createTime": "2026-09-28T22:02:30",
+            "email": null,
+            "id": 10205,
+            "nickname": "头像验收",
+            "phone": null,
+            "role": "USER",
+            "username": "avatar_c232c4feaddf"
+          },
+          "timestamp": 1790604151136
+        }
+      }
+    },
+    {
+      "name": "PNG persisted HTTP avatar",
+      "actual": "/api/files/7e1cb7ae10c74e6593e6584e83a8c243.png",
+      "expected": "/api/files/7e1cb7ae10c74e6593e6584e83a8c243.png",
+      "passed": true
+    },
+    {
+      "name": "PNG persisted SQL avatar",
+      "actual": "/api/files/7e1cb7ae10c74e6593e6584e83a8c243.png",
+      "expected": "/api/files/7e1cb7ae10c74e6593e6584e83a8c243.png",
+      "passed": true
+    },
+    {
+      "name": "PNG public image",
+      "actual": [
+        200,
+        null
+      ],
+      "expected": [
+        200,
+        null
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/files/7e1cb7ae10c74e6593e6584e83a8c243.png",
+        "body": null,
+        "binaryBytes": null
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "image/png",
+          "Content-Length": "77",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "bytes": 77,
+          "sha256": "784df963df080411768f8264a6beed0c625c5d05e7adc4fff57c96d07daf7851"
+        }
+      }
+    },
+    {
+      "name": "PNG image bytes unchanged",
+      "actual": "784df963df080411768f8264a6beed0c625c5d05e7adc4fff57c96d07daf7851",
+      "expected": "784df963df080411768f8264a6beed0c625c5d05e7adc4fff57c96d07daf7851",
+      "passed": true
+    },
+    {
+      "name": "PNG content headers",
+      "actual": [
+        "image/png",
+        "nosniff"
+      ],
+      "expected": [
+        "image/png",
+        "nosniff"
+      ],
+      "passed": true
+    },
+    {
+      "name": "JPEG upload",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/file/upload",
+        "body": null,
+        "binaryBytes": 820
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "169",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "name": "84bb8b2c9e6f4018b4809d3d162635bd.jpg",
+            "url": "/api/files/84bb8b2c9e6f4018b4809d3d162635bd.jpg"
+          },
+          "timestamp": 1790604151305
+        }
+      }
+    },
+    {
+      "name": "JPEG upload generated path",
+      "actual": "/api/files/84bb8b2c9e6f4018b4809d3d162635bd.jpg",
+      "expected": "/api/files/84bb8b2c9e6f4018b4809d3d162635bd.jpg",
+      "passed": true
+    },
+    {
+      "name": "JPEG save avatar",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/profile",
+        "body": {
+          "avatar": "/api/files/84bb8b2c9e6f4018b4809d3d162635bd.jpg"
+        },
+        "binaryBytes": null
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "281",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": "/api/files/84bb8b2c9e6f4018b4809d3d162635bd.jpg",
+            "city": "",
+            "createTime": "2026-09-28T22:02:30",
+            "email": null,
+            "id": 10205,
+            "nickname": "头像验收",
+            "phone": null,
+            "role": "USER",
+            "username": "avatar_c232c4feaddf"
+          },
+          "timestamp": 1790604151318
+        }
+      }
+    },
+    {
+      "name": "JPEG save response avatar",
+      "actual": "/api/files/84bb8b2c9e6f4018b4809d3d162635bd.jpg",
+      "expected": "/api/files/84bb8b2c9e6f4018b4809d3d162635bd.jpg",
+      "passed": true
+    },
+    {
+      "name": "JPEG reread profile",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/profile",
+        "body": null,
+        "binaryBytes": null
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "281",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": "/api/files/84bb8b2c9e6f4018b4809d3d162635bd.jpg",
+            "city": "",
+            "createTime": "2026-09-28T22:02:30",
+            "email": null,
+            "id": 10205,
+            "nickname": "头像验收",
+            "phone": null,
+            "role": "USER",
+            "username": "avatar_c232c4feaddf"
+          },
+          "timestamp": 1790604151326
+        }
+      }
+    },
+    {
+      "name": "JPEG persisted HTTP avatar",
+      "actual": "/api/files/84bb8b2c9e6f4018b4809d3d162635bd.jpg",
+      "expected": "/api/files/84bb8b2c9e6f4018b4809d3d162635bd.jpg",
+      "passed": true
+    },
+    {
+      "name": "JPEG persisted SQL avatar",
+      "actual": "/api/files/84bb8b2c9e6f4018b4809d3d162635bd.jpg",
+      "expected": "/api/files/84bb8b2c9e6f4018b4809d3d162635bd.jpg",
+      "passed": true
+    },
+    {
+      "name": "JPEG public image",
+      "actual": [
+        200,
+        null
+      ],
+      "expected": [
+        200,
+        null
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/files/84bb8b2c9e6f4018b4809d3d162635bd.jpg",
+        "body": null,
+        "binaryBytes": null
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "image/jpeg",
+          "Content-Length": "633",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "bytes": 633,
+          "sha256": "79f0780109d947fe3e6f7f9194b211df7c339ee002da23a20f86729febda9e38"
+        }
+      }
+    },
+    {
+      "name": "JPEG image bytes unchanged",
+      "actual": "79f0780109d947fe3e6f7f9194b211df7c339ee002da23a20f86729febda9e38",
+      "expected": "79f0780109d947fe3e6f7f9194b211df7c339ee002da23a20f86729febda9e38",
+      "passed": true
+    },
+    {
+      "name": "JPEG content headers",
+      "actual": [
+        "image/jpeg",
+        "nosniff"
+      ],
+      "expected": [
+        "image/jpeg",
+        "nosniff"
+      ],
+      "passed": true
+    },
+    {
+      "name": "PNG named JPEG uses decoded format",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/file/upload",
+        "body": null,
+        "binaryBytes": 264
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "169",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "name": "2a59024c059e4d1193a131bb99d24bc8.png",
+            "url": "/api/files/2a59024c059e4d1193a131bb99d24bc8.png"
+          },
+          "timestamp": 1790604151475
+        }
+      }
+    },
+    {
+      "name": "PNG named JPEG uses decoded format generated path",
+      "actual": "/api/files/2a59024c059e4d1193a131bb99d24bc8.png",
+      "expected": "/api/files/2a59024c059e4d1193a131bb99d24bc8.png",
+      "passed": true
+    },
+    {
+      "name": "decoded PNG extension",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "empty image rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/file/upload",
+        "body": null,
+        "binaryBytes": 184
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "93",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 400,
+          "message": "图片须非空且不超过5MB",
+          "data": null,
+          "timestamp": 1790604151492
+        }
+      }
+    },
+    {
+      "name": "fake PNG text rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/file/upload",
+        "body": null,
+        "binaryBytes": 204
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "97",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 400,
+          "message": "只支持有效的PNG或JPEG图片",
+          "data": null,
+          "timestamp": 1790604151510
+        }
+      }
+    },
+    {
+      "name": "GIF rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/file/upload",
+        "body": null,
+        "binaryBytes": 229
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "88",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 400,
+          "message": "只支持PNG或JPEG图片",
+          "data": null,
+          "timestamp": 1790604151553
+        }
+      }
+    },
+    {
+      "name": "truncated PNG rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/file/upload",
+        "body": null,
+        "binaryBytes": 217
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "99",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 400,
+          "message": "图片内容损坏或格式不支持",
+          "data": null,
+          "timestamp": 1790604151584
+        }
+      }
+    },
+    {
+      "name": "width over 6000 rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/file/upload",
+        "body": null,
+        "binaryBytes": 217
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "102",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 400,
+          "message": "图片尺寸过大，请压缩后上传",
+          "data": null,
+          "timestamp": 1790604151615
+        }
+      }
+    },
+    {
+      "name": "pixels over 20 million rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/file/upload",
+        "body": null,
+        "binaryBytes": 217
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "102",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 400,
+          "message": "图片尺寸过大，请压缩后上传",
+          "data": null,
+          "timestamp": 1790604151636
+        }
+      }
+    },
+    {
+      "name": "exactly 5 MiB accepted",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/file/upload",
+        "body": null,
+        "binaryBytes": 5243064
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "169",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "name": "bc6c3ce6110b4e56b0fd625d6bd6b1b8.png",
+            "url": "/api/files/bc6c3ce6110b4e56b0fd625d6bd6b1b8.png"
+          },
+          "timestamp": 1790604151755
+        }
+      }
+    },
+    {
+      "name": "exactly 5 MiB accepted generated path",
+      "actual": "/api/files/bc6c3ce6110b4e56b0fd625d6bd6b1b8.png",
+      "expected": "/api/files/bc6c3ce6110b4e56b0fd625d6bd6b1b8.png",
+      "passed": true
+    },
+    {
+      "name": "over 5 MiB rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/file/upload",
+        "body": null,
+        "binaryBytes": 5243065
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "93",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 400,
+          "message": "图片须非空且不超过5MB",
+          "data": null,
+          "timestamp": 1790604151847
+        }
+      }
+    },
+    {
+      "name": "missing multipart file rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/file/upload",
+        "body": null,
+        "binaryBytes": 11
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "107",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 400,
+          "message": "请选择PNG/JPEG图片，单张不超过5MB",
+          "data": null,
+          "timestamp": 1790604151887
+        }
+      }
+    },
+    {
+      "name": "legacy 36 character name avatar rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/profile",
+        "body": {
+          "avatar": "/api/files/9c0348a7-6a1b-41b0-a5ed-ebd1a1fe3a83.png"
+        },
+        "binaryBytes": null
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "123",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 400,
+          "message": "头像必须为本站上传路径或 http/https 图片地址",
+          "data": null,
+          "timestamp": 1790604151895
+        }
+      }
+    },
+    {
+      "name": "unsupported jpeg suffix avatar rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/profile",
+        "body": {
+          "avatar": "/api/files/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.jpeg"
+        },
+        "binaryBytes": null
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "123",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 400,
+          "message": "头像必须为本站上传路径或 http/https 图片地址",
+          "data": null,
+          "timestamp": 1790604151903
+        }
+      }
+    },
+    {
+      "name": "uppercase name avatar rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/profile",
+        "body": {
+          "avatar": "/api/files/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.png"
+        },
+        "binaryBytes": null
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "123",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 400,
+          "message": "头像必须为本站上传路径或 http/https 图片地址",
+          "data": null,
+          "timestamp": 1790604151910
+        }
+      }
+    },
+    {
+      "name": "path traversal avatar rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/profile",
+        "body": {
+          "avatar": "/api/files/../application.yml"
+        },
+        "binaryBytes": null
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "123",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 400,
+          "message": "头像必须为本站上传路径或 http/https 图片地址",
+          "data": null,
+          "timestamp": 1790604151917
+        }
+      }
+    },
+    {
+      "name": "javascript URL avatar rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/profile",
+        "body": {
+          "avatar": "javascript:alert(1)"
+        },
+        "binaryBytes": null
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "123",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 400,
+          "message": "头像必须为本站上传路径或 http/https 图片地址",
+          "data": null,
+          "timestamp": 1790604151925
+        }
+      }
+    },
+    {
+      "name": "URL with userinfo avatar rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/profile",
+        "body": {
+          "avatar": "https://user:pass@example.com/avatar.png"
+        },
+        "binaryBytes": null
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "123",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 400,
+          "message": "头像必须为本站上传路径或 http/https 图片地址",
+          "data": null,
+          "timestamp": 1790604151932
+        }
+      }
+    },
+    {
+      "name": "invalid file name not served",
+      "actual": [
+        404,
+        null
+      ],
+      "expected": [
+        404,
+        null
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/files/not-an-image.png",
+        "body": null,
+        "binaryBytes": null
+      },
+      "response": {
+        "status": 404,
+        "headers": {
+          "Content-Type": null,
+          "Content-Length": "0",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "name": "missing file not served",
+      "actual": [
+        404,
+        null
+      ],
+      "expected": [
+        404,
+        null
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/files/19e73ae2963646bcbd1a837017b6474c.png",
+        "body": null,
+        "binaryBytes": null
+      },
+      "response": {
+        "status": 404,
+        "headers": {
+          "Content-Type": null,
+          "Content-Length": "0",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "name": "HTTPS avatar supported",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/profile",
+        "body": {
+          "avatar": "https://example.com/avatar.png"
+        },
+        "binaryBytes": null
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "264",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": "https://example.com/avatar.png",
+            "city": "",
+            "createTime": "2026-09-28T22:02:30",
+            "email": null,
+            "id": 10205,
+            "nickname": "头像验收",
+            "phone": null,
+            "role": "USER",
+            "username": "avatar_c232c4feaddf"
+          },
+          "timestamp": 1790604152148
+        }
+      }
+    },
+    {
+      "name": "clear avatar",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/profile",
+        "body": {
+          "avatar": ""
+        },
+        "binaryBytes": null
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "234",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": "",
+            "city": "",
+            "createTime": "2026-09-28T22:02:30",
+            "email": null,
+            "id": 10205,
+            "nickname": "头像验收",
+            "phone": null,
+            "role": "USER",
+            "username": "avatar_c232c4feaddf"
+          },
+          "timestamp": 1790604152160
+        }
+      }
+    },
+    {
+      "name": "clear avatar response",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "avatar cleared in SQL",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "other profile fields save",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/profile",
+        "body": {
+          "nickname": "Updated avatar tester",
+          "city": "Hangzhou",
+          "email": "avatar_c232c4feaddf@example.com"
+        },
+        "binaryBytes": null
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "280",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": "",
+            "city": "Hangzhou",
+            "createTime": "2026-09-28T22:02:30",
+            "email": "avatar_c232c4feaddf@example.com",
+            "id": 10205,
+            "nickname": "Updated avatar tester",
+            "phone": null,
+            "role": "USER",
+            "username": "avatar_c232c4feaddf"
+          },
+          "timestamp": 1790604152237
+        }
+      }
+    },
+    {
+      "name": "profile save response reflects changes",
+      "actual": {
+        "nickname": "Updated avatar tester",
+        "city": "Hangzhou",
+        "email": "avatar_c232c4feaddf@example.com"
+      },
+      "expected": {
+        "nickname": "Updated avatar tester",
+        "city": "Hangzhou",
+        "email": "avatar_c232c4feaddf@example.com"
+      },
+      "passed": true
+    },
+    {
+      "name": "partial update clears nullable email",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/profile",
+        "body": {
+          "email": ""
+        },
+        "binaryBytes": null
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Content-Length": "251",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": "",
+            "city": "Hangzhou",
+            "createTime": "2026-09-28T22:02:30",
+            "email": null,
+            "id": 10205,
+            "nickname": "Updated avatar tester",
+            "phone": null,
+            "role": "USER",
+            "username": "avatar_c232c4feaddf"
+          },
+          "timestamp": 1790604152250
+        }
+      }
+    },
+    {
+      "name": "cleared email and preserved nickname in response",
+      "actual": [
+        null,
+        "Updated avatar tester"
+      ],
+      "expected": [
+        null,
+        "Updated avatar tester"
+      ],
+      "passed": true
+    },
+    {
+      "name": "cleared email in SQL",
+      "actual": "1",
+      "expected": "1",
+      "passed": true
+    },
+    {
+      "name": "temporary user cleaned",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "temporary Redis sessions cleaned",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "uploaded file cleaned: 7e1cb7ae10c74e6593e6584e83a8c243.png",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "uploaded file cleaned: 84bb8b2c9e6f4018b4809d3d162635bd.jpg",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "uploaded file cleaned: 2a59024c059e4d1193a131bb99d24bc8.png",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "uploaded file cleaned: bc6c3ce6110b4e56b0fd625d6bd6b1b8.png",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    }
+  ],
+  "summary": {
+    "total": 59,
+    "passed": 59,
+    "failed": 0
+  },
+  "finishedAt": "2026-09-28T22:02:32.559787+08:00"
+}

@@ -9,8 +9,7 @@ import java.util.regex.Pattern;
 /** Deliberately conservative extraction, not a substitute for semantic model parsing. */
 @Component
 public class RuleIntentParser {
-    static final List<String> TAGS = List.of("自然风光", "历史文化", "美食", "亲子", "摄影", "探险",
-            "古城", "慢生活", "海边", "徒步", "温泉", "滑雪", "夜游", "露营", "民俗", "购物");
+    static final List<String> TAGS = com.trip.common.TravelTags.ALL;
 
     public IntentResult parse(String query, List<String> destinationNames) {
         // Reject ambiguous/negated clauses rather than turning exclusions into preferences.

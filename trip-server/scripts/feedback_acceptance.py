@@ -146,13 +146,9 @@ class Acceptance(HttpAcceptance):
                     uid = user["id"]
                     self.sql(f"DELETE FROM feedback WHERE user_id={uid}; DELETE FROM sys_user WHERE id={uid} AND username='{user['name']}'")
                     self.check("temporary account and feedback removed", self.sql(f"SELECT (SELECT COUNT(*) FROM sys_user WHERE id={uid})+(SELECT COUNT(*) FROM feedback WHERE user_id={uid})"), "0")
-                    prefix = "trip:auth:session:{" + str(uid) + "}:"
-                    args = ["redis-cli", "--scan", "--pattern", prefix + "*"]
-                    for key in subprocess.check_output(args, text=True).splitlines():
-                        if not key.startswith(prefix):
-                            raise RuntimeError("Unexpected session key")
-                        subprocess.check_output(["redis-cli", "DEL", key], text=True)
-                    self.check("temporary session keys removed", subprocess.check_output(args, text=True).strip(), "")
+                    from redis_fixture import clean_sessions,session_keys
+                    clean_sessions(uid)
+                    self.check("temporary session keys removed", session_keys(uid), [])
                 except Exception as error:
                     self.check("cleanup completed", type(error).__name__, "no exception")
             self.save()

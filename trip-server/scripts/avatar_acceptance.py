@@ -211,15 +211,8 @@ class Acceptance:
             attempt("temporary user cleaned", clean_user)
         if self.uid is not None:
             def clean_sessions():
-                prefix = "trip:auth:session:{" + str(self.uid) + "}:"
-                keys = subprocess.check_output(["redis-cli", "--scan", "--pattern", prefix + "*"], text=True).splitlines()
-                for key in keys:
-                    if not key.startswith(prefix):
-                        raise RuntimeError("Unexpected session key")
-                    subprocess.check_output(["redis-cli", "DEL", key], text=True)
-                remaining = subprocess.check_output(["redis-cli", "--scan", "--pattern", prefix + "*"], text=True).strip()
-                if remaining:
-                    raise RuntimeError("Temporary sessions remain")
+                from redis_fixture import clean_sessions as clean_redis_sessions
+                clean_redis_sessions(self.uid)
             attempt("temporary Redis sessions cleaned", clean_sessions)
         for name, digest in self.files.items():
             def clean_file(name=name, digest=digest):

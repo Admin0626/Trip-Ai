@@ -1,0 +1,22 @@
+{
+  "source": "20260928-214654-346467-final.json",
+  "checks": [
+    {
+      "userId": 10174,
+      "removedSessions": 0,
+      "remainingSessions": 0,
+      "remainingAccountRows": 0
+    },
+    {
+      "userId": 10175,
+      "removedSessions": 1,
+      "remainingSessions": 0,
+      "remainingAccountRows": 0
+    },
+    {
+      "destinationName": "pw_7b975e0f52aDestination",
+      "remainingRows": 0
+    }
+  ],
+  "passed": true
+}

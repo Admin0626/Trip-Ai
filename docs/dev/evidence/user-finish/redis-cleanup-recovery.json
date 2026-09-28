@@ -1,0 +1,297 @@
+{
+  "method": "Explicit SCAN cursor loop; evidence-owned deleted accounts only",
+  "checks": [
+    {
+      "userId": 14,
+      "removedCount": 0,
+      "remainingCount": 0
+    },
+    {
+      "userId": 15,
+      "removedCount": 0,
+      "remainingCount": 0
+    },
+    {
+      "userId": 18,
+      "removedCount": 0,
+      "remainingCount": 0
+    },
+    {
+      "userId": 19,
+      "removedCount": 0,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10123,
+      "removedCount": 3,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10124,
+      "removedCount": 1,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10125,
+      "removedCount": 1,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10126,
+      "removedCount": 1,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10127,
+      "removedCount": 1,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10128,
+      "removedCount": 1,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10129,
+      "removedCount": 4,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10130,
+      "removedCount": 1,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10131,
+      "removedCount": 3,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10133,
+      "removedCount": 1,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10134,
+      "removedCount": 1,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10135,
+      "removedCount": 0,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10136,
+      "removedCount": 1,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10142,
+      "removedCount": 0,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10143,
+      "removedCount": 1,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10144,
+      "removedCount": 1,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10145,
+      "removedCount": 1,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10146,
+      "removedCount": 1,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10147,
+      "removedCount": 0,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10148,
+      "removedCount": 1,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10149,
+      "removedCount": 1,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10150,
+      "removedCount": 1,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10151,
+      "removedCount": 1,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10152,
+      "removedCount": 1,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10153,
+      "removedCount": 1,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10154,
+      "removedCount": 1,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10155,
+      "removedCount": 2,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10156,
+      "removedCount": 1,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10158,
+      "removedCount": 4,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10159,
+      "removedCount": 1,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10160,
+      "removedCount": 3,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10161,
+      "removedCount": 2,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10162,
+      "removedCount": 2,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10163,
+      "removedCount": 2,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10164,
+      "removedCount": 2,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10170,
+      "removedCount": 2,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10171,
+      "removedCount": 1,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10172,
+      "removedCount": 1,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10174,
+      "removedCount": 0,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10175,
+      "removedCount": 0,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10176,
+      "removedCount": 0,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10177,
+      "removedCount": 0,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10178,
+      "removedCount": 0,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10179,
+      "removedCount": 0,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10181,
+      "removedCount": 0,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10182,
+      "removedCount": 0,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10183,
+      "removedCount": 0,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10184,
+      "removedCount": 0,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10185,
+      "removedCount": 0,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10186,
+      "removedCount": 0,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10187,
+      "removedCount": 0,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10188,
+      "removedCount": 0,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10189,
+      "removedCount": 0,
+      "remainingCount": 0
+    },
+    {
+      "userId": 10190,
+      "removedCount": 0,
+      "remainingCount": 0
+    }
+  ],
+  "passed": true,
+  "historicalNote": "Earlier --scan results on this Windows CLI were empty and did not prove absence. Older unowned sessions are left to TTL; existing users are preserved."
+}

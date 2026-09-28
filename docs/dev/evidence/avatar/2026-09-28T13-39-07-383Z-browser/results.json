@@ -1,0 +1,102 @@
+{
+  "mode": "REAL_EDGE_AVATAR_HTTP_MYSQL_REDIS",
+  "checks": [
+    {
+      "name": "temporary user registered",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "profile form loaded",
+      "actual": "Avatar UI",
+      "expected": "Avatar UI",
+      "passed": true
+    },
+    {
+      "name": "browser uploads PNG",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "uploaded preview decodes",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "profile save succeeds",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "save response has current avatar",
+      "actual": "/api/files/7ba23e465a3f40848b9cfe11e462f643.png",
+      "expected": "/api/files/7ba23e465a3f40848b9cfe11e462f643.png",
+      "passed": true
+    },
+    {
+      "name": "header shows saved avatar",
+      "actual": "/api/files/7ba23e465a3f40848b9cfe11e462f643.png",
+      "expected": "/api/files/7ba23e465a3f40848b9cfe11e462f643.png",
+      "passed": true
+    },
+    {
+      "name": "database contains saved avatar",
+      "actual": "/api/files/7ba23e465a3f40848b9cfe11e462f643.png",
+      "expected": "/api/files/7ba23e465a3f40848b9cfe11e462f643.png",
+      "passed": true
+    },
+    {
+      "name": "local profile stores saved avatar",
+      "actual": "/api/files/7ba23e465a3f40848b9cfe11e462f643.png",
+      "expected": "/api/files/7ba23e465a3f40848b9cfe11e462f643.png",
+      "passed": true
+    },
+    {
+      "name": "reload keeps visible avatar",
+      "actual": "/api/files/7ba23e465a3f40848b9cfe11e462f643.png",
+      "expected": "/api/files/7ba23e465a3f40848b9cfe11e462f643.png",
+      "passed": true
+    },
+    {
+      "name": "mobile has no horizontal overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "mobile upload control visible",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "no page errors",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "temporary user removed",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "temporary sessions removed",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "uploaded fixture removed",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    }
+  ],
+  "errors": []
+}

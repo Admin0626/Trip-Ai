@@ -1,0 +1,1521 @@
+{
+  "time": "20260928-213030-730022",
+  "baseUrl": "http://localhost:8080/api",
+  "mode": "REAL_HTTP_RULE_ONLY",
+  "checks": [
+    {
+      "name": "fixture registration",
+      "path": "/auth/register",
+      "request": "<redacted>",
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 200,
+      "response": {
+        "code": 200
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 182
+    },
+    {
+      "name": "fixture login",
+      "path": "/auth/login",
+      "request": "<redacted>",
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 200,
+      "response": {
+        "code": 200
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 119
+    },
+    {
+      "name": "anonymous rejected",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {
+          "destinations": [
+            "match_e771623817"
+          ],
+          "days": 5,
+          "budget": 2000,
+          "preferenceTags": [
+            "自然风光",
+            "美食"
+          ]
+        },
+        "topN": 5
+      },
+      "http": 401,
+      "expectedHttp": 401,
+      "expectedCode": 401,
+      "response": {
+        "code": 401,
+        "message": "请先登录",
+        "data": null
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 4
+    },
+    {
+      "name": "hard filters and tag order",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {
+          "destinations": [
+            "match_e771623817"
+          ],
+          "days": 5,
+          "budget": 2000,
+          "preferenceTags": [
+            "自然风光",
+            "美食"
+          ]
+        },
+        "topN": 5
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 200,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "totalCandidates": 2,
+          "recallDetail": {
+            "content": 2,
+            "behavior": 0,
+            "cf": 0,
+            "hot": 0
+          },
+          "costMs": 2,
+          "source": "RULE_BASED",
+          "unsupportedCriteria": [],
+          "list": [
+            {
+              "routeId": 273,
+              "title": "match_e771623817-both",
+              "coverImg": "",
+              "destinationName": "match_e7716238170",
+              "days": 5,
+              "price": 1000.0,
+              "tags": [
+                "自然风光",
+                "美食"
+              ],
+              "recallScore": 1.0,
+              "llmScore": null,
+              "reason": "目的地符合、天数一致、人均参考价在预算内、自然风光、美食",
+              "highlightMatch": [
+                "目的地符合",
+                "天数一致",
+                "人均参考价在预算内",
+                "自然风光",
+                "美食"
+              ]
+            },
+            {
+              "routeId": 274,
+              "title": "match_e771623817-one",
+              "coverImg": "",
+              "destinationName": "match_e7716238170",
+              "days": 5,
+              "price": 1500.0,
+              "tags": [
+                "美食"
+              ],
+              "recallScore": 0.5,
+              "llmScore": null,
+              "reason": "目的地符合、天数一致、人均参考价在预算内、美食",
+              "highlightMatch": [
+                "目的地符合",
+                "天数一致",
+                "人均参考价在预算内",
+                "美食"
+              ]
+            }
+          ],
+          "effectiveCriteria": {
+            "destinations": [
+              "match_e771623817"
+            ],
+            "days": 5,
+            "budgetMin": null,
+            "budgetMax": 2000,
+            "preferenceTags": [
+              "自然风光",
+              "美食"
+            ],
+            "avoid": []
+          },
+          "savedPreferenceFields": []
+        },
+        "timestamp": 1790602232307
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 27
+    },
+    {
+      "name": "no invented model scores",
+      "actual": [
+        null,
+        null
+      ],
+      "expected": [
+        null,
+        null
+      ],
+      "passed": true
+    },
+    {
+      "name": "exact tag fraction",
+      "actual": [
+        1.0,
+        0.5
+      ],
+      "expected": [
+        1,
+        0.5
+      ],
+      "passed": true
+    },
+    {
+      "name": "honest source",
+      "actual": "RULE_BASED",
+      "expected": "RULE_BASED",
+      "passed": true
+    },
+    {
+      "name": "topN does not change total",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {
+          "destinations": [
+            "match_e771623817"
+          ],
+          "days": 5,
+          "budget": 2000,
+          "preferenceTags": [
+            "自然风光",
+            "美食"
+          ]
+        },
+        "topN": 1
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 200,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "totalCandidates": 2,
+          "recallDetail": {
+            "content": 2,
+            "behavior": 0,
+            "cf": 0,
+            "hot": 0
+          },
+          "costMs": 2,
+          "source": "RULE_BASED",
+          "unsupportedCriteria": [],
+          "list": [
+            {
+              "routeId": 273,
+              "title": "match_e771623817-both",
+              "coverImg": "",
+              "destinationName": "match_e7716238170",
+              "days": 5,
+              "price": 1000.0,
+              "tags": [
+                "自然风光",
+                "美食"
+              ],
+              "recallScore": 1.0,
+              "llmScore": null,
+              "reason": "目的地符合、天数一致、人均参考价在预算内、自然风光、美食",
+              "highlightMatch": [
+                "目的地符合",
+                "天数一致",
+                "人均参考价在预算内",
+                "自然风光",
+                "美食"
+              ]
+            }
+          ],
+          "effectiveCriteria": {
+            "destinations": [
+              "match_e771623817"
+            ],
+            "days": 5,
+            "budgetMin": null,
+            "budgetMax": 2000,
+            "preferenceTags": [
+              "自然风光",
+              "美食"
+            ],
+            "avoid": []
+          },
+          "savedPreferenceFields": []
+        },
+        "timestamp": 1790602232327
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 13
+    },
+    {
+      "name": "default limit with null topN",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {
+          "destinations": [
+            "match_e771623817"
+          ],
+          "days": 5,
+          "budget": 2000,
+          "preferenceTags": [
+            "自然风光",
+            "美食"
+          ]
+        },
+        "topN": null
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 200,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "totalCandidates": 2,
+          "recallDetail": {
+            "content": 2,
+            "behavior": 0,
+            "cf": 0,
+            "hot": 0
+          },
+          "costMs": 2,
+          "source": "RULE_BASED",
+          "unsupportedCriteria": [],
+          "list": [
+            {
+              "routeId": 273,
+              "title": "match_e771623817-both",
+              "coverImg": "",
+              "destinationName": "match_e7716238170",
+              "days": 5,
+              "price": 1000.0,
+              "tags": [
+                "自然风光",
+                "美食"
+              ],
+              "recallScore": 1.0,
+              "llmScore": null,
+              "reason": "目的地符合、天数一致、人均参考价在预算内、自然风光、美食",
+              "highlightMatch": [
+                "目的地符合",
+                "天数一致",
+                "人均参考价在预算内",
+                "自然风光",
+                "美食"
+              ]
+            },
+            {
+              "routeId": 274,
+              "title": "match_e771623817-one",
+              "coverImg": "",
+              "destinationName": "match_e7716238170",
+              "days": 5,
+              "price": 1500.0,
+              "tags": [
+                "美食"
+              ],
+              "recallScore": 0.5,
+              "llmScore": null,
+              "reason": "目的地符合、天数一致、人均参考价在预算内、美食",
+              "highlightMatch": [
+                "目的地符合",
+                "天数一致",
+                "人均参考价在预算内",
+                "美食"
+              ]
+            }
+          ],
+          "effectiveCriteria": {
+            "destinations": [
+              "match_e771623817"
+            ],
+            "days": 5,
+            "budgetMin": null,
+            "budgetMax": 2000,
+            "preferenceTags": [
+              "自然风光",
+              "美食"
+            ],
+            "avoid": []
+          },
+          "savedPreferenceFields": []
+        },
+        "timestamp": 1790602232345
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 15
+    },
+    {
+      "name": "budget boundary inclusive",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {
+          "destinations": [
+            "match_e771623817"
+          ],
+          "days": 5,
+          "budget": 1000,
+          "preferenceTags": [
+            "自然风光",
+            "美食"
+          ]
+        },
+        "topN": 5
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 200,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "totalCandidates": 1,
+          "recallDetail": {
+            "content": 1,
+            "behavior": 0,
+            "cf": 0,
+            "hot": 0
+          },
+          "costMs": 2,
+          "source": "RULE_BASED",
+          "unsupportedCriteria": [],
+          "list": [
+            {
+              "routeId": 273,
+              "title": "match_e771623817-both",
+              "coverImg": "",
+              "destinationName": "match_e7716238170",
+              "days": 5,
+              "price": 1000.0,
+              "tags": [
+                "自然风光",
+                "美食"
+              ],
+              "recallScore": 1.0,
+              "llmScore": null,
+              "reason": "目的地符合、天数一致、人均参考价在预算内、自然风光、美食",
+              "highlightMatch": [
+                "目的地符合",
+                "天数一致",
+                "人均参考价在预算内",
+                "自然风光",
+                "美食"
+              ]
+            }
+          ],
+          "effectiveCriteria": {
+            "destinations": [
+              "match_e771623817"
+            ],
+            "days": 5,
+            "budgetMin": null,
+            "budgetMax": 1000,
+            "preferenceTags": [
+              "自然风光",
+              "美食"
+            ],
+            "avoid": []
+          },
+          "savedPreferenceFields": []
+        },
+        "timestamp": 1790602232361
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 13
+    },
+    {
+      "name": "price just outside excluded",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {
+          "destinations": [
+            "match_e771623817"
+          ],
+          "days": 5,
+          "budget": 999,
+          "preferenceTags": [
+            "自然风光",
+            "美食"
+          ]
+        },
+        "topN": 5
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 200,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "totalCandidates": 0,
+          "recallDetail": {
+            "content": 0,
+            "behavior": 0,
+            "cf": 0,
+            "hot": 0
+          },
+          "costMs": 2,
+          "source": "RULE_BASED",
+          "unsupportedCriteria": [],
+          "list": [],
+          "effectiveCriteria": {
+            "destinations": [
+              "match_e771623817"
+            ],
+            "days": 5,
+            "budgetMin": null,
+            "budgetMax": 999,
+            "preferenceTags": [
+              "自然风光",
+              "美食"
+            ],
+            "avoid": []
+          },
+          "savedPreferenceFields": []
+        },
+        "timestamp": 1790602232376
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 14
+    },
+    {
+      "name": "exclude exact tags",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {
+          "destinations": [
+            "match_e771623817"
+          ],
+          "days": 5,
+          "avoid": [
+            "美食"
+          ]
+        },
+        "topN": 5
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 200,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "totalCandidates": 1,
+          "recallDetail": {
+            "content": 1,
+            "behavior": 0,
+            "cf": 0,
+            "hot": 0
+          },
+          "costMs": 2,
+          "source": "RULE_BASED",
+          "unsupportedCriteria": [],
+          "list": [
+            {
+              "routeId": 275,
+              "title": "match_e771623817-substring",
+              "coverImg": "",
+              "destinationName": "match_e7716238170",
+              "days": 5,
+              "price": 4000.0,
+              "tags": [
+                "美食街"
+              ],
+              "recallScore": 0.0,
+              "llmScore": null,
+              "reason": "目的地符合、天数一致",
+              "highlightMatch": [
+                "目的地符合",
+                "天数一致"
+              ]
+            }
+          ],
+          "effectiveCriteria": {
+            "destinations": [
+              "match_e771623817"
+            ],
+            "days": 5,
+            "budgetMin": null,
+            "budgetMax": null,
+            "preferenceTags": [],
+            "avoid": [
+              "美食"
+            ]
+          },
+          "savedPreferenceFields": []
+        },
+        "timestamp": 1790602232391
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 12
+    },
+    {
+      "name": "empty preferences sort rating",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {
+          "destinations": [
+            "match_e771623817"
+          ],
+          "days": 5
+        },
+        "topN": 5
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 200,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "totalCandidates": 3,
+          "recallDetail": {
+            "content": 3,
+            "behavior": 0,
+            "cf": 0,
+            "hot": 0
+          },
+          "costMs": 2,
+          "source": "RULE_BASED",
+          "unsupportedCriteria": [],
+          "list": [
+            {
+              "routeId": 274,
+              "title": "match_e771623817-one",
+              "coverImg": "",
+              "destinationName": "match_e7716238170",
+              "days": 5,
+              "price": 1500.0,
+              "tags": [
+                "美食"
+              ],
+              "recallScore": 0.0,
+              "llmScore": null,
+              "reason": "目的地符合、天数一致",
+              "highlightMatch": [
+                "目的地符合",
+                "天数一致"
+              ]
+            },
+            {
+              "routeId": 275,
+              "title": "match_e771623817-substring",
+              "coverImg": "",
+              "destinationName": "match_e7716238170",
+              "days": 5,
+              "price": 4000.0,
+              "tags": [
+                "美食街"
+              ],
+              "recallScore": 0.0,
+              "llmScore": null,
+              "reason": "目的地符合、天数一致",
+              "highlightMatch": [
+                "目的地符合",
+                "天数一致"
+              ]
+            },
+            {
+              "routeId": 273,
+              "title": "match_e771623817-both",
+              "coverImg": "",
+              "destinationName": "match_e7716238170",
+              "days": 5,
+              "price": 1000.0,
+              "tags": [
+                "自然风光",
+                "美食"
+              ],
+              "recallScore": 0.0,
+              "llmScore": null,
+              "reason": "目的地符合、天数一致",
+              "highlightMatch": [
+                "目的地符合",
+                "天数一致"
+              ]
+            }
+          ],
+          "effectiveCriteria": {
+            "destinations": [
+              "match_e771623817"
+            ],
+            "days": 5,
+            "budgetMin": null,
+            "budgetMax": null,
+            "preferenceTags": [],
+            "avoid": []
+          },
+          "savedPreferenceFields": []
+        },
+        "timestamp": 1790602232405
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 12
+    },
+    {
+      "name": "duplicates do not inflate score",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {
+          "destinations": [
+            "match_e771623817"
+          ],
+          "days": 5,
+          "budget": 2000,
+          "preferenceTags": [
+            "美食",
+            "美食"
+          ]
+        },
+        "topN": 5
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 200,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "totalCandidates": 2,
+          "recallDetail": {
+            "content": 2,
+            "behavior": 0,
+            "cf": 0,
+            "hot": 0
+          },
+          "costMs": 1,
+          "source": "RULE_BASED",
+          "unsupportedCriteria": [],
+          "list": [
+            {
+              "routeId": 274,
+              "title": "match_e771623817-one",
+              "coverImg": "",
+              "destinationName": "match_e7716238170",
+              "days": 5,
+              "price": 1500.0,
+              "tags": [
+                "美食"
+              ],
+              "recallScore": 1.0,
+              "llmScore": null,
+              "reason": "目的地符合、天数一致、人均参考价在预算内、美食",
+              "highlightMatch": [
+                "目的地符合",
+                "天数一致",
+                "人均参考价在预算内",
+                "美食"
+              ]
+            },
+            {
+              "routeId": 273,
+              "title": "match_e771623817-both",
+              "coverImg": "",
+              "destinationName": "match_e7716238170",
+              "days": 5,
+              "price": 1000.0,
+              "tags": [
+                "自然风光",
+                "美食"
+              ],
+              "recallScore": 1.0,
+              "llmScore": null,
+              "reason": "目的地符合、天数一致、人均参考价在预算内、美食",
+              "highlightMatch": [
+                "目的地符合",
+                "天数一致",
+                "人均参考价在预算内",
+                "美食"
+              ]
+            }
+          ],
+          "effectiveCriteria": {
+            "destinations": [
+              "match_e771623817"
+            ],
+            "days": 5,
+            "budgetMin": null,
+            "budgetMax": 2000,
+            "preferenceTags": [
+              "美食"
+            ],
+            "avoid": []
+          },
+          "savedPreferenceFields": []
+        },
+        "timestamp": 1790602232433
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 26
+    },
+    {
+      "name": "unsupported fields explicitly reported",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {
+          "destinations": [
+            "match_e771623817"
+          ],
+          "days": 5,
+          "budget": 2000,
+          "preferenceTags": [
+            "自然风光",
+            "美食"
+          ],
+          "pace": "relaxed",
+          "travelMonth": 10
+        },
+        "topN": 5
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 200,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "totalCandidates": 2,
+          "recallDetail": {
+            "content": 2,
+            "behavior": 0,
+            "cf": 0,
+            "hot": 0
+          },
+          "costMs": 2,
+          "source": "RULE_BASED",
+          "unsupportedCriteria": [
+            "pace",
+            "travelMonth"
+          ],
+          "list": [
+            {
+              "routeId": 273,
+              "title": "match_e771623817-both",
+              "coverImg": "",
+              "destinationName": "match_e7716238170",
+              "days": 5,
+              "price": 1000.0,
+              "tags": [
+                "自然风光",
+                "美食"
+              ],
+              "recallScore": 1.0,
+              "llmScore": null,
+              "reason": "目的地符合、天数一致、人均参考价在预算内、自然风光、美食",
+              "highlightMatch": [
+                "目的地符合",
+                "天数一致",
+                "人均参考价在预算内",
+                "自然风光",
+                "美食"
+              ]
+            },
+            {
+              "routeId": 274,
+              "title": "match_e771623817-one",
+              "coverImg": "",
+              "destinationName": "match_e7716238170",
+              "days": 5,
+              "price": 1500.0,
+              "tags": [
+                "美食"
+              ],
+              "recallScore": 0.5,
+              "llmScore": null,
+              "reason": "目的地符合、天数一致、人均参考价在预算内、美食",
+              "highlightMatch": [
+                "目的地符合",
+                "天数一致",
+                "人均参考价在预算内",
+                "美食"
+              ]
+            }
+          ],
+          "effectiveCriteria": {
+            "destinations": [
+              "match_e771623817"
+            ],
+            "days": 5,
+            "budgetMin": null,
+            "budgetMax": 2000,
+            "preferenceTags": [
+              "自然风光",
+              "美食"
+            ],
+            "avoid": []
+          },
+          "savedPreferenceFields": []
+        },
+        "timestamp": 1790602232448
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 14
+    },
+    {
+      "name": "unknown destination stays empty",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {
+          "destinations": [
+            "不存在的目的地match_e771623817"
+          ]
+        },
+        "topN": 5
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 200,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "totalCandidates": 0,
+          "recallDetail": {
+            "content": 0,
+            "behavior": 0,
+            "cf": 0,
+            "hot": 0
+          },
+          "costMs": 1,
+          "source": "RULE_BASED",
+          "unsupportedCriteria": [],
+          "list": [],
+          "effectiveCriteria": {
+            "destinations": [
+              "不存在的目的地match_e771623817"
+            ],
+            "days": null,
+            "budgetMin": null,
+            "budgetMax": null,
+            "preferenceTags": [],
+            "avoid": []
+          },
+          "savedPreferenceFields": []
+        },
+        "timestamp": 1790602232462
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 12
+    },
+    {
+      "name": "SQL syntax is literal data",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {
+          "destinations": [
+            "' OR 1=1 --"
+          ]
+        },
+        "topN": 5
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 200,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "totalCandidates": 0,
+          "recallDetail": {
+            "content": 0,
+            "behavior": 0,
+            "cf": 0,
+            "hot": 0
+          },
+          "costMs": 1,
+          "source": "RULE_BASED",
+          "unsupportedCriteria": [],
+          "list": [],
+          "effectiveCriteria": {
+            "destinations": [
+              "' OR 1=1 --"
+            ],
+            "days": null,
+            "budgetMin": null,
+            "budgetMax": null,
+            "preferenceTags": [],
+            "avoid": []
+          },
+          "savedPreferenceFields": []
+        },
+        "timestamp": 1790602232496
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 30
+    },
+    {
+      "name": "wildcard is literal data",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {
+          "destinations": [
+            "%"
+          ]
+        },
+        "topN": 5
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 200,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "totalCandidates": 0,
+          "recallDetail": {
+            "content": 0,
+            "behavior": 0,
+            "cf": 0,
+            "hot": 0
+          },
+          "costMs": 1,
+          "source": "RULE_BASED",
+          "unsupportedCriteria": [],
+          "list": [],
+          "effectiveCriteria": {
+            "destinations": [
+              "%"
+            ],
+            "days": null,
+            "budgetMin": null,
+            "budgetMax": null,
+            "preferenceTags": [],
+            "avoid": []
+          },
+          "savedPreferenceFields": []
+        },
+        "timestamp": 1790602232512
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 14
+    },
+    {
+      "name": "empty filters allowed",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {},
+        "topN": 5
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 200,
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "totalCandidates": 24,
+          "recallDetail": {
+            "content": 24,
+            "behavior": 0,
+            "cf": 0,
+            "hot": 0
+          },
+          "costMs": 2,
+          "source": "RULE_BASED",
+          "unsupportedCriteria": [],
+          "list": [
+            {
+              "routeId": 202,
+              "title": "云南西双版纳 4 日雨林探秘",
+              "coverImg": "https://oss.example.com/trip/route/202.jpg",
+              "destinationName": "云南",
+              "days": 4,
+              "price": 2680.0,
+              "tags": [
+                "亲子",
+                "探险",
+                "美食"
+              ],
+              "recallScore": 0.0,
+              "llmScore": null,
+              "reason": "在架路线，按用户评分排序",
+              "highlightMatch": []
+            },
+            {
+              "routeId": 204,
+              "title": "大理苍山洱海 6 日深度游",
+              "coverImg": "https://oss.example.com/trip/route/204.jpg",
+              "destinationName": "大理",
+              "days": 6,
+              "price": 3980.0,
+              "tags": [
+                "自然风光",
+                "历史文化",
+                "徒步"
+              ],
+              "recallScore": 0.0,
+              "llmScore": null,
+              "reason": "在架路线，按用户评分排序",
+              "highlightMatch": []
+            },
+            {
+              "routeId": 210,
+              "title": "三亚 4 日浪漫海岛游",
+              "coverImg": "https://oss.example.com/trip/route/210.jpg",
+              "destinationName": "三亚",
+              "days": 4,
+              "price": 4280.0,
+              "tags": [
+                "海边",
+                "情侣",
+                "度假"
+              ],
+              "recallScore": 0.0,
+              "llmScore": null,
+              "reason": "在架路线，按用户评分排序",
+              "highlightMatch": []
+            },
+            {
+              "routeId": 211,
+              "title": "张家界武陵源 3 日奇峰之旅",
+              "coverImg": "https://oss.example.com/trip/route/211.jpg",
+              "destinationName": "张家界",
+              "days": 3,
+              "price": 1980.0,
+              "tags": [
+                "自然风光",
+                "摄影",
+                "探险"
+              ],
+              "recallScore": 0.0,
+              "llmScore": null,
+              "reason": "在架路线，按用户评分排序",
+              "highlightMatch": []
+            },
+            {
+              "routeId": 213,
+              "title": "桂林漓江阳朔 4 日山水游",
+              "coverImg": "https://oss.example.com/trip/route/213.jpg",
+              "destinationName": "桂林",
+              "days": 4,
+              "price": 2680.0,
+              "tags": [
+                "自然风光",
+                "摄影",
+                "休闲"
+              ],
+              "recallScore": 0.0,
+              "llmScore": null,
+              "reason": "在架路线，按用户评分排序",
+              "highlightMatch": []
+            }
+          ],
+          "effectiveCriteria": {
+            "destinations": [],
+            "days": null,
+            "budgetMin": null,
+            "budgetMax": null,
+            "preferenceTags": [],
+            "avoid": []
+          },
+          "savedPreferenceFields": []
+        },
+        "timestamp": 1790602232529
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 15
+    },
+    {
+      "name": "missing intent",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": null,
+        "topN": 5
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 400,
+      "response": {
+        "code": 400,
+        "message": "intent不能为空",
+        "data": null,
+        "timestamp": 1790602232542
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 10
+    },
+    {
+      "name": "days zero",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {
+          "days": 0
+        },
+        "topN": 5
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 400,
+      "response": {
+        "code": 400,
+        "message": "days须为1—365的整数",
+        "data": null,
+        "timestamp": 1790602232556
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 11
+    },
+    {
+      "name": "days too large",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {
+          "days": 366
+        },
+        "topN": 5
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 400,
+      "response": {
+        "code": 400,
+        "message": "days须为1—365的整数",
+        "data": null,
+        "timestamp": 1790602232568
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 10
+    },
+    {
+      "name": "numeric string",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {
+          "days": "5"
+        },
+        "topN": 5
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 400,
+      "response": {
+        "code": 400,
+        "message": "days须为1—365的整数",
+        "data": null,
+        "timestamp": 1790602232581
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 10
+    },
+    {
+      "name": "fraction",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {
+          "days": 5.5
+        },
+        "topN": 5
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 400,
+      "response": {
+        "code": 400,
+        "message": "days须为1—365的整数",
+        "data": null,
+        "timestamp": 1790602232593
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 9
+    },
+    {
+      "name": "boolean number",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {
+          "days": true
+        },
+        "topN": 5
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 400,
+      "response": {
+        "code": 400,
+        "message": "days须为1—365的整数",
+        "data": null,
+        "timestamp": 1790602232616
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 20
+    },
+    {
+      "name": "negative budget",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {
+          "budget": -1
+        },
+        "topN": 5
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 400,
+      "response": {
+        "code": 400,
+        "message": "budget须为1—1000000的整数",
+        "data": null,
+        "timestamp": 1790602232626
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 9
+    },
+    {
+      "name": "huge budget",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {
+          "budget": 1000001
+        },
+        "topN": 5
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 400,
+      "response": {
+        "code": 400,
+        "message": "budget须为1—1000000的整数",
+        "data": null,
+        "timestamp": 1790602232638
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 9
+    },
+    {
+      "name": "bad destinations type",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {
+          "destinations": "云南"
+        },
+        "topN": 5
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 400,
+      "response": {
+        "code": 400,
+        "message": "destinations须为最多3项的数组",
+        "data": null,
+        "timestamp": 1790602232649
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 9
+    },
+    {
+      "name": "null list element",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {
+          "destinations": [
+            null
+          ]
+        },
+        "topN": 5
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 400,
+      "response": {
+        "code": 400,
+        "message": "destinations包含非法文本",
+        "data": null,
+        "timestamp": 1790602232662
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 11
+    },
+    {
+      "name": "too many destinations",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {
+          "destinations": [
+            "a",
+            "b",
+            "c",
+            "d"
+          ]
+        },
+        "topN": 5
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 400,
+      "response": {
+        "code": 400,
+        "message": "destinations须为最多3项的数组",
+        "data": null,
+        "timestamp": 1790602232675
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 10
+    },
+    {
+      "name": "unsupported tag",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {
+          "preferenceTags": [
+            "美食街"
+          ]
+        },
+        "topN": 5
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 400,
+      "response": {
+        "code": 400,
+        "message": "preferenceTags包含不支持的标签",
+        "data": null,
+        "timestamp": 1790602232687
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 9
+    },
+    {
+      "name": "conflicting tags",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {
+          "preferenceTags": [
+            "美食"
+          ],
+          "avoid": [
+            "美食"
+          ]
+        },
+        "topN": 5
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 400,
+      "response": {
+        "code": 400,
+        "message": "偏好与排除标签不能重叠",
+        "data": null,
+        "timestamp": 1790602232698
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 9
+    },
+    {
+      "name": "topN zero",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {},
+        "topN": 0
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 400,
+      "response": {
+        "code": 400,
+        "message": "topN须为1—20的整数",
+        "data": null,
+        "timestamp": 1790602232726
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 25
+    },
+    {
+      "name": "topN over limit",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {},
+        "topN": 21
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 400,
+      "response": {
+        "code": 400,
+        "message": "topN须为1—20的整数",
+        "data": null,
+        "timestamp": 1790602232756
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 29
+    },
+    {
+      "name": "topN string",
+      "path": "/ai/recommend/match",
+      "request": {
+        "intent": {},
+        "topN": "5"
+      },
+      "http": 200,
+      "expectedHttp": 200,
+      "expectedCode": 400,
+      "response": {
+        "code": 400,
+        "message": "topN须为1—20的整数",
+        "data": null,
+        "timestamp": 1790602232768
+      },
+      "passed": true,
+      "checkError": "",
+      "durationMs": 9
+    },
+    {
+      "name": "match does not create model call logs",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "fixture account removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ]
+}

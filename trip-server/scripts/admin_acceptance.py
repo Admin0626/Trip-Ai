@@ -166,9 +166,9 @@ class Acceptance(Base):
                 for did in self.dest_ids:self.sql(f'DELETE FROM attraction WHERE destination_id={did}; DELETE FROM destination WHERE id={did}')
                 for user in self.users:
                     uid=user['id'];self.sql(f'DELETE FROM user_behavior WHERE user_id={uid}; DELETE FROM user_preference WHERE user_id={uid}; DELETE FROM sys_user WHERE id={uid}')
-                    args=['redis-cli','--scan','--pattern','trip:auth:session:{'+str(uid)+'}:*']
-                    for key in subprocess.check_output(args,text=True).splitlines():subprocess.check_output(['redis-cli','DEL',key],text=True)
-                    self.check('fixture account and session cleaned',self.sql(f'SELECT COUNT(*) FROM sys_user WHERE id={uid}')+subprocess.check_output(args,text=True).strip(),'0')
+                    from redis_fixture import clean_sessions,session_keys
+                    clean_sessions(uid)
+                    self.check('fixture account and session cleaned',[self.sql(f'SELECT COUNT(*) FROM sys_user WHERE id={uid}'),session_keys(uid)],['0',[]])
                 self.check('fixture cleanup completed',True,True)
             except Exception as error:self.check('cleanup completed',type(error).__name__,'no exception')
             self.save()

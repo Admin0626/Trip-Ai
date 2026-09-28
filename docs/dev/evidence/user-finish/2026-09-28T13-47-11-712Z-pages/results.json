@@ -1,0 +1,400 @@
+{
+  "mode": "REAL_EDGE_USER_FINISH",
+  "stage": "destination",
+  "checks": [
+    {
+      "name": "profile shows four statistics",
+      "actual": 4,
+      "expected": 4,
+      "passed": true
+    },
+    {
+      "name": "new user statistics zero",
+      "actual": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "expected": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "passed": true
+    },
+    {
+      "name": "stats HTTP reflects records",
+      "actual": {
+        "favoriteCount": 1,
+        "bookingCount": 1,
+        "commentCount": 1,
+        "planCount": 1,
+        "chatCount": 0
+      },
+      "expected": {
+        "favoriteCount": 1,
+        "bookingCount": 1,
+        "commentCount": 1,
+        "planCount": 1,
+        "chatCount": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "four rendered counts update",
+      "actual": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "expected": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "passed": true
+    },
+    {
+      "name": "stats network failure explained",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "stats retry restores response",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "invalid profile phone has actual rejection",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "invalid preference range explained",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "preference saved via page",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "preference decimals persisted",
+      "actual": [
+        150.5,
+        300.5
+      ],
+      "expected": [
+        150.5,
+        300.5
+      ],
+      "passed": true
+    },
+    {
+      "name": "saved preference reloads days",
+      "actual": 3,
+      "expected": 3,
+      "passed": true
+    },
+    {
+      "name": "failed preference load blocks saving",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "preference load recovers",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real intent response",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "saved days prefilled",
+      "actual": 3,
+      "expected": 3,
+      "passed": true
+    },
+    {
+      "name": "saved decimal bounds prefilled",
+      "actual": [
+        150.5,
+        300.5
+      ],
+      "expected": [
+        150.5,
+        300.5
+      ],
+      "passed": true
+    },
+    {
+      "name": "saved origins shown",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "saved preference actual route ordering",
+      "actual": [
+        324,
+        325
+      ],
+      "expected": [
+        324,
+        325
+      ],
+      "passed": true
+    },
+    {
+      "name": "two matching cards render",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "effective budget visible",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "saved preference switch disabled",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "opt out removes default filters",
+      "actual": 4,
+      "expected": 4,
+      "passed": true
+    },
+    {
+      "name": "explicit clear is not refilled",
+      "actual": 4,
+      "expected": 4,
+      "passed": true
+    },
+    {
+      "name": "explicit clear reflected by server",
+      "actual": [
+        null,
+        null,
+        null,
+        [],
+        []
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        [],
+        []
+      ],
+      "passed": true
+    },
+    {
+      "name": "real intent response",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "explicit query conditions win over saved defaults",
+      "actual": [
+        5,
+        null,
+        500,
+        [
+          "美食"
+        ]
+      ],
+      "expected": [
+        5,
+        null,
+        500,
+        [
+          "美食"
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "name": "explicit request gets correct route",
+      "actual": [
+        327
+      ],
+      "expected": [
+        327
+      ],
+      "passed": true
+    },
+    {
+      "name": "mobile recommendation has no overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "only active attraction shown",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "hidden attraction absent",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "only public routes in destination",
+      "actual": 4,
+      "expected": 4,
+      "passed": true
+    },
+    {
+      "name": "mobile destination has no overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "offline destination removes old detail",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "destination retry works",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "profile mobile has no overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "deleted comment changes statistics",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "preference mobile has no overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "fixture sessions removed",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "fixture user removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "fixture content removed",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "no unhandled browser errors",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "fixtures": {
+    "users": [
+      {
+        "name": "finish_1d52ea4f6a",
+        "id": 10183
+      }
+    ],
+    "routes": [
+      324,
+      325,
+      326,
+      327,
+      328
+    ],
+    "destinations": [
+      39
+    ]
+  },
+  "httpCodes": [
+    {
+      "path": "/auth/register",
+      "method": "POST",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/auth/login",
+      "method": "POST",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/interaction/favorite",
+      "method": "POST",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/interaction/booking",
+      "method": "POST",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/interaction/comment",
+      "method": "POST",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/plan",
+      "method": "POST",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/interaction/comment/5304",
+      "method": "DELETE",
+      "http": 200,
+      "code": 200
+    }
+  ],
+  "summary": {
+    "total": 41,
+    "passed": 41,
+    "failed": 0
+  }
+}

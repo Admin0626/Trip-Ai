@@ -1,0 +1,20 @@
+{
+  "mode": "REAL_EDGE_SHARED_STORAGE_REFRESH",
+  "label": "final",
+  "checks": [
+    {
+      "name": "refresh run completed",
+      "actual": "Unexpected end of JSON input",
+      "expected": "no exception",
+      "passed": false
+    }
+  ],
+  "errors": [],
+  "refreshResponses": [],
+  "users": [],
+  "summary": {
+    "total": 1,
+    "passed": 0,
+    "failed": 1
+  }
+}

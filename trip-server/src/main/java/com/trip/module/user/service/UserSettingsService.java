@@ -21,7 +21,7 @@ import java.util.*;
 public class UserSettingsService {
     private static final Set<String> PROFILE = Set.of("nickname", "phone", "email", "city", "avatar");
     private static final Set<String> PREFERENCE = Set.of("preferenceTags", "avoidTags", "budgetMin", "budgetMax", "preferredDays", "companions", "pace");
-    private static final Set<String> TAGS = Set.of("自然风光", "历史文化", "美食", "亲子", "摄影", "探险", "海滨", "都市", "购物", "温泉", "滑雪", "徒步", "自驾", "民俗", "宗教", "康养");
+    private static final Set<String> TAGS = Set.copyOf(com.trip.common.TravelTags.ALL);
     private final SysUserMapper users;
     private final JdbcTemplate jdbc;
     private final PasswordEncoder passwords;

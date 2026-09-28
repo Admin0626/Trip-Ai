@@ -168,13 +168,10 @@ async function run() {
         const id = user.id || Number(sql(`SELECT id FROM sys_user WHERE username='${user.name}'`));
         if (!Number.isSafeInteger(id) || id <= 0) throw new Error('Invalid fixture user');
         sql(`DELETE FROM feedback WHERE user_id=${id}; DELETE FROM sys_user WHERE id=${id} AND username='${user.name}'`);
-        const prefix = `trip:auth:session:{${id}}:`;
-        for (const key of redis('--scan', '--pattern', prefix + '*').split(/\r?\n/).filter(Boolean)) {
-          if (!key.startsWith(prefix)) throw new Error('Unexpected session key');
-          redis('DEL', key);
-        }
+        const {cleanSessions,sessionKeys}=require('./redis_fixture.cjs');
+        cleanSessions(id);
         check('fixture rows removed', sql(`SELECT (SELECT COUNT(*) FROM sys_user WHERE id=${id})+(SELECT COUNT(*) FROM feedback WHERE user_id=${id})`), '0');
-        check('fixture sessions removed', redis('--scan', '--pattern', prefix + '*'), '');
+        check('fixture sessions removed', sessionKeys(id).length, 0);
       } catch (error) { check('fixture cleanup', error.name, 'no error'); }
     }
     const directory = path.resolve(root, 'trip-server/uploads');

@@ -11,7 +11,7 @@ const checks = [], errors = [];
 const username = 'bm_' + Date.now(), password = 'MatchUiTest123';
 let uid, browser, page;
 function sql(q) { return execFileSync('mysql', ['-u', 'root', '-N', '-B', '--default-character-set=utf8mb4', 'trip_llm', '-e', q], { encoding: 'utf8', env: { ...process.env, MYSQL_PWD: process.env.MYSQL_PASSWORD || '123456' } }).trim(); }
-function save() { fs.writeFileSync(path.join(out, 'results.json'), JSON.stringify({ mode: 'REAL_BROWSER_HTTP', checks, errors }, null, 2)); }
+function save() { fs.writeFileSync(path.join(out, 'results.json'), JSON.stringify({ mode: 'REAL_BROWSER_HTTP', fixture:{username,id:uid}, checks, errors }, null, 2)); }
 function check(name, actual, expected) { checks.push({ name, actual, expected, passed: JSON.stringify(actual) === JSON.stringify(expected) }); save(); }
 async function responseClick(button, endpoint) {
   const response = page.waitForResponse(r => r.url().endsWith(endpoint) && r.request().method() === 'POST');
@@ -40,7 +40,7 @@ async function responseClick(button, endpoint) {
     check('actual parser fallback', parsed.data.source, 'RULE_FALLBACK');
     await page.getByTestId('intent-confirm').waitFor();
     check('days prefilled', await page.getByRole('spinbutton', { name: '旅行天数', exact: true }).inputValue(), '5');
-    check('budget prefilled', await page.getByRole('spinbutton', { name: '预算上限', exact: true }).inputValue(), '3000');
+    check('budget prefilled', Number(await page.getByRole('spinbutton', { name: '预算上限', exact: true }).inputValue()), 3000);
     check('requires explicit confirmation', await page.getByTestId('match-results').count(), 0);
     // Clear restrictive conditions to exercise results against the existing demo database.
     await page.getByRole('textbox', { name: '目的地', exact: true }).fill('');
@@ -105,6 +105,7 @@ async function responseClick(button, endpoint) {
     if (browser) await browser.close();
     if (uid) {
       sql(`DELETE FROM llm_call_log WHERE user_id=${uid}; DELETE FROM user_preference WHERE user_id=${uid}; DELETE FROM sys_user WHERE id=${uid}`);
+      require('./redis_fixture.cjs').cleanSessions(uid);
       check('fixture cleanup', sql(`SELECT COUNT(*) FROM sys_user WHERE id=${uid}`), '0');
     }
     save();

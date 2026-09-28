@@ -1,4 +1,47 @@
-# Session：基础后台验收完成
+# Session：用户侧收尾完成
+
+更新时间：2026-09-28（北京时间），最新指令“继续吧”，起点783b0e4。接续基础后台之后的个人统计、偏好推荐、跨标签页会话协调及用户页面验收；本批功能和实际验收已完成，整体项目仍有后续AI与高级运营功能。
+
+## 本批完成
+
+- `/user/profile`显示收藏/预约/规划/评论4类统计，独立刷新与错误重试，明确预约包含全部状态、评论/规划排除删除记录。
+- 保存偏好实际影响基础推荐：服务端opt-in使用本人设置；缺键才补，明确null/[]清空优先；小数预算上下限含边界，保留旧budget契约；21标签及8项偏好上限统一。本次明确标签覆盖保存的冲突标签，首尾空白也正确处理。
+- `/recommend`预填规则未明确的条件并显示来源，关闭开关移除未改默认值；确认提交显示条件快照，手动清空不会补回。返回effectiveCriteria和savedPreferenceFields以便解释。
+- Web Locks同源多页串行刷新、原子存储trip_authSession、登录epoch防止退出/换账号/同账号新登录后旧响应覆写或重放；页面按epoch重挂载清掉旧表单，退出受保护页和失去ADMIN身份时离开对应页面。瞬时网络故障保留会话，无锁环境提示重新登录，旧完整三键可迁移。
+- 偏好页错误恢复及保存保护；实际浏览器验收个人统计、偏好、推荐、目的地详情上下架和手机布局。资料保存/上传捕获预期失败。
+- 修正旧Windows CLI --scan静默空输出导致的测试清理错误，新增显式SCAN/前缀检查/删除后复扫及夹具追踪。恢复记录修正旧报告的会话清理结论，未清空Redis。
+
+## 本批验证
+
+| 检查 | 结果 |
+|---|---|
+| 接口基线→最终 | [33/44](docs/dev/evidence/user-finish/20260928-211916-192156-baseline.json)→[63/63](docs/dev/evidence/user-finish/20260928-215315-950065-final.json) |
+| 多页刷新基线→最终 | [3/7](docs/dev/evidence/user-finish/2026-09-28T13-14-51-848Z-baseline-refresh/results.json)→[30/30](docs/dev/evidence/user-finish/2026-09-28T14-10-40-126Z-final-refresh/results.json) |
+| 用户页面 | [41/41](docs/dev/evidence/user-finish/2026-09-28T14-08-42-803Z-pages/results.json)，pageerror=0，手机截图人工核对 |
+| 原推荐回归 | [38/38接口](docs/dev/evidence/batch3-match/20260928-214908-109913-http.json)、[23/23页面](docs/dev/evidence/batch3-match/2026-09-28T13-47-31-780Z-browser/results.json) |
+| 改密回归 | [75/75接口](docs/dev/evidence/password/20260928-214902-271179-final.json)、[24/24页面](docs/dev/evidence/password/2026-09-28T14-07-50-911Z-final-browser/results.json) |
+| 头像/基础回归 | [16/16头像页面](docs/dev/evidence/avatar/2026-09-28T13-47-27-486Z-browser/results.json)、[21/21基础接口](docs/dev/evidence/basic-user/20260928-214031-606697-http.json) |
+| 清理修正后的旧脚本回归 | 后台140/140、反馈94/94、头像59/59、反馈页面30/30，证据见实测 |
+| 清理恢复 | [58个已删除临时账号核对、53个残留会话删除](docs/dev/evidence/user-finish/redis-cleanup-recovery.json)；[扫描器首轮中断夹具恢复](docs/dev/evidence/user-finish/fixture-recovery.json) |
+| 编译 | Maven22/22，21:52:00完成；vue-tsc/Vite通过，主包约1.13MB警告保留 |
+
+测试包含夹具和清理断言，失败/采集问题均保留。最终新夹具及会话已清理；证据未记录ID而无法归属的旧会话保留自然TTL，已删除账号令牌仍被后端拒绝，现有用户会话不撤销。密码/JWT脱敏，不提交用户真实Key/散列或原始运行日志。无数据库迁移、不重建库。
+
+文档：[实测与全部问题](docs/dev/用户侧收尾接口与页面实测.md)、[开发与答辩复盘](docs/dev/用户侧收尾开发与答辩复盘.md)、[进度/目标/问题](docs/dev/用户侧收尾进度.md)，README、索引、总览、交接和认证/推荐API契约同步更新。
+
+## Git与接续
+
+远程`https://github.com/Admin0626/Trip-Ai.git`、分支main，本批标题`feat: complete user preferences statistics and cross-tab sessions`。代码/脚本/证据/文档统一交付；提交号和同步状态用git log -1、git status及远程main核对。推送中断保留本地提交继续，不重做已完成内容。
+
+启动沿用README：MySQL3306、Redis6379、后端8080/api、前端5173；本批无SQL升级。复现命令及环境见实测文档，先编译等待后端健康UP再跑HTTP/Edge，避免DevTools重启中断请求。
+
+下一项优先模型故障熔断与恢复，按用户/服务隔离，实际测试触发、快速拒绝和恢复，不能一个用户的错误Key影响其他用户。真实模型质量仍待用户配置服务。其后为SSE/RAG、多路召回/模型重排、评论情感、已有规划就地AI优化；邮箱验证/找回密码、生产云存储、高级后台、负载与主包优化仍未完成。
+
+---
+
+## 以下是基础后台批次历史快照，接续以本批为准
+
+# Session：基础后台验收完成（历史）
 
 更新时间：2026-09-28（北京时间）。本轮指令：“先把基础的后台搭建完成，然后上传至git远程，之后告诉我”。起点`a3d1496`。本轮基础后台已实现并实际验收，整体项目仍有后续功能。
 

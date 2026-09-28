@@ -1,6 +1,7 @@
 """Real HTTP and MySQL tests; isolated route/destination/user fixtures, no model calls."""
 import uuid
 import sys
+from redis_fixture import clean_sessions
 import batch3_intent_acceptance as t
 
 t.OUT = t.ROOT / 'docs/dev/evidence/batch3-match' / (t.stamp + '-http.json')
@@ -14,6 +15,8 @@ def main():
     auth = {'username': name, 'password': 'MatchTest123456'}
     t.call('fixture registration', '/auth/register', auth, record=False)
     uid = int(t.sql(f"SELECT id FROM sys_user WHERE username='{name}'"))
+    t.check('fixture account tracked', uid > 0, True)
+    t.rows[-1]['fixtureUserId'] = uid
     t.token = t.call('fixture login', '/auth/login', auth, record=False)['data']['accessToken']
     for i in range(3):
         destination_ids.append(int(t.sql(f"""INSERT INTO destination(name,province,city,longitude,latitude,cover_img,status,deleted)
@@ -81,6 +84,7 @@ if __name__ == '__main__':
             t.sql('DELETE FROM destination WHERE id IN (' + ','.join(map(str, destination_ids)) + ')')
         if uid:
             t.sql(f'DELETE FROM user_preference WHERE user_id={uid}; DELETE FROM sys_user WHERE id={uid}')
+            clean_sessions(uid)
             t.check('fixture account removed', t.sql(f'SELECT COUNT(*) FROM sys_user WHERE id={uid}'), '0')
         t.save()
     failed = sum(not row['passed'] for row in t.rows)

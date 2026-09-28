@@ -1,0 +1,144 @@
+{
+  "mode": "REAL_BROWSER_HTTP",
+  "checks": [
+    {
+      "name": "anonymous redirected with return URL",
+      "actual": "/recommend",
+      "expected": "/recommend",
+      "passed": true
+    },
+    {
+      "name": "login returns to recommendation",
+      "actual": "/recommend",
+      "expected": "/recommend",
+      "passed": true
+    },
+    {
+      "name": "actual parser fallback",
+      "actual": "RULE_FALLBACK",
+      "expected": "RULE_FALLBACK",
+      "passed": true
+    },
+    {
+      "name": "days prefilled",
+      "actual": "5",
+      "expected": "5",
+      "passed": true
+    },
+    {
+      "name": "budget prefilled",
+      "actual": 3000,
+      "expected": 3000,
+      "passed": true
+    },
+    {
+      "name": "requires explicit confirmation",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "actual database matching",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "honest source",
+      "actual": "RULE_BASED",
+      "expected": "RULE_BASED",
+      "passed": true
+    },
+    {
+      "name": "database returns routes",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "cards match response",
+      "actual": 5,
+      "expected": 5,
+      "passed": true
+    },
+    {
+      "name": "detail link points to returned route",
+      "actual": "/route/214",
+      "expected": "/route/214",
+      "passed": true
+    },
+    {
+      "name": "detail navigation",
+      "actual": "/route/214",
+      "expected": "/route/214",
+      "passed": true
+    },
+    {
+      "name": "no-match response",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "no-match guidance visible",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "editing conditions invalidates old results",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "stale response discarded after edit",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "controlled transport failure shows retry guidance",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "recovers after network failure",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "mobile has no horizontal overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "mobile navigation remains a single readable line",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "editing query invalidates parsed intent",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "no unhandled page errors",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "fixture cleanup",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

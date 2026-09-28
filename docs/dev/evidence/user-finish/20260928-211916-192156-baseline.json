@@ -1,0 +1,2760 @@
+{
+  "mode": "REAL_USER_STATS_PREFERENCE_HTTP_MYSQL_REDIS",
+  "label": "baseline",
+  "startedAt": "2026-09-28T21:19:16.192095+08:00",
+  "checks": [
+    {
+      "name": "register a",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_d7bd6d1670a",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "id": 10151,
+            "nickname": "pw_d7bd6d1670a",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_d7bd6d1670a"
+          },
+          "timestamp": 1790601556331
+        }
+      }
+    },
+    {
+      "name": "register b",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_8c17d3fef1b",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "id": 10152,
+            "nickname": "pw_8c17d3fef1b",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_8c17d3fef1b"
+          },
+          "timestamp": 1790601556539
+        }
+      }
+    },
+    {
+      "name": "login a",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_d7bd6d1670a",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-28T21:19:16",
+              "email": null,
+              "id": 10151,
+              "nickname": "pw_d7bd6d1670a",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_d7bd6d1670a"
+            }
+          },
+          "timestamp": 1790601556747
+        }
+      }
+    },
+    {
+      "name": "login b",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_8c17d3fef1b",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-28T21:19:16",
+              "email": null,
+              "id": 10152,
+              "nickname": "pw_8c17d3fef1b",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_8c17d3fef1b"
+            }
+          },
+          "timestamp": 1790601556865
+        }
+      }
+    },
+    {
+      "name": "save personal preference",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/user/preference",
+        "body": {
+          "preferenceTags": [
+            "海滨",
+            "康养"
+          ],
+          "avoidTags": [
+            "探险"
+          ],
+          "budgetMin": 150.5,
+          "budgetMax": 300.5,
+          "preferredDays": 3,
+          "companions": "family",
+          "pace": "relaxed"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "preferenceTags": [
+              "海滨",
+              "康养"
+            ],
+            "avoidTags": [
+              "探险"
+            ],
+            "budgetMin": 150.5,
+            "budgetMax": 300.5,
+            "preferredDays": 3,
+            "companions": "family",
+            "pace": "relaxed"
+          },
+          "timestamp": 1790601557565
+        }
+      }
+    },
+    {
+      "name": "other user preference empty",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/preference",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "preferenceTags": [],
+            "avoidTags": [],
+            "budgetMin": 0,
+            "budgetMax": 0,
+            "preferredDays": null,
+            "companions": "",
+            "pace": ""
+          },
+          "timestamp": 1790601557574
+        }
+      }
+    },
+    {
+      "name": "saved preference applied",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/recommend/match",
+        "body": {
+          "intent": {
+            "destinations": [
+              "pw_d7bd6d1670aDestination"
+            ]
+          },
+          "topN": 20,
+          "useSavedPreference": true
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "totalCandidates": 6,
+            "recallDetail": {
+              "content": 6,
+              "behavior": 0,
+              "cf": 0,
+              "hot": 0
+            },
+            "costMs": 1,
+            "source": "RULE_BASED",
+            "unsupportedCriteria": [],
+            "list": [
+              {
+                "routeId": 262,
+                "title": "rated",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 250.0,
+                "tags": [
+                  "自然风光"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 263,
+                "title": "cheap",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 150.49,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 264,
+                "title": "expensive",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 300.51,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 265,
+                "title": "otherday",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 5,
+                "price": 200.0,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 266,
+                "title": "avoid",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 240.0,
+                "tags": [
+                  "海滨",
+                  "探险"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 261,
+                "title": "best",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 200.5,
+                "tags": [
+                  "海滨",
+                  "康养"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              }
+            ]
+          },
+          "timestamp": 1790601557584
+        }
+      }
+    },
+    {
+      "name": "saved filters and preference rank",
+      "actual": [
+        262,
+        263,
+        264,
+        265,
+        266,
+        261
+      ],
+      "expected": [
+        261,
+        262
+      ],
+      "passed": false
+    },
+    {
+      "name": "server states applied fields",
+      "actual": [],
+      "expected": [
+        "avoid",
+        "budgetRange",
+        "days",
+        "preferenceTags"
+      ],
+      "passed": false
+    },
+    {
+      "name": "opt out personal preference",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/recommend/match",
+        "body": {
+          "intent": {
+            "destinations": [
+              "pw_d7bd6d1670aDestination"
+            ]
+          },
+          "topN": 20,
+          "useSavedPreference": false
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "totalCandidates": 6,
+            "recallDetail": {
+              "content": 6,
+              "behavior": 0,
+              "cf": 0,
+              "hot": 0
+            },
+            "costMs": 1,
+            "source": "RULE_BASED",
+            "unsupportedCriteria": [],
+            "list": [
+              {
+                "routeId": 262,
+                "title": "rated",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 250.0,
+                "tags": [
+                  "自然风光"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 263,
+                "title": "cheap",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 150.49,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 264,
+                "title": "expensive",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 300.51,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 265,
+                "title": "otherday",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 5,
+                "price": 200.0,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 266,
+                "title": "avoid",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 240.0,
+                "tags": [
+                  "海滨",
+                  "探险"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 261,
+                "title": "best",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 200.5,
+                "tags": [
+                  "海滨",
+                  "康养"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              }
+            ]
+          },
+          "timestamp": 1790601557620
+        }
+      }
+    },
+    {
+      "name": "opt out restores all fixture candidates",
+      "actual": 6,
+      "expected": 6,
+      "passed": true
+    },
+    {
+      "name": "preference isolation",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/recommend/match",
+        "body": {
+          "intent": {
+            "destinations": [
+              "pw_d7bd6d1670aDestination"
+            ]
+          },
+          "topN": 20,
+          "useSavedPreference": true
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "totalCandidates": 6,
+            "recallDetail": {
+              "content": 6,
+              "behavior": 0,
+              "cf": 0,
+              "hot": 0
+            },
+            "costMs": 1,
+            "source": "RULE_BASED",
+            "unsupportedCriteria": [],
+            "list": [
+              {
+                "routeId": 262,
+                "title": "rated",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 250.0,
+                "tags": [
+                  "自然风光"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 263,
+                "title": "cheap",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 150.49,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 264,
+                "title": "expensive",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 300.51,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 265,
+                "title": "otherday",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 5,
+                "price": 200.0,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 266,
+                "title": "avoid",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 240.0,
+                "tags": [
+                  "海滨",
+                  "探险"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 261,
+                "title": "best",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 200.5,
+                "tags": [
+                  "海滨",
+                  "康养"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              }
+            ]
+          },
+          "timestamp": 1790601557650
+        }
+      }
+    },
+    {
+      "name": "other user does not inherit filters",
+      "actual": 6,
+      "expected": 6,
+      "passed": true
+    },
+    {
+      "name": "explicit clear and fields win",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/recommend/match",
+        "body": {
+          "intent": {
+            "destinations": [
+              "pw_d7bd6d1670aDestination"
+            ],
+            "days": 5,
+            "budget": null,
+            "preferenceTags": [],
+            "avoid": []
+          },
+          "topN": 20,
+          "useSavedPreference": true
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "totalCandidates": 1,
+            "recallDetail": {
+              "content": 1,
+              "behavior": 0,
+              "cf": 0,
+              "hot": 0
+            },
+            "costMs": 1,
+            "source": "RULE_BASED",
+            "unsupportedCriteria": [],
+            "list": [
+              {
+                "routeId": 265,
+                "title": "otherday",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 5,
+                "price": 200.0,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合、天数一致",
+                "highlightMatch": [
+                  "目的地符合",
+                  "天数一致"
+                ]
+              }
+            ]
+          },
+          "timestamp": 1790601557662
+        }
+      }
+    },
+    {
+      "name": "explicit day and empty tags honored",
+      "actual": [
+        265
+      ],
+      "expected": [
+        265
+      ],
+      "passed": true
+    },
+    {
+      "name": "all explicit clears remove saved limits",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/recommend/match",
+        "body": {
+          "intent": {
+            "destinations": [
+              "pw_d7bd6d1670aDestination"
+            ],
+            "days": null,
+            "budget": null,
+            "preferenceTags": [],
+            "avoid": []
+          },
+          "topN": 20,
+          "useSavedPreference": true
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "totalCandidates": 6,
+            "recallDetail": {
+              "content": 6,
+              "behavior": 0,
+              "cf": 0,
+              "hot": 0
+            },
+            "costMs": 1,
+            "source": "RULE_BASED",
+            "unsupportedCriteria": [],
+            "list": [
+              {
+                "routeId": 262,
+                "title": "rated",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 250.0,
+                "tags": [
+                  "自然风光"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 263,
+                "title": "cheap",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 150.49,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 264,
+                "title": "expensive",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 300.51,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 265,
+                "title": "otherday",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 5,
+                "price": 200.0,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 266,
+                "title": "avoid",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 240.0,
+                "tags": [
+                  "海滨",
+                  "探险"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 261,
+                "title": "best",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 200.5,
+                "tags": [
+                  "海滨",
+                  "康养"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              }
+            ]
+          },
+          "timestamp": 1790601557696
+        }
+      }
+    },
+    {
+      "name": "explicit clears restore six candidates",
+      "actual": 6,
+      "expected": 6,
+      "passed": true
+    },
+    {
+      "name": "explicit decimal budget range",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": false,
+      "request": {
+        "method": "POST",
+        "path": "/ai/recommend/match",
+        "body": {
+          "intent": {
+            "destinations": [
+              "pw_d7bd6d1670aDestination"
+            ],
+            "days": 3,
+            "budgetMin": 150.5,
+            "budgetMax": 200.5,
+            "preferenceTags": [
+              "海滨"
+            ],
+            "avoid": []
+          },
+          "topN": 20,
+          "useSavedPreference": false
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "preferenceTags包含不支持的标签",
+          "data": null,
+          "timestamp": 1790601557707
+        }
+      }
+    },
+    {
+      "name": "decimal boundaries inclusive",
+      "actual": [],
+      "expected": [
+        261
+      ],
+      "passed": false
+    },
+    {
+      "name": "strict opt in flag",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": false,
+      "request": {
+        "method": "POST",
+        "path": "/ai/recommend/match",
+        "body": {
+          "intent": {},
+          "topN": 20,
+          "useSavedPreference": "true"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "totalCandidates": 26,
+            "recallDetail": {
+              "content": 26,
+              "behavior": 0,
+              "cf": 0,
+              "hot": 0
+            },
+            "costMs": 2,
+            "source": "RULE_BASED",
+            "unsupportedCriteria": [],
+            "list": [
+              {
+                "routeId": 202,
+                "title": "云南西双版纳 4 日雨林探秘",
+                "coverImg": "https://oss.example.com/trip/route/202.jpg",
+                "destinationName": "云南",
+                "days": 4,
+                "price": 2680.0,
+                "tags": [
+                  "亲子",
+                  "探险",
+                  "美食"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 204,
+                "title": "大理苍山洱海 6 日深度游",
+                "coverImg": "https://oss.example.com/trip/route/204.jpg",
+                "destinationName": "大理",
+                "days": 6,
+                "price": 3980.0,
+                "tags": [
+                  "自然风光",
+                  "历史文化",
+                  "徒步"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 210,
+                "title": "三亚 4 日浪漫海岛游",
+                "coverImg": "https://oss.example.com/trip/route/210.jpg",
+                "destinationName": "三亚",
+                "days": 4,
+                "price": 4280.0,
+                "tags": [
+                  "海边",
+                  "情侣",
+                  "度假"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 211,
+                "title": "张家界武陵源 3 日奇峰之旅",
+                "coverImg": "https://oss.example.com/trip/route/211.jpg",
+                "destinationName": "张家界",
+                "days": 3,
+                "price": 1980.0,
+                "tags": [
+                  "自然风光",
+                  "摄影",
+                  "探险"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 213,
+                "title": "桂林漓江阳朔 4 日山水游",
+                "coverImg": "https://oss.example.com/trip/route/213.jpg",
+                "destinationName": "桂林",
+                "days": 4,
+                "price": 2680.0,
+                "tags": [
+                  "自然风光",
+                  "摄影",
+                  "休闲"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 215,
+                "title": "成都美食文化 5 日深度游",
+                "coverImg": "https://oss.example.com/trip/route/215.jpg",
+                "destinationName": "成都",
+                "days": 5,
+                "price": 2980.0,
+                "tags": [
+                  "美食",
+                  "历史文化",
+                  "亲子"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 216,
+                "title": "成都青城山 4 日休闲之旅",
+                "coverImg": "https://oss.example.com/trip/route/216.jpg",
+                "destinationName": "成都",
+                "days": 4,
+                "price": 2280.0,
+                "tags": [
+                  "慢生活",
+                  "历史文化",
+                  "自然风光"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 262,
+                "title": "rated",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 250.0,
+                "tags": [
+                  "自然风光"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 263,
+                "title": "cheap",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 150.49,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 264,
+                "title": "expensive",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 300.51,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 265,
+                "title": "otherday",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 5,
+                "price": 200.0,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 266,
+                "title": "avoid",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 240.0,
+                "tags": [
+                  "海滨",
+                  "探险"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 201,
+                "title": "云南大理丽江香格里拉 5 日纯玩",
+                "coverImg": "https://oss.example.com/trip/route/201.jpg",
+                "destinationName": "云南",
+                "days": 5,
+                "price": 2980.0,
+                "tags": [
+                  "自然风光",
+                  "摄影",
+                  "深度游"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 220,
+                "title": "厦门 4 日海岛慢生活",
+                "coverImg": "https://oss.example.com/trip/route/220.jpg",
+                "destinationName": "厦门",
+                "days": 4,
+                "price": 3180.0,
+                "tags": [
+                  "慢生活",
+                  "海边",
+                  "美食"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 214,
+                "title": "桂林阳朔 3 日轻度假",
+                "coverImg": "https://oss.example.com/trip/route/214.jpg",
+                "destinationName": "桂林",
+                "days": 3,
+                "price": 1880.0,
+                "tags": [
+                  "慢生活",
+                  "自然风光",
+                  "美食"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 217,
+                "title": "西安古都 4 日历史文化之旅",
+                "coverImg": "https://oss.example.com/trip/route/217.jpg",
+                "destinationName": "西安",
+                "days": 4,
+                "price": 2680.0,
+                "tags": [
+                  "历史文化",
+                  "亲子",
+                  "美食"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 205,
+                "title": "丽江古城玉龙雪山 4 日",
+                "coverImg": "https://oss.example.com/trip/route/205.jpg",
+                "destinationName": "丽江",
+                "days": 4,
+                "price": 2980.0,
+                "tags": [
+                  "古城",
+                  "摄影",
+                  "自然风光"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 209,
+                "title": "三亚亚龙湾 4 日亲子度假",
+                "coverImg": "https://oss.example.com/trip/route/209.jpg",
+                "destinationName": "三亚",
+                "days": 4,
+                "price": 3880.0,
+                "tags": [
+                  "亲子",
+                  "海边",
+                  "度假"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 203,
+                "title": "大理洱海环湖 3 日慢行",
+                "coverImg": "https://oss.example.com/trip/route/203.jpg",
+                "destinationName": "大理",
+                "days": 3,
+                "price": 1680.0,
+                "tags": [
+                  "慢生活",
+                  "自然风光",
+                  "摄影"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 206,
+                "title": "丽江泸沽湖 3 日环湖之旅",
+                "coverImg": "https://oss.example.com/trip/route/206.jpg",
+                "destinationName": "丽江",
+                "days": 3,
+                "price": 2380.0,
+                "tags": [
+                  "民族风情",
+                  "摄影",
+                  "慢生活"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              }
+            ]
+          },
+          "timestamp": 1790601557745
+        }
+      }
+    },
+    {
+      "name": "strict budgetMin",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": false,
+      "request": {
+        "method": "POST",
+        "path": "/ai/recommend/match",
+        "body": {
+          "intent": {
+            "destinations": [
+              "pw_d7bd6d1670aDestination"
+            ],
+            "budgetMin": "100"
+          },
+          "topN": 20,
+          "useSavedPreference": false
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "totalCandidates": 6,
+            "recallDetail": {
+              "content": 6,
+              "behavior": 0,
+              "cf": 0,
+              "hot": 0
+            },
+            "costMs": 1,
+            "source": "RULE_BASED",
+            "unsupportedCriteria": [
+              "budgetMin"
+            ],
+            "list": [
+              {
+                "routeId": 262,
+                "title": "rated",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 250.0,
+                "tags": [
+                  "自然风光"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 263,
+                "title": "cheap",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 150.49,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 264,
+                "title": "expensive",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 300.51,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 265,
+                "title": "otherday",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 5,
+                "price": 200.0,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 266,
+                "title": "avoid",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 240.0,
+                "tags": [
+                  "海滨",
+                  "探险"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 261,
+                "title": "best",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 200.5,
+                "tags": [
+                  "海滨",
+                  "康养"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              }
+            ]
+          },
+          "timestamp": 1790601557775
+        }
+      }
+    },
+    {
+      "name": "strict budgetMax",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": false,
+      "request": {
+        "method": "POST",
+        "path": "/ai/recommend/match",
+        "body": {
+          "intent": {
+            "destinations": [
+              "pw_d7bd6d1670aDestination"
+            ],
+            "budgetMax": true
+          },
+          "topN": 20,
+          "useSavedPreference": false
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "totalCandidates": 6,
+            "recallDetail": {
+              "content": 6,
+              "behavior": 0,
+              "cf": 0,
+              "hot": 0
+            },
+            "costMs": 1,
+            "source": "RULE_BASED",
+            "unsupportedCriteria": [
+              "budgetMax"
+            ],
+            "list": [
+              {
+                "routeId": 262,
+                "title": "rated",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 250.0,
+                "tags": [
+                  "自然风光"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 263,
+                "title": "cheap",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 150.49,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 264,
+                "title": "expensive",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 300.51,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 265,
+                "title": "otherday",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 5,
+                "price": 200.0,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 266,
+                "title": "avoid",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 240.0,
+                "tags": [
+                  "海滨",
+                  "探险"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 261,
+                "title": "best",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 200.5,
+                "tags": [
+                  "海滨",
+                  "康养"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              }
+            ]
+          },
+          "timestamp": 1790601557805
+        }
+      }
+    },
+    {
+      "name": "strict budgetMax",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": false,
+      "request": {
+        "method": "POST",
+        "path": "/ai/recommend/match",
+        "body": {
+          "intent": {
+            "destinations": [
+              "pw_d7bd6d1670aDestination"
+            ],
+            "budgetMax": 100.001
+          },
+          "topN": 20,
+          "useSavedPreference": false
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "totalCandidates": 6,
+            "recallDetail": {
+              "content": 6,
+              "behavior": 0,
+              "cf": 0,
+              "hot": 0
+            },
+            "costMs": 1,
+            "source": "RULE_BASED",
+            "unsupportedCriteria": [
+              "budgetMax"
+            ],
+            "list": [
+              {
+                "routeId": 262,
+                "title": "rated",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 250.0,
+                "tags": [
+                  "自然风光"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 263,
+                "title": "cheap",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 150.49,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 264,
+                "title": "expensive",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 300.51,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 265,
+                "title": "otherday",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 5,
+                "price": 200.0,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 266,
+                "title": "avoid",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 240.0,
+                "tags": [
+                  "海滨",
+                  "探险"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              },
+              {
+                "routeId": 261,
+                "title": "best",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 200.5,
+                "tags": [
+                  "海滨",
+                  "康养"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "目的地符合",
+                "highlightMatch": [
+                  "目的地符合"
+                ]
+              }
+            ]
+          },
+          "timestamp": 1790601557815
+        }
+      }
+    },
+    {
+      "name": "invalid range order",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": false,
+      "request": {
+        "method": "POST",
+        "path": "/ai/recommend/match",
+        "body": {
+          "intent": {
+            "budgetMin": 300,
+            "budgetMax": 200
+          },
+          "topN": 20,
+          "useSavedPreference": false
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "totalCandidates": 26,
+            "recallDetail": {
+              "content": 26,
+              "behavior": 0,
+              "cf": 0,
+              "hot": 0
+            },
+            "costMs": 2,
+            "source": "RULE_BASED",
+            "unsupportedCriteria": [
+              "budgetMin",
+              "budgetMax"
+            ],
+            "list": [
+              {
+                "routeId": 202,
+                "title": "云南西双版纳 4 日雨林探秘",
+                "coverImg": "https://oss.example.com/trip/route/202.jpg",
+                "destinationName": "云南",
+                "days": 4,
+                "price": 2680.0,
+                "tags": [
+                  "亲子",
+                  "探险",
+                  "美食"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 204,
+                "title": "大理苍山洱海 6 日深度游",
+                "coverImg": "https://oss.example.com/trip/route/204.jpg",
+                "destinationName": "大理",
+                "days": 6,
+                "price": 3980.0,
+                "tags": [
+                  "自然风光",
+                  "历史文化",
+                  "徒步"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 210,
+                "title": "三亚 4 日浪漫海岛游",
+                "coverImg": "https://oss.example.com/trip/route/210.jpg",
+                "destinationName": "三亚",
+                "days": 4,
+                "price": 4280.0,
+                "tags": [
+                  "海边",
+                  "情侣",
+                  "度假"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 211,
+                "title": "张家界武陵源 3 日奇峰之旅",
+                "coverImg": "https://oss.example.com/trip/route/211.jpg",
+                "destinationName": "张家界",
+                "days": 3,
+                "price": 1980.0,
+                "tags": [
+                  "自然风光",
+                  "摄影",
+                  "探险"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 213,
+                "title": "桂林漓江阳朔 4 日山水游",
+                "coverImg": "https://oss.example.com/trip/route/213.jpg",
+                "destinationName": "桂林",
+                "days": 4,
+                "price": 2680.0,
+                "tags": [
+                  "自然风光",
+                  "摄影",
+                  "休闲"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 215,
+                "title": "成都美食文化 5 日深度游",
+                "coverImg": "https://oss.example.com/trip/route/215.jpg",
+                "destinationName": "成都",
+                "days": 5,
+                "price": 2980.0,
+                "tags": [
+                  "美食",
+                  "历史文化",
+                  "亲子"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 216,
+                "title": "成都青城山 4 日休闲之旅",
+                "coverImg": "https://oss.example.com/trip/route/216.jpg",
+                "destinationName": "成都",
+                "days": 4,
+                "price": 2280.0,
+                "tags": [
+                  "慢生活",
+                  "历史文化",
+                  "自然风光"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 262,
+                "title": "rated",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 250.0,
+                "tags": [
+                  "自然风光"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 263,
+                "title": "cheap",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 150.49,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 264,
+                "title": "expensive",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 300.51,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 265,
+                "title": "otherday",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 5,
+                "price": 200.0,
+                "tags": [
+                  "海滨"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 266,
+                "title": "avoid",
+                "coverImg": "",
+                "destinationName": "pw_d7bd6d1670aDestination",
+                "days": 3,
+                "price": 240.0,
+                "tags": [
+                  "海滨",
+                  "探险"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 201,
+                "title": "云南大理丽江香格里拉 5 日纯玩",
+                "coverImg": "https://oss.example.com/trip/route/201.jpg",
+                "destinationName": "云南",
+                "days": 5,
+                "price": 2980.0,
+                "tags": [
+                  "自然风光",
+                  "摄影",
+                  "深度游"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 220,
+                "title": "厦门 4 日海岛慢生活",
+                "coverImg": "https://oss.example.com/trip/route/220.jpg",
+                "destinationName": "厦门",
+                "days": 4,
+                "price": 3180.0,
+                "tags": [
+                  "慢生活",
+                  "海边",
+                  "美食"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 214,
+                "title": "桂林阳朔 3 日轻度假",
+                "coverImg": "https://oss.example.com/trip/route/214.jpg",
+                "destinationName": "桂林",
+                "days": 3,
+                "price": 1880.0,
+                "tags": [
+                  "慢生活",
+                  "自然风光",
+                  "美食"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 217,
+                "title": "西安古都 4 日历史文化之旅",
+                "coverImg": "https://oss.example.com/trip/route/217.jpg",
+                "destinationName": "西安",
+                "days": 4,
+                "price": 2680.0,
+                "tags": [
+                  "历史文化",
+                  "亲子",
+                  "美食"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 205,
+                "title": "丽江古城玉龙雪山 4 日",
+                "coverImg": "https://oss.example.com/trip/route/205.jpg",
+                "destinationName": "丽江",
+                "days": 4,
+                "price": 2980.0,
+                "tags": [
+                  "古城",
+                  "摄影",
+                  "自然风光"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 209,
+                "title": "三亚亚龙湾 4 日亲子度假",
+                "coverImg": "https://oss.example.com/trip/route/209.jpg",
+                "destinationName": "三亚",
+                "days": 4,
+                "price": 3880.0,
+                "tags": [
+                  "亲子",
+                  "海边",
+                  "度假"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 203,
+                "title": "大理洱海环湖 3 日慢行",
+                "coverImg": "https://oss.example.com/trip/route/203.jpg",
+                "destinationName": "大理",
+                "days": 3,
+                "price": 1680.0,
+                "tags": [
+                  "慢生活",
+                  "自然风光",
+                  "摄影"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              },
+              {
+                "routeId": 206,
+                "title": "丽江泸沽湖 3 日环湖之旅",
+                "coverImg": "https://oss.example.com/trip/route/206.jpg",
+                "destinationName": "丽江",
+                "days": 3,
+                "price": 2380.0,
+                "tags": [
+                  "民族风情",
+                  "摄影",
+                  "慢生活"
+                ],
+                "recallScore": 0.0,
+                "llmScore": null,
+                "reason": "在架路线，按用户评分排序",
+                "highlightMatch": []
+              }
+            ]
+          },
+          "timestamp": 1790601557838
+        }
+      }
+    },
+    {
+      "name": "unified eight preference tags",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": false,
+      "request": {
+        "method": "PUT",
+        "path": "/user/preference",
+        "body": {
+          "preferenceTags": [
+            "自然风光",
+            "历史文化",
+            "美食",
+            "亲子",
+            "摄影",
+            "海滨",
+            "康养",
+            "古城"
+          ],
+          "avoidTags": [
+            "探险"
+          ],
+          "budgetMin": 150.5,
+          "budgetMax": 300.5,
+          "preferredDays": 3,
+          "companions": "family",
+          "pace": "relaxed"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "标签不支持或重复",
+          "data": null,
+          "timestamp": 1790601557849
+        }
+      }
+    },
+    {
+      "name": "eight tags accepted by match",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": false,
+      "request": {
+        "method": "POST",
+        "path": "/ai/recommend/match",
+        "body": {
+          "intent": {
+            "destinations": [
+              "pw_d7bd6d1670aDestination"
+            ],
+            "preferenceTags": [
+              "自然风光",
+              "历史文化",
+              "美食",
+              "亲子",
+              "摄影",
+              "海滨",
+              "康养",
+              "古城"
+            ],
+            "avoid": []
+          },
+          "topN": 20,
+          "useSavedPreference": false
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "preferenceTags须为最多5项的数组",
+          "data": null,
+          "timestamp": 1790601557860
+        }
+      }
+    },
+    {
+      "name": "stats anonymous denied",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/stats",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "请先登录",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "preference anonymous denied",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/preference",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "请先登录",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "favorite fixture",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/interaction/favorite",
+        "body": {
+          "routeId": 261
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "favoriteCount": 1,
+            "favorited": true
+          },
+          "timestamp": 1790601557931
+        }
+      }
+    },
+    {
+      "name": "booking fixture",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/interaction/booking",
+        "body": {
+          "routeId": 261,
+          "travelDate": "2026-10-08",
+          "peopleNum": 1,
+          "contactName": "Fixture",
+          "contactPhone": "13800000000"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "bookingId": 9128,
+            "bookingNo": "ecc664ac5aa445dd88d95c6017f02619",
+            "contactName": "Fixture",
+            "contactPhone": "13800000000",
+            "createTime": "2026-09-28 21:19:17",
+            "peopleNum": 1,
+            "remark": null,
+            "routeId": 261,
+            "routeTitle": "best",
+            "status": 0,
+            "travelDate": "2026-10-08"
+          },
+          "timestamp": 1790601557979
+        }
+      }
+    },
+    {
+      "name": "comment fixture",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/interaction/comment",
+        "body": {
+          "routeId": 261,
+          "score": 5,
+          "content": "Preference stats fixture"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "content": null,
+            "createTime": null,
+            "id": 5297,
+            "images": null,
+            "likeCount": null,
+            "liked": null,
+            "parentId": null,
+            "routeId": null,
+            "score": null,
+            "sentiment": "unknown",
+            "sentimentScore": null,
+            "status": null,
+            "userAvatar": null,
+            "userId": null,
+            "userNickname": null
+          },
+          "timestamp": 1790601558007
+        }
+      }
+    },
+    {
+      "name": "stats actual persisted counts",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/stats",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "favoriteCount": 1,
+            "bookingCount": 1,
+            "commentCount": 1,
+            "planCount": 1,
+            "chatCount": 0
+          },
+          "timestamp": 1790601558148
+        }
+      }
+    },
+    {
+      "name": "stats totals match own rows",
+      "actual": {
+        "favoriteCount": 1,
+        "bookingCount": 1,
+        "commentCount": 1,
+        "planCount": 1,
+        "chatCount": 0
+      },
+      "expected": {
+        "favoriteCount": 1,
+        "bookingCount": 1,
+        "commentCount": 1,
+        "planCount": 1,
+        "chatCount": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "stats forged userId ignored",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/stats?userId=10152",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "favoriteCount": 1,
+            "bookingCount": 1,
+            "commentCount": 1,
+            "planCount": 1,
+            "chatCount": 0
+          },
+          "timestamp": 1790601558178
+        }
+      }
+    },
+    {
+      "name": "stats cannot select other user",
+      "actual": {
+        "favoriteCount": 1,
+        "bookingCount": 1,
+        "commentCount": 1,
+        "planCount": 1,
+        "chatCount": 0
+      },
+      "expected": {
+        "favoriteCount": 1,
+        "bookingCount": 1,
+        "commentCount": 1,
+        "planCount": 1,
+        "chatCount": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "other stats empty",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/stats",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "favoriteCount": 0,
+            "bookingCount": 0,
+            "commentCount": 0,
+            "planCount": 0,
+            "chatCount": 0
+          },
+          "timestamp": 1790601558189
+        }
+      }
+    },
+    {
+      "name": "other user stats isolated",
+      "actual": {
+        "favoriteCount": 0,
+        "bookingCount": 0,
+        "commentCount": 0,
+        "planCount": 0,
+        "chatCount": 0
+      },
+      "expected": {
+        "favoriteCount": 0,
+        "bookingCount": 0,
+        "commentCount": 0,
+        "planCount": 0,
+        "chatCount": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "delete own comment",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "DELETE",
+        "path": "/interaction/comment/5297",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790601558232
+        }
+      }
+    },
+    {
+      "name": "stats after comment deletion",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/stats",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "favoriteCount": 1,
+            "bookingCount": 1,
+            "commentCount": 0,
+            "planCount": 1,
+            "chatCount": 0
+          },
+          "timestamp": 1790601558255
+        }
+      }
+    },
+    {
+      "name": "stats excludes deleted comment",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "rule preference match makes no model calls",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "fixture user cleaned",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "fixture user cleaned",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "fixture content cleaned",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    }
+  ],
+  "summary": {
+    "total": 44,
+    "passed": 33,
+    "failed": 11
+  }
+}

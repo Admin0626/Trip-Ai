@@ -15,10 +15,11 @@ public class MatchService {
                        BigDecimal price, List<String> tags, double recallScore, Integer llmScore,
                        String reason, List<String> highlightMatch) {}
     public record Result(long totalCandidates, Map<String, Long> recallDetail, long costMs, String source,
-                         List<String> unsupportedCriteria, List<Item> list) {}
+                         List<String> unsupportedCriteria, List<Item> list,EffectiveCriteria effectiveCriteria,List<String> savedPreferenceFields) {}
+    public record EffectiveCriteria(List<String> destinations,Integer days,BigDecimal budgetMin,BigDecimal budgetMax,List<String> preferenceTags,List<String> avoid) {}
 
     @Transactional(readOnly = true)
-    public Result match(MatchCriteria c) {
+    public Result match(MatchCriteria c,List<String> savedFields) {
         long start = System.nanoTime();
         StringBuilder where = new StringBuilder(" FROM route r JOIN destination d ON d.id=r.destination_id WHERE r.status=1 AND r.deleted=0 AND d.status=1 AND d.deleted=0");
         var args = new ArrayList<Object>();
@@ -32,7 +33,8 @@ public class MatchService {
             where.append(String.join(" OR ", groups)).append(")");
         }
         if (c.days() != null) { where.append(" AND r.days=?"); args.add(c.days()); }
-        if (c.budget() != null) { where.append(" AND r.price<=?"); args.add(c.budget()); }
+        if (c.budgetMin() != null) { where.append(" AND r.price>=?"); args.add(c.budgetMin()); }
+        if (c.budgetMax() != null) { where.append(" AND r.price<=?"); args.add(c.budgetMax()); }
         for (String tag : c.avoid()) { where.append(" AND FIND_IN_SET(?,r.tags)=0"); args.add(tag); }
         long total = Objects.requireNonNull(jdbc.queryForObject("SELECT COUNT(*)" + where, Long.class, args.toArray()));
         var selectArgs = new ArrayList<Object>();
@@ -46,7 +48,7 @@ public class MatchService {
                     var highlights = new ArrayList<String>();
                     if (!c.destinations().isEmpty()) highlights.add("目的地符合");
                     if (c.days() != null) highlights.add("天数一致");
-                    if (c.budget() != null) highlights.add("人均参考价在预算内");
+                    if (c.budgetMin() != null||c.budgetMax()!=null) highlights.add("人均参考价在预算内");
                     c.tags().stream().filter(tags::contains).forEach(highlights::add);
                     String reason = highlights.isEmpty() ? "在架路线，按用户评分排序" : String.join("、", highlights);
                     return new Item(rs.getLong("id"), rs.getString("title"), rs.getString("cover_img"), rs.getString("name"),
@@ -54,6 +56,7 @@ public class MatchService {
                             c.tags().isEmpty() ? 0 : rs.getInt("matched_tags") * 1.0 / c.tags().size(), null, reason, highlights);
                 }, selectArgs.toArray());
         return new Result(total, Map.of("content", total, "cf", 0L, "hot", 0L, "behavior", 0L),
-                (System.nanoTime() - start) / 1000000, "RULE_BASED", c.unsupported(), items);
+                (System.nanoTime() - start) / 1000000, "RULE_BASED", c.unsupported(), items,
+                new EffectiveCriteria(c.destinations(),c.days(),c.budgetMin(),c.budgetMax(),c.tags(),c.avoid()),List.copyOf(savedFields));
     }
 }

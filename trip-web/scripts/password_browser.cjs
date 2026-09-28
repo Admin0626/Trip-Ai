@@ -9,7 +9,7 @@ const username = 'pwui_' + crypto.randomUUID().replaceAll('-', '').slice(0, 12);
 const initial = 'InitialUi123', changed = 'ChangedUi456';
 let browser, uid, registered = false;
 fs.mkdirSync(out, { recursive: true });
-function save() { fs.writeFileSync(path.join(out, 'results.json'), JSON.stringify({ mode: 'REAL_EDGE_PASSWORD_MULTI_DEVICE', label, checks, errors }, null, 2)); }
+function save() { fs.writeFileSync(path.join(out, 'results.json'), JSON.stringify({ mode: 'REAL_EDGE_PASSWORD_MULTI_DEVICE', label, fixture: {username, id:uid}, checks, errors }, null, 2)); }
 function check(name, actual, expected) { checks.push({ name, actual, expected, passed: actual === expected }); save(); }
 function sql(query) { return execFileSync('mysql', ['-u', 'root', '-N', '-B', 'trip_llm', '-e', query], { encoding: 'utf8', env: { ...process.env, MYSQL_PWD: process.env.MYSQL_PASSWORD || '123456' } }).trim(); }
 function redis(...args) { return execFileSync('redis-cli', args, { encoding: 'utf8' }).trim(); }
@@ -39,7 +39,7 @@ async function submitChange(page, readBody = true) {
   const [data] = await Promise.all([response, page.getByRole('button', { name: '修改密码', exact: true }).click()]);
   return data;
 }
-const noSession = () => ['trip_token', 'trip_refreshToken', 'trip_userInfo'].every(key => !localStorage.getItem(key));
+const noSession = () => ['trip_token', 'trip_refreshToken', 'trip_userInfo', 'trip_authSession'].every(key => !localStorage.getItem(key));
 async function run() {
   try {
     sql('SELECT 1'); redis('PING');
@@ -113,12 +113,9 @@ async function run() {
         if (!Number.isSafeInteger(uid) || uid <= 0) throw new Error('Invalid temporary ID');
         sql(`DELETE FROM sys_user WHERE id=${uid} AND username='${username}'`);
         check('temporary user removed', sql(`SELECT COUNT(*) FROM sys_user WHERE id=${uid}`), '0');
-        const prefix = `trip:auth:session:{${uid}}:`;
-        for (const key of redis('--scan', '--pattern', prefix + '*').split(/\r?\n/).filter(Boolean)) {
-          if (!key.startsWith(prefix)) throw new Error('Unexpected session key');
-          redis('DEL', key);
-        }
-        check('temporary sessions removed', redis('--scan', '--pattern', prefix + '*'), '');
+        const {cleanSessions,sessionKeys}=require('./redis_fixture.cjs');
+        cleanSessions(uid);
+        check('temporary sessions removed', sessionKeys(uid).length, 0);
       } catch (error) { check('cleanup completed', error.name, 'no error'); }
     }
     save(); console.log(`${checks.filter(c => c.passed).length}/${checks.length} passed; ${out}`);

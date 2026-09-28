@@ -9,7 +9,7 @@ const png = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAIAAAASFvFNAAAAFElEQVR
 const username = 'avui_' + crypto.randomUUID().replaceAll('-', '').slice(0, 12);
 let browser, uid, registered = false;
 fs.mkdirSync(out, { recursive: true });
-function save() { fs.writeFileSync(path.join(out, 'results.json'), JSON.stringify({ mode: 'REAL_EDGE_AVATAR_HTTP_MYSQL_REDIS', checks, errors }, null, 2)); }
+function save() { fs.writeFileSync(path.join(out, 'results.json'), JSON.stringify({ mode: 'REAL_EDGE_AVATAR_HTTP_MYSQL_REDIS', fixture:{username,id:uid}, checks, errors }, null, 2)); }
 function check(name, actual, expected) { checks.push({ name, actual, expected, passed: actual === expected }); save(); }
 function sql(query) { return execFileSync('mysql', ['-u', 'root', '-N', '-B', '--default-character-set=utf8mb4', 'trip_llm', '-e', query], { encoding: 'utf8', env: { ...process.env, MYSQL_PWD: process.env.MYSQL_PASSWORD || '123456' } }).trim(); }
 function redis(...args) { return execFileSync('redis-cli', args, { encoding: 'utf8' }).trim(); }
@@ -73,12 +73,7 @@ async function run() {
       if (sql(`SELECT COUNT(*) FROM sys_user WHERE id=${uid}`) !== '0') throw new Error('User remains');
     });
     if (uid) cleanup('temporary sessions removed', () => {
-      const prefix = `trip:auth:session:{${uid}}:`;
-      for (const key of redis('--scan', '--pattern', prefix + '*').split(/\r?\n/).filter(Boolean)) {
-        if (!key.startsWith(prefix)) throw new Error('Unexpected session key');
-        redis('DEL', key);
-      }
-      if (redis('--scan', '--pattern', prefix + '*')) throw new Error('Sessions remain');
+      require('./redis_fixture.cjs').cleanSessions(uid);
     });
     const directory = path.resolve(root, 'trip-server/uploads');
     for (const name of uploads) cleanup('uploaded fixture removed', () => {

@@ -1,0 +1,134 @@
+{
+  "mode": "REAL_EDGE_SHARED_STORAGE_REFRESH",
+  "label": "final",
+  "checks": [
+    {
+      "name": "Web Locks available",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "all four requests recover",
+      "actual": [
+        [
+          200,
+          200
+        ],
+        [
+          200,
+          200
+        ]
+      ],
+      "expected": [
+        [
+          200,
+          200
+        ],
+        [
+          200,
+          200
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "name": "only one server refresh rotation",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "refresh succeeds",
+      "actual": [
+        200
+      ],
+      "expected": [
+        200
+      ],
+      "passed": true
+    },
+    {
+      "name": "both tabs keep login",
+      "actual": [
+        true,
+        true
+      ],
+      "expected": [
+        true,
+        true
+      ],
+      "passed": true
+    },
+    {
+      "name": "recovered session actually authenticates",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true
+    },
+    {
+      "name": "logout suppresses stale response",
+      "actual": [
+        "rejected",
+        "rejected"
+      ],
+      "expected": [
+        "rejected",
+        "rejected"
+      ],
+      "passed": true
+    },
+    {
+      "name": "logout remains cleared",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "refresh run completed",
+      "actual": "page.waitForURL: Timeout 12000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+      "expected": "no exception",
+      "passed": false
+    },
+    {
+      "name": "fixture sessions removed",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "fixture account removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "refreshResponses": [
+    {
+      "http": 200,
+      "code": 200
+    },
+    {
+      "http": 200,
+      "code": 200
+    }
+  ],
+  "users": [
+    {
+      "name": "rf_ui_a06f7eafb1",
+      "id": 10213
+    }
+  ],
+  "summary": {
+    "total": 11,
+    "passed": 10,
+    "failed": 1
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "checkedAt": "2026-09-28T22:12:23.843811+08:00",
+  "maven": {
+    "finishedAt": "2026-09-28T21:52:00+08:00",
+    "suites": [
+      {
+        "suite": "com.trip.module.ai.AiQuotaTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "suite": "com.trip.module.ai.RuleIntentParserTest",
+        "tests": 8,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "suite": "com.trip.module.ai.UserPlannerTest",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "suite": "com.trip.TripServerApplicationTests",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      }
+    ],
+    "passed": true
+  },
+  "frontend": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "typescript": "passed",
+    "vite": "passed",
+    "mainChunkKB": 1127.22,
+    "warning": "Existing chunk exceeds 500kB",
+    "note": "Final build includes App epoch route remount; npm exit 0 observed."
+  },
+  "source": "Maven XML read from final build; npm output observed in this session. Raw logs excluded."
+}

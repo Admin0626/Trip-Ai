@@ -1,0 +1,328 @@
+{
+  "mode": "REAL_EDGE_SHARED_STORAGE_REFRESH",
+  "label": "final",
+  "checks": [
+    {
+      "name": "Web Locks available",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "all four requests recover",
+      "actual": [
+        [
+          200,
+          200
+        ],
+        [
+          200,
+          200
+        ]
+      ],
+      "expected": [
+        [
+          200,
+          200
+        ],
+        [
+          200,
+          200
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "name": "only one server refresh rotation",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "refresh succeeds",
+      "actual": [
+        200
+      ],
+      "expected": [
+        200
+      ],
+      "passed": true
+    },
+    {
+      "name": "both tabs keep login",
+      "actual": [
+        true,
+        true
+      ],
+      "expected": [
+        true,
+        true
+      ],
+      "passed": true
+    },
+    {
+      "name": "recovered session actually authenticates",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true
+    },
+    {
+      "name": "logout suppresses stale response",
+      "actual": [
+        "rejected",
+        "rejected"
+      ],
+      "expected": [
+        "rejected",
+        "rejected"
+      ],
+      "passed": true
+    },
+    {
+      "name": "logout remains cleared",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "logout closes both protected pages",
+      "actual": [
+        "/login",
+        "/login"
+      ],
+      "expected": [
+        "/login",
+        "/login"
+      ],
+      "passed": true
+    },
+    {
+      "name": "account switch suppresses stale requests",
+      "actual": [
+        "rejected",
+        "rejected"
+      ],
+      "expected": [
+        "rejected",
+        "rejected"
+      ],
+      "passed": true
+    },
+    {
+      "name": "new account preserved",
+      "actual": 10218,
+      "expected": 10218,
+      "passed": true
+    },
+    {
+      "name": "new account still authenticates",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true
+    },
+    {
+      "name": "switched account reloads profile fields",
+      "actual": "rf_ui_d6b8a3248e",
+      "expected": "rf_ui_d6b8a3248e",
+      "passed": true
+    },
+    {
+      "name": "legacy login rotates successfully",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true
+    },
+    {
+      "name": "legacy session migrated atomically",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "same user re-login suppresses stale requests",
+      "actual": [
+        "rejected",
+        "rejected"
+      ],
+      "expected": [
+        "rejected",
+        "rejected"
+      ],
+      "passed": true
+    },
+    {
+      "name": "same user new token pair preserved",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "same user new session authenticates",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true
+    },
+    {
+      "name": "refresh network failure rejects requests",
+      "actual": [
+        "rejected",
+        "rejected"
+      ],
+      "expected": [
+        "rejected",
+        "rejected"
+      ],
+      "passed": true
+    },
+    {
+      "name": "network failure retains session",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "network recovery refreshes successfully",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true
+    },
+    {
+      "name": "login epoch works without randomUUID",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "fallback login epoch keeps authentication",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true
+    },
+    {
+      "name": "unsupported locks refuses unsafe replay",
+      "actual": [
+        "rejected",
+        "rejected"
+      ],
+      "expected": [
+        "rejected",
+        "rejected"
+      ],
+      "passed": true
+    },
+    {
+      "name": "unsupported locks sends no refresh",
+      "actual": 6,
+      "expected": 6,
+      "passed": true
+    },
+    {
+      "name": "no unhandled errors",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "fixture sessions removed",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "fixture account removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "fixture sessions removed",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "fixture account removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "refreshResponses": [
+    {
+      "http": 200,
+      "code": 200
+    },
+    {
+      "http": 200,
+      "code": 200
+    },
+    {
+      "http": 200,
+      "code": 200
+    },
+    {
+      "http": 200,
+      "code": 200
+    },
+    {
+      "http": 200,
+      "code": 200
+    },
+    {
+      "http": 200,
+      "code": 200
+    }
+  ],
+  "users": [
+    {
+      "name": "rf_ui_f7d06f75aa",
+      "id": 10217
+    },
+    {
+      "name": "rf_ui_d6b8a3248e",
+      "id": 10218
+    }
+  ],
+  "summary": {
+    "total": 30,
+    "passed": 30,
+    "failed": 0
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "mode": "REAL_EDGE_SHARED_STORAGE_REFRESH",
+  "label": "baseline",
+  "checks": [
+    {
+      "name": "Web Locks available",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "all four requests recover",
+      "actual": [
+        [
+          200,
+          200
+        ],
+        [
+          "rejected",
+          "rejected"
+        ]
+      ],
+      "expected": [
+        [
+          200,
+          200
+        ],
+        [
+          200,
+          200
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "name": "only one server refresh rotation",
+      "actual": 2,
+      "expected": 1,
+      "passed": false
+    },
+    {
+      "name": "refresh succeeds",
+      "actual": [
+        401,
+        200
+      ],
+      "expected": [
+        200
+      ],
+      "passed": false
+    },
+    {
+      "name": "both tabs keep login",
+      "actual": [
+        false,
+        false
+      ],
+      "expected": [
+        true,
+        true
+      ],
+      "passed": false
+    },
+    {
+      "name": "no unhandled errors",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "fixture account removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "refreshResponses": [
+    {
+      "http": 200,
+      "code": 401
+    },
+    {
+      "http": 200,
+      "code": 200
+    }
+  ],
+  "users": [
+    {
+      "name": "rf_ui_5b3f022dbb",
+      "id": 10148
+    }
+  ],
+  "summary": {
+    "total": 7,
+    "passed": 3,
+    "failed": 4
+  }
+}

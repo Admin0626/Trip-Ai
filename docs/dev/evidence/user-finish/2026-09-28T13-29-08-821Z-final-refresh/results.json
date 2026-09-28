@@ -1,0 +1,190 @@
+{
+  "mode": "REAL_EDGE_SHARED_STORAGE_REFRESH",
+  "label": "final",
+  "checks": [
+    {
+      "name": "Web Locks available",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "all four requests recover",
+      "actual": [
+        [
+          200,
+          200
+        ],
+        [
+          200,
+          200
+        ]
+      ],
+      "expected": [
+        [
+          200,
+          200
+        ],
+        [
+          200,
+          200
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "name": "only one server refresh rotation",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "refresh succeeds",
+      "actual": [
+        200
+      ],
+      "expected": [
+        200
+      ],
+      "passed": true
+    },
+    {
+      "name": "both tabs keep login",
+      "actual": [
+        true,
+        true
+      ],
+      "expected": [
+        true,
+        true
+      ],
+      "passed": true
+    },
+    {
+      "name": "recovered session actually authenticates",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true
+    },
+    {
+      "name": "logout suppresses stale response",
+      "actual": [
+        "rejected",
+        "rejected"
+      ],
+      "expected": [
+        "rejected",
+        "rejected"
+      ],
+      "passed": true
+    },
+    {
+      "name": "logout remains cleared",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "account switch suppresses stale requests",
+      "actual": [
+        "rejected",
+        "rejected"
+      ],
+      "expected": [
+        "rejected",
+        "rejected"
+      ],
+      "passed": true
+    },
+    {
+      "name": "new account preserved",
+      "actual": 10156,
+      "expected": 10156,
+      "passed": true
+    },
+    {
+      "name": "new account still authenticates",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true
+    },
+    {
+      "name": "unsupported locks refuses unsafe replay",
+      "actual": [
+        "rejected",
+        "rejected"
+      ],
+      "expected": [
+        "rejected",
+        "rejected"
+      ],
+      "passed": true
+    },
+    {
+      "name": "unsupported locks sends no refresh",
+      "actual": 3,
+      "expected": 3,
+      "passed": true
+    },
+    {
+      "name": "no unhandled errors",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "fixture account removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "fixture account removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "refreshResponses": [
+    {
+      "http": 200,
+      "code": 200
+    },
+    {
+      "http": 200,
+      "code": 200
+    },
+    {
+      "http": 200,
+      "code": 200
+    }
+  ],
+  "users": [
+    {
+      "name": "rf_ui_50aa28889b",
+      "id": 10155
+    },
+    {
+      "name": "rf_ui_2f7ad37fc8",
+      "id": 10156
+    }
+  ],
+  "summary": {
+    "total": 16,
+    "passed": 16,
+    "failed": 0
+  }
+}

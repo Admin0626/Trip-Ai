@@ -15,6 +15,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 import uuid
+from redis_fixture import clean_sessions, session_keys
 
 ROOT = Path(__file__).resolve().parents[2]
 SECRET_FIELDS = {"password", "oldpassword", "newpassword", "accesstoken", "refreshtoken", "token", "authorization"}
@@ -190,13 +191,8 @@ class Acceptance:
                         user["id"] = int(self.sql(f"SELECT id FROM sys_user WHERE username='{user['name']}'"))
                     self.sql(f"DELETE FROM sys_user WHERE id={user['id']} AND username='{user['name']}'")
                     self.check("temporary user removed", self.sql(f"SELECT COUNT(*) FROM sys_user WHERE id={user['id']}"), "0")
-                    prefix = "trip:auth:session:{" + str(user["id"]) + "}:"
-                    args = ["redis-cli", "--scan", "--pattern", prefix + "*"]
-                    for key in subprocess.check_output(args, text=True).splitlines():
-                        if not key.startswith(prefix):
-                            raise RuntimeError("Unexpected session key")
-                        subprocess.check_output(["redis-cli", "DEL", key], text=True)
-                    self.check("temporary session keys removed", subprocess.check_output(args, text=True).strip(), "")
+                    removed = clean_sessions(user["id"])
+                    self.check("temporary session keys removed", session_keys(user["id"]), [], removedCount=removed)
                 except Exception as error:
                     self.check("cleanup completed", type(error).__name__, "no error")
             self.report["finishedAt"] = dt.datetime.now().astimezone().isoformat()
