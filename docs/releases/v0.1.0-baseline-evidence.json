@@ -1,0 +1,84 @@
+{
+  "tag": "v0.1.0-baseline",
+  "recordedAt": "2026-09-29T11:08:49.201736+08:00",
+  "codeSourceCommit": "91f4720c513c46e608d426538f1bde0cd5c1d030",
+  "codeTrees": {
+    "trip-server": "e76cab4d7da272aec5ce8f6dc731e3d9b0c740b2",
+    "trip-web": "56cce2c81a322b45f7ce7674ec9d2e185b429ebc"
+  },
+  "testExecutionDate": "2026-09-28",
+  "fullSuiteRerunForThisRecord": false,
+  "hashMeaning": "SHA-256 of committed Git blob bytes, independent of working-copy CRLF conversion",
+  "evidence": [
+    {
+      "path": "docs/dev/evidence/basic-user/20260928-214031-606697-http.json",
+      "gitBlobSha256": "9b0bba1b9d47d64bcc72ddf05827457d83948819f45857ad1ded1185c1bd7d2a",
+      "recordedChecks": 21,
+      "recordedPassed": 21,
+      "recordedFailed": 0
+    },
+    {
+      "path": "docs/dev/evidence/user-finish/20260928-215315-950065-final.json",
+      "gitBlobSha256": "cbd533f584c61e2f26f96f2f22537d4b46aa3f07a53d3fe6a2afed86848c8bc0",
+      "recordedChecks": 63,
+      "recordedPassed": 63,
+      "recordedFailed": 0
+    },
+    {
+      "path": "docs/dev/evidence/user-finish/2026-09-28T14-10-40-126Z-final-refresh/results.json",
+      "gitBlobSha256": "687868d244e21f9f593c04cdf853edf604f221dd7296a4479f38bf5195fefe01",
+      "recordedChecks": 30,
+      "recordedPassed": 30,
+      "recordedFailed": 0
+    },
+    {
+      "path": "docs/dev/evidence/user-finish/2026-09-28T14-08-42-803Z-pages/results.json",
+      "gitBlobSha256": "c674b65c6e329270241f37b765c22706d6cc796bb0602a71a08d544d2387ef92",
+      "recordedChecks": 41,
+      "recordedPassed": 41,
+      "recordedFailed": 0
+    },
+    {
+      "path": "docs/dev/evidence/admin/20260928-205738-483795-final.json",
+      "gitBlobSha256": "70b8b5f7ef416474bc425cbed01ba3307ec5731fabc321a4bcc21743a22fbda9",
+      "recordedChecks": 139,
+      "recordedPassed": 139,
+      "recordedFailed": 0
+    },
+    {
+      "path": "docs/dev/evidence/admin/2026-09-28T12-59-22-052Z-browser/results.json",
+      "gitBlobSha256": "ca9c811a54600651d0c24e87a141bbc099470c75d66fb7829b45aa783caeeecc",
+      "recordedChecks": 50,
+      "recordedPassed": 50,
+      "recordedFailed": 0
+    },
+    {
+      "path": "docs/dev/evidence/circuit/20260928-225733-243042-final.json",
+      "gitBlobSha256": "586721e6d6041d1fe47615d1981b9aeea93dd8714f3419c8c334dda0bf2e93de",
+      "recordedChecks": 150,
+      "recordedPassed": 150,
+      "recordedFailed": 0
+    },
+    {
+      "path": "docs/dev/evidence/circuit/20260928-225922-578452-production-defaults.json",
+      "gitBlobSha256": "2f21dcf0e2ac3cfae676fa2e3b0fd25cd75c1899dff5f5b5072347a04b431d81",
+      "recordedChecks": 26,
+      "recordedPassed": 26,
+      "recordedFailed": 0
+    },
+    {
+      "path": "docs/dev/evidence/circuit/2026-09-28T14-56-37-806Z-browser/results.json",
+      "gitBlobSha256": "16f3c7c3e28e31c76d3841454c0da4b569be4a7998a79b4c34dad80717b1bc1c",
+      "recordedChecks": 34,
+      "recordedPassed": 34,
+      "recordedFailed": 0
+    },
+    {
+      "path": "docs/dev/evidence/circuit/build-verification.json",
+      "gitBlobSha256": "1027084d158537d4d80b8ead9cec01f0f83b788732514022f7f5fcffeeb541fa",
+      "recordedChecks": 2,
+      "recordedPassed": 2,
+      "recordedFailed": 0
+    }
+  ]
+}
