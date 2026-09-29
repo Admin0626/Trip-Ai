@@ -14,7 +14,7 @@
 
 ## 下一步、边界与接续
 
-本批提交标题`feat: add cancellable planner progress SSE`，推送到origin/codex/ai-planner-sse并创建PR。使用git log与远程ref核对最终提交；如果上传中断，先继续推送当前提交/建PR，不重新实现。main与基线仍ceec9a2。工作区原有docs/README.md及实训报告（答辩版）修改属于既有答辩材料，本批保留，单独审阅，不混入SSE提交。
+本批功能提交`54f4ab1b2d5e103320395350ee8f2f8f3b0bf228`（feat: add cancellable planner progress SSE）已推送到origin/codex/ai-planner-sse。[PR #1](https://github.com/Admin0626/Trip-Ai/pull/1)已创建，状态open、未合并，基点ceec9a2；本段发布记录通过后续文档提交补充。使用git log与远程ref核对最终分支提交；如果文档上传中断，仅继续推送，不重新实现功能。main与基线仍ceec9a2。工作区原有docs/README.md及实训报告（答辩版）修改属于既有答辩材料，本批保留，单独审阅，不混入SSE提交。
 
 审核融合后再从最新main创建codex/rag-knowledge分支，做知识文档导入/检索/来源回答。不要在当前分支继续混入RAG。邮箱验证码/找回密码/注销、高级运营、真实模型质量、集群并发/任务恢复仍未交付。SSE作业暂实例内，需要单实例/同实例路由；取消不能保证供应商停止计费；阶段SSE不能等同规划token流或RAG聊天。
 
