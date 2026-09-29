@@ -6,7 +6,7 @@ import { useUserStore } from '@/store/user'
 import { today } from '@/utils/format'
 import { createPlanApi } from '@/api/modules/plan'
 import { destinationListApi } from '@/api/modules/destination'
-import { plannerOptions, plannerUsage, plannerCircuit, testModel, generatePlan, type PlannerCircuit, type PlannerPreview, type PlannerUsage } from '@/api/modules/planner'
+import { plannerOptions, plannerUsage, plannerCircuit, testModel, generatePlan, generatePlanStream, cancelPlannerRequest, type PlannerCircuit, type PlannerPreview, type PlannerUsage } from '@/api/modules/planner'
 
 const router = useRouter(), user = useUserStore()
 const connection = reactive({ baseUrl: '', model: '', apiKey: '' })
@@ -19,13 +19,16 @@ const connected = ref(false)
 const preview = ref<PlannerPreview | null>(null)
 const title = ref('')
 const acknowledged = ref(false)
+const showProgress=ref(true),stage=ref(''),attempt=ref(1),elapsed=ref(0),cancelling=ref(false),cancelled=ref(false)
+let activeRequest='',streamController:AbortController|null=null,startedAt=0
+const stageText=computed(()=>({CONNECTING:'正在连接你的模型服务',GENERATING:'模型正在生成完整行程',VALIDATING:'正在检查行程结构',RETRYING:'行程结构需要重新生成，正在准备重试'}[stage.value]||'正在启动生成'))
 const usage = ref<PlannerUsage | null>(null)
 const usageError = ref(false)
 const refreshingUsage = ref(false)
 const circuit = ref<PlannerCircuit | null>(null)
 const circuitError = ref(false), refreshingCircuit = ref(false), clockTick = ref(0)
 let circuitRevision = 0, circuitDeadline = 0, mounted = true
-const ticker = window.setInterval(() => { clockTick.value = performance.now() }, 1000)
+const ticker = window.setInterval(() => { clockTick.value = performance.now(); if(busy.value==='generate')elapsed.value=Math.floor((performance.now()-startedAt)/1000) }, 1000)
 const circuitWait = computed(() => Math.max(0, Math.ceil((circuitDeadline - clockTick.value) / 1000)))
 const circuitBlocked = computed(() => circuit.value?.phase === 'HALF_OPEN' || (circuit.value?.phase === 'OPEN' && circuitWait.value > 0))
 const exhausted = computed(() => !!usage.value && [usage.value.quota.hourly, usage.value.quota.daily, usage.value.quota.globalDaily].some(q => q.remaining === 0))
@@ -37,8 +40,9 @@ watch(connection, () => {
   circuitError.value = false; refreshingCircuit.value = false; circuitDeadline = 0
 }, { deep: true, flush: 'sync' })
 watch(form, invalidate, { deep: true, flush: 'sync' })
+watch(showProgress,invalidate)
 watch(storageKey, () => { connection.apiKey = ''; usage.value = null; loadSettings(); void refreshUsage() })
-onBeforeUnmount(() => { mounted = false; revision++; circuitRevision++; window.clearInterval(ticker); connection.apiKey = '' })
+onBeforeUnmount(() => { mounted = false; revision++; circuitRevision++; streamController?.abort(); window.clearInterval(ticker); connection.apiKey = '' })
 
 function loadSettings() {
   connection.baseUrl = ''; connection.model = ''; connection.apiKey = ''
@@ -70,7 +74,7 @@ function clearSettings() {
 }
 function config() { return { baseUrl: connection.baseUrl.trim(), model: connection.model.trim(), apiKey: connection.apiKey.trim() } }
 async function refreshCircuit() {
-  if (!connection.baseUrl.trim() || !connection.model.trim()) return
+  if (!mounted || !connection.baseUrl.trim() || !connection.model.trim()) return
   const version = ++circuitRevision
   refreshingCircuit.value = true
   try {
@@ -84,6 +88,7 @@ async function refreshCircuit() {
   } finally { if (mounted && version === circuitRevision) refreshingCircuit.value = false }
 }
 async function refreshUsage() {
+  if(!mounted)return
   refreshingUsage.value = true
   const account = storageKey.value
   try { const result = await plannerUsage(); if (account === storageKey.value) { usage.value = result; usageError.value = false } }
@@ -105,13 +110,32 @@ async function generate() {
   if (!form.days || !form.budget || !form.peopleNum) { ElMessage.warning('请填写天数、预算和人数'); return }
   if (!form.startDate || form.startDate < today()) { ElMessage.warning('出发日期须为今天及以后'); return }
   invalidate(); busy.value = 'generate'
+  cancelled.value=false;stage.value='';attempt.value=1;elapsed.value=0;startedAt=performance.now()
+  const controller=new AbortController();streamController=controller
   const version = revision
   try {
-    const data = await generatePlan({ connection: config(), query: form.query.trim(), days: form.days, budget: form.budget, peopleNum: form.peopleNum, startDate: form.startDate })
-    if (version !== revision) return
+    const requestId=crypto.randomUUID();activeRequest=requestId
+    const input={ connection: config(), query: form.query.trim(), days: form.days, budget: form.budget, peopleNum: form.peopleNum, startDate: form.startDate }
+    const data = showProgress.value?await generatePlanStream(input,requestId,controller.signal,(name,event)=>{
+      if(!mounted||version!==revision)return
+      if(name==='progress'){stage.value=event.data.stage as string;attempt.value=event.data.attempt as number}
+    }):await generatePlan(input)
+    if (!mounted || version !== revision) return
+    if(!data){cancelled.value=true;return}
     preview.value = data; title.value = data.draft.title
-  } catch (e) { if (version === revision) error.value = e instanceof Error ? e.message : '生成失败，请重试' }
-  finally { await Promise.allSettled([refreshUsage(), refreshCircuit()]); busy.value = '' }
+  } catch (e) { if (mounted && version === revision) { if(controller.signal.aborted)cancelled.value=true;else error.value = e instanceof Error ? e.message : '生成失败，请重试' } }
+  finally { activeRequest='';streamController=null;cancelling.value=false;await Promise.allSettled([refreshUsage(), refreshCircuit()]); busy.value = '' }
+}
+async function cancelGeneration(){
+  if(!activeRequest||cancelling.value)return
+  cancelling.value=true
+  try { await cancelPlannerRequest(activeRequest) }
+  catch(e) {
+    cancelling.value=false
+    // A committed result is still deliverable. Other failures stop the local stream;
+    // the server detects the closed connection on its next write/heartbeat.
+    if((e as {code?:number}).code!==409)streamController?.abort()
+  }
 }
 async function save() {
   if (!preview.value || !acknowledged.value) return
@@ -188,6 +212,8 @@ onMounted(async () => {
       </section>
       <section class="panel">
         <h2>2. 你的旅行需求</h2>
+        <el-checkbox v-model="showProgress" data-testid="planner-progress-mode">展示生成进度（支持取消）</el-checkbox>
+        <p class="hint">关闭后使用普通生成。显示实际处理阶段，完整行程检查通过后再预览；切换方式后需要自行重新生成。</p>
         <el-form-item label="告诉AI你想去哪里、喜欢什么、有哪些限制">
           <el-input v-model="form.query" type="textarea" :rows="4" maxlength="1000" show-word-limit aria-label="AI旅行需求" placeholder="例如：想去大理玩3天，喜欢美食和自然风光，带父母同行，每天不要太赶。" />
         </el-form-item>
@@ -201,9 +227,15 @@ onMounted(async () => {
           </el-form-item>
         </div>
         <el-button type="primary" :loading="busy === 'generate'" :disabled="exhausted || circuitBlocked || refreshingCircuit" @click="generate">生成AI行程</el-button>
-        <p v-if="busy === 'generate'" class="hint" role="status">正在生成完整行程，结构不合格时会自动重试一次，请稍候。</p>
+        <p v-if="busy === 'generate' && !showProgress" class="hint" role="status">正在生成完整行程，结构不合格时会自动重试一次，请稍候。</p>
       </section>
     </el-form>
+    <section v-if="busy === 'generate' && showProgress" class="panel" data-testid="planner-progress" aria-live="polite">
+      <h2>{{ stageText }}</h2><p>第{{ attempt }}次尝试 · 已等待{{ elapsed }}秒</p>
+      <p class="hint">取消会停止后台等待；已准入的调用不退额度，模型服务可能已经计费。离开页面也会停止等待。</p>
+      <el-button type="warning" :loading="cancelling" @click="cancelGeneration">取消生成</el-button>
+    </section>
+    <el-alert v-if="cancelled" title="已停止本次生成等待，未保存行程。已准入的调用不退额度。" type="info" :closable="false" data-testid="planner-cancelled" />
     <el-alert v-if="error" :title="error" type="error" :closable="false" role="alert" />
     <section v-if="preview" class="panel preview" data-testid="ai-preview">
       <h2>3. 检查AI生成的行程</h2>

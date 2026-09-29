@@ -1,0 +1,48 @@
+{
+  "mode": "REAL_HTTP_SSE_MYSQL_REDIS_CONTROLLED_PROVIDER",
+  "label": "implementation",
+  "startedAt": "2026-09-29T20:09:17.906176+08:00",
+  "checks": [
+    {
+      "name": "register s",
+      "actual": [
+        200,
+        500
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": false,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_a17c39edd1s",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 500,
+          "message": "服务器内部错误",
+          "data": null,
+          "timestamp": 1790683759088
+        }
+      }
+    },
+    {
+      "name": "runner completed",
+      "actual": "Temporary registration failed",
+      "expected": "no error",
+      "passed": false
+    }
+  ],
+  "phase": "COMPLETE",
+  "summary": {
+    "total": 2,
+    "passed": 0,
+    "failed": 2
+  }
+}

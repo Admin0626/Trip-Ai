@@ -22,6 +22,10 @@ public class CompatiblePlannerClient {
         this.json = json; this.timeout = Math.max(1, Math.min(timeout, 60));
     }
     public String call(URI uri, PlannerConnection config, String system, String user, boolean structured) {
+        return call(uri,config,system,user,structured,new PlannerExecution());
+    }
+    public String call(URI uri, PlannerConnection config, String system, String user, boolean structured,PlannerExecution execution) {
+        execution.check();
         var body = new LinkedHashMap<String, Object>();
         body.put("model", config.model()); body.put("stream", false);
         body.put("messages", List.of(Map.of("role", "system", "content", system), Map.of("role", "user", "content", user)));
@@ -29,9 +33,15 @@ public class CompatiblePlannerClient {
         var request = HttpRequest.newBuilder(uri).timeout(Duration.ofSeconds(timeout)).header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(json.writeValueAsString(body)));
         if (config.apiKey() != null && !config.apiKey().isBlank()) request.header("Authorization", "Bearer " + config.apiKey().strip());
-        CompletableFuture<HttpResponse<byte[]>> future = client.sendAsync(request.build(), info -> new LimitedBody());
+        CompletableFuture<HttpResponse<byte[]>> future;
+        synchronized(execution) {
+            execution.check();
+            future=client.sendAsync(request.build(), info -> new LimitedBody());
+            execution.attach(future);
+        }
         try {
             var response = future.get(timeout, TimeUnit.SECONDS);
+            execution.check();
             int status = response.statusCode();
             if (status == 401 || status == 403) throw new BizException(3004, "模型服务拒绝认证，请检查API Key与模型权限");
             if (status == 429) throw new BizException(3004, "模型服务限流或额度不足，请稍后重试");
@@ -40,11 +50,12 @@ public class CompatiblePlannerClient {
             var content = root.path("choices").path(0).path("message").path("content");
             if (!content.isString() || content.asString().isBlank()) throw new BizException(3004, "模型服务没有返回有效文本");
             return content.asString();
-        } catch (BizException e) { throw e; }
+        } catch (PlannerExecution.Stopped e) { throw e; }
+        catch (BizException e) { execution.check(); throw e; }
         catch (InterruptedException e) { Thread.currentThread().interrupt(); throw new BizException(3004, "模型请求已中断"); }
         catch (TimeoutException e) { throw new BizException(3004, "模型请求超时，请稍后重试或减少行程天数"); }
-        catch (Exception e) { throw new BizException(3004, "无法读取模型响应，请检查服务连接、响应大小与兼容协议"); }
-        finally { if (!future.isDone()) future.cancel(true); }
+        catch (Exception e) { execution.check(); throw new BizException(3004, "无法读取模型响应，请检查服务连接、响应大小与兼容协议"); }
+        finally { execution.detach(future); if (!future.isDone()) future.cancel(true); }
     }
 
     /** Limit buffering to 1 MiB even for chunked responses without Content-Length. */

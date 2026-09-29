@@ -1,0 +1,131 @@
+{
+  "mode": "REAL_LOCAL_BASIC_HTTP_MYSQL_REDIS",
+  "checks": [
+    {
+      "name": "register",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "login",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "profile read",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "preference read",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "stats read",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "profile update",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "preference update",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "refresh rotates tokens",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "old refresh rejected",
+      "actual": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "name": "public destination page",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "destination detail",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "destination attractions",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "public banner list",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "feedback create",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "my feedback page",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "feedback returned own row",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "user cannot read admin feedback",
+      "actual": 403,
+      "expected": 403,
+      "passed": true
+    },
+    {
+      "name": "invalid preference type",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "logout revokes session",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "revoked access rejected",
+      "actual": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "name": "temporary account cleaned",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ]
+}

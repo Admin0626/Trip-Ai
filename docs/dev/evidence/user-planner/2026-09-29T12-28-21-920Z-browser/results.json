@@ -1,0 +1,168 @@
+{
+  "mode": "REAL_BROWSER_WITH_CONTROLLED_PROVIDER_NOT_REAL_LLM",
+  "checks": [
+    {
+      "name": "key masked",
+      "actual": "password",
+      "expected": "password",
+      "passed": true
+    },
+    {
+      "name": "only endpoint and model remembered",
+      "actual": [
+        "baseUrl",
+        "model"
+      ],
+      "expected": [
+        "baseUrl",
+        "model"
+      ],
+      "passed": true
+    },
+    {
+      "name": "key absent from persistent storage",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "credential query cannot be remembered",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "connection test uses actual compatible fixture",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "generate succeeds",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "preview shows two days",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "preview not saved automatically",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "save disabled until acknowledgement",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "mobile no horizontal overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "acknowledgement enables saving",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "saved as one editable draft",
+      "actual": "1",
+      "expected": "1",
+      "passed": true
+    },
+    {
+      "name": "plan editor receives generated title",
+      "actual": "可控服务生成的测试行程",
+      "expected": "可控服务生成的测试行程",
+      "passed": true
+    },
+    {
+      "name": "endpoint remembered for same user",
+      "actual": "http://localhost:11435/v1",
+      "expected": "http://localhost:11435/v1",
+      "passed": true
+    },
+    {
+      "name": "key cleared after leaving page",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "key absent after refresh",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "authentication failure shown",
+      "actual": 3004,
+      "expected": 3004,
+      "passed": true
+    },
+    {
+      "name": "upstream response secret not displayed",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "second user does not inherit endpoint",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "second user does not inherit model",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "no unhandled page errors",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "fixture sessions cleaned 10267",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "fixture model state cleaned 10267",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "fixture sessions cleaned 10268",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "fixture model state cleaned 10268",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "both fixture accounts removed",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    }
+  ],
+  "errors": []
+}

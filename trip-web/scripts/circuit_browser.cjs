@@ -45,6 +45,7 @@ async function action(name,endpoint){const r=page.waitForResponse(r=>r.url().end
   await control('ok');await test.waitFor({state:'visible'});await page.waitForFunction(()=>[...document.querySelectorAll('button')].some(b=>b.textContent.trim()==='测试连接'&&!b.disabled),{},{timeout:10000});
   check('cooldown reenables real probe',await test.isEnabled(),true);check('actual half-open recovery',(await action('测试连接','/ai/planner/test')).code,200);check('closed state after recovery',(await state.innerText()).includes('当前模型可尝试调用'),true);
   await page.getByRole('textbox',{name:'AI旅行需求',exact:true}).fill('希望轻松体验当地美食，安排两天旅行');await page.getByRole('spinbutton',{name:'AI天数',exact:true}).fill('2');await page.getByRole('spinbutton',{name:'AI天数',exact:true}).press('Tab');
+  await page.getByTestId('planner-progress-mode').click(); // This regression covers the retained ordinary endpoint.
   check('real generation after recovery',(await action('生成AI行程','/ai/planner/generate')).code,200);await page.getByTestId('ai-preview').waitFor();check('two generated days',await page.locator('.preview .day').count(),2);
   check('no automatic save',sql(`SELECT COUNT(*) FROM user_plan WHERE user_id=${users[0].id}`),'0');
   // Buffer a real status response while configuration changes; old reply must be discarded.

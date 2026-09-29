@@ -1,0 +1,20 @@
+{
+  "recordedAt": "2026-09-29T20:39:04.821133+08:00",
+  "checks": [
+    {
+      "name": "known owned fixture accounts absent",
+      "knownNames": 16,
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "isolated test Redis prefixes cleaned",
+      "removedKeyCount": 1,
+      "remainingKeys": 0,
+      "passed": true
+    }
+  ],
+  "sharedGlobalQuota": "Retained all admitted calls; no shared counter reset",
+  "runtime": "Dedicated8081 and controlled suppliers stopped; normal8080/Vite/Redis retained"
+}

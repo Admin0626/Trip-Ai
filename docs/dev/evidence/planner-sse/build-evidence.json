@@ -1,0 +1,60 @@
+{
+  "recordedAt": "2026-09-29T20:37:45.757205+08:00",
+  "maven": {
+    "command": "mvn test",
+    "finishedAt": "2026-09-29T20:23:52+08:00",
+    "suites": [
+      {
+        "suite": "com.trip.module.ai.AiQuotaTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "suite": "com.trip.module.ai.PlannerCircuitTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "suite": "com.trip.module.ai.PlannerExecutionTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "suite": "com.trip.module.ai.RuleIntentParserTest",
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "suite": "com.trip.module.ai.UserPlannerTest",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "suite": "com.trip.TripServerApplicationTests",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ],
+    "total": 29,
+    "failures": 0,
+    "errors": 0
+  },
+  "frontend": {
+    "command": "npm run build",
+    "result": "vue-tsc and Vite build passed",
+    "knownWarning": "Existing main chunk about 1.13 MB; not solved in this batch"
+  },
+  "sourceNotes": "Final later edits were audit indentation and cancellation wording; functional tests referenced in companion reports."
+}

@@ -1,4 +1,28 @@
-# Session：基础版本记录与分支开发
+# Session：用户AI规划阶段SSE完成，功能分支待融合
+
+更新：2026-09-29（北京时间）。接续指令“继续”，起点ceec9a2。本轮在codex/ai-planner-sse实现、实测、记录并提交推送；本轮不融合main，不移动v0.1.0-baseline。远程https://github.com/Admin0626/Trip-Ai.git。
+
+## 本批完成与验证
+
+- 登录POST阶段SSE（start/progress/heartbeat/done/error/cancelled），实际阶段/等待秒数；完整JSON校验后才预览，最多一次结构重试，上游仍非流式，没有模型token。
+- 本人UUID请求、取消及状态；有界作业/10分钟最近状态，旧test/generate共用本人1个/单实例8个名额、配额/熔断/审计。future取消，不打断Redis/SQL清理线程；取消/断连/认证撤销/整体截止中性释放半开探测。
+- 前端Axios fetch流、UTF-8逐块解析/2MiB边界/缺终态拒绝，表单外取消按钮、普通生成选项、离页清Key/断流、账号epoch保护，不自动重发失败模型请求。
+- HTTP116/116；刷新轮换/禁用/短总超时32/32；Edge真实流与独立解析检查40/40、pageerror=0；旧规划接口52/52与浏览器26/26、会话75/75、基础21/21；Maven29/29、生产构建通过，旧主包警告保留。
+- 发现并修复启动前SSE/JSON协商空响应、长行小分块扫描性能；测试夹具key时间格式、模型计数跨轮污染与隐藏checkbox定位错误均保留失败记录。实际响应/原因/方案详见[实测](docs/dev/AI规划SSE接口与页面实测.md)、[开发与答辩复盘](docs/dev/AI规划SSE开发与答辩复盘.md)、[进度](docs/dev/AI规划SSE进度.md)。
+
+正常本机服务：MySQL3306、Redis6379、后端8080/api、Vite5173，启动沿根README。生命周期验收另起8081（总5秒/心跳1秒、独立AI Redis前缀）；受控服务11437（SSE）与11435（旧规划）只用于测试。测试账号/会话/个人AI状态和日志清理，无数据库迁移/重建，默认全局配额保留已准入测试次数。收费真实模型/代理生产环境/负载未验收。
+
+## 下一步、边界与接续
+
+本批提交标题`feat: add cancellable planner progress SSE`，推送到origin/codex/ai-planner-sse并创建PR。使用git log与远程ref核对最终提交；如果上传中断，先继续推送当前提交/建PR，不重新实现。main与基线仍ceec9a2。工作区原有docs/README.md及实训报告（答辩版）修改属于既有答辩材料，本批保留，单独审阅，不混入SSE提交。
+
+审核融合后再从最新main创建codex/rag-knowledge分支，做知识文档导入/检索/来源回答。不要在当前分支继续混入RAG。邮箱验证码/找回密码/注销、高级运营、真实模型质量、集群并发/任务恢复仍未交付。SSE作业暂实例内，需要单实例/同实例路由；取消不能保证供应商停止计费；阶段SSE不能等同规划token流或RAG聊天。
+
+复现：后端python scripts/planner_sse_acceptance.py --label final；独立8081就绪后python scripts/planner_sse_lifecycle.py；提供11437夹具后前端node scripts/planner_sse_browser.cjs。其他回归及构建命令见实测。原始日志/Key/JWT不提交。时间戳证据都保留，不覆盖失败。
+
+---
+
+# 以下为基础版本记录与分支开发历史快照
 
 更新：2026-09-29（北京时间）。本轮指令：确认基础功能，并在GitHub记录当前项目作为开发基线；新功能先上传独立分支，之后融合。起点`91f4720c513c46e608d426538f1bde0cd5c1d030`，本轮仅版本及工作流程文档，无应用功能修改。
 

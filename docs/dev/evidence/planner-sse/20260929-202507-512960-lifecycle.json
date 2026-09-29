@@ -1,0 +1,731 @@
+{
+  "mode": "REAL_HTTP_SSE_REVOCATION_AND_ISOLATED_OVERALL_TIMEOUT",
+  "label": "lifecycle",
+  "startedAt": "2026-09-29T20:25:07.512913+08:00",
+  "checks": [
+    {
+      "name": "register life",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_70cdc2a43dlife",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "id": 10263,
+            "nickname": "pw_70cdc2a43dlife",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_70cdc2a43dlife"
+          },
+          "timestamp": 1790684707627
+        }
+      }
+    },
+    {
+      "name": "lifecycle fixture login",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_70cdc2a43dlife",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-29T20:25:07",
+              "email": null,
+              "id": 10263,
+              "nickname": "pw_70cdc2a43dlife",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_70cdc2a43dlife"
+            }
+          },
+          "timestamp": 1790684707770
+        }
+      }
+    },
+    {
+      "name": "rotation actual outbound",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "rotate while stream active",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/refresh",
+        "body": {
+          "refreshToken": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-29T20:25:07",
+              "email": null,
+              "id": 10263,
+              "nickname": "pw_70cdc2a43dlife",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_70cdc2a43dlife"
+            }
+          },
+          "timestamp": 1790684707920
+        }
+      }
+    },
+    {
+      "name": "rotation single error terminal",
+      "actual": [
+        "error"
+      ],
+      "expected": [
+        "error"
+      ],
+      "passed": true
+    },
+    {
+      "name": "rotation code",
+      "actual": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "name": "rotation stops before slow provider",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "rotation job state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/planner/requests/a830086c-dcdd-4e25-a8bd-9303e082b008",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "requestId": "a830086c-dcdd-4e25-a8bd-9303e082b008",
+            "state": "FAILED",
+            "startedAt": "2026-09-29T12:25:07.790Z",
+            "finishedAt": "2026-09-29T12:25:12.795Z"
+          },
+          "timestamp": 1790684712824
+        }
+      }
+    },
+    {
+      "name": "rotation failed state",
+      "actual": "FAILED",
+      "expected": "FAILED",
+      "passed": true
+    },
+    {
+      "name": "rotation circuit",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:52879/v1",
+            "model": "sse-life-rotation",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "CLOSED",
+            "total": 0,
+            "failed": 0,
+            "failurePercent": 0.0,
+            "minimumCalls": 10,
+            "windowSeconds": 300,
+            "cooldownSeconds": 600,
+            "retryAt": null,
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790684712833
+        }
+      }
+    },
+    {
+      "name": "rotation neutral fault samples",
+      "actual": [
+        0,
+        0
+      ],
+      "expected": [
+        0,
+        0
+      ],
+      "passed": true
+    },
+    {
+      "name": "rotation safe audit",
+      "actual": "STOPPED_401",
+      "expected": "STOPPED_401",
+      "passed": true
+    },
+    {
+      "name": "disabled actual outbound",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "disabled single error terminal",
+      "actual": [
+        "error"
+      ],
+      "expected": [
+        "error"
+      ],
+      "passed": true
+    },
+    {
+      "name": "disabled code",
+      "actual": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "name": "disabled stops before slow provider",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "login enabled fixture",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_70cdc2a43dlife",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-29T20:25:07",
+              "email": null,
+              "id": 10263,
+              "nickname": "pw_70cdc2a43dlife",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_70cdc2a43dlife"
+            }
+          },
+          "timestamp": 1790684718091
+        }
+      }
+    },
+    {
+      "name": "disabled job state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/planner/requests/9ed83a6d-289b-44c1-841a-9744d641d1cb",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "requestId": "9ed83a6d-289b-44c1-841a-9744d641d1cb",
+            "state": "FAILED",
+            "startedAt": "2026-09-29T12:25:12.924Z",
+            "finishedAt": "2026-09-29T12:25:17.935Z"
+          },
+          "timestamp": 1790684718096
+        }
+      }
+    },
+    {
+      "name": "disabled failed state",
+      "actual": "FAILED",
+      "expected": "FAILED",
+      "passed": true
+    },
+    {
+      "name": "disabled circuit",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:52879/v1",
+            "model": "sse-life-disabled",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "CLOSED",
+            "total": 0,
+            "failed": 0,
+            "failurePercent": 0.0,
+            "minimumCalls": 10,
+            "windowSeconds": 300,
+            "cooldownSeconds": 600,
+            "retryAt": null,
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790684718105
+        }
+      }
+    },
+    {
+      "name": "disabled neutral fault samples",
+      "actual": [
+        0,
+        0
+      ],
+      "expected": [
+        0,
+        0
+      ],
+      "passed": true
+    },
+    {
+      "name": "disabled safe audit",
+      "actual": "STOPPED_401",
+      "expected": "STOPPED_401",
+      "passed": true
+    },
+    {
+      "name": "timeout actual outbound",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "timeout single error terminal",
+      "actual": [
+        "error"
+      ],
+      "expected": [
+        "error"
+      ],
+      "passed": true
+    },
+    {
+      "name": "timeout code",
+      "actual": 408,
+      "expected": 408,
+      "passed": true
+    },
+    {
+      "name": "timeout stops before slow provider",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "timeout job state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/planner/requests/f8aa2edf-7ad4-44b7-aea0-431cc6e8dd19",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "requestId": "f8aa2edf-7ad4-44b7-aea0-431cc6e8dd19",
+            "state": "FAILED",
+            "startedAt": "2026-09-29T12:25:18.475Z",
+            "finishedAt": "2026-09-29T12:25:22.507Z"
+          },
+          "timestamp": 1790684722566
+        }
+      }
+    },
+    {
+      "name": "timeout failed state",
+      "actual": "FAILED",
+      "expected": "FAILED",
+      "passed": true
+    },
+    {
+      "name": "timeout circuit",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:52879/v1",
+            "model": "sse-life-timeout",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "CLOSED",
+            "total": 0,
+            "failed": 0,
+            "failurePercent": 0.0,
+            "minimumCalls": 10,
+            "windowSeconds": 300,
+            "cooldownSeconds": 600,
+            "retryAt": null,
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790684722852
+        }
+      }
+    },
+    {
+      "name": "timeout neutral fault samples",
+      "actual": [
+        0,
+        0
+      ],
+      "expected": [
+        0,
+        0
+      ],
+      "passed": true
+    },
+    {
+      "name": "timeout safe audit",
+      "actual": "STOPPED_408",
+      "expected": "STOPPED_408",
+      "passed": true
+    },
+    {
+      "name": "lifecycle fixture removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ],
+  "phase": "COMPLETE",
+  "streams": [
+    [
+      {
+        "event": "start",
+        "payload": {
+          "data": {
+            "state": "RUNNING"
+          },
+          "requestId": "a830086c-dcdd-4e25-a8bd-9303e082b008"
+        },
+        "atMs": 16
+      },
+      {
+        "event": "progress",
+        "payload": {
+          "data": {
+            "stage": "CONNECTING",
+            "attempt": 1
+          },
+          "requestId": "a830086c-dcdd-4e25-a8bd-9303e082b008"
+        },
+        "atMs": 151
+      },
+      {
+        "event": "progress",
+        "payload": {
+          "data": {
+            "stage": "GENERATING",
+            "attempt": 1
+          },
+          "requestId": "a830086c-dcdd-4e25-a8bd-9303e082b008"
+        },
+        "atMs": 151
+      },
+      {
+        "event": "error",
+        "payload": {
+          "data": {
+            "message": "登录已变更或过期，请重新操作",
+            "code": 401
+          },
+          "requestId": "a830086c-dcdd-4e25-a8bd-9303e082b008"
+        },
+        "atMs": 5022
+      }
+    ],
+    [
+      {
+        "event": "start",
+        "payload": {
+          "data": {
+            "state": "RUNNING"
+          },
+          "requestId": "9ed83a6d-289b-44c1-841a-9744d641d1cb"
+        },
+        "atMs": 28
+      },
+      {
+        "event": "progress",
+        "payload": {
+          "data": {
+            "stage": "CONNECTING",
+            "attempt": 1
+          },
+          "requestId": "9ed83a6d-289b-44c1-841a-9744d641d1cb"
+        },
+        "atMs": 190
+      },
+      {
+        "event": "progress",
+        "payload": {
+          "data": {
+            "stage": "GENERATING",
+            "attempt": 1
+          },
+          "requestId": "9ed83a6d-289b-44c1-841a-9744d641d1cb"
+        },
+        "atMs": 190
+      },
+      {
+        "event": "error",
+        "payload": {
+          "data": {
+            "message": "登录已变更或过期，请重新操作",
+            "code": 401
+          },
+          "requestId": "9ed83a6d-289b-44c1-841a-9744d641d1cb"
+        },
+        "atMs": 5039
+      }
+    ],
+    [
+      {
+        "event": "start",
+        "payload": {
+          "data": {
+            "state": "RUNNING"
+          },
+          "requestId": "f8aa2edf-7ad4-44b7-aea0-431cc6e8dd19"
+        },
+        "atMs": 323
+      },
+      {
+        "event": "progress",
+        "payload": {
+          "data": {
+            "attempt": 1,
+            "stage": "CONNECTING"
+          },
+          "requestId": "f8aa2edf-7ad4-44b7-aea0-431cc6e8dd19"
+        },
+        "atMs": 528
+      },
+      {
+        "event": "progress",
+        "payload": {
+          "data": {
+            "attempt": 1,
+            "stage": "GENERATING"
+          },
+          "requestId": "f8aa2edf-7ad4-44b7-aea0-431cc6e8dd19"
+        },
+        "atMs": 528
+      },
+      {
+        "event": "heartbeat",
+        "payload": {
+          "data": {
+            "elapsedSeconds": 1
+          },
+          "requestId": "f8aa2edf-7ad4-44b7-aea0-431cc6e8dd19"
+        },
+        "atMs": 1311
+      },
+      {
+        "event": "heartbeat",
+        "payload": {
+          "data": {
+            "elapsedSeconds": 2
+          },
+          "requestId": "f8aa2edf-7ad4-44b7-aea0-431cc6e8dd19"
+        },
+        "atMs": 2311
+      },
+      {
+        "event": "heartbeat",
+        "payload": {
+          "data": {
+            "elapsedSeconds": 3
+          },
+          "requestId": "f8aa2edf-7ad4-44b7-aea0-431cc6e8dd19"
+        },
+        "atMs": 3322
+      },
+      {
+        "event": "error",
+        "payload": {
+          "data": {
+            "message": "生成等待超时，请稍后重试或使用普通生成",
+            "code": 408
+          },
+          "requestId": "f8aa2edf-7ad4-44b7-aea0-431cc6e8dd19"
+        },
+        "atMs": 4334
+      }
+    ]
+  ],
+  "summary": {
+    "total": 32,
+    "passed": 32,
+    "failed": 0
+  }
+}

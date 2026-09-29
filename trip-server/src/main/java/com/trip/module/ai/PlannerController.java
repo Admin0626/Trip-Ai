@@ -9,6 +9,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import java.math.BigDecimal;
 import tools.jackson.databind.annotation.JsonDeserialize;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 @RestController
 @RequestMapping("/ai/planner")
@@ -18,6 +21,9 @@ public class PlannerController {
     private final PlannerEndpointPolicy policy;
     private final AiQuotaService quota;
     private final PlannerCircuitService circuit;
+    private final PlannerStreamService streams;
+    public record Stream(@NotBlank @Pattern(regexp="[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}")
+                         @JsonDeserialize(using=StrictPlannerJson.Text.class) String requestId,@Valid @NotNull Generate input) {}
     public record Test(@Valid @NotNull PlannerConnection connection) {}
     public record Generate(@Valid @NotNull PlannerConnection connection,
                            @NotBlank @Size(min=5,max=1000) @JsonDeserialize(using=StrictPlannerJson.Text.class) String query,
@@ -34,11 +40,27 @@ public class PlannerController {
         return R.ok(service.execute(userId, new Generate(request.connection(), null, null, null, null, null), true));
     }
     @PostMapping("generate") public R<Object> generate(@AuthenticationPrincipal Long userId, @Valid @RequestBody Generate request) {
+        validateGenerate(request);
+        return R.ok(service.execute(userId, request, false));
+    }
+    @PostMapping(value="generate-stream",produces=MediaType.TEXT_EVENT_STREAM_VALUE)
+    public ResponseEntity<SseEmitter> stream(@AuthenticationPrincipal Long userId,@RequestHeader("Authorization") String authorization,@Valid @RequestBody Stream request) {
+        validateGenerate(request.input());
+        return ResponseEntity.ok().contentType(MediaType.parseMediaType("text/event-stream;charset=UTF-8"))
+                .header("Cache-Control","no-cache, no-store").header("X-Accel-Buffering","no")
+                .body(streams.start(userId,authorization.substring(7),request));
+    }
+    @PostMapping("requests/{requestId}/cancel") public R<PlannerStreamService.Cancel> cancel(@AuthenticationPrincipal Long userId,@PathVariable String requestId) {
+        return R.ok(streams.cancel(userId,requestId));
+    }
+    @GetMapping("requests/{requestId}") public R<PlannerStreamService.Status> status(@AuthenticationPrincipal Long userId,@PathVariable String requestId) {
+        return R.ok(streams.status(userId,requestId));
+    }
+    private void validateGenerate(Generate request) {
         if (request.query().strip().length() < 5) throw new BizException(400, "旅行需求至少5字");
         if (request.startDate() != null) {
             try { if (java.time.LocalDate.parse(request.startDate()).isBefore(java.time.LocalDate.now())) throw new IllegalArgumentException(); }
             catch (Exception e) { throw new BizException(400, "出发日期格式须为yyyy-MM-dd且为今天及以后"); }
         }
-        return R.ok(service.execute(userId, request, false));
     }
 }

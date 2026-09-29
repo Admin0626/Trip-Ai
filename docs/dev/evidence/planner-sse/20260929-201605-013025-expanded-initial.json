@@ -1,0 +1,514 @@
+{
+  "mode": "REAL_INCREMENTAL_HTTP_SSE_MYSQL_REDIS_CONTROLLED_PROVIDER",
+  "label": "expanded-initial",
+  "startedAt": "2026-09-29T20:16:05.012977+08:00",
+  "checks": [
+    {
+      "name": "register s",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_01882bb095s",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "id": 10251,
+            "nickname": "pw_01882bb095s",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_01882bb095s"
+          },
+          "timestamp": 1790684165144
+        }
+      }
+    },
+    {
+      "name": "login SSE fixture",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_01882bb095s",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-29T20:16:05",
+              "email": null,
+              "id": 10251,
+              "nickname": "pw_01882bb095s",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_01882bb095s"
+            }
+          },
+          "timestamp": 1790684165446
+        }
+      }
+    },
+    {
+      "name": "register o",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_c36dca9a54o",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "id": 10252,
+            "nickname": "pw_c36dca9a54o",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_c36dca9a54o"
+          },
+          "timestamp": 1790684165559
+        }
+      }
+    },
+    {
+      "name": "login isolated fixture",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_c36dca9a54o",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-29T20:16:05",
+              "email": null,
+              "id": 10252,
+              "nickname": "pw_c36dca9a54o",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_c36dca9a54o"
+            }
+          },
+          "timestamp": 1790684165752
+        }
+      }
+    },
+    {
+      "name": "start before upstream completes",
+      "actual": [
+        "start",
+        true
+      ],
+      "expected": [
+        "start",
+        true
+      ],
+      "passed": true
+    },
+    {
+      "name": "UTF8/no cache/no proxy buffering",
+      "actual": [
+        false,
+        "no-cache, no-store",
+        "no"
+      ],
+      "expected": [
+        true,
+        "no-cache, no-store",
+        "no"
+      ],
+      "passed": false
+    },
+    {
+      "name": "single terminal f739c4f4-1b4f-470b-9e2c-96f32e88cff6",
+      "actual": [
+        "done"
+      ],
+      "expected": [
+        "done"
+      ],
+      "passed": true
+    },
+    {
+      "name": "all event request IDs match f739c4f4-1b4f-470b-9e2c-96f32e88cff6",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "validated preview",
+      "actual": [
+        "USER_MODEL",
+        1,
+        2
+      ],
+      "expected": [
+        "USER_MODEL",
+        1,
+        2
+      ],
+      "passed": true
+    },
+    {
+      "name": "heartbeat while waiting",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "stages ordered",
+      "actual": [
+        "CONNECTING",
+        "GENERATING",
+        "VALIDATING"
+      ],
+      "expected": [
+        "CONNECTING",
+        "GENERATING",
+        "VALIDATING"
+      ],
+      "passed": true
+    },
+    {
+      "name": "preview never auto saved",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "read owned request state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/planner/requests/f739c4f4-1b4f-470b-9e2c-96f32e88cff6",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "requestId": "f739c4f4-1b4f-470b-9e2c-96f32e88cff6",
+            "state": "SUCCEEDED",
+            "startedAt": "2026-09-29T12:16:05.800Z",
+            "finishedAt": "2026-09-29T12:16:11.842Z"
+          },
+          "timestamp": 1790684171937
+        }
+      }
+    },
+    {
+      "name": "request final status",
+      "actual": "SUCCEEDED",
+      "expected": "SUCCEEDED",
+      "passed": true
+    },
+    {
+      "name": "cancel owned request",
+      "actual": [
+        200,
+        409
+      ],
+      "expected": [
+        200,
+        409
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/requests/f739c4f4-1b4f-470b-9e2c-96f32e88cff6/cancel",
+        "body": {}
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 409,
+          "message": "该请求已完成或正在提交结果，无法再取消",
+          "data": null,
+          "timestamp": 1790684171950
+        }
+      }
+    },
+    {
+      "name": "read owned request state",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/planner/requests/f739c4f4-1b4f-470b-9e2c-96f32e88cff6",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "生成请求不存在或已过期",
+          "data": null,
+          "timestamp": 1790684171983
+        }
+      }
+    },
+    {
+      "name": "cancel owned request",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/requests/f739c4f4-1b4f-470b-9e2c-96f32e88cff6/cancel",
+        "body": {}
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "生成请求不存在或已过期",
+          "data": null,
+          "timestamp": 1790684171992
+        }
+      }
+    },
+    {
+      "name": "runner completed",
+      "actual": "Expecting value: line 1 column 1 (char 0)",
+      "expected": "no error",
+      "passed": false
+    },
+    {
+      "name": "owned fixture removed 10251",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "owned fixture removed 10252",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ],
+  "phase": "COMPLETE",
+  "streams": [
+    {
+      "requestId": "f739c4f4-1b4f-470b-9e2c-96f32e88cff6",
+      "http": 200,
+      "contentType": "text/event-stream",
+      "json": null,
+      "events": [
+        {
+          "event": "start",
+          "payload": {
+            "data": {
+              "state": "RUNNING"
+            },
+            "requestId": "f739c4f4-1b4f-470b-9e2c-96f32e88cff6"
+          },
+          "atMs": 48
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "CONNECTING",
+              "attempt": 1
+            },
+            "requestId": "f739c4f4-1b4f-470b-9e2c-96f32e88cff6"
+          },
+          "atMs": 58
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "GENERATING",
+              "attempt": 1
+            },
+            "requestId": "f739c4f4-1b4f-470b-9e2c-96f32e88cff6"
+          },
+          "atMs": 69
+        },
+        {
+          "event": "heartbeat",
+          "payload": {
+            "data": {
+              "elapsedSeconds": 5
+            },
+            "requestId": "f739c4f4-1b4f-470b-9e2c-96f32e88cff6"
+          },
+          "atMs": 5060
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "VALIDATING",
+              "attempt": 1
+            },
+            "requestId": "f739c4f4-1b4f-470b-9e2c-96f32e88cff6"
+          },
+          "atMs": 6078
+        },
+        {
+          "event": "done",
+          "payload": {
+            "data": {
+              "draft": {
+                "title": "SSE协议夹具",
+                "dayList": [
+                  {
+                    "dayIndex": 1,
+                    "items": [
+                      {
+                        "activity": null,
+                        "attractionId": 0,
+                        "cost": 0,
+                        "durationMin": null,
+                        "hotel": null,
+                        "meal": null,
+                        "sortNo": 1,
+                        "timePoint": null,
+                        "tips": null,
+                        "title": "散步",
+                        "transport": null
+                      }
+                    ],
+                    "summary": "受控服务非真实AI",
+                    "title": "第1天"
+                  },
+                  {
+                    "dayIndex": 2,
+                    "items": [
+                      {
+                        "activity": null,
+                        "attractionId": 0,
+                        "cost": 0,
+                        "durationMin": null,
+                        "hotel": null,
+                        "meal": null,
+                        "sortNo": 1,
+                        "timePoint": null,
+                        "tips": null,
+                        "title": "散步",
+                        "transport": null
+                      }
+                    ],
+                    "summary": "受控服务非真实AI",
+                    "title": "第2天"
+                  }
+                ]
+              },
+              "source": "USER_MODEL",
+              "model": "sse-heartbeat",
+              "attempts": 1
+            },
+            "requestId": "f739c4f4-1b4f-470b-9e2c-96f32e88cff6"
+          },
+          "atMs": 6089
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total": 20,
+    "passed": 18,
+    "failed": 2
+  }
+}

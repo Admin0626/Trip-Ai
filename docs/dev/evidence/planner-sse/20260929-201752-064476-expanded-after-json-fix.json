@@ -1,0 +1,2878 @@
+{
+  "mode": "REAL_INCREMENTAL_HTTP_SSE_MYSQL_REDIS_CONTROLLED_PROVIDER",
+  "label": "expanded-after-json-fix",
+  "startedAt": "2026-09-29T20:17:52.064434+08:00",
+  "checks": [
+    {
+      "name": "register s",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_f0d13dadf0s",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "id": 10253,
+            "nickname": "pw_f0d13dadf0s",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_f0d13dadf0s"
+          },
+          "timestamp": 1790684272195
+        }
+      }
+    },
+    {
+      "name": "login SSE fixture",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_f0d13dadf0s",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-29T20:17:52",
+              "email": null,
+              "id": 10253,
+              "nickname": "pw_f0d13dadf0s",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_f0d13dadf0s"
+            }
+          },
+          "timestamp": 1790684272409
+        }
+      }
+    },
+    {
+      "name": "register o",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_e4493198f3o",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "id": 10254,
+            "nickname": "pw_e4493198f3o",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_e4493198f3o"
+          },
+          "timestamp": 1790684272525
+        }
+      }
+    },
+    {
+      "name": "login isolated fixture",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_e4493198f3o",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-29T20:17:52",
+              "email": null,
+              "id": 10254,
+              "nickname": "pw_e4493198f3o",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_e4493198f3o"
+            }
+          },
+          "timestamp": 1790684272691
+        }
+      }
+    },
+    {
+      "name": "start before upstream completes",
+      "actual": [
+        "start",
+        true
+      ],
+      "expected": [
+        "start",
+        true
+      ],
+      "passed": true
+    },
+    {
+      "name": "UTF8/no cache/no proxy buffering",
+      "actual": [
+        true,
+        "no-cache, no-store",
+        "no"
+      ],
+      "expected": [
+        true,
+        "no-cache, no-store",
+        "no"
+      ],
+      "passed": true
+    },
+    {
+      "name": "single terminal 5dc7c4b0-5f62-4ee7-99b9-f6fb7ba86cfa",
+      "actual": [
+        "done"
+      ],
+      "expected": [
+        "done"
+      ],
+      "passed": true
+    },
+    {
+      "name": "all event request IDs match 5dc7c4b0-5f62-4ee7-99b9-f6fb7ba86cfa",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "validated preview",
+      "actual": [
+        "USER_MODEL",
+        1,
+        2
+      ],
+      "expected": [
+        "USER_MODEL",
+        1,
+        2
+      ],
+      "passed": true
+    },
+    {
+      "name": "heartbeat while waiting",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "stages ordered",
+      "actual": [
+        "CONNECTING",
+        "GENERATING",
+        "VALIDATING"
+      ],
+      "expected": [
+        "CONNECTING",
+        "GENERATING",
+        "VALIDATING"
+      ],
+      "passed": true
+    },
+    {
+      "name": "preview never auto saved",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "read owned request state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/planner/requests/5dc7c4b0-5f62-4ee7-99b9-f6fb7ba86cfa",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "requestId": "5dc7c4b0-5f62-4ee7-99b9-f6fb7ba86cfa",
+            "state": "SUCCEEDED",
+            "startedAt": "2026-09-29T12:17:52.723Z",
+            "finishedAt": "2026-09-29T12:17:58.767Z"
+          },
+          "timestamp": 1790684278863
+        }
+      }
+    },
+    {
+      "name": "request final status",
+      "actual": "SUCCEEDED",
+      "expected": "SUCCEEDED",
+      "passed": true
+    },
+    {
+      "name": "cancel owned request",
+      "actual": [
+        200,
+        409
+      ],
+      "expected": [
+        200,
+        409
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/requests/5dc7c4b0-5f62-4ee7-99b9-f6fb7ba86cfa/cancel",
+        "body": {}
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 409,
+          "message": "该请求已完成或正在提交结果，无法再取消",
+          "data": null,
+          "timestamp": 1790684278897
+        }
+      }
+    },
+    {
+      "name": "read owned request state",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/planner/requests/5dc7c4b0-5f62-4ee7-99b9-f6fb7ba86cfa",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "生成请求不存在或已过期",
+          "data": null,
+          "timestamp": 1790684278927
+        }
+      }
+    },
+    {
+      "name": "cancel owned request",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/requests/5dc7c4b0-5f62-4ee7-99b9-f6fb7ba86cfa/cancel",
+        "body": {}
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "生成请求不存在或已过期",
+          "data": null,
+          "timestamp": 1790684278958
+        }
+      }
+    },
+    {
+      "name": "duplicate JSON error",
+      "actual": 409,
+      "expected": 409,
+      "passed": true
+    },
+    {
+      "name": "duplicate no outbound",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "invalid UUID JSON before SSE",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "strict invalid field JSON before SSE",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "old date JSON before SSE",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "anonymous auth denied",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true
+    },
+    {
+      "name": "read actual quota/audit summary",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/planner/usage",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "quota": {
+              "hourly": {
+                "limit": 20,
+                "used": 1,
+                "remaining": 19,
+                "resetAt": "2026-09-29T21:00+08:00"
+              },
+              "daily": {
+                "limit": 200,
+                "used": 1,
+                "remaining": 199,
+                "resetAt": "2026-09-30T00:00+08:00"
+              },
+              "globalDaily": {
+                "limit": 2000,
+                "used": 3,
+                "remaining": 1997,
+                "resetAt": "2026-09-30T00:00+08:00"
+              },
+              "timeZone": "Asia/Shanghai"
+            },
+            "today": {
+              "operations": 1,
+              "succeeded": 1,
+              "failed": 0,
+              "averageCostMs": 6031.0
+            }
+          },
+          "timestamp": 1790684279150
+        }
+      }
+    },
+    {
+      "name": "single terminal 36b13a32-31ac-4381-9b0a-0f95e4001939",
+      "actual": [
+        "done"
+      ],
+      "expected": [
+        "done"
+      ],
+      "passed": true
+    },
+    {
+      "name": "all event request IDs match 36b13a32-31ac-4381-9b0a-0f95e4001939",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "read actual quota/audit summary",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/planner/usage",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "quota": {
+              "hourly": {
+                "limit": 20,
+                "used": 3,
+                "remaining": 17,
+                "resetAt": "2026-09-29T21:00+08:00"
+              },
+              "daily": {
+                "limit": 200,
+                "used": 3,
+                "remaining": 197,
+                "resetAt": "2026-09-30T00:00+08:00"
+              },
+              "globalDaily": {
+                "limit": 2000,
+                "used": 5,
+                "remaining": 1995,
+                "resetAt": "2026-09-30T00:00+08:00"
+              },
+              "timeZone": "Asia/Shanghai"
+            },
+            "today": {
+              "operations": 2,
+              "succeeded": 2,
+              "failed": 0,
+              "averageCostMs": 3029.5
+            }
+          },
+          "timestamp": 1790684279211
+        }
+      }
+    },
+    {
+      "name": "retry attempts",
+      "actual": [
+        2,
+        2
+      ],
+      "expected": [
+        2,
+        2
+      ],
+      "passed": true
+    },
+    {
+      "name": "retry quota versus operation",
+      "actual": [
+        2,
+        1
+      ],
+      "expected": [
+        2,
+        1
+      ],
+      "passed": true
+    },
+    {
+      "name": "retry progression",
+      "actual": [
+        {
+          "stage": "CONNECTING",
+          "attempt": 1
+        },
+        {
+          "stage": "GENERATING",
+          "attempt": 1
+        },
+        {
+          "stage": "VALIDATING",
+          "attempt": 1
+        },
+        {
+          "stage": "RETRYING",
+          "attempt": 1
+        },
+        {
+          "stage": "CONNECTING",
+          "attempt": 2
+        },
+        {
+          "stage": "GENERATING",
+          "attempt": 2
+        },
+        {
+          "stage": "VALIDATING",
+          "attempt": 2
+        }
+      ],
+      "expected": [
+        {
+          "stage": "CONNECTING",
+          "attempt": 1
+        },
+        {
+          "stage": "GENERATING",
+          "attempt": 1
+        },
+        {
+          "stage": "VALIDATING",
+          "attempt": 1
+        },
+        {
+          "stage": "RETRYING",
+          "attempt": 1
+        },
+        {
+          "stage": "CONNECTING",
+          "attempt": 2
+        },
+        {
+          "stage": "GENERATING",
+          "attempt": 2
+        },
+        {
+          "stage": "VALIDATING",
+          "attempt": 2
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "single terminal 79850ddf-c8f2-4396-b014-7a3351b60c86",
+      "actual": [
+        "error"
+      ],
+      "expected": [
+        "error"
+      ],
+      "passed": true
+    },
+    {
+      "name": "all event request IDs match 79850ddf-c8f2-4396-b014-7a3351b60c86",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "terminal business code 79850ddf-c8f2-4396-b014-7a3351b60c86",
+      "actual": 3004,
+      "expected": 3004,
+      "passed": true
+    },
+    {
+      "name": "provider error text suppressed invalid",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "retry only for draft structure invalid",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "single terminal 8c141d68-dba2-48e2-9928-2c8a6360ef71",
+      "actual": [
+        "error"
+      ],
+      "expected": [
+        "error"
+      ],
+      "passed": true
+    },
+    {
+      "name": "all event request IDs match 8c141d68-dba2-48e2-9928-2c8a6360ef71",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "terminal business code 8c141d68-dba2-48e2-9928-2c8a6360ef71",
+      "actual": 3004,
+      "expected": 3004,
+      "passed": true
+    },
+    {
+      "name": "provider error text suppressed auth",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "retry only for draft structure auth",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "single terminal 43bc0b95-3e1a-48c2-a21d-c09ab0f9fdf3",
+      "actual": [
+        "error"
+      ],
+      "expected": [
+        "error"
+      ],
+      "passed": true
+    },
+    {
+      "name": "all event request IDs match 43bc0b95-3e1a-48c2-a21d-c09ab0f9fdf3",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "terminal business code 43bc0b95-3e1a-48c2-a21d-c09ab0f9fdf3",
+      "actual": 3004,
+      "expected": 3004,
+      "passed": true
+    },
+    {
+      "name": "provider error text suppressed rate",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "retry only for draft structure rate",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "single terminal 6b773bb0-39cd-432e-8b6c-4c9d5507f400",
+      "actual": [
+        "error"
+      ],
+      "expected": [
+        "error"
+      ],
+      "passed": true
+    },
+    {
+      "name": "all event request IDs match 6b773bb0-39cd-432e-8b6c-4c9d5507f400",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "terminal business code 6b773bb0-39cd-432e-8b6c-4c9d5507f400",
+      "actual": 3004,
+      "expected": 3004,
+      "passed": true
+    },
+    {
+      "name": "provider error text suppressed error",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "retry only for draft structure error",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "single terminal ac8d9a4c-164a-4545-9c06-8e29eb0285e2",
+      "actual": [
+        "error"
+      ],
+      "expected": [
+        "error"
+      ],
+      "passed": true
+    },
+    {
+      "name": "all event request IDs match ac8d9a4c-164a-4545-9c06-8e29eb0285e2",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "terminal business code ac8d9a4c-164a-4545-9c06-8e29eb0285e2",
+      "actual": 3004,
+      "expected": 3004,
+      "passed": true
+    },
+    {
+      "name": "provider error text suppressed malformed",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "retry only for draft structure malformed",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "single terminal da558a73-3c12-4528-8d56-37a0ca0dbf08",
+      "actual": [
+        "error"
+      ],
+      "expected": [
+        "error"
+      ],
+      "passed": true
+    },
+    {
+      "name": "all event request IDs match da558a73-3c12-4528-8d56-37a0ca0dbf08",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "terminal business code da558a73-3c12-4528-8d56-37a0ca0dbf08",
+      "actual": 3004,
+      "expected": 3004,
+      "passed": true
+    },
+    {
+      "name": "provider error text suppressed big",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "retry only for draft structure big",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "read actual quota/audit summary",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/planner/usage",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "quota": {
+              "hourly": {
+                "limit": 20,
+                "used": 10,
+                "remaining": 10,
+                "resetAt": "2026-09-29T21:00+08:00"
+              },
+              "daily": {
+                "limit": 200,
+                "used": 10,
+                "remaining": 190,
+                "resetAt": "2026-09-30T00:00+08:00"
+              },
+              "globalDaily": {
+                "limit": 2000,
+                "used": 12,
+                "remaining": 1988,
+                "resetAt": "2026-09-30T00:00+08:00"
+              },
+              "timeZone": "Asia/Shanghai"
+            },
+            "today": {
+              "operations": 8,
+              "succeeded": 2,
+              "failed": 6,
+              "averageCostMs": 773.75
+            }
+          },
+          "timestamp": 1790684279657
+        }
+      }
+    },
+    {
+      "name": "cancel after actual outbound",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "legacy shares active user lock",
+      "actual": [
+        200,
+        429
+      ],
+      "expected": [
+        200,
+        429
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/generate",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:58146/v1",
+            "model": "sse-valid",
+            "apiKey": "<redacted>"
+          },
+          "query": "希望轻松体验当地美食",
+          "days": 2,
+          "budget": 3000,
+          "peopleNum": 2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 429,
+          "message": "你已有一个AI请求正在处理，请稍后再试",
+          "data": null,
+          "timestamp": 1790684279788
+        }
+      }
+    },
+    {
+      "name": "SSE shares active user lock",
+      "actual": 429,
+      "expected": 429,
+      "passed": true
+    },
+    {
+      "name": "cancel owned request",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/requests/e6937620-d8ce-4e12-958b-505f1bf839bb/cancel",
+        "body": {}
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "requestId": "e6937620-d8ce-4e12-958b-505f1bf839bb",
+            "accepted": true,
+            "state": "CANCELLING"
+          },
+          "timestamp": 1790684279853
+        }
+      }
+    },
+    {
+      "name": "single terminal e6937620-d8ce-4e12-958b-505f1bf839bb",
+      "actual": [
+        "cancelled"
+      ],
+      "expected": [
+        "cancelled"
+      ],
+      "passed": true
+    },
+    {
+      "name": "all event request IDs match e6937620-d8ce-4e12-958b-505f1bf839bb",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "terminal business code e6937620-d8ce-4e12-958b-505f1bf839bb",
+      "actual": 499,
+      "expected": 499,
+      "passed": true
+    },
+    {
+      "name": "cancel promptly releases wait",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "read owned request state",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/planner/requests/e6937620-d8ce-4e12-958b-505f1bf839bb",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "requestId": "e6937620-d8ce-4e12-958b-505f1bf839bb",
+            "state": "CANCELLED",
+            "startedAt": "2026-09-29T12:17:59.680Z",
+            "finishedAt": "2026-09-29T12:17:59.860Z"
+          },
+          "timestamp": 1790684279884
+        }
+      }
+    },
+    {
+      "name": "cancel final state",
+      "actual": "CANCELLED",
+      "expected": "CANCELLED",
+      "passed": true
+    },
+    {
+      "name": "cancel owned request",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/requests/e6937620-d8ce-4e12-958b-505f1bf839bb/cancel",
+        "body": {}
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "requestId": "e6937620-d8ce-4e12-958b-505f1bf839bb",
+            "accepted": true,
+            "state": "CANCELLED"
+          },
+          "timestamp": 1790684279914
+        }
+      }
+    },
+    {
+      "name": "read actual quota/audit summary",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/planner/usage",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "quota": {
+              "hourly": {
+                "limit": 20,
+                "used": 11,
+                "remaining": 9,
+                "resetAt": "2026-09-29T21:00+08:00"
+              },
+              "daily": {
+                "limit": 200,
+                "used": 11,
+                "remaining": 189,
+                "resetAt": "2026-09-30T00:00+08:00"
+              },
+              "globalDaily": {
+                "limit": 2000,
+                "used": 13,
+                "remaining": 1987,
+                "resetAt": "2026-09-30T00:00+08:00"
+              },
+              "timeZone": "Asia/Shanghai"
+            },
+            "today": {
+              "operations": 9,
+              "succeeded": 2,
+              "failed": 7,
+              "averageCostMs": 707.2222
+            }
+          },
+          "timestamp": 1790684279953
+        }
+      }
+    },
+    {
+      "name": "admitted cancel quota/audit",
+      "actual": [
+        1,
+        1
+      ],
+      "expected": [
+        1,
+        1
+      ],
+      "passed": true
+    },
+    {
+      "name": "read actual model fault samples",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:58146/v1",
+            "model": "sse-cancel",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "CLOSED",
+            "total": 0,
+            "failed": 0,
+            "failurePercent": 0.0,
+            "minimumCalls": 10,
+            "windowSeconds": 300,
+            "cooldownSeconds": 600,
+            "retryAt": null,
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790684279980
+        }
+      }
+    },
+    {
+      "name": "cancel neutral fault sample",
+      "actual": [
+        0,
+        0
+      ],
+      "expected": [
+        0,
+        0
+      ],
+      "passed": true
+    },
+    {
+      "name": "cancel audit",
+      "actual": "CANCELLED",
+      "expected": "CANCELLED",
+      "passed": true
+    },
+    {
+      "name": "single terminal bd3709d9-0ae5-4135-a53f-e69afcd2f738",
+      "actual": [
+        "done"
+      ],
+      "expected": [
+        "done"
+      ],
+      "passed": true
+    },
+    {
+      "name": "all event request IDs match bd3709d9-0ae5-4135-a53f-e69afcd2f738",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "generation after cancel succeeds",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "disconnect after outbound",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "disconnect clears job in bounded time",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "read actual model fault samples",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:58146/v1",
+            "model": "sse-disconnect",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "CLOSED",
+            "total": 0,
+            "failed": 0,
+            "failurePercent": 0.0,
+            "minimumCalls": 10,
+            "windowSeconds": 300,
+            "cooldownSeconds": 600,
+            "retryAt": null,
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790684285212
+        }
+      }
+    },
+    {
+      "name": "disconnect neutral sample",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "logout after outbound",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "logout active stream session",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/logout",
+        "body": {}
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790684285360
+        }
+      }
+    },
+    {
+      "name": "single terminal e73f2c7d-c426-4c67-932e-a3279ba16c1f",
+      "actual": [
+        "error"
+      ],
+      "expected": [
+        "error"
+      ],
+      "passed": true
+    },
+    {
+      "name": "all event request IDs match e73f2c7d-c426-4c67-932e-a3279ba16c1f",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "terminal business code e73f2c7d-c426-4c67-932e-a3279ba16c1f",
+      "actual": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "name": "revocation terminates while provider waits",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "login after revocation",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_f0d13dadf0s",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-29T20:17:52",
+              "email": null,
+              "id": 10253,
+              "nickname": "pw_f0d13dadf0s",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_f0d13dadf0s"
+            }
+          },
+          "timestamp": 1790684290343
+        }
+      }
+    },
+    {
+      "name": "read actual model fault samples",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:58146/v1",
+            "model": "sse-logout",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "CLOSED",
+            "total": 0,
+            "failed": 0,
+            "failurePercent": 0.0,
+            "minimumCalls": 10,
+            "windowSeconds": 300,
+            "cooldownSeconds": 600,
+            "retryAt": null,
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790684290362
+        }
+      }
+    },
+    {
+      "name": "revocation neutral sample",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "half-open outbound probe",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "read actual model fault samples",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:58146/v1",
+            "model": "sse-half-open",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "HALF_OPEN",
+            "total": 0,
+            "failed": 0,
+            "failurePercent": 0.0,
+            "minimumCalls": 10,
+            "windowSeconds": 300,
+            "cooldownSeconds": 600,
+            "retryAt": "2026-09-29T12:19:40.420Z",
+            "retryAfterSeconds": 90
+          },
+          "timestamp": 1790684290535
+        }
+      }
+    },
+    {
+      "name": "half-open during call",
+      "actual": "HALF_OPEN",
+      "expected": "HALF_OPEN",
+      "passed": true
+    },
+    {
+      "name": "cancel owned request",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/requests/36219db1-3b20-45fb-ac0c-51ef78bae475/cancel",
+        "body": {}
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "requestId": "36219db1-3b20-45fb-ac0c-51ef78bae475",
+            "accepted": true,
+            "state": "CANCELLING"
+          },
+          "timestamp": 1790684290565
+        }
+      }
+    },
+    {
+      "name": "single terminal 36219db1-3b20-45fb-ac0c-51ef78bae475",
+      "actual": [
+        "cancelled"
+      ],
+      "expected": [
+        "cancelled"
+      ],
+      "passed": true
+    },
+    {
+      "name": "all event request IDs match 36219db1-3b20-45fb-ac0c-51ef78bae475",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "terminal business code 36219db1-3b20-45fb-ac0c-51ef78bae475",
+      "actual": 499,
+      "expected": 499,
+      "passed": true
+    },
+    {
+      "name": "read actual model fault samples",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:58146/v1",
+            "model": "sse-half-open",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "OPEN",
+            "total": 0,
+            "failed": 0,
+            "failurePercent": 0.0,
+            "minimumCalls": 10,
+            "windowSeconds": 300,
+            "cooldownSeconds": 600,
+            "retryAt": "2026-09-29T12:18:10.567Z",
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790684290613
+        }
+      }
+    },
+    {
+      "name": "abandoned probe no sample/wait",
+      "actual": [
+        0,
+        0
+      ],
+      "expected": [
+        0,
+        0
+      ],
+      "passed": true
+    },
+    {
+      "name": "single terminal 10396ab8-db08-4b61-85c3-7fbef9075a1f",
+      "actual": [
+        "done"
+      ],
+      "expected": [
+        "done"
+      ],
+      "passed": true
+    },
+    {
+      "name": "all event request IDs match 10396ab8-db08-4b61-85c3-7fbef9075a1f",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "read actual model fault samples",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/circuit",
+        "body": {
+          "connection": {
+            "baseUrl": "http://127.0.0.1:58146/v1",
+            "model": "sse-half-open",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "phase": "CLOSED",
+            "total": 1,
+            "failed": 0,
+            "failurePercent": 0.0,
+            "minimumCalls": 10,
+            "windowSeconds": 300,
+            "cooldownSeconds": 600,
+            "retryAt": null,
+            "retryAfterSeconds": 0
+          },
+          "timestamp": 1790684290676
+        }
+      }
+    },
+    {
+      "name": "fresh probe recovers",
+      "actual": "CLOSED",
+      "expected": "CLOSED",
+      "passed": true
+    },
+    {
+      "name": "register q",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_bb6fad23b6q",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "id": 10255,
+            "nickname": "pw_bb6fad23b6q",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_bb6fad23b6q"
+          },
+          "timestamp": 1790684290778
+        }
+      }
+    },
+    {
+      "name": "login quota fixture",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_bb6fad23b6q",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-29T20:18:10",
+              "email": null,
+              "id": 10255,
+              "nickname": "pw_bb6fad23b6q",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_bb6fad23b6q"
+            }
+          },
+          "timestamp": 1790684290948
+        }
+      }
+    },
+    {
+      "name": "single terminal aa7178f1-5c26-4211-8f99-3c48f28303a1",
+      "actual": [
+        "done"
+      ],
+      "expected": [
+        "error"
+      ],
+      "passed": false
+    },
+    {
+      "name": "all event request IDs match aa7178f1-5c26-4211-8f99-3c48f28303a1",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "runner completed",
+      "actual": "'code'",
+      "expected": "no error",
+      "passed": false
+    },
+    {
+      "name": "owned fixture removed 10253",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "owned fixture removed 10254",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "owned fixture removed 10255",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ],
+  "phase": "COMPLETE",
+  "streams": [
+    {
+      "requestId": "5dc7c4b0-5f62-4ee7-99b9-f6fb7ba86cfa",
+      "http": 200,
+      "contentType": "text/event-stream;charset=UTF-8",
+      "json": null,
+      "events": [
+        {
+          "event": "start",
+          "payload": {
+            "data": {
+              "state": "RUNNING"
+            },
+            "requestId": "5dc7c4b0-5f62-4ee7-99b9-f6fb7ba86cfa"
+          },
+          "atMs": 31
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "CONNECTING",
+              "attempt": 1
+            },
+            "requestId": "5dc7c4b0-5f62-4ee7-99b9-f6fb7ba86cfa"
+          },
+          "atMs": 39
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "GENERATING",
+              "attempt": 1
+            },
+            "requestId": "5dc7c4b0-5f62-4ee7-99b9-f6fb7ba86cfa"
+          },
+          "atMs": 47
+        },
+        {
+          "event": "heartbeat",
+          "payload": {
+            "data": {
+              "elapsedSeconds": 5
+            },
+            "requestId": "5dc7c4b0-5f62-4ee7-99b9-f6fb7ba86cfa"
+          },
+          "atMs": 5035
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "VALIDATING",
+              "attempt": 1
+            },
+            "requestId": "5dc7c4b0-5f62-4ee7-99b9-f6fb7ba86cfa"
+          },
+          "atMs": 6058
+        },
+        {
+          "event": "done",
+          "payload": {
+            "data": {
+              "draft": {
+                "title": "SSE协议夹具",
+                "dayList": [
+                  {
+                    "dayIndex": 1,
+                    "items": [
+                      {
+                        "activity": null,
+                        "attractionId": 0,
+                        "cost": 0,
+                        "durationMin": null,
+                        "hotel": null,
+                        "meal": null,
+                        "sortNo": 1,
+                        "timePoint": null,
+                        "tips": null,
+                        "title": "散步",
+                        "transport": null
+                      }
+                    ],
+                    "summary": "受控服务非真实AI",
+                    "title": "第1天"
+                  },
+                  {
+                    "dayIndex": 2,
+                    "items": [
+                      {
+                        "activity": null,
+                        "attractionId": 0,
+                        "cost": 0,
+                        "durationMin": null,
+                        "hotel": null,
+                        "meal": null,
+                        "sortNo": 1,
+                        "timePoint": null,
+                        "tips": null,
+                        "title": "散步",
+                        "transport": null
+                      }
+                    ],
+                    "summary": "受控服务非真实AI",
+                    "title": "第2天"
+                  }
+                ]
+              },
+              "source": "USER_MODEL",
+              "model": "sse-heartbeat",
+              "attempts": 1
+            },
+            "requestId": "5dc7c4b0-5f62-4ee7-99b9-f6fb7ba86cfa"
+          },
+          "atMs": 6075
+        }
+      ]
+    },
+    {
+      "requestId": "36b13a32-31ac-4381-9b0a-0f95e4001939",
+      "http": 200,
+      "contentType": "text/event-stream;charset=UTF-8",
+      "json": null,
+      "events": [
+        {
+          "event": "start",
+          "payload": {
+            "data": {
+              "state": "RUNNING"
+            },
+            "requestId": "36b13a32-31ac-4381-9b0a-0f95e4001939"
+          },
+          "atMs": 6
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "CONNECTING",
+              "attempt": 1
+            },
+            "requestId": "36b13a32-31ac-4381-9b0a-0f95e4001939"
+          },
+          "atMs": 11
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "GENERATING",
+              "attempt": 1
+            },
+            "requestId": "36b13a32-31ac-4381-9b0a-0f95e4001939"
+          },
+          "atMs": 15
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "VALIDATING",
+              "attempt": 1
+            },
+            "requestId": "36b13a32-31ac-4381-9b0a-0f95e4001939"
+          },
+          "atMs": 19
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "RETRYING",
+              "attempt": 1
+            },
+            "requestId": "36b13a32-31ac-4381-9b0a-0f95e4001939"
+          },
+          "atMs": 21
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "CONNECTING",
+              "attempt": 2
+            },
+            "requestId": "36b13a32-31ac-4381-9b0a-0f95e4001939"
+          },
+          "atMs": 23
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "GENERATING",
+              "attempt": 2
+            },
+            "requestId": "36b13a32-31ac-4381-9b0a-0f95e4001939"
+          },
+          "atMs": 26
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "VALIDATING",
+              "attempt": 2
+            },
+            "requestId": "36b13a32-31ac-4381-9b0a-0f95e4001939"
+          },
+          "atMs": 30
+        },
+        {
+          "event": "done",
+          "payload": {
+            "data": {
+              "draft": {
+                "title": "SSE协议夹具",
+                "dayList": [
+                  {
+                    "dayIndex": 1,
+                    "items": [
+                      {
+                        "activity": null,
+                        "attractionId": 0,
+                        "cost": 0,
+                        "durationMin": null,
+                        "hotel": null,
+                        "meal": null,
+                        "sortNo": 1,
+                        "timePoint": null,
+                        "tips": null,
+                        "title": "散步",
+                        "transport": null
+                      }
+                    ],
+                    "summary": "受控服务非真实AI",
+                    "title": "第1天"
+                  },
+                  {
+                    "dayIndex": 2,
+                    "items": [
+                      {
+                        "activity": null,
+                        "attractionId": 0,
+                        "cost": 0,
+                        "durationMin": null,
+                        "hotel": null,
+                        "meal": null,
+                        "sortNo": 1,
+                        "timePoint": null,
+                        "tips": null,
+                        "title": "散步",
+                        "transport": null
+                      }
+                    ],
+                    "summary": "受控服务非真实AI",
+                    "title": "第2天"
+                  }
+                ]
+              },
+              "source": "USER_MODEL",
+              "model": "sse-retry",
+              "attempts": 2
+            },
+            "requestId": "36b13a32-31ac-4381-9b0a-0f95e4001939"
+          },
+          "atMs": 39
+        }
+      ]
+    },
+    {
+      "requestId": "79850ddf-c8f2-4396-b014-7a3351b60c86",
+      "http": 200,
+      "contentType": "text/event-stream;charset=UTF-8",
+      "json": null,
+      "events": [
+        {
+          "event": "start",
+          "payload": {
+            "data": {
+              "state": "RUNNING"
+            },
+            "requestId": "79850ddf-c8f2-4396-b014-7a3351b60c86"
+          },
+          "atMs": 7
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "CONNECTING",
+              "attempt": 1
+            },
+            "requestId": "79850ddf-c8f2-4396-b014-7a3351b60c86"
+          },
+          "atMs": 12
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "GENERATING",
+              "attempt": 1
+            },
+            "requestId": "79850ddf-c8f2-4396-b014-7a3351b60c86"
+          },
+          "atMs": 16
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "VALIDATING",
+              "attempt": 1
+            },
+            "requestId": "79850ddf-c8f2-4396-b014-7a3351b60c86"
+          },
+          "atMs": 22
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "RETRYING",
+              "attempt": 1
+            },
+            "requestId": "79850ddf-c8f2-4396-b014-7a3351b60c86"
+          },
+          "atMs": 24
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "CONNECTING",
+              "attempt": 2
+            },
+            "requestId": "79850ddf-c8f2-4396-b014-7a3351b60c86"
+          },
+          "atMs": 27
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "GENERATING",
+              "attempt": 2
+            },
+            "requestId": "79850ddf-c8f2-4396-b014-7a3351b60c86"
+          },
+          "atMs": 30
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "VALIDATING",
+              "attempt": 2
+            },
+            "requestId": "79850ddf-c8f2-4396-b014-7a3351b60c86"
+          },
+          "atMs": 35
+        },
+        {
+          "event": "error",
+          "payload": {
+            "data": {
+              "message": "模型两次返回的行程结构均不合格，请换用支持JSON输出的模型或减少天数",
+              "code": 3004
+            },
+            "requestId": "79850ddf-c8f2-4396-b014-7a3351b60c86"
+          },
+          "atMs": 42
+        }
+      ]
+    },
+    {
+      "requestId": "8c141d68-dba2-48e2-9928-2c8a6360ef71",
+      "http": 200,
+      "contentType": "text/event-stream;charset=UTF-8",
+      "json": null,
+      "events": [
+        {
+          "event": "start",
+          "payload": {
+            "data": {
+              "state": "RUNNING"
+            },
+            "requestId": "8c141d68-dba2-48e2-9928-2c8a6360ef71"
+          },
+          "atMs": 28
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "CONNECTING",
+              "attempt": 1
+            },
+            "requestId": "8c141d68-dba2-48e2-9928-2c8a6360ef71"
+          },
+          "atMs": 33
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "GENERATING",
+              "attempt": 1
+            },
+            "requestId": "8c141d68-dba2-48e2-9928-2c8a6360ef71"
+          },
+          "atMs": 36
+        },
+        {
+          "event": "error",
+          "payload": {
+            "data": {
+              "message": "模型服务拒绝认证，请检查API Key与模型权限",
+              "code": 3004
+            },
+            "requestId": "8c141d68-dba2-48e2-9928-2c8a6360ef71"
+          },
+          "atMs": 45
+        }
+      ]
+    },
+    {
+      "requestId": "43bc0b95-3e1a-48c2-a21d-c09ab0f9fdf3",
+      "http": 200,
+      "contentType": "text/event-stream;charset=UTF-8",
+      "json": null,
+      "events": [
+        {
+          "event": "start",
+          "payload": {
+            "data": {
+              "state": "RUNNING"
+            },
+            "requestId": "43bc0b95-3e1a-48c2-a21d-c09ab0f9fdf3"
+          },
+          "atMs": 6
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "CONNECTING",
+              "attempt": 1
+            },
+            "requestId": "43bc0b95-3e1a-48c2-a21d-c09ab0f9fdf3"
+          },
+          "atMs": 11
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "GENERATING",
+              "attempt": 1
+            },
+            "requestId": "43bc0b95-3e1a-48c2-a21d-c09ab0f9fdf3"
+          },
+          "atMs": 15
+        },
+        {
+          "event": "error",
+          "payload": {
+            "data": {
+              "message": "模型服务限流或额度不足，请稍后重试",
+              "code": 3004
+            },
+            "requestId": "43bc0b95-3e1a-48c2-a21d-c09ab0f9fdf3"
+          },
+          "atMs": 27
+        }
+      ]
+    },
+    {
+      "requestId": "6b773bb0-39cd-432e-8b6c-4c9d5507f400",
+      "http": 200,
+      "contentType": "text/event-stream;charset=UTF-8",
+      "json": null,
+      "events": [
+        {
+          "event": "start",
+          "payload": {
+            "data": {
+              "state": "RUNNING"
+            },
+            "requestId": "6b773bb0-39cd-432e-8b6c-4c9d5507f400"
+          },
+          "atMs": 33
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "CONNECTING",
+              "attempt": 1
+            },
+            "requestId": "6b773bb0-39cd-432e-8b6c-4c9d5507f400"
+          },
+          "atMs": 40
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "GENERATING",
+              "attempt": 1
+            },
+            "requestId": "6b773bb0-39cd-432e-8b6c-4c9d5507f400"
+          },
+          "atMs": 44
+        },
+        {
+          "event": "error",
+          "payload": {
+            "data": {
+              "message": "模型服务请求失败（HTTP 500），请检查API地址与模型名称",
+              "code": 3004
+            },
+            "requestId": "6b773bb0-39cd-432e-8b6c-4c9d5507f400"
+          },
+          "atMs": 61
+        }
+      ]
+    },
+    {
+      "requestId": "ac8d9a4c-164a-4545-9c06-8e29eb0285e2",
+      "http": 200,
+      "contentType": "text/event-stream;charset=UTF-8",
+      "json": null,
+      "events": [
+        {
+          "event": "start",
+          "payload": {
+            "data": {
+              "state": "RUNNING"
+            },
+            "requestId": "ac8d9a4c-164a-4545-9c06-8e29eb0285e2"
+          },
+          "atMs": 31
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "CONNECTING",
+              "attempt": 1
+            },
+            "requestId": "ac8d9a4c-164a-4545-9c06-8e29eb0285e2"
+          },
+          "atMs": 43
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "GENERATING",
+              "attempt": 1
+            },
+            "requestId": "ac8d9a4c-164a-4545-9c06-8e29eb0285e2"
+          },
+          "atMs": 56
+        },
+        {
+          "event": "error",
+          "payload": {
+            "data": {
+              "message": "模型服务没有返回有效文本",
+              "code": 3004
+            },
+            "requestId": "ac8d9a4c-164a-4545-9c06-8e29eb0285e2"
+          },
+          "atMs": 75
+        }
+      ]
+    },
+    {
+      "requestId": "da558a73-3c12-4528-8d56-37a0ca0dbf08",
+      "http": 200,
+      "contentType": "text/event-stream;charset=UTF-8",
+      "json": null,
+      "events": [
+        {
+          "event": "start",
+          "payload": {
+            "data": {
+              "state": "RUNNING"
+            },
+            "requestId": "da558a73-3c12-4528-8d56-37a0ca0dbf08"
+          },
+          "atMs": 7
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "CONNECTING",
+              "attempt": 1
+            },
+            "requestId": "da558a73-3c12-4528-8d56-37a0ca0dbf08"
+          },
+          "atMs": 16
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "GENERATING",
+              "attempt": 1
+            },
+            "requestId": "da558a73-3c12-4528-8d56-37a0ca0dbf08"
+          },
+          "atMs": 20
+        },
+        {
+          "event": "error",
+          "payload": {
+            "data": {
+              "message": "无法读取模型响应，请检查服务连接、响应大小与兼容协议",
+              "code": 3004
+            },
+            "requestId": "da558a73-3c12-4528-8d56-37a0ca0dbf08"
+          },
+          "atMs": 39
+        }
+      ]
+    },
+    {
+      "requestId": "e6937620-d8ce-4e12-958b-505f1bf839bb",
+      "http": 200,
+      "contentType": "text/event-stream;charset=UTF-8",
+      "json": null,
+      "events": [
+        {
+          "event": "start",
+          "payload": {
+            "data": {
+              "state": "RUNNING"
+            },
+            "requestId": "e6937620-d8ce-4e12-958b-505f1bf839bb"
+          },
+          "atMs": 19
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "CONNECTING",
+              "attempt": 1
+            },
+            "requestId": "e6937620-d8ce-4e12-958b-505f1bf839bb"
+          },
+          "atMs": 196
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "GENERATING",
+              "attempt": 1
+            },
+            "requestId": "e6937620-d8ce-4e12-958b-505f1bf839bb"
+          },
+          "atMs": 196
+        },
+        {
+          "event": "cancelled",
+          "payload": {
+            "data": {
+              "message": "已取消生成；已准入的调用不退额度",
+              "code": 499
+            },
+            "requestId": "e6937620-d8ce-4e12-958b-505f1bf839bb"
+          },
+          "atMs": 199
+        }
+      ]
+    },
+    {
+      "requestId": "bd3709d9-0ae5-4135-a53f-e69afcd2f738",
+      "http": 200,
+      "contentType": "text/event-stream;charset=UTF-8",
+      "json": null,
+      "events": [
+        {
+          "event": "start",
+          "payload": {
+            "data": {
+              "state": "RUNNING"
+            },
+            "requestId": "bd3709d9-0ae5-4135-a53f-e69afcd2f738"
+          },
+          "atMs": 18
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "CONNECTING",
+              "attempt": 1
+            },
+            "requestId": "bd3709d9-0ae5-4135-a53f-e69afcd2f738"
+          },
+          "atMs": 24
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "GENERATING",
+              "attempt": 1
+            },
+            "requestId": "bd3709d9-0ae5-4135-a53f-e69afcd2f738"
+          },
+          "atMs": 27
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "VALIDATING",
+              "attempt": 1
+            },
+            "requestId": "bd3709d9-0ae5-4135-a53f-e69afcd2f738"
+          },
+          "atMs": 31
+        },
+        {
+          "event": "done",
+          "payload": {
+            "data": {
+              "draft": {
+                "title": "SSE协议夹具",
+                "dayList": [
+                  {
+                    "dayIndex": 1,
+                    "items": [
+                      {
+                        "activity": null,
+                        "attractionId": 0,
+                        "cost": 0,
+                        "durationMin": null,
+                        "hotel": null,
+                        "meal": null,
+                        "sortNo": 1,
+                        "timePoint": null,
+                        "tips": null,
+                        "title": "散步",
+                        "transport": null
+                      }
+                    ],
+                    "summary": "受控服务非真实AI",
+                    "title": "第1天"
+                  },
+                  {
+                    "dayIndex": 2,
+                    "items": [
+                      {
+                        "activity": null,
+                        "attractionId": 0,
+                        "cost": 0,
+                        "durationMin": null,
+                        "hotel": null,
+                        "meal": null,
+                        "sortNo": 1,
+                        "timePoint": null,
+                        "tips": null,
+                        "title": "散步",
+                        "transport": null
+                      }
+                    ],
+                    "summary": "受控服务非真实AI",
+                    "title": "第2天"
+                  }
+                ]
+              },
+              "source": "USER_MODEL",
+              "model": "sse-valid",
+              "attempts": 1
+            },
+            "requestId": "bd3709d9-0ae5-4135-a53f-e69afcd2f738"
+          },
+          "atMs": 41
+        }
+      ]
+    },
+    {
+      "requestId": "e73f2c7d-c426-4c67-932e-a3279ba16c1f",
+      "http": 200,
+      "contentType": "text/event-stream;charset=UTF-8",
+      "json": null,
+      "events": [
+        {
+          "event": "start",
+          "payload": {
+            "data": {
+              "state": "RUNNING"
+            },
+            "requestId": "e73f2c7d-c426-4c67-932e-a3279ba16c1f"
+          },
+          "atMs": 6
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "CONNECTING",
+              "attempt": 1
+            },
+            "requestId": "e73f2c7d-c426-4c67-932e-a3279ba16c1f"
+          },
+          "atMs": 145
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "GENERATING",
+              "attempt": 1
+            },
+            "requestId": "e73f2c7d-c426-4c67-932e-a3279ba16c1f"
+          },
+          "atMs": 145
+        },
+        {
+          "event": "error",
+          "payload": {
+            "data": {
+              "message": "登录已变更或过期，请重新操作",
+              "code": 401
+            },
+            "requestId": "e73f2c7d-c426-4c67-932e-a3279ba16c1f"
+          },
+          "atMs": 5028
+        }
+      ]
+    },
+    {
+      "requestId": "36219db1-3b20-45fb-ac0c-51ef78bae475",
+      "http": 200,
+      "contentType": "text/event-stream;charset=UTF-8",
+      "json": null,
+      "events": [
+        {
+          "event": "start",
+          "payload": {
+            "data": {
+              "state": "RUNNING"
+            },
+            "requestId": "36219db1-3b20-45fb-ac0c-51ef78bae475"
+          },
+          "atMs": 5
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "CONNECTING",
+              "attempt": 1
+            },
+            "requestId": "36219db1-3b20-45fb-ac0c-51ef78bae475"
+          },
+          "atMs": 157
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "GENERATING",
+              "attempt": 1
+            },
+            "requestId": "36219db1-3b20-45fb-ac0c-51ef78bae475"
+          },
+          "atMs": 157
+        },
+        {
+          "event": "cancelled",
+          "payload": {
+            "data": {
+              "message": "已取消生成；已准入的调用不退额度",
+              "code": 499
+            },
+            "requestId": "36219db1-3b20-45fb-ac0c-51ef78bae475"
+          },
+          "atMs": 161
+        }
+      ]
+    },
+    {
+      "requestId": "10396ab8-db08-4b61-85c3-7fbef9075a1f",
+      "http": 200,
+      "contentType": "text/event-stream;charset=UTF-8",
+      "json": null,
+      "events": [
+        {
+          "event": "start",
+          "payload": {
+            "data": {
+              "state": "RUNNING"
+            },
+            "requestId": "10396ab8-db08-4b61-85c3-7fbef9075a1f"
+          },
+          "atMs": 26
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "CONNECTING",
+              "attempt": 1
+            },
+            "requestId": "10396ab8-db08-4b61-85c3-7fbef9075a1f"
+          },
+          "atMs": 29
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "GENERATING",
+              "attempt": 1
+            },
+            "requestId": "10396ab8-db08-4b61-85c3-7fbef9075a1f"
+          },
+          "atMs": 31
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "VALIDATING",
+              "attempt": 1
+            },
+            "requestId": "10396ab8-db08-4b61-85c3-7fbef9075a1f"
+          },
+          "atMs": 34
+        },
+        {
+          "event": "done",
+          "payload": {
+            "data": {
+              "draft": {
+                "title": "SSE协议夹具",
+                "dayList": [
+                  {
+                    "dayIndex": 1,
+                    "items": [
+                      {
+                        "activity": null,
+                        "attractionId": 0,
+                        "cost": 0,
+                        "durationMin": null,
+                        "hotel": null,
+                        "meal": null,
+                        "sortNo": 1,
+                        "timePoint": null,
+                        "tips": null,
+                        "title": "散步",
+                        "transport": null
+                      }
+                    ],
+                    "summary": "受控服务非真实AI",
+                    "title": "第1天"
+                  },
+                  {
+                    "dayIndex": 2,
+                    "items": [
+                      {
+                        "activity": null,
+                        "attractionId": 0,
+                        "cost": 0,
+                        "durationMin": null,
+                        "hotel": null,
+                        "meal": null,
+                        "sortNo": 1,
+                        "timePoint": null,
+                        "tips": null,
+                        "title": "散步",
+                        "transport": null
+                      }
+                    ],
+                    "summary": "受控服务非真实AI",
+                    "title": "第2天"
+                  }
+                ]
+              },
+              "source": "USER_MODEL",
+              "model": "sse-half-open",
+              "attempts": 1
+            },
+            "requestId": "10396ab8-db08-4b61-85c3-7fbef9075a1f"
+          },
+          "atMs": 43
+        }
+      ]
+    },
+    {
+      "requestId": "aa7178f1-5c26-4211-8f99-3c48f28303a1",
+      "http": 200,
+      "contentType": "text/event-stream;charset=UTF-8",
+      "json": null,
+      "events": [
+        {
+          "event": "start",
+          "payload": {
+            "data": {
+              "state": "RUNNING"
+            },
+            "requestId": "aa7178f1-5c26-4211-8f99-3c48f28303a1"
+          },
+          "atMs": 6
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "CONNECTING",
+              "attempt": 1
+            },
+            "requestId": "aa7178f1-5c26-4211-8f99-3c48f28303a1"
+          },
+          "atMs": 10
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "GENERATING",
+              "attempt": 1
+            },
+            "requestId": "aa7178f1-5c26-4211-8f99-3c48f28303a1"
+          },
+          "atMs": 14
+        },
+        {
+          "event": "progress",
+          "payload": {
+            "data": {
+              "stage": "VALIDATING",
+              "attempt": 1
+            },
+            "requestId": "aa7178f1-5c26-4211-8f99-3c48f28303a1"
+          },
+          "atMs": 18
+        },
+        {
+          "event": "done",
+          "payload": {
+            "data": {
+              "draft": {
+                "title": "SSE协议夹具",
+                "dayList": [
+                  {
+                    "dayIndex": 1,
+                    "items": [
+                      {
+                        "activity": null,
+                        "attractionId": 0,
+                        "cost": 0,
+                        "durationMin": null,
+                        "hotel": null,
+                        "meal": null,
+                        "sortNo": 1,
+                        "timePoint": null,
+                        "tips": null,
+                        "title": "散步",
+                        "transport": null
+                      }
+                    ],
+                    "summary": "受控服务非真实AI",
+                    "title": "第1天"
+                  },
+                  {
+                    "dayIndex": 2,
+                    "items": [
+                      {
+                        "activity": null,
+                        "attractionId": 0,
+                        "cost": 0,
+                        "durationMin": null,
+                        "hotel": null,
+                        "meal": null,
+                        "sortNo": 1,
+                        "timePoint": null,
+                        "tips": null,
+                        "title": "散步",
+                        "transport": null
+                      }
+                    ],
+                    "summary": "受控服务非真实AI",
+                    "title": "第2天"
+                  }
+                ]
+              },
+              "source": "USER_MODEL",
+              "model": "sse-quota",
+              "attempts": 1
+            },
+            "requestId": "aa7178f1-5c26-4211-8f99-3c48f28303a1"
+          },
+          "atMs": 32
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total": 114,
+    "passed": 112,
+    "failed": 2
+  }
+}
