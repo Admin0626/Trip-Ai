@@ -1,0 +1,133 @@
+{
+  "mode": "REAL_EDGE_LIVE_HTTP_SSE_PLUS_SEPARATE_LOCAL_PARSER_TESTS",
+  "phase": "COMPLETE",
+  "checks": [
+    {
+      "name": "progress enabled by default",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "cancel enabled while form busy",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "preview hidden before validated done",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "real SSE content type",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "mobile progress no horizontal overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "real backend job cancelled",
+      "actual": "CANCELLED",
+      "expected": "CANCELLED",
+      "passed": true
+    },
+    {
+      "name": "cancel no preview",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "cancel no saved plan",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "key not persisted",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "cancel does not automatically retry",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "SSE done renders two validated days",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "save requires explicit acknowledgement",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "live provider received two structural attempts",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "stream error no stale preview",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "provider error body absent",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "browser completed",
+      "actual": "locator.uncheck: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('planner-progress-mode').getByRole('checkbox')\u001b[22m\n\u001b[2m    - locator resolved to <input type=\"checkbox\" class=\"el-checkbox__original\"/>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    59 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "expected": "no error",
+      "passed": false
+    },
+    {
+      "name": "owned fixture removed 10259",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "owned fixture removed 10260",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "requests": [
+    {
+      "path": "/api/ai/planner/generate-stream",
+      "requestId": "48516dcc-eee5-4bf9-bb95-c6073a5900eb"
+    },
+    {
+      "path": "/api/ai/planner/generate-stream",
+      "requestId": "ff118668-3b73-46ed-8d0c-c25d87bf4892"
+    },
+    {
+      "path": "/api/ai/planner/generate-stream",
+      "requestId": "f5bba994-7f28-4d97-b840-844be2680c9f"
+    },
+    {
+      "path": "/api/ai/planner/generate-stream",
+      "requestId": "0decf90d-77d0-4f23-8935-bfe2d8d1edae"
+    }
+  ]
+}

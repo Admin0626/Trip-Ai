@@ -49,7 +49,7 @@ public class SecurityConfig {
                             response.getWriter().write("{\"code\":403,\"message\":\"无权访问\",\"data\":null}");
                         }))
                 .authorizeHttpRequests(auth -> auth
-                        .dispatcherTypeMatchers(DispatcherType.ERROR, DispatcherType.FORWARD).permitAll()
+                        .dispatcherTypeMatchers(DispatcherType.ERROR, DispatcherType.FORWARD, DispatcherType.ASYNC).permitAll()
                         .requestMatchers("/auth/**", "/doc.html", "/webjars/**",
                                 "/v3/api-docs/**", "/swagger-ui/**",
                                 "/actuator/**", "/files/**").permitAll()

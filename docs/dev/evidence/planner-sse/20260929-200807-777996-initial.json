@@ -1,0 +1,19 @@
+{
+  "mode": "REAL_HTTP_SSE_MYSQL_REDIS_CONTROLLED_PROVIDER",
+  "label": "initial",
+  "startedAt": "2026-09-29T20:08:07.777548+08:00",
+  "checks": [
+    {
+      "name": "runner completed",
+      "actual": "<urlopen error [WinError 10061] 由于目标计算机积极拒绝，无法连接。>",
+      "expected": "no error",
+      "passed": false
+    }
+  ],
+  "phase": "COMPLETE",
+  "summary": {
+    "total": 1,
+    "passed": 0,
+    "failed": 1
+  }
+}

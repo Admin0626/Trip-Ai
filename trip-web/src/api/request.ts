@@ -86,7 +86,7 @@ request.interceptors.response.use(
     if (body && typeof body === 'object' && 'code' in body && body.code !== 200) {
       if (body.code === 401 && !publicAuth(response.config.url)) return recoverUnauthorized(response.config as AuthConfig)
       ElMessage.error(body.message || '请求失败')
-      throw new Error(body.message || '请求失败')
+      throw Object.assign(new Error(body.message || '请求失败'), { code: body.code })
     }
     return response
   },

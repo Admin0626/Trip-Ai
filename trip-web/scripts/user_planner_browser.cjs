@@ -55,6 +55,7 @@ async function clickRequest(name, endpoint) {
     await page.getByRole('textbox', { name: 'AI旅行需求', exact: true }).fill('去大理旅行，喜欢美食和自然风光');
     await page.getByRole('spinbutton', { name: 'AI天数', exact: true }).fill('2');
     await page.getByRole('spinbutton', { name: 'AI天数', exact: true }).press('Tab');
+    await page.getByTestId('planner-progress-mode').click();
     const result = await clickRequest('生成AI行程', '/ai/planner/generate');
     check('generate succeeds', result.code, 200);
     await page.getByTestId('ai-preview').waitFor();

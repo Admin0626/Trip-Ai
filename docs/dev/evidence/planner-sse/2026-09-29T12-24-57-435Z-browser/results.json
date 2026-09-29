@@ -1,0 +1,277 @@
+{
+  "mode": "REAL_EDGE_LIVE_HTTP_SSE_PLUS_SEPARATE_LOCAL_PARSER_TESTS",
+  "phase": "COMPLETE",
+  "checks": [
+    {
+      "name": "progress enabled by default",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "cancel enabled while form busy",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "preview hidden before validated done",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "real SSE content type",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "mobile progress no horizontal overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "real backend job cancelled",
+      "actual": "CANCELLED",
+      "expected": "CANCELLED",
+      "passed": true
+    },
+    {
+      "name": "cancel no preview",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "cancel no saved plan",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "key not persisted",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "cancel does not automatically retry",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "SSE done renders two validated days",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "save requires explicit acknowledgement",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "live provider received two structural attempts",
+      "actual": 3,
+      "expected": 2,
+      "passed": false
+    },
+    {
+      "name": "stream error no stale preview",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "provider error body absent",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "manual ordinary fallback actual endpoint",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "ordinary fallback no progress panel",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "navigation closes real stream",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "leaving clears API Key",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "cancel endpoint fault aborts local stream",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "local actual parser: UTF8 every-byte \"\\n\"",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "local actual parser: UTF8 every-byte \"\\r\\n\"",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "local actual parser: UTF8 every-byte \"\\r\"",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "local actual parser: multiple data lines",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "local actual parser: cancelled returns null",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "local actual parser: missing terminal",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "local actual parser: unterminated done",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "local actual parser: wrong request ID",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "local actual parser: malformed JSON",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "local actual parser: invalid stage",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "local actual parser: invalid attempt",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "local actual parser: incomplete itinerary",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "local actual parser: terminal error",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "local actual parser: oversize",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "local actual parser: invalid UTF8",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "new account no key",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "new account no stale preview",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "unhandled page errors",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "owned fixture removed 10261",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "owned fixture removed 10262",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "requests": [
+    {
+      "path": "/api/ai/planner/generate-stream",
+      "requestId": "88fdb0c6-1983-4609-950a-b95fc0bcdada"
+    },
+    {
+      "path": "/api/ai/planner/generate-stream",
+      "requestId": "b857ca1c-1a95-4885-867d-fc6429f113cd"
+    },
+    {
+      "path": "/api/ai/planner/generate-stream",
+      "requestId": "4f087b29-b5a8-457c-88e9-f3fd4cd11e65"
+    },
+    {
+      "path": "/api/ai/planner/generate-stream",
+      "requestId": "4b87b8e3-9464-42c2-b2e7-25058766f9e6"
+    },
+    {
+      "path": "/api/ai/planner/generate",
+      "requestId": null
+    },
+    {
+      "path": "/api/ai/planner/generate-stream",
+      "requestId": "00205432-ef16-452f-8f02-0528db403a63"
+    },
+    {
+      "path": "/api/ai/planner/generate-stream",
+      "requestId": "b698291f-5b27-4b0d-b282-24a606198d46"
+    }
+  ]
+}

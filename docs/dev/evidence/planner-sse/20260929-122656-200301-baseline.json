@@ -1,0 +1,115 @@
+{
+  "mode": "REAL_HTTP_SSE_MYSQL_REDIS_CONTROLLED_PROVIDER",
+  "label": "baseline",
+  "startedAt": "2026-09-29T12:26:56.200261+08:00",
+  "checks": [
+    {
+      "name": "register s",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_e71df49f38s",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "id": 10249,
+            "nickname": "pw_e71df49f38s",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_e71df49f38s"
+          },
+          "timestamp": 1790656016753
+        }
+      }
+    },
+    {
+      "name": "login SSE fixture",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_e71df49f38s",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-29T12:26:56",
+              "email": null,
+              "id": 10249,
+              "nickname": "pw_e71df49f38s",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_e71df49f38s"
+            }
+          },
+          "timestamp": 1790656017535
+        }
+      }
+    },
+    {
+      "name": "stream response content type",
+      "actual": "",
+      "expected": "text/event-stream",
+      "passed": false,
+      "response": ""
+    },
+    {
+      "name": "complete events delivered",
+      "actual": false,
+      "expected": true,
+      "passed": false
+    },
+    {
+      "name": "owned fixture removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ],
+  "phase": "COMPLETE",
+  "summary": {
+    "total": 5,
+    "passed": 3,
+    "failed": 2
+  }
+}
