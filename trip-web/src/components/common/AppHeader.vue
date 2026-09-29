@@ -50,6 +50,7 @@ function handleCommand(cmd: string): void {
         <router-link to="/destinations" class="nav-link">目的地</router-link>
         <router-link to="/recommend" class="nav-link">旅行推荐</router-link>
         <router-link to="/ai-planner" class="nav-link">AI规划</router-link>
+        <router-link to="/knowledge" class="nav-link">旅行资料</router-link>
       </nav>
 
       <div class="app-header__user">
@@ -162,7 +163,7 @@ function handleCommand(cmd: string): void {
   width: 100%;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 980px) {
   .app-header {
     &__inner { height: auto; min-height: 60px; flex-wrap: wrap; gap: 8px; padding-top: 10px; padding-bottom: 10px; }
     &__logo { flex-shrink: 0; white-space: nowrap; }
@@ -170,6 +171,13 @@ function handleCommand(cmd: string): void {
     &__nav { order: 3; flex: 0 0 100%; justify-content: space-between;
       .nav-link { padding: 6px 6px; white-space: nowrap; }
     }
+  }
+}
+@media (max-width: 640px) {
+  .app-header__nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    text-align: center;
   }
 }
 </style>

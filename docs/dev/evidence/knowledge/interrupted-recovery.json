@@ -1,0 +1,29 @@
+{
+  "mode": "REAL_MYSQL_REDIS_INTERRUPTED_FIXTURE_RECOVERY",
+  "source": "20260929-211925-942605-final.json",
+  "cause": "UnicodeEncodeError in evidence writer for unpaired surrogate; source remains partial RUNNING",
+  "time": "2026-09-29T21:20:36.549613+08:00",
+  "accounts": [
+    {
+      "id": 10287,
+      "sessionsRemoved": 1,
+      "remaining": 0
+    },
+    {
+      "id": 10288,
+      "sessionsRemoved": 1,
+      "remaining": 0
+    }
+  ],
+  "documents": [
+    {
+      "docId": 24,
+      "remaining": 0
+    },
+    {
+      "docId": 25,
+      "remaining": 0
+    }
+  ],
+  "emptyPendingRemoved": true
+}

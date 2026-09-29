@@ -66,7 +66,9 @@ class Run(Acceptance):
     def save(self):
         self.report['summary']={'total':len(self.report['checks']),'passed':sum(r['passed'] for r in self.report['checks']),'failed':sum(not r['passed'] for r in self.report['checks'])}
         self.out.parent.mkdir(parents=True,exist_ok=True)
-        payload=json.dumps(redact(self.report),ensure_ascii=False,indent=2)
+        # Invalid Unicode is a deliberate HTTP validation fixture. Preserve it as
+        # a JSON escape so evidence writing cannot interrupt fixture cleanup.
+        payload=json.dumps(redact(self.report),ensure_ascii=False,indent=2).encode('utf-8',errors='backslashreplace').decode('utf-8')
         pending=self.out.with_suffix('.writing')
         for attempt in range(3):
             try: pending.write_text(payload,encoding='utf-8'); pending.replace(self.out); return

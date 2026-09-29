@@ -1,4 +1,30 @@
-# Session：用户AI规划阶段SSE完成，功能分支待融合
+# Session：本地知识管理与来源检索完成，独立分支已推送
+
+更新：2026-09-29（北京时间）。接续“下一步”，用户明确选择“先完成本地知识检索”。先审核合并SSE [PR #1](https://github.com/Admin0626/Trip-Ai/pull/1)，集成提交`9d58768e065b1441353dc9dbbf36c8499511134a`；同步main后新建`codex/rag-knowledge`。固定基线v0.1.0-baseline仍指向ceec9a2，不移动。本批新功能不直接合并main。
+
+## 本批交付与验证
+
+- 管理员知识新增/编辑/启停/逻辑删除、UTF-8 TXT/MD导入及单篇重建；title≤200、正文≤20000 Unicode字符、文件≤256KiB；严格参数类型/来源校验、expectedRevision及并发事务锁。
+- 持久500字符/50重叠分片与倒排词；NFKC中文二元组/英文词检索，最多5个原文片段、完整资料及有效目录来源。停用/删除/索引过期/来源下架不公开；无匹配和全部未索引分别返回普通提示/503。
+- 用户入口`/knowledge`、`/knowledge/:id`，管理员`/admin/ai/knowledge`；保存自动分片，默认停用，409保留输入，纯文本渲染，过期响应保护及窄屏导航调整。
+- HTTP/MySQL/Redis最终129/129；首次完整116/116含未索引维护分支；Edge44/44、pageerror=0；演示索引37/37；基础21/21、会话75/75；Maven33/33及vue-tsc/Vite构建通过，旧主包1127.98kB警告保留。
+- 增量升级`upgrade_local_knowledge.sql`连续执行两次成功（新增source_id/revision/indexed_revision/index_method及2表）；schema.sql新库29表同步。旧10篇正文保留，经逐篇核对仓库种子后建立本地索引，不猜目录ID；vector_status仍0。
+
+缺陷和全部失败：375px页头导航溢出已修复；非法Unicode夹具触发证据写入器错误已转合法JSON转义，恢复清理2个所属账号/会话；503测试前提错误、DevTools重启请求失败及沙箱Vite子进程限制均保留原证据。旧CRLF重建偏移风险经审查修复并真实验收。见[实测/原因/解决](docs/dev/本地知识检索接口与页面实测.md)、[开发与答辩复盘](docs/dev/本地知识检索开发与答辩复盘.md)、[进度/目标/问题](docs/dev/本地知识检索进度.md)。所有专属测试知识/目录/账号/会话清理，演示索引保留；RUNNING失败片段保留并单列恢复记录，不标成完整通过。
+
+## 部署、边界与下一步
+
+正常服务MySQL3306、Redis6379、后端8080/api（chat=none）、Vite5173，启动沿README。已有库在MySQL选择trip_llm后执行升级脚本，不执行schema.sql/data.sql。管理员逐篇重建，也可在后端运行`python scripts/knowledge_seed_index.py`仅重建未修改演示种子；接口`python scripts/knowledge_acceptance.py --label final`，前端`node scripts/knowledge_browser.cjs final`，测试需要本机MySQL夹具权限。
+
+本批仅本地词法检索，不接真实模型/嵌入/Milvus、不生成回答、不消耗AI额度、不提供聊天会话或问答token SSE。keywordCoverage≥0.3不是语义相似度0.6；部分索引不可用时只返回就绪文档，规模/生产负载未验收。原用户规划SSE已合并，但仍是阶段流+完整JSON。
+
+实现、实测及文档已随功能提交`b2cfeac5b3f74adde21b9eaabec03159906120ed`推送到origin/codex/rag-knowledge；[PR #2](https://github.com/Admin0626/Trip-Ai/pull/2)已创建，目标main，保持open/未合并。发布核对见[Git记录](docs/dev/evidence/knowledge/git-delivery.json)，本段通过后续文档提交补充；最终分支提交以git log -1与远程ref核对。若上传中断，只继续文档推送，不重做功能。当前docs/README.md与docs/12-实训报告（答辩版）.md为既有未提交答辩材料，保持原样，不混入本批；新文档入口在根README/AI接口/本SESSION。
+
+下一批先审核融合本地知识PR，再从最新main另建功能分支。用户“暂不接真实模型”约定继续有效；可继续确定性检索质量/来源维护，语义向量、依据生成/引用校验、聊天归属/最近3轮上下文及问答流另批。多路推荐/情感分析/规划AI优化、邮箱验证/找回密码/注销、高级运营和生产部署要求仍未完成。GitHub未配置CI检查，不声称CI通过。
+
+---
+
+# 以下为SSE完成时的历史快照（PR #1现已合并）
 
 更新：2026-09-29（北京时间）。接续指令“继续”，起点ceec9a2。本轮在codex/ai-planner-sse实现、实测、记录并提交推送；本轮不融合main，不移动v0.1.0-baseline。远程https://github.com/Admin0626/Trip-Ai.git。
 

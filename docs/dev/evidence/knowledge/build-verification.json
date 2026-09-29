@@ -1,0 +1,75 @@
+{
+  "mode": "REAL_MAVEN_VUE_TSC_VITE",
+  "time": "2026-09-29T21:29:16.078277+08:00",
+  "javaHome": "D:/Java/jdk-21.0.2",
+  "javaReleaseTarget": 17,
+  "maven": {
+    "total": 33,
+    "failures": 0,
+    "errors": 0,
+    "suites": [
+      {
+        "name": "com.trip.module.ai.AiQuotaTest",
+        "tests": "6",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.trip.module.ai.KnowledgeTextTest",
+        "tests": "4",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.trip.module.ai.PlannerCircuitTest",
+        "tests": "3",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.trip.module.ai.PlannerExecutionTest",
+        "tests": "4",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.trip.module.ai.RuleIntentParserTest",
+        "tests": "8",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.trip.module.ai.UserPlannerTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.trip.TripServerApplicationTests",
+        "tests": "1",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      }
+    ],
+    "result": "BUILD SUCCESS"
+  },
+  "frontend": {
+    "command": "npm run build",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "mainChunkKB": 1127.98,
+    "existingChunkWarningRetained": true
+  },
+  "failedFrontendAttempt": {
+    "cause": "Windows sandbox spawn EPERM in Vite config path resolution",
+    "resolved": "Reran same command with approved child process permission"
+  },
+  "rawLogsCommitted": false
+}

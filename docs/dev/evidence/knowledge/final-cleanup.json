@@ -1,0 +1,145 @@
+{
+  "mode": "REAL_READ_ONLY_FINAL_MYSQL_REDIS_CHECK",
+  "time": "2026-09-29T21:29:21.717939+08:00",
+  "ownedFixtureDocumentsChecked": 20,
+  "ownedFixtureDocumentsRemaining": 0,
+  "ownedUsers": [
+    {
+      "fixtureIdentity": "pw_d226f2892cku",
+      "accountRemaining": 0,
+      "knownIdSessionRemaining": null,
+      "sessionVerification": "Fixture cleanup in complete HTTP/browser evidence; not re-scanned without known ID"
+    },
+    {
+      "fixtureIdentity": "pw_739e5695afka",
+      "accountRemaining": 0,
+      "knownIdSessionRemaining": null,
+      "sessionVerification": "Fixture cleanup in complete HTTP/browser evidence; not re-scanned without known ID"
+    },
+    {
+      "fixtureIdentity": "id:10275",
+      "accountRemaining": 0,
+      "knownIdSessionRemaining": 0
+    },
+    {
+      "fixtureIdentity": "id:10276",
+      "accountRemaining": 0,
+      "knownIdSessionRemaining": 0
+    },
+    {
+      "fixtureIdentity": "pw_289a877614ku",
+      "accountRemaining": 0,
+      "knownIdSessionRemaining": null,
+      "sessionVerification": "Fixture cleanup in complete HTTP/browser evidence; not re-scanned without known ID"
+    },
+    {
+      "fixtureIdentity": "pw_0745a439dfka",
+      "accountRemaining": 0,
+      "knownIdSessionRemaining": null,
+      "sessionVerification": "Fixture cleanup in complete HTTP/browser evidence; not re-scanned without known ID"
+    },
+    {
+      "fixtureIdentity": "id:10277",
+      "accountRemaining": 0,
+      "knownIdSessionRemaining": 0
+    },
+    {
+      "fixtureIdentity": "id:10278",
+      "accountRemaining": 0,
+      "knownIdSessionRemaining": 0
+    },
+    {
+      "fixtureIdentity": "pw_551c31c12fku",
+      "accountRemaining": 0,
+      "knownIdSessionRemaining": null,
+      "sessionVerification": "Fixture cleanup in complete HTTP/browser evidence; not re-scanned without known ID"
+    },
+    {
+      "fixtureIdentity": "pw_2032e64cecka",
+      "accountRemaining": 0,
+      "knownIdSessionRemaining": null,
+      "sessionVerification": "Fixture cleanup in complete HTTP/browser evidence; not re-scanned without known ID"
+    },
+    {
+      "fixtureIdentity": "id:10279",
+      "accountRemaining": 0,
+      "knownIdSessionRemaining": 0
+    },
+    {
+      "fixtureIdentity": "id:10280",
+      "accountRemaining": 0,
+      "knownIdSessionRemaining": 0
+    },
+    {
+      "fixtureIdentity": "pw_fc7b8d76c2kseed",
+      "accountRemaining": 0,
+      "knownIdSessionRemaining": null,
+      "sessionVerification": "Fixture cleanup in complete HTTP/browser evidence; not re-scanned without known ID"
+    },
+    {
+      "fixtureIdentity": "pw_b1e90acf6eku",
+      "accountRemaining": 0,
+      "knownIdSessionRemaining": null,
+      "sessionVerification": "Fixture cleanup in complete HTTP/browser evidence; not re-scanned without known ID"
+    },
+    {
+      "fixtureIdentity": "pw_62c2333889ka",
+      "accountRemaining": 0,
+      "knownIdSessionRemaining": null,
+      "sessionVerification": "Fixture cleanup in complete HTTP/browser evidence; not re-scanned without known ID"
+    },
+    {
+      "fixtureIdentity": "pw_34324fde1eku",
+      "accountRemaining": 0,
+      "knownIdSessionRemaining": null,
+      "sessionVerification": "Fixture cleanup in complete HTTP/browser evidence; not re-scanned without known ID"
+    },
+    {
+      "fixtureIdentity": "pw_2467b0e731ka",
+      "accountRemaining": 0,
+      "knownIdSessionRemaining": null,
+      "sessionVerification": "Fixture cleanup in complete HTTP/browser evidence; not re-scanned without known ID"
+    },
+    {
+      "fixtureIdentity": "id:10292",
+      "accountRemaining": 0,
+      "knownIdSessionRemaining": 0
+    },
+    {
+      "fixtureIdentity": "id:10293",
+      "accountRemaining": 0,
+      "knownIdSessionRemaining": 0
+    },
+    {
+      "fixtureIdentity": "KUI_9fd9691401_admin",
+      "accountRemaining": 0,
+      "knownIdSessionRemaining": null,
+      "sessionVerification": "Fixture cleanup in complete HTTP/browser evidence; not re-scanned without known ID"
+    },
+    {
+      "fixtureIdentity": "KUI_9fd9691401_user",
+      "accountRemaining": 0,
+      "knownIdSessionRemaining": null,
+      "sessionVerification": "Fixture cleanup in complete HTTP/browser evidence; not re-scanned without known ID"
+    },
+    {
+      "fixtureIdentity": "KUI_0d691fac50_admin",
+      "accountRemaining": 0,
+      "knownIdSessionRemaining": null,
+      "sessionVerification": "Fixture cleanup in complete HTTP/browser evidence; not re-scanned without known ID"
+    },
+    {
+      "fixtureIdentity": "KUI_0d691fac50_user",
+      "accountRemaining": 0,
+      "knownIdSessionRemaining": null,
+      "sessionVerification": "Fixture cleanup in complete HTTP/browser evidence; not re-scanned without known ID"
+    }
+  ],
+  "partialReportRetained": [
+    "20260929-211925-942605-final.json"
+  ],
+  "partialRecovery": "interrupted-recovery.json",
+  "pendingWrites": 0,
+  "demoDocumentsReady": 10,
+  "demoVectorReady": 0
+}
