@@ -1,0 +1,25 @@
+{
+  "mode": "REAL_GIT_GITHUB_API_DELIVERY",
+  "time": "2026-09-30T00:01:45.321933+08:00",
+  "featureCommit": "fb797ed16642c2af97d05e1aef7a1f4f29b23016",
+  "branch": "codex/knowledge-sessions",
+  "remoteHead": "fb797ed16642c2af97d05e1aef7a1f4f29b23016",
+  "main": "d63cb66a4919b7e8b09b0a22ff7999aa750afe31",
+  "baselineTagObject": "f347ba5c2a8db4b4a88f47b070614d64b9fe72b1",
+  "baselineCommit": "ceec9a2789410f3f404cbc2268cb07ada2dffb9f",
+  "previousKnowledgePR": {
+    "number": 2,
+    "merged": true,
+    "mergeCommit": "d63cb66a4919b7e8b09b0a22ff7999aa750afe31"
+  },
+  "pullRequest": {
+    "number": 3,
+    "url": "https://github.com/Admin0626/Trip-Ai/pull/3",
+    "state": "open",
+    "merged": false,
+    "head": "fb797ed16642c2af97d05e1aef7a1f4f29b23016",
+    "base": "d63cb66a4919b7e8b09b0a22ff7999aa750afe31"
+  },
+  "ciConfigured": false,
+  "note": "Publication record is added by a follow-up documentation commit; verify final branch head separately."
+}

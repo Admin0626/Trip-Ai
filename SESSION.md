@@ -1,6 +1,6 @@
-# Session：本人资料检索会话与历史完成，准备独立分支发布
+# Session：本人资料检索会话与历史完成，独立分支已发布
 
-更新：2026-09-29（北京时间）。用户“继续完成吧”，沿用暂不接真实模型。上批[知识PR #2](https://github.com/Admin0626/Trip-Ai/pull/2)经审核无冲突/评论，按已有实测合并，main=`d63cb66a4919b7e8b09b0a22ff7999aa750afe31`。本批从该main新建`codex/knowledge-sessions`；固定基线v0.1.0-baseline仍为ceec9a2。本批新PR不立即合并。
+更新：2026-09-30（北京时间；功能验收2026-09-29）。用户“继续完成吧”，沿用暂不接真实模型。上批[知识PR #2](https://github.com/Admin0626/Trip-Ai/pull/2)经审核无冲突/评论，按已有实测合并，main=`d63cb66a4919b7e8b09b0a22ff7999aa750afe31`。本批从该main新建`codex/knowledge-sessions`；固定基线v0.1.0-baseline仍为ceec9a2。本批新PR不立即合并。
 
 ## 本批交付与验证
 
@@ -17,7 +17,7 @@
 
 本机MySQL3306、Redis6379、后端8080/api(chat=none)、前端5173用于验收并保持运行；启动沿根README。已有库先完成知识层升级，再执行会话升级，勿运行schema.sql/data.sql重建。入口`/knowledge`→资料会话或直接`/ai/chat`。
 
-实现、实测及文档已完成，下一步只需检查/提交/推送`codex/knowledge-sessions`并创建目标main的新PR，随后用文档提交记录实际SHA/PR地址。发布完成前不写成已推送。如中断先检查git log/status及远程head，继续发布，不重新实现或重复测试。原有docs/README.md与docs/12-实训报告（答辩版）.md仍保持原样，不混入本批。
+实现、实测及文档以功能提交`fb797ed16642c2af97d05e1aef7a1f4f29b23016`推送origin/codex/knowledge-sessions；[PR #3](https://github.com/Admin0626/Trip-Ai/pull/3)已创建，目标main，保持open/未合并。[Git核对证据](docs/dev/evidence/knowledge-sessions/git-delivery.json)记录功能head、基点及基线，本段由后续文档提交补充，最终分支head以git log -1与远程核对。若中断，只继续尚未完成的文档提交推送，不重复实现或测试。原有docs/README.md与docs/12-实训报告（答辩版）.md保持原样，不混入本批。
 
 下一批先审核融合本批PR，再从最新main创建独立分支；暂不接真实模型继续有效，可做本地检索质量评估/来源维护。语义向量、模型生成与引用校验、最近3轮模型上下文、问答token SSE仍未完成；已保存历史不等于语义聊天完成。
 
