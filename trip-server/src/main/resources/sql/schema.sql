@@ -1,6 +1,6 @@
 -- =====================================================================
 -- 数据库：基于 LLM 的旅行行程推荐系统
--- 版本：v1.0 ｜ 共 27 张表（26 张设计文档 + route_comment_like 评论点赞）
+-- 版本：v1.1 ｜ 共 29 张表（26 张设计文档 + 评论点赞 + 本地知识分片/倒排词表）
 -- 依据：docs/05-数据库设计.md + docs/dev/建表对照清单.md（B1~B9 已裁定）
 -- 建表约定：utf8mb4 / InnoDB / bigint unsigned 自增主键 / 业务侧维护计数字段
 -- 执行：mysql -u root -p < schema.sql
@@ -419,16 +419,23 @@ CREATE TABLE ai_insight (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='AI 数据洞察';
 
 -- 21. knowledge_doc RAG 知识库文档（8 张逻辑删除表之一）
+-- 以下为新库完整建表；已有库仅执行 upgrade_local_knowledge.sql。
+DROP TABLE IF EXISTS knowledge_chunk_token;
+DROP TABLE IF EXISTS knowledge_chunk;
 DROP TABLE IF EXISTS knowledge_doc;
 CREATE TABLE knowledge_doc (
     id             bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
     title          varchar(200) NOT NULL COMMENT '文档标题',
     doc_type       varchar(20)  NOT NULL DEFAULT 'GUIDE' COMMENT 'DESTINATION / ROUTE / GUIDE',
     source_type    varchar(20)  NOT NULL DEFAULT 'MANUAL' COMMENT 'MANUAL / FILE / LINK',
+    source_id      bigint unsigned DEFAULT NULL COMMENT '关联目的地或路线ID，空表示独立资料',
+    revision       bigint unsigned NOT NULL DEFAULT 1 COMMENT '内容与状态版本',
+    indexed_revision bigint unsigned NOT NULL DEFAULT 0 COMMENT '本地索引版本',
+    index_method   varchar(20) NOT NULL DEFAULT 'NONE' COMMENT 'NONE / LOCAL_NGRAM，非向量索引',
     content        longtext     NOT NULL COMMENT 'RAG 正文',
     file_path      varchar(255) NOT NULL DEFAULT '' COMMENT '文件路径',
     chunk_count    int unsigned NOT NULL DEFAULT 0 COMMENT '切片数',
-    vector_status  tinyint      NOT NULL DEFAULT 0 COMMENT '0 未索引 / 1 已索引 / 2 索引失败',
+    vector_status  tinyint      NOT NULL DEFAULT 0 COMMENT '向量索引：0 未索引 / 1 已索引 / 2 失败，本地看index_method',
     status         tinyint      NOT NULL DEFAULT 1 COMMENT '1 启用 / 0 停用',
     create_time    datetime     NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     update_time    datetime     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
@@ -436,6 +443,27 @@ CREATE TABLE knowledge_doc (
     PRIMARY KEY (id),
     KEY idx_doc_type (doc_type)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='RAG 知识库文档';
+
+CREATE TABLE knowledge_chunk (
+    id bigint unsigned NOT NULL AUTO_INCREMENT,
+    doc_id bigint unsigned NOT NULL,
+    doc_revision bigint unsigned NOT NULL,
+    chunk_index int unsigned NOT NULL,
+    start_offset int unsigned NOT NULL,
+    end_offset int unsigned NOT NULL,
+    content text NOT NULL,
+    PRIMARY KEY(id),
+    UNIQUE KEY uk_knowledge_chunk(doc_id,doc_revision,chunk_index),
+    CONSTRAINT fk_knowledge_chunk_doc FOREIGN KEY(doc_id) REFERENCES knowledge_doc(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='本地知识分片，偏移量以Unicode字符计';
+
+CREATE TABLE knowledge_chunk_token (
+    chunk_id bigint unsigned NOT NULL,
+    token varchar(64) COLLATE utf8mb4_bin NOT NULL,
+    PRIMARY KEY(chunk_id,token),
+    KEY idx_knowledge_token(token,chunk_id),
+    CONSTRAINT fk_knowledge_token_chunk FOREIGN KEY(chunk_id) REFERENCES knowledge_chunk(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='本地字符二元组与英文词倒排索引，非语义向量';
 
 -- ---------------------------------------------------------------------
 -- 六、运营组（6 张）

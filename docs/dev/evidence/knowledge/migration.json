@@ -1,0 +1,26 @@
+{
+  "mode": "REAL_MYSQL_IDEMPOTENT_UPGRADE",
+  "time": "2026-09-29T21:13:33.983582+08:00",
+  "runs": [
+    {
+      "run": 1,
+      "exitCode": 0
+    },
+    {
+      "run": 2,
+      "exitCode": 0
+    }
+  ],
+  "seedDocumentsCount": 10,
+  "seedContentUnchanged": true,
+  "columns": [
+    "index_method",
+    "indexed_revision",
+    "revision",
+    "source_id"
+  ],
+  "tables": [
+    "knowledge_chunk",
+    "knowledge_chunk_token"
+  ]
+}

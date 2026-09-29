@@ -1,0 +1,1266 @@
+{
+  "mode": "REAL_HTTP_VERIFIED_DEMO_LOCAL_INDEX",
+  "label": "demo-index",
+  "startedAt": "2026-09-29T21:18:15.806324+08:00",
+  "checks": [
+    {
+      "name": "register kseed",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_fc7b8d76c2kseed",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "id": 10285,
+            "nickname": "pw_fc7b8d76c2kseed",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_fc7b8d76c2kseed"
+          },
+          "timestamp": 1790687896005
+        }
+      }
+    },
+    {
+      "name": "local index admin login",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_fc7b8d76c2kseed",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-09-29T21:18:16",
+              "email": null,
+              "id": 10285,
+              "nickname": "pw_fc7b8d76c2kseed",
+              "phone": null,
+              "role": "ADMIN",
+              "username": "pw_fc7b8d76c2kseed"
+            }
+          },
+          "timestamp": 1790687896350
+        }
+      }
+    },
+    {
+      "name": "read verified seed",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/1",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 1,
+            "title": "香格里拉十月出行注意事项",
+            "docType": "GUIDE",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 0,
+            "indexMethod": "NONE",
+            "chunkCount": 0,
+            "vectorStatus": 0,
+            "updateTime": "2026-08-10T00:00:00",
+            "content": "香格里拉十月已进入深秋，日均气温 3℃ 至 15℃，昼夜温差大，建议携带羽绒服与保暖内衣。高原紫外线强烈，需备防晒霜与墨镜。普达措国家公园十月中旬进入最佳观赏期，湖水湛蓝，草甸金黄。前往梅里雪山需提前查询道路通行情况，连续降雨可能导致部分路段封闭。松赞林寺参观需脱帽、肃静，尊重藏传佛教习俗。"
+          },
+          "timestamp": 1790687896483
+        }
+      }
+    },
+    {
+      "name": "rebuild verified seed",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/ai/knowledge/rebuild",
+        "body": {
+          "id": 1,
+          "expectedRevision": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 1,
+            "title": "香格里拉十月出行注意事项",
+            "docType": "GUIDE",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 1,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 1,
+            "vectorStatus": 0,
+            "updateTime": "2026-09-29T21:18:16",
+            "content": "香格里拉十月已进入深秋，日均气温 3℃ 至 15℃，昼夜温差大，建议携带羽绒服与保暖内衣。高原紫外线强烈，需备防晒霜与墨镜。普达措国家公园十月中旬进入最佳观赏期，湖水湛蓝，草甸金黄。前往梅里雪山需提前查询道路通行情况，连续降雨可能导致部分路段封闭。松赞林寺参观需脱帽、肃静，尊重藏传佛教习俗。"
+          },
+          "timestamp": 1790687896549
+        }
+      }
+    },
+    {
+      "name": "seed body and revision preserved 1",
+      "actual": [
+        "香格里拉十月已进入深秋，日均气温 3℃ 至 15℃，昼夜温差大，建议携带羽绒服与保暖内衣。高原紫外线强烈，需备防晒霜与墨镜。普达措国家公园十月中旬进入最佳观赏期，湖水湛蓝，草甸金黄。前往梅里雪山需提前查询道路通行情况，连续降雨可能导致部分路段封闭。松赞林寺参观需脱帽、肃静，尊重藏传佛教习俗。",
+        1,
+        0
+      ],
+      "expected": [
+        "香格里拉十月已进入深秋，日均气温 3℃ 至 15℃，昼夜温差大，建议携带羽绒服与保暖内衣。高原紫外线强烈，需备防晒霜与墨镜。普达措国家公园十月中旬进入最佳观赏期，湖水湛蓝，草甸金黄。前往梅里雪山需提前查询道路通行情况，连续降雨可能导致部分路段封闭。松赞林寺参观需脱帽、肃静，尊重藏传佛教习俗。",
+        1,
+        0
+      ],
+      "passed": true
+    },
+    {
+      "name": "read verified seed",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/2",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 2,
+            "title": "大理洱海环湖骑行全攻略",
+            "docType": "GUIDE",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 0,
+            "indexMethod": "NONE",
+            "chunkCount": 0,
+            "vectorStatus": 0,
+            "updateTime": "2026-08-10T00:00:00",
+            "content": "洱海环湖全程约 120 公里，骑行建议分 2 天完成。西岸路况平缓，适合新手，可途经喜洲古镇、海舌公园；东岸坡多但风景更开阔，可看双廊日落。沿途补给点较多，租车价格 40-80 元/天。上午出发避开正午暴晒，骑行务必佩戴头盔并注意防晒。十月起湖边风大，体力消耗明显增加。"
+          },
+          "timestamp": 1790687896686
+        }
+      }
+    },
+    {
+      "name": "rebuild verified seed",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/ai/knowledge/rebuild",
+        "body": {
+          "id": 2,
+          "expectedRevision": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 2,
+            "title": "大理洱海环湖骑行全攻略",
+            "docType": "GUIDE",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 1,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 1,
+            "vectorStatus": 0,
+            "updateTime": "2026-09-29T21:18:16",
+            "content": "洱海环湖全程约 120 公里，骑行建议分 2 天完成。西岸路况平缓，适合新手，可途经喜洲古镇、海舌公园；东岸坡多但风景更开阔，可看双廊日落。沿途补给点较多，租车价格 40-80 元/天。上午出发避开正午暴晒，骑行务必佩戴头盔并注意防晒。十月起湖边风大，体力消耗明显增加。"
+          },
+          "timestamp": 1790687896736
+        }
+      }
+    },
+    {
+      "name": "seed body and revision preserved 2",
+      "actual": [
+        "洱海环湖全程约 120 公里，骑行建议分 2 天完成。西岸路况平缓，适合新手，可途经喜洲古镇、海舌公园；东岸坡多但风景更开阔，可看双廊日落。沿途补给点较多，租车价格 40-80 元/天。上午出发避开正午暴晒，骑行务必佩戴头盔并注意防晒。十月起湖边风大，体力消耗明显增加。",
+        1,
+        0
+      ],
+      "expected": [
+        "洱海环湖全程约 120 公里，骑行建议分 2 天完成。西岸路况平缓，适合新手，可途经喜洲古镇、海舌公园；东岸坡多但风景更开阔，可看双廊日落。沿途补给点较多，租车价格 40-80 元/天。上午出发避开正午暴晒，骑行务必佩戴头盔并注意防晒。十月起湖边风大，体力消耗明显增加。",
+        1,
+        0
+      ],
+      "passed": true
+    },
+    {
+      "name": "read verified seed",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/3",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 3,
+            "title": "云南-昆明-景点-滇池",
+            "docType": "DESTINATION",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 0,
+            "indexMethod": "NONE",
+            "chunkCount": 0,
+            "vectorStatus": 0,
+            "updateTime": "2026-08-10T00:00:00",
+            "content": "滇池是云南最大的淡水湖，有「高原明珠」之称。海埂公园是观赏滇池与西山全景的最佳位置，冬季可近距离观察红嘴鸥。环湖路适合骑行与散步，全长约 100 公里。周边配套餐饮完善，推荐品尝过桥米线与烤乳扇。景区免费开放，旺季（11月-次年3月）在翠湖公园亦可观赏海鸥。"
+          },
+          "timestamp": 1790687896896
+        }
+      }
+    },
+    {
+      "name": "rebuild verified seed",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/ai/knowledge/rebuild",
+        "body": {
+          "id": 3,
+          "expectedRevision": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 3,
+            "title": "云南-昆明-景点-滇池",
+            "docType": "DESTINATION",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 1,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 1,
+            "vectorStatus": 0,
+            "updateTime": "2026-09-29T21:18:16",
+            "content": "滇池是云南最大的淡水湖，有「高原明珠」之称。海埂公园是观赏滇池与西山全景的最佳位置，冬季可近距离观察红嘴鸥。环湖路适合骑行与散步，全长约 100 公里。周边配套餐饮完善，推荐品尝过桥米线与烤乳扇。景区免费开放，旺季（11月-次年3月）在翠湖公园亦可观赏海鸥。"
+          },
+          "timestamp": 1790687896955
+        }
+      }
+    },
+    {
+      "name": "seed body and revision preserved 3",
+      "actual": [
+        "滇池是云南最大的淡水湖，有「高原明珠」之称。海埂公园是观赏滇池与西山全景的最佳位置，冬季可近距离观察红嘴鸥。环湖路适合骑行与散步，全长约 100 公里。周边配套餐饮完善，推荐品尝过桥米线与烤乳扇。景区免费开放，旺季（11月-次年3月）在翠湖公园亦可观赏海鸥。",
+        1,
+        0
+      ],
+      "expected": [
+        "滇池是云南最大的淡水湖，有「高原明珠」之称。海埂公园是观赏滇池与西山全景的最佳位置，冬季可近距离观察红嘴鸥。环湖路适合骑行与散步，全长约 100 公里。周边配套餐饮完善，推荐品尝过桥米线与烤乳扇。景区免费开放，旺季（11月-次年3月）在翠湖公园亦可观赏海鸥。",
+        1,
+        0
+      ],
+      "passed": true
+    },
+    {
+      "name": "read verified seed",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/4",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 4,
+            "title": "云南-大理-景点-崇圣寺三塔",
+            "docType": "DESTINATION",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 0,
+            "indexMethod": "NONE",
+            "chunkCount": 0,
+            "vectorStatus": 0,
+            "updateTime": "2026-08-10T00:00:00",
+            "content": "崇圣寺三塔始建于南诏国时期，是大理的地标建筑。主塔千寻塔高 69.13 米，历经千年地震仍屹立不倒。景区内可参观南诏建极大钟与雨铜观音殿，三塔倒影池是最佳拍照点。门票 75 元，开放时间 7:30-18:30，建议游玩 2 小时。龙王庙方向拍摄三塔与苍山同框效果最佳。"
+          },
+          "timestamp": 1790687897112
+        }
+      }
+    },
+    {
+      "name": "rebuild verified seed",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/ai/knowledge/rebuild",
+        "body": {
+          "id": 4,
+          "expectedRevision": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 4,
+            "title": "云南-大理-景点-崇圣寺三塔",
+            "docType": "DESTINATION",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 1,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 1,
+            "vectorStatus": 0,
+            "updateTime": "2026-09-29T21:18:17",
+            "content": "崇圣寺三塔始建于南诏国时期，是大理的地标建筑。主塔千寻塔高 69.13 米，历经千年地震仍屹立不倒。景区内可参观南诏建极大钟与雨铜观音殿，三塔倒影池是最佳拍照点。门票 75 元，开放时间 7:30-18:30，建议游玩 2 小时。龙王庙方向拍摄三塔与苍山同框效果最佳。"
+          },
+          "timestamp": 1790687897166
+        }
+      }
+    },
+    {
+      "name": "seed body and revision preserved 4",
+      "actual": [
+        "崇圣寺三塔始建于南诏国时期，是大理的地标建筑。主塔千寻塔高 69.13 米，历经千年地震仍屹立不倒。景区内可参观南诏建极大钟与雨铜观音殿，三塔倒影池是最佳拍照点。门票 75 元，开放时间 7:30-18:30，建议游玩 2 小时。龙王庙方向拍摄三塔与苍山同框效果最佳。",
+        1,
+        0
+      ],
+      "expected": [
+        "崇圣寺三塔始建于南诏国时期，是大理的地标建筑。主塔千寻塔高 69.13 米，历经千年地震仍屹立不倒。景区内可参观南诏建极大钟与雨铜观音殿，三塔倒影池是最佳拍照点。门票 75 元，开放时间 7:30-18:30，建议游玩 2 小时。龙王庙方向拍摄三塔与苍山同框效果最佳。",
+        1,
+        0
+      ],
+      "passed": true
+    },
+    {
+      "name": "read verified seed",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/5",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 5,
+            "title": "云南-丽江-景点-玉龙雪山",
+            "docType": "DESTINATION",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 0,
+            "indexMethod": "NONE",
+            "chunkCount": 0,
+            "vectorStatus": 0,
+            "updateTime": "2026-08-10T00:00:00",
+            "content": "玉龙雪山是北半球最近赤道的雪山，主峰扇子陡海拔 5596 米。乘冰川大索道可达 4506 米观景台，需提前 1-3 天预订索道票。山下蓝月谷湖水呈翡翠色，被誉为「小九寨沟」。高原反应预防：建议提前一周服用红景天，山上减少剧烈运动。氧气瓶景区售价 60 元左右，山脚便利店更便宜。"
+          },
+          "timestamp": 1790687897326
+        }
+      }
+    },
+    {
+      "name": "rebuild verified seed",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/ai/knowledge/rebuild",
+        "body": {
+          "id": 5,
+          "expectedRevision": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 5,
+            "title": "云南-丽江-景点-玉龙雪山",
+            "docType": "DESTINATION",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 1,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 1,
+            "vectorStatus": 0,
+            "updateTime": "2026-09-29T21:18:17",
+            "content": "玉龙雪山是北半球最近赤道的雪山，主峰扇子陡海拔 5596 米。乘冰川大索道可达 4506 米观景台，需提前 1-3 天预订索道票。山下蓝月谷湖水呈翡翠色，被誉为「小九寨沟」。高原反应预防：建议提前一周服用红景天，山上减少剧烈运动。氧气瓶景区售价 60 元左右，山脚便利店更便宜。"
+          },
+          "timestamp": 1790687897381
+        }
+      }
+    },
+    {
+      "name": "seed body and revision preserved 5",
+      "actual": [
+        "玉龙雪山是北半球最近赤道的雪山，主峰扇子陡海拔 5596 米。乘冰川大索道可达 4506 米观景台，需提前 1-3 天预订索道票。山下蓝月谷湖水呈翡翠色，被誉为「小九寨沟」。高原反应预防：建议提前一周服用红景天，山上减少剧烈运动。氧气瓶景区售价 60 元左右，山脚便利店更便宜。",
+        1,
+        0
+      ],
+      "expected": [
+        "玉龙雪山是北半球最近赤道的雪山，主峰扇子陡海拔 5596 米。乘冰川大索道可达 4506 米观景台，需提前 1-3 天预订索道票。山下蓝月谷湖水呈翡翠色，被誉为「小九寨沟」。高原反应预防：建议提前一周服用红景天，山上减少剧烈运动。氧气瓶景区售价 60 元左右，山脚便利店更便宜。",
+        1,
+        0
+      ],
+      "passed": true
+    },
+    {
+      "name": "read verified seed",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/6",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 6,
+            "title": "海南-三亚-景点-蜈支洲岛",
+            "docType": "DESTINATION",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 0,
+            "indexMethod": "NONE",
+            "chunkCount": 0,
+            "vectorStatus": 0,
+            "updateTime": "2026-08-10T00:00:00",
+            "content": "蜈支洲岛被誉为「中国的马尔代夫」，距三亚市区约 1 小时船程。岛上水质清澈，是海南最负盛名的潜水胜地，潜水分浮潜与深潜，价格 380-880 元不等。环岛电瓶车 120 元/人，可停靠多个观景台。冬季（11月-次年3月）水温适宜，是潜水最佳季节。岛上餐饮价格较高，建议自带零食。"
+          },
+          "timestamp": 1790687897518
+        }
+      }
+    },
+    {
+      "name": "rebuild verified seed",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/ai/knowledge/rebuild",
+        "body": {
+          "id": 6,
+          "expectedRevision": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 6,
+            "title": "海南-三亚-景点-蜈支洲岛",
+            "docType": "DESTINATION",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 1,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 1,
+            "vectorStatus": 0,
+            "updateTime": "2026-09-29T21:18:17",
+            "content": "蜈支洲岛被誉为「中国的马尔代夫」，距三亚市区约 1 小时船程。岛上水质清澈，是海南最负盛名的潜水胜地，潜水分浮潜与深潜，价格 380-880 元不等。环岛电瓶车 120 元/人，可停靠多个观景台。冬季（11月-次年3月）水温适宜，是潜水最佳季节。岛上餐饮价格较高，建议自带零食。"
+          },
+          "timestamp": 1790687897577
+        }
+      }
+    },
+    {
+      "name": "seed body and revision preserved 6",
+      "actual": [
+        "蜈支洲岛被誉为「中国的马尔代夫」，距三亚市区约 1 小时船程。岛上水质清澈，是海南最负盛名的潜水胜地，潜水分浮潜与深潜，价格 380-880 元不等。环岛电瓶车 120 元/人，可停靠多个观景台。冬季（11月-次年3月）水温适宜，是潜水最佳季节。岛上餐饮价格较高，建议自带零食。",
+        1,
+        0
+      ],
+      "expected": [
+        "蜈支洲岛被誉为「中国的马尔代夫」，距三亚市区约 1 小时船程。岛上水质清澈，是海南最负盛名的潜水胜地，潜水分浮潜与深潜，价格 380-880 元不等。环岛电瓶车 120 元/人，可停靠多个观景台。冬季（11月-次年3月）水温适宜，是潜水最佳季节。岛上餐饮价格较高，建议自带零食。",
+        1,
+        0
+      ],
+      "passed": true
+    },
+    {
+      "name": "read verified seed",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/7",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 7,
+            "title": "湖南-张家界-景点-天门山",
+            "docType": "DESTINATION",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 0,
+            "indexMethod": "NONE",
+            "chunkCount": 0,
+            "vectorStatus": 0,
+            "updateTime": "2026-08-10T00:00:00",
+            "content": "天门山因 1999 年飞机穿越天门洞而闻名。山顶玻璃栈道全长 60 米，悬于 1430 米峭壁之上。登顶需乘世界最长高山客运索道（7455 米），单程约 28 分钟。冬季可能出现雾凇景观，能见度低时索道可能停运。建议网上提前购票并关注景区公告，天门洞 999 级台阶体力消耗较大。"
+          },
+          "timestamp": 1790687897733
+        }
+      }
+    },
+    {
+      "name": "rebuild verified seed",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/ai/knowledge/rebuild",
+        "body": {
+          "id": 7,
+          "expectedRevision": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 7,
+            "title": "湖南-张家界-景点-天门山",
+            "docType": "DESTINATION",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 1,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 1,
+            "vectorStatus": 0,
+            "updateTime": "2026-09-29T21:18:17",
+            "content": "天门山因 1999 年飞机穿越天门洞而闻名。山顶玻璃栈道全长 60 米，悬于 1430 米峭壁之上。登顶需乘世界最长高山客运索道（7455 米），单程约 28 分钟。冬季可能出现雾凇景观，能见度低时索道可能停运。建议网上提前购票并关注景区公告，天门洞 999 级台阶体力消耗较大。"
+          },
+          "timestamp": 1790687897802
+        }
+      }
+    },
+    {
+      "name": "seed body and revision preserved 7",
+      "actual": [
+        "天门山因 1999 年飞机穿越天门洞而闻名。山顶玻璃栈道全长 60 米，悬于 1430 米峭壁之上。登顶需乘世界最长高山客运索道（7455 米），单程约 28 分钟。冬季可能出现雾凇景观，能见度低时索道可能停运。建议网上提前购票并关注景区公告，天门洞 999 级台阶体力消耗较大。",
+        1,
+        0
+      ],
+      "expected": [
+        "天门山因 1999 年飞机穿越天门洞而闻名。山顶玻璃栈道全长 60 米，悬于 1430 米峭壁之上。登顶需乘世界最长高山客运索道（7455 米），单程约 28 分钟。冬季可能出现雾凇景观，能见度低时索道可能停运。建议网上提前购票并关注景区公告，天门洞 999 级台阶体力消耗较大。",
+        1,
+        0
+      ],
+      "passed": true
+    },
+    {
+      "name": "read verified seed",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/8",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 8,
+            "title": "广西-桂林-景点-漓江",
+            "docType": "DESTINATION",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 0,
+            "indexMethod": "NONE",
+            "chunkCount": 0,
+            "vectorStatus": 0,
+            "updateTime": "2026-08-10T00:00:00",
+            "content": "漓江桂林至阳朔段是最经典的山水画卷，全程83公里，乘竹筏游览精华段（杨堤-兴坪）约2.5小时。20元人民币背面图案取自兴坪古镇附近的漓江段。雨季水位上涨时竹筏可能停航，出发前建议查询漓江景区公告。阳朔西街夜晚热闹，推荐啤酒鱼与桂林米粉。"
+          },
+          "timestamp": 1790687897963
+        }
+      }
+    },
+    {
+      "name": "rebuild verified seed",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/ai/knowledge/rebuild",
+        "body": {
+          "id": 8,
+          "expectedRevision": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 8,
+            "title": "广西-桂林-景点-漓江",
+            "docType": "DESTINATION",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 1,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 1,
+            "vectorStatus": 0,
+            "updateTime": "2026-09-29T21:18:18",
+            "content": "漓江桂林至阳朔段是最经典的山水画卷，全程83公里，乘竹筏游览精华段（杨堤-兴坪）约2.5小时。20元人民币背面图案取自兴坪古镇附近的漓江段。雨季水位上涨时竹筏可能停航，出发前建议查询漓江景区公告。阳朔西街夜晚热闹，推荐啤酒鱼与桂林米粉。"
+          },
+          "timestamp": 1790687898029
+        }
+      }
+    },
+    {
+      "name": "seed body and revision preserved 8",
+      "actual": [
+        "漓江桂林至阳朔段是最经典的山水画卷，全程83公里，乘竹筏游览精华段（杨堤-兴坪）约2.5小时。20元人民币背面图案取自兴坪古镇附近的漓江段。雨季水位上涨时竹筏可能停航，出发前建议查询漓江景区公告。阳朔西街夜晚热闹，推荐啤酒鱼与桂林米粉。",
+        1,
+        0
+      ],
+      "expected": [
+        "漓江桂林至阳朔段是最经典的山水画卷，全程83公里，乘竹筏游览精华段（杨堤-兴坪）约2.5小时。20元人民币背面图案取自兴坪古镇附近的漓江段。雨季水位上涨时竹筏可能停航，出发前建议查询漓江景区公告。阳朔西街夜晚热闹，推荐啤酒鱼与桂林米粉。",
+        1,
+        0
+      ],
+      "passed": true
+    },
+    {
+      "name": "read verified seed",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/9",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 9,
+            "title": "陕西-西安-景点-兵马俑",
+            "docType": "DESTINATION",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 0,
+            "indexMethod": "NONE",
+            "chunkCount": 0,
+            "vectorStatus": 0,
+            "updateTime": "2026-08-10T00:00:00",
+            "content": "秦始皇帝陵博物院（兵马俑）是世界第八大奇迹，一号坑是目前发掘面积最大、兵马俑数量最多的坑。建议参观顺序：一号坑→三号坑→二号坑，全程约 2.5 小时。强烈建议租讲解器（30 元）或请讲解员，否则难以理解坑道布局与文物细节。门票 120 元，需提前 1-7 天实名预约。"
+          },
+          "timestamp": 1790687898186
+        }
+      }
+    },
+    {
+      "name": "rebuild verified seed",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/ai/knowledge/rebuild",
+        "body": {
+          "id": 9,
+          "expectedRevision": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 9,
+            "title": "陕西-西安-景点-兵马俑",
+            "docType": "DESTINATION",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 1,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 1,
+            "vectorStatus": 0,
+            "updateTime": "2026-09-29T21:18:18",
+            "content": "秦始皇帝陵博物院（兵马俑）是世界第八大奇迹，一号坑是目前发掘面积最大、兵马俑数量最多的坑。建议参观顺序：一号坑→三号坑→二号坑，全程约 2.5 小时。强烈建议租讲解器（30 元）或请讲解员，否则难以理解坑道布局与文物细节。门票 120 元，需提前 1-7 天实名预约。"
+          },
+          "timestamp": 1790687898249
+        }
+      }
+    },
+    {
+      "name": "seed body and revision preserved 9",
+      "actual": [
+        "秦始皇帝陵博物院（兵马俑）是世界第八大奇迹，一号坑是目前发掘面积最大、兵马俑数量最多的坑。建议参观顺序：一号坑→三号坑→二号坑，全程约 2.5 小时。强烈建议租讲解器（30 元）或请讲解员，否则难以理解坑道布局与文物细节。门票 120 元，需提前 1-7 天实名预约。",
+        1,
+        0
+      ],
+      "expected": [
+        "秦始皇帝陵博物院（兵马俑）是世界第八大奇迹，一号坑是目前发掘面积最大、兵马俑数量最多的坑。建议参观顺序：一号坑→三号坑→二号坑，全程约 2.5 小时。强烈建议租讲解器（30 元）或请讲解员，否则难以理解坑道布局与文物细节。门票 120 元，需提前 1-7 天实名预约。",
+        1,
+        0
+      ],
+      "passed": true
+    },
+    {
+      "name": "read verified seed",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/10",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 10,
+            "title": "四川-成都-熊猫基地",
+            "docType": "DESTINATION",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 0,
+            "indexMethod": "NONE",
+            "chunkCount": 0,
+            "vectorStatus": 0,
+            "updateTime": "2026-08-10T00:00:00",
+            "content": "成都大熊猫繁育研究基地是观赏大熊猫的最佳去处。大熊猫活跃时段为清晨（8:30-10:00），建议开门即入园。月亮产房可近距离观看幼崽，成年大熊猫在太阳产房与熊猫别墅。园区电瓶车 10 元/人，可直达月亮产房。全程步行约 3 小时，请勿投喂与大声喧哗。门票 55 元，需提前预约。"
+          },
+          "timestamp": 1790687898408
+        }
+      }
+    },
+    {
+      "name": "rebuild verified seed",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/ai/knowledge/rebuild",
+        "body": {
+          "id": 10,
+          "expectedRevision": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 10,
+            "title": "四川-成都-熊猫基地",
+            "docType": "DESTINATION",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 1,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 1,
+            "vectorStatus": 0,
+            "updateTime": "2026-09-29T21:18:18",
+            "content": "成都大熊猫繁育研究基地是观赏大熊猫的最佳去处。大熊猫活跃时段为清晨（8:30-10:00），建议开门即入园。月亮产房可近距离观看幼崽，成年大熊猫在太阳产房与熊猫别墅。园区电瓶车 10 元/人，可直达月亮产房。全程步行约 3 小时，请勿投喂与大声喧哗。门票 55 元，需提前预约。"
+          },
+          "timestamp": 1790687898459
+        }
+      }
+    },
+    {
+      "name": "seed body and revision preserved 10",
+      "actual": [
+        "成都大熊猫繁育研究基地是观赏大熊猫的最佳去处。大熊猫活跃时段为清晨（8:30-10:00），建议开门即入园。月亮产房可近距离观看幼崽，成年大熊猫在太阳产房与熊猫别墅。园区电瓶车 10 元/人，可直达月亮产房。全程步行约 3 小时，请勿投喂与大声喧哗。门票 55 元，需提前预约。",
+        1,
+        0
+      ],
+      "expected": [
+        "成都大熊猫繁育研究基地是观赏大熊猫的最佳去处。大熊猫活跃时段为清晨（8:30-10:00），建议开门即入园。月亮产房可近距离观看幼崽，成年大熊猫在太阳产房与熊猫别墅。园区电瓶车 10 元/人，可直达月亮产房。全程步行约 3 小时，请勿投喂与大声喧哗。门票 55 元，需提前预约。",
+        1,
+        0
+      ],
+      "passed": true
+    },
+    {
+      "name": "demo query 香格里拉十月",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/knowledge/search",
+        "body": {
+          "query": "香格里拉十月"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "query": "香格里拉十月",
+            "mode": "LOCAL_NGRAM",
+            "matched": true,
+            "message": "以下为资料原文片段，请结合来源与更新时间核实",
+            "references": [
+              {
+                "docId": 1,
+                "chunkId": 33,
+                "chunkIndex": 1,
+                "title": "香格里拉十月出行注意事项",
+                "excerpt": "香格里拉十月已进入深秋，日均气温 3℃ 至 15℃，昼夜温差大，建议携带羽绒服与保暖内衣。高原紫外线强烈，需备防晒霜与墨镜。普达措国家公园十月中旬进入最佳观赏期，湖水湛蓝，草甸金黄。前往梅里雪山需提前查询道路通行情况，连续降雨可能导致部分路段封闭。松赞林寺参观需脱帽、肃静，尊重藏传佛教习俗。",
+                "keywordCoverage": 1.0,
+                "documentPath": "/knowledge/1",
+                "sourcePath": null
+              }
+            ]
+          },
+          "timestamp": 1790687898497
+        }
+      }
+    },
+    {
+      "name": "demo actual source references 香格里拉十月",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "demo query 洱海骑行",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/knowledge/search",
+        "body": {
+          "query": "洱海骑行"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "query": "洱海骑行",
+            "mode": "LOCAL_NGRAM",
+            "matched": true,
+            "message": "以下为资料原文片段，请结合来源与更新时间核实",
+            "references": [
+              {
+                "docId": 2,
+                "chunkId": 34,
+                "chunkIndex": 1,
+                "title": "大理洱海环湖骑行全攻略",
+                "excerpt": "洱海环湖全程约 120 公里，骑行建议分 2 天完成。西岸路况平缓，适合新手，可途经喜洲古镇、海舌公园；东岸坡多但风景更开阔，可看双廊日落。沿途补给点较多，租车价格 40-80 元/天。上午出发避开正午暴晒，骑行务必佩戴头盔并注意防晒。十月起湖边风大，体力消耗明显增加。",
+                "keywordCoverage": 0.6667,
+                "documentPath": "/knowledge/2",
+                "sourcePath": null
+              }
+            ]
+          },
+          "timestamp": 1790687898529
+        }
+      }
+    },
+    {
+      "name": "demo actual source references 洱海骑行",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "owned seed index account cleaned",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ],
+  "phase": "COMPLETE",
+  "documents": [
+    {
+      "docId": 1,
+      "title": "香格里拉十月出行注意事项",
+      "action": "INDEXED_LOCAL",
+      "contentSha256": "35d92e363047e62be0fe8b61106cdaee0e120cf4af9a7d059610664c743922ba",
+      "revision": 1,
+      "indexedRevision": 1,
+      "chunks": 1
+    },
+    {
+      "docId": 2,
+      "title": "大理洱海环湖骑行全攻略",
+      "action": "INDEXED_LOCAL",
+      "contentSha256": "45e34088c15fc1faafd1384234e5706f61992884aea9da9f9367aa7ec824b50c",
+      "revision": 1,
+      "indexedRevision": 1,
+      "chunks": 1
+    },
+    {
+      "docId": 3,
+      "title": "云南-昆明-景点-滇池",
+      "action": "INDEXED_LOCAL",
+      "contentSha256": "1ad4b9f7f95870c813bec485fc30c0c5509d4e89c8ef519708e93c5f1e4a0861",
+      "revision": 1,
+      "indexedRevision": 1,
+      "chunks": 1
+    },
+    {
+      "docId": 4,
+      "title": "云南-大理-景点-崇圣寺三塔",
+      "action": "INDEXED_LOCAL",
+      "contentSha256": "93e08f78eda117fe9db5811eec75557fb1c654719249acf40e4dde6bb7345403",
+      "revision": 1,
+      "indexedRevision": 1,
+      "chunks": 1
+    },
+    {
+      "docId": 5,
+      "title": "云南-丽江-景点-玉龙雪山",
+      "action": "INDEXED_LOCAL",
+      "contentSha256": "85389e0ccd213c9eeeba56a955dcac17727be88c3980bafc05f716a598306e60",
+      "revision": 1,
+      "indexedRevision": 1,
+      "chunks": 1
+    },
+    {
+      "docId": 6,
+      "title": "海南-三亚-景点-蜈支洲岛",
+      "action": "INDEXED_LOCAL",
+      "contentSha256": "91b5797506fb88b47d53ae5196565a7e3a9505a7d9d6ffe89238ce41dc2df176",
+      "revision": 1,
+      "indexedRevision": 1,
+      "chunks": 1
+    },
+    {
+      "docId": 7,
+      "title": "湖南-张家界-景点-天门山",
+      "action": "INDEXED_LOCAL",
+      "contentSha256": "72a7f9f2ccc421bf17adb9459316ed222c66692e077c240d43f3d07f76905b04",
+      "revision": 1,
+      "indexedRevision": 1,
+      "chunks": 1
+    },
+    {
+      "docId": 8,
+      "title": "广西-桂林-景点-漓江",
+      "action": "INDEXED_LOCAL",
+      "contentSha256": "739118fa13584e4601cf7a54a49f3a114f9765e54105768d1e78534e8aa46e48",
+      "revision": 1,
+      "indexedRevision": 1,
+      "chunks": 1
+    },
+    {
+      "docId": 9,
+      "title": "陕西-西安-景点-兵马俑",
+      "action": "INDEXED_LOCAL",
+      "contentSha256": "91f5ffa0d81c27d602e13b5e48736ec16a9963f3b519bf61505b35516bbebfea",
+      "revision": 1,
+      "indexedRevision": 1,
+      "chunks": 1
+    },
+    {
+      "docId": 10,
+      "title": "四川-成都-熊猫基地",
+      "action": "INDEXED_LOCAL",
+      "contentSha256": "b49fc5b25ff05951c806d80f8d55f731704ca054a1393370b45d0305ea48cce9",
+      "revision": 1,
+      "indexedRevision": 1,
+      "chunks": 1
+    }
+  ],
+  "summary": {
+    "total": 37,
+    "passed": 37,
+    "failed": 0
+  }
+}

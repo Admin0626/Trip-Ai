@@ -8,7 +8,8 @@
 |---|---|
 | `main` | 已验收的集成版本；新功能经PR合并，不直接在main持续开发 |
 | `v0.1.0-baseline` | 当前基础功能固定标签及GitHub Release，后续不移动、不覆盖 |
-| `codex/ai-planner-sse` | 从本次基线建立的下一功能分支：AI规划SSE进度及取消，功能尚未实现 |
+| `codex/ai-planner-sse` | AI规划SSE进度及取消已交付；PR #1已审核合并，main集成9d58768 |
+| `codex/rag-knowledge` | 从9d58768建立，本地知识管理/分片/检索；本批独立PR，暂不合并 |
 | `codex/<feature>` | 其他新功能各建独立分支，例如`codex/rag-chat`；从当时最新main起步 |
 
 这是协作工作约定。本次没有配置GitHub服务器分支保护或强制检查，不能宣称GitHub已经从技术上阻止直接push main。
@@ -36,6 +37,6 @@ git commit -m "feat: describe the completed change"
 git push -u origin codex/feature-name
 ```
 
-本次已经建立`codex/ai-planner-sse`并设置远程跟踪，下一批可直接在该分支继续。PR可使用GitHub网页的Compare & pull request；CLI可用时也可从文件提交PR正文，避免换行/转义错误。
+当前本地知识任务使用`codex/rag-knowledge`，不能继续混入已合并的SSE分支。PR可使用GitHub网页的Compare & pull request；CLI可用时也可从文件提交PR正文。GitHub尚未配置CI检查，审核依据本地实测证据，不把没有检查称为CI通过。旧基线不移动。
 
 查看固定基线可用GitHub标签页面；本地临时查看可`git switch --detach v0.1.0-baseline`，这不恢复本机数据库。继续开发时切回对应功能分支。
