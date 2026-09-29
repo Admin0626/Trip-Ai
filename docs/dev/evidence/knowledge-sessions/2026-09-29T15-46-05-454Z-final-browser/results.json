@@ -1,0 +1,432 @@
+{
+  "mode": "REAL_EDGE_PRIVATE_LOCAL_HISTORY_RESPONSE_LOSS_NO_LLM",
+  "label": "final",
+  "phase": "COMPLETE",
+  "checks": [
+    {
+      "name": "registered fixture READER",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "registered fixture OTHER",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "registered fixture ADMIN",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "actual READER UI login",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "actual OTHER UI login",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "UI creates private session",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "UI atomic local turn",
+      "actual": [
+        200,
+        false,
+        2
+      ],
+      "expected": [
+        200,
+        false,
+        2
+      ],
+      "passed": true
+    },
+    {
+      "name": "first turn title auto",
+      "actual": [
+        "霁澜回看",
+        2
+      ],
+      "expected": [
+        "霁澜回看",
+        2
+      ],
+      "passed": true
+    },
+    {
+      "name": "literal HTML text safe",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "no injected history image",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "no script executed",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "real source navigation",
+      "actual": "/knowledge/39",
+      "expected": "/knowledge/39",
+      "passed": true
+    },
+    {
+      "name": "real appended history 0",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real appended history 1",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real appended history 2",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real appended history 3",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real appended history 4",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real appended history 5",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real appended history 6",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real appended history 7",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real appended history 8",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real appended history 9",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "latest page bounded",
+      "actual": 20,
+      "expected": 20,
+      "passed": true
+    },
+    {
+      "name": "older cursor adds without duplicates",
+      "actual": 22,
+      "expected": 22,
+      "passed": true
+    },
+    {
+      "name": "older end no extra button",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "hidden reference body absent",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "hidden reference links absent",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "restored source revalidated",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "edited source old history hidden",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "new result current original",
+      "actual": "晴岚回看，新的资料正文。",
+      "expected": "晴岚回看，新的资料正文。",
+      "passed": true
+    },
+    {
+      "name": "real concurrent rename",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "UI stale rename conflict",
+      "actual": 409,
+      "expected": 409,
+      "passed": true
+    },
+    {
+      "name": "rename draft retained",
+      "actual": "KSUI_87d7d9af我的记录",
+      "expected": "KSUI_87d7d9af我的记录",
+      "passed": true
+    },
+    {
+      "name": "fresh rename succeeds",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "new session starts empty",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "switch restores history",
+      "actual": 20,
+      "expected": 20,
+      "passed": true
+    },
+    {
+      "name": "other account cannot render history",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "other account cannot render private title",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "lost response actually committed",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "lost turn persisted twice-role only",
+      "actual": "2",
+      "expected": "2",
+      "passed": true
+    },
+    {
+      "name": "refresh retains pending draft",
+      "actual": "待编辑的新问题",
+      "expected": "待编辑的新问题",
+      "passed": true
+    },
+    {
+      "name": "same request recovered without duplicate",
+      "actual": [
+        200,
+        true,
+        "886cc540-01a1-429b-beab-e954eff26b10"
+      ],
+      "expected": [
+        200,
+        true,
+        "886cc540-01a1-429b-beab-e954eff26b10"
+      ],
+      "passed": true
+    },
+    {
+      "name": "same committed message IDs",
+      "actual": [
+        887,
+        888
+      ],
+      "expected": [
+        887,
+        888
+      ],
+      "passed": true
+    },
+    {
+      "name": "retry does not append",
+      "actual": "2",
+      "expected": "2",
+      "passed": true
+    },
+    {
+      "name": "375px no page overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "768px no page overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "UI no-match is not generated answer",
+      "actual": [
+        false,
+        []
+      ],
+      "expected": [
+        false,
+        []
+      ],
+      "passed": true
+    },
+    {
+      "name": "UI deletes session and messages",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "delete clears private view",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "delete purges messages SQL",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "no uncaught browser errors",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "owned account/session cleanup READER",
+      "actual": [
+        "0",
+        "0"
+      ],
+      "expected": [
+        "0",
+        "0"
+      ],
+      "passed": true
+    },
+    {
+      "name": "owned account/session cleanup OTHER",
+      "actual": [
+        "0",
+        "0"
+      ],
+      "expected": [
+        "0",
+        "0"
+      ],
+      "passed": true
+    },
+    {
+      "name": "owned account/session cleanup ADMIN",
+      "actual": [
+        "0",
+        "0"
+      ],
+      "expected": [
+        "0",
+        "0"
+      ],
+      "passed": true
+    },
+    {
+      "name": "owned knowledge cleanup",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "accounts": [
+    {
+      "id": 10305,
+      "username": "KSUI_87d7d9af_reader",
+      "role": "READER"
+    },
+    {
+      "id": 10306,
+      "username": "KSUI_87d7d9af_other",
+      "role": "OTHER"
+    },
+    {
+      "id": 10307,
+      "username": "KSUI_87d7d9af_admin",
+      "role": "ADMIN"
+    }
+  ],
+  "fixtures": [
+    {
+      "docId": 39,
+      "title": "KSUI_87d7d9af原文旧标题"
+    },
+    {
+      "sessionId": 211,
+      "userId": 10305
+    },
+    {
+      "sessionId": 212,
+      "userId": 10305
+    }
+  ],
+  "summary": {
+    "total": 55,
+    "passed": 55,
+    "failed": 0
+  },
+  "responseLoss": {
+    "requestId": "886cc540-01a1-429b-beab-e954eff26b10",
+    "actualServerCode": 200,
+    "replayCode": 200,
+    "replayed": true
+  }
+}

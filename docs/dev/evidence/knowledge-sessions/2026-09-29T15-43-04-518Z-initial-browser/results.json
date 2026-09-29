@@ -1,0 +1,33 @@
+{
+  "mode": "REAL_EDGE_PRIVATE_LOCAL_HISTORY_RESPONSE_LOSS_NO_LLM",
+  "label": "initial",
+  "phase": "COMPLETE",
+  "checks": [
+    {
+      "name": "registered fixture READER",
+      "actual": 400,
+      "expected": 200,
+      "passed": false
+    },
+    {
+      "name": "browser run completed",
+      "actual": "register failed",
+      "expected": "no error",
+      "passed": false
+    },
+    {
+      "name": "owned knowledge cleanup",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "accounts": [],
+  "fixtures": [],
+  "summary": {
+    "total": 3,
+    "passed": 1,
+    "failed": 2
+  }
+}

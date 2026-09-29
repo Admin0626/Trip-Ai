@@ -1,6 +1,6 @@
 -- =====================================================================
 -- 数据库：基于 LLM 的旅行行程推荐系统
--- 版本：v1.1 ｜ 共 29 张表（26 张设计文档 + 评论点赞 + 本地知识分片/倒排词表）
+-- 版本：v1.2 ｜ 共 29 张表（26 张设计文档 + 评论点赞 + 本地知识分片/倒排词表；私人检索会话字段）
 -- 依据：docs/05-数据库设计.md + docs/dev/建表对照清单.md（B1~B9 已裁定）
 -- 建表约定：utf8mb4 / InnoDB / bigint unsigned 自增主键 / 业务侧维护计数字段
 -- 执行：mysql -u root -p < schema.sql
@@ -358,13 +358,16 @@ CREATE TABLE llm_chat_session (
     id               bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '会话ID',
     user_id          bigint unsigned NOT NULL COMMENT '用户ID',
     title            varchar(100) NOT NULL DEFAULT '' COMMENT '会话标题（取首问前 N 字）',
+    mode             varchar(20) NOT NULL DEFAULT 'LEGACY' COMMENT 'LEGACY / LOCAL_SEARCH',
+    revision         bigint unsigned NOT NULL DEFAULT 1 COMMENT '会话内容及标题版本',
     message_count    int unsigned NOT NULL DEFAULT 0 COMMENT '消息条数',
     last_message_time datetime    DEFAULT NULL COMMENT '最后活跃时间',
     create_time      datetime     NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     update_time      datetime     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
     deleted          tinyint      NOT NULL DEFAULT 0 COMMENT '逻辑删除 0否 1是',
     PRIMARY KEY (id),
-    KEY idx_user_id (user_id)
+    KEY idx_user_id (user_id),
+    KEY idx_local_session_page (user_id,mode,deleted,update_time,id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='AI 对话会话';
 
 -- 18. llm_chat_message 对话消息
@@ -374,12 +377,16 @@ CREATE TABLE llm_chat_message (
     session_id      bigint unsigned NOT NULL COMMENT '会话ID',
     role            varchar(20)  NOT NULL COMMENT 'user / assistant',
     content         text         NOT NULL COMMENT '消息内容',
+    message_type    varchar(20) NOT NULL DEFAULT 'LEGACY' COMMENT 'LEGACY / LOCAL_QUERY / LOCAL_RESULT',
+    request_id      char(36) CHARACTER SET ascii COLLATE ascii_bin DEFAULT NULL COMMENT '本次检索UUID',
+    request_hash    char(64) CHARACTER SET ascii COLLATE ascii_bin DEFAULT NULL COMMENT '规范化问题和topK摘要',
     references_json text                  COMMENT '引用溯源 JSON',
     tokens_used     int unsigned NOT NULL DEFAULT 0 COMMENT 'token 消耗',
     cost_ms         int unsigned NOT NULL DEFAULT 0 COMMENT '耗时（毫秒）',
     create_time     datetime     NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     PRIMARY KEY (id),
-    KEY idx_session_id (session_id)
+    KEY idx_session_id (session_id),
+    UNIQUE KEY uk_chat_request_role (session_id,request_id,role)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='AI 对话消息';
 
 -- 19. llm_call_log LLM 调用日志（成本与稳定性观测唯一依据）
