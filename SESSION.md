@@ -1,4 +1,4 @@
-# Session：本地知识管理与来源检索完成，独立分支待发布
+# Session：本地知识管理与来源检索完成，独立分支已推送
 
 更新：2026-09-29（北京时间）。接续“下一步”，用户明确选择“先完成本地知识检索”。先审核合并SSE [PR #1](https://github.com/Admin0626/Trip-Ai/pull/1)，集成提交`9d58768e065b1441353dc9dbbf36c8499511134a`；同步main后新建`codex/rag-knowledge`。固定基线v0.1.0-baseline仍指向ceec9a2，不移动。本批新功能不直接合并main。
 
@@ -18,7 +18,7 @@
 
 本批仅本地词法检索，不接真实模型/嵌入/Milvus、不生成回答、不消耗AI额度、不提供聊天会话或问答token SSE。keywordCoverage≥0.3不是语义相似度0.6；部分索引不可用时只返回就绪文档，规模/生产负载未验收。原用户规划SSE已合并，但仍是阶段流+完整JSON。
 
-实现、实测和文档已经完成；待本轮提交推送codex/rag-knowledge并创建目标main的新PR，随后补最终Git记录。若中断，先核对git status/log及本进度，继续未完成发布，不重做功能。当前docs/README.md与docs/12-实训报告（答辩版）.md为既有未提交答辩材料，保持原样，不混入本批提交；新文档入口在根README/AI接口/本SESSION。
+实现、实测及文档已随功能提交`b2cfeac5b3f74adde21b9eaabec03159906120ed`推送到origin/codex/rag-knowledge；[PR #2](https://github.com/Admin0626/Trip-Ai/pull/2)已创建，目标main，保持open/未合并。发布核对见[Git记录](docs/dev/evidence/knowledge/git-delivery.json)，本段通过后续文档提交补充；最终分支提交以git log -1与远程ref核对。若上传中断，只继续文档推送，不重做功能。当前docs/README.md与docs/12-实训报告（答辩版）.md为既有未提交答辩材料，保持原样，不混入本批；新文档入口在根README/AI接口/本SESSION。
 
 下一批先审核融合本地知识PR，再从最新main另建功能分支。用户“暂不接真实模型”约定继续有效；可继续确定性检索质量/来源维护，语义向量、依据生成/引用校验、聊天归属/最近3轮上下文及问答流另批。多路推荐/情感分析/规划AI优化、邮箱验证/找回密码/注销、高级运营和生产部署要求仍未完成。GitHub未配置CI检查，不声称CI通过。
 

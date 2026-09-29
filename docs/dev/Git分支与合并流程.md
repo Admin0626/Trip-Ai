@@ -9,7 +9,7 @@
 | `main` | 已验收的集成版本；新功能经PR合并，不直接在main持续开发 |
 | `v0.1.0-baseline` | 当前基础功能固定标签及GitHub Release，后续不移动、不覆盖 |
 | `codex/ai-planner-sse` | AI规划SSE进度及取消已交付；PR #1已审核合并，main集成9d58768 |
-| `codex/rag-knowledge` | 从9d58768建立，本地知识管理/分片/检索；本批独立PR，暂不合并 |
+| `codex/rag-knowledge` | 从9d58768建立，本地知识管理/分片/检索；已推送[PR #2](https://github.com/Admin0626/Trip-Ai/pull/2)，暂不合并 |
 | `codex/<feature>` | 其他新功能各建独立分支，例如`codex/rag-chat`；从当时最新main起步 |
 
 这是协作工作约定。本次没有配置GitHub服务器分支保护或强制检查，不能宣称GitHub已经从技术上阻止直接push main。

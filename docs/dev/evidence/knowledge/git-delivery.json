@@ -1,0 +1,19 @@
+{
+  "mode": "REAL_GITHUB_API_DELIVERY",
+  "time": "2026-09-29T21:35:05.760436+08:00",
+  "featureCommit": "b2cfeac5b3f74adde21b9eaabec03159906120ed",
+  "branch": "codex/rag-knowledge",
+  "pullRequest": {
+    "number": 2,
+    "url": "https://github.com/Admin0626/Trip-Ai/pull/2",
+    "state": "open",
+    "merged": false,
+    "initialHead": "b2cfeac5b3f74adde21b9eaabec03159906120ed",
+    "base": "main"
+  },
+  "main": "9d58768e065b1441353dc9dbbf36c8499511134a",
+  "ssePR1Merged": true,
+  "baselineTagObject": "f347ba5c2a8db4b4a88f47b070614d64b9fe72b1",
+  "baselineCommit": "ceec9a2789410f3f404cbc2268cb07ada2dffb9f",
+  "scope": "Feature source pushed and PR created; publication documentation follows in another commit"
+}
