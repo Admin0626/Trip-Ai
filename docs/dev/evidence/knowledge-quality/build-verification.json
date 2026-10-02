@@ -1,0 +1,92 @@
+{
+  "mode": "REAL_MAVEN_VUE_TSC_VITE",
+  "date": "2026-10-02",
+  "maven": {
+    "tests": 40,
+    "failures": 0,
+    "errors": 0,
+    "suites": [
+      {
+        "name": "com.trip.module.ai.AiQuotaTest",
+        "tests": "6",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.trip.module.ai.KnowledgeTextTest",
+        "tests": "4",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.trip.module.ai.PlannerCircuitTest",
+        "tests": "3",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.trip.module.ai.PlannerExecutionTest",
+        "tests": "4",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.trip.module.ai.RuleIntentParserTest",
+        "tests": "8",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.trip.module.ai.UserPlannerTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.trip.module.user.service.EmailCodeServiceTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.trip.TripServerApplicationTests",
+        "tests": "1",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      }
+    ],
+    "result": "BUILD SUCCESS"
+  },
+  "frontend": {
+    "command": "npm run build",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "mainChunkKB": 1129.02,
+    "largeChunkWarningRetained": true
+  },
+  "failedBuildAttempts": [
+    {
+      "error": "TS7006 implicit any in selection-change handler",
+      "fix": "Typed KnowledgeDoc[] handler"
+    },
+    {
+      "error": "Replacement script used repository-relative path from trip-web; file not found, TS6133/TS7006 remained",
+      "fix": "Correct working-directory path and bind typed handler"
+    }
+  ],
+  "health": {
+    "before": "DOWN",
+    "confirmedLog": "MailHealthIndicator: Mail health check failed",
+    "after": "UP",
+    "mailEnabled": false
+  },
+  "rawLogsCommitted": false
+}

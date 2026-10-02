@@ -1,0 +1,39 @@
+{
+  "recordedAt": "2026-10-02",
+  "repository": "Admin0626/Trip-Ai",
+  "branch": "codex/knowledge-quality",
+  "featureCommit": "be3274ed32994d45bb5f4b6c697d2f1a14c6530d",
+  "baseCommit": "29f0bb85cb202ce75b0031e3965fa2a688747853",
+  "remoteHead": "be3274ed32994d45bb5f4b6c697d2f1a14c6530d",
+  "mainAtPublication": "29f0bb85cb202ce75b0031e3965fa2a688747853",
+  "pullRequest": {
+    "number": 5,
+    "url": "https://github.com/Admin0626/Trip-Ai/pull/5",
+    "state": "open",
+    "merged": false,
+    "head": "be3274ed32994d45bb5f4b6c697d2f1a14c6530d",
+    "base": "main"
+  },
+  "previousPullRequests": [
+    {
+      "number": 3,
+      "merged": true,
+      "mergeCommit": "29f0bb85cb202ce75b0031e3965fa2a688747853"
+    },
+    {
+      "number": 4,
+      "merged": true,
+      "mergeCommit": "923d2c6ee596bb2ffa02682d968803a09e334743"
+    }
+  ],
+  "baselineTag": {
+    "name": "v0.1.0-baseline",
+    "object": "f347ba5c2a8db4b4a88f47b070614d64b9fe72b1",
+    "commit": "ceec9a2789410f3f404cbc2268cb07ada2dffb9f"
+  },
+  "ci": {
+    "checkRuns": 0,
+    "statuses": 0
+  },
+  "note": "This records the feature commit; a subsequent documentation-only commit records delivery. Final branch head must be verified against GitHub and git log. New PR remains open."
+}

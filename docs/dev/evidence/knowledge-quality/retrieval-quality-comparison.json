@@ -1,0 +1,25 @@
+{
+  "mode": "DERIVED_FROM_REAL_HTTP_REPORTS",
+  "baseline": {
+    "file": "20261002-121806-120860-baseline.json",
+    "samples": 5,
+    "expectedSourceRecallAt5": 0.8333333333333334,
+    "MRRAt5": 1.0,
+    "firstExcerptContainsQuery": false
+  },
+  "final": {
+    "file": "20261002-123133-056266-redis-scan-fixed-final.json",
+    "samples": 8,
+    "expectedSourceRecallAt5": 1.0,
+    "MRRAt5": 1.0,
+    "firstExcerptContainsQuery": true
+  },
+  "comparisonCases": [
+    "distinct sources",
+    "body-bearing first excerpt",
+    "fullwidth English",
+    "unknown content",
+    "disabled content"
+  ],
+  "limits": "Only three positive lexical fixtures and explicit negative fixtures. MRR is unchanged; source recall and excerpt relevance improved. Not a production or semantic benchmark."
+}

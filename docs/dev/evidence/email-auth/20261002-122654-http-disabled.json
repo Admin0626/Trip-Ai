@@ -1,0 +1,10 @@
+{
+  "mode": "REAL_HTTP_DEFAULT_MAIL_DISABLED",
+  "checks": [],
+  "phase": "INCOMPLETE",
+  "summary": {
+    "total": 0,
+    "passed": 0
+  },
+  "reason": "Runner default target 8087/Redis6387 was not running; connection refused before first request and no account was created. Default-off email behavior is subsequently verified on live 8080/6379 by knowledge_quality_acceptance.py."
+}

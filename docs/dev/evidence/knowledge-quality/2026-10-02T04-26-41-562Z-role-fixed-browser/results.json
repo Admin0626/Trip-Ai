@@ -1,0 +1,104 @@
+{
+  "mode": "REAL_EDGE_KNOWLEDGE_MAINTENANCE_NO_LLM",
+  "phase": "COMPLETE",
+  "checks": [
+    {
+      "name": "real fixture register admin",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real fixture register reader",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real owned doc create 缺片",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real owned doc create 停用过期",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real owned doc create 健康",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real admin UI login",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "UI own docs filtered",
+      "actual": 3,
+      "expected": 3,
+      "passed": true
+    },
+    {
+      "name": "missing chunks reason shown",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "health count matches actual",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "browser run completed",
+      "actual": "locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('combobox', { name: '资料索引筛选', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <input readonly value=\"\" type=\"text\" tabindex=\"0\" role=\"combobox\" id=\"el-id-765-25\" autocomplete=\"off\" spellcheck=\"false\" aria-label=\"资料索引筛选\" aria-expanded=\"false\" aria-haspopup=\"listbox\" class=\"el-select__input\" aria-activedescendant=\"\" aria-autocomplete=\"none\" aria-controls=\"el-id-765-12\"/>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"el-select__selected-item el-select__placeholder is-transparent\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"el-select__selected-item el-select__placeholder is-transparent\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    29 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <div class=\"el-select__selected-item el-select__placeholder is-transparent\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "expected": "no error",
+      "passed": false
+    },
+    {
+      "name": "owned doc cleanup",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "accounts": [
+    {
+      "id": 10328,
+      "username": "KQUI_eb134a_admin",
+      "role": "admin"
+    },
+    {
+      "id": 10329,
+      "username": "KQUI_eb134a_reader",
+      "role": "reader"
+    }
+  ],
+  "fixtures": [
+    {
+      "docId": 64,
+      "title": "KQUI_eb134a缺片"
+    },
+    {
+      "docId": 65,
+      "title": "KQUI_eb134a停用过期"
+    },
+    {
+      "docId": 66,
+      "title": "KQUI_eb134a健康"
+    }
+  ],
+  "summary": {
+    "total": 11,
+    "passed": 10,
+    "failed": 1
+  }
+}

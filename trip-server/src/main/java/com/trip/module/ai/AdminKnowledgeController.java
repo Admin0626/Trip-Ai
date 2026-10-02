@@ -10,7 +10,10 @@ import org.springframework.web.multipart.MultipartFile;
 @PreAuthorize("hasRole('ADMIN')")
 public class AdminKnowledgeController {
     private final KnowledgeService service;
-    @GetMapping("page") public R<?> page(@RequestParam(defaultValue="1") long current,@RequestParam(defaultValue="20") long size,@RequestParam(required=false) String keyword,@RequestParam(required=false) Integer status){return R.ok(service.page(current,size,keyword,status));}
+    private final KnowledgeMaintenanceService maintenance;
+    @GetMapping("page") public R<?> page(@RequestParam(defaultValue="1") long current,@RequestParam(defaultValue="20") long size,@RequestParam(required=false) String keyword,@RequestParam(required=false) Integer status,@RequestParam(required=false) String indexState,@RequestParam(required=false) String sourceState){return R.ok(service.page(current,size,keyword,status,indexState,sourceState));}
+    @GetMapping("health") public R<?> health(){return R.ok(service.health());}
+    @PostMapping("repair") public R<?> repair(@Valid @RequestBody KnowledgeInput.BatchRepair input){return R.ok(maintenance.repair(input));}
     @GetMapping("{id}") public R<?> detail(@PathVariable long id){return R.ok(service.detail(id));}
     @PostMapping public R<?> create(@Valid @RequestBody KnowledgeInput.Save input){return R.ok(service.save(null,input));}
     @PutMapping("{id}") public R<?> update(@PathVariable long id,@Valid @RequestBody KnowledgeInput.Save input){return R.ok(service.save(id,input));}

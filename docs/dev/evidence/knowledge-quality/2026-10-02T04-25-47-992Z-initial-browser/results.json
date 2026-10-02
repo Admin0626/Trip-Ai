@@ -1,0 +1,104 @@
+{
+  "mode": "REAL_EDGE_KNOWLEDGE_MAINTENANCE_NO_LLM",
+  "phase": "COMPLETE",
+  "checks": [
+    {
+      "name": "real fixture register admin",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real fixture register reader",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real owned doc create 缺片",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real owned doc create 停用过期",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real owned doc create 健康",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real admin UI login",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "UI own docs filtered",
+      "actual": 3,
+      "expected": 3,
+      "passed": true
+    },
+    {
+      "name": "missing chunks reason shown",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "health count matches actual",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "browser run completed",
+      "actual": "locator.click: Error: strict mode violation: getByLabel('资料索引筛选', { exact: true }) resolved to 2 elements:\n    1) <input readonly value=\"\" type=\"text\" tabindex=\"0\" role=\"combobox\" id=\"el-id-629-25\" autocomplete=\"off\" spellcheck=\"false\" aria-label=\"资料索引筛选\" aria-expanded=\"false\" aria-haspopup=\"listbox\" class=\"el-select__input\" aria-activedescendant=\"\" aria-autocomplete=\"none\" aria-controls=\"el-id-629-12\"/> aka getByRole('combobox', { name: '资料索引筛选' })\n    2) <ul role=\"listbox\" id=\"el-id-629-12\" aria-label=\"资料索引筛选\" aria-orientation=\"vertical\" class=\"el-scrollbar__view el-select-dropdown__list\">…</ul> aka getByText('索引就绪待修复索引')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('资料索引筛选', { exact: true })\u001b[22m\n",
+      "expected": "no error",
+      "passed": false
+    },
+    {
+      "name": "owned doc cleanup",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "accounts": [
+    {
+      "id": 10326,
+      "username": "KQUI_57c8c0_admin",
+      "role": "admin"
+    },
+    {
+      "id": 10327,
+      "username": "KQUI_57c8c0_reader",
+      "role": "reader"
+    }
+  ],
+  "fixtures": [
+    {
+      "docId": 61,
+      "title": "KQUI_57c8c0缺片"
+    },
+    {
+      "docId": 62,
+      "title": "KQUI_57c8c0停用过期"
+    },
+    {
+      "docId": 63,
+      "title": "KQUI_57c8c0健康"
+    }
+  ],
+  "summary": {
+    "total": 11,
+    "passed": 10,
+    "failed": 1
+  }
+}

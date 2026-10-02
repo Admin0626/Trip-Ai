@@ -1,6 +1,8 @@
 package com.trip.module.ai;
 
 import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
+import java.util.List;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.core.JsonParser;
 import tools.jackson.core.JsonToken;
@@ -28,4 +30,5 @@ public final class KnowledgeInput {
                           @NotNull @Positive @JsonDeserialize(using=LongNumber.class) Long expectedRevision) {}
     public record Search(@NotBlank @JsonDeserialize(using=StrictPlannerJson.Text.class) String query,
                          @Min(1) @Max(5) @JsonDeserialize(using=StrictPlannerJson.IntegerNumber.class) Integer topK) {}
+    public record BatchRepair(@NotNull @Size(min=1,max=10) List<@NotNull @Valid Rebuild> documents) {}
 }

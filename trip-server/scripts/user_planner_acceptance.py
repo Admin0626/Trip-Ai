@@ -63,7 +63,7 @@ def start_provider(port=0):
 
 def redact(value):
     if isinstance(value, dict):
-        return {k: '<redacted>' if k.lower() in {'apikey', 'password', 'accesstoken', 'refreshtoken', 'authorization'} else redact(v) for k, v in value.items()}
+        return {k: '<redacted>' if k.lower() in {'apikey', 'password', 'oldpassword', 'newpassword', 'accesstoken', 'refreshtoken', 'authorization'} else redact(v) for k, v in value.items()}
     if isinstance(value, list): return [redact(v) for v in value]
     return value
 

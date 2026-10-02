@@ -1,0 +1,4819 @@
+{
+  "mode": "REAL_LOCAL_KNOWLEDGE_SESSION_HTTP_MYSQL_REDIS_NO_LLM",
+  "label": "quality-regression",
+  "startedAt": "2026-10-02T12:26:46.097818+08:00",
+  "checks": [
+    {
+      "name": "register ks",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_e1c17a72efks",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "emailVerified": false,
+            "id": 10332,
+            "nickname": "pw_e1c17a72efks",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_e1c17a72efks"
+          },
+          "timestamp": 1790915206217
+        }
+      }
+    },
+    {
+      "name": "register ko",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_c0ebc1d3a2ko",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "emailVerified": false,
+            "id": 10333,
+            "nickname": "pw_c0ebc1d3a2ko",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_c0ebc1d3a2ko"
+          },
+          "timestamp": 1790915206322
+        }
+      }
+    },
+    {
+      "name": "register kad",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_e41d164a6ekad",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "emailVerified": false,
+            "id": 10334,
+            "nickname": "pw_e41d164a6ekad",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_e41d164a6ekad"
+          },
+          "timestamp": 1790915206455
+        }
+      }
+    },
+    {
+      "name": "register klim",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_1fce716bf7klim",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "emailVerified": false,
+            "id": 10335,
+            "nickname": "pw_1fce716bf7klim",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_1fce716bf7klim"
+          },
+          "timestamp": 1790915206567
+        }
+      }
+    },
+    {
+      "name": "login reader",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_e1c17a72efks",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-10-02T12:26:46",
+              "email": null,
+              "emailVerified": false,
+              "id": 10332,
+              "nickname": "pw_e1c17a72efks",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_e1c17a72efks"
+            }
+          },
+          "timestamp": 1790915206723
+        }
+      }
+    },
+    {
+      "name": "login second reader",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_c0ebc1d3a2ko",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-10-02T12:26:46",
+              "email": null,
+              "emailVerified": false,
+              "id": 10333,
+              "nickname": "pw_c0ebc1d3a2ko",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_c0ebc1d3a2ko"
+            }
+          },
+          "timestamp": 1790915206788
+        }
+      }
+    },
+    {
+      "name": "login owned admin",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_e41d164a6ekad",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-10-02T12:26:46",
+              "email": null,
+              "emailVerified": false,
+              "id": 10334,
+              "nickname": "pw_e41d164a6ekad",
+              "phone": null,
+              "role": "ADMIN",
+              "username": "pw_e41d164a6ekad"
+            }
+          },
+          "timestamp": 1790915206876
+        }
+      }
+    },
+    {
+      "name": "login limit reader",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_1fce716bf7klim",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-10-02T12:26:46",
+              "email": null,
+              "emailVerified": false,
+              "id": 10335,
+              "nickname": "pw_1fce716bf7klim",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_1fce716bf7klim"
+            }
+          },
+          "timestamp": 1790915206944
+        }
+      }
+    },
+    {
+      "name": "anonymous session operation denied",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/session/page",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "请先登录",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "anonymous session operation denied",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/session",
+        "body": {}
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "请先登录",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "anonymous session operation denied",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {}
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "请先登录",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "session page bounds current=0",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/session/page?current=0",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "会话分页超出范围",
+          "data": null,
+          "timestamp": 1790915207005
+        }
+      }
+    },
+    {
+      "name": "session page bounds size=51",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/session/page?size=51",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "会话分页超出范围",
+          "data": null,
+          "timestamp": 1790915207035
+        }
+      }
+    },
+    {
+      "name": "session page bounds current=abc",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/session/page?current=abc",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求参数缺失或格式不正确",
+          "data": null,
+          "timestamp": 1790915207066
+        }
+      }
+    },
+    {
+      "name": "create title wrong type",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/session",
+        "body": {
+          "title": 2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求体格式错误",
+          "data": null,
+          "timestamp": 1790915207081
+        }
+      }
+    },
+    {
+      "name": "create title over bound",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/session",
+        "body": {
+          "title": "甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "会话标题须为1—100个字符",
+          "data": null,
+          "timestamp": 1790915207113
+        }
+      }
+    },
+    {
+      "name": "create title control rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/session",
+        "body": {
+          "title": "bad\u0000title"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "会话标题含不支持的控制字符或无效Unicode",
+          "data": null,
+          "timestamp": 1790915207121
+        }
+      }
+    },
+    {
+      "name": "create own local session",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/session",
+        "body": {}
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 213,
+            "title": "新资料会话",
+            "mode": "LOCAL_SEARCH",
+            "revision": 1,
+            "messageCount": 0,
+            "lastMessageTime": null,
+            "createTime": "2026-10-02T12:26:47",
+            "updateTime": "2026-10-02T12:26:47"
+          },
+          "timestamp": 1790915207137
+        }
+      }
+    },
+    {
+      "name": "new session mode/counters",
+      "actual": [
+        "LOCAL_SEARCH",
+        "新资料会话",
+        1,
+        0
+      ],
+      "expected": [
+        "LOCAL_SEARCH",
+        "新资料会话",
+        1,
+        0
+      ],
+      "passed": true
+    },
+    {
+      "name": "owned chronological message page",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=213&size=20",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "records": [],
+            "hasMore": false,
+            "nextBeforeId": null
+          },
+          "timestamp": 1790915207155
+        }
+      }
+    },
+    {
+      "name": "empty history",
+      "actual": {
+        "records": [],
+        "hasMore": false,
+        "nextBeforeId": null
+      },
+      "expected": {
+        "records": [],
+        "hasMore": false,
+        "nextBeforeId": null
+      },
+      "passed": true
+    },
+    {
+      "name": "owned session detail",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/session/213",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "资料会话不存在或已删除",
+          "data": null,
+          "timestamp": 1790915207167
+        }
+      }
+    },
+    {
+      "name": "owned chronological message page",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=213&size=20",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "资料会话不存在或已删除",
+          "data": null,
+          "timestamp": 1790915207191
+        }
+      }
+    },
+    {
+      "name": "cross owner rename denied",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/ai/chat/session/213",
+        "body": {
+          "title": "stolen",
+          "expectedRevision": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "资料会话不存在或已删除",
+          "data": null,
+          "timestamp": 1790915207200
+        }
+      }
+    },
+    {
+      "name": "cross owner delete denied",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "DELETE",
+        "path": "/ai/chat/session/213?expectedRevision=1",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "资料会话不存在或已删除",
+          "data": null,
+          "timestamp": 1790915207223
+        }
+      }
+    },
+    {
+      "name": "persisted actual local retrieval",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": 213,
+          "query": "霁澜星径",
+          "topK": 1,
+          "requestId": "0aa30383-1e71-455f-890d-ff7f85f67a75"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "资料会话不存在或已删除",
+          "data": null,
+          "timestamp": 1790915207257
+        }
+      }
+    },
+    {
+      "name": "owned session detail",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/session/213",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "资料会话不存在或已删除",
+          "data": null,
+          "timestamp": 1790915207263
+        }
+      }
+    },
+    {
+      "name": "owned chronological message page",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=213&size=20",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "资料会话不存在或已删除",
+          "data": null,
+          "timestamp": 1790915207285
+        }
+      }
+    },
+    {
+      "name": "cross owner rename denied",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/ai/chat/session/213",
+        "body": {
+          "title": "stolen",
+          "expectedRevision": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "资料会话不存在或已删除",
+          "data": null,
+          "timestamp": 1790915207315
+        }
+      }
+    },
+    {
+      "name": "cross owner delete denied",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "DELETE",
+        "path": "/ai/chat/session/213?expectedRevision=1",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "资料会话不存在或已删除",
+          "data": null,
+          "timestamp": 1790915207345
+        }
+      }
+    },
+    {
+      "name": "persisted actual local retrieval",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": 213,
+          "query": "霁澜星径",
+          "topK": 1,
+          "requestId": "8124193f-de87-4b76-8831-7e4e9aec26e8"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "资料会话不存在或已删除",
+          "data": null,
+          "timestamp": 1790915207351
+        }
+      }
+    },
+    {
+      "name": "principal overrides userId query",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/session/page?userId=10332",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "current": 1,
+            "pages": 0,
+            "records": [],
+            "size": 20,
+            "total": 0
+          },
+          "timestamp": 1790915207378
+        }
+      }
+    },
+    {
+      "name": "no other owner sessions",
+      "actual": [],
+      "expected": [],
+      "passed": true
+    },
+    {
+      "name": "upgrade with legacy fixture 1",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "upgrade with legacy fixture 2",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "legacy data/mode preserved",
+      "actual": "KSS_67a04de7b6legacy\tLEGACY\t1\t0",
+      "expected": "KSS_67a04de7b6legacy\tLEGACY\t1\t0",
+      "passed": true
+    },
+    {
+      "name": "legacy message untouched",
+      "actual": "legacy fixture",
+      "expected": "legacy fixture",
+      "passed": true
+    },
+    {
+      "name": "owned session detail",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/session/214",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "资料会话不存在或已删除",
+          "data": null,
+          "timestamp": 1790915207682
+        }
+      }
+    },
+    {
+      "name": "local sessions only",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/session/page",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "current": 1,
+            "pages": 1,
+            "records": [
+              {
+                "id": 213,
+                "title": "新资料会话",
+                "mode": "LOCAL_SEARCH",
+                "revision": 1,
+                "messageCount": 0,
+                "lastMessageTime": null,
+                "createTime": "2026-10-02T12:26:47",
+                "updateTime": "2026-10-02T12:26:47"
+              }
+            ],
+            "size": 20,
+            "total": 1
+          },
+          "timestamp": 1790915207704
+        }
+      }
+    },
+    {
+      "name": "legacy excluded from page",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "create own local session",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/session",
+        "body": {
+          "title": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 215,
+            "title": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀",
+            "mode": "LOCAL_SEARCH",
+            "revision": 1,
+            "messageCount": 0,
+            "lastMessageTime": null,
+            "createTime": "2026-10-02T12:26:47",
+            "updateTime": "2026-10-02T12:26:47"
+          },
+          "timestamp": 1790915207738
+        }
+      }
+    },
+    {
+      "name": "100 Unicode title supported",
+      "actual": 100,
+      "expected": 100,
+      "passed": true
+    },
+    {
+      "name": "owned knowledge fixture save",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/ai/knowledge",
+        "body": {
+          "title": "KSS_67a04de7b6原文旧标题",
+          "docType": "GUIDE",
+          "sourceId": null,
+          "status": 1,
+          "content": "霁澜星径，旧历史私密片段。<img src=x onerror=\"alert(1)\">"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 75,
+            "title": "KSS_67a04de7b6原文旧标题",
+            "docType": "GUIDE",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 1,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 1,
+            "vectorStatus": 0,
+            "updateTime": "2026-10-02T12:26:47",
+            "content": "霁澜星径，旧历史私密片段。<img src=x onerror=\"alert(1)\">"
+          },
+          "timestamp": 1790915207771
+        }
+      }
+    },
+    {
+      "name": "local quota baseline",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/planner/usage",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "quota": {
+              "hourly": {
+                "limit": 20,
+                "used": 0,
+                "remaining": 20,
+                "resetAt": "2026-10-02T13:00+08:00"
+              },
+              "daily": {
+                "limit": 200,
+                "used": 0,
+                "remaining": 200,
+                "resetAt": "2026-10-03T00:00+08:00"
+              },
+              "globalDaily": {
+                "limit": 2000,
+                "used": 0,
+                "remaining": 2000,
+                "resetAt": "2026-10-03T00:00+08:00"
+              },
+              "timeZone": "Asia/Shanghai"
+            },
+            "today": {
+              "operations": 0,
+              "succeeded": 0,
+              "failed": 0,
+              "averageCostMs": 0.0
+            }
+          },
+          "timestamp": 1790915207798
+        }
+      }
+    },
+    {
+      "name": "persisted actual local retrieval",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": 213,
+          "query": "霁澜星径",
+          "topK": 1,
+          "requestId": "99386fa3-9770-47df-84c3-1954463c4082"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "session": {
+              "id": 213,
+              "title": "霁澜星径",
+              "mode": "LOCAL_SEARCH",
+              "revision": 2,
+              "messageCount": 2,
+              "lastMessageTime": "2026-10-02T12:26:47",
+              "createTime": "2026-10-02T12:26:47",
+              "updateTime": "2026-10-02T12:26:47"
+            },
+            "requestId": "99386fa3-9770-47df-84c3-1954463c4082",
+            "replayed": false,
+            "messages": [
+              {
+                "id": 892,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "霁澜星径",
+                "requestId": "99386fa3-9770-47df-84c3-1954463c4082",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:47",
+                "result": null
+              },
+              {
+                "id": 893,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "99386fa3-9770-47df-84c3-1954463c4082",
+                "tokensUsed": 0,
+                "costMs": 4,
+                "createTime": "2026-10-02T12:26:47",
+                "result": {
+                  "query": "霁澜星径",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "以下为资料原文片段，请结合来源与更新时间核实",
+                  "references": [
+                    {
+                      "docId": 75,
+                      "chunkId": 295,
+                      "chunkIndex": 1,
+                      "title": "KSS_67a04de7b6原文旧标题",
+                      "excerpt": "霁澜星径，旧历史私密片段。<img src=x onerror=\"alert(1)\">",
+                      "keywordCoverage": 1.0,
+                      "documentPath": "/knowledge/75",
+                      "sourcePath": null
+                    }
+                  ],
+                  "unavailableReferenceCount": 0
+                }
+              }
+            ]
+          },
+          "timestamp": 1790915207877
+        }
+      }
+    },
+    {
+      "name": "two atomic messages",
+      "actual": [
+        2,
+        [
+          "user",
+          "assistant"
+        ],
+        [
+          "LOCAL_QUERY",
+          "LOCAL_RESULT"
+        ]
+      ],
+      "expected": [
+        2,
+        [
+          "user",
+          "assistant"
+        ],
+        [
+          "LOCAL_QUERY",
+          "LOCAL_RESULT"
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "name": "fresh request not replayed",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "session count/title/revision",
+      "actual": [
+        2,
+        "霁澜星径",
+        2
+      ],
+      "expected": [
+        2,
+        "霁澜星径",
+        2
+      ],
+      "passed": true
+    },
+    {
+      "name": "original reference actual body",
+      "actual": [
+        "LOCAL_NGRAM",
+        75,
+        "霁澜星径，旧历史私密片段。<img src=x onerror=\"alert(1)\">"
+      ],
+      "expected": [
+        "LOCAL_NGRAM",
+        75,
+        "霁澜星径，旧历史私密片段。<img src=x onerror=\"alert(1)\">"
+      ],
+      "passed": true
+    },
+    {
+      "name": "tokens are zero",
+      "actual": [
+        0,
+        0
+      ],
+      "expected": [
+        0,
+        0
+      ],
+      "passed": true
+    },
+    {
+      "name": "persisted pair/count SQL",
+      "actual": "2\t0",
+      "expected": "2\t0",
+      "passed": true
+    },
+    {
+      "name": "persisted actual local retrieval",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": 213,
+          "query": "霁澜星径",
+          "topK": 1,
+          "requestId": "99386fa3-9770-47df-84c3-1954463c4082"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "session": {
+              "id": 213,
+              "title": "霁澜星径",
+              "mode": "LOCAL_SEARCH",
+              "revision": 2,
+              "messageCount": 2,
+              "lastMessageTime": "2026-10-02T12:26:47",
+              "createTime": "2026-10-02T12:26:47",
+              "updateTime": "2026-10-02T12:26:47"
+            },
+            "requestId": "99386fa3-9770-47df-84c3-1954463c4082",
+            "replayed": true,
+            "messages": [
+              {
+                "id": 892,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "霁澜星径",
+                "requestId": "99386fa3-9770-47df-84c3-1954463c4082",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:47",
+                "result": null
+              },
+              {
+                "id": 893,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "99386fa3-9770-47df-84c3-1954463c4082",
+                "tokensUsed": 0,
+                "costMs": 4,
+                "createTime": "2026-10-02T12:26:47",
+                "result": {
+                  "query": "霁澜星径",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "以下为资料原文片段，请结合来源与更新时间核实",
+                  "references": [
+                    {
+                      "docId": 75,
+                      "chunkId": 295,
+                      "chunkIndex": 1,
+                      "title": "KSS_67a04de7b6原文旧标题",
+                      "excerpt": "霁澜星径，旧历史私密片段。<img src=x onerror=\"alert(1)\">",
+                      "keywordCoverage": 1.0,
+                      "documentPath": "/knowledge/75",
+                      "sourcePath": null
+                    }
+                  ],
+                  "unavailableReferenceCount": 0
+                }
+              }
+            ]
+          },
+          "timestamp": 1790915207929
+        }
+      }
+    },
+    {
+      "name": "same request replay id/count",
+      "actual": [
+        true,
+        [
+          892,
+          893
+        ],
+        2
+      ],
+      "expected": [
+        true,
+        [
+          892,
+          893
+        ],
+        2
+      ],
+      "passed": true
+    },
+    {
+      "name": "persisted actual local retrieval",
+      "actual": [
+        200,
+        409
+      ],
+      "expected": [
+        200,
+        409
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": 213,
+          "query": "different question",
+          "topK": 1,
+          "requestId": "99386fa3-9770-47df-84c3-1954463c4082"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 409,
+          "message": "此请求编号已用于其他问题，请刷新或提交新的检索",
+          "data": null,
+          "timestamp": 1790915207955
+        }
+      }
+    },
+    {
+      "name": "persisted actual local retrieval",
+      "actual": [
+        200,
+        409
+      ],
+      "expected": [
+        200,
+        409
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": 213,
+          "query": "霁澜星径",
+          "topK": 2,
+          "requestId": "99386fa3-9770-47df-84c3-1954463c4082"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 409,
+          "message": "此请求编号已用于其他问题，请刷新或提交新的检索",
+          "data": null,
+          "timestamp": 1790915207986
+        }
+      }
+    },
+    {
+      "name": "duplicate concurrent actual codes",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true
+    },
+    {
+      "name": "one concurrent replay",
+      "actual": [
+        false,
+        true
+      ],
+      "expected": [
+        false,
+        true
+      ],
+      "passed": true
+    },
+    {
+      "name": "same concurrent message IDs",
+      "actual": [
+        894,
+        895
+      ],
+      "expected": [
+        894,
+        895
+      ],
+      "passed": true
+    },
+    {
+      "name": "duplicate pair persisted once",
+      "actual": "2",
+      "expected": "2",
+      "passed": true
+    },
+    {
+      "name": "distinct concurrent appends",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true
+    },
+    {
+      "name": "owned session detail",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/session/213",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 213,
+            "title": "霁澜星径",
+            "mode": "LOCAL_SEARCH",
+            "revision": 5,
+            "messageCount": 8,
+            "lastMessageTime": "2026-10-02T12:26:48",
+            "createTime": "2026-10-02T12:26:47",
+            "updateTime": "2026-10-02T12:26:48"
+          },
+          "timestamp": 1790915208123
+        }
+      }
+    },
+    {
+      "name": "all appends counted",
+      "actual": [
+        8,
+        5
+      ],
+      "expected": [
+        8,
+        5
+      ],
+      "passed": true
+    },
+    {
+      "name": "owned chronological message page",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=213&size=3",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "records": [
+              {
+                "id": 897,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "71b2fa05-e728-419e-86b9-3ecc8b23d13b",
+                "tokensUsed": 0,
+                "costMs": 2,
+                "createTime": "2026-10-02T12:26:48",
+                "result": {
+                  "query": "霁澜星径",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "以下为资料原文片段，请结合来源与更新时间核实",
+                  "references": [
+                    {
+                      "docId": 75,
+                      "chunkId": 295,
+                      "chunkIndex": 1,
+                      "title": "KSS_67a04de7b6原文旧标题",
+                      "excerpt": "霁澜星径，旧历史私密片段。<img src=x onerror=\"alert(1)\">",
+                      "keywordCoverage": 1.0,
+                      "documentPath": "/knowledge/75",
+                      "sourcePath": null
+                    }
+                  ],
+                  "unavailableReferenceCount": 0
+                }
+              },
+              {
+                "id": 898,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "霁澜星径",
+                "requestId": "04f882ad-d47e-4dbf-a9d2-48c6c9055784",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:48",
+                "result": null
+              },
+              {
+                "id": 899,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "04f882ad-d47e-4dbf-a9d2-48c6c9055784",
+                "tokensUsed": 0,
+                "costMs": 2,
+                "createTime": "2026-10-02T12:26:48",
+                "result": {
+                  "query": "霁澜星径",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "以下为资料原文片段，请结合来源与更新时间核实",
+                  "references": [
+                    {
+                      "docId": 75,
+                      "chunkId": 295,
+                      "chunkIndex": 1,
+                      "title": "KSS_67a04de7b6原文旧标题",
+                      "excerpt": "霁澜星径，旧历史私密片段。<img src=x onerror=\"alert(1)\">",
+                      "keywordCoverage": 1.0,
+                      "documentPath": "/knowledge/75",
+                      "sourcePath": null
+                    }
+                  ],
+                  "unavailableReferenceCount": 0
+                }
+              }
+            ],
+            "hasMore": true,
+            "nextBeforeId": 897
+          },
+          "timestamp": 1790915208169
+        }
+      }
+    },
+    {
+      "name": "latest window ascending",
+      "actual": [
+        897,
+        898,
+        899
+      ],
+      "expected": [
+        897,
+        898,
+        899
+      ],
+      "passed": true
+    },
+    {
+      "name": "owned chronological message page",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=213&size=1",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "records": [
+              {
+                "id": 899,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "04f882ad-d47e-4dbf-a9d2-48c6c9055784",
+                "tokensUsed": 0,
+                "costMs": 2,
+                "createTime": "2026-10-02T12:26:48",
+                "result": {
+                  "query": "霁澜星径",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "以下为资料原文片段，请结合来源与更新时间核实",
+                  "references": [
+                    {
+                      "docId": 75,
+                      "chunkId": 295,
+                      "chunkIndex": 1,
+                      "title": "KSS_67a04de7b6原文旧标题",
+                      "excerpt": "霁澜星径，旧历史私密片段。<img src=x onerror=\"alert(1)\">",
+                      "keywordCoverage": 1.0,
+                      "documentPath": "/knowledge/75",
+                      "sourcePath": null
+                    }
+                  ],
+                  "unavailableReferenceCount": 0
+                }
+              }
+            ],
+            "hasMore": true,
+            "nextBeforeId": 899
+          },
+          "timestamp": 1790915208201
+        }
+      }
+    },
+    {
+      "name": "owned chronological message page",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=213&size=1&beforeId=899",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "records": [
+              {
+                "id": 898,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "霁澜星径",
+                "requestId": "04f882ad-d47e-4dbf-a9d2-48c6c9055784",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:48",
+                "result": null
+              }
+            ],
+            "hasMore": true,
+            "nextBeforeId": 898
+          },
+          "timestamp": 1790915208232
+        }
+      }
+    },
+    {
+      "name": "owned chronological message page",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=213&size=1&beforeId=898",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "records": [
+              {
+                "id": 897,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "71b2fa05-e728-419e-86b9-3ecc8b23d13b",
+                "tokensUsed": 0,
+                "costMs": 2,
+                "createTime": "2026-10-02T12:26:48",
+                "result": {
+                  "query": "霁澜星径",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "以下为资料原文片段，请结合来源与更新时间核实",
+                  "references": [
+                    {
+                      "docId": 75,
+                      "chunkId": 295,
+                      "chunkIndex": 1,
+                      "title": "KSS_67a04de7b6原文旧标题",
+                      "excerpt": "霁澜星径，旧历史私密片段。<img src=x onerror=\"alert(1)\">",
+                      "keywordCoverage": 1.0,
+                      "documentPath": "/knowledge/75",
+                      "sourcePath": null
+                    }
+                  ],
+                  "unavailableReferenceCount": 0
+                }
+              }
+            ],
+            "hasMore": true,
+            "nextBeforeId": 897
+          },
+          "timestamp": 1790915208240
+        }
+      }
+    },
+    {
+      "name": "owned chronological message page",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=213&size=1&beforeId=897",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "records": [
+              {
+                "id": 896,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "霁澜星径",
+                "requestId": "71b2fa05-e728-419e-86b9-3ecc8b23d13b",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:48",
+                "result": null
+              }
+            ],
+            "hasMore": true,
+            "nextBeforeId": 896
+          },
+          "timestamp": 1790915208247
+        }
+      }
+    },
+    {
+      "name": "owned chronological message page",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=213&size=1&beforeId=896",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "records": [
+              {
+                "id": 895,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "e0c6b948-f0f4-4474-9d63-ee65b8dff885",
+                "tokensUsed": 0,
+                "costMs": 2,
+                "createTime": "2026-10-02T12:26:48",
+                "result": {
+                  "query": "霁澜星径",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "以下为资料原文片段，请结合来源与更新时间核实",
+                  "references": [
+                    {
+                      "docId": 75,
+                      "chunkId": 295,
+                      "chunkIndex": 1,
+                      "title": "KSS_67a04de7b6原文旧标题",
+                      "excerpt": "霁澜星径，旧历史私密片段。<img src=x onerror=\"alert(1)\">",
+                      "keywordCoverage": 1.0,
+                      "documentPath": "/knowledge/75",
+                      "sourcePath": null
+                    }
+                  ],
+                  "unavailableReferenceCount": 0
+                }
+              }
+            ],
+            "hasMore": true,
+            "nextBeforeId": 895
+          },
+          "timestamp": 1790915208280
+        }
+      }
+    },
+    {
+      "name": "owned chronological message page",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=213&size=1&beforeId=895",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "records": [
+              {
+                "id": 894,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "霁澜星径",
+                "requestId": "e0c6b948-f0f4-4474-9d63-ee65b8dff885",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:48",
+                "result": null
+              }
+            ],
+            "hasMore": true,
+            "nextBeforeId": 894
+          },
+          "timestamp": 1790915208322
+        }
+      }
+    },
+    {
+      "name": "owned chronological message page",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=213&size=1&beforeId=894",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "records": [
+              {
+                "id": 893,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "99386fa3-9770-47df-84c3-1954463c4082",
+                "tokensUsed": 0,
+                "costMs": 4,
+                "createTime": "2026-10-02T12:26:47",
+                "result": {
+                  "query": "霁澜星径",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "以下为资料原文片段，请结合来源与更新时间核实",
+                  "references": [
+                    {
+                      "docId": 75,
+                      "chunkId": 295,
+                      "chunkIndex": 1,
+                      "title": "KSS_67a04de7b6原文旧标题",
+                      "excerpt": "霁澜星径，旧历史私密片段。<img src=x onerror=\"alert(1)\">",
+                      "keywordCoverage": 1.0,
+                      "documentPath": "/knowledge/75",
+                      "sourcePath": null
+                    }
+                  ],
+                  "unavailableReferenceCount": 0
+                }
+              }
+            ],
+            "hasMore": true,
+            "nextBeforeId": 893
+          },
+          "timestamp": 1790915208346
+        }
+      }
+    },
+    {
+      "name": "owned chronological message page",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=213&size=1&beforeId=893",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "records": [
+              {
+                "id": 892,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "霁澜星径",
+                "requestId": "99386fa3-9770-47df-84c3-1954463c4082",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:47",
+                "result": null
+              }
+            ],
+            "hasMore": false,
+            "nextBeforeId": null
+          },
+          "timestamp": 1790915208354
+        }
+      }
+    },
+    {
+      "name": "cursor complete without duplicates",
+      "actual": [
+        892,
+        893,
+        894,
+        895,
+        896,
+        897,
+        898,
+        899
+      ],
+      "expected": [
+        892,
+        893,
+        894,
+        895,
+        896,
+        897,
+        898,
+        899
+      ],
+      "passed": true
+    },
+    {
+      "name": "owned chronological message page",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=213&size=0",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "历史分页参数超出范围",
+          "data": null,
+          "timestamp": 1790915208372
+        }
+      }
+    },
+    {
+      "name": "owned chronological message page",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=213&size=51",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "历史分页参数超出范围",
+          "data": null,
+          "timestamp": 1790915208378
+        }
+      }
+    },
+    {
+      "name": "owned chronological message page",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=213&size=2&beforeId=0",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "历史分页参数超出范围",
+          "data": null,
+          "timestamp": 1790915208385
+        }
+      }
+    },
+    {
+      "name": "owned chronological message page",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=213&size=2&beforeId=-1",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "历史分页参数超出范围",
+          "data": null,
+          "timestamp": 1790915208403
+        }
+      }
+    },
+    {
+      "name": "strict search input rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": "213",
+          "query": "霁澜星径",
+          "topK": 1,
+          "requestId": "1eedb90b-95de-43bf-86e5-fa4ded22d435"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求体格式错误",
+          "data": null,
+          "timestamp": 1790915208410
+        }
+      }
+    },
+    {
+      "name": "strict search input rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": 0,
+          "query": "霁澜星径",
+          "topK": 1,
+          "requestId": "0c9e91d5-a4ef-4613-99a2-1170e9693f02"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "sessionId 必须是正数",
+          "data": null,
+          "timestamp": 1790915208417
+        }
+      }
+    },
+    {
+      "name": "strict search input rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": 213,
+          "query": 2,
+          "topK": 1,
+          "requestId": "7d1822ab-2eb0-4edc-b3e6-c0e3439d9171"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求体格式错误",
+          "data": null,
+          "timestamp": 1790915208424
+        }
+      }
+    },
+    {
+      "name": "strict search input rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": 213,
+          "query": "😀!?",
+          "topK": 1,
+          "requestId": "e0326cf2-748b-487c-b026-8a1d79de64d0"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请填写至少2个连续汉字或有效英文词",
+          "data": null,
+          "timestamp": 1790915208453
+        }
+      }
+    },
+    {
+      "name": "strict search input rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": 213,
+          "query": "\ud800",
+          "topK": 1,
+          "requestId": "b70d3298-3f08-42ba-b253-fd605586aebf"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "检索问题须为2—200个字符",
+          "data": null,
+          "timestamp": 1790915208482
+        }
+      }
+    },
+    {
+      "name": "strict search input rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": 213,
+          "query": "甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲",
+          "topK": 1,
+          "requestId": "102e844d-9595-4edb-bacc-043f30683147"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "检索问题须为2—200个字符",
+          "data": null,
+          "timestamp": 1790915208511
+        }
+      }
+    },
+    {
+      "name": "strict search input rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": 213,
+          "query": "霁澜星径",
+          "topK": "2",
+          "requestId": "9a0d36f2-2bd3-4e0b-8eec-87ce24df080d"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求体格式错误",
+          "data": null,
+          "timestamp": 1790915208518
+        }
+      }
+    },
+    {
+      "name": "strict search input rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": 213,
+          "query": "霁澜星径",
+          "topK": true,
+          "requestId": "d0398f65-25d0-4273-98fa-19880ddfbbc1"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求体格式错误",
+          "data": null,
+          "timestamp": 1790915208543
+        }
+      }
+    },
+    {
+      "name": "strict search input rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": 213,
+          "query": "霁澜星径",
+          "topK": 6,
+          "requestId": "7c835f4a-1fc5-4ec3-83c7-01b42db20364"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "topK 最大不能超过5",
+          "data": null,
+          "timestamp": 1790915208573
+        }
+      }
+    },
+    {
+      "name": "strict search input rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": 213,
+          "query": "霁澜星径",
+          "topK": 1,
+          "requestId": "bad"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "requestId 需要匹配正则表达式\"[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}\"",
+          "data": null,
+          "timestamp": 1790915208605
+        }
+      }
+    },
+    {
+      "name": "strict search input rejected",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": 213,
+          "query": "霁澜星径",
+          "topK": 1,
+          "requestId": 42
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求体格式错误",
+          "data": null,
+          "timestamp": 1790915208613
+        }
+      }
+    },
+    {
+      "name": "owned session detail",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/session/213",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 213,
+            "title": "霁澜星径",
+            "mode": "LOCAL_SEARCH",
+            "revision": 5,
+            "messageCount": 8,
+            "lastMessageTime": "2026-10-02T12:26:48",
+            "createTime": "2026-10-02T12:26:47",
+            "updateTime": "2026-10-02T12:26:48"
+          },
+          "timestamp": 1790915208637
+        }
+      }
+    },
+    {
+      "name": "invalid requests did not append",
+      "actual": 8,
+      "expected": 8,
+      "passed": true
+    },
+    {
+      "name": "hide own knowledge",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/75/status",
+        "body": {
+          "status": 0,
+          "expectedRevision": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 75,
+            "title": "KSS_67a04de7b6原文旧标题",
+            "docType": "GUIDE",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 0,
+            "revision": 2,
+            "indexedRevision": 2,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 1,
+            "vectorStatus": 0,
+            "updateTime": "2026-10-02T12:26:48",
+            "content": "霁澜星径，旧历史私密片段。<img src=x onerror=\"alert(1)\">"
+          },
+          "timestamp": 1790915208670
+        }
+      }
+    },
+    {
+      "name": "owned chronological message page",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=213&size=20",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "records": [
+              {
+                "id": 892,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "霁澜星径",
+                "requestId": "99386fa3-9770-47df-84c3-1954463c4082",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:47",
+                "result": null
+              },
+              {
+                "id": 893,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "99386fa3-9770-47df-84c3-1954463c4082",
+                "tokensUsed": 0,
+                "costMs": 4,
+                "createTime": "2026-10-02T12:26:47",
+                "result": {
+                  "query": "霁澜星径",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "部分历史引用已更新或不再公开，已隐藏旧片段，请重新检索",
+                  "references": [],
+                  "unavailableReferenceCount": 1
+                }
+              },
+              {
+                "id": 894,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "霁澜星径",
+                "requestId": "e0c6b948-f0f4-4474-9d63-ee65b8dff885",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:48",
+                "result": null
+              },
+              {
+                "id": 895,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "e0c6b948-f0f4-4474-9d63-ee65b8dff885",
+                "tokensUsed": 0,
+                "costMs": 2,
+                "createTime": "2026-10-02T12:26:48",
+                "result": {
+                  "query": "霁澜星径",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "部分历史引用已更新或不再公开，已隐藏旧片段，请重新检索",
+                  "references": [],
+                  "unavailableReferenceCount": 1
+                }
+              },
+              {
+                "id": 896,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "霁澜星径",
+                "requestId": "71b2fa05-e728-419e-86b9-3ecc8b23d13b",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:48",
+                "result": null
+              },
+              {
+                "id": 897,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "71b2fa05-e728-419e-86b9-3ecc8b23d13b",
+                "tokensUsed": 0,
+                "costMs": 2,
+                "createTime": "2026-10-02T12:26:48",
+                "result": {
+                  "query": "霁澜星径",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "部分历史引用已更新或不再公开，已隐藏旧片段，请重新检索",
+                  "references": [],
+                  "unavailableReferenceCount": 1
+                }
+              },
+              {
+                "id": 898,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "霁澜星径",
+                "requestId": "04f882ad-d47e-4dbf-a9d2-48c6c9055784",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:48",
+                "result": null
+              },
+              {
+                "id": 899,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "04f882ad-d47e-4dbf-a9d2-48c6c9055784",
+                "tokensUsed": 0,
+                "costMs": 2,
+                "createTime": "2026-10-02T12:26:48",
+                "result": {
+                  "query": "霁澜星径",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "部分历史引用已更新或不再公开，已隐藏旧片段，请重新检索",
+                  "references": [],
+                  "unavailableReferenceCount": 1
+                }
+              }
+            ],
+            "hasMore": false,
+            "nextBeforeId": null
+          },
+          "timestamp": 1790915208699
+        }
+      }
+    },
+    {
+      "name": "hidden old title/body/link omitted",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "all hidden references marked",
+      "actual": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "expected": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "passed": true
+    },
+    {
+      "name": "persisted actual local retrieval",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": 213,
+          "query": "霁澜星径",
+          "topK": 1,
+          "requestId": "99386fa3-9770-47df-84c3-1954463c4082"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "session": {
+              "id": 213,
+              "title": "霁澜星径",
+              "mode": "LOCAL_SEARCH",
+              "revision": 5,
+              "messageCount": 8,
+              "lastMessageTime": "2026-10-02T12:26:48",
+              "createTime": "2026-10-02T12:26:47",
+              "updateTime": "2026-10-02T12:26:48"
+            },
+            "requestId": "99386fa3-9770-47df-84c3-1954463c4082",
+            "replayed": true,
+            "messages": [
+              {
+                "id": 892,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "霁澜星径",
+                "requestId": "99386fa3-9770-47df-84c3-1954463c4082",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:47",
+                "result": null
+              },
+              {
+                "id": 893,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "99386fa3-9770-47df-84c3-1954463c4082",
+                "tokensUsed": 0,
+                "costMs": 4,
+                "createTime": "2026-10-02T12:26:47",
+                "result": {
+                  "query": "霁澜星径",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "部分历史引用已更新或不再公开，已隐藏旧片段，请重新检索",
+                  "references": [],
+                  "unavailableReferenceCount": 1
+                }
+              }
+            ]
+          },
+          "timestamp": 1790915208717
+        }
+      }
+    },
+    {
+      "name": "replay also revalidates",
+      "actual": [],
+      "expected": [],
+      "passed": true
+    },
+    {
+      "name": "restore unchanged reference",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/75/status",
+        "body": {
+          "status": 1,
+          "expectedRevision": 2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 75,
+            "title": "KSS_67a04de7b6原文旧标题",
+            "docType": "GUIDE",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 3,
+            "indexedRevision": 3,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 1,
+            "vectorStatus": 0,
+            "updateTime": "2026-10-02T12:26:48",
+            "content": "霁澜星径，旧历史私密片段。<img src=x onerror=\"alert(1)\">"
+          },
+          "timestamp": 1790915208746
+        }
+      }
+    },
+    {
+      "name": "owned chronological message page",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=213&size=20",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "records": [
+              {
+                "id": 892,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "霁澜星径",
+                "requestId": "99386fa3-9770-47df-84c3-1954463c4082",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:47",
+                "result": null
+              },
+              {
+                "id": 893,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "99386fa3-9770-47df-84c3-1954463c4082",
+                "tokensUsed": 0,
+                "costMs": 4,
+                "createTime": "2026-10-02T12:26:47",
+                "result": {
+                  "query": "霁澜星径",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "以下为资料原文片段，请结合来源与更新时间核实",
+                  "references": [
+                    {
+                      "docId": 75,
+                      "chunkId": 295,
+                      "chunkIndex": 1,
+                      "title": "KSS_67a04de7b6原文旧标题",
+                      "excerpt": "霁澜星径，旧历史私密片段。<img src=x onerror=\"alert(1)\">",
+                      "keywordCoverage": 1.0,
+                      "documentPath": "/knowledge/75",
+                      "sourcePath": null
+                    }
+                  ],
+                  "unavailableReferenceCount": 0
+                }
+              },
+              {
+                "id": 894,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "霁澜星径",
+                "requestId": "e0c6b948-f0f4-4474-9d63-ee65b8dff885",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:48",
+                "result": null
+              },
+              {
+                "id": 895,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "e0c6b948-f0f4-4474-9d63-ee65b8dff885",
+                "tokensUsed": 0,
+                "costMs": 2,
+                "createTime": "2026-10-02T12:26:48",
+                "result": {
+                  "query": "霁澜星径",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "以下为资料原文片段，请结合来源与更新时间核实",
+                  "references": [
+                    {
+                      "docId": 75,
+                      "chunkId": 295,
+                      "chunkIndex": 1,
+                      "title": "KSS_67a04de7b6原文旧标题",
+                      "excerpt": "霁澜星径，旧历史私密片段。<img src=x onerror=\"alert(1)\">",
+                      "keywordCoverage": 1.0,
+                      "documentPath": "/knowledge/75",
+                      "sourcePath": null
+                    }
+                  ],
+                  "unavailableReferenceCount": 0
+                }
+              },
+              {
+                "id": 896,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "霁澜星径",
+                "requestId": "71b2fa05-e728-419e-86b9-3ecc8b23d13b",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:48",
+                "result": null
+              },
+              {
+                "id": 897,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "71b2fa05-e728-419e-86b9-3ecc8b23d13b",
+                "tokensUsed": 0,
+                "costMs": 2,
+                "createTime": "2026-10-02T12:26:48",
+                "result": {
+                  "query": "霁澜星径",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "以下为资料原文片段，请结合来源与更新时间核实",
+                  "references": [
+                    {
+                      "docId": 75,
+                      "chunkId": 295,
+                      "chunkIndex": 1,
+                      "title": "KSS_67a04de7b6原文旧标题",
+                      "excerpt": "霁澜星径，旧历史私密片段。<img src=x onerror=\"alert(1)\">",
+                      "keywordCoverage": 1.0,
+                      "documentPath": "/knowledge/75",
+                      "sourcePath": null
+                    }
+                  ],
+                  "unavailableReferenceCount": 0
+                }
+              },
+              {
+                "id": 898,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "霁澜星径",
+                "requestId": "04f882ad-d47e-4dbf-a9d2-48c6c9055784",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:48",
+                "result": null
+              },
+              {
+                "id": 899,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "04f882ad-d47e-4dbf-a9d2-48c6c9055784",
+                "tokensUsed": 0,
+                "costMs": 2,
+                "createTime": "2026-10-02T12:26:48",
+                "result": {
+                  "query": "霁澜星径",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "以下为资料原文片段，请结合来源与更新时间核实",
+                  "references": [
+                    {
+                      "docId": 75,
+                      "chunkId": 295,
+                      "chunkIndex": 1,
+                      "title": "KSS_67a04de7b6原文旧标题",
+                      "excerpt": "霁澜星径，旧历史私密片段。<img src=x onerror=\"alert(1)\">",
+                      "keywordCoverage": 1.0,
+                      "documentPath": "/knowledge/75",
+                      "sourcePath": null
+                    }
+                  ],
+                  "unavailableReferenceCount": 0
+                }
+              }
+            ],
+            "hasMore": false,
+            "nextBeforeId": null
+          },
+          "timestamp": 1790915208778
+        }
+      }
+    },
+    {
+      "name": "restored unchanged current reference",
+      "actual": "霁澜星径，旧历史私密片段。<img src=x onerror=\"alert(1)\">",
+      "expected": "霁澜星径，旧历史私密片段。<img src=x onerror=\"alert(1)\">",
+      "passed": true
+    },
+    {
+      "name": "owned knowledge fixture save",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/75",
+        "body": {
+          "title": "KSS_67a04de7b6当前标题",
+          "docType": "GUIDE",
+          "sourceId": null,
+          "status": 1,
+          "content": "晴岚星径，新的资料原文。",
+          "expectedRevision": 3
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 75,
+            "title": "KSS_67a04de7b6当前标题",
+            "docType": "GUIDE",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 4,
+            "indexedRevision": 4,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 1,
+            "vectorStatus": 0,
+            "updateTime": "2026-10-02T12:26:48",
+            "content": "晴岚星径，新的资料原文。"
+          },
+          "timestamp": 1790915208793
+        }
+      }
+    },
+    {
+      "name": "owned chronological message page",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=213&size=20",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "records": [
+              {
+                "id": 892,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "霁澜星径",
+                "requestId": "99386fa3-9770-47df-84c3-1954463c4082",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:47",
+                "result": null
+              },
+              {
+                "id": 893,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "99386fa3-9770-47df-84c3-1954463c4082",
+                "tokensUsed": 0,
+                "costMs": 4,
+                "createTime": "2026-10-02T12:26:47",
+                "result": {
+                  "query": "霁澜星径",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "部分历史引用已更新或不再公开，已隐藏旧片段，请重新检索",
+                  "references": [],
+                  "unavailableReferenceCount": 1
+                }
+              },
+              {
+                "id": 894,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "霁澜星径",
+                "requestId": "e0c6b948-f0f4-4474-9d63-ee65b8dff885",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:48",
+                "result": null
+              },
+              {
+                "id": 895,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "e0c6b948-f0f4-4474-9d63-ee65b8dff885",
+                "tokensUsed": 0,
+                "costMs": 2,
+                "createTime": "2026-10-02T12:26:48",
+                "result": {
+                  "query": "霁澜星径",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "部分历史引用已更新或不再公开，已隐藏旧片段，请重新检索",
+                  "references": [],
+                  "unavailableReferenceCount": 1
+                }
+              },
+              {
+                "id": 896,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "霁澜星径",
+                "requestId": "71b2fa05-e728-419e-86b9-3ecc8b23d13b",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:48",
+                "result": null
+              },
+              {
+                "id": 897,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "71b2fa05-e728-419e-86b9-3ecc8b23d13b",
+                "tokensUsed": 0,
+                "costMs": 2,
+                "createTime": "2026-10-02T12:26:48",
+                "result": {
+                  "query": "霁澜星径",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "部分历史引用已更新或不再公开，已隐藏旧片段，请重新检索",
+                  "references": [],
+                  "unavailableReferenceCount": 1
+                }
+              },
+              {
+                "id": 898,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "霁澜星径",
+                "requestId": "04f882ad-d47e-4dbf-a9d2-48c6c9055784",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:48",
+                "result": null
+              },
+              {
+                "id": 899,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "04f882ad-d47e-4dbf-a9d2-48c6c9055784",
+                "tokensUsed": 0,
+                "costMs": 2,
+                "createTime": "2026-10-02T12:26:48",
+                "result": {
+                  "query": "霁澜星径",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "部分历史引用已更新或不再公开，已隐藏旧片段，请重新检索",
+                  "references": [],
+                  "unavailableReferenceCount": 1
+                }
+              }
+            ],
+            "hasMore": false,
+            "nextBeforeId": null
+          },
+          "timestamp": 1790915208824
+        }
+      }
+    },
+    {
+      "name": "edited history avoids stale excerpts",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "persisted actual local retrieval",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": 213,
+          "query": "晴岚星径",
+          "topK": 1,
+          "requestId": "3a4f3102-ec5f-4bc6-87c4-be9f96632444"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "session": {
+              "id": 213,
+              "title": "霁澜星径",
+              "mode": "LOCAL_SEARCH",
+              "revision": 6,
+              "messageCount": 10,
+              "lastMessageTime": "2026-10-02T12:26:48",
+              "createTime": "2026-10-02T12:26:47",
+              "updateTime": "2026-10-02T12:26:48"
+            },
+            "requestId": "3a4f3102-ec5f-4bc6-87c4-be9f96632444",
+            "replayed": false,
+            "messages": [
+              {
+                "id": 900,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "晴岚星径",
+                "requestId": "3a4f3102-ec5f-4bc6-87c4-be9f96632444",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:48",
+                "result": null
+              },
+              {
+                "id": 901,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "3a4f3102-ec5f-4bc6-87c4-be9f96632444",
+                "tokensUsed": 0,
+                "costMs": 2,
+                "createTime": "2026-10-02T12:26:48",
+                "result": {
+                  "query": "晴岚星径",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "以下为资料原文片段，请结合来源与更新时间核实",
+                  "references": [
+                    {
+                      "docId": 75,
+                      "chunkId": 296,
+                      "chunkIndex": 1,
+                      "title": "KSS_67a04de7b6当前标题",
+                      "excerpt": "晴岚星径，新的资料原文。",
+                      "keywordCoverage": 1.0,
+                      "documentPath": "/knowledge/75",
+                      "sourcePath": null
+                    }
+                  ],
+                  "unavailableReferenceCount": 0
+                }
+              }
+            ]
+          },
+          "timestamp": 1790915208840
+        }
+      }
+    },
+    {
+      "name": "new retrieval uses current source",
+      "actual": "晴岚星径，新的资料原文。",
+      "expected": "晴岚星径，新的资料原文。",
+      "passed": true
+    },
+    {
+      "name": "persisted actual local retrieval",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": 213,
+          "query": "土星雷暴天气",
+          "topK": 1,
+          "requestId": "e5ce3508-6657-427c-8bdc-460e57a3abfa"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "session": {
+              "id": 213,
+              "title": "霁澜星径",
+              "mode": "LOCAL_SEARCH",
+              "revision": 7,
+              "messageCount": 12,
+              "lastMessageTime": "2026-10-02T12:26:48",
+              "createTime": "2026-10-02T12:26:47",
+              "updateTime": "2026-10-02T12:26:48"
+            },
+            "requestId": "e5ce3508-6657-427c-8bdc-460e57a3abfa",
+            "replayed": false,
+            "messages": [
+              {
+                "id": 902,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "土星雷暴天气",
+                "requestId": "e5ce3508-6657-427c-8bdc-460e57a3abfa",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:48",
+                "result": null
+              },
+              {
+                "id": 903,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料未找到匹配",
+                "requestId": "e5ce3508-6657-427c-8bdc-460e57a3abfa",
+                "tokensUsed": 0,
+                "costMs": 2,
+                "createTime": "2026-10-02T12:26:48",
+                "result": {
+                  "query": "土星雷暴天气",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": false,
+                  "message": "当前资料中未找到相关片段，请换用具体地点或关键字；不会编造资料之外的回答",
+                  "references": [],
+                  "unavailableReferenceCount": 0
+                }
+              }
+            ]
+          },
+          "timestamp": 1790915208874
+        }
+      }
+    },
+    {
+      "name": "no match persisted explicitly",
+      "actual": [
+        false,
+        []
+      ],
+      "expected": [
+        false,
+        []
+      ],
+      "passed": true
+    },
+    {
+      "name": "persisted actual local retrieval",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": 213,
+          "query": "那里呢",
+          "topK": 1,
+          "requestId": "24e8c49a-4961-493a-83cf-61ac80ec0caf"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "session": {
+              "id": 213,
+              "title": "霁澜星径",
+              "mode": "LOCAL_SEARCH",
+              "revision": 8,
+              "messageCount": 14,
+              "lastMessageTime": "2026-10-02T12:26:48",
+              "createTime": "2026-10-02T12:26:47",
+              "updateTime": "2026-10-02T12:26:48"
+            },
+            "requestId": "24e8c49a-4961-493a-83cf-61ac80ec0caf",
+            "replayed": false,
+            "messages": [
+              {
+                "id": 904,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "那里呢",
+                "requestId": "24e8c49a-4961-493a-83cf-61ac80ec0caf",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:48",
+                "result": null
+              },
+              {
+                "id": 905,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料未找到匹配",
+                "requestId": "24e8c49a-4961-493a-83cf-61ac80ec0caf",
+                "tokensUsed": 0,
+                "costMs": 2,
+                "createTime": "2026-10-02T12:26:48",
+                "result": {
+                  "query": "那里呢",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": false,
+                  "message": "当前资料中未找到相关片段，请换用具体地点或关键字；不会编造资料之外的回答",
+                  "references": [],
+                  "unavailableReferenceCount": 0
+                }
+              }
+            ]
+          },
+          "timestamp": 1790915208889
+        }
+      }
+    },
+    {
+      "name": "no inferred conversational context",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "owned knowledge fixture save",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/ai/knowledge",
+        "body": {
+          "title": "KSS_67a04de7b6目录引用",
+          "docType": "ROUTE",
+          "sourceId": 370,
+          "status": 1,
+          "content": "澄岳联程，目录来源片段。"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 76,
+            "title": "KSS_67a04de7b6目录引用",
+            "docType": "ROUTE",
+            "sourceType": "MANUAL",
+            "sourceId": 370,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 1,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 1,
+            "vectorStatus": 0,
+            "updateTime": "2026-10-02T12:26:49",
+            "content": "澄岳联程，目录来源片段。"
+          },
+          "timestamp": 1790915209124
+        }
+      }
+    },
+    {
+      "name": "persisted actual local retrieval",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": 213,
+          "query": "澄岳联程",
+          "topK": 1,
+          "requestId": "2f789a33-138a-4914-bfe4-777acde8b050"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "session": {
+              "id": 213,
+              "title": "霁澜星径",
+              "mode": "LOCAL_SEARCH",
+              "revision": 9,
+              "messageCount": 16,
+              "lastMessageTime": "2026-10-02T12:26:49",
+              "createTime": "2026-10-02T12:26:47",
+              "updateTime": "2026-10-02T12:26:49"
+            },
+            "requestId": "2f789a33-138a-4914-bfe4-777acde8b050",
+            "replayed": false,
+            "messages": [
+              {
+                "id": 906,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "澄岳联程",
+                "requestId": "2f789a33-138a-4914-bfe4-777acde8b050",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:49",
+                "result": null
+              },
+              {
+                "id": 907,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "2f789a33-138a-4914-bfe4-777acde8b050",
+                "tokensUsed": 0,
+                "costMs": 2,
+                "createTime": "2026-10-02T12:26:49",
+                "result": {
+                  "query": "澄岳联程",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "以下为资料原文片段，请结合来源与更新时间核实",
+                  "references": [
+                    {
+                      "docId": 76,
+                      "chunkId": 297,
+                      "chunkIndex": 1,
+                      "title": "KSS_67a04de7b6目录引用",
+                      "excerpt": "澄岳联程，目录来源片段。",
+                      "keywordCoverage": 1.0,
+                      "documentPath": "/knowledge/76",
+                      "sourcePath": "/route/370"
+                    }
+                  ],
+                  "unavailableReferenceCount": 0
+                }
+              }
+            ]
+          },
+          "timestamp": 1790915209140
+        }
+      }
+    },
+    {
+      "name": "catalog history verified link",
+      "actual": "/route/370",
+      "expected": "/route/370",
+      "passed": true
+    },
+    {
+      "name": "owned chronological message page",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=213&size=2",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "records": [
+              {
+                "id": 906,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "澄岳联程",
+                "requestId": "2f789a33-138a-4914-bfe4-777acde8b050",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:49",
+                "result": null
+              },
+              {
+                "id": 907,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "2f789a33-138a-4914-bfe4-777acde8b050",
+                "tokensUsed": 0,
+                "costMs": 2,
+                "createTime": "2026-10-02T12:26:49",
+                "result": {
+                  "query": "澄岳联程",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "部分历史引用已更新或不再公开，已隐藏旧片段，请重新检索",
+                  "references": [],
+                  "unavailableReferenceCount": 1
+                }
+              }
+            ],
+            "hasMore": true,
+            "nextBeforeId": 906
+          },
+          "timestamp": 1790915209210
+        }
+      }
+    },
+    {
+      "name": "hidden parent strips historical link/body",
+      "actual": [
+        [],
+        1
+      ],
+      "expected": [
+        [],
+        1
+      ],
+      "passed": true
+    },
+    {
+      "name": "stale rename conflicts",
+      "actual": [
+        200,
+        409
+      ],
+      "expected": [
+        200,
+        409
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/ai/chat/session/213",
+        "body": {
+          "title": "lost",
+          "expectedRevision": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 409,
+          "message": "会话已变化，请刷新后重新操作",
+          "data": null,
+          "timestamp": 1790915209288
+        }
+      }
+    },
+    {
+      "name": "stale delete conflicts",
+      "actual": [
+        200,
+        409
+      ],
+      "expected": [
+        200,
+        409
+      ],
+      "passed": true,
+      "request": {
+        "method": "DELETE",
+        "path": "/ai/chat/session/213?expectedRevision=1",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 409,
+          "message": "会话已变化，请刷新后重新操作",
+          "data": null,
+          "timestamp": 1790915209296
+        }
+      }
+    },
+    {
+      "name": "strict rename invalid",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/ai/chat/session/213",
+        "body": {
+          "title": 2,
+          "expectedRevision": 9
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求体格式错误",
+          "data": null,
+          "timestamp": 1790915209304
+        }
+      }
+    },
+    {
+      "name": "strict rename invalid",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/ai/chat/session/213",
+        "body": {
+          "title": "甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲",
+          "expectedRevision": 9
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "会话标题须为1—100个字符",
+          "data": null,
+          "timestamp": 1790915209333
+        }
+      }
+    },
+    {
+      "name": "strict rename invalid",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/ai/chat/session/213",
+        "body": {
+          "title": "new",
+          "expectedRevision": "9"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求体格式错误",
+          "data": null,
+          "timestamp": 1790915209363
+        }
+      }
+    },
+    {
+      "name": "rename current session",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/ai/chat/session/213",
+        "body": {
+          "title": "KSS_67a04de7b6_100%",
+          "expectedRevision": 9
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 213,
+            "title": "KSS_67a04de7b6_100%",
+            "mode": "LOCAL_SEARCH",
+            "revision": 10,
+            "messageCount": 16,
+            "lastMessageTime": "2026-10-02T12:26:49",
+            "createTime": "2026-10-02T12:26:47",
+            "updateTime": "2026-10-02T12:26:49"
+          },
+          "timestamp": 1790915209397
+        }
+      }
+    },
+    {
+      "name": "rename increments only revision",
+      "actual": [
+        10,
+        16
+      ],
+      "expected": [
+        10,
+        16
+      ],
+      "passed": true
+    },
+    {
+      "name": "literal title wildcard filter",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/session/page?keyword=KSS_67a04de7b6_100%25",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "current": 1,
+            "pages": 1,
+            "records": [
+              {
+                "id": 213,
+                "title": "KSS_67a04de7b6_100%",
+                "mode": "LOCAL_SEARCH",
+                "revision": 10,
+                "messageCount": 16,
+                "lastMessageTime": "2026-10-02T12:26:49",
+                "createTime": "2026-10-02T12:26:47",
+                "updateTime": "2026-10-02T12:26:49"
+              }
+            ],
+            "size": 20,
+            "total": 1
+          },
+          "timestamp": 1790915209408
+        }
+      }
+    },
+    {
+      "name": "escaped title literal",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "delete version mandatory",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "DELETE",
+        "path": "/ai/chat/session/213",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求参数缺失或格式不正确",
+          "data": null,
+          "timestamp": 1790915209440
+        }
+      }
+    },
+    {
+      "name": "100-session cap serialized",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true
+    },
+    {
+      "name": "exact session cap",
+      "actual": "100",
+      "expected": "100",
+      "passed": true
+    },
+    {
+      "name": "create own local session",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/session",
+        "body": {
+          "title": "KSS_67a04de7b6round-cap"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 316,
+            "title": "KSS_67a04de7b6round-cap",
+            "mode": "LOCAL_SEARCH",
+            "revision": 1,
+            "messageCount": 0,
+            "lastMessageTime": null,
+            "createTime": "2026-10-02T12:26:49",
+            "updateTime": "2026-10-02T12:26:49"
+          },
+          "timestamp": 1790915209548
+        }
+      }
+    },
+    {
+      "name": "persisted actual local retrieval",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": 316,
+          "query": "晴岚星径",
+          "topK": 1,
+          "requestId": "7e2f3a27-67fc-4bdb-a812-ae779276c584"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "session": {
+              "id": 316,
+              "title": "KSS_67a04de7b6round-cap",
+              "mode": "LOCAL_SEARCH",
+              "revision": 2,
+              "messageCount": 2,
+              "lastMessageTime": "2026-10-02T12:26:49",
+              "createTime": "2026-10-02T12:26:49",
+              "updateTime": "2026-10-02T12:26:49"
+            },
+            "requestId": "7e2f3a27-67fc-4bdb-a812-ae779276c584",
+            "replayed": false,
+            "messages": [
+              {
+                "id": 908,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "晴岚星径",
+                "requestId": "7e2f3a27-67fc-4bdb-a812-ae779276c584",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:49",
+                "result": null
+              },
+              {
+                "id": 909,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "7e2f3a27-67fc-4bdb-a812-ae779276c584",
+                "tokensUsed": 0,
+                "costMs": 2,
+                "createTime": "2026-10-02T12:26:49",
+                "result": {
+                  "query": "晴岚星径",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "以下为资料原文片段，请结合来源与更新时间核实",
+                  "references": [
+                    {
+                      "docId": 75,
+                      "chunkId": 296,
+                      "chunkIndex": 1,
+                      "title": "KSS_67a04de7b6当前标题",
+                      "excerpt": "晴岚星径，新的资料原文。",
+                      "keywordCoverage": 1.0,
+                      "documentPath": "/knowledge/75",
+                      "sourcePath": null
+                    }
+                  ],
+                  "unavailableReferenceCount": 0
+                }
+              }
+            ]
+          },
+          "timestamp": 1790915209563
+        }
+      }
+    },
+    {
+      "name": "persisted actual local retrieval",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": 316,
+          "query": "晴岚星径",
+          "topK": 1,
+          "requestId": "81353341-6a78-4f81-ba2e-87e54499b069"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "此会话已达200轮，请新建资料会话",
+          "data": null,
+          "timestamp": 1790915209659
+        }
+      }
+    },
+    {
+      "name": "persisted actual local retrieval",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": 316,
+          "query": "晴岚星径",
+          "topK": 1,
+          "requestId": "7e2f3a27-67fc-4bdb-a812-ae779276c584"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "session": {
+              "id": 316,
+              "title": "KSS_67a04de7b6round-cap",
+              "mode": "LOCAL_SEARCH",
+              "revision": 2,
+              "messageCount": 400,
+              "lastMessageTime": "2026-10-02T12:26:49",
+              "createTime": "2026-10-02T12:26:49",
+              "updateTime": "2026-10-02T12:26:49"
+            },
+            "requestId": "7e2f3a27-67fc-4bdb-a812-ae779276c584",
+            "replayed": true,
+            "messages": [
+              {
+                "id": 908,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "晴岚星径",
+                "requestId": "7e2f3a27-67fc-4bdb-a812-ae779276c584",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-02T12:26:49",
+                "result": null
+              },
+              {
+                "id": 909,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "7e2f3a27-67fc-4bdb-a812-ae779276c584",
+                "tokensUsed": 0,
+                "costMs": 2,
+                "createTime": "2026-10-02T12:26:49",
+                "result": {
+                  "query": "晴岚星径",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "以下为资料原文片段，请结合来源与更新时间核实",
+                  "references": [
+                    {
+                      "docId": 75,
+                      "chunkId": 296,
+                      "chunkIndex": 1,
+                      "title": "KSS_67a04de7b6当前标题",
+                      "excerpt": "晴岚星径，新的资料原文。",
+                      "keywordCoverage": 1.0,
+                      "documentPath": "/knowledge/75",
+                      "sourcePath": null
+                    }
+                  ],
+                  "unavailableReferenceCount": 0
+                }
+              }
+            ]
+          },
+          "timestamp": 1790915209691
+        }
+      }
+    },
+    {
+      "name": "cap still permits replay",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "exact message cap persists",
+      "actual": "400",
+      "expected": "400",
+      "passed": true
+    },
+    {
+      "name": "local quota after",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/planner/usage",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "quota": {
+              "hourly": {
+                "limit": 20,
+                "used": 0,
+                "remaining": 20,
+                "resetAt": "2026-10-02T13:00+08:00"
+              },
+              "daily": {
+                "limit": 200,
+                "used": 0,
+                "remaining": 200,
+                "resetAt": "2026-10-03T00:00+08:00"
+              },
+              "globalDaily": {
+                "limit": 2000,
+                "used": 0,
+                "remaining": 2000,
+                "resetAt": "2026-10-03T00:00+08:00"
+              },
+              "timeZone": "Asia/Shanghai"
+            },
+            "today": {
+              "operations": 0,
+              "succeeded": 0,
+              "failed": 0,
+              "averageCostMs": 0.0
+            }
+          },
+          "timestamp": 1790915209741
+        }
+      }
+    },
+    {
+      "name": "local history no AI quota",
+      "actual": {
+        "quota": {
+          "hourly": {
+            "limit": 20,
+            "used": 0,
+            "remaining": 20,
+            "resetAt": "2026-10-02T13:00+08:00"
+          },
+          "daily": {
+            "limit": 200,
+            "used": 0,
+            "remaining": 200,
+            "resetAt": "2026-10-03T00:00+08:00"
+          },
+          "globalDaily": {
+            "limit": 2000,
+            "used": 0,
+            "remaining": 2000,
+            "resetAt": "2026-10-03T00:00+08:00"
+          },
+          "timeZone": "Asia/Shanghai"
+        },
+        "today": {
+          "operations": 0,
+          "succeeded": 0,
+          "failed": 0,
+          "averageCostMs": 0.0
+        }
+      },
+      "expected": {
+        "quota": {
+          "hourly": {
+            "limit": 20,
+            "used": 0,
+            "remaining": 20,
+            "resetAt": "2026-10-02T13:00+08:00"
+          },
+          "daily": {
+            "limit": 200,
+            "used": 0,
+            "remaining": 200,
+            "resetAt": "2026-10-03T00:00+08:00"
+          },
+          "globalDaily": {
+            "limit": 2000,
+            "used": 0,
+            "remaining": 2000,
+            "resetAt": "2026-10-03T00:00+08:00"
+          },
+          "timeZone": "Asia/Shanghai"
+        },
+        "today": {
+          "operations": 0,
+          "succeeded": 0,
+          "failed": 0,
+          "averageCostMs": 0.0
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "no model audit fabricated",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "delete own session and messages",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "DELETE",
+        "path": "/ai/chat/session/213?expectedRevision=10",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1790915209788
+        }
+      }
+    },
+    {
+      "name": "owned session detail",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/session/213",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "资料会话不存在或已删除",
+          "data": null,
+          "timestamp": 1790915209795
+        }
+      }
+    },
+    {
+      "name": "owned chronological message page",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=213&size=20",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "资料会话不存在或已删除",
+          "data": null,
+          "timestamp": 1790915209815
+        }
+      }
+    },
+    {
+      "name": "persisted actual local retrieval",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": 213,
+          "query": "霁澜星径",
+          "topK": 1,
+          "requestId": "14b11732-8077-42f5-8785-f264ca29b49e"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "资料会话不存在或已删除",
+          "data": null,
+          "timestamp": 1790915209846
+        }
+      }
+    },
+    {
+      "name": "messages physically removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "own sessions after delete",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/session/page",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "current": 1,
+            "pages": 1,
+            "records": [
+              {
+                "id": 316,
+                "title": "KSS_67a04de7b6round-cap",
+                "mode": "LOCAL_SEARCH",
+                "revision": 2,
+                "messageCount": 400,
+                "lastMessageTime": "2026-10-02T12:26:49",
+                "createTime": "2026-10-02T12:26:49",
+                "updateTime": "2026-10-02T12:26:49"
+              },
+              {
+                "id": 215,
+                "title": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀",
+                "mode": "LOCAL_SEARCH",
+                "revision": 1,
+                "messageCount": 0,
+                "lastMessageTime": null,
+                "createTime": "2026-10-02T12:26:47",
+                "updateTime": "2026-10-02T12:26:47"
+              }
+            ],
+            "size": 20,
+            "total": 2
+          },
+          "timestamp": 1790915209889
+        }
+      }
+    },
+    {
+      "name": "deleted session hidden from list",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "owned sessions/users cleaned 10332",
+      "actual": [
+        "0",
+        "0"
+      ],
+      "expected": [
+        "0",
+        "0"
+      ],
+      "passed": true
+    },
+    {
+      "name": "owned sessions/users cleaned 10333",
+      "actual": [
+        "0",
+        "0"
+      ],
+      "expected": [
+        "0",
+        "0"
+      ],
+      "passed": true
+    },
+    {
+      "name": "owned sessions/users cleaned 10334",
+      "actual": [
+        "0",
+        "0"
+      ],
+      "expected": [
+        "0",
+        "0"
+      ],
+      "passed": true
+    },
+    {
+      "name": "owned sessions/users cleaned 10335",
+      "actual": [
+        "0",
+        "0"
+      ],
+      "expected": [
+        "0",
+        "0"
+      ],
+      "passed": true
+    },
+    {
+      "name": "owned knowledge cleaned",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    }
+  ],
+  "phase": "COMPLETE",
+  "fixtures": [
+    {
+      "sessionId": 213,
+      "userId": 10332
+    },
+    {
+      "sessionId": 215,
+      "userId": 10332
+    },
+    {
+      "docId": 75,
+      "title": "KSS_67a04de7b6原文旧标题"
+    },
+    {
+      "docId": 76,
+      "title": "KSS_67a04de7b6目录引用"
+    },
+    {
+      "sessionId": 316,
+      "userId": 10332
+    }
+  ],
+  "capacityFixtures": "99 local sessions and 398 message rows for exact boundary checks, not a load test",
+  "summary": {
+    "total": 146,
+    "passed": 146,
+    "failed": 0
+  }
+}
