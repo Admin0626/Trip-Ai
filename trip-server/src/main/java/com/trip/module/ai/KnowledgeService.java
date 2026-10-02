@@ -115,6 +115,14 @@ public class KnowledgeService {
     }
     public record Reference(long docId,long chunkId,int chunkIndex,String title,String excerpt,double keywordCoverage,String documentPath,String sourcePath) {}
     public record SearchResult(String query,String mode,boolean matched,String message,List<Reference> references) {}
+    /** History never exposes saved text or links without validating current public data. */
+    public Optional<Reference> activeReference(Reference old) {
+        var rows=jdbc.queryForList("SELECT c.chunk_index,c.content,d.title,d.doc_type,d.source_id FROM knowledge_chunk c JOIN knowledge_doc d ON d.id=c.doc_id WHERE c.id=? AND d.id=? AND c.doc_revision=d.revision AND "+PUBLIC+" AND "+READY,old.chunkId(),old.docId());
+        if(rows.isEmpty())return Optional.empty();
+        var row=rows.get(0);String sourcePath=null;
+        if(row.get("source_id")!=null)sourcePath=("ROUTE".equals(row.get("doc_type"))?"/route/":"/destination/")+number(row,"source_id");
+        return Optional.of(new Reference(old.docId(),old.chunkId(),(int)number(row,"chunk_index"),(String)row.get("title"),(String)row.get("content"),old.keywordCoverage(),"/knowledge/"+old.docId(),sourcePath));
+    }
     @Transactional(readOnly=true) public SearchResult search(KnowledgeInput.Search input) {
         String query=KnowledgeText.clean(input.query(),2,200,"检索问题");Set<String> tokens=KnowledgeText.tokens(query);
         if(tokens.isEmpty())throw new BizException(400,"请填写至少2个连续汉字或有效英文词");

@@ -1,0 +1,29 @@
+{
+  "mode": "REAL_MYSQL_IDEMPOTENT_CHAT_UPGRADE",
+  "time": "2026-09-29T23:26:33.740239+08:00",
+  "runs": [
+    {
+      "run": 1,
+      "exitCode": 0
+    },
+    {
+      "run": 2,
+      "exitCode": 0
+    }
+  ],
+  "existingSessionCount": 0,
+  "existingMessageCount": 0,
+  "oldTitleContentReferencesAndCountsUnchanged": true,
+  "oldSessionModes": [],
+  "columns": [
+    "llm_chat_message\tmessage_type",
+    "llm_chat_message\trequest_hash",
+    "llm_chat_message\trequest_id",
+    "llm_chat_session\tmode",
+    "llm_chat_session\trevision"
+  ],
+  "indexes": [
+    "idx_local_session_page",
+    "uk_chat_request_role"
+  ]
+}

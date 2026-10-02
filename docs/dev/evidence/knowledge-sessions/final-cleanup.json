@@ -1,0 +1,96 @@
+{
+  "mode": "REAL_READ_ONLY_FINAL_MYSQL_REDIS_CHECK",
+  "time": "2026-09-29T23:49:21.206444+08:00",
+  "ownedUsers": [
+    {
+      "userId": 10294,
+      "accountRemaining": 0,
+      "sessionsRemaining": 0,
+      "redisSessionsRemaining": 0
+    },
+    {
+      "userId": 10295,
+      "accountRemaining": 0,
+      "sessionsRemaining": 0,
+      "redisSessionsRemaining": 0
+    },
+    {
+      "userId": 10296,
+      "accountRemaining": 0,
+      "sessionsRemaining": 0,
+      "redisSessionsRemaining": 0
+    },
+    {
+      "userId": 10297,
+      "accountRemaining": 0,
+      "sessionsRemaining": 0,
+      "redisSessionsRemaining": 0
+    },
+    {
+      "userId": 10298,
+      "accountRemaining": 0,
+      "sessionsRemaining": 0,
+      "redisSessionsRemaining": 0
+    },
+    {
+      "userId": 10299,
+      "accountRemaining": 0,
+      "sessionsRemaining": 0,
+      "redisSessionsRemaining": 0
+    },
+    {
+      "userId": 10300,
+      "accountRemaining": 0,
+      "sessionsRemaining": 0,
+      "redisSessionsRemaining": 0
+    },
+    {
+      "userId": 10301,
+      "accountRemaining": 0,
+      "sessionsRemaining": 0,
+      "redisSessionsRemaining": 0
+    },
+    {
+      "userId": 10302,
+      "accountRemaining": 0,
+      "sessionsRemaining": 0,
+      "redisSessionsRemaining": 0
+    },
+    {
+      "userId": 10303,
+      "accountRemaining": 0,
+      "sessionsRemaining": 0,
+      "redisSessionsRemaining": 0
+    },
+    {
+      "userId": 10304,
+      "accountRemaining": 0,
+      "sessionsRemaining": 0,
+      "redisSessionsRemaining": 0
+    },
+    {
+      "userId": 10305,
+      "accountRemaining": 0,
+      "sessionsRemaining": 0,
+      "redisSessionsRemaining": 0
+    },
+    {
+      "userId": 10306,
+      "accountRemaining": 0,
+      "sessionsRemaining": 0,
+      "redisSessionsRemaining": 0
+    },
+    {
+      "userId": 10307,
+      "accountRemaining": 0,
+      "sessionsRemaining": 0,
+      "redisSessionsRemaining": 0
+    }
+  ],
+  "ownedKnowledgeChecked": 6,
+  "ownedKnowledgeRemaining": 0,
+  "orphanChatMessages": 0,
+  "pendingEvidenceWrites": 0,
+  "currentLocalSessions": 0,
+  "existingDemoKnowledgeReady": 10
+}

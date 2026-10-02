@@ -21,6 +21,7 @@ export const userRoutes: RouteRecordRaw[] = [
       { path: 'recommend', name: 'Recommend', component: () => import('@/views/recommend/Recommend.vue'), meta: { title: '旅行推荐' } },
       { path: 'ai-planner', name: 'AiPlanner', component: () => import('@/views/plan/AiPlanner.vue'), meta: { title: 'AI规划' } },
       { path: 'knowledge', name: 'KnowledgeSearch', component: () => import('@/views/knowledge/Search.vue'), meta: { title: '旅行资料' } },
+      { path: 'ai/chat', name: 'KnowledgeSessions', component: () => import('@/views/knowledge/Sessions.vue'), meta: { title: '资料检索会话' } },
       { path: 'knowledge/:id', name: 'KnowledgeDocument', component: () => import('@/views/knowledge/Document.vue'), meta: { title: '资料来源' } },
       { path: 'plan', name: 'PlanList', component: () => import('@/views/plan/PlanList.vue'), meta: { title: '我的规划' } },
       { path: 'plan/create', name: 'PlanCreate', component: () => import('@/views/plan/PlanEditor.vue'), meta: { title: '新建规划' } },

@@ -1,4 +1,29 @@
-# Session：本地知识管理与来源检索完成，独立分支已推送
+# Session：本人资料检索会话与历史完成，独立分支已发布
+
+更新：2026-09-30（北京时间；功能验收2026-09-29）。用户“继续完成吧”，沿用暂不接真实模型。上批[知识PR #2](https://github.com/Admin0626/Trip-Ai/pull/2)经审核无冲突/评论，按已有实测合并，main=`d63cb66a4919b7e8b09b0a22ff7999aa750afe31`。本批从该main新建`codex/knowledge-sessions`；固定基线v0.1.0-baseline仍为ceec9a2。本批新PR不立即合并。
+
+## 本批交付与验证
+
+- `/ai/chat`私人资料会话：新建/列表/详情/重命名/删除、消息游标、`POST /ai/chat/search`保存本地问题与原文检索结果。归属取认证用户，ADMIN也不能读取别人历史；LEGACY旧聊天不混入。
+- 会话事务行锁、检索UUID+输入摘要幂等、两条消息原子落库；重命名/删除expectedRevision冲突保护。100活动会话/200轮上限，到上限仍可回放成功UUID。纯文本、来源链接、无命中提示，不消耗模型配额。
+- 历史/回放每次重新核验资料、索引代次及来源公开状态；编辑/下架后隐藏旧标题/摘录/链接。已展示内容需刷新，不提供下架实时推送。刷新保留当前待确认请求UUID与草稿，响应丢失后重试不重复追加。
+- 真HTTP/MySQL/Redis146/146；最终Edge55/55、pageerror=0；原知识129/129、基础21/21、改密认证75/75回归；Maven33/33及vue-tsc/Vite通过。旧1128.22kB主包警告仍在。
+- 幂等升级`upgrade_knowledge_sessions.sql`新增5字段/2索引、重复执行两次成功，新库schema同步，29表不变。本机旧聊天表为空，另用专属LEGACY夹具验证升级保留及接口隔离，不声称生产历史迁移验收。
+- 初测接口145/146是非法query用例复用UUID；Edge1/3是用户名22字符，54/55是历史未渲染便断言。三份失败报告保留，脚本修正后完整通过；刷新丢待确认UUID为审查发现并修复的产品风险，实际服务成功后丢响应再回放验收通过。
+
+文档：[实际响应与所有问题](docs/dev/资料检索会话接口与页面实测.md)、[开发与答辩复盘](docs/dev/资料检索会话开发与答辩复盘.md)、[进度/目标/问题](docs/dev/资料检索会话进度.md)。最后检查本批14个账号及SQL/Redis会话、6篇知识夹具无残留，孤儿消息0，原10篇演示资料仍就绪。容量使用SQL边界夹具，不是生产负载测试。GitHub未配置CI。
+
+## 启动、发布与接续
+
+本机MySQL3306、Redis6379、后端8080/api(chat=none)、前端5173用于验收并保持运行；启动沿根README。已有库先完成知识层升级，再执行会话升级，勿运行schema.sql/data.sql重建。入口`/knowledge`→资料会话或直接`/ai/chat`。
+
+实现、实测及文档以功能提交`fb797ed16642c2af97d05e1aef7a1f4f29b23016`推送origin/codex/knowledge-sessions；[PR #3](https://github.com/Admin0626/Trip-Ai/pull/3)已创建，目标main，保持open/未合并。[Git核对证据](docs/dev/evidence/knowledge-sessions/git-delivery.json)记录功能head、基点及基线，本段由后续文档提交补充，最终分支head以git log -1与远程核对。若中断，只继续尚未完成的文档提交推送，不重复实现或测试。原有docs/README.md与docs/12-实训报告（答辩版）.md保持原样，不混入本批。
+
+下一批先审核融合本批PR，再从最新main创建独立分支；暂不接真实模型继续有效，可做本地检索质量评估/来源维护。语义向量、模型生成与引用校验、最近3轮模型上下文、问答token SSE仍未完成；已保存历史不等于语义聊天完成。
+
+---
+
+# 以下为本地知识检索历史快照（PR #2现已合并）
 
 更新：2026-09-29（北京时间）。接续“下一步”，用户明确选择“先完成本地知识检索”。先审核合并SSE [PR #1](https://github.com/Admin0626/Trip-Ai/pull/1)，集成提交`9d58768e065b1441353dc9dbbf36c8499511134a`；同步main后新建`codex/rag-knowledge`。固定基线v0.1.0-baseline仍指向ceec9a2，不移动。本批新功能不直接合并main。
 
