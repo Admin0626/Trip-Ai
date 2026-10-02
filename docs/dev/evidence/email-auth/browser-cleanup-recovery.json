@@ -1,0 +1,7 @@
+{
+  "mode": "DEDICATED_REDIS_6387_FIXTURE_RECOVERY",
+  "removedKeys": [
+    "trip:mail:limit:email:0f03a9e8d1dac87a664674a4c2d233054dbeecb23886aef9344dd7748ab30695"
+  ],
+  "remaining": 0
+}

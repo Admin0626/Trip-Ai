@@ -35,6 +35,8 @@ public class SysUser {
 
     private String email;
 
+    private Integer emailVerified;
+
     private String city;
 
     private String role;

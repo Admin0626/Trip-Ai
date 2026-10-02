@@ -42,6 +42,8 @@ public class UserSettingsService {
         String avatar = body.containsKey("avatar") ? string(body, "avatar", 255, true) : current.getAvatar();
         String phone = body.containsKey("phone") ? string(body, "phone", 20, true) : current.getPhone();
         String email = body.containsKey("email") ? string(body, "email", 100, true) : current.getEmail();
+        if (!Objects.equals(blankToNull(email), blankToNull(current.getEmail())))
+            throw bad("请通过邮箱验证功能更换邮箱");
         if (phone != null && !phone.isEmpty() && !phone.matches("1[3-9][0-9]{9}")) throw bad("手机号格式不正确");
         if (email != null && !email.isEmpty() && !email.matches("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$")) throw bad("邮箱格式不正确");
         if (avatar != null && !safeAvatar(avatar)) throw bad("头像必须为本站上传路径或 http/https 图片地址");

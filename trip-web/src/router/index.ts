@@ -53,6 +53,7 @@ export const userRoutes: RouteRecordRaw[] = [
     meta: { title: '注册', public: true },
   },
   { path: '/:pathMatch(.*)*', redirect: '/' },
+  { path: '/forgot-password', name: 'ForgotPassword', component: () => import('@/views/login/ForgotPassword.vue'), meta: { title: '找回密码', public: true } },
 ]
 
 const router = createRouter({

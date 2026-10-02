@@ -1,0 +1,218 @@
+{
+  "mode": "REAL_EDGE_HTTP_SMTP_LOOPBACK",
+  "fixtures": {
+    "username": "mailui_12d79609e",
+    "uid": 10321,
+    "emails": [
+      "registered-12d79609e@trip.invalid",
+      "changed-12d79609e@trip.invalid",
+      "replacement-12d79609e@trip.invalid",
+      "failure-12d79609e@trip.invalid"
+    ]
+  },
+  "checks": [
+    {
+      "name": "login links to public recovery",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "recovery validates missing code",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "recovery mobile no overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "register requires code when email provided",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "registration SMTP response",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "send button shows disabled countdown",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "registration receipt has no code",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "changing email clears entered code",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "registration submits verified account",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "profile displays verified status",
+      "actual": "已验证",
+      "expected": "已验证",
+      "passed": true
+    },
+    {
+      "name": "profile email is read-only",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "wrong current password is rejected",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "binding email send succeeds",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "binding confirmation succeeds",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "profile reflects new email",
+      "actual": "replacement-12d79609e@trip.invalid",
+      "expected": "replacement-12d79609e@trip.invalid",
+      "passed": true
+    },
+    {
+      "name": "normal profile save still works",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "verification survives refresh",
+      "actual": "已验证",
+      "expected": "已验证",
+      "passed": true
+    },
+    {
+      "name": "profile email panel fits mobile",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "SMTP failure visible to recovery user",
+      "actual": 503,
+      "expected": 503,
+      "passed": true
+    },
+    {
+      "name": "failure allows retry",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "recovery SMTP accepted",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "confirm password mismatch explained",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "wrong code handled without navigation",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "failed reset keeps email draft",
+      "actual": "replacement-12d79609e@trip.invalid",
+      "expected": "replacement-12d79609e@trip.invalid",
+      "passed": true
+    },
+    {
+      "name": "recovery succeeds through page",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "successful reset returns to login",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "first device session revoked",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "second device session revoked",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "new password login succeeds",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "browser fixture account removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "browser fixture sessions removed",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "browser mail fixtures removed",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "no unhandled page errors",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "summary": {
+    "total": 33,
+    "passed": 33
+  }
+}

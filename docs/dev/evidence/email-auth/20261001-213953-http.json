@@ -1,0 +1,521 @@
+{
+  "mode": "REAL_HTTP_MYSQL_REDIS_6387_SMTP_LOOPBACK",
+  "checks": [
+    {
+      "name": "binding requires login",
+      "actual": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "name": "strict email type",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "strict extra fields",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "reject header injection",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "register plain",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "registration without email remains available",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "profile cannot bypass email ownership",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "SMTP send REGISTER",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "local SMTP produces six digit code",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "Redis does not store plaintext code",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "challenge expiry ten minutes",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "mail cooldown applies",
+      "actual": 429,
+      "expected": 429,
+      "passed": true
+    },
+    {
+      "name": "wrong registration code",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "registration rejects numeric code",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "register verified",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "verified registration normalizes email",
+      "actual": "verified-6aa7199f2@trip.invalid",
+      "expected": "verified-6aa7199f2@trip.invalid",
+      "passed": true
+    },
+    {
+      "name": "verified registration flag",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "verification persisted",
+      "actual": "1",
+      "expected": "1",
+      "passed": true
+    },
+    {
+      "name": "registration code consumed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "registration code cannot reset password",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "SMTP send RESET",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "known address cooldown response",
+      "actual": 429,
+      "expected": 429,
+      "passed": true
+    },
+    {
+      "name": "wrong reset attempt 1",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "wrong reset attempt 2",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "wrong reset attempt 3",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "wrong reset attempt 4",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "wrong reset attempt 5",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "correct code rejected after five failures",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "exhausted challenge removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "SMTP send RESET",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "expired code rejected",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "SMTP send RESET",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "SMTP send RESET",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "resend invalidates previous code",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "numeric code rejected",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "weak new password rejected",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "concurrent reset only succeeds once",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true
+    },
+    {
+      "name": "old password rejected",
+      "actual": 1001,
+      "expected": 1001,
+      "passed": true
+    },
+    {
+      "name": "first old access revoked",
+      "actual": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "name": "second old access revoked",
+      "actual": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "name": "first old refresh revoked",
+      "actual": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "name": "second old refresh revoked",
+      "actual": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "name": "new password works",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "successful reset code cannot replay",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "SMTP send RESET",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "SMTP send RESET",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "unknown recovery accepted",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "known recovery accepted",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "unknown and known recovery responses identical",
+      "actual": {
+        "expiresIn": 600,
+        "message": "邮件已发送，请查看收件箱或垃圾邮件。找回密码仅适用于已验证邮箱的有效账号。",
+        "retryAfter": 60
+      },
+      "expected": {
+        "expiresIn": 600,
+        "message": "邮件已发送，请查看收件箱或垃圾邮件。找回密码仅适用于已验证邮箱的有效账号。",
+        "retryAfter": 60
+      },
+      "passed": true
+    },
+    {
+      "name": "unknown account still follows SMTP path",
+      "actual": 6,
+      "expected": 6,
+      "passed": true
+    },
+    {
+      "name": "unknown address cannot reset",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "SMTP send RESET",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "legacy unverified email cannot recover",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "SMTP send BIND",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "occupied email rejected for another user",
+      "actual": 409,
+      "expected": 409,
+      "passed": true
+    },
+    {
+      "name": "SMTP send BIND",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "unused email challenge is scoped to sender user",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "bind verifies old account",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "bind code replay rejected",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "SMTP send RESET",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "verified legacy account can now recover",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "SMTP send RESET",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "SMTP send BIND",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "replace verified email",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "previous email cannot use pending reset",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "replacement persisted",
+      "actual": "replacement-6aa7199f2@trip.invalid",
+      "expected": "replacement-6aa7199f2@trip.invalid",
+      "passed": true
+    },
+    {
+      "name": "SMTP send RESET",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "logged-in password change",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "pending reset rejected after password change",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "SMTP send RESET",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "disabled account cannot recover",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "SMTP failure reported",
+      "actual": 503,
+      "expected": 503,
+      "passed": true
+    },
+    {
+      "name": "failed delivery leaves no challenge",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "failed delivery releases cooldown",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "SMTP send REGISTER",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "email hourly quota",
+      "actual": 429,
+      "expected": 429,
+      "passed": true
+    },
+    {
+      "name": "IP hourly quota",
+      "actual": 429,
+      "expected": 429,
+      "passed": true
+    },
+    {
+      "name": "global hourly quota",
+      "actual": 429,
+      "expected": 429,
+      "passed": true
+    },
+    {
+      "name": "fixture account removed em_plain_6aa7199f2",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "fixture sessions removed em_plain_6aa7199f2",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "fixture account removed em_verified_6aa7199f",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "fixture sessions removed em_verified_6aa7199f",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "fixture mail challenges removed",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    }
+  ],
+  "summary": {
+    "total": 83,
+    "passed": 83
+  }
+}

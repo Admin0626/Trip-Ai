@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-01",
+  "mode": "ACTUAL_LOCAL_VALIDATION_SUMMARY",
+  "maven": {
+    "tests": 40,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "frontend": {
+    "typecheck": "passed",
+    "viteBuild": "passed",
+    "mainChunkKB": 1128.75,
+    "largeChunkWarning": "existing"
+  },
+  "migration": {
+    "newColumns": [
+      "sys_user.email_verified"
+    ],
+    "newTables": 0,
+    "idempotentExecutions": 2,
+    "existingEmailsAutoVerified": false
+  },
+  "realProviderConfigured": false,
+  "tests": {
+    "http": {
+      "passed": 83,
+      "total": 83
+    },
+    "edge": {
+      "passed": 33,
+      "total": 33,
+      "pageerror": 0
+    },
+    "mailDisabled": {
+      "passed": 7,
+      "total": 7
+    },
+    "basicRegression": {
+      "passed": 21,
+      "total": 21
+    }
+  }
+}

@@ -2,12 +2,13 @@
 import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage, type FormInstance, type FormRules } from 'element-plus'
-import { registerApi } from '@/api/modules/auth'
+import { registerApi, registrationCodeApi } from '@/api/modules/auth'
+import EmailCodeInput from '@/components/EmailCodeInput.vue'
 
 const router = useRouter()
 const formRef = ref<FormInstance>()
 const loading = ref(false)
-const form = reactive({ username: '', password: '', confirm: '', nickname: '' })
+const form = reactive({ username: '', password: '', confirm: '', nickname: '', email: '', emailCode: '' })
 
 const rules: FormRules = {
   username: [
@@ -16,7 +17,8 @@ const rules: FormRules = {
   ],
   password: [
     { required: true, message: '请输入密码', trigger: 'blur' },
-    { min: 6, max: 32, message: '密码 6-32 位', trigger: 'blur' },
+    { min: 8, max: 20, message: '密码 8-20 位', trigger: 'blur' },
+    { pattern: /^(?=.*[a-zA-Z])(?=.*\d).+$/, message: '密码须同时包含字母与数字', trigger: 'blur' },
   ],
   confirm: [
     {
@@ -27,14 +29,18 @@ const rules: FormRules = {
 }
 
 async function onSubmit(): Promise<void> {
-  if (!formRef.value) return
+  if (!formRef.value || loading.value) return
   const valid = await formRef.value.validate().catch(() => false)
   if (!valid) return
+  if(form.email.trim()&&!/^\d{6}$/.test(form.emailCode)){ElMessage.warning('填写邮箱时须输入6位验证码');return}
   loading.value = true
   try {
-    await registerApi({ username: form.username, password: form.password, nickname: form.nickname })
+    await registerApi({ username: form.username, password: form.password, nickname: form.nickname,
+      ...(form.email.trim()?{email:form.email.trim(),emailCode:form.emailCode}:{}) })
     ElMessage.success('注册成功，请登录')
     void router.push('/login')
+  } catch {
+    // Keep the form on validation or delivery failures.
   } finally {
     loading.value = false
   }
@@ -53,11 +59,13 @@ async function onSubmit(): Promise<void> {
           <el-input v-model="form.nickname" placeholder="展示昵称（可选）" />
         </el-form-item>
         <el-form-item label="密码" prop="password">
-          <el-input v-model="form.password" type="password" show-password placeholder="6-32 位密码" />
+          <el-input v-model="form.password" type="password" show-password placeholder="8-20 位，含字母和数字" />
         </el-form-item>
         <el-form-item label="确认密码" prop="confirm">
           <el-input v-model="form.confirm" type="password" show-password placeholder="再次输入密码" />
         </el-form-item>
+        <el-form-item label="邮箱（可选，验证后可找回密码）"><el-input v-model="form.email" type="email" maxlength="100" aria-label="注册邮箱" :disabled="loading"/></el-form-item>
+        <EmailCodeInput v-if="form.email.trim()" v-model="form.emailCode" :email="form.email" :disabled="loading" :send="()=>registrationCodeApi(form.email)"/>
         <el-button type="primary" class="auth-card__submit" :loading="loading" @click="onSubmit">注 册</el-button>
       </el-form>
       <div class="auth-card__foot">
@@ -70,6 +78,8 @@ async function onSubmit(): Promise<void> {
 
 <style scoped lang="scss">
 .auth-page {
+  padding: 24px 16px;
+  box-sizing: border-box;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -78,6 +88,8 @@ async function onSubmit(): Promise<void> {
 }
 
 .auth-card {
+  max-width: 100%;
+  box-sizing: border-box;
   width: 420px;
   padding: 32px;
 
