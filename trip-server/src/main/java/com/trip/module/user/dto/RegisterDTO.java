@@ -28,8 +28,12 @@ public class RegisterDTO {
     private String phone;
 
     @Email(message = "邮箱格式不正确")
+    @tools.jackson.databind.annotation.JsonDeserialize(using=com.trip.module.catalog.StrictCatalogJson.Text.class)
+    @Size(max = 100, message = "邮箱最长100字符")
     private String email;
 
-    /** 邮箱验证码（发送/校验能力在后续批次接入，字段保留与前端契约一致） */
+    /** 填写邮箱时必需；不填写邮箱仍可注册，之后在个人中心验证。 */
+    @Size(max = 6, message = "邮箱验证码为6位数字")
+    @tools.jackson.databind.annotation.JsonDeserialize(using=com.trip.module.catalog.StrictCatalogJson.Text.class)
     private String emailCode;
 }

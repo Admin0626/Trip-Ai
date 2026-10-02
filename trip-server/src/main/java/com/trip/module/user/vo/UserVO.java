@@ -17,6 +17,7 @@ public class UserVO {
     private String city;
     private String phone;
     private String email;
+    private boolean emailVerified;
     private java.time.LocalDateTime createTime;
 
     public static UserVO from(SysUser user) {
@@ -29,6 +30,7 @@ public class UserVO {
         vo.setCity(user.getCity());
         vo.setPhone(user.getPhone());
         vo.setEmail(user.getEmail());
+        vo.setEmailVerified(Integer.valueOf(1).equals(user.getEmailVerified()));
         vo.setCreateTime(user.getCreateTime());
         return vo;
     }

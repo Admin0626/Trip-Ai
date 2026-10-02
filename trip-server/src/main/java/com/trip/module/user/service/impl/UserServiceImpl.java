@@ -9,6 +9,7 @@ import com.trip.module.user.dto.RegisterDTO;
 import com.trip.module.user.entity.SysUser;
 import com.trip.module.user.mapper.SysUserMapper;
 import com.trip.module.user.service.UserService;
+import com.trip.module.user.service.EmailCodeService;
 import com.trip.module.user.vo.LoginVO;
 import com.trip.module.user.vo.UserVO;
 import com.trip.security.AuthSessionService;
@@ -33,6 +34,7 @@ public class UserServiceImpl implements UserService {
     private final SysUserMapper sysUserMapper;
     private final AuthSessionService sessions;
     private final PasswordEncoder passwordEncoder;
+    private final EmailCodeService emailCodes;
 
     @Override
     @Transactional
@@ -58,9 +60,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public UserVO register(RegisterDTO dto) {
         String username = dto.getUsername().trim();
         String password = dto.getPassword();
+        if (isNotEmpty(dto.getEmail())) dto.setEmail(EmailCodeService.email(dto.getEmail()));
+        else if (isNotEmpty(dto.getEmailCode())) throw new BizException(400,"请填写需要验证的邮箱");
         if (!USERNAME_PATTERN.matcher(username).matches()) {
             throw new BizException(400, "用户名 4-20 位，仅允许字母、数字、下划线");
         }
@@ -88,7 +93,13 @@ public class UserServiceImpl implements UserService {
         user.setCity("");
         user.setRole("USER");
         user.setStatus(1);
-        sysUserMapper.insert(user);
+        user.setEmailVerified(0);
+        if (isNotEmpty(dto.getEmail())) {
+            emailCodes.consume("REGISTER",dto.getEmail(),null,"REGISTER",dto.getEmailCode());
+            user.setEmailVerified(1);
+        }
+        try { sysUserMapper.insert(user); }
+        catch (org.springframework.dao.DuplicateKeyException e) { throw new BizException(409,"用户名、手机号或邮箱已被使用，请重新获取验证码"); }
         return UserVO.from(user);
     }
 

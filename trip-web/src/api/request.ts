@@ -9,7 +9,7 @@ const request: AxiosInstance = axios.create({ baseURL, timeout: 30000 })
 const refreshClient = axios.create({ baseURL, timeout: 15000 })
 type AuthConfig = InternalAxiosRequestConfig & { _retried?: boolean; _authToken?: string; _authUserId?: number; _authEpoch?:string }
 let expiredNotice = false
-const publicAuth = (url = '') => ['/auth/login', '/auth/register', '/auth/refresh'].includes(url)
+const publicAuth = (url = '') => ['/auth/login', '/auth/register', '/auth/refresh', '/auth/email/code', '/auth/password/code', '/auth/password/reset'].includes(url)
 
 request.interceptors.request.use((config: AuthConfig) => {
   const session=getAuthSession(),token=session?.accessToken

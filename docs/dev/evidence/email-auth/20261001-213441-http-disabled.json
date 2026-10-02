@@ -1,0 +1,47 @@
+{
+  "mode": "REAL_HTTP_DEFAULT_MAIL_DISABLED",
+  "checks": [
+    {
+      "name": "registration email unavailable",
+      "actual": 503,
+      "expected": 503,
+      "passed": true
+    },
+    {
+      "name": "password recovery email unavailable",
+      "actual": 503,
+      "expected": 503,
+      "passed": true
+    },
+    {
+      "name": "plain registration stays available",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "plain login stays available",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "logged-in email binding unavailable",
+      "actual": 503,
+      "expected": 503,
+      "passed": true
+    },
+    {
+      "name": "unissued reset cannot modify password",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "disabled service creates no challenge or quota",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    }
+  ]
+}

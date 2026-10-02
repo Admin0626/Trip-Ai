@@ -49,6 +49,8 @@ async function onSubmit(): Promise<void> {
         <el-button type="primary" class="auth-card__submit" :loading="loading" @click="onSubmit">登 录</el-button>
       </el-form>
       <div class="auth-card__foot">
+        <router-link to="/forgot-password">忘记密码？</router-link>
+        <br />
         <span class="text-secondary">还没有账号？</span>
         <router-link to="/register">立即注册</router-link>
       </div>

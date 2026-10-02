@@ -1,0 +1,136 @@
+{
+  "mode": "REAL_EDGE_HTTP_SMTP_LOOPBACK",
+  "checks": [
+    {
+      "name": "login links to public recovery",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "recovery validates missing code",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "recovery mobile no overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "register requires code when email provided",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "registration SMTP response",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "send button shows disabled countdown",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "registration receipt has no code",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "changing email clears entered code",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "registration submits verified account",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "profile displays verified status",
+      "actual": "已验证",
+      "expected": "已验证",
+      "passed": true
+    },
+    {
+      "name": "profile email is read-only",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "wrong current password is rejected",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "binding email send succeeds",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "binding confirmation succeeds",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "profile reflects new email",
+      "actual": "replacement-f40b04a4b@trip.invalid",
+      "expected": "replacement-f40b04a4b@trip.invalid",
+      "passed": true
+    },
+    {
+      "name": "normal profile save still works",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "browser completed",
+      "actual": "locator.waitFor: Error: strict mode violation: locator('.el-loading-mask') resolved to 2 elements:\n    1) <div class=\"el-loading-mask el-loading-fade-leave-from el-loading-fade-leave-active\">…</div> aka locator('.el-loading-mask').first()\n    2) <div class=\"el-loading-mask el-loading-fade-leave-active el-loading-fade-leave-to\">…</div> aka locator('.el-loading-mask.el-loading-fade-leave-active.el-loading-fade-leave-to')\n\nCall log:\n\u001b[2m  - waiting for locator('.el-loading-mask') to be hidden\u001b[22m\n",
+      "expected": "no exception",
+      "passed": false
+    },
+    {
+      "name": "browser fixture account removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "browser fixture sessions removed",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "browser mail fixtures removed",
+      "actual": false,
+      "expected": true,
+      "passed": false
+    },
+    {
+      "name": "no unhandled page errors",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "summary": {
+    "total": 21,
+    "passed": 19
+  }
+}

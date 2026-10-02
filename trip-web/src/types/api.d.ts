@@ -28,6 +28,7 @@ interface UserInfo {
   city?: string
   phone?: string
   email?: string
+  emailVerified?: boolean
   createTime?: string
 }
 
