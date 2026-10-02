@@ -11,7 +11,7 @@
 | `codex/ai-planner-sse` | AI规划SSE进度及取消已交付；PR #1已审核合并，main集成9d58768 |
 | `codex/rag-knowledge` | 从9d58768建立，本地知识管理/分片/检索；[PR #2](https://github.com/Admin0626/Trip-Ai/pull/2)已审核合并，main集成d63cb66 |
 | `codex/knowledge-sessions` | 从d63cb66建立，本人本地检索会话/历史；146项接口/55项Edge通过，[PR #3](https://github.com/Admin0626/Trip-Ai/pull/3)已合并main29f0bb8 |
-| `codex/knowledge-quality` | 从29f0bb8建立，知识健康/异常修复与检索质量；86项HTTP/24项Edge通过，发布见SESSION |
+| `codex/knowledge-quality` | 从29f0bb8建立，知识健康/异常修复与检索质量；86项HTTP/24项Edge通过，[PR #5](https://github.com/Admin0626/Trip-Ai/pull/5)待审/未合并，发布见SESSION |
 | `codex/<feature>` | 其他新功能各建独立分支，例如`codex/rag-chat`；从当时最新main起步 |
 
 这是协作工作约定。本次没有配置GitHub服务器分支保护或强制检查，不能宣称GitHub已经从技术上阻止直接push main。

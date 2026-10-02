@@ -1,4 +1,4 @@
-# Session：知识索引维护与检索质量完成，准备独立分支发布
+# Session：知识索引维护与检索质量完成，独立分支已发布
 
 更新：2026-10-02（北京时间）。用户继续功能开发，暂不接真实模型。核对远程PR #3资料会话已合并；同步main=29f0bb85cb202ce75b0031e3965fa2a688747853，含PR #4邮箱验证/找回密码成果，再新建codex/knowledge-quality。固定v0.1.0-baseline仍ceec9a2。既有docs/README.md、实训报告及docs/答辩材料/保留，不混入本批。
 
@@ -17,7 +17,7 @@
 
 无本批SQL迁移；已有库需此前知识/会话/邮箱升级已完成，勿重建库。MySQL3306、Redis6379、后端8080/api(chat=none)、Vite5173运行供验收，SMTP默认关闭。入口/admin/ai/knowledge。运行脚本、环境与边界见实测，写夹具测试按顺序执行。
 
-应用、实测和文档完成，待检查并提交推送codex/knowledge-quality、创建目标main的新PR；本批不立即合并。发布SHA及地址通过后续文档补充。如果中断，检查git log/status与远程head后继续发布，不重做功能。下一批先审核融合，再从最新main另建功能分支；可继续知识来源人工关联/更大查询样本或其他业务缺口。真实模型、向量、语义上下文、token流、账号注销及生产要求仍待完成。GitHub未配置CI，不称CI通过。
+应用、实测和文档已以功能提交`be3274ed32994d45bb5f4b6c697d2f1a14c6530d`推送origin/codex/knowledge-quality；[PR #5](https://github.com/Admin0626/Trip-Ai/pull/5)目标main，保持open/未合并。[Git发布核对](docs/dev/evidence/knowledge-quality/git-delivery.json)记录功能head、main、PR #3/#4合并及基线未移动；本段由后续文档提交补充，最终head以git log -1与远程核对。若中断，只继续尚未完成的文档提交推送，不重做功能或重复验收。下一批先审核融合，再从最新main另建功能分支；可继续知识来源人工关联/更大查询样本或其他业务缺口。真实模型、向量、语义上下文、token流、账号注销及生产要求仍待完成。GitHub未配置CI，不称CI通过。
 
 ---
 
