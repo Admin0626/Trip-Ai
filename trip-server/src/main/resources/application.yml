@@ -23,6 +23,12 @@ trip:
     enabled: ${TRIP_MAIL_ENABLED:false}
     from: ${SMTP_FROM:}
 
+# Optional mail must not make the application unhealthy while explicitly disabled.
+management:
+  health:
+    mail:
+      enabled: ${TRIP_MAIL_ENABLED:false}
+
 server:
   port: 8080
   servlet:

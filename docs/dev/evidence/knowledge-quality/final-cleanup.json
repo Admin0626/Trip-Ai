@@ -1,0 +1,132 @@
+{
+  "mode": "REAL_READ_ONLY_MYSQL_REDIS_FINAL_CHECK",
+  "date": "2026-10-02",
+  "ownedUsers": [
+    {
+      "id": 10322,
+      "userRemaining": 0,
+      "sessionKeysRemaining": 0
+    },
+    {
+      "id": 10323,
+      "userRemaining": 0,
+      "sessionKeysRemaining": 0
+    },
+    {
+      "id": 10324,
+      "userRemaining": 0,
+      "sessionKeysRemaining": 0
+    },
+    {
+      "id": 10325,
+      "userRemaining": 0,
+      "sessionKeysRemaining": 0
+    },
+    {
+      "id": 10326,
+      "userRemaining": 0,
+      "sessionKeysRemaining": 0
+    },
+    {
+      "id": 10327,
+      "userRemaining": 0,
+      "sessionKeysRemaining": 0
+    },
+    {
+      "id": 10328,
+      "userRemaining": 0,
+      "sessionKeysRemaining": 0
+    },
+    {
+      "id": 10329,
+      "userRemaining": 0,
+      "sessionKeysRemaining": 0
+    },
+    {
+      "id": 10339,
+      "userRemaining": 0,
+      "sessionKeysRemaining": 0
+    },
+    {
+      "id": 10340,
+      "userRemaining": 0,
+      "sessionKeysRemaining": 0
+    },
+    {
+      "id": 10341,
+      "userRemaining": 0,
+      "sessionKeysRemaining": 0
+    },
+    {
+      "id": 10342,
+      "userRemaining": 0,
+      "sessionKeysRemaining": 0
+    },
+    {
+      "id": 10343,
+      "userRemaining": 0,
+      "sessionKeysRemaining": 0
+    },
+    {
+      "id": 10344,
+      "userRemaining": 0,
+      "sessionKeysRemaining": 0
+    },
+    {
+      "id": 10345,
+      "userRemaining": 0,
+      "sessionKeysRemaining": 0
+    },
+    {
+      "id": 10346,
+      "userRemaining": 0,
+      "sessionKeysRemaining": 0
+    }
+  ],
+  "ownedDocIds": [
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96
+  ],
+  "ownedDocumentsRemaining": 0,
+  "orphanChunks": 0,
+  "orphanTokens": 0,
+  "remainingKnowledge": 10,
+  "pendingWrites": 0
+}

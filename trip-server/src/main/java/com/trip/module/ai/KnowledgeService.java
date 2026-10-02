@@ -19,7 +19,11 @@ public class KnowledgeService {
     private final JdbcTemplate jdbc;
     private static final String SOURCE_VISIBLE="(d.source_id IS NULL OR (d.doc_type='DESTINATION' AND EXISTS(SELECT 1 FROM destination a WHERE a.id=d.source_id AND a.status=1 AND a.deleted=0)) OR (d.doc_type='ROUTE' AND EXISTS(SELECT 1 FROM route r JOIN destination a ON a.id=r.destination_id WHERE r.id=d.source_id AND r.status=1 AND r.deleted=0 AND a.status=1 AND a.deleted=0)))";
     private static final String PUBLIC="d.status=1 AND d.deleted=0 AND "+SOURCE_VISIBLE;
-    private static final String READY="d.index_method='LOCAL_NGRAM' AND d.indexed_revision=d.revision";
+    private static final String ACTUAL_CHUNKS="(SELECT COUNT(*) FROM knowledge_chunk qc WHERE qc.doc_id=d.id)";
+    private static final String GENERATIONS="NOT EXISTS(SELECT 1 FROM knowledge_chunk qc WHERE qc.doc_id=d.id AND qc.doc_revision<>d.revision)";
+    private static final String READY="d.index_method='LOCAL_NGRAM' AND d.indexed_revision=d.revision AND d.chunk_count>0 AND d.chunk_count="+ACTUAL_CHUNKS+" AND "+GENERATIONS;
+    private static final String SOURCE_STATE="CASE WHEN d.doc_type<>'GUIDE' AND d.source_id IS NULL THEN 'UNLINKED' WHEN "+SOURCE_VISIBLE+" THEN 'AVAILABLE' ELSE 'UNAVAILABLE' END";
+    private static final String ISSUE="CASE WHEN d.index_method<>'LOCAL_NGRAM' THEN 'NOT_BUILT' WHEN d.indexed_revision<>d.revision THEN 'STALE_REVISION' WHEN "+ACTUAL_CHUNKS+"=0 THEN 'MISSING_CHUNKS' WHEN d.chunk_count<>"+ACTUAL_CHUNKS+" THEN 'COUNT_MISMATCH' WHEN NOT ("+GENERATIONS+") THEN 'CHUNK_REVISION_MISMATCH' ELSE 'NONE' END";
     private static final String FIELDS="d.id,d.title,d.doc_type AS docType,d.source_type AS sourceType,d.source_id AS sourceId,d.status,d.revision,d.indexed_revision AS indexedRevision,d.index_method AS indexMethod,d.chunk_count AS chunkCount,d.vector_status AS vectorStatus,d.update_time AS updateTime";
     private Map<String,Object> own(long id,boolean lock) {
         if(id<1)throw new BizException(400,"文档ID须为正整数");
@@ -37,18 +41,35 @@ public class KnowledgeService {
                 "SELECT COUNT(*) FROM route r JOIN destination a ON a.id=r.destination_id WHERE r.id=? AND r.deleted=0 AND a.deleted=0"+(status==1?" AND r.status=1 AND a.status=1":"");
         if(jdbc.queryForObject(query,Long.class,id)==0)throw new BizException(400,"关联内容不存在或未公开，请先恢复内容或将资料停用");
     }
-    public PageResult<Map<String,Object>> page(long current,long size,String keyword,Integer status) {
+    @Transactional(readOnly=true)
+    public PageResult<Map<String,Object>> page(long current,long size,String keyword,Integer status,String indexState,String sourceState) {
         if(current<1 || current>1000000 || size<1 || size>100 || (status!=null && status!=0 && status!=1))throw new BizException(400,"分页或状态参数超出范围");
         String where=" WHERE d.deleted=0";var args=new ArrayList<Object>();
         if(keyword!=null && !keyword.isBlank()) { String value=KnowledgeText.clean(keyword,1,100,"标题关键字");where+=" AND d.title LIKE ? ESCAPE '='";args.add("%"+value.replace("=","==").replace("%","=%").replace("_","=_")+"%"); }
         if(status!=null){where+=" AND d.status=?";args.add(status);}
+        if(indexState!=null){if(!Set.of("READY","NEEDS_REBUILD").contains(indexState))throw new BizException(400,"索引筛选不正确");where+=" AND "+(indexState.equals("READY")?"("+READY+")":"NOT ("+READY+")");}
+        if(sourceState!=null){if(!Set.of("AVAILABLE","UNAVAILABLE","UNLINKED").contains(sourceState))throw new BizException(400,"来源筛选不正确");where+=" AND ("+SOURCE_STATE+")=?";args.add(sourceState);}
         long total=jdbc.queryForObject("SELECT COUNT(*) FROM knowledge_doc d"+where,Long.class,args.toArray());
         args.add(size);args.add((current-1)*size);
-        var records=jdbc.queryForList("SELECT "+FIELDS+",("+SOURCE_VISIBLE+") AS sourceAvailable FROM knowledge_doc d"+where+" ORDER BY d.id DESC LIMIT ? OFFSET ?",args.toArray());
+        var records=jdbc.queryForList("SELECT "+FIELDS+",("+SOURCE_VISIBLE+") AS sourceAvailable,"+ACTUAL_CHUNKS+" AS actualChunkCount,CASE WHEN "+READY+" THEN 'READY' ELSE 'NEEDS_REBUILD' END AS indexState,("+ISSUE+") AS indexIssue,("+SOURCE_STATE+") AS sourceState FROM knowledge_doc d"+where+" ORDER BY d.id DESC LIMIT ? OFFSET ?",args.toArray());
         records.forEach(row->row.put("sourceAvailable",number(row,"sourceAvailable")!=0));
         var page=new PageResult<Map<String,Object>>();page.setRecords(records);page.setTotal(total);page.setCurrent(current);page.setSize(size);page.setPages((total+size-1)/size);return page;
     }
     public Map<String,Object> detail(long id) { return own(id,false); }
+    @Transactional(readOnly=true)
+    public Map<String,Object> health() {
+        return jdbc.queryForMap("SELECT COUNT(*) AS total,COALESCE(SUM(d.status=1),0) AS enabled,COALESCE(SUM(d.status=0),0) AS disabled,COALESCE(SUM("+READY+"),0) AS indexReady,COALESCE(SUM(NOT ("+READY+")),0) AS needsRebuild,COALESCE(SUM(("+SOURCE_STATE+")='UNAVAILABLE'),0) AS sourceUnavailable,COALESCE(SUM(("+SOURCE_STATE+")='UNLINKED'),0) AS unlinked,COALESCE(SUM(("+PUBLIC+") AND ("+READY+")),0) AS searchable FROM knowledge_doc d WHERE d.deleted=0");
+    }
+    public record Repair(String outcome,Map<String,Object> document) {}
+    @Transactional
+    public Repair repair(long id,long revision) {
+        var row=own(id,true);expected(row,revision);
+        long ready=jdbc.queryForObject("SELECT COUNT(*) FROM knowledge_doc d WHERE d.id=? AND "+READY,Long.class,id);
+        // Skipping healthy data preserves chunk IDs and already saved history references.
+        if(ready==1)return new Repair("UNCHANGED",row);
+        // This self-call runs inside repair's transaction; the batch calls repair through the proxy.
+        return new Repair("REPAIRED",rebuild(id,revision));
+    }
     @Transactional public Map<String,Object> save(Long id,KnowledgeInput.Save input) {
         String title=KnowledgeText.clean(input.title(),1,200,"标题"),content=KnowledgeText.clean(input.content(),1,20000,"资料正文");
         source(input.docType(),input.sourceId(),input.status(),true);
@@ -133,14 +154,21 @@ public class KnowledgeService {
         if(publicCount>0 && readyCount==0)throw new BizException(503,"资料尚未完成本地索引，请联系管理员");
         String placeholders=String.join(",",Collections.nCopies(tokens.size(),"?"));var args=new ArrayList<Object>(tokens);
         var rows=jdbc.queryForList("SELECT c.id,c.doc_id,c.chunk_index,c.content,d.title,d.doc_type,d.source_id,COUNT(DISTINCT t.token) AS matched FROM knowledge_chunk_token t JOIN knowledge_chunk c ON c.id=t.chunk_id JOIN knowledge_doc d ON d.id=c.doc_id WHERE t.token IN ("+placeholders+") AND "+PUBLIC+" AND "+READY+" AND c.doc_revision=d.revision GROUP BY c.id,c.doc_id,c.chunk_index,c.content,d.title,d.doc_type,d.source_id ORDER BY matched DESC,c.id ASC LIMIT 200",args.toArray());
-        List<Reference> references=new ArrayList<>();int minimum=tokens.size()==1?1:2;
+        // Title tokens are shared by every chunk; prefer excerpts containing the actual query terms.
+        rows.forEach(row->row.put("bodyMatched",KnowledgeText.tokens((String)row.get("content")).stream().filter(tokens::contains).count()));
+        rows.sort(Comparator.<Map<String,Object>>comparingLong(row->number(row,"matched")).reversed()
+                .thenComparing(Comparator.<Map<String,Object>>comparingLong(row->number(row,"bodyMatched")).reversed())
+                .thenComparingLong(row->number(row,"id")));
+        List<Reference> candidates=new ArrayList<>();int minimum=tokens.size()==1?1:2;
         for(var row:rows) {
             long matched=number(row,"matched");double score=matched/(double)tokens.size();if(matched<minimum || score<.3)continue;
             long docId=number(row,"doc_id");String sourcePath=null;
             if(row.get("source_id")!=null)sourcePath=((String)row.get("doc_type")).equals("ROUTE")?"/route/"+number(row,"source_id"):"/destination/"+number(row,"source_id");
-            references.add(new Reference(docId,number(row,"id"),(int)number(row,"chunk_index"),(String)row.get("title"),(String)row.get("content"),Math.round(score*10000)/10000d,"/knowledge/"+docId,sourcePath));
-            if(references.size()==top)break;
+            candidates.add(new Reference(docId,number(row,"id"),(int)number(row,"chunk_index"),(String)row.get("title"),(String)row.get("content"),Math.round(score*10000)/10000d,"/knowledge/"+docId,sourcePath));
         }
+        List<Reference> references=new ArrayList<>();Set<Long> seenDocs=new HashSet<>(),seenChunks=new HashSet<>();
+        for(var ref:candidates){if(seenDocs.add(ref.docId())){references.add(ref);seenChunks.add(ref.chunkId());if(references.size()==top)break;}}
+        if(references.size()<top)for(var ref:candidates){if(seenChunks.add(ref.chunkId())){references.add(ref);if(references.size()==top)break;}}
         return new SearchResult(query,"LOCAL_NGRAM",!references.isEmpty(),references.isEmpty()?"当前资料中未找到相关片段，请换用具体地点或关键字；不会编造资料之外的回答":"以下为资料原文片段，请结合来源与更新时间核实",references);
     }
 }

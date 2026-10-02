@@ -1,0 +1,116 @@
+{
+  "mode": "REAL_EDGE_KNOWLEDGE_MAINTENANCE_NO_LLM",
+  "phase": "COMPLETE",
+  "checks": [
+    {
+      "name": "real fixture register admin",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real fixture register reader",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real owned doc create 缺片",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real owned doc create 停用过期",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real owned doc create 健康",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real admin UI login",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "UI own docs filtered",
+      "actual": 3,
+      "expected": 3,
+      "passed": true
+    },
+    {
+      "name": "missing chunks reason shown",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "health count matches actual",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "UI selects damaged only",
+      "actual": [
+        77,
+        78
+      ],
+      "expected": [
+        77,
+        78
+      ],
+      "passed": true
+    },
+    {
+      "name": "browser run completed",
+      "actual": "locator.check: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.el-table__body-wrapper tr').filter({ hasText: 'KQUI_ec1901缺片' }).getByRole('checkbox')\u001b[22m\n\u001b[2m    - locator resolved to <input type=\"checkbox\" id=\"el-id-5897-30\" class=\"el-checkbox__original\"/>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    29 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "expected": "no error",
+      "passed": false
+    },
+    {
+      "name": "owned doc cleanup",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "accounts": [
+    {
+      "id": 10339,
+      "username": "KQUI_ec1901_admin",
+      "role": "admin"
+    },
+    {
+      "id": 10340,
+      "username": "KQUI_ec1901_reader",
+      "role": "reader"
+    }
+  ],
+  "fixtures": [
+    {
+      "docId": 77,
+      "title": "KQUI_ec1901缺片"
+    },
+    {
+      "docId": 78,
+      "title": "KQUI_ec1901停用过期"
+    },
+    {
+      "docId": 79,
+      "title": "KQUI_ec1901健康"
+    }
+  ],
+  "summary": {
+    "total": 12,
+    "passed": 11,
+    "failed": 1
+  }
+}
