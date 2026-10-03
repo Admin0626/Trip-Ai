@@ -1,0 +1,31 @@
+{
+  "recordedAt": "2026-10-03",
+  "maven": {
+    "exit": 0,
+    "summary": {
+      "tests": 40,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "buildSuccess": true
+  },
+  "frontend": {
+    "exit": 0,
+    "typecheckAndVitePassed": true,
+    "existingLargeChunkWarning": true,
+    "mainBundle": "dist/assets/index-qp_2vywv.js               1,129.01 kB │ gzip: 370.86 kB"
+  },
+  "failedPreflight": [
+    {
+      "name": "Python fixture syntax",
+      "error": "Comma-separated assignments to calls are invalid Python syntax at line 18.",
+      "fix": "Use separate statements; py_compile then passed."
+    }
+  ],
+  "reviewFixes": [
+    "Damaged index generation might equal next document revision; only original READY indexes advance, damaged indexed_revision is reset to 0.",
+    "Catch detail failures and disable form during source confirmation to prevent unhandled UI errors/double submit."
+  ],
+  "runtime": "Redis6379/backend8080(chat=none)/Vite5173 running; no real model or SMTP; no migration."
+}

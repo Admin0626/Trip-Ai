@@ -3,6 +3,9 @@ export interface KnowledgeDoc { id:number;title:string;docType:'GUIDE'|'DESTINAT
 export interface KnowledgeHealth { total:number;enabled:number;disabled:number;indexReady:number;needsRebuild:number;sourceUnavailable:number;unlinked:number;searchable:number }
 export interface KnowledgeRepair { total:number;succeeded:number;unchanged:number;failed:number;results:{id:number;code:number;outcome:'REPAIRED'|'UNCHANGED'|'FAILED';message:string;revision:number|null;chunkCount:number|null}[] }
 export interface KnowledgeInput { title:string;docType:KnowledgeDoc['docType'];sourceId:number|null;content:string;status:number;expectedRevision?:number }
+export interface KnowledgeSource {id:number;name:string;status:number;available:boolean;parentName:string|null;availabilityReason:'AVAILABLE'|'UNPUBLISHED'|'PARENT_UNAVAILABLE'}
+export function knowledgeSources(params:{docType:string;current?:number;size?:number;keyword?:string;sourceId?:number}){return request.get<ApiResponse<PageResult<KnowledgeSource>>>('/admin/ai/knowledge/sources',{params}).then(r=>r.data.data)}
+export function changeKnowledgeSource(doc:KnowledgeDoc,docType:KnowledgeDoc['docType'],sourceId:number|null){return request.put<ApiResponse<{outcome:'UPDATED'|'UNCHANGED';document:KnowledgeDoc}>>(`/admin/ai/knowledge/${doc.id}/source`,{docType,sourceId,expectedRevision:doc.revision}).then(r=>r.data.data)}
 export interface KnowledgeReference { docId:number;chunkId:number;chunkIndex:number;title:string;excerpt:string;keywordCoverage:number;documentPath:string;sourcePath:string|null }
 export interface KnowledgeResult { query:string;mode:'LOCAL_NGRAM';matched:boolean;message:string;references:KnowledgeReference[] }
 export function knowledgePage(params:{current:number;keyword?:string;status?:number;indexState?:KnowledgeDoc['indexState'];sourceState?:KnowledgeDoc['sourceState']}) {return request.get<ApiResponse<PageResult<KnowledgeDoc>>>('/admin/ai/knowledge/page',{params}).then(r=>r.data.data)}

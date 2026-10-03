@@ -1,0 +1,317 @@
+{
+  "mode": "REAL_HTTP_MYSQL_REDIS_SOURCE_MAINTENANCE_NO_LLM",
+  "label": "initial",
+  "startedAt": "2026-10-03T12:06:03.929929+08:00",
+  "checks": [
+    {
+      "name": "register sa",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_52fee04049sa",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "emailVerified": false,
+            "id": 10348,
+            "nickname": "pw_52fee04049sa",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_52fee04049sa"
+          },
+          "timestamp": 1791000364459
+        }
+      }
+    },
+    {
+      "name": "register sr",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_e1d104209csr",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "emailVerified": false,
+            "id": 10349,
+            "nickname": "pw_e1d104209csr",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_e1d104209csr"
+          },
+          "timestamp": 1791000364841
+        }
+      }
+    },
+    {
+      "name": "admin login",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_52fee04049sa",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-10-03T12:06:04",
+              "email": null,
+              "emailVerified": false,
+              "id": 10348,
+              "nickname": "pw_52fee04049sa",
+              "phone": null,
+              "role": "ADMIN",
+              "username": "pw_52fee04049sa"
+            }
+          },
+          "timestamp": 1791000365408
+        }
+      }
+    },
+    {
+      "name": "reader login",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_e1d104209csr",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-10-03T12:06:04",
+              "email": null,
+              "emailVerified": false,
+              "id": 10349,
+              "nickname": "pw_e1d104209csr",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_e1d104209csr"
+            }
+          },
+          "timestamp": 1791000365477
+        }
+      }
+    },
+    {
+      "name": "runner completed",
+      "actual": "Local SQL check failed: ERROR 1062 (23000) at line 1: Duplicate entry '夹具-KS_13605166同名' for key 'destination.uk_province_name'\n",
+      "expected": "no error",
+      "passed": false
+    },
+    {
+      "name": "owned cleanup knowledge_doc",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "owned cleanup destination",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "owned cleanup route",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    }
+  ],
+  "phase": "COMPLETE",
+  "fixtures": [
+    {
+      "destinationId": 62,
+      "name": "KS_13605166公开"
+    },
+    {
+      "destinationId": 63,
+      "name": "KS_13605166未公开"
+    },
+    {
+      "destinationId": 64,
+      "name": "KS_13605166已删除"
+    },
+    {
+      "destinationId": 65,
+      "name": "KS_13605166分页00"
+    },
+    {
+      "destinationId": 66,
+      "name": "KS_13605166分页01"
+    },
+    {
+      "destinationId": 67,
+      "name": "KS_13605166分页02"
+    },
+    {
+      "destinationId": 68,
+      "name": "KS_13605166分页03"
+    },
+    {
+      "destinationId": 69,
+      "name": "KS_13605166分页04"
+    },
+    {
+      "destinationId": 70,
+      "name": "KS_13605166分页05"
+    },
+    {
+      "destinationId": 71,
+      "name": "KS_13605166分页06"
+    },
+    {
+      "destinationId": 72,
+      "name": "KS_13605166分页07"
+    },
+    {
+      "destinationId": 73,
+      "name": "KS_13605166分页08"
+    },
+    {
+      "destinationId": 74,
+      "name": "KS_13605166分页09"
+    },
+    {
+      "destinationId": 75,
+      "name": "KS_13605166分页10"
+    },
+    {
+      "destinationId": 76,
+      "name": "KS_13605166分页11"
+    },
+    {
+      "destinationId": 77,
+      "name": "KS_13605166分页12"
+    },
+    {
+      "destinationId": 78,
+      "name": "KS_13605166分页13"
+    },
+    {
+      "destinationId": 79,
+      "name": "KS_13605166分页14"
+    },
+    {
+      "destinationId": 80,
+      "name": "KS_13605166分页15"
+    },
+    {
+      "destinationId": 81,
+      "name": "KS_13605166分页16"
+    },
+    {
+      "destinationId": 82,
+      "name": "KS_13605166分页17"
+    },
+    {
+      "destinationId": 83,
+      "name": "KS_13605166分页18"
+    },
+    {
+      "destinationId": 84,
+      "name": "KS_13605166分页19"
+    },
+    {
+      "destinationId": 85,
+      "name": "KS_13605166分页20"
+    },
+    {
+      "destinationId": 86,
+      "name": "KS_13605166分页21"
+    },
+    {
+      "destinationId": 87,
+      "name": "KS_13605166字面%_="
+    },
+    {
+      "destinationId": 88,
+      "name": "KS_13605166同名"
+    }
+  ],
+  "summary": {
+    "total": 8,
+    "passed": 7,
+    "failed": 1
+  }
+}

@@ -1,0 +1,319 @@
+{
+  "mode": "REAL_EDGE_KNOWLEDGE_SOURCE_MAINTENANCE_NO_LLM",
+  "phase": "COMPLETE",
+  "checks": [
+    {
+      "name": "fixture register admin",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "fixture register reader",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real doc create 旧资料",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real doc create 草稿",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real UI login",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "source search actual total",
+      "actual": 24,
+      "expected": 24,
+      "passed": true
+    },
+    {
+      "name": "source page beyond first 20",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "enabled doc hidden option disabled",
+      "actual": "true",
+      "expected": "true",
+      "passed": true
+    },
+    {
+      "name": "explicit independent publishing warning",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "legacy linked through UI",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "UI source update keeps chunk IDs",
+      "actual": "390",
+      "expected": "390",
+      "passed": true
+    },
+    {
+      "name": "selected source outside first page resolves",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "real competing editor mutation",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "explicit independent publishing warning",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "stale UI source rejected",
+      "actual": 409,
+      "expected": 409,
+      "passed": true
+    },
+    {
+      "name": "conflict selection retained",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "explicit independent publishing warning",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "draft UI hidden route save",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "draft remains disabled in SQL",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "full editor reuses unpublished picker",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "explicit independent publishing warning",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "source hidden after selection rejected",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "source dialog no page overflow 375",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "source dialog no page overflow 768",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "explicit independent publishing warning",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "retry valid unchanged selection",
+      "actual": "UNCHANGED",
+      "expected": "UNCHANGED",
+      "passed": true
+    },
+    {
+      "name": "reader source catalog denied",
+      "actual": 403,
+      "expected": 403,
+      "passed": true
+    },
+    {
+      "name": "no page errors",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "owned cleanup knowledge_doc",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "owned cleanup destination",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "owned cleanup route",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "accounts": [
+    {
+      "id": 10358,
+      "username": "KSUI_72e248_admin",
+      "role": "admin"
+    },
+    {
+      "id": 10359,
+      "username": "KSUI_72e248_reader",
+      "role": "reader"
+    }
+  ],
+  "fixtures": [
+    {
+      "destinationId": 190,
+      "name": "KSUI_72e248公开"
+    },
+    {
+      "destinationId": 191,
+      "name": "KSUI_72e248隐藏"
+    },
+    {
+      "destinationId": 192,
+      "name": "KSUI_72e248分页0"
+    },
+    {
+      "destinationId": 193,
+      "name": "KSUI_72e248分页1"
+    },
+    {
+      "destinationId": 194,
+      "name": "KSUI_72e248分页2"
+    },
+    {
+      "destinationId": 195,
+      "name": "KSUI_72e248分页3"
+    },
+    {
+      "destinationId": 196,
+      "name": "KSUI_72e248分页4"
+    },
+    {
+      "destinationId": 197,
+      "name": "KSUI_72e248分页5"
+    },
+    {
+      "destinationId": 198,
+      "name": "KSUI_72e248分页6"
+    },
+    {
+      "destinationId": 199,
+      "name": "KSUI_72e248分页7"
+    },
+    {
+      "destinationId": 200,
+      "name": "KSUI_72e248分页8"
+    },
+    {
+      "destinationId": 201,
+      "name": "KSUI_72e248分页9"
+    },
+    {
+      "destinationId": 202,
+      "name": "KSUI_72e248分页10"
+    },
+    {
+      "destinationId": 203,
+      "name": "KSUI_72e248分页11"
+    },
+    {
+      "destinationId": 204,
+      "name": "KSUI_72e248分页12"
+    },
+    {
+      "destinationId": 205,
+      "name": "KSUI_72e248分页13"
+    },
+    {
+      "destinationId": 206,
+      "name": "KSUI_72e248分页14"
+    },
+    {
+      "destinationId": 207,
+      "name": "KSUI_72e248分页15"
+    },
+    {
+      "destinationId": 208,
+      "name": "KSUI_72e248分页16"
+    },
+    {
+      "destinationId": 209,
+      "name": "KSUI_72e248分页17"
+    },
+    {
+      "destinationId": 210,
+      "name": "KSUI_72e248分页18"
+    },
+    {
+      "destinationId": 211,
+      "name": "KSUI_72e248分页19"
+    },
+    {
+      "destinationId": 212,
+      "name": "KSUI_72e248分页20"
+    },
+    {
+      "destinationId": 213,
+      "name": "KSUI_72e248分页21"
+    },
+    {
+      "routeId": 381
+    },
+    {
+      "docId": 111,
+      "title": "KSUI_72e248旧资料"
+    },
+    {
+      "docId": 112,
+      "title": "KSUI_72e248草稿"
+    }
+  ],
+  "summary": {
+    "total": 31,
+    "passed": 31,
+    "failed": 0
+  }
+}

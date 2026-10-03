@@ -1,0 +1,187 @@
+{
+  "mode": "REAL_EDGE_KNOWLEDGE_SOURCE_MAINTENANCE_NO_LLM",
+  "phase": "RUNNING",
+  "checks": [
+    {
+      "name": "fixture register admin",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "fixture register reader",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real doc create 旧资料",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real doc create 草稿",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real UI login",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "source search actual total",
+      "actual": 24,
+      "expected": 24,
+      "passed": true
+    },
+    {
+      "name": "source page beyond first 20",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "enabled doc hidden option disabled",
+      "actual": "true",
+      "expected": "true",
+      "passed": true
+    },
+    {
+      "name": "explicit independent publishing warning",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "accounts": [
+    {
+      "id": 10354,
+      "username": "KSUI_7f307f_admin",
+      "role": "admin"
+    },
+    {
+      "id": 10355,
+      "username": "KSUI_7f307f_reader",
+      "role": "reader"
+    }
+  ],
+  "fixtures": [
+    {
+      "destinationId": 142,
+      "name": "KSUI_7f307f公开"
+    },
+    {
+      "destinationId": 143,
+      "name": "KSUI_7f307f隐藏"
+    },
+    {
+      "destinationId": 144,
+      "name": "KSUI_7f307f分页0"
+    },
+    {
+      "destinationId": 145,
+      "name": "KSUI_7f307f分页1"
+    },
+    {
+      "destinationId": 146,
+      "name": "KSUI_7f307f分页2"
+    },
+    {
+      "destinationId": 147,
+      "name": "KSUI_7f307f分页3"
+    },
+    {
+      "destinationId": 148,
+      "name": "KSUI_7f307f分页4"
+    },
+    {
+      "destinationId": 149,
+      "name": "KSUI_7f307f分页5"
+    },
+    {
+      "destinationId": 150,
+      "name": "KSUI_7f307f分页6"
+    },
+    {
+      "destinationId": 151,
+      "name": "KSUI_7f307f分页7"
+    },
+    {
+      "destinationId": 152,
+      "name": "KSUI_7f307f分页8"
+    },
+    {
+      "destinationId": 153,
+      "name": "KSUI_7f307f分页9"
+    },
+    {
+      "destinationId": 154,
+      "name": "KSUI_7f307f分页10"
+    },
+    {
+      "destinationId": 155,
+      "name": "KSUI_7f307f分页11"
+    },
+    {
+      "destinationId": 156,
+      "name": "KSUI_7f307f分页12"
+    },
+    {
+      "destinationId": 157,
+      "name": "KSUI_7f307f分页13"
+    },
+    {
+      "destinationId": 158,
+      "name": "KSUI_7f307f分页14"
+    },
+    {
+      "destinationId": 159,
+      "name": "KSUI_7f307f分页15"
+    },
+    {
+      "destinationId": 160,
+      "name": "KSUI_7f307f分页16"
+    },
+    {
+      "destinationId": 161,
+      "name": "KSUI_7f307f分页17"
+    },
+    {
+      "destinationId": 162,
+      "name": "KSUI_7f307f分页18"
+    },
+    {
+      "destinationId": 163,
+      "name": "KSUI_7f307f分页19"
+    },
+    {
+      "destinationId": 164,
+      "name": "KSUI_7f307f分页20"
+    },
+    {
+      "destinationId": 165,
+      "name": "KSUI_7f307f分页21"
+    },
+    {
+      "routeId": 379
+    },
+    {
+      "docId": 107,
+      "title": "KSUI_7f307f旧资料"
+    },
+    {
+      "docId": 108,
+      "title": "KSUI_7f307f草稿"
+    }
+  ],
+  "summary": {
+    "total": 9,
+    "passed": 9,
+    "failed": 0
+  }
+}

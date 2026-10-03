@@ -56,6 +56,35 @@ public class KnowledgeService {
         var page=new PageResult<Map<String,Object>>();page.setRecords(records);page.setTotal(total);page.setCurrent(current);page.setSize(size);page.setPages((total+size-1)/size);return page;
     }
     public Map<String,Object> detail(long id) { return own(id,false); }
+    /** Admin-only catalog summaries, including unpublished entries for disabled documents. */
+    @Transactional(readOnly=true)
+    public PageResult<Map<String,Object>> sources(String type,long current,long size,String keyword,Long sourceId) {
+        if(!Set.of("DESTINATION","ROUTE").contains(type) || current<1 || current>1000000 || size<1 || size>50 || (sourceId!=null && sourceId<1))throw new BizException(400,"来源类型或分页参数不正确");
+        boolean route=type.equals("ROUTE");
+        String from=route?" FROM route r JOIN destination a ON a.id=r.destination_id WHERE r.deleted=0 AND a.deleted=0":" FROM destination a WHERE a.deleted=0";
+        String id=route?"r.id":"a.id",name=route?"r.title":"a.name",available=route?"r.status=1 AND a.status=1":"a.status=1";
+        var args=new ArrayList<Object>();
+        if(sourceId!=null){from+=" AND "+id+"=?";args.add(sourceId);}
+        if(keyword!=null&&!keyword.isBlank()){String value=KnowledgeText.clean(keyword,1,100,"来源关键字");from+=" AND "+name+" LIKE ? ESCAPE '='";args.add("%"+value.replace("=","==").replace("%","=%").replace("_","=_")+"%");}
+        long total=jdbc.queryForObject("SELECT COUNT(*)"+from,Long.class,args.toArray());args.add(size);args.add((current-1)*size);
+        String fields=id+" AS id,"+name+" AS name,"+(route?"r.status":"a.status")+" AS status,("+available+") AS available,"+(route?"a.name":"NULL")+" AS parentName,CASE WHEN "+available+" THEN 'AVAILABLE' "+(route?"WHEN a.status<>1 THEN 'PARENT_UNAVAILABLE' ":"")+"ELSE 'UNPUBLISHED' END AS availabilityReason";
+        var rows=jdbc.queryForList("SELECT "+fields+from+" ORDER BY "+id+" DESC LIMIT ? OFFSET ?",args.toArray());rows.forEach(row->row.put("available",number(row,"available")!=0));
+        var page=new PageResult<Map<String,Object>>();page.setRecords(rows);page.setTotal(total);page.setCurrent(current);page.setSize(size);page.setPages((total+size-1)/size);return page;
+    }
+    public record SourceChange(String outcome,Map<String,Object> document) {}
+    @Transactional
+    public SourceChange changeSource(long id,KnowledgeInput.Source input) {
+        var row=own(id,true);expected(row,input.expectedRevision());
+        source(input.docType(),input.sourceId(),(int)number(row,"status"),true);
+        Long oldId=row.get("sourceId")==null?null:number(row,"sourceId");
+        if(input.docType().equals(row.get("docType"))&&Objects.equals(input.sourceId(),oldId))return new SourceChange("UNCHANGED",row);
+        long oldRevision=number(row,"revision"),revision=oldRevision+1;
+        boolean ready=jdbc.queryForObject("SELECT COUNT(*) FROM knowledge_doc d WHERE d.id=? AND "+READY,Long.class,id)==1;
+        // The indexed text is unchanged. Move only matching generations; damaged indexes stay damaged.
+        jdbc.update("UPDATE knowledge_doc SET doc_type=?,source_id=?,revision=?,indexed_revision=? WHERE id=?",input.docType(),input.sourceId(),revision,ready?revision:0,id);
+        jdbc.update("UPDATE knowledge_chunk SET doc_revision=? WHERE doc_id=? AND doc_revision=?",revision,id,oldRevision);
+        return new SourceChange("UPDATED",own(id,false));
+    }
     @Transactional(readOnly=true)
     public Map<String,Object> health() {
         return jdbc.queryForMap("SELECT COUNT(*) AS total,COALESCE(SUM(d.status=1),0) AS enabled,COALESCE(SUM(d.status=0),0) AS disabled,COALESCE(SUM("+READY+"),0) AS indexReady,COALESCE(SUM(NOT ("+READY+")),0) AS needsRebuild,COALESCE(SUM(("+SOURCE_STATE+")='UNAVAILABLE'),0) AS sourceUnavailable,COALESCE(SUM(("+SOURCE_STATE+")='UNLINKED'),0) AS unlinked,COALESCE(SUM(("+PUBLIC+") AND ("+READY+")),0) AS searchable FROM knowledge_doc d WHERE d.deleted=0");

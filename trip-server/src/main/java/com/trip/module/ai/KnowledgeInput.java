@@ -31,4 +31,7 @@ public final class KnowledgeInput {
     public record Search(@NotBlank @JsonDeserialize(using=StrictPlannerJson.Text.class) String query,
                          @Min(1) @Max(5) @JsonDeserialize(using=StrictPlannerJson.IntegerNumber.class) Integer topK) {}
     public record BatchRepair(@NotNull @Size(min=1,max=10) List<@NotNull @Valid Rebuild> documents) {}
+    public record Source(@NotBlank @Pattern(regexp="GUIDE|DESTINATION|ROUTE") @JsonDeserialize(using=StrictPlannerJson.Text.class) String docType,
+                         @Positive @JsonDeserialize(using=LongNumber.class) Long sourceId,
+                         @NotNull @Positive @JsonDeserialize(using=LongNumber.class) Long expectedRevision) {}
 }

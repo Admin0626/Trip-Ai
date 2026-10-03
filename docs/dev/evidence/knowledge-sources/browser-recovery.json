@@ -1,0 +1,26 @@
+[
+  {
+    "originalReport": "docs\\dev\\evidence\\knowledge-sources\\2026-10-03T04-09-53-953Z-search-fixed-browser\\results.json",
+    "phase": "INCOMPLETE",
+    "reason": "Default confirmation button is 确定; wrong locator caused response wait rejection before cleanup. A first recovery failed due to missing UTF-8 subprocess decoding and accidentally reran unchanged script. Both original RUNNING reports are preserved.",
+    "cleanup": "Checked exact owned prefix before each deletion. Subsequent recovery uses UTF-8.",
+    "remaining": {
+      "knowledge_doc": 0,
+      "route": 0,
+      "destination": 0,
+      "sys_user": 0
+    }
+  },
+  {
+    "originalReport": "docs\\dev\\evidence\\knowledge-sources\\2026-10-03T04-10-52-967Z-confirm-fixed-browser\\results.json",
+    "phase": "INCOMPLETE",
+    "reason": "Default confirmation button is 确定; wrong locator caused response wait rejection before cleanup. A first recovery failed due to missing UTF-8 subprocess decoding and accidentally reran unchanged script. Both original RUNNING reports are preserved.",
+    "cleanup": "Checked exact owned prefix before each deletion. Subsequent recovery uses UTF-8.",
+    "remaining": {
+      "knowledge_doc": 0,
+      "route": 0,
+      "destination": 0,
+      "sys_user": 0
+    }
+  }
+]
