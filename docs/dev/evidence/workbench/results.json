@@ -2,9 +2,21 @@
   "mode": "REAL_EDGE_LOCAL_EDUCATIONAL_UI",
   "checks": [
     {
-      "name": "public entry without login",
-      "actual": "/workbench",
-      "expected": "/workbench",
+      "name": "public workbench route removed",
+      "actual": "/",
+      "expected": "/",
+      "passed": true
+    },
+    {
+      "name": "user navigation has no workbench entry",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "admin entry after login",
+      "actual": "/admin/workbench",
+      "expected": "/admin/workbench",
       "passed": true
     },
     {
@@ -392,9 +404,9 @@
       "passed": true
     },
     {
-      "name": "shared navigation has one workbench entry",
-      "actual": 1,
-      "expected": 1,
+      "name": "user header has no workbench entry",
+      "actual": 0,
+      "expected": 0,
       "passed": true
     },
     {
@@ -428,15 +440,15 @@
       "passed": true
     },
     {
-      "name": "mobile navigation exposes workbench",
-      "actual": true,
-      "expected": true,
+      "name": "admin navigation exposes workbench",
+      "actual": 1,
+      "expected": 1,
       "passed": true
     },
     {
-      "name": "shared navigation opens workbench",
-      "actual": "/workbench",
-      "expected": "/workbench",
+      "name": "admin navigation opens workbench",
+      "actual": "/admin/workbench",
+      "expected": "/admin/workbench",
       "passed": true
     },
     {
@@ -449,8 +461,8 @@
   "errors": [],
   "apiCalls": [],
   "summary": {
-    "total": 74,
-    "passed": 74,
+    "total": 76,
+    "passed": 76,
     "failed": 0
   }
 }

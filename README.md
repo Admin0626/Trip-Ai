@@ -10,7 +10,7 @@
 
 ## 当前进度
 
-- [项目学习工作台](docs/dev/项目学习工作台.md)：访问 `/workbench`（无需登录），通过连接图、代码导览、请求回放与本地实验理解 Spring 装配、前后端、接口和数据关系。提供 Markdown 导出与打印，明确当前实现和设计目标；真实浏览器 74 项检查通过。
+- [项目学习工作台](docs/dev/项目学习工作台.md)：管理员从 `/admin/workbench` 进入，通过连接图、代码导览、请求回放与本地实验理解 Spring 装配、前后端、接口和数据关系。工作台不出现在用户端导航，实际访问需管理员登录；权限调整后的真实浏览器 76 项检查通过。
 
 2026-09-29已记录[基础功能基线 v0.1.0-baseline](docs/releases/v0.1.0-baseline.md)：核心基础业务闭环已交付，未完成项明确列出。[GitHub Release](https://github.com/Admin0626/Trip-Ai/releases/tag/v0.1.0-baseline)保存固定版本；后续新功能在独立`codex/*`分支开发并推送，验收后通过PR融合main，见[分支流程](docs/dev/Git分支与合并流程.md)。
 

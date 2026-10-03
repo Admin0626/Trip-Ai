@@ -12,7 +12,7 @@ const selected = ref('service')
 const graphNodes = computed(() => current.value.id === 'spring' ? springNodes : current.value.id === 'frontend' ? frontendNodes : current.value.id === 'data' ? dataNodes : overviewNodes)
 const graphEdges = computed(() => current.value.id === 'spring' ? springEdges : current.value.id === 'frontend' ? frontendEdges : current.value.id === 'data' ? dataEdges : overviewEdges)
 const node = computed(() => graphNodes.value.find(n => n.id === selected.value) || graphNodes.value[0]!)
-function navigate(id: string) { void router.replace({ path: '/workbench', query: { view: id } }) }
+function navigate(id: string) { void router.replace({ path: route.path, query: { view: id } }) }
 watch(() => current.value.id, () => { selected.value = graphNodes.value[0]!.id; questionIndex.value = 0; choice.value = null; tourOpen.value = false })
 const springStep = ref(0)
 const springLesson = computed(() => springSteps[springStep.value]!)
@@ -84,8 +84,8 @@ function printGuide() { window.print() }
 <template>
   <div class="workbench">
     <header class="wb-header">
-      <router-link class="brand" to="/"><span class="brand-mark"><el-icon><Connection /></el-icon></span><strong>Trip-AI</strong><span class="brand-divider">/</span><span>项目学习工作台</span></router-link>
-      <div class="header-actions"><span class="snapshot">代码导览 · 2026.10.03</span><router-link to="/">返回项目 <el-icon><ArrowRight /></el-icon></router-link></div>
+      <router-link class="brand" to="/admin"><span class="brand-mark"><el-icon><Connection /></el-icon></span><strong>Trip-AI</strong><span class="brand-divider">/</span><span>项目学习工作台</span></router-link>
+      <div class="header-actions"><span class="snapshot">管理员教学工具 · 2026.10.03</span><router-link to="/admin">返回后台 <el-icon><ArrowRight /></el-icon></router-link></div>
     </header>
     <div class="wb-layout">
       <aside class="sidebar">

@@ -3,6 +3,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'C:/Users/wlky0/.c
 const fs = require('node:fs');
 const path = require('node:path');
 const base = process.env.WORKBENCH_URL || 'http://127.0.0.1:5173';
+const workbenchPath = '/admin/workbench';
 const out = path.resolve(__dirname, '../../docs/dev/evidence/workbench');
 fs.mkdirSync(out, { recursive: true });
 const checks = [], errors = [], apiCalls = [];
@@ -19,8 +20,18 @@ function check(name, actual, expected = true) {
     page.on('pageerror', e => errors.push(e.message));
     page.on('request', r => { if (new URL(r.url()).pathname.startsWith('/api/')) apiCalls.push(r.url()); });
     await page.goto(base + '/workbench');
+    await page.waitForURL(u => u.pathname === '/');
+    check('public workbench route removed', new URL(page.url()).pathname, '/');
+    check('user navigation has no workbench entry', await page.locator('#main-navigation').getByRole('link', { name: '学习工作台', exact: true }).count(), 0);
+    await page.goto(base + workbenchPath);
+    await page.waitForURL(u => u.pathname === '/login');
+    await page.getByPlaceholder('user1001').fill('admin');
+    await page.getByPlaceholder('123456', { exact: true }).fill('123456');
+    await page.getByRole('button', { name: '登 录', exact: true }).click();
+    await page.waitForURL(u => u.pathname === workbenchPath);
+    apiCalls.length = 0;
     await page.getByRole('heading', { name: '一张图，读懂 Trip-AI' }).waitFor();
-    check('public entry without login', new URL(page.url()).pathname, '/workbench');
+    check('admin entry after login', new URL(page.url()).pathname, workbenchPath);
     await page.locator('[data-node="mapper"]').click();
     check('node inspector follows selection', await page.locator('.inspector h3').innerText(), 'Mapper / JDBC');
     await page.locator('.inspector summary').click();
@@ -93,34 +104,33 @@ function check(name, actual, expected = true) {
     for (const width of [1440, 1024, 768, 390, 320]) {
       await page.setViewportSize({ width, height: 900 });
       for (const view of ['overview', 'spring', 'request', 'frontend', 'api', 'data']) {
-        await page.goto(base + '/workbench?view=' + view);
+        await page.goto(base + workbenchPath + '?view=' + view);
         await page.locator('h1').waitFor();
         check(view + ' no horizontal overflow at ' + width, await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
       }
     }
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.goto(base + '/workbench?view=spring');
+    await page.goto(base + workbenchPath + '?view=spring');
     await page.locator('.relation-list').waitFor({ state: 'visible' });
     check('mobile shows explicit dependency relations', await page.locator('.relation-list li').count(), 3);
     await page.screenshot({ path: path.join(out, 'spring-mobile.png'), fullPage: true });
     check('no business API calls', apiCalls.length, 0);
-    // Verify the new navigation entry in the real shared header, separately from offline workbench checks.
+    // Verify the workbench is absent from the user header and present in the admin header.
     page.removeAllListeners('request');
     await page.setViewportSize({ width: 1440, height: 1000 });
     await page.goto(base + '/routes');
     await page.locator('#main-navigation').waitFor({ state: 'attached' });
-    check('shared navigation has one workbench entry', await page.locator('#main-navigation').getByRole('link', { name: '学习工作台', exact: true }).count(), 1);
+    check('user header has no workbench entry', await page.locator('#main-navigation').getByRole('link', { name: '学习工作台', exact: true }).count(), 0);
     for (const width of [1440, 1024, 768, 390, 320]) {
       await page.setViewportSize({ width, height: 900 });
       check('existing route page header fits at ' + width, await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
     }
-    await page.setViewportSize({ width: 390, height: 844 });
-    await page.getByRole('button', { name: '导航菜单', exact: true }).click();
-    const entry = page.locator('#main-navigation').getByRole('link', { name: '学习工作台', exact: true });
-    check('mobile navigation exposes workbench', await entry.isVisible());
+    await page.goto(base + '/admin');
+    const entry = page.locator('nav[aria-label="后台导航"]').getByRole('link', { name: '项目学习工作台', exact: true });
+    check('admin navigation exposes workbench', await entry.count(), 1);
     await entry.click();
-    await page.waitForURL(u => u.pathname === '/workbench');
-    check('shared navigation opens workbench', new URL(page.url()).pathname, '/workbench');
+    await page.waitForURL(u => u.pathname === workbenchPath);
+    check('admin navigation opens workbench', new URL(page.url()).pathname, workbenchPath);
     check('no unhandled browser errors', errors.length, 0);
   } catch (e) {
     checks.push({ name: 'browser acceptance completed', passed: false, error: e.message });
