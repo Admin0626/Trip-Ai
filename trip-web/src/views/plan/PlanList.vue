@@ -73,22 +73,23 @@ onMounted(load)
 </script>
 
 <template>
-  <div class="container page-wrapper">
+  <main class="plan-list container page-wrapper">
     <div class="page-head">
       <h1 class="page-head__title">我的规划</h1>
-      <el-button type="primary" @click="router.push('/plan/create')">+ 新建规划</el-button>
+      <el-button type="primary" @click="router.push('/plan/create')">新建规划</el-button>
     </div>
+    <p class="plan-intro">把期待变成行程，保存后随时回来继续编辑。</p>
 
     <div v-loading="loading">
       <template v-if="list.length">
         <div v-for="p in list" :key="p.id" class="plan-card card">
-          <div class="plan-card__main" @click="edit(p)">
+          <div class="plan-card__main" role="link" tabindex="0" @click="edit(p)" @keydown.enter="edit(p)">
             <h3 class="plan-card__title">{{ p.title }}</h3>
             <div class="plan-card__meta">
               <el-tag :type="p.status === 1 ? 'success' : 'info'" size="small">{{ planStatusText(p.status) }}</el-tag>
-              <span>🗓 {{ p.startDate }} 起 · {{ p.days }} 天</span>
-              <span>📍 {{ (p.destinationIds || []).length }} 个目的地</span>
-              <span>🧑‍🤝‍🧑 {{ p.peopleNum }} 人</span>
+              <span>{{ p.startDate }} 起 · {{ p.days }} 天</span>
+              <span>{{ (p.destinationIds || []).length }} 个目的地</span>
+              <span>{{ p.peopleNum }} 人</span>
               <span class="money">预算 {{ formatMoney(p.budget) }}</span>
               <span class="text-secondary">{{ p.updateTime }}</span>
             </div>
@@ -101,7 +102,8 @@ onMounted(load)
           </div>
         </div>
       </template>
-      <EmptyState v-else-if="!loading" icon="🗓️" text="还没有规划，点击右上角新建">
+      <EmptyState v-else-if="!loading" class="plan-empty card" text="还没有保存的规划">
+        <p class="text-secondary">从一份新的规划开始，慢慢安排你的旅程。</p>
         <el-button type="primary" @click="router.push('/plan/create')">新建规划</el-button>
       </EmptyState>
     </div>
@@ -111,7 +113,7 @@ onMounted(load)
     <el-dialog v-model="exportVisible" title="行程单" width="560px">
       <pre class="export-text">{{ exportText }}</pre>
     </el-dialog>
-  </div>
+  </main>
 </template>
 
 <style scoped lang="scss">
@@ -121,11 +123,13 @@ onMounted(load)
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 24px;
 
   &__title {
     margin: 0;
-    font-size: 24px;
+    font-size: 32px;
   }
 }
 
@@ -133,8 +137,9 @@ onMounted(load)
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 20px;
-  margin-bottom: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  gap: 24px;
   cursor: pointer;
 
   &__main {
@@ -144,13 +149,13 @@ onMounted(load)
 
   &__title {
     margin: 0 0 8px;
-    font-size: 16px;
+    font-size: 20px;
   }
 
   &__meta {
     display: flex;
     gap: 16px;
-    font-size: 13px;
+    font-size: 14px;
     color: $color-text-secondary;
     align-items: center;
     flex-wrap: wrap;
@@ -160,8 +165,13 @@ onMounted(load)
     display: flex;
     gap: 4px;
     flex-shrink: 0;
+    flex-wrap: wrap;
   }
 }
+.plan-intro { color: $color-text-secondary; margin: 0 0 48px; }
+.plan-empty { box-shadow: none; }
+.plan-empty p { margin: 0; text-align: center; }
+@media (max-width: 767px) { .plan-card { flex-direction: column; align-items: stretch; }.plan-card__actions { gap: 8px; }.plan-card__actions :deep(.el-button) { margin-left: 0; } }
 
 .export-text {
   white-space: pre-wrap;

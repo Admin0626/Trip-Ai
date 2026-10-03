@@ -1,6 +1,6 @@
 """Live HTTP/MySQL/Redis quota acceptance; local controlled provider, not a real LLM.
-Only temporary users and uniquely prefixed Lua keys are removed. Shared app global
-usage includes these admitted test requests and is deliberately never reset.
+Only temporary users and uniquely prefixed Lua keys are removed. Legacy shared
+daily usage is deliberately never changed or reset.
 """
 import concurrent.futures
 import datetime as dt
@@ -57,21 +57,23 @@ def lua_checks():
     prefix='trip:test:quota:'+uuid.uuid4().hex
     keys=[prefix+':hour',prefix+':day',prefix+':global']; owned_keys.update(keys)
     expiry=int(time.time())+300
-    def acquire(limits=(7,100,100)):
-        return redis('EVAL',source,3,*keys,*limits,expiry,expiry,expiry).splitlines()
+    # Saturated legacy daily counters must neither deny nor get incremented.
+    redis('SET',keys[1],200,'EX',300); redis('SET',keys[2],2000,'EX',300)
+    def acquire(limit=7):
+        return redis('EVAL',source,3,*keys,limit,expiry).splitlines()
     with concurrent.futures.ThreadPoolExecutor(max_workers=16) as executor:
         results=list(executor.map(lambda _:acquire(),range(40)))
     check('40 concurrent Lua requests admit exactly 7',sum(r[0]=='1' for r in results),7)
-    check('all dimensions equal accepted calls',redis('MGET',*keys).splitlines(),['7','7','7'])
+    check('only hour increments; saturated daily counters untouched',redis('MGET',*keys).splitlines(),['7','200','2000'])
     check('counter expiry bounded',0<int(redis('TTL',keys[0]))<=300,True)
-    for dimension,limits in [(2,(100,7,100)),(3,(100,100,7))]:
-        check('deny dimension '+str(dimension),acquire(limits)[:2],['0',str(dimension)])
-        check('denial never charges other dimensions '+str(dimension),redis('MGET',*keys).splitlines(),['7','7','7'])
+    check('hour denial remains atomic',acquire(),['0','7'])
+    check('denial leaves all counters untouched',redis('MGET',*keys).splitlines(),['7','200','2000'])
     for corrupt in ['1.5','1.0','01']:
-        redis('SET',keys[0],7,'EX',300)
-        redis('SET',keys[1],corrupt,'EX',300)
-        check('corrupt counter rejected before increments '+corrupt,'INVALID_QUOTA_COUNTER' in '\n'.join(acquire((100,100,100))),True)
-        check('corrupt counter does not partially charge '+corrupt,redis('GET',keys[0]),'7')
+        redis('SET',keys[0],corrupt,'EX',300)
+        check('corrupt hour counter rejected '+corrupt,'INVALID_QUOTA_COUNTER' in '\n'.join(acquire(100)),True)
+        check('corrupt hour counter remains untouched '+corrupt,redis('GET',keys[0]),corrupt)
+    redis('SET',keys[0],0,'EX',300); redis('SET',keys[1],'invalid','EX',300)
+    check('even corrupt retired daily counter is ignored',acquire(),['1','1'])
 
 def main():
     global phase
@@ -92,7 +94,9 @@ def main():
         call('anonymous usage denied','/ai/planner/usage',http=401,code=401)
         call('normal user cannot read audit','/admin/ai/recommend/log',token=a,http=403,code=403)
         usage=call('initial usage','/ai/planner/usage',token=a)['data']
-        check('defaults hourly daily global',[usage['quota'][k]['limit'] for k in ['hourly','daily','globalDaily']],[20,200,2000])
+        check('default hourly rate limit retained',usage['quota']['hourly']['limit'],20)
+        for k in ['daily','globalDaily']:
+            check(k+' explicitly disabled',usage['quota'][k],dict(enabled=False,limit=None,used=None,remaining=None,resetAt=None))
         check('own initial usage',usage['quota']['hourly']['used'],0)
         call('one connection attempt','/ai/planner/test',{'connection':connection},a)
         call('retry consumes two','/ai/planner/generate',{**body,'connection':{**connection,'model':'fixture-retry'}},a)
@@ -116,12 +120,14 @@ def main():
         check('19 operations, no phantom denied calls',[usage['today'][k] for k in ['operations','succeeded','failed']],[19,17,2])
         usage_b=call('other user isolated','/ai/planner/usage?userId='+str(users[0]),token=b)['data']
         check('query userId cannot select another account',usage_b['quota']['hourly']['used'],0)
-        check('global count shared',usage_b['quota']['globalDaily']['used'],usage['quota']['globalDaily']['used'])
         # Only this temporary user's daily key is seeded; real users/global are untouched.
         redis('SET',user_keys(users[1])[1],200,'EX',300)
-        call('daily limit denies unused hour','/ai/planner/test',{'connection':connection},b,code=429)
-        check('daily denial leaves hour unused',redis('GET',user_keys(users[1])[0]),'')
-        check('daily denial never reaches provider',sum(p.counts.values()),20)
+        call('saturated old daily counter allows test','/ai/planner/test',{'connection':connection},b)
+        call('saturated old daily counter allows generation','/ai/planner/generate',body,b)
+        call('saturated old daily counter allows both invalid-structure attempts','/ai/planner/generate',{**body,'connection':{**connection,'model':'fixture-invalid'}},b,code=3004)
+        check('new hourly count includes test, generation and retry',redis('GET',user_keys(users[1])[0]),'4')
+        check('old daily counter is unchanged',redis('GET',user_keys(users[1])[1]),'200')
+        check('calls despite old daily cap reached provider',sum(p.counts.values()),24)
         audit=call('admin paginated own fixture logs',f'/admin/ai/recommend/log?userId={users[0]}&size=2',token=admin)['data']
         check('admin page size',len(audit['records']),2)
         check('admin total includes free rule audit',audit['total'],20)

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessageBox } from 'element-plus'
 import { ArrowDown } from '@element-plus/icons-vue'
@@ -7,6 +7,8 @@ import { useUserStore } from '@/store/user'
 
 const router = useRouter()
 const route = useRoute()
+const menuOpen = ref(false)
+watch(() => route.fullPath, () => { menuOpen.value = false })
 const assistantActive = computed(() => ['/travel-assistant', '/recommend', '/ai-planner'].includes(route.path))
 const userStore = useUserStore()
 
@@ -41,17 +43,18 @@ function handleCommand(cmd: string): void {
 <template>
   <header class="app-header">
     <div class="app-header__inner container">
-      <div class="app-header__logo" @click="router.push('/')">
-        <span class="logo-icon">✈️</span>
-        <span class="logo-text">智游行程</span>
-      </div>
+      <router-link to="/" class="app-header__logo" aria-label="Trip-AI 智游行程首页">
+        <span class="logo-text">Trip-AI <span class="logo-divider">/</span> 智游行程</span>
+      </router-link>
 
-      <nav class="app-header__nav">
+      <button class="menu-toggle" type="button" :aria-expanded="menuOpen" aria-controls="main-navigation" @click="menuOpen = !menuOpen">{{ menuOpen ? '收起导航' : '导航菜单' }}</button>
+      <nav id="main-navigation" class="app-header__nav" :class="{ 'is-open': menuOpen }" aria-label="主导航">
         <router-link to="/" class="nav-link" active-class="" exact-active-class="router-link-active">首页</router-link>
         <router-link to="/routes" class="nav-link">路线</router-link>
         <router-link to="/destinations" class="nav-link">目的地</router-link>
         <router-link to="/travel-assistant" class="nav-link" :class="{ 'router-link-active': assistantActive }">旅行助手</router-link>
         <router-link to="/knowledge" class="nav-link">旅行资料</router-link>
+        <router-link to="/plan" class="nav-link">我的规划</router-link>
       </nav>
 
       <div class="app-header__user">
@@ -93,13 +96,13 @@ function handleCommand(cmd: string): void {
   top: 0;
   z-index: 100;
   background: #fff;
-  box-shadow: 0 1px 4px rgba(31, 41, 55, 0.08);
+  border-bottom: 1px solid $color-border;
 
   &__inner {
     display: flex;
     align-items: center;
-    gap: 24px;
-    height: 60px;
+    gap: 32px;
+    min-height: 72px;
   }
 
   &__logo {
@@ -112,8 +115,8 @@ function handleCommand(cmd: string): void {
       font-size: 22px;
     }
     .logo-text {
-      font-size: 18px;
-      font-weight: 700;
+      font-size: 20px;
+      font-weight: 600;
       color: $color-primary;
     }
   }
@@ -124,15 +127,15 @@ function handleCommand(cmd: string): void {
     flex: 1;
 
     .nav-link {
-      padding: 6px 14px;
-      border-radius: 6px;
+      padding: 12px 10px;
+      border-radius: 8px;
       color: $color-text;
       font-size: 14px;
       transition: all 0.2s;
 
       &.router-link-active {
         color: $color-primary;
-        background: rgba(47, 123, 255, 0.08);
+        background: #EDF4EF;
         font-weight: 600;
       }
 
@@ -148,7 +151,7 @@ function handleCommand(cmd: string): void {
       align-items: center;
       gap: 8px;
       cursor: pointer;
-      outline: none;
+      min-height: 44px;
     }
     .user-name {
       font-size: 14px;
@@ -158,13 +161,13 @@ function handleCommand(cmd: string): void {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 20px;
   width: 100%;
 }
 
-@media (max-width: 980px) {
+@media (max-width: 1100px) {
   .app-header {
     &__inner { height: auto; min-height: 60px; flex-wrap: wrap; gap: 8px; padding-top: 10px; padding-bottom: 10px; }
     &__logo { flex-shrink: 0; white-space: nowrap; }
@@ -174,11 +177,15 @@ function handleCommand(cmd: string): void {
     }
   }
 }
-@media (max-width: 640px) {
-  .app-header__nav {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    text-align: center;
-  }
+.logo-divider { color: $color-text-secondary; margin: 0 4px; font-weight: 400; }
+.menu-toggle { display: none; min-height: 44px; padding: 8px 12px; border: 1px solid $color-border; border-radius: 12px; background: white; color: $color-primary; font: inherit; font-size: 14px; cursor: pointer; }
+@media (max-width: 767px) {
+  .menu-toggle { display: block; margin-left: auto; }
+  .app-header__logo .logo-text { font-size: 18px; }
+  .app-header__user { margin-left: 0; }
+  .app-header__nav { display: none; }
+  .app-header__nav.is-open { display: grid; grid-template-columns: 1fr; text-align: left; }
+  .user-name { max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .app-header__user :deep(.el-button) { padding: 8px 12px; margin-left: 0; }
 }
 </style>

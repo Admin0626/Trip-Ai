@@ -7,5 +7,27 @@ const route=useRoute(),router=useRouter(),sharedQuery=ref(''),busy=ref(false)
 const mode=computed(()=>route.query.mode==='routes'?'routes':route.query.mode==='ai'||route.path==='/ai-planner'?'ai':route.path==='/recommend'?'routes':'ai')
 function choose(value:'routes'|'ai'){if(!busy.value&&value!==mode.value)void router.push({path:'/travel-assistant',query:{mode:value}})}
 </script>
-<template><main class="travel-assistant" data-testid="travel-assistant"><header><h1>旅行助手</h1><p>描述旅行需求，选择查找已有路线，或连接自己的模型生成个性化行程。</p></header><div class="assistant-modes" role="tablist" aria-label="旅行助手方式"><button id="assistant-ai-tab" type="button" role="tab" :aria-selected="mode==='ai'" aria-controls="assistant-panel" :disabled="busy" @click="choose('ai')"><strong>AI定制行程</strong><span>模型回答旅行建议，并生成可保存的每日行程</span></button><button id="assistant-routes-tab" type="button" role="tab" :aria-selected="mode==='routes'" aria-controls="assistant-panel" :disabled="busy" @click="choose('routes')"><strong>查找已有路线</strong><span>筛选系统已发布路线，查看详情与预约，无需密钥</span></button></div><p class="mode-note">两种方式会沿用你的需求文字。已有路线按人均参考价筛选，AI按总预算规划，请分别确认条件。切换方式后需重新填写密钥。</p><section id="assistant-panel" role="tabpanel" :aria-labelledby="mode==='ai'?'assistant-ai-tab':'assistant-routes-tab'"><AiPlanner v-if="mode==='ai'" embedded v-model:shared-query="sharedQuery" @busy="busy=$event"/><Recommend v-else embedded v-model:shared-query="sharedQuery"/></section></main></template>
-<style scoped>.travel-assistant{max-width:1000px;margin:auto;padding:30px 20px 60px}h1{font-size:30px;margin:0 0 12px}header p,.mode-note{color:#64748b;line-height:1.7}.assistant-modes{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0 12px}.assistant-modes button{text-align:left;border:1px solid #dbe3ef;background:#fff;border-radius:12px;padding:18px;cursor:pointer;color:#334155}.assistant-modes button[aria-selected=true]{border-color:#2563eb;background:#eff6ff;color:#1d4ed8}.assistant-modes button:focus-visible{outline:3px solid #93c5fd;outline-offset:3px}.assistant-modes button:disabled{cursor:wait;opacity:.65}.assistant-modes strong,.assistant-modes span{display:block}.assistant-modes strong{font-size:18px;margin-bottom:8px}.assistant-modes span,.mode-note{font-size:14px}.mode-note{margin-bottom:24px}@media(max-width:640px){.travel-assistant{padding:24px 12px}.assistant-modes{grid-template-columns:1fr;gap:10px}}</style>
+<template>
+  <main class="travel-assistant page-wrapper" data-testid="travel-assistant">
+    <header><h1>旅行助手</h1><p>描述旅行需求，选择查找已有路线，或连接自己的模型生成个性化行程。</p></header>
+    <div class="assistant-modes" role="tablist" aria-label="旅行助手方式">
+      <button id="assistant-ai-tab" type="button" role="tab" :aria-selected="mode==='ai'" aria-controls="assistant-panel" :disabled="busy" @click="choose('ai')">AI定制行程</button>
+      <button id="assistant-routes-tab" type="button" role="tab" :aria-selected="mode==='routes'" aria-controls="assistant-panel" :disabled="busy" @click="choose('routes')">查找已有路线</button>
+    </div>
+    <p class="mode-note">{{mode === 'ai' ? '模型回答旅行建议，并生成可保存的每日行程。' : '筛选系统已发布路线，查看详情与预约，无需密钥。'}}两种方式沿用需求文字；已有路线按人均参考价筛选，AI按总预算规划。切换后需重新填写密钥。</p>
+    <section id="assistant-panel" role="tabpanel" :aria-labelledby="mode==='ai'?'assistant-ai-tab':'assistant-routes-tab'">
+      <AiPlanner v-if="mode==='ai'" embedded v-model:shared-query="sharedQuery" @busy="busy=$event" />
+      <Recommend v-else embedded v-model:shared-query="sharedQuery" />
+    </section>
+  </main>
+</template>
+<style scoped>
+h1 { font-size: 32px; font-weight: 600; margin: 0 0 24px; }
+header p,.mode-note { color: var(--trip-muted); line-height: 1.7; }
+.assistant-modes { display: flex; flex-wrap: wrap; gap: 16px; margin: 32px 0 16px; }
+.assistant-modes button { border: 1px solid var(--trip-border); background: white; border-radius: 12px; padding: 12px 24px; min-height: 48px; font: inherit; cursor: pointer; color: var(--trip-forest); }
+.assistant-modes button[aria-selected=true] { border-color: var(--trip-forest); background: var(--trip-forest); color: white; }
+.assistant-modes button:disabled { cursor: wait; opacity: .65; }
+.mode-note { font-size: 14px; margin-bottom: 32px; max-width: 80ch; }
+@media (max-width:767px) { .assistant-modes { flex-direction: column; align-items: flex-start; } }
+</style>

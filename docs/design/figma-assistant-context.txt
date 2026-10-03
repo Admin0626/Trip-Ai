@@ -1,0 +1,191 @@
+type TripButtonPrimaryProps = {
+  className?: string;
+  label?: string;
+};
+
+function TripButtonPrimary({ className, label = "开始规划" }: TripButtonPrimaryProps) {
+  return (
+    <div className={className || "bg-[var(--trip-forest,#2f6650)] content-stretch flex items-start pl-[var(--24px,24px)] pr-[24px] py-[12px] relative rounded-bl-[12px] rounded-br-[12px] rounded-tl-[var(--12px,12px)] rounded-tr-[12px]"} data-node-id="5:24" data-name="Trip/Button/Primary">
+      <p className="[word-break:break-word] font-['Noto_Sans_SC:Medium'] font-medium leading-[1.5] relative shrink-0 text-[16px] text-[color:var(--trip-surface,white)] whitespace-nowrap" data-node-id="5:25">
+        {label}
+      </p>
+    </div>
+  );
+}
+
+type TripButtonSecondaryProps = {
+  className?: string;
+  label?: string;
+};
+
+function TripButtonSecondary({ className, label = "查看路线" }: TripButtonSecondaryProps) {
+  return (
+    <div className={className || "bg-[var(--trip-surface,white)] border border-[var(--trip-border,#e4e4e7)] border-solid content-stretch flex items-start pl-[var(--24px,24px)] pr-[24px] py-[12px] relative rounded-bl-[12px] rounded-br-[12px] rounded-tl-[var(--12px,12px)] rounded-tr-[12px]"} data-node-id="5:26" data-name="Trip/Button/Secondary">
+      <p className="[word-break:break-word] font-['Noto_Sans_SC:Medium'] font-medium leading-[1.5] relative shrink-0 text-[16px] text-[color:var(--trip-forest,#2f6650)] whitespace-nowrap" data-node-id="5:27">
+        {label}
+      </p>
+    </div>
+  );
+}
+
+export default function Desktop() {
+  return (
+    <div className="bg-[var(--trip-canvas,#fafafa)] content-stretch flex flex-col items-start relative size-full" data-node-id="5:37" data-name="旅行助手 / Desktop">
+      <div className="[word-break:break-word] bg-[var(--trip-surface,white)] content-stretch flex gap-[48px] items-center leading-[1.5] px-[80px] py-[20px] relative shrink-0 w-[1440px] whitespace-pre-wrap" data-node-id="6:132" data-name="Navigation">
+        <p className="font-['Noto_Sans_SC:Medium'] font-medium relative shrink-0 text-[20px] text-[color:var(--trip-forest,#2f6650)] w-[170px]" data-node-id="6:133">{`Trip-AI  /  智游行程`}</p>
+        <p className="font-['Noto_Sans_SC:Regular'] font-normal relative shrink-0 text-[16px] text-[color:var(--trip-muted,#52525b)] w-[448px]" data-node-id="6:134">{`首页        路线        目的地        旅行助手        旅行资料        我的规划`}</p>
+      </div>
+      <div className="content-stretch flex flex-col gap-[48px] items-start pb-[64px] pt-[56px] px-[80px] relative shrink-0 w-[1440px]" data-node-id="6:135" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_SC:Medium'] font-medium leading-[1.5] relative shrink-0 text-[32px] text-[color:var(--trip-ink,#27272a)] w-[128px]" data-node-id="6:136">
+          旅行助手
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[1.5] relative shrink-0 text-[16px] text-[color:var(--trip-muted,#52525b)] w-[1280px]" data-node-id="6:137">
+          描述旅行需求，选择查找已有路线，或连接自己的模型生成个性化行程。
+        </p>
+        <div className="content-stretch flex gap-[16px] items-start relative shrink-0 w-[289px]" data-node-id="6:138" data-name="Mode switch">
+          <TripButtonPrimary className="bg-[var(--trip-forest,#2f6650)] content-stretch flex items-start pl-[var(--24px,24px)] pr-[24px] py-[12px] relative rounded-bl-[12px] rounded-br-[12px] rounded-tl-[var(--12px,12px)] rounded-tr-[12px] shrink-0" label="AI定制行程" />
+          <TripButtonSecondary className="bg-[var(--trip-surface,white)] border border-[var(--trip-border,#e4e4e7)] border-solid content-stretch flex items-start pl-[var(--24px,24px)] pr-[24px] py-[12px] relative rounded-bl-[12px] rounded-br-[12px] rounded-tl-[var(--12px,12px)] rounded-tr-[12px] shrink-0" label="查找已有路线" />
+        </div>
+        <div className="[word-break:break-word] bg-[var(--trip-surface,white)] border border-[var(--trip-border,#e4e4e7)] border-solid content-stretch flex flex-col gap-[16px] items-start leading-[1.5] p-[24px] relative rounded-bl-[20px] rounded-br-[20px] rounded-tl-[var(--20px,20px)] rounded-tr-[20px] shrink-0 w-[1280px]" data-node-id="6:143" data-name="Usage">
+          <p className="font-['Noto_Sans_SC:Medium'] font-medium relative shrink-0 text-[20px] text-[color:var(--trip-ink,#27272a)] w-[99px]" data-node-id="6:144">
+            AI请求用量
+          </p>
+          <p className="font-['Noto_Sans_SC:Regular'] font-normal relative shrink-0 text-[14px] text-[color:var(--trip-muted,#52525b)] w-[1232px]" data-node-id="6:145">
+            按实际配额展示当前用量和重置时间
+          </p>
+        </div>
+        <div className="content-stretch flex gap-[24px] items-start relative shrink-0 w-[1280px]" data-node-id="6:146" data-name="Planner columns">
+          <div className="bg-[var(--trip-surface,white)] border border-[var(--trip-border,#e4e4e7)] border-solid content-stretch flex flex-col gap-[16px] items-start p-[24px] relative rounded-bl-[20px] rounded-br-[20px] rounded-tl-[var(--20px,20px)] rounded-tr-[20px] shrink-0 w-[628px]" data-node-id="6:147" data-name="Model connection">
+            <p className="[word-break:break-word] font-['Noto_Sans_SC:Medium'] font-medium leading-[1.5] relative shrink-0 text-[20px] text-[color:var(--trip-ink,#27272a)] w-[142px]" data-node-id="6:148">
+              1. 连接你的模型
+            </p>
+            <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[1.5] relative shrink-0 text-[14px] text-[color:var(--trip-muted,#52525b)] w-[580px]" data-node-id="6:149">
+              API基础地址
+            </p>
+            <div className="bg-[var(--trip-surface,white)] border border-[var(--trip-border,#e4e4e7)] border-solid content-stretch flex flex-col items-start p-[16px] relative rounded-[12px] shrink-0 w-[580px]" data-node-id="6:150" data-name="Trip/Input">
+              <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[1.5] relative shrink-0 text-[16px] text-[color:var(--trip-muted,#52525b)] w-full" data-node-id="I6:150;5:31">{`https://api.deepseek.com`}</p>
+            </div>
+            <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[1.5] relative shrink-0 text-[14px] text-[color:var(--trip-muted,#52525b)] w-[580px]" data-node-id="6:152">
+              模型名称
+            </p>
+            <div className="bg-[var(--trip-surface,white)] border border-[var(--trip-border,#e4e4e7)] border-solid content-stretch flex flex-col items-start p-[16px] relative rounded-[12px] shrink-0 w-[580px]" data-node-id="6:153" data-name="Trip/Input">
+              <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[1.5] relative shrink-0 text-[16px] text-[color:var(--trip-muted,#52525b)] w-full" data-node-id="I6:153;5:31">
+                deepseek-flash
+              </p>
+            </div>
+            <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[1.5] relative shrink-0 text-[14px] text-[color:var(--trip-muted,#52525b)] w-[580px]" data-node-id="6:155">
+              API Key
+            </p>
+            <div className="bg-[var(--trip-surface,white)] border border-[var(--trip-border,#e4e4e7)] border-solid content-stretch flex flex-col items-start p-[16px] relative rounded-[12px] shrink-0 w-[580px]" data-node-id="6:156" data-name="Trip/Input">
+              <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[1.5] relative shrink-0 text-[16px] text-[color:var(--trip-muted,#52525b)] w-full" data-node-id="I6:156;5:31">
+                只在当前页面使用，不会保存
+              </p>
+            </div>
+            <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[1.5] relative shrink-0 text-[14px] text-[color:var(--trip-muted,#52525b)] w-[580px]" data-node-id="6:158">
+              密钥只在当前页面内存中使用，刷新或离开需要重新填写。
+            </p>
+            <TripButtonSecondary className="bg-[var(--trip-surface,white)] border border-[var(--trip-border,#e4e4e7)] border-solid content-stretch flex items-start pl-[var(--24px,24px)] pr-[24px] py-[12px] relative rounded-bl-[12px] rounded-br-[12px] rounded-tl-[var(--12px,12px)] rounded-tr-[12px] shrink-0" label="测试连接" />
+            <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[1.5] relative shrink-0 text-[14px] text-[color:var(--trip-forest,#2f6650)] w-[580px]" data-node-id="6:161">
+              记住地址与模型 · 清除设置与密钥
+            </p>
+            <TripButtonSecondary className="bg-[var(--trip-surface,white)] border border-[var(--trip-border,#e4e4e7)] border-solid content-stretch flex items-start pl-[var(--24px,24px)] pr-[24px] py-[12px] relative rounded-bl-[12px] rounded-br-[12px] rounded-tl-[var(--12px,12px)] rounded-tr-[12px] shrink-0" label="刷新模型状态" />
+          </div>
+          <div className="bg-[var(--trip-surface,white)] border border-[var(--trip-border,#e4e4e7)] border-solid content-stretch flex flex-col gap-[16px] items-start p-[24px] relative rounded-bl-[20px] rounded-br-[20px] rounded-tl-[var(--20px,20px)] rounded-tr-[20px] shrink-0 w-[628px]" data-node-id="6:164" data-name="Travel needs">
+            <p className="[word-break:break-word] font-['Noto_Sans_SC:Medium'] font-medium leading-[1.5] relative shrink-0 text-[20px] text-[color:var(--trip-ink,#27272a)] w-[142px]" data-node-id="6:165">
+              2. 你的旅行需求
+            </p>
+            <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[1.5] relative shrink-0 text-[14px] text-[color:var(--trip-muted,#52525b)] w-[580px]" data-node-id="6:166">
+              告诉AI你想去哪里、喜欢什么、有哪些限制
+            </p>
+            <div className="bg-[var(--trip-surface,white)] border border-[var(--trip-border,#e4e4e7)] border-solid content-stretch flex flex-col items-start p-[16px] relative rounded-[12px] shrink-0 w-[580px]" data-node-id="6:167" data-name="Trip/Input">
+              <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[1.5] relative shrink-0 text-[16px] text-[color:var(--trip-muted,#52525b)] w-full" data-node-id="I6:167;5:31">
+                例如：想去大理玩3天，喜欢美食和自然风光，每天不要太赶。
+              </p>
+            </div>
+            <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[1.5] relative shrink-0 text-[14px] text-[color:var(--trip-muted,#52525b)] w-[580px]" data-node-id="6:169">
+              天数（1—14）
+            </p>
+            <div className="bg-[var(--trip-surface,white)] border border-[var(--trip-border,#e4e4e7)] border-solid content-stretch flex flex-col items-start p-[16px] relative rounded-[12px] shrink-0 w-[580px]" data-node-id="6:170" data-name="Trip/Input">
+              <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[1.5] relative shrink-0 text-[16px] text-[color:var(--trip-muted,#52525b)] w-full" data-node-id="I6:170;5:31">
+                3
+              </p>
+            </div>
+            <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[1.5] relative shrink-0 text-[14px] text-[color:var(--trip-muted,#52525b)] w-[580px]" data-node-id="6:172">
+              总预算（元）
+            </p>
+            <div className="bg-[var(--trip-surface,white)] border border-[var(--trip-border,#e4e4e7)] border-solid content-stretch flex flex-col items-start p-[16px] relative rounded-[12px] shrink-0 w-[580px]" data-node-id="6:173" data-name="Trip/Input">
+              <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[1.5] relative shrink-0 text-[16px] text-[color:var(--trip-muted,#52525b)] w-full" data-node-id="I6:173;5:31">
+                3000
+              </p>
+            </div>
+            <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[1.5] relative shrink-0 text-[14px] text-[color:var(--trip-muted,#52525b)] w-[580px]" data-node-id="6:175">
+              同行人数
+            </p>
+            <div className="bg-[var(--trip-surface,white)] border border-[var(--trip-border,#e4e4e7)] border-solid content-stretch flex flex-col items-start p-[16px] relative rounded-[12px] shrink-0 w-[580px]" data-node-id="6:176" data-name="Trip/Input">
+              <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[1.5] relative shrink-0 text-[16px] text-[color:var(--trip-muted,#52525b)] w-full" data-node-id="I6:176;5:31">
+                1
+              </p>
+            </div>
+            <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[1.5] relative shrink-0 text-[14px] text-[color:var(--trip-muted,#52525b)] w-[580px]" data-node-id="6:178">
+              出发日期
+            </p>
+            <div className="bg-[var(--trip-surface,white)] border border-[var(--trip-border,#e4e4e7)] border-solid content-stretch flex flex-col items-start p-[16px] relative rounded-[12px] shrink-0 w-[580px]" data-node-id="6:179" data-name="Trip/Input">
+              <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[1.5] relative shrink-0 text-[16px] text-[color:var(--trip-muted,#52525b)] w-full" data-node-id="I6:179;5:31">
+                选择出发日期
+              </p>
+            </div>
+            <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[1.5] relative shrink-0 text-[14px] text-[color:var(--trip-muted,#52525b)] w-[580px]" data-node-id="6:181">
+              保存时关联的目的地
+            </p>
+            <div className="bg-[var(--trip-surface,white)] border border-[var(--trip-border,#e4e4e7)] border-solid content-stretch flex flex-col items-start p-[16px] relative rounded-[12px] shrink-0 w-[580px]" data-node-id="6:182" data-name="Trip/Input">
+              <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[1.5] relative shrink-0 text-[16px] text-[color:var(--trip-muted,#52525b)] w-full" data-node-id="I6:182;5:31">
+                选择目的地（可选）
+              </p>
+            </div>
+            <TripButtonPrimary className="bg-[var(--trip-forest,#2f6650)] content-stretch flex items-start pl-[var(--24px,24px)] pr-[24px] py-[12px] relative rounded-bl-[12px] rounded-br-[12px] rounded-tl-[var(--12px,12px)] rounded-tr-[12px] shrink-0" label="生成AI行程" />
+          </div>
+        </div>
+        <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[1.5] relative shrink-0 text-[14px] text-[color:var(--trip-muted,#52525b)] w-[1280px]" data-node-id="6:186">
+          生成后先查看建议与每日行程，再确认保存到我的规划。
+        </p>
+      </div>
+      <div className="[word-break:break-word] bg-[var(--trip-surface,white)] content-stretch flex flex-col font-['Noto_Sans_SC:Regular'] font-normal gap-[16px] items-start leading-[1.5] px-[80px] py-[24px] relative shrink-0 text-[14px] text-[color:var(--trip-muted,#52525b)] w-[1440px]" data-node-id="6:187" data-name="Footer">
+        <p className="relative shrink-0 w-[120px]" data-node-id="6:188">
+          Trip-AI · 智游行程
+        </p>
+        <p className="relative shrink-0 w-[182px]" data-node-id="6:189">
+          发现目的地，安排下一段旅程
+        </p>
+      </div>
+    </div>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## Trip/Button/Primary
+**Node ID:** 5:24
+
+Trip-AI 操作按钮。文本属性可改；森林绿用于主操作，浅色用于辅助或已选方式。
+
+## Trip/Button/Secondary
+**Node ID:** 5:26
+
+Trip-AI 操作按钮。文本属性可改；森林绿用于主操作，浅色用于辅助或已选方式。
+
+## Trip/Input
+**Node ID:** 5:30
+
+有标签的输入区域，复用颜色、边界与圆角。
+
+Images and SVGs will be stored as constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These constants will be used in the code as the source for the image, ex: <img src={image} />. Image assets are stored on a remote server for 7 days and can be fetched using the provided URLs until they expire.

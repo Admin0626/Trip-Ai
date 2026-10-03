@@ -34,7 +34,7 @@ let circuitRevision = 0, circuitDeadline = 0, mounted = true
 const ticker = window.setInterval(() => { clockTick.value = performance.now(); if(busy.value==='generate')elapsed.value=Math.floor((performance.now()-startedAt)/1000) }, 1000)
 const circuitWait = computed(() => Math.max(0, Math.ceil((circuitDeadline - clockTick.value) / 1000)))
 const circuitBlocked = computed(() => circuit.value?.phase === 'HALF_OPEN' || (circuit.value?.phase === 'OPEN' && circuitWait.value > 0))
-const exhausted = computed(() => !!usage.value && [usage.value.quota.hourly, usage.value.quota.daily, usage.value.quota.globalDaily].some(q => q.remaining === 0))
+const exhausted = computed(() => usage.value?.quota.hourly.remaining === 0)
 const storageKey = computed(() => `trip_ai_connection_${user.userInfo?.id ?? 'none'}`)
 let revision = 0
 function invalidate() { revision++; preview.value = null; acknowledged.value = false; error.value = '' }
@@ -167,27 +167,26 @@ onMounted(async () => {
 </script>
 
 <template>
-  <main class="ai-planner" :class="{embedded}">
+  <div class="ai-planner" :class="{embedded}">
     <h1 v-if="!embedded">让 AI 帮你规划旅程</h1>
     <p class="hint">连接自己的模型服务，生成行程预览，确认后保存并继续编辑。</p>
     <section class="panel quota-panel" data-testid="ai-usage" aria-live="polite">
-      <div class="usage-heading"><h2>我的AI额度</h2><el-button :loading="refreshingUsage" :disabled="!!busy" @click="refreshUsage">刷新额度</el-button></div>
+      <div class="usage-heading"><h2>调用状态</h2><el-button :loading="refreshingUsage" :disabled="!!busy" @click="refreshUsage">刷新状态</el-button></div>
       <template v-if="usage">
         <div class="fields">
-          <p data-testid="hourly-remaining">本小时剩余 <strong>{{ usage.quota.hourly.remaining }}</strong> / {{ usage.quota.hourly.limit }} 次</p>
-          <p data-testid="daily-remaining">今日剩余 <strong>{{ usage.quota.daily.remaining }}</strong> / {{ usage.quota.daily.limit }} 次</p>
+          <p data-testid="hourly-remaining">本小时可调用 <strong>{{ usage.quota.hourly.remaining }}</strong> / {{ usage.quota.hourly.limit }} 次</p>
         </div>
         <p class="hint">今日操作 {{ usage.today.operations }} 次：成功 {{ usage.today.succeeded }}，失败 {{ usage.today.failed }}；平均耗时 {{ Math.round(usage.today.averageCostMs) }} ms。</p>
-        <p class="hint">北京时间：小时额度重置于 {{ resetTime(usage.quota.hourly.resetAt) }}，日额度重置于 {{ resetTime(usage.quota.daily.resetAt) }}。全站今日剩余 {{ usage.quota.globalDaily.remaining }} 次。</p>
-        <el-alert v-if="exhausted" title="AI额度已用尽。到重置时间后点击刷新额度，可继续使用基础旅行推荐。" type="warning" :closable="false" />
+        <p class="hint">每小时调用窗口重置于 {{ resetTime(usage.quota.hourly.resetAt) }}（北京时间）。</p>
+        <el-alert v-if="exhausted" title="本小时调用次数已达上限。窗口重置后刷新状态即可继续，也可使用基础旅行推荐。" type="warning" :closable="false" />
       </template>
-      <el-alert v-else-if="usageError" title="暂时无法读取额度，请刷新重试；模型调用仍由服务端校验额度。" type="warning" :closable="false" />
-      <p class="hint">连接测试和每次模型生成尝试各用1次额度，结构重试另用1次；已发起的失败请求不退还。操作统计按一次测试或生成计数，可能与额度用量不同。基础旅行推荐不消耗模型额度。</p>
+      <el-alert v-else-if="usageError" title="暂时无法读取调用状态，请刷新重试；模型调用仍由服务端进行限流校验。" type="warning" :closable="false" />
+      <p class="hint">使用你提供的模型服务，Trip-AI不设置个人或全站每日调用上限；模型余额和计费由服务商管理。每小时限流用于保护转发服务，连接测试、每次生成尝试和结构重试各计1次，已发起的失败请求也计入次数。</p>
       <router-link to="/recommend">使用基础旅行推荐</router-link>
     </section>
-    <el-form label-position="top" :disabled="!!busy">
+    <el-form class="planner-columns" label-position="top" :disabled="!!busy">
       <section class="panel">
-        <h2>1. 标准 API 配置</h2>
+        <h2>1. 连接你的模型</h2>
         <p class="hint">填写API地址、模型名称与API Key即可使用自己的模型。DeepSeek已预填地址与模型，密钥由你自行填写。</p>
         <el-button :disabled="!!busy" @click="deepseekDefaults">填入DeepSeek地址与模型</el-button>
         <el-form-item label="API基础地址（可包含端口）">
@@ -243,10 +242,10 @@ onMounted(async () => {
     </el-form>
     <section v-if="busy === 'generate' && showProgress" class="panel" data-testid="planner-progress" aria-live="polite">
       <h2>{{ stageText }}</h2><p>第{{ attempt }}次尝试 · 已等待{{ elapsed }}秒</p>
-      <p class="hint">取消会停止后台等待；已准入的调用不退额度，模型服务可能已经计费。离开页面也会停止等待。</p>
+      <p class="hint">取消会停止后台等待；已准入的调用仍计入本小时次数，模型服务可能已经计费。离开页面也会停止等待。</p>
       <el-button type="warning" :loading="cancelling" @click="cancelGeneration">取消生成</el-button>
     </section>
-    <el-alert v-if="cancelled" title="已停止本次生成等待，未保存行程。已准入的调用不退额度。" type="info" :closable="false" data-testid="planner-cancelled" />
+    <el-alert v-if="cancelled" title="已停止本次生成等待，未保存行程。已准入的调用仍计入本小时次数。" type="info" :closable="false" data-testid="planner-cancelled" />
     <el-alert v-if="error" :title="error" type="error" :closable="false" role="alert" />
     <section v-if="preview" class="panel preview" data-testid="ai-preview">
       <h2>3. 模型回答与每日行程</h2>
@@ -267,19 +266,25 @@ onMounted(async () => {
       <el-checkbox v-model="acknowledged" :disabled="!!busy">我已查看行程，保存为可编辑草稿</el-checkbox>
       <div><el-button type="primary" :disabled="!acknowledged || !!busy" :loading="busy === 'save'" @click="save">保存到我的规划并编辑</el-button></div>
     </section>
-  </main>
+  </div>
 </template>
 
 <style scoped>
-.ai-planner { max-width: 960px; margin: auto; padding: 30px 20px 60px; }
-.ai-planner.embedded{max-width:none;padding:0}.model-answer{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.8;background:#f0f7ff;border-radius:10px;padding:16px;margin:16px 0}
+.ai-planner { max-width: 1280px; margin: auto; padding: 30px 20px 60px; }
+.ai-planner.embedded{max-width:none;padding:0}.model-answer{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.8;background:var(--trip-tint);border-radius:12px;padding:16px;margin:16px 0}
 h1 { font-size: 30px; } h2 { margin: 0 0 20px; font-size: 20px; }
-.panel { background: white; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px; margin: 24px 0; }
-.hint { color: #64748b; font-size: 14px; line-height: 1.7; }
+.panel { background: white; border: 1px solid var(--trip-border); border-radius: 20px; padding: 24px; margin: 24px 0; min-width: 0; overflow-wrap: anywhere; }
+.hint { color: var(--trip-muted); font-size: 14px; line-height: 1.7; }
+.planner-columns { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; align-items: start; margin-top: 24px; }
+.planner-columns > .panel { margin: 0; }
+.planner-columns .fields { grid-template-columns: 1fr; }
+.planner-columns :deep(.el-input-number), .planner-columns :deep(.el-date-editor) { width: 100%; }
+.planner-columns :deep(.el-form-item__label) { height: auto; white-space: normal; }
+.planner-columns :deep(.el-form-item) { margin-top: 16px; }
 .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }.wide { grid-column: 1 / -1; }
 .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }.actions .el-button { margin: 0; }
 .usage-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }.usage-heading h2 { margin: 0; }
-.day { border-bottom: 1px solid #e2e8f0; padding: 16px 0; line-height: 1.7; }.day li { margin: 16px 0; }.day p { margin: 4px 0; }
+.day { border-bottom: 1px solid var(--trip-border); padding: 16px 0; line-height: 1.7; }.day li { margin: 16px 0; }.day p { margin: 4px 0; }
 .preview > div:last-child { margin-top: 14px; }
-@media(max-width:640px) { .fields { grid-template-columns: 1fr; }.panel { padding: 18px; }.ai-planner { padding: 24px 12px; } }
+@media(max-width:767px) { .fields,.planner-columns { grid-template-columns: 1fr; }.panel { padding: 24px; }.ai-planner { padding: 24px 20px; }.usage-heading { flex-wrap: wrap; } }
 </style>

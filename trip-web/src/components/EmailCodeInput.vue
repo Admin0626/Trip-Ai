@@ -30,4 +30,4 @@ async function sendCode(){
     <p v-if="notice" role="status" class="code-notice">{{notice}}</p>
   </el-form-item>
 </template>
-<style scoped>.code-row{display:flex;gap:8px;width:100%}.code-row .el-input{min-width:0}.code-notice{font-size:12px;color:#64748b;line-height:1.6;margin:8px 0 0}</style>
+<style scoped>.code-row{display:flex;gap:8px;width:100%}.code-row .el-input{min-width:0}.code-notice{font-size:12px;color:var(--trip-muted);line-height:1.6;margin:8px 0 0}</style>

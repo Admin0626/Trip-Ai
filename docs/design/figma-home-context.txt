@@ -1,0 +1,172 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/f8ddbf98-1914-4345-bea3-5a6266c546d2";
+const imgFrame = `${assetPathPrefix}/7a89a.svg`;
+
+function TripNatureLandscape({ className }: { className?: string }) {
+  return (
+    <div className={className || "h-[480px] relative w-[640px]"} data-node-id="6:2" data-name="Trip/NatureLandscape">
+      <div className="absolute h-[480px] left-0 top-0 w-[640px]" data-node-id="6:3" data-name="Frame">
+        <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFrame} />
+      </div>
+    </div>
+  );
+}
+
+type TripButtonPrimaryProps = {
+  className?: string;
+  label?: string;
+};
+
+function TripButtonPrimary({ className, label = "开始规划" }: TripButtonPrimaryProps) {
+  return (
+    <div className={className || "bg-[var(--trip-forest,#2f6650)] content-stretch flex items-start pl-[var(--24px,24px)] pr-[24px] py-[12px] relative rounded-bl-[12px] rounded-br-[12px] rounded-tl-[var(--12px,12px)] rounded-tr-[12px]"} data-node-id="5:24" data-name="Trip/Button/Primary">
+      <p className="[word-break:break-word] font-['Noto_Sans_SC:Medium'] font-medium leading-[1.5] relative shrink-0 text-[16px] text-[color:var(--trip-surface,white)] whitespace-nowrap" data-node-id="5:25">
+        {label}
+      </p>
+    </div>
+  );
+}
+
+export default function Desktop() {
+  return (
+    <div className="bg-[var(--trip-canvas,#fafafa)] content-stretch flex flex-col items-start relative size-full" data-node-id="5:35" data-name="首页 / Desktop">
+      <div className="[word-break:break-word] bg-[var(--trip-surface,white)] content-stretch flex gap-[48px] items-center leading-[1.5] px-[80px] py-[20px] relative shrink-0 w-[1440px] whitespace-pre-wrap" data-node-id="6:16" data-name="Navigation">
+        <p className="font-['Noto_Sans_SC:Medium'] font-medium relative shrink-0 text-[20px] text-[color:var(--trip-forest,#2f6650)] w-[170px]" data-node-id="6:17">{`Trip-AI  /  智游行程`}</p>
+        <p className="font-['Noto_Sans_SC:Regular'] font-normal relative shrink-0 text-[16px] text-[color:var(--trip-muted,#52525b)] w-[448px]" data-node-id="6:18">{`首页        路线        目的地        旅行助手        旅行资料        我的规划`}</p>
+      </div>
+      <div className="content-stretch flex flex-col gap-[48px] items-start pb-[64px] pt-[56px] px-[80px] relative shrink-0 w-[1440px]" data-node-id="6:19" data-name="Main">
+        <div className="content-stretch flex gap-[64px] items-center relative shrink-0 w-[1280px]" data-node-id="6:20" data-name="Hero">
+          <div className="content-stretch flex flex-col gap-[24px] items-start relative shrink-0 w-[576px]" data-node-id="6:21" data-name="Hero copy">
+            <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[1.5] relative shrink-0 text-[14px] text-[color:var(--trip-forest,#2f6650)] w-[168px]" data-node-id="6:22">
+              为下一次出发，留一点期待
+            </p>
+            <div className="[word-break:break-word] font-['Noto_Sans_SC:Medium'] font-medium leading-[0] relative shrink-0 text-[48px] text-[color:var(--trip-ink,#27272a)] w-[576px]" data-node-id="6:23">
+              <p className="leading-[1.5] mb-0">下一段旅程，</p>
+              <p className="leading-[1.5]">从这里开始</p>
+            </div>
+            <div className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[0] relative shrink-0 text-[16px] text-[color:var(--trip-muted,#52525b)] w-[576px]" data-node-id="6:24">
+              <p className="leading-[1.5] mb-0">发现目的地，挑选路线，</p>
+              <p className="leading-[1.5]">安排适合自己的行程。</p>
+            </div>
+            <TripButtonPrimary className="bg-[var(--trip-forest,#2f6650)] content-stretch flex items-start pl-[var(--24px,24px)] pr-[24px] py-[12px] relative rounded-bl-[12px] rounded-br-[12px] rounded-tl-[var(--12px,12px)] rounded-tr-[12px] shrink-0" />
+            <p className="[word-break:break-word] font-['Noto_Sans_SC:Regular'] font-normal leading-[1.5] relative shrink-0 text-[14px] text-[color:var(--trip-muted,#52525b)] w-[209px]" data-node-id="6:27">
+              自然风光 · 城市漫步 · 轻松规划
+            </p>
+          </div>
+          <TripNatureLandscape className="h-[480px] overflow-clip relative rounded-[24px] shrink-0 w-[640px]" />
+        </div>
+        <div className="[word-break:break-word] content-stretch flex flex-col gap-[24px] items-start leading-[1.5] relative shrink-0 w-[1280px]" data-node-id="6:42" data-name="热门目的地">
+          <p className="font-['Noto_Sans_SC:Medium'] font-medium relative shrink-0 text-[28px] text-[color:var(--trip-ink,#27272a)] w-[140px]" data-node-id="6:43">
+            热门目的地
+          </p>
+          <div className="content-stretch flex gap-[24px] items-start relative shrink-0 w-[1280px]" data-node-id="6:44" data-name="Content grid">
+            <div className="bg-[var(--trip-surface,white)] border border-[var(--trip-border,#e4e4e7)] border-solid content-stretch flex flex-col gap-[16px] items-start p-[24px] relative rounded-bl-[20px] rounded-br-[20px] rounded-tl-[var(--20px,20px)] rounded-tr-[20px] shrink-0 w-[628px]" data-node-id="6:45" data-name="张家界">
+              <p className="font-['Noto_Sans_SC:Medium'] font-medium relative shrink-0 text-[24px] text-[color:var(--trip-ink,#27272a)] w-[72px]" data-node-id="6:46">
+                张家界
+              </p>
+              <p className="font-['Noto_Sans_SC:Regular'] font-normal relative shrink-0 text-[14px] text-[color:var(--trip-muted,#52525b)] w-[119px]" data-node-id="6:47">
+                湖南省 · 张家界市
+              </p>
+              <p className="font-['Noto_Sans_SC:Regular'] font-normal relative shrink-0 text-[14px] text-[color:var(--trip-forest,#2f6650)] w-[70px]" data-node-id="6:48">
+                查看目的地
+              </p>
+            </div>
+            <div className="bg-[var(--trip-surface,white)] border border-[var(--trip-border,#e4e4e7)] border-solid content-stretch flex flex-col gap-[16px] items-start p-[24px] relative rounded-bl-[20px] rounded-br-[20px] rounded-tl-[var(--20px,20px)] rounded-tr-[20px] shrink-0 w-[628px]" data-node-id="6:49" data-name="云南">
+              <p className="font-['Noto_Sans_SC:Medium'] font-medium relative shrink-0 text-[24px] text-[color:var(--trip-ink,#27272a)] w-[48px]" data-node-id="6:50">
+                云南
+              </p>
+              <p className="font-['Noto_Sans_SC:Regular'] font-normal relative shrink-0 text-[14px] text-[color:var(--trip-muted,#52525b)] w-[105px]" data-node-id="6:51">
+                云南省 · 昆明市
+              </p>
+              <p className="font-['Noto_Sans_SC:Regular'] font-normal relative shrink-0 text-[14px] text-[color:var(--trip-forest,#2f6650)] w-[70px]" data-node-id="6:52">
+                查看目的地
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="[word-break:break-word] content-stretch flex flex-col gap-[24px] items-start leading-[1.5] relative shrink-0 w-[1280px]" data-node-id="6:53" data-name="精选路线">
+          <p className="font-['Noto_Sans_SC:Medium'] font-medium relative shrink-0 text-[28px] text-[color:var(--trip-ink,#27272a)] w-[112px]" data-node-id="6:54">
+            精选路线
+          </p>
+          <div className="content-stretch flex gap-[24px] items-start relative shrink-0 w-[1280px]" data-node-id="6:55" data-name="Content grid">
+            <div className="bg-[var(--trip-surface,white)] border border-[var(--trip-border,#e4e4e7)] border-solid content-stretch flex flex-col gap-[12px] items-start p-[24px] relative rounded-[20px] shrink-0 w-[628px]" data-node-id="6:56" data-name="Trip/RouteCard">
+              <p className="font-['Noto_Sans_SC:Medium'] font-medium relative shrink-0 text-[20px] text-[color:var(--trip-ink,#27272a)] w-[512px]" data-node-id="I6:56;5:33">
+                云南大理丽江香格里拉 5 日纯玩
+              </p>
+              <p className="font-['Noto_Sans_SC:Regular'] font-normal relative shrink-0 text-[14px] text-[color:var(--trip-muted,#52525b)] w-[512px]" data-node-id="I6:56;5:34">
+                云南 · 5 天 · ¥2,980.00 /人
+              </p>
+            </div>
+            <div className="bg-[var(--trip-surface,white)] border border-[var(--trip-border,#e4e4e7)] border-solid content-stretch flex flex-col gap-[12px] items-start p-[24px] relative rounded-[20px] shrink-0 w-[628px]" data-node-id="6:59" data-name="Trip/RouteCard">
+              <p className="font-['Noto_Sans_SC:Medium'] font-medium relative shrink-0 text-[20px] text-[color:var(--trip-ink,#27272a)] w-[512px]" data-node-id="I6:59;5:33">
+                大理洱海环湖 3 日慢行
+              </p>
+              <p className="font-['Noto_Sans_SC:Regular'] font-normal relative shrink-0 text-[14px] text-[color:var(--trip-muted,#52525b)] w-[512px]" data-node-id="I6:59;5:34">
+                大理 · 3 天 · ¥1,680.00 /人
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="[word-break:break-word] content-stretch flex flex-col gap-[24px] items-start leading-[1.5] relative shrink-0 w-[1280px]" data-node-id="6:62" data-name="热门路线">
+          <p className="font-['Noto_Sans_SC:Medium'] font-medium relative shrink-0 text-[28px] text-[color:var(--trip-ink,#27272a)] w-[112px]" data-node-id="6:63">
+            热门路线
+          </p>
+          <div className="content-stretch flex gap-[24px] items-start relative shrink-0 w-[1280px]" data-node-id="6:64" data-name="Content grid">
+            <div className="bg-[var(--trip-surface,white)] border border-[var(--trip-border,#e4e4e7)] border-solid content-stretch flex flex-col gap-[12px] items-start p-[24px] relative rounded-[20px] shrink-0 w-[628px]" data-node-id="6:65" data-name="Trip/RouteCard">
+              <p className="font-['Noto_Sans_SC:Medium'] font-medium relative shrink-0 text-[20px] text-[color:var(--trip-ink,#27272a)] w-[512px]" data-node-id="I6:65;5:33">
+                云南大理丽江香格里拉 5 日纯玩
+              </p>
+              <p className="font-['Noto_Sans_SC:Regular'] font-normal relative shrink-0 text-[14px] text-[color:var(--trip-muted,#52525b)] w-[512px]" data-node-id="I6:65;5:34">
+                云南 · 5 天 · ¥2,980.00 /人
+              </p>
+            </div>
+            <div className="bg-[var(--trip-surface,white)] border border-[var(--trip-border,#e4e4e7)] border-solid content-stretch flex flex-col gap-[12px] items-start p-[24px] relative rounded-[20px] shrink-0 w-[628px]" data-node-id="6:68" data-name="Trip/RouteCard">
+              <p className="font-['Noto_Sans_SC:Medium'] font-medium relative shrink-0 text-[20px] text-[color:var(--trip-ink,#27272a)] w-[512px]" data-node-id="I6:68;5:33">
+                大理洱海环湖 3 日慢行
+              </p>
+              <p className="font-['Noto_Sans_SC:Regular'] font-normal relative shrink-0 text-[14px] text-[color:var(--trip-muted,#52525b)] w-[512px]" data-node-id="I6:68;5:34">
+                大理 · 3 天 · ¥1,680.00 /人
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="[word-break:break-word] bg-[var(--trip-surface,white)] content-stretch flex flex-col font-['Noto_Sans_SC:Regular'] font-normal gap-[16px] items-start leading-[1.5] px-[80px] py-[24px] relative shrink-0 text-[14px] text-[color:var(--trip-muted,#52525b)] w-[1440px]" data-node-id="6:71" data-name="Footer">
+        <p className="relative shrink-0 w-[120px]" data-node-id="6:72">
+          Trip-AI · 智游行程
+        </p>
+        <p className="relative shrink-0 w-[182px]" data-node-id="6:73">
+          发现目的地，安排下一段旅程
+        </p>
+      </div>
+    </div>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## Trip/Button/Primary
+**Node ID:** 5:24
+
+Trip-AI 操作按钮。文本属性可改；森林绿用于主操作，浅色用于辅助或已选方式。
+
+## Trip/NatureLandscape
+**Node ID:** 6:2
+
+自然主题示意插画；与代码中的 nature-landscape.svg 一致，不代表实际目的地照片。
+
+## Trip/RouteCard
+**Node ID:** 5:32
+
+路线信息卡；实际数据来自系统目录，内容覆盖用于样式示例。
+
+Images and SVGs will be stored as constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These constants will be used in the code as the source for the image, ex: <img src={image} />. Image assets are stored on a remote server for 7 days and can be fetched using the provided URLs until they expire.

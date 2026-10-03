@@ -6,9 +6,9 @@ import AppFooter from '@/components/common/AppFooter.vue'
 <template>
   <div class="user-layout">
     <AppHeader />
-    <main class="user-layout__main">
+    <div class="user-layout__main">
       <router-view />
-    </main>
+    </div>
     <AppFooter />
   </div>
 </template>
@@ -17,7 +17,7 @@ import AppFooter from '@/components/common/AppFooter.vue'
 .user-layout {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100dvh;
 
   &__main {
     flex: 1;

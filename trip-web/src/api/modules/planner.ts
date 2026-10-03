@@ -6,6 +6,7 @@ export interface ModelConnection { baseUrl: string; model: string; apiKey: strin
 export interface PlannerInput { connection: ModelConnection; query: string; days: number; budget: number; peopleNum: number; startDate: string }
 export interface PlannerPreview { draft: { title: string; dayList: PlanDayDTO[];answer?:string|null }; source: string; model: string; attempts: number }
 export interface QuotaBucket { limit: number; used: number; remaining: number; resetAt: string }
+export interface UnlimitedDailyBucket { enabled: false; limit: null; used: null; remaining: null; resetAt: null }
 export interface PlannerCircuit {
   phase: 'CLOSED' | 'OPEN' | 'HALF_OPEN'; total: number; failed: number; failurePercent: number
   minimumCalls: number; windowSeconds: number; cooldownSeconds: number; retryAt: string | null; retryAfterSeconds: number
@@ -14,7 +15,7 @@ export function plannerCircuit(connection: ModelConnection) {
   return request.post<ApiResponse<PlannerCircuit>>('/ai/planner/circuit', { connection }).then(r => r.data.data)
 }
 export interface PlannerUsage {
-  quota: { hourly: QuotaBucket; daily: QuotaBucket; globalDaily: QuotaBucket; timeZone: string }
+  quota: { hourly: QuotaBucket; daily: UnlimitedDailyBucket; globalDaily: UnlimitedDailyBucket; timeZone: string }
   today: { operations: number; succeeded: number; failed: number; averageCostMs: number }
 }
 export function plannerUsage() {
