@@ -186,6 +186,9 @@ public class InteractionServiceImpl implements InteractionService {
     @Override
     @Transactional
     public BookingVO createBooking(Long userId, BookingCreateDTO dto) {
+        SysUser bookingUser = sysUserMapper.selectOne(new LambdaQueryWrapper<SysUser>().eq(SysUser::getId,userId).last("FOR UPDATE"));
+        if(bookingUser==null || !Integer.valueOf(1).equals(bookingUser.getStatus()))
+            throw new BizException(401,"账号已不可用，请重新登录");
         // ① BR-INT-02：出行日期 ≥ 明天
         if (dto.getTravelDate().isBefore(LocalDate.now().plusDays(1))) {
             throw new BizException(ResultCode.BAD_REQUEST.getCode(), "出行日期须为明天及以后");

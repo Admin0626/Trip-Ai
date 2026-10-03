@@ -2,6 +2,7 @@ package com.trip.module.user.controller;
 
 import com.trip.common.result.R;
 import com.trip.module.user.service.UserSettingsService;
+import com.trip.module.user.service.AccountClosureService;
 import com.trip.module.user.vo.UserVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -13,6 +14,12 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class UserController {
     private final UserSettingsService settings;
+    private final AccountClosureService closure;
+
+    @PostMapping("/account/close")
+    public R<Void> close(@AuthenticationPrincipal Long userId, @RequestBody Map<String,Object> body) {
+        closure.close(userId,body); return R.ok();
+    }
 
     @GetMapping("/profile")
     public R<UserVO> profile(@AuthenticationPrincipal Long userId) { return R.ok(settings.profile(userId)); }

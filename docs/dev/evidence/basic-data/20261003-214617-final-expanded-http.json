@@ -1,0 +1,3832 @@
+{
+  "mode": "REAL_LOCAL_HTTP_MYSQL_REDIS_NO_MODEL",
+  "label": "final-expanded",
+  "startedAt": "2026-10-03T21:46:17.978309+08:00",
+  "checks": [
+    {
+      "name": "register n",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_e8f49a6673n",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "emailVerified": false,
+            "id": 10417,
+            "nickname": "pw_e8f49a6673n",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_e8f49a6673n"
+          },
+          "timestamp": 1791035178060
+        }
+      }
+    },
+    {
+      "name": "register adm",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_2977c922c6adm",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "emailVerified": false,
+            "id": 10418,
+            "nickname": "pw_2977c922c6adm",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_2977c922c6adm"
+          },
+          "timestamp": 1791035178182
+        }
+      }
+    },
+    {
+      "name": "register o",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_6b927a732ao",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "emailVerified": false,
+            "id": 10419,
+            "nickname": "pw_6b927a732ao",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_6b927a732ao"
+          },
+          "timestamp": 1791035178289
+        }
+      }
+    },
+    {
+      "name": "register r",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_fb3d64a394r",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "emailVerified": false,
+            "id": 10420,
+            "nickname": "pw_fb3d64a394r",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_fb3d64a394r"
+          },
+          "timestamp": 1791035178438
+        }
+      }
+    },
+    {
+      "name": "admin login",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_2977c922c6adm",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-10-03T21:46:18",
+              "email": null,
+              "emailVerified": false,
+              "id": 10418,
+              "nickname": " =SUM(1,1)",
+              "phone": null,
+              "role": "ADMIN",
+              "username": "pw_2977c922c6adm"
+            }
+          },
+          "timestamp": 1791035178570
+        }
+      }
+    },
+    {
+      "name": "normal login",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_e8f49a6673n",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-10-03T21:46:18",
+              "email": null,
+              "emailVerified": false,
+              "id": 10417,
+              "nickname": "pw_e8f49a6673n",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_e8f49a6673n"
+            }
+          },
+          "timestamp": 1791035178660
+        }
+      }
+    },
+    {
+      "name": "normal second device",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_e8f49a6673n",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-10-03T21:46:18",
+              "email": null,
+              "emailVerified": false,
+              "id": 10417,
+              "nickname": "pw_e8f49a6673n",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_e8f49a6673n"
+            }
+          },
+          "timestamp": 1791035178737
+        }
+      }
+    },
+    {
+      "name": "unrelated user login",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_6b927a732ao",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-10-03T21:46:18",
+              "email": null,
+              "emailVerified": false,
+              "id": 10419,
+              "nickname": "pw_6b927a732ao",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_6b927a732ao"
+            }
+          },
+          "timestamp": 1791035178816
+        }
+      }
+    },
+    {
+      "name": "export permission 401",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true
+    },
+    {
+      "name": "import permission 401",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/preview",
+        "batch": {
+          "version": 1,
+          "type": "DESTINATION",
+          "records": [
+            {
+              "name": "bd09061162",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 401,
+        "message": "请先登录",
+        "data": null
+      }
+    },
+    {
+      "name": "export permission 403",
+      "actual": [
+        403,
+        403
+      ],
+      "expected": [
+        403,
+        403
+      ],
+      "passed": true
+    },
+    {
+      "name": "import permission 403",
+      "actual": [
+        403,
+        403
+      ],
+      "expected": [
+        403,
+        403
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/preview",
+        "batch": {
+          "version": 1,
+          "type": "DESTINATION",
+          "records": [
+            {
+              "name": "bd09061162",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 403,
+        "message": "无权访问",
+        "data": null
+      }
+    },
+    {
+      "name": "CSV actual HTTP/status and BOM",
+      "actual": [
+        200,
+        true
+      ],
+      "expected": [
+        200,
+        true
+      ],
+      "passed": true
+    },
+    {
+      "name": "CSV attachment and no store",
+      "actual": [
+        true,
+        "no-store"
+      ],
+      "expected": [
+        true,
+        "no-store"
+      ],
+      "passed": true
+    },
+    {
+      "name": "CSV filtered single user",
+      "actual": 2,
+      "expected": 2,
+      "passed": true,
+      "response": {
+        "columns": [
+          "用户ID",
+          "用户名",
+          "昵称",
+          "城市",
+          "角色",
+          "状态",
+          "注册时间",
+          "最后登录时间"
+        ],
+        "row": [
+          "10418",
+          "pw_2977c922c6adm",
+          "' =SUM(1,1)",
+          "",
+          "ADMIN",
+          "1",
+          "2026-10-03T21:46:18",
+          "2026-10-03T21:46:19"
+        ]
+      }
+    },
+    {
+      "name": "CSV formula escaped",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "CSV no credentials",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "invalid export filter",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true
+    },
+    {
+      "name": "empty export has header only",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "destination preview",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/preview",
+        "batch": {
+          "version": 1,
+          "type": "DESTINATION",
+          "records": [
+            {
+              "name": "bd09061162a",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd09061162b",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "type": "DESTINATION",
+          "total": 2,
+          "valid": true,
+          "rows": [
+            {
+              "index": 1,
+              "name": "bd09061162a",
+              "valid": true,
+              "errors": []
+            },
+            {
+              "index": 2,
+              "name": "bd09061162b",
+              "valid": true,
+              "errors": []
+            }
+          ]
+        },
+        "timestamp": 1791035178954
+      }
+    },
+    {
+      "name": "valid preview",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "preview does not write",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "destination commit",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/commit",
+        "batch": {
+          "version": 1,
+          "type": "DESTINATION",
+          "records": [
+            {
+              "name": "bd09061162a",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd09061162b",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            }
+          ]
+        },
+        "requestId": "b70fcd14-090c-4d55-88a5-4ea95b2cba72"
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "type": "DESTINATION",
+          "total": 2,
+          "ids": [
+            259,
+            260
+          ],
+          "replayed": false
+        },
+        "timestamp": 1791035179026
+      }
+    },
+    {
+      "name": "same file replay",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/commit",
+        "batch": {
+          "version": 1,
+          "type": "DESTINATION",
+          "records": [
+            {
+              "name": "bd09061162a",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd09061162b",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            }
+          ]
+        },
+        "requestId": "b70fcd14-090c-4d55-88a5-4ea95b2cba72"
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "type": "DESTINATION",
+          "total": 2,
+          "ids": [
+            259,
+            260
+          ],
+          "replayed": true
+        },
+        "timestamp": 1791035179038
+      }
+    },
+    {
+      "name": "idempotent same IDs and replay",
+      "actual": [
+        [
+          259,
+          260
+        ],
+        true
+      ],
+      "expected": [
+        [
+          259,
+          260,
+          261,
+          261
+        ],
+        true
+      ],
+      "passed": true
+    },
+    {
+      "name": "same request changed file",
+      "actual": [
+        200,
+        409
+      ],
+      "expected": [
+        200,
+        409
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/commit",
+        "batch": {
+          "version": 1,
+          "type": "DESTINATION",
+          "records": [
+            {
+              "name": "bd09061162c",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            }
+          ]
+        },
+        "requestId": "b70fcd14-090c-4d55-88a5-4ea95b2cba72"
+      },
+      "response": {
+        "code": 409,
+        "message": "请求编号已用于其他文件，请重新预览",
+        "data": null,
+        "timestamp": 1791035179057
+      }
+    },
+    {
+      "name": "all imported destinations are offline",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "database duplicate preview",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/preview",
+        "batch": {
+          "version": 1,
+          "type": "DESTINATION",
+          "records": [
+            {
+              "name": "bd09061162a",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd09061162b",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "type": "DESTINATION",
+          "total": 2,
+          "valid": false,
+          "rows": [
+            {
+              "index": 1,
+              "name": "bd09061162a",
+              "valid": false,
+              "errors": [
+                "同省份已存在该目的地（含已删除记录）"
+              ]
+            },
+            {
+              "index": 2,
+              "name": "bd09061162b",
+              "valid": false,
+              "errors": [
+                "同省份已存在该目的地（含已删除记录）"
+              ]
+            }
+          ]
+        },
+        "timestamp": 1791035179121
+      }
+    },
+    {
+      "name": "duplicate marked invalid",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "attraction preview",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/preview",
+        "batch": {
+          "version": 1,
+          "type": "ATTRACTION",
+          "records": [
+            {
+              "destinationId": 259,
+              "name": "bd09061162spot",
+              "status": 0
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "type": "ATTRACTION",
+          "total": 1,
+          "valid": true,
+          "rows": [
+            {
+              "index": 1,
+              "name": "bd09061162spot",
+              "valid": true,
+              "errors": []
+            }
+          ]
+        },
+        "timestamp": 1791035179155
+      }
+    },
+    {
+      "name": "attraction commit",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/commit",
+        "batch": {
+          "version": 1,
+          "type": "ATTRACTION",
+          "records": [
+            {
+              "destinationId": 259,
+              "name": "bd09061162spot",
+              "status": 0
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "type": "ATTRACTION",
+          "total": 1,
+          "ids": [
+            206
+          ],
+          "replayed": false
+        },
+        "timestamp": 1791035179175
+      }
+    },
+    {
+      "name": "route preview",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/preview",
+        "batch": {
+          "version": 1,
+          "type": "ROUTE",
+          "records": [
+            {
+              "title": "bd09061162route",
+              "destinationId": 259,
+              "coverImg": "https://example.com/route.jpg",
+              "days": 1,
+              "price": 50,
+              "status": 0,
+              "dayList": [
+                {
+                  "title": "测试当天",
+                  "items": [
+                    {
+                      "title": "自由活动",
+                      "attractionId": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "type": "ROUTE",
+          "total": 1,
+          "valid": true,
+          "rows": [
+            {
+              "index": 1,
+              "name": "bd09061162route",
+              "valid": true,
+              "errors": []
+            }
+          ]
+        },
+        "timestamp": 1791035179189
+      }
+    },
+    {
+      "name": "valid route preview",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "route commit",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/commit",
+        "batch": {
+          "version": 1,
+          "type": "ROUTE",
+          "records": [
+            {
+              "title": "bd09061162route",
+              "destinationId": 259,
+              "coverImg": "https://example.com/route.jpg",
+              "days": 1,
+              "price": 50,
+              "status": 0,
+              "dayList": [
+                {
+                  "title": "测试当天",
+                  "items": [
+                    {
+                      "title": "自由活动",
+                      "attractionId": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "type": "ROUTE",
+          "total": 1,
+          "ids": [
+            390
+          ],
+          "replayed": false
+        },
+        "timestamp": 1791035179227
+      }
+    },
+    {
+      "name": "imported daily itinerary",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/catalog/routes/390",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "bookingCount": 0,
+            "coverImg": "https://example.com/route.jpg",
+            "dayList": [
+              {
+                "dayIndex": 1,
+                "items": [
+                  {
+                    "activity": "",
+                    "attractionId": 0,
+                    "cost": 0.0,
+                    "durationMin": 0,
+                    "hotel": "",
+                    "meal": "",
+                    "sortNo": 1,
+                    "timePoint": "",
+                    "tips": "",
+                    "title": "自由活动",
+                    "transport": ""
+                  }
+                ],
+                "summary": "",
+                "title": "测试当天"
+              }
+            ],
+            "days": 1,
+            "destinationId": 259,
+            "destinationName": "bd09061162a",
+            "difficulty": 1,
+            "highlights": "",
+            "id": 390,
+            "isTop": 0,
+            "notice": "",
+            "price": 50.0,
+            "quotaPerDay": 20,
+            "recommendWeight": 0.5,
+            "status": 0,
+            "subtitle": "",
+            "tags": [],
+            "title": "bd09061162route",
+            "viewCount": 0
+          },
+          "timestamp": 1791035179263
+        }
+      }
+    },
+    {
+      "name": "daily item retained",
+      "actual": "自由活动",
+      "expected": "自由活动",
+      "passed": true
+    },
+    {
+      "name": "mixed invalid row preview",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/preview",
+        "batch": {
+          "version": 1,
+          "type": "DESTINATION",
+          "records": [
+            {
+              "name": "bd09061162good",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd09061162bad",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": "120",
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "type": "DESTINATION",
+          "total": 2,
+          "valid": false,
+          "rows": [
+            {
+              "index": 1,
+              "name": "bd09061162good",
+              "valid": true,
+              "errors": []
+            },
+            {
+              "index": 2,
+              "name": "",
+              "valid": false,
+              "errors": [
+                "字段类型、未知字段或目的地ID不合法"
+              ]
+            }
+          ]
+        },
+        "timestamp": 1791035179297
+      }
+    },
+    {
+      "name": "mixed invalid row invalid",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "mixed invalid row whole batch denied",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/commit",
+        "batch": {
+          "version": 1,
+          "type": "DESTINATION",
+          "records": [
+            {
+              "name": "bd09061162good",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd09061162bad",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": "120",
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 400,
+        "message": "导入校验未通过，请重新预览并修正；本批未写入",
+        "data": null,
+        "timestamp": 1791035179330
+      }
+    },
+    {
+      "name": "unknown ID binding preview",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/preview",
+        "batch": {
+          "version": 1,
+          "type": "DESTINATION",
+          "records": [
+            {
+              "name": "bd09061162id",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0,
+              "id": 999999
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "type": "DESTINATION",
+          "total": 1,
+          "valid": false,
+          "rows": [
+            {
+              "index": 1,
+              "name": "",
+              "valid": false,
+              "errors": [
+                "字段类型、未知字段或目的地ID不合法"
+              ]
+            }
+          ]
+        },
+        "timestamp": 1791035179358
+      }
+    },
+    {
+      "name": "unknown ID binding invalid",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "unknown ID binding whole batch denied",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/commit",
+        "batch": {
+          "version": 1,
+          "type": "DESTINATION",
+          "records": [
+            {
+              "name": "bd09061162id",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0,
+              "id": 999999
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 400,
+        "message": "导入校验未通过，请重新预览并修正；本批未写入",
+        "data": null,
+        "timestamp": 1791035179391
+      }
+    },
+    {
+      "name": "unknown comma tag preview",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/preview",
+        "batch": {
+          "version": 1,
+          "type": "DESTINATION",
+          "records": [
+            {
+              "name": "bd09061162tag",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "a,b"
+              ],
+              "status": 0
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "type": "DESTINATION",
+          "total": 1,
+          "valid": false,
+          "rows": [
+            {
+              "index": 1,
+              "name": "bd09061162tag",
+              "valid": false,
+              "errors": [
+                "单个标签不能包含逗号"
+              ]
+            }
+          ]
+        },
+        "timestamp": 1791035179421
+      }
+    },
+    {
+      "name": "unknown comma tag invalid",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "unknown comma tag whole batch denied",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/commit",
+        "batch": {
+          "version": 1,
+          "type": "DESTINATION",
+          "records": [
+            {
+              "name": "bd09061162tag",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "a,b"
+              ],
+              "status": 0
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 400,
+        "message": "导入校验未通过，请重新预览并修正；本批未写入",
+        "data": null,
+        "timestamp": 1791035179454
+      }
+    },
+    {
+      "name": "file duplicate preview",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/preview",
+        "batch": {
+          "version": 1,
+          "type": "DESTINATION",
+          "records": [
+            {
+              "name": "bd09061162dup",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd09061162dup",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "type": "DESTINATION",
+          "total": 2,
+          "valid": false,
+          "rows": [
+            {
+              "index": 1,
+              "name": "bd09061162dup",
+              "valid": true,
+              "errors": []
+            },
+            {
+              "index": 2,
+              "name": "bd09061162dup",
+              "valid": false,
+              "errors": [
+                "文件内同一范围存在重名内容"
+              ]
+            }
+          ]
+        },
+        "timestamp": 1791035179484
+      }
+    },
+    {
+      "name": "file duplicate invalid",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "file duplicate whole batch denied",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/commit",
+        "batch": {
+          "version": 1,
+          "type": "DESTINATION",
+          "records": [
+            {
+              "name": "bd09061162dup",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd09061162dup",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 400,
+        "message": "导入校验未通过，请重新预览并修正；本批未写入",
+        "data": null,
+        "timestamp": 1791035179517
+      }
+    },
+    {
+      "name": "published not allowed preview",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/preview",
+        "batch": {
+          "version": 1,
+          "type": "DESTINATION",
+          "records": [
+            {
+              "name": "bd09061162public",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 1
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "type": "DESTINATION",
+          "total": 1,
+          "valid": false,
+          "rows": [
+            {
+              "index": 1,
+              "name": "bd09061162public",
+              "valid": false,
+              "errors": [
+                "批量导入仅创建下架内容，请设置status=0；导入后单独审核上架"
+              ]
+            }
+          ]
+        },
+        "timestamp": 1791035179531
+      }
+    },
+    {
+      "name": "published not allowed invalid",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "published not allowed whole batch denied",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/commit",
+        "batch": {
+          "version": 1,
+          "type": "DESTINATION",
+          "records": [
+            {
+              "name": "bd09061162public",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 1
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 400,
+        "message": "导入校验未通过，请重新预览并修正；本批未写入",
+        "data": null,
+        "timestamp": 1791035179550
+      }
+    },
+    {
+      "name": "invalid batch wrote no extra destination",
+      "actual": "2",
+      "expected": "2",
+      "passed": true
+    },
+    {
+      "name": "invalid parent",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/preview",
+        "batch": {
+          "version": 1,
+          "type": "ROUTE",
+          "records": [
+            {
+              "title": "bd09061162noParent",
+              "destinationId": 999999999,
+              "coverImg": "https://example.com/route.jpg",
+              "days": 1,
+              "price": 50,
+              "status": 0,
+              "dayList": [
+                {
+                  "title": "测试当天",
+                  "items": [
+                    {
+                      "title": "自由活动",
+                      "attractionId": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "type": "ROUTE",
+          "total": 1,
+          "valid": false,
+          "rows": [
+            {
+              "index": 1,
+              "name": "bd09061162noParent",
+              "valid": false,
+              "errors": [
+                "所属目的地不存在或已删除"
+              ]
+            }
+          ]
+        },
+        "timestamp": 1791035179625
+      }
+    },
+    {
+      "name": "invalid parent invalid",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "days mismatch",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/preview",
+        "batch": {
+          "version": 1,
+          "type": "ROUTE",
+          "records": [
+            {
+              "title": "bd09061162days",
+              "destinationId": 259,
+              "coverImg": "https://example.com/route.jpg",
+              "days": 2,
+              "price": 50,
+              "status": 0,
+              "dayList": [
+                {
+                  "title": "测试当天",
+                  "items": [
+                    {
+                      "title": "自由活动",
+                      "attractionId": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "type": "ROUTE",
+          "total": 1,
+          "valid": false,
+          "rows": [
+            {
+              "index": 1,
+              "name": "bd09061162days",
+              "valid": false,
+              "errors": [
+                "路线天数必须等于每日行程数量"
+              ]
+            }
+          ]
+        },
+        "timestamp": 1791035179640
+      }
+    },
+    {
+      "name": "days mismatch invalid",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "hidden attraction",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/preview",
+        "batch": {
+          "version": 1,
+          "type": "ROUTE",
+          "records": [
+            {
+              "title": "bd09061162spotRoute",
+              "destinationId": 259,
+              "coverImg": "https://example.com/route.jpg",
+              "days": 1,
+              "price": 50,
+              "status": 0,
+              "dayList": [
+                {
+                  "title": "一天",
+                  "items": [
+                    {
+                      "title": "关联",
+                      "attractionId": 206
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "type": "ROUTE",
+          "total": 1,
+          "valid": false,
+          "rows": [
+            {
+              "index": 1,
+              "name": "bd09061162spotRoute",
+              "valid": false,
+              "errors": [
+                "关联景点必须属于该目的地且已上架"
+              ]
+            }
+          ]
+        },
+        "timestamp": 1791035179672
+      }
+    },
+    {
+      "name": "hidden attraction invalid",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "empty records",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/preview",
+        "batch": {
+          "version": 1,
+          "type": "DESTINATION",
+          "records": []
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 400,
+        "message": "模板须为version=1、type与1至50条records",
+        "data": null,
+        "timestamp": 1791035179699
+      }
+    },
+    {
+      "name": "51 records",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/preview",
+        "batch": {
+          "version": 1,
+          "type": "DESTINATION",
+          "records": [
+            {
+              "name": "bd090611620",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd090611621",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd090611622",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd090611623",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd090611624",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd090611625",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd090611626",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd090611627",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd090611628",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd090611629",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116210",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116211",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116212",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116213",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116214",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116215",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116216",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116217",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116218",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116219",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116220",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116221",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116222",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116223",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116224",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116225",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116226",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116227",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116228",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116229",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116230",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116231",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116232",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116233",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116234",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116235",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116236",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116237",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116238",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116239",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116240",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116241",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116242",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116243",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116244",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116245",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116246",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116247",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116248",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116249",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd0906116250",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 400,
+        "message": "模板须为version=1、type与1至50条records",
+        "data": null,
+        "timestamp": 1791035179737
+      }
+    },
+    {
+      "name": "overflow version",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/preview",
+        "batch": {
+          "version": 4294967297,
+          "type": "DESTINATION",
+          "records": [
+            {
+              "name": "bd09061162a",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd09061162b",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 400,
+        "message": "模板须为version=1、type与1至50条records",
+        "data": null,
+        "timestamp": 1791035179766
+      }
+    },
+    {
+      "name": "duplicate JSON fields",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/preview",
+        "batch": "<bounded malformed file>",
+        "requestId": null
+      },
+      "response": {
+        "code": 400,
+        "message": "文件不是有效JSON（不能包含重复字段）",
+        "data": null,
+        "timestamp": 1791035179794
+      }
+    },
+    {
+      "name": "malformed JSON",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/preview",
+        "batch": "<bounded malformed file>",
+        "requestId": null
+      },
+      "response": {
+        "code": 400,
+        "message": "文件不是有效JSON（不能包含重复字段）",
+        "data": null,
+        "timestamp": 1791035179824
+      }
+    },
+    {
+      "name": "oversized file",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/preview",
+        "batch": "<bounded malformed file>",
+        "requestId": null
+      },
+      "response": {
+        "code": 400,
+        "message": "请选择1MiB以内的JSON文件",
+        "data": null,
+        "timestamp": 1791035179838
+      }
+    },
+    {
+      "name": "commit confirmation missing",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/commit",
+        "batch": {
+          "version": 1,
+          "type": "DESTINATION",
+          "records": [
+            {
+              "name": "bd09061162confirm",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 400,
+        "message": "请明确确认导入",
+        "data": null,
+        "timestamp": 1791035179857
+      }
+    },
+    {
+      "name": "collation duplicate preview",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/preview",
+        "batch": {
+          "version": 1,
+          "type": "DESTINATION",
+          "records": [
+            {
+              "name": "bd09061162cafe",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd09061162café",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "type": "DESTINATION",
+          "total": 2,
+          "valid": false,
+          "rows": [
+            {
+              "index": 1,
+              "name": "bd09061162cafe",
+              "valid": true,
+              "errors": []
+            },
+            {
+              "index": 2,
+              "name": "bd09061162café",
+              "valid": false,
+              "errors": [
+                "文件内同一范围存在重名内容"
+              ]
+            }
+          ]
+        },
+        "timestamp": 1791035179893
+      }
+    },
+    {
+      "name": "collation duplicate commits nothing",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/commit",
+        "batch": {
+          "version": 1,
+          "type": "DESTINATION",
+          "records": [
+            {
+              "name": "bd09061162cafe",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd09061162café",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 400,
+        "message": "导入校验未通过，请重新预览并修正；本批未写入",
+        "data": null,
+        "timestamp": 1791035179911
+      }
+    },
+    {
+      "name": "atomic failed import inserts nothing",
+      "actual": "2",
+      "expected": "2",
+      "passed": true
+    },
+    {
+      "name": "controller file size rejection",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/preview",
+        "batch": "<bounded malformed file>",
+        "requestId": null
+      },
+      "response": {
+        "code": 400,
+        "message": "请选择1MiB以内的JSON文件",
+        "data": null,
+        "timestamp": 1791035180008
+      }
+    },
+    {
+      "name": "oversize import message describes JSON",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "server multipart size rejection",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/preview",
+        "batch": "<bounded malformed file>",
+        "requestId": null
+      },
+      "response": {
+        "code": 400,
+        "message": "请提供file字段中的JSON文件，单批不超过1MiB",
+        "data": null,
+        "timestamp": 1791035180095
+      }
+    },
+    {
+      "name": "global multipart rejection describes JSON",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "parallel replay succeeds exactly once",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "response": [
+        {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "type": "DESTINATION",
+            "total": 1,
+            "ids": [
+              261
+            ],
+            "replayed": false
+          },
+          "timestamp": 1791035180128
+        },
+        {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "type": "DESTINATION",
+            "total": 1,
+            "ids": [
+              261
+            ],
+            "replayed": true
+          },
+          "timestamp": 1791035180128
+        }
+      ]
+    },
+    {
+      "name": "parallel replay IDs match",
+      "actual": [
+        261
+      ],
+      "expected": [
+        261
+      ],
+      "passed": true
+    },
+    {
+      "name": "parallel replay flags",
+      "actual": [
+        false,
+        true
+      ],
+      "expected": [
+        false,
+        true
+      ],
+      "passed": true
+    },
+    {
+      "name": "stale preview",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/preview",
+        "batch": {
+          "version": 1,
+          "type": "DESTINATION",
+          "records": [
+            {
+              "name": "bd09061162stale",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd09061162never",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "type": "DESTINATION",
+          "total": 2,
+          "valid": true,
+          "rows": [
+            {
+              "index": 1,
+              "name": "bd09061162stale",
+              "valid": true,
+              "errors": []
+            },
+            {
+              "index": 2,
+              "name": "bd09061162never",
+              "valid": true,
+              "errors": []
+            }
+          ]
+        },
+        "timestamp": 1791035180148
+      }
+    },
+    {
+      "name": "stale preview initially valid",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "catalog changed after preview",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/catalog/destinations",
+        "body": {
+          "name": "bd09061162stale",
+          "province": "浙江省",
+          "city": "验收城市",
+          "longitude": 120,
+          "latitude": 30,
+          "coverImg": "https://example.com/test.jpg",
+          "tags": [
+            "nature"
+          ],
+          "status": 0
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": 262,
+          "timestamp": 1791035180160
+        }
+      }
+    },
+    {
+      "name": "commit revalidates changed catalog",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "path": "/admin/catalog/import/commit",
+        "batch": {
+          "version": 1,
+          "type": "DESTINATION",
+          "records": [
+            {
+              "name": "bd09061162stale",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            },
+            {
+              "name": "bd09061162never",
+              "province": "浙江省",
+              "city": "验收城市",
+              "longitude": 120,
+              "latitude": 30,
+              "coverImg": "https://example.com/test.jpg",
+              "tags": [
+                "nature"
+              ],
+              "status": 0
+            }
+          ]
+        },
+        "requestId": null
+      },
+      "response": {
+        "code": 400,
+        "message": "导入校验未通过，请重新预览并修正；本批未写入",
+        "data": null,
+        "timestamp": 1791035180194
+      }
+    },
+    {
+      "name": "changed preview writes no second row",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "anonymous closure denied",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/user/account/close",
+        "body": {
+          "password": "<redacted>",
+          "confirmation": "注销账号"
+        }
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "请先登录",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "admin closure protected",
+      "actual": [
+        200,
+        403
+      ],
+      "expected": [
+        200,
+        403
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/user/account/close",
+        "body": {
+          "password": "<redacted>",
+          "confirmation": "注销账号"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 403,
+          "message": "管理员账号不能在此注销",
+          "data": null,
+          "timestamp": 1791035180249
+        }
+      }
+    },
+    {
+      "name": "wrong password",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/user/account/close",
+        "body": {
+          "password": "<redacted>",
+          "confirmation": "注销账号"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "当前密码不正确",
+          "data": null,
+          "timestamp": 1791035180333
+        }
+      }
+    },
+    {
+      "name": "wrong confirmation",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/user/account/close",
+        "body": {
+          "password": "<redacted>",
+          "confirmation": "yes"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请填写当前密码并输入‘注销账号’确认",
+          "data": null,
+          "timestamp": 1791035180355
+        }
+      }
+    },
+    {
+      "name": "extra owner",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/user/account/close",
+        "body": {
+          "password": "<redacted>",
+          "confirmation": "注销账号",
+          "userId": 10419
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请填写当前密码并输入‘注销账号’确认",
+          "data": null,
+          "timestamp": 1791035180371
+        }
+      }
+    },
+    {
+      "name": "numeric password",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/user/account/close",
+        "body": {
+          "password": "<redacted>",
+          "confirmation": "注销账号"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请填写当前密码并输入‘注销账号’确认",
+          "data": null,
+          "timestamp": 1791035180400
+        }
+      }
+    },
+    {
+      "name": "publish parent",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/catalog/destinations/259/status",
+        "body": {
+          "status": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1791035180420
+        }
+      }
+    },
+    {
+      "name": "publish route",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/catalog/routes/390/status",
+        "body": {
+          "status": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1791035180454
+        }
+      }
+    },
+    {
+      "name": "own active booking",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/interaction/booking",
+        "body": {
+          "routeId": 390,
+          "travelDate": "2026-10-04",
+          "peopleNum": 1,
+          "contactName": "验收用户",
+          "contactPhone": "13800009999",
+          "remark": "fixture"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "bookingId": 9149,
+            "bookingNo": "edaf72903d974d4c88e2c27e2c5c2c33",
+            "contactName": "验收用户",
+            "contactPhone": "13800009999",
+            "createTime": "2026-10-03 21:46:20",
+            "peopleNum": 1,
+            "remark": "fixture",
+            "routeId": 390,
+            "routeTitle": "bd09061162route",
+            "status": 0,
+            "travelDate": "2026-10-04"
+          },
+          "timestamp": 1791035180470
+        }
+      }
+    },
+    {
+      "name": "active booking blocks closure",
+      "actual": [
+        200,
+        409
+      ],
+      "expected": [
+        200,
+        409
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/user/account/close",
+        "body": {
+          "password": "<redacted>",
+          "confirmation": "注销账号"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 409,
+          "message": "还有待确认或已确认预约，请先取消或完成预约",
+          "data": null,
+          "timestamp": 1791035180551
+        }
+      }
+    },
+    {
+      "name": "cancel owned booking",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/interaction/booking/9149/cancel",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1791035180578
+        }
+      }
+    },
+    {
+      "name": "close own account",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/user/account/close",
+        "body": {
+          "password": "<redacted>",
+          "confirmation": "注销账号"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1791035180744
+        }
+      }
+    },
+    {
+      "name": "closure clears profile and tombstones",
+      "actual": "1:0:已注销用户:::",
+      "expected": "1:0:已注销用户:::",
+      "passed": true
+    },
+    {
+      "name": "all own sessions removed",
+      "actual": [],
+      "expected": [],
+      "passed": true
+    },
+    {
+      "name": "first closed device access rejected",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/profile",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期",
+          "data": null,
+          "timestamp": 1791035180860
+        }
+      }
+    },
+    {
+      "name": "first closed device refresh rejected",
+      "actual": [
+        200,
+        401
+      ],
+      "expected": [
+        200,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/refresh",
+        "body": {
+          "refreshToken": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期，请重新登录",
+          "data": null,
+          "timestamp": 1791035180886
+        }
+      }
+    },
+    {
+      "name": "second closed device access rejected",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/profile",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期",
+          "data": null,
+          "timestamp": 1791035180891
+        }
+      }
+    },
+    {
+      "name": "second closed device refresh rejected",
+      "actual": [
+        200,
+        401
+      ],
+      "expected": [
+        200,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/refresh",
+        "body": {
+          "refreshToken": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 401,
+          "message": "未登录或登录已过期，请重新登录",
+          "data": null,
+          "timestamp": 1791035180897
+        }
+      }
+    },
+    {
+      "name": "closed login denied",
+      "actual": [
+        200,
+        1001
+      ],
+      "expected": [
+        200,
+        1001
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_e8f49a6673n",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 1001,
+          "message": "用户名或密码错误",
+          "data": null,
+          "timestamp": 1791035180904
+        }
+      }
+    },
+    {
+      "name": "unrelated account stays active",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/user/profile",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": "",
+            "city": "",
+            "createTime": "2026-10-03T21:46:18",
+            "email": null,
+            "emailVerified": false,
+            "id": 10419,
+            "nickname": "pw_6b927a732ao",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_6b927a732ao"
+          },
+          "timestamp": 1791035180912
+        }
+      }
+    },
+    {
+      "name": "race login",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_fb3d64a394r",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-10-03T21:46:18",
+              "email": null,
+              "emailVerified": false,
+              "id": 10420,
+              "nickname": "pw_fb3d64a394r",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_fb3d64a394r"
+            }
+          },
+          "timestamp": 1791035180981
+        }
+      }
+    },
+    {
+      "name": "closure and booking race remains consistent",
+      "actual": true,
+      "expected": true,
+      "passed": true,
+      "response": [
+        {
+          "status": 200,
+          "body": {
+            "code": 409,
+            "message": "还有待确认或已确认预约，请先取消或完成预约",
+            "data": null,
+            "timestamp": 1791035181072
+          }
+        },
+        {
+          "status": 200,
+          "body": {
+            "code": 200,
+            "message": "success",
+            "data": {
+              "bookingId": 9150,
+              "bookingNo": "d159e257316b48e8907533f2cd048f31",
+              "contactName": "验收用户",
+              "contactPhone": "13800009999",
+              "createTime": "2026-10-03 21:46:20",
+              "peopleNum": 1,
+              "remark": "fixture",
+              "routeId": 390,
+              "routeTitle": "bd09061162route",
+              "status": 0,
+              "travelDate": "2026-10-04"
+            },
+            "timestamp": 1791035180996
+          }
+        }
+      ]
+    },
+    {
+      "name": "own fixture removed 10417",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "own fixture removed 10418",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "own fixture removed 10419",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "own fixture removed 10420",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ],
+  "phase": "COMPLETED",
+  "summary": {
+    "total": 106,
+    "passed": 106,
+    "failed": 0
+  }
+}

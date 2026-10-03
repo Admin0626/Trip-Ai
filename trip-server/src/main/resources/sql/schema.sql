@@ -1,6 +1,6 @@
 -- =====================================================================
 -- 数据库：基于 LLM 的旅行行程推荐系统
--- 版本：v1.2 ｜ 共 29 张表（26 张设计文档 + 评论点赞 + 本地知识分片/倒排词表；私人检索会话字段）
+-- 版本：v1.2 ｜ 共 30 张表（26 张设计文档 + 评论点赞 + 本地知识分片/倒排词表；私人检索会话字段）
 -- 依据：docs/05-数据库设计.md + docs/dev/建表对照清单.md（B1~B9 已裁定）
 -- 建表约定：utf8mb4 / InnoDB / bigint unsigned 自增主键 / 业务侧维护计数字段
 -- 执行：mysql -u root -p < schema.sql
@@ -583,3 +583,15 @@ CREATE TABLE sys_log (
     KEY idx_create_time (create_time),
     KEY idx_user_id (user_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='操作日志';
+
+-- 30. catalog_import_batch 目录导入幂等记录
+CREATE TABLE IF NOT EXISTS catalog_import_batch (
+    id bigint unsigned NOT NULL AUTO_INCREMENT,
+    user_id bigint unsigned NOT NULL,
+    request_id char(36) NOT NULL,
+    payload_hash char(64) NOT NULL,
+    result_json text NOT NULL,
+    create_time datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    UNIQUE KEY uk_owner_request(user_id,request_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='目录导入幂等结果（不存文件内容）';
