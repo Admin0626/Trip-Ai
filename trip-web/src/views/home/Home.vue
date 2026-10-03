@@ -3,155 +3,109 @@ import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { routeHotApi, routeRecommendHomeApi } from '@/api/modules/route'
 import { destinationHotApi } from '@/api/modules/destination'
-import RouteCard from '@/components/common/RouteCard.vue'
 import { activeBanners, type Banner } from '@/api/modules/catalog'
-
+import RouteCard from '@/components/common/RouteCard.vue'
+import CatalogCover from '@/components/common/CatalogCover.vue'
+import EmptyState from '@/components/common/EmptyState.vue'
 const router = useRouter()
-const hotRoutes = ref<RoutePageVO[]>([])
-const recommendRoutes = ref<RoutePageVO[]>([])
-const hotDests = ref<DestinationVO[]>([])
-const banners = ref<Banner[]>([])
-function bannerLink(b:Banner):string|null {
-  if(b.linkType==='ROUTE' && /^[1-9]\d*$/.test(b.linkValue))return `/route/${b.linkValue}`
-  if(b.linkType==='DESTINATION' && /^[1-9]\d*$/.test(b.linkValue))return `/destination/${b.linkValue}`
-  if(b.linkType==='URL')try{const u=new URL(b.linkValue);if(['http:','https:'].includes(u.protocol)&&!u.username&&!u.password)return u.href}catch{}
+const hotRoutes = ref<RoutePageVO[]>([]), recommendRoutes = ref<RoutePageVO[]>([]), hotDests = ref<DestinationVO[]>([])
+const banners = ref<Banner[]>([]), loading = ref(true), loadError = ref(false), autoplay = ref(false)
+function bannerLink(b: Banner): string | null {
+  if (b.linkType === 'ROUTE' && /^[1-9]\d*$/.test(b.linkValue)) return `/route/${b.linkValue}`
+  if (b.linkType === 'DESTINATION' && /^[1-9]\d*$/.test(b.linkValue)) return `/destination/${b.linkValue}`
+  if (b.linkType === 'URL') try {
+    const u = new URL(b.linkValue)
+    if (['http:', 'https:'].includes(u.protocol) && !u.username && !u.password) return u.href
+  } catch { /* 无效链接不提供跳转 */ }
   return null
 }
-
-onMounted(async () => {
-  void activeBanners().then(data=>banners.value=data).catch(()=>{})
-  try {
-    const [r1, r2, d] = await Promise.all([routeHotApi(5), routeRecommendHomeApi(), destinationHotApi(8)])
-    hotRoutes.value = r1
-    recommendRoutes.value = r2
-    hotDests.value = d
-  } catch {
-    /* 拦截器已提示 */
-  }
-})
+async function load() {
+  loading.value = true; loadError.value = false
+  const results = await Promise.allSettled([routeHotApi(5), routeRecommendHomeApi(), destinationHotApi(8), activeBanners()])
+  const [hot, recommended, destinations, banner] = results
+  if (hot.status === 'fulfilled') hotRoutes.value = hot.value
+  if (recommended.status === 'fulfilled') recommendRoutes.value = recommended.value
+  if (destinations.status === 'fulfilled') hotDests.value = destinations.value
+  if (banner.status === 'fulfilled') banners.value = banner.value
+  loadError.value = results.some(result => result.status === 'rejected'); loading.value = false
+}
+onMounted(() => { void load() })
 </script>
 
 <template>
-  <div class="home-page page-wrapper">
-    <!-- 轮播英雄区 -->
-    <section class="hero">
-      <div class="hero__inner container">
-        <h1 class="hero__title">用 AI 规划你的下一段旅程</h1>
-        <p class="hero__subtitle">智能推荐 · 行程规划 · 一键生成</p>
-        <div class="hero__actions">
-          <el-button type="primary" size="large" round @click="router.push('/routes')">浏览路线</el-button>
-          <el-button size="large" round plain @click="router.push('/plan/create')">开始规划</el-button>
-          <el-button size="large" round plain @click="router.push('/travel-assistant')">旅行助手 · 查路线或AI规划</el-button>
-        </div>
+  <main class="home-page page-wrapper">
+    <section class="hero" aria-labelledby="home-title">
+      <div class="hero__copy">
+        <p class="eyebrow">为下一次出发，留一点期待</p>
+        <h1 id="home-title">下一段旅程，<br />从这里开始</h1>
+        <p class="hero__subtitle">发现目的地，挑选路线，<br />安排适合自己的行程。</p>
+        <el-button type="primary" @click="router.push('/travel-assistant')">开始规划</el-button>
+        <p class="hero__note">自然风光 · 城市漫步 · 轻松规划</p>
       </div>
+      <div class="hero__landscape"><img src="/figma-landscape.svg" width="640" height="480" alt="" fetchpriority="high" /></div>
     </section>
-
-    <section v-if="banners.length" class="container section home-banners" aria-label="首页轮播">
-      <el-carousel height="280px" :interval="6000" :autoplay="banners.length>1" arrow="hover">
+    <div v-if="loadError" class="load-error" role="status">部分内容暂时无法加载。<el-button text type="primary" @click="load">重新加载</el-button></div>
+    <section class="section" aria-labelledby="destinations-title">
+      <div class="section__heading"><h2 id="destinations-title">热门目的地</h2><router-link to="/destinations">全部目的地</router-link></div>
+      <el-skeleton v-if="loading" :rows="3" animated />
+      <div v-else-if="hotDests.length" class="content-grid">
+        <router-link v-for="d in hotDests" :key="d.id" :to="`/destination/${d.id}`" class="dest-card card">
+          <CatalogCover :src="d.coverImg" :alt="d.name" compact />
+          <div class="dest-card__body"><h3>{{ d.name }}</h3><p>{{ d.province }} · {{ d.city }}</p><span>查看目的地</span></div>
+        </router-link>
+      </div>
+      <EmptyState v-else text="暂时没有热门目的地" />
+    </section>
+    <section class="section" aria-labelledby="recommended-title">
+      <div class="section__heading"><h2 id="recommended-title">精选路线</h2><router-link to="/routes">全部路线</router-link></div>
+      <el-skeleton v-if="loading" :rows="3" animated />
+      <div v-else-if="recommendRoutes.length" class="content-grid"><RouteCard v-for="r in recommendRoutes" :key="r.id" :route="r" /></div>
+      <EmptyState v-else text="暂时没有精选路线" />
+    </section>
+    <section class="section" aria-labelledby="hot-title">
+      <div class="section__heading"><h2 id="hot-title">热门路线</h2><span class="text-secondary">当前热门 Top 5</span></div>
+      <el-skeleton v-if="loading" :rows="3" animated />
+      <div v-else-if="hotRoutes.length" class="content-grid"><RouteCard v-for="r in hotRoutes" :key="r.id" :route="r" /></div>
+      <EmptyState v-else text="暂时没有热门路线" />
+    </section>
+    <section v-if="banners.length" class="section home-banners" aria-label="旅行精选轮播">
+      <div class="section__heading"><h2>旅行精选</h2><el-button v-if="banners.length > 1" :aria-pressed="autoplay" @click="autoplay = !autoplay">{{ autoplay ? '暂停轮播' : '自动播放' }}</el-button></div>
+      <el-carousel height="320px" :interval="6000" :autoplay="autoplay && banners.length > 1" arrow="always">
         <el-carousel-item v-for="b in banners" :key="b.id">
-          <a v-if="bannerLink(b)" :href="bannerLink(b)!" :target="b.linkType==='URL'?'_blank':undefined" rel="noopener noreferrer" class="banner-slide"><img :src="b.imageUrl" :alt="b.title"/><span>{{b.title}}</span></a>
-          <div v-else class="banner-slide"><img :src="b.imageUrl" :alt="b.title"/><span>{{b.title}}</span></div>
+          <component :is="bannerLink(b) ? 'a' : 'div'" :href="bannerLink(b) || undefined" :target="b.linkType === 'URL' ? '_blank' : undefined" rel="noopener noreferrer" class="banner-slide">
+            <CatalogCover :src="b.imageUrl" :alt="b.title" /><span>{{ b.title }}</span>
+          </component>
         </el-carousel-item>
       </el-carousel>
     </section>
-
-    <!-- 热门目的地 -->
-    <section class="container section">
-      <h2 class="section__title">热门目的地</h2>
-      <el-row :gutter="16">
-        <el-col v-for="d in hotDests" :key="d.id" :xs="12" :sm="8" :md="6">
-          <div class="dest-card card" role="link" tabindex="0" @click="router.push(`/destination/${d.id}`)" @keydown.enter="router.push(`/destination/${d.id}`)">
-            <img :src="d.coverImg" :alt="d.name" loading="lazy" />
-            <div class="dest-card__name">{{ d.name }}</div>
-            <div class="dest-card__meta">{{ d.province }} {{ d.city }}</div>
-          </div>
-        </el-col>
-      </el-row>
-    </section>
-
-    <!-- 精选路线 -->
-    <section class="container section">
-      <h2 class="section__title">精选路线</h2>
-      <el-row :gutter="16">
-        <el-col v-for="r in recommendRoutes" :key="r.id" :xs="12" :sm="8" :md="6">
-          <RouteCard :route="r" />
-        </el-col>
-      </el-row>
-    </section>
-
-    <!-- 热门路线 -->
-    <section class="container section">
-      <h2 class="section__title">热门路线 Top 5</h2>
-      <el-row :gutter="16">
-        <el-col v-for="r in hotRoutes" :key="r.id" :xs="12" :sm="8" :md="6">
-          <RouteCard :route="r" />
-        </el-col>
-      </el-row>
-    </section>
-  </div>
+  </main>
 </template>
 
 <style scoped lang="scss">
 @use '@/assets/styles/variables.scss' as *;
-
-.hero {
-  background: linear-gradient(135deg, #2f7bff 0%, #6aa5ff 100%);
-  color: #fff;
-  padding: 48px 32px;
-  border-radius: 12px;
-
-  &__title {
-    margin: 0 0 12px;
-    font-size: 32px;
-  }
-
-  &__subtitle {
-    margin: 0 0 24px;
-    opacity: 0.9;
-  }
-
-  &__actions {
-    display: flex;
-    gap: 12px;
-  }
-}
-.hero__actions{flex-wrap:wrap}.banner-slide{position:relative;display:block;height:100%;color:white}.banner-slide img{width:100%;height:100%;object-fit:cover}.banner-slide span{position:absolute;bottom:0;left:0;right:0;padding:24px;background:linear-gradient(transparent,rgba(0,0,0,.7));font-size:22px}.home-banners :deep(.el-carousel){border-radius:12px}@media(max-width:600px){.hero{padding:36px 20px}.hero__title{font-size:26px}.banner-slide span{font-size:18px;padding:18px}.home-banners :deep(.el-carousel__container){height:200px!important}}
-
-.section {
-  padding-top: 32px;
-
-  &__title {
-    font-size: 20px;
-    margin: 0 0 16px;
-  }
-}
-
-.dest-card {
-  margin-bottom: 16px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.2s;
-
-  &:hover {
-    transform: translateY(-4px);
-  }
-
-  img {
-    width: 100%;
-    height: 110px;
-    object-fit: cover;
-    display: block;
-  }
-
-  &__name {
-    padding: 10px 12px 2px;
-    font-weight: 600;
-  }
-
-  &__meta {
-    padding: 0 12px 10px;
-    font-size: 12px;
-    color: $color-text-secondary;
-  }
-}
+.hero { display: grid; grid-template-columns: .9fr 1fr; gap: 64px; align-items: center; }
+.hero__copy { display: grid; justify-items: start; gap: 24px; min-width: 0; }
+.hero p, .hero h1 { margin: 0; }
+.eyebrow { color: $color-primary; font-size: 14px; }
+.hero h1 { font-size: clamp(34px, 3.34vw, 48px); font-weight: 600; line-height: 1.5; }
+.hero__subtitle { color: $color-text-secondary; line-height: 1.5; }
+.hero__note { color: $color-text-secondary; font-size: 14px; }
+.hero__landscape { min-width: 0; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 24px; background: #EDF4EF; }
+.hero__landscape img { display: block; width: 100%; height: auto; }
+.section { margin-top: 48px; }
+.section__heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; }
+.section__heading h2 { margin: 0; font-size: 28px; font-weight: 600; }
+.section__heading a, .section__heading > span { font-size: 14px; }
+.content-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.dest-card { display: block; min-width: 0; color: $color-text; overflow: hidden; box-shadow: none; transition: transform .2s; }
+.dest-card:hover { transform: translateY(-2px); }
+.dest-card__body { padding: 24px; display: grid; gap: 16px; }
+.dest-card h3 { margin: 0; font-size: 24px; font-weight: 600; }
+.dest-card p { margin: 0; font-size: 14px; color: $color-text-secondary; }
+.dest-card span { font-size: 14px; color: $color-primary; }
+.banner-slide { display: grid; grid-template-rows: 1fr auto; height: 100%; background: white; border-radius: 20px; overflow: hidden; border: 1px solid $color-border; }
+.banner-slide span { padding: 16px 24px; font-size: 20px; color: $color-text; }
+.banner-slide :deep(.catalog-cover) { height: 100%; min-height: 0; }
+.load-error { margin-top: 24px; color: $color-text-secondary; }
+@media (max-width: 767px) { .hero, .content-grid { grid-template-columns: 1fr; }.hero { gap: 32px; }.section { margin-top: 32px; }.section__heading h2 { font-size: 24px; } }
 </style>

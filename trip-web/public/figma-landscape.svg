@@ -1,0 +1,21 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="640" height="480" viewBox="0 0 640 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame" clip-path="url(#clip0_0_26)">
+<path id="Vector" d="M616 0H24C10.7452 0 0 10.7452 0 24V456C0 469.255 10.7452 480 24 480H616C629.255 480 640 469.255 640 456V24C640 10.7452 629.255 0 616 0Z" fill="#EDF4EF"/>
+<path id="Vector_2" d="M474 150C500.51 150 522 128.51 522 102C522 75.4903 500.51 54 474 54C447.49 54 426 75.4903 426 102C426 128.51 447.49 150 474 150Z" fill="white"/>
+<path id="Vector_3" d="M0 290L112 146L201 250L332 94L490 272L580 187L640 254V480H0V290Z" fill="#C6D9CD"/>
+<path id="Vector_4" d="M279 157L332 94L392 162L354 150L333 162L309 145L279 157Z" fill="#F9FAF9"/>
+<path id="Vector_5" d="M0 347L145 248L293 361L424 251L640 360V480H0V347Z" fill="#93B39E"/>
+<path id="Vector_6" d="M0 422C124 326 223 334 343 403C463 472 543 433 640 400V480H0V422Z" fill="#577F66"/>
+<path id="Vector_7" d="M300 353C317 373 325 397 304 416C284 433 255 452 269 480H347C315 447 343 429 352 405C362 380 345 364 327 353H300Z" fill="#E7EFE9"/>
+<path id="Vector_8" d="M76 381L102 329L128 381H76ZM83 354L102 313L121 354H83Z" fill="#2F6650"/>
+<path id="Vector_9" d="M101 379V398" stroke="#2F6650" stroke-width="5" stroke-linecap="round"/>
+<path id="Vector_10" d="M522 397L552 334L582 397H522ZM531 364L552 316L573 364H531Z" fill="#2F6650"/>
+<path id="Vector_11" d="M552 395V417" stroke="#2F6650" stroke-width="5" stroke-linecap="round"/>
+<path id="Vector_12" d="M52 105H156M74 117H122" stroke="white" stroke-width="6" stroke-linecap="round"/>
+</g>
+<defs>
+<clipPath id="clip0_0_26">
+<rect width="640" height="480" fill="white"/>
+</clipPath>
+</defs>
+</svg>

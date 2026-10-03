@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { formatMoney } from '@/utils/format'
+import CatalogCover from './CatalogCover.vue'
 
 const props = defineProps<{ route: RoutePageVO }>()
 const router = useRouter()
@@ -11,13 +12,13 @@ const tags = computed(() => (props.route.tags ?? []).slice(0, 3))
 </script>
 
 <template>
-  <div class="route-card card" @click="router.push(`/route/${route.id}`)">
+  <article class="route-card card" role="link" tabindex="0" :aria-label="route.title" @click="router.push(`/route/${route.id}`)" @keydown.enter="router.push(`/route/${route.id}`)">
     <div class="route-card__cover">
-      <img :src="route.coverImg" :alt="route.title" loading="lazy" />
-      <span v-if="route.isTop === 1" class="route-card__top">置顶</span>
+      <CatalogCover :src="route.coverImg" :alt="route.title" compact />
     </div>
     <div class="route-card__body">
       <h3 class="route-card__title">{{ route.title }}</h3>
+      <span v-if="route.isTop === 1" class="route-card__top">精选</span>
       <p v-if="route.subtitle" class="route-card__subtitle">{{ route.subtitle }}</p>
       <div class="route-card__meta">
         <span>{{ destName }}</span>
@@ -30,10 +31,10 @@ const tags = computed(() => (props.route.tags ?? []).slice(0, 3))
       </div>
       <div class="route-card__footer">
         <span class="money">{{ formatMoney(route.price) }}<small>/人</small></span>
-        <span class="text-secondary">👍 {{ route.likeCount }} · ⭐ {{ route.favoriteCount }}</span>
+        <span class="text-secondary">点赞 {{ route.likeCount }} · 收藏 {{ route.favoriteCount }}</span>
       </div>
     </div>
-  </div>
+  </article>
 </template>
 
 <style scoped lang="scss">
@@ -41,6 +42,8 @@ const tags = computed(() => (props.route.tags ?? []).slice(0, 3))
 
 .route-card {
   overflow: hidden;
+  min-width: 0;
+  box-shadow: none;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
 
@@ -51,7 +54,6 @@ const tags = computed(() => (props.route.tags ?? []).slice(0, 3))
 
   &__cover {
     position: relative;
-    height: 160px;
     overflow: hidden;
     background: $color-bg;
 
@@ -63,32 +65,29 @@ const tags = computed(() => (props.route.tags ?? []).slice(0, 3))
   }
 
   &__top {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    background: rgba(255, 183, 77, 0.95);
-    color: #fff;
-    font-size: 12px;
+    display: inline-block;
+    margin-bottom: 12px;
+    background: #EDF4EF;
+    color: $color-primary;
+    font-size: 14px;
     padding: 2px 8px;
     border-radius: 4px;
   }
 
   &__body {
-    padding: 12px;
+    padding: 24px;
   }
 
   &__title {
-    margin: 0 0 4px;
-    font-size: 16px;
+    margin: 0 0 12px;
+    font-size: 20px;
     font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow-wrap: anywhere;
   }
 
   &__subtitle {
     margin: 0 0 8px;
-    font-size: 12px;
+    font-size: 14px;
     color: $color-text-secondary;
     white-space: nowrap;
     overflow: hidden;
@@ -97,9 +96,10 @@ const tags = computed(() => (props.route.tags ?? []).slice(0, 3))
 
   &__meta {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 10px;
-    font-size: 12px;
+    font-size: 14px;
     color: $color-text-secondary;
   }
 
@@ -115,10 +115,12 @@ const tags = computed(() => (props.route.tags ?? []).slice(0, 3))
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 13px;
+    font-size: 14px;
+    flex-wrap: wrap;
+    gap: 12px;
 
     .money small {
-      font-size: 11px;
+      font-size: 14px;
       color: $color-text-secondary;
     }
   }

@@ -1,0 +1,103 @@
+{
+  "createdNodeIds": [
+    "VariableID:5:3",
+    "VariableID:5:4",
+    "VariableID:5:5",
+    "VariableID:5:6",
+    "VariableID:5:7",
+    "VariableID:5:8",
+    "VariableID:5:9",
+    "VariableID:5:10",
+    "VariableID:5:11",
+    "VariableID:5:12",
+    "VariableID:5:13",
+    "VariableID:5:14",
+    "VariableID:5:15",
+    "VariableID:5:16",
+    "VariableID:5:17",
+    "VariableID:5:18",
+    "S:6d9758f3ae4dc884cee80697f9064166bffb7661,",
+    "S:8518e73364140d20f00eb136a6a782bd7a64376d,",
+    "S:81bc1144010e4831241b8a024a360323503e0ea7,",
+    "S:25a715301ab42cb6a00294c47be5d428802ab7a3,",
+    "S:12314d85b1800cc76246fa8b446298dd8d8454d0,",
+    "5:24",
+    "5:25",
+    "5:26",
+    "5:27",
+    "5:28",
+    "5:29",
+    "5:30",
+    "5:31",
+    "5:32",
+    "5:33",
+    "5:34",
+    "5:35",
+    "5:36",
+    "5:37",
+    "5:38",
+    "5:39",
+    "5:40",
+    "5:41",
+    "5:42"
+  ],
+  "collectionId": "VariableCollectionId:5:2",
+  "variables": {
+    "8": "VariableID:5:11",
+    "12": "VariableID:5:12",
+    "16": "VariableID:5:13",
+    "20": "VariableID:5:14",
+    "24": "VariableID:5:15",
+    "32": "VariableID:5:16",
+    "48": "VariableID:5:17",
+    "64": "VariableID:5:18",
+    "canvas": "VariableID:5:3",
+    "surface": "VariableID:5:4",
+    "ink": "VariableID:5:5",
+    "muted": "VariableID:5:6",
+    "border": "VariableID:5:7",
+    "forest": "VariableID:5:8",
+    "hover": "VariableID:5:9",
+    "tint": "VariableID:5:10"
+  },
+  "styles": {
+    "Display": "S:6d9758f3ae4dc884cee80697f9064166bffb7661,",
+    "Heading": "S:8518e73364140d20f00eb136a6a782bd7a64376d,",
+    "Section": "S:81bc1144010e4831241b8a024a360323503e0ea7,",
+    "Body": "S:25a715301ab42cb6a00294c47be5d428802ab7a3,",
+    "Caption": "S:12314d85b1800cc76246fa8b446298dd8d8454d0,"
+  },
+  "components": {
+    "Button/Primary": {
+      "id": "5:24",
+      "prop": "Label#5:0"
+    },
+    "Button/Secondary": {
+      "id": "5:26",
+      "prop": "Label#5:1"
+    },
+    "Button/Selected": {
+      "id": "5:28",
+      "prop": "Label#5:2"
+    },
+    "Input": {
+      "id": "5:30",
+      "prop": "Value#5:3"
+    },
+    "RouteCard": {
+      "id": "5:32",
+      "title": "Title#5:4",
+      "meta": "Meta#5:5"
+    }
+  },
+  "screens": {
+    "首页 / Desktop": "5:35",
+    "首页 / Mobile": "5:36",
+    "旅行助手 / Desktop": "5:37",
+    "旅行助手 / Mobile": "5:38",
+    "路线详情 / Desktop": "5:39",
+    "路线详情 / Mobile": "5:40",
+    "我的规划 / Desktop": "5:41",
+    "我的规划 / Mobile": "5:42"
+  }
+}

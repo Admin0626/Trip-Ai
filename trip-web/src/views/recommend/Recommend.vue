@@ -160,16 +160,16 @@ onMounted(loadPreference)
 <style scoped lang="scss">
 .recommend-page { max-width: 1000px; margin: 0 auto; padding: 32px 20px 60px; }
 .recommend-page.embedded { max-width:none;padding:0; }
-.intro { margin-bottom: 28px; h1 { font-size: 32px; margin: 8px 0; } p { color: #64748b; } }
-.eyebrow { color: #2563eb !important; font-size: 14px; }
-.panel { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px; margin-bottom: 24px; h2 { font-size: 20px; margin: 0 0 18px; } }
+.intro { margin-bottom: 28px; h1 { font-size: 32px; margin: 8px 0; } p { color: var(--trip-muted); } }
+.eyebrow { color: var(--trip-forest) !important; font-size: 14px; }
+.panel { background: #fff; border: 1px solid var(--trip-border); border-radius: 20px; padding: 24px; margin-bottom: 24px; h2 { font-size: 20px; margin: 0 0 18px; } }
 .panel > .el-button { margin-top: 16px; }
-.hint { color: #64748b; line-height: 1.7; font-size: 14px; }
+.hint { color: var(--trip-muted); line-height: 1.7; font-size: 14px; }
 .criteria { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; margin-top: 20px; .wide { grid-column: 1 / -1; } }
 .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.match-card { border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; img { width: 100%; height: 170px; object-fit: cover; } }
-.cover { min-height: 170px; display: grid; place-items: center; background: linear-gradient(135deg, #dbeafe, #ecfdf5); color: #1e40af; font-size: 16px; }
-.match-card__body { padding: 18px; h3 { margin: 0 0 12px; } a { color: #2563eb; } }
-.reason { font-size: 14px; color: #475569; line-height: 1.6; }
-@media (max-width: 640px) { .criteria, .result-grid { grid-template-columns: 1fr; } .panel { padding: 18px; } .recommend-page { padding: 24px 12px; } }
+.match-card { border: 1px solid var(--trip-border); border-radius: 10px; overflow: hidden; img { width: 100%; height: 170px; object-fit: cover; } }
+.cover { min-height: 170px; display: grid; place-items: center; background: var(--trip-tint); color: var(--trip-forest); font-size: 16px; }
+.match-card__body { padding: 18px; h3 { margin: 0 0 12px; } a { color: var(--trip-forest); } }
+.reason { font-size: 14px; color: var(--trip-muted); line-height: 1.6; }
+@media (max-width: 767px) { .criteria, .result-grid { grid-template-columns: 1fr; } .panel { padding: 24px; } .recommend-page { padding: 24px 20px; } }
 </style>

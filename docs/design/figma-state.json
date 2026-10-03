@@ -1,0 +1,48 @@
+{
+  "runId": "trip-nature-2026-10-03",
+  "fileKey": "KpiEIIPPgKqGBQ6fbx2ZjA",
+  "url": "https://www.figma.com/design/KpiEIIPPgKqGBQ6fbx2ZjA",
+  "scope": "Four key screens at desktop and mobile sizes; minimal reusable foundations",
+  "discovery": {
+    "codeConnect": "No mappings found in repository",
+    "existingScreens": "Target file was empty before capture",
+    "libraries": "SDS Button and Body Base use Inter; brand/font/semantic model differ from DESIGN.md; use local components bound to project tokens",
+    "variablesAndStyles": "SDS background, spacing and body assets inspected; local tokens needed for forest palette and Noto Sans SC",
+    "captureRoot": "3:2",
+    "contentImages": "Existing homepage capture returned no image fills; external pictures unavailable; use local nature illustration as branded fallback, preserve dynamic catalog covers"
+  },
+  "entities": {
+    "plans": [
+      "5:41",
+      "5:42"
+    ],
+    "home": [
+      "5:35",
+      "5:36"
+    ],
+    "landscape": "6:2",
+    "assistant": [
+      "5:37",
+      "5:38"
+    ],
+    "route": [
+      "5:39",
+      "5:40"
+    ]
+  },
+  "completedSteps": [
+    "file-created",
+    "discovery",
+    "foundations",
+    "eight-screen-composition",
+    "layout-repair",
+    "four-desktop-design-contexts",
+    "frontend",
+    "build",
+    "browser-geometry-and-interactions"
+  ],
+  "pendingValidations": [
+    "Figma illustration instance clipping polish blocked by Starter rate limit",
+    "Plan empty-state live rendering not tested; existing two records preserved"
+  ]
+}

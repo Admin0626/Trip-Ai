@@ -167,7 +167,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <main class="ai-planner" :class="{embedded}">
+  <div class="ai-planner" :class="{embedded}">
     <h1 v-if="!embedded">让 AI 帮你规划旅程</h1>
     <p class="hint">连接自己的模型服务，生成行程预览，确认后保存并继续编辑。</p>
     <section class="panel quota-panel" data-testid="ai-usage" aria-live="polite">
@@ -185,9 +185,9 @@ onMounted(async () => {
       <p class="hint">连接测试和每次模型生成尝试各用1次额度，结构重试另用1次；已发起的失败请求不退还。操作统计按一次测试或生成计数，可能与额度用量不同。基础旅行推荐不消耗模型额度。</p>
       <router-link to="/recommend">使用基础旅行推荐</router-link>
     </section>
-    <el-form label-position="top" :disabled="!!busy">
+    <el-form class="planner-columns" label-position="top" :disabled="!!busy">
       <section class="panel">
-        <h2>1. 标准 API 配置</h2>
+        <h2>1. 连接你的模型</h2>
         <p class="hint">填写API地址、模型名称与API Key即可使用自己的模型。DeepSeek已预填地址与模型，密钥由你自行填写。</p>
         <el-button :disabled="!!busy" @click="deepseekDefaults">填入DeepSeek地址与模型</el-button>
         <el-form-item label="API基础地址（可包含端口）">
@@ -267,19 +267,25 @@ onMounted(async () => {
       <el-checkbox v-model="acknowledged" :disabled="!!busy">我已查看行程，保存为可编辑草稿</el-checkbox>
       <div><el-button type="primary" :disabled="!acknowledged || !!busy" :loading="busy === 'save'" @click="save">保存到我的规划并编辑</el-button></div>
     </section>
-  </main>
+  </div>
 </template>
 
 <style scoped>
-.ai-planner { max-width: 960px; margin: auto; padding: 30px 20px 60px; }
-.ai-planner.embedded{max-width:none;padding:0}.model-answer{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.8;background:#f0f7ff;border-radius:10px;padding:16px;margin:16px 0}
+.ai-planner { max-width: 1280px; margin: auto; padding: 30px 20px 60px; }
+.ai-planner.embedded{max-width:none;padding:0}.model-answer{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.8;background:var(--trip-tint);border-radius:12px;padding:16px;margin:16px 0}
 h1 { font-size: 30px; } h2 { margin: 0 0 20px; font-size: 20px; }
-.panel { background: white; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px; margin: 24px 0; }
-.hint { color: #64748b; font-size: 14px; line-height: 1.7; }
+.panel { background: white; border: 1px solid var(--trip-border); border-radius: 20px; padding: 24px; margin: 24px 0; min-width: 0; overflow-wrap: anywhere; }
+.hint { color: var(--trip-muted); font-size: 14px; line-height: 1.7; }
+.planner-columns { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; align-items: start; margin-top: 24px; }
+.planner-columns > .panel { margin: 0; }
+.planner-columns .fields { grid-template-columns: 1fr; }
+.planner-columns :deep(.el-input-number), .planner-columns :deep(.el-date-editor) { width: 100%; }
+.planner-columns :deep(.el-form-item__label) { height: auto; white-space: normal; }
+.planner-columns :deep(.el-form-item) { margin-top: 16px; }
 .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }.wide { grid-column: 1 / -1; }
 .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }.actions .el-button { margin: 0; }
 .usage-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }.usage-heading h2 { margin: 0; }
-.day { border-bottom: 1px solid #e2e8f0; padding: 16px 0; line-height: 1.7; }.day li { margin: 16px 0; }.day p { margin: 4px 0; }
+.day { border-bottom: 1px solid var(--trip-border); padding: 16px 0; line-height: 1.7; }.day li { margin: 16px 0; }.day p { margin: 4px 0; }
 .preview > div:last-child { margin-top: 14px; }
-@media(max-width:640px) { .fields { grid-template-columns: 1fr; }.panel { padding: 18px; }.ai-planner { padding: 24px 12px; } }
+@media(max-width:767px) { .fields,.planner-columns { grid-template-columns: 1fr; }.panel { padding: 24px; }.ai-planner { padding: 24px 20px; }.usage-heading { flex-wrap: wrap; } }
 </style>

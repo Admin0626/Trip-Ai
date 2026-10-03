@@ -14,6 +14,7 @@ body,
 
 body {
   font-family:
+    'Noto Sans SC',
     'PingFang SC',
     'Microsoft YaHei',
     -apple-system,
@@ -23,7 +24,8 @@ body {
     sans-serif;
   color: $color-text;
   background-color: $color-bg;
-  font-size: 14px;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 a {
@@ -32,14 +34,15 @@ a {
 }
 
 .page-wrapper {
-  max-width: 1200px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 20px 16px 40px;
+  padding: 56px 20px 64px;
 }
 
 .card {
   background: $color-card;
   border-radius: $radius-lg;
+  border: 1px solid $color-border;
   box-shadow: $shadow-card;
 }
 
@@ -48,11 +51,57 @@ a {
 }
 
 .money {
-  color: #f56c6c;
+  color: $color-primary;
   font-weight: 600;
 }
 
 /* Element Plus 统一主色 */
 :root {
   --el-color-primary: #{$color-primary};
+  --el-color-primary-light-3: #6D9483;
+  --el-color-primary-light-5: #96B3A6;
+  --el-color-primary-light-7: #C0D3C9;
+  --el-color-primary-light-8: #D5E2DA;
+  --el-color-primary-light-9: #EDF4EF;
+  --el-color-primary-dark-2: #25523F;
+  --el-color-success: #{$color-success};
+  --el-color-success-light-9: #EDF4EF;
+  --el-color-info: #52525B;
+  --el-color-info-light-9: #F4F4F5;
+  --el-color-warning: #9A6700;
+  --el-color-warning-light-9: #FFF8E5;
+  --el-color-danger: #B42318;
+  --el-color-danger-light-9: #FFF1F0;
+  --el-text-color-secondary: #71717A;
+  --el-border-color: #{$color-border};
+  --el-text-color-primary: #{$color-text};
+  --el-text-color-regular: #{$color-text-secondary};
+  --el-border-radius-base: 12px;
+  --el-font-size-base: 16px;
+  --trip-forest: #2F6650;
+  --trip-hover: #25523F;
+  --trip-tint: #EDF4EF;
+  --trip-canvas: #FAFAFA;
+  --trip-surface: #FFFFFF;
+  --trip-ink: #27272A;
+  --trip-muted: #52525B;
+  --trip-border: #E4E4E7;
+}
+
+:focus-visible { outline: 2px solid $color-primary; outline-offset: 3px; }
+.el-button { min-height: 44px; padding: 12px 24px; font-size: 16px; border-radius: 12px; transition: background-color .18s, transform .18s; }
+.el-button:active:not(:disabled) { transform: translateY(1px); }
+.el-button--small { padding: 8px 16px; font-size: 14px; }
+.el-input__wrapper, .el-select__wrapper { min-height: 48px; }
+.el-textarea__inner { padding: 16px; font-size: 16px; line-height: 1.65; }
+.el-form-item__label { color: $color-text-secondary; line-height: 1.5; height: auto; }
+.el-dialog { max-width: calc(100vw - 32px); border-radius: 20px; }
+.el-checkbox { height: auto; min-height: 44px; max-width: 100%; }
+.el-checkbox__label { white-space: normal; line-height: 1.5; }
+.el-input-number, .el-date-editor, .el-select { max-width: 100%; }
+.el-alert__content { min-width: 0; overflow-wrap: anywhere; }
+.el-rate { --el-rate-fill-color: #2F6650; }
+@media (max-width: 767px) { .page-wrapper { padding: 32px 20px 48px; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }

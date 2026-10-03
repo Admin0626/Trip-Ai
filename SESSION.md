@@ -1,3 +1,16 @@
+# Session：自然纯净 Figma 样式图与前端实现
+
+更新：2026-10-03。用户要求先调用 Figma 绘制样式图，再落地前端；已选择个人团队。设计文件 https://www.figma.com/design/KpiEIIPPgKqGBQ6fbx2ZjA，首页/旅行助手/路线详情/我的规划各桌面与手机，共八个原生可编辑画板。先取得四页设计上下文，再适配现有 Vue/SCSS，运行时直接复用 Figma 导出 SVG。
+
+- `codex/nature-design` 从当前 `codex/home-layout` 延续，保留未合并 PR #8 的两笔提交；本批统一森林绿/米白、共享组件和关键页面布局。原业务 API、模型及保存流程保留。
+- 最终 vue-tsc/Vite 构建通过，原大包警告仍存在。四页 1440/1024/390/320px 无横向溢出；导航菜单、首页 CTA、模式切换保留需求/清 Key、缺 Key 提示、预约弹窗取消、新建规划入口实际验证通过。未执行真实模型调用或数据写入。
+- Figma Starter 额度限制阻止最后细调：空状态和路线插画实例仍有裁切差异。前端已正确复用矢量资源；不宣称全部画板最终像素验收。实际规划列表有两条数据，空状态未通过清空真实数据测试。
+- [设计实现、验证与限制](docs/design/README.md)、[浏览器证据](docs/design/qa/browser-checks.json)、[设计规范](DESIGN.md)。原 docs/README.md、实训报告和答辩材料保留，不纳入本批提交。
+
+本批按仓库既有约定提交并推送独立分支、创建目标 main 的 PR；不自动合并。最终分支 head 和 PR 链接以 Git / GitHub 为准。本机服务继续用于预览。
+
+---
+
 # Session：首页左右留白修复完成
 
 更新：2026-10-03（北京时间）。旅行助手PR #7已按用户授权合并，main=ab1ad991871c782709bf40e48615cab103a95127。本批用户要求首页不要左右铺满，从main建立codex/home-layout。

@@ -16,4 +16,4 @@ async function select(event:Event){
 }
 </script>
 <template><div class="image-uploader"><div v-for="(url,i) in modelValue" :key="url" class="image"><img :src="url" alt="已上传图片"/><el-button size="small" :disabled="uploading" @click="emit('update:modelValue',modelValue.filter((_,index)=>index!==i))">移除图片</el-button></div><label v-if="modelValue.length<max">{{ uploading?'上传中…':'选择图片（PNG/JPEG，≤5MB）' }}<input type="file" accept="image/png,image/jpeg" :disabled="uploading" aria-label="上传图片" @change="select"/></label></div></template>
-<style scoped>.image-uploader{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.image{display:flex;flex-direction:column;gap:6px}.image img{width:100px;height:80px;object-fit:cover;border-radius:6px}label{display:flex;flex-direction:column;gap:6px;font-size:13px;color:#64748b}input{max-width:240px}</style>
+<style scoped>.image-uploader{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.image{display:flex;flex-direction:column;gap:6px}.image img{width:100px;height:80px;object-fit:cover;border-radius:6px}label{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--trip-muted)}input{max-width:240px}</style>

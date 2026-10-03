@@ -1,0 +1,175 @@
+{
+  "date": "2026-10-03",
+  "checks": [
+    {
+      "columns": "628px 628px",
+      "mode": "AI定制行程",
+      "page": "/travel-assistant",
+      "scrollWidth": 1425,
+      "width": 1440
+    },
+    {
+      "name": "缺少密钥时在页面报错",
+      "passed": true
+    },
+    {
+      "name": "切换查路线保留需求",
+      "passed": true,
+      "query": "大理3天，喜欢自然风光，节奏轻松"
+    },
+    {
+      "name": "返回AI模式清空密钥",
+      "passed": true
+    },
+    {
+      "heroColumns": "592px 640px",
+      "overlap": false,
+      "page": "/route/201",
+      "scrollWidth": 1425,
+      "title": "云南大理丽江香格里拉 5 日纯玩",
+      "width": 1440
+    },
+    {
+      "name": "预约按钮打开原有预约表单",
+      "passed": true
+    },
+    {
+      "artLoaded": true,
+      "empty": false,
+      "page": "/plan",
+      "scrollWidth": 1440,
+      "width": 1440
+    },
+    {
+      "main": {
+        "bottom": 875.3333587646484,
+        "height": 758.6666870117188,
+        "left": 0,
+        "right": 374.6666870117187,
+        "top": 116.66667175292967,
+        "width": 374.6666870117187,
+        "x": 0,
+        "y": 116.66667175292967
+      },
+      "page": "/plan",
+      "scrollWidth": 375,
+      "width": 390
+    },
+    {
+      "columns": null,
+      "page": "/",
+      "passed": true,
+      "scrollWidth": 375,
+      "staticAssets": [
+        {
+          "height": 251,
+          "loaded": true,
+          "width": 334.66668701171875
+        }
+      ],
+      "width": 390
+    },
+    {
+      "columns": "334.667px",
+      "page": "/travel-assistant",
+      "passed": true,
+      "scrollWidth": 375,
+      "staticAssets": [],
+      "width": 390
+    },
+    {
+      "columns": null,
+      "page": "/route/201",
+      "passed": true,
+      "scrollWidth": 375,
+      "staticAssets": [
+        {
+          "height": 251,
+          "loaded": true,
+          "width": 334.66668701171875
+        }
+      ],
+      "width": 390
+    },
+    {
+      "columns": null,
+      "page": "/plan",
+      "passed": true,
+      "scrollWidth": 375,
+      "staticAssets": [],
+      "width": 390
+    },
+    {
+      "page": "/",
+      "passed": true,
+      "scrollWidth": 305,
+      "width": 320
+    },
+    {
+      "page": "/travel-assistant",
+      "passed": true,
+      "scrollWidth": 305,
+      "width": 320
+    },
+    {
+      "page": "/route/201",
+      "passed": true,
+      "scrollWidth": 305,
+      "width": 320
+    },
+    {
+      "page": "/plan",
+      "passed": true,
+      "scrollWidth": 305,
+      "width": 320
+    },
+    {
+      "check": "tablet-layout",
+      "path": "/",
+      "passed": true,
+      "scrollWidth": 1009,
+      "viewport": 1024
+    },
+    {
+      "check": "tablet-layout",
+      "path": "/travel-assistant",
+      "passed": true,
+      "scrollWidth": 1009,
+      "viewport": 1024
+    },
+    {
+      "check": "tablet-layout",
+      "path": "/route/201",
+      "passed": true,
+      "scrollWidth": 1009,
+      "viewport": 1024
+    },
+    {
+      "check": "tablet-layout",
+      "path": "/plan",
+      "passed": true,
+      "scrollWidth": 1024,
+      "viewport": 1024
+    },
+    {
+      "check": "mobile-menu-opens",
+      "passed": true
+    },
+    {
+      "check": "mobile-menu-route-closes",
+      "passed": true
+    },
+    {
+      "check": "new-plan-entry",
+      "passed": true
+    },
+    {
+      "check": "desktop-home-layout",
+      "page": "/",
+      "artLoaded": true,
+      "passed": true,
+      "scrollWidth": 1425,
+      "width": 1440
+    }
+  ]
+}

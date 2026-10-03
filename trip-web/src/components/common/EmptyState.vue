@@ -4,7 +4,7 @@ defineProps<{ text?: string; icon?: string }>()
 
 <template>
   <div class="empty-state">
-    <div class="empty-state__icon">{{ icon || '📭' }}</div>
+    <div class="empty-state__art"><img src="/figma-landscape.svg" width="640" height="480" alt="" /></div>
     <p class="empty-state__text">{{ text || '暂无数据' }}</p>
     <slot />
   </div>
@@ -17,16 +17,21 @@ defineProps<{ text?: string; icon?: string }>()
   align-items: center;
   justify-content: center;
   padding: 48px 16px;
-  color: #9ca3af;
+  color: var(--trip-muted);
+  gap: 16px;
 
-  &__icon {
-    font-size: 44px;
-    margin-bottom: 8px;
+  &__art {
+    width: min(360px, 100%);
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 24px;
+    img { display: block; width: 100%; height: auto; }
   }
 
   &__text {
     margin: 0;
-    font-size: 14px;
+    font-size: 16px;
+    text-align: center;
   }
 }
 </style>

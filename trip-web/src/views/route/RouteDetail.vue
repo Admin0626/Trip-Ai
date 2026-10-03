@@ -7,6 +7,7 @@ import { toggleLikeApi, toggleFavoriteApi, createBookingApi, commentPageApi, cre
 import { useUserStore } from '@/store/user'
 import { dateAfter, formatMoney, timePoint } from '@/utils/format'
 import EmptyState from '@/components/common/EmptyState.vue'
+import CatalogCover from '@/components/common/CatalogCover.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -139,52 +140,51 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div v-loading="loading" class="route-detail">
+  <main v-loading="loading" class="route-detail page-wrapper">
     <!-- 顶部大图 -->
-    <div class="hero">
-      <img :src="detail?.coverImg" :alt="detail?.title" />
-      <div class="hero__mask"></div>
-      <div class="hero__info container">
+    <div v-if="detail" class="hero">
+      <div class="hero__info">
+        <p class="hero__eyebrow">路线 / {{ detail.destination?.name }}</p>
         <h1 class="hero__title">{{ detail?.title }}</h1>
         <p v-if="detail?.subtitle" class="hero__subtitle">{{ detail.subtitle }}</p>
         <div class="hero__tags">
-          <el-tag v-for="t in tags" :key="t" size="small" effect="dark">{{ t }}</el-tag>
+          <el-tag v-for="t in tags" :key="t" size="small" type="success" effect="plain">{{ t }}</el-tag>
         </div>
         <div class="hero__stats">
-          <span>📍 {{ detail?.destination?.name }}</span>
-          <span>🗓 {{ detail?.days }} 天</span>
-          <span>👍 {{ detail?.likeCount }}</span>
-          <span>⭐ {{ detail?.favoriteCount }}</span>
-          <span>📅 {{ detail?.bookingCount }}</span>
-          <span>👁 {{ detail?.viewCount }}</span>
+          <span>{{ detail?.destination?.name }}</span>
+          <span>{{ detail?.days }} 天</span>
+          <span>点赞 {{ detail?.likeCount }}</span>
+          <span>收藏 {{ detail?.favoriteCount }}</span>
+          <span>预约 {{ detail?.bookingCount }}</span>
+          <span>浏览 {{ detail?.viewCount }}</span>
         </div>
       </div>
+      <CatalogCover :src="detail.coverImg" :alt="detail.title" landscape />
     </div>
 
-    <div class="container page-wrapper">
+    <div class="route-content">
       <!-- 操作条 -->
       <div v-if="detail" class="action-bar card">
         <div class="action-bar__left">
-          <span class="price">{{ formatMoney(detail.price) }}<small>/人</small></span>
+          <span class="price">{{ formatMoney(detail.price) }}<small>/人 · 人均参考价</small></span>
           <el-rate :model-value="Math.round(detail.avgScore ?? 0)" disabled />
           <span class="text-secondary">{{ (detail.avgScore ?? 0).toFixed(1) }} 分 · {{ detail.commentCount }} 条评论</span>
         </div>
         <div class="action-bar__right">
-          <el-button :type="detail.liked ? 'danger' : 'default'" round @click="onLike">
+          <el-button type="primary" @click="onBooking">立即预约</el-button>
+          <el-button @click="router.push({ path: '/plan/create', query: { fromRoute: detail.id } })">一键生成规划</el-button>
+          <el-button :type="detail.liked ? 'primary' : 'default'" plain @click="onLike">
             {{ detail.liked ? '已点赞' : '点赞' }}
           </el-button>
-          <el-button :type="detail.favorited ? 'warning' : 'default'" round @click="onFavorite">
+          <el-button :type="detail.favorited ? 'primary' : 'default'" plain @click="onFavorite">
             {{ detail.favorited ? '已收藏' : '收藏' }}
           </el-button>
-          <el-button round @click="router.push({ path: '/plan/create', query: { fromRoute: detail.id } })">
-            一键生成规划
-          </el-button>
-          <el-button type="primary" round @click="onBooking">立即预约</el-button>
         </div>
       </div>
 
       <!-- 行程时间轴 -->
       <div v-if="detail" class="card section-card">
+        <h2 class="section-title">每日行程</h2>
         <el-tabs v-model="activeDay" class="day-tabs">
           <el-tab-pane v-for="(day, i) in detail.dayList" :key="day.id" :name="i">
             <template #label>
@@ -197,13 +197,13 @@ onMounted(async () => {
               <el-timeline-item v-for="item in day.items" :key="item.id" :timestamp="timePoint(item.timePoint)">
                 <div class="item-card">
                   <div class="item-card__title">{{ item.title }}</div>
-                  <div v-if="item.activity" class="item-card__line">🎯 {{ item.activity }}</div>
-                  <div v-if="item.transport" class="item-card__line">🚌 {{ item.transport }}</div>
-                  <div v-if="item.hotel" class="item-card__line">🏨 {{ item.hotel }}</div>
-                  <div v-if="item.meal" class="item-card__line">🍜 {{ item.meal }}</div>
-                  <div v-if="item.durationMin" class="item-card__line">⏱ {{ item.durationMin }} 分钟</div>
-                  <div v-if="item.cost" class="item-card__line money">💰 {{ formatMoney(item.cost) }}</div>
-                  <el-tag v-if="item.tips" size="small" type="info" effect="plain">💡 {{ item.tips }}</el-tag>
+                  <div v-if="item.activity" class="item-card__line">活动：{{ item.activity }}</div>
+                  <div v-if="item.transport" class="item-card__line">交通：{{ item.transport }}</div>
+                  <div v-if="item.hotel" class="item-card__line">住宿：{{ item.hotel }}</div>
+                  <div v-if="item.meal" class="item-card__line">餐饮：{{ item.meal }}</div>
+                  <div v-if="item.durationMin" class="item-card__line">时长：{{ item.durationMin }} 分钟</div>
+                  <div v-if="item.cost" class="item-card__line money">费用：{{ formatMoney(item.cost) }}</div>
+                  <el-tag v-if="item.tips" size="small" type="info" effect="plain">提示：{{ item.tips }}</el-tag>
                 </div>
               </el-timeline-item>
             </el-timeline>
@@ -286,7 +286,7 @@ onMounted(async () => {
         <el-button type="primary" :loading="submitting" @click="submitBooking">提交预约</el-button>
       </template>
     </el-dialog>
-  </div>
+  </main>
 </template>
 
 <style scoped lang="scss">
@@ -294,42 +294,34 @@ onMounted(async () => {
 
 .route-detail {
   .hero {
-    position: relative;
-    height: 320px;
-    overflow: hidden;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    &__mask {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.65) 100%);
-    }
+    display: grid;
+    grid-template-columns: .925fr 1fr;
+    gap: 48px;
+    align-items: start;
+    margin-bottom: 48px;
 
     &__info {
-      position: absolute;
-      bottom: 24px;
-      left: 0;
-      right: 0;
-      color: #fff;
+      min-width: 0;
+      color: $color-text;
+      display: grid;
+      gap: 20px;
     }
 
     &__title {
-      margin: 0 0 8px;
-      font-size: 28px;
+      margin: 0;
+      font-size: clamp(30px, 2.5vw, 36px);
+      font-weight: 600;
+      overflow-wrap: anywhere;
     }
 
     &__subtitle {
       margin: 0 0 8px;
-      opacity: 0.9;
+      color: $color-text-secondary;
     }
 
     &__tags {
       display: flex;
+      flex-wrap: wrap;
       gap: 6px;
       margin-bottom: 10px;
     }
@@ -337,26 +329,30 @@ onMounted(async () => {
     &__stats {
       display: flex;
       gap: 16px;
-      font-size: 13px;
-      opacity: 0.95;
+      font-size: 14px;
+      flex-wrap: wrap;
+      color: $color-text-secondary;
     }
   }
 
   .action-bar {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 20px;
-    margin-bottom: 16px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 24px;
+    margin-bottom: 48px;
+    box-shadow: none;
 
     &__left {
       display: flex;
       align-items: center;
       gap: 12px;
+      flex-wrap: wrap;
 
       .price {
         font-size: 22px;
-        color: $color-danger;
+        color: $color-primary;
         font-weight: 700;
 
         small {
@@ -369,13 +365,14 @@ onMounted(async () => {
   }
 
   .section-card {
-    padding: 20px;
-    margin-bottom: 16px;
+    padding: 24px;
+    margin-bottom: 48px;
+    box-shadow: none;
   }
 
   .section-title {
     margin: 0 0 12px;
-    font-size: 18px;
+    font-size: 24px;
   }
 
   .day-tab {
@@ -386,7 +383,7 @@ onMounted(async () => {
     }
 
     &__summary {
-      font-size: 11px;
+      font-size: 14px;
       color: $color-text-secondary;
       max-width: 120px;
       white-space: nowrap;
@@ -399,7 +396,7 @@ onMounted(async () => {
     border: 1px solid $color-border;
     border-radius: $radius-md;
     padding: 12px;
-    background: #fafbfc;
+    background: $color-bg;
 
     &__title {
       font-weight: 600;
@@ -407,7 +404,7 @@ onMounted(async () => {
     }
 
     &__line {
-      font-size: 13px;
+      font-size: 14px;
       color: $color-text-secondary;
       margin-top: 2px;
     }
@@ -426,7 +423,7 @@ onMounted(async () => {
   }
 
   .comment-form {
-    background: #fafbfc;
+    background: $color-bg;
     border-radius: $radius-md;
     padding: 12px;
     margin-bottom: 16px;
@@ -449,17 +446,20 @@ onMounted(async () => {
 
     &__body {
       flex: 1;
+      min-width: 0;
+      overflow-wrap: anywhere;
     }
 
     &__head {
       display: flex;
       align-items: center;
       gap: 8px;
+      flex-wrap: wrap;
     }
 
     &__name {
       font-weight: 600;
-      font-size: 13px;
+      font-size: 14px;
     }
 
     &__content {
@@ -471,5 +471,15 @@ onMounted(async () => {
       font-size: 12px;
     }
   }
+}
+.hero__eyebrow { color: $color-primary; margin: 0; font-size: 14px; }
+.action-bar__right { display: flex; flex-wrap: wrap; gap: 12px; }
+.action-bar__right :deep(.el-button) { margin-left: 0; }
+@media (max-width:767px) {
+  .route-detail .hero { grid-template-columns: 1fr; gap: 32px; }
+  .route-detail .hero__stats { gap: 12px; }
+  .route-detail .action-bar__left { align-items: flex-start; }
+  .route-detail .section-card { padding: 20px; }
+  .route-detail :deep(.el-tabs__nav-wrap) { max-width: 100%; }
 }
 </style>
