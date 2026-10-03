@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-03 Asia/Shanghai",
+  "mode": "REAL_EDGE_LOCAL_APP_LAYOUT",
+  "before": {
+    "viewport": 1440,
+    "hero": {
+      "x": 0,
+      "width": 1440,
+      "right": 1440
+    },
+    "destinations": {
+      "x": 0,
+      "width": 1440,
+      "right": 1440
+    },
+    "scrollWidth": 1448
+  },
+  "after": [
+    {
+      "viewport": 1440,
+      "wrapper": {
+        "x": 120,
+        "width": 1200,
+        "right": 1320
+      },
+      "hero": {
+        "x": 136,
+        "width": 1168,
+        "right": 1304
+      },
+      "destinations": {
+        "x": 136,
+        "width": 1168,
+        "right": 1304
+      },
+      "scrollWidth": 1440
+    },
+    {
+      "viewport": 1024,
+      "wrapper": {
+        "x": 0,
+        "width": 1024,
+        "right": 1024
+      },
+      "hero": {
+        "x": 16,
+        "width": 992,
+        "right": 1008
+      },
+      "destinations": {
+        "x": 16,
+        "width": 992,
+        "right": 1008
+      },
+      "scrollWidth": 1024
+    },
+    {
+      "viewport": 390,
+      "wrapper": {
+        "x": 0,
+        "width": 390,
+        "right": 390
+      },
+      "hero": {
+        "x": 16,
+        "width": 358,
+        "right": 374
+      },
+      "destinations": {
+        "x": 16,
+        "width": 358,
+        "right": 374
+      },
+      "scrollWidth": 390
+    }
+  ],
+  "passed": true
+}
