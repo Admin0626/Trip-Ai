@@ -1,4 +1,4 @@
-# Session：统一旅行助手实现与实测完成，等待Git发布
+# Session：统一旅行助手实现与实测完成，独立分支已发布
 
 更新：2026-10-03（北京时间）。用户要标准API密钥配置、模型回答，并确认“旅行建议文字＋可保存的每日行程”。已核对PR #6精确head010f61a、mergeable/clean，无评论/检查，按既有工作流合并；同步main=aabcffed8dfc041f897a5d3fe2f5c941541ac98e，再创建codex/travel-assistant。固定基线v0.1.0-baseline未移动。
 
@@ -15,7 +15,7 @@
 
 ## 发布与接续
 
-功能及文档待在codex/travel-assistant提交推送，创建目标main的新PR并附到任务；本批新PR不立即合并。完成后补这里及evidence/travel-assistant/git-delivery.json。本机3306/6379/8080/api/5173服务保持运行；临时受控模型服务在验收后关闭。若额度中断，先读取本SESSION/进度/git diff，继续发布核对，不重建数据库或重复真实付费调用。
+实现、实测及文档已随de8e2addf5f0c5ce6d82481fddafb513804720bf推送origin/codex/travel-assistant；[PR #7](https://github.com/Admin0626/Trip-Ai/pull/7)已创建并附到任务，目标main=aabcffe，保持open/未合并。发布记录见[Git证据](docs/dev/evidence/travel-assistant/git-delivery.json)。本段由后续文档提交补充；最终feature head按git log与PR远程核对，不能把实现提交当成文档补充后的最新head。本机3306/6379/8080/api/5173服务保持运行；临时受控模型服务在验收后关闭。若额度中断，先读取本SESSION/进度/git diff，继续发布核对，不重建数据库或重复真实付费调用。
 
 下一批先审核融合本PR，再从最新main建codex/*分支。可以推进已有行程AI修改预览/差异确认；生成式RAG依据与引用、向量、多路重排、评论情感、生产验收等仍未完成。真实模型当前一日游链路通过，不能说全部需求质量已验证；GitHub没有CI检查。
 
