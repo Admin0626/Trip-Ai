@@ -1,0 +1,19 @@
+<script setup lang="ts">
+import {computed,onBeforeUnmount,ref,watch} from 'vue'
+import {knowledgeSources,type KnowledgeDoc,type KnowledgeSource} from '@/api/modules/knowledge'
+const props=defineProps<{modelValue:number|null;docType:KnowledgeDoc['docType'];status:number;disabled?:boolean}>()
+const emit=defineEmits<{ 'update:modelValue':[number|null] }>()
+const rows=ref<KnowledgeSource[]>([]),selected=ref<KnowledgeSource>(),current=ref(1),pages=ref(0),total=ref(0),query=ref(''),loading=ref(false),error=ref('')
+let version=0,selectedVersion=0,mounted=true
+onBeforeUnmount(()=>{mounted=false;version++;selectedVersion++})
+const options=computed(()=>selected.value&&!rows.value.some(r=>r.id===selected.value!.id)?[selected.value,...rows.value]:rows.value)
+function label(r:KnowledgeSource){return `${r.name} · ID ${r.id}${r.parentName?' · '+r.parentName:''} · ${r.available?'已公开':r.availabilityReason==='PARENT_UNAVAILABLE'?'目的地未公开':'未公开'}`}
+async function load(){const v=++version;error.value='';if(props.docType==='GUIDE'){rows.value=[];total.value=0;pages.value=0;loading.value=false;return}loading.value=true;try{const p=await knowledgeSources({docType:props.docType,current:current.value,size:20,keyword:query.value.trim()||undefined});if(!mounted||v!==version)return;rows.value=p.records;total.value=p.total;pages.value=p.pages}catch(e){if(mounted&&v===version){rows.value=[];error.value=e instanceof Error?e.message:'来源加载失败，请重试'}}finally{if(v===version)loading.value=false}}
+async function resolve(){const v=++selectedVersion;selected.value=undefined;if(!props.modelValue||props.docType==='GUIDE')return;try{const p=await knowledgeSources({docType:props.docType,sourceId:props.modelValue});if(mounted&&v===selectedVersion)selected.value=p.records[0]}catch(e){if(mounted&&v===selectedVersion)error.value=e instanceof Error?e.message:'原来源加载失败'}}
+function search(){current.value=1;void load()}
+function move(delta:number){current.value+=delta;void load()}
+watch(()=>props.docType,()=>{current.value=1;query.value='';rows.value=[];void load();void resolve()},{immediate:true})
+watch(()=>props.modelValue,()=>{void resolve()})
+</script>
+<template><div class="source-picker" data-testid="source-picker"><div class="source-search"><el-input v-model="query" aria-label="来源名称筛选" placeholder="输入来源名称" :disabled="disabled||loading" maxlength="100" @keyup.enter="search"/><el-button :disabled="disabled||loading" @click="search">查询来源</el-button></div><el-select :model-value="modelValue" aria-label="关联资料来源" filterable :loading="loading" :disabled="disabled" placeholder="选择本页来源，可先按名称查询" @update:model-value="emit('update:modelValue',$event)"><el-option v-if="modelValue&&!options.some(r=>r.id===modelValue)" :value="modelValue" :label="`原关联ID ${modelValue}（不存在或已删除，请重新选择）`" disabled/><el-option v-for="r in options" :key="r.id" :value="r.id" :label="label(r)" :disabled="status===1&&!r.available"/></el-select><div class="source-pages"><span>共{{total}}项 · 第{{pages?current:0}}/{{pages}}页</span><el-button size="small" :disabled="disabled||loading||current<=1" @click="move(-1)">上一页来源</el-button><el-button size="small" :disabled="disabled||loading||current>=pages" @click="move(1)">下一页来源</el-button></div><p>启用资料只能关联已公开来源；停用资料可关联未公开来源，保存后仍停用。</p><div v-if="error" role="alert">{{error}} <el-button link :disabled="disabled||loading" @click="load();resolve()">重新加载来源</el-button></div></div></template>
+<style scoped>.source-picker{width:100%;min-width:0}.source-picker .el-select{width:100%}.source-search{display:flex;gap:8px;margin-bottom:8px}.source-search .el-input{min-width:0}.source-pages{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:8px}.source-pages span,.source-picker p{font-size:12px;color:var(--el-text-color-secondary)}.source-picker p{margin:8px 0}.source-picker [role=alert]{color:var(--el-color-danger)}</style>

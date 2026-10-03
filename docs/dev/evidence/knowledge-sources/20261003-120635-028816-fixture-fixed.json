@@ -1,0 +1,3929 @@
+{
+  "mode": "REAL_HTTP_MYSQL_REDIS_SOURCE_MAINTENANCE_NO_LLM",
+  "label": "fixture-fixed",
+  "startedAt": "2026-10-03T12:06:35.028774+08:00",
+  "checks": [
+    {
+      "name": "register sa",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_a9d3255784sa",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "emailVerified": false,
+            "id": 10350,
+            "nickname": "pw_a9d3255784sa",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_a9d3255784sa"
+          },
+          "timestamp": 1791000395116
+        }
+      }
+    },
+    {
+      "name": "register sr",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_18d14d7c72sr",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "emailVerified": false,
+            "id": 10351,
+            "nickname": "pw_18d14d7c72sr",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_18d14d7c72sr"
+          },
+          "timestamp": 1791000395240
+        }
+      }
+    },
+    {
+      "name": "admin login",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_a9d3255784sa",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-10-03T12:06:35",
+              "email": null,
+              "emailVerified": false,
+              "id": 10350,
+              "nickname": "pw_a9d3255784sa",
+              "phone": null,
+              "role": "ADMIN",
+              "username": "pw_a9d3255784sa"
+            }
+          },
+          "timestamp": 1791000395374
+        }
+      }
+    },
+    {
+      "name": "reader login",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_18d14d7c72sr",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-10-03T12:06:35",
+              "email": null,
+              "emailVerified": false,
+              "id": 10351,
+              "nickname": "pw_18d14d7c72sr",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_18d14d7c72sr"
+            }
+          },
+          "timestamp": 1791000395450
+        }
+      }
+    },
+    {
+      "name": "anonymous source operation denied",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/sources?docType=DESTINATION",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "请先登录",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "reader source operation denied",
+      "actual": [
+        403,
+        403
+      ],
+      "expected": [
+        403,
+        403
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/sources?docType=DESTINATION",
+        "body": null
+      },
+      "response": {
+        "status": 403,
+        "body": {
+          "code": 403,
+          "message": "无权访问",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "anonymous source operation denied",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/1/source",
+        "body": {
+          "docType": "GUIDE",
+          "expectedRevision": 1
+        }
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "请先登录",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "reader source operation denied",
+      "actual": [
+        403,
+        403
+      ],
+      "expected": [
+        403,
+        403
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/1/source",
+        "body": {
+          "docType": "GUIDE",
+          "expectedRevision": 1
+        }
+      },
+      "response": {
+        "status": 403,
+        "body": {
+          "code": 403,
+          "message": "无权访问",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "source summary page",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/sources?docType=DESTINATION&keyword=KS_c6549aac&size=20",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "current": 1,
+            "pages": 2,
+            "records": [
+              {
+                "id": 117,
+                "name": "KS_c6549aac同名",
+                "status": 1,
+                "available": true,
+                "parentName": null,
+                "availabilityReason": "AVAILABLE"
+              },
+              {
+                "id": 116,
+                "name": "KS_c6549aac同名",
+                "status": 1,
+                "available": true,
+                "parentName": null,
+                "availabilityReason": "AVAILABLE"
+              },
+              {
+                "id": 115,
+                "name": "KS_c6549aac字面%_=",
+                "status": 1,
+                "available": true,
+                "parentName": null,
+                "availabilityReason": "AVAILABLE"
+              },
+              {
+                "id": 114,
+                "name": "KS_c6549aac分页21",
+                "status": 1,
+                "available": true,
+                "parentName": null,
+                "availabilityReason": "AVAILABLE"
+              },
+              {
+                "id": 113,
+                "name": "KS_c6549aac分页20",
+                "status": 0,
+                "available": false,
+                "parentName": null,
+                "availabilityReason": "UNPUBLISHED"
+              },
+              {
+                "id": 112,
+                "name": "KS_c6549aac分页19",
+                "status": 1,
+                "available": true,
+                "parentName": null,
+                "availabilityReason": "AVAILABLE"
+              },
+              {
+                "id": 111,
+                "name": "KS_c6549aac分页18",
+                "status": 0,
+                "available": false,
+                "parentName": null,
+                "availabilityReason": "UNPUBLISHED"
+              },
+              {
+                "id": 110,
+                "name": "KS_c6549aac分页17",
+                "status": 1,
+                "available": true,
+                "parentName": null,
+                "availabilityReason": "AVAILABLE"
+              },
+              {
+                "id": 109,
+                "name": "KS_c6549aac分页16",
+                "status": 0,
+                "available": false,
+                "parentName": null,
+                "availabilityReason": "UNPUBLISHED"
+              },
+              {
+                "id": 108,
+                "name": "KS_c6549aac分页15",
+                "status": 1,
+                "available": true,
+                "parentName": null,
+                "availabilityReason": "AVAILABLE"
+              },
+              {
+                "id": 107,
+                "name": "KS_c6549aac分页14",
+                "status": 0,
+                "available": false,
+                "parentName": null,
+                "availabilityReason": "UNPUBLISHED"
+              },
+              {
+                "id": 106,
+                "name": "KS_c6549aac分页13",
+                "status": 1,
+                "available": true,
+                "parentName": null,
+                "availabilityReason": "AVAILABLE"
+              },
+              {
+                "id": 105,
+                "name": "KS_c6549aac分页12",
+                "status": 0,
+                "available": false,
+                "parentName": null,
+                "availabilityReason": "UNPUBLISHED"
+              },
+              {
+                "id": 104,
+                "name": "KS_c6549aac分页11",
+                "status": 1,
+                "available": true,
+                "parentName": null,
+                "availabilityReason": "AVAILABLE"
+              },
+              {
+                "id": 103,
+                "name": "KS_c6549aac分页10",
+                "status": 0,
+                "available": false,
+                "parentName": null,
+                "availabilityReason": "UNPUBLISHED"
+              },
+              {
+                "id": 102,
+                "name": "KS_c6549aac分页09",
+                "status": 1,
+                "available": true,
+                "parentName": null,
+                "availabilityReason": "AVAILABLE"
+              },
+              {
+                "id": 101,
+                "name": "KS_c6549aac分页08",
+                "status": 0,
+                "available": false,
+                "parentName": null,
+                "availabilityReason": "UNPUBLISHED"
+              },
+              {
+                "id": 100,
+                "name": "KS_c6549aac分页07",
+                "status": 1,
+                "available": true,
+                "parentName": null,
+                "availabilityReason": "AVAILABLE"
+              },
+              {
+                "id": 99,
+                "name": "KS_c6549aac分页06",
+                "status": 0,
+                "available": false,
+                "parentName": null,
+                "availabilityReason": "UNPUBLISHED"
+              },
+              {
+                "id": 98,
+                "name": "KS_c6549aac分页05",
+                "status": 1,
+                "available": true,
+                "parentName": null,
+                "availabilityReason": "AVAILABLE"
+              }
+            ],
+            "size": 20,
+            "total": 27
+          },
+          "timestamp": 1791000397902
+        }
+      }
+    },
+    {
+      "name": "undeleted unpublished entries included",
+      "actual": 27,
+      "expected": 27,
+      "passed": true
+    },
+    {
+      "name": "source projection has no catalog body",
+      "actual": [
+        "availabilityReason",
+        "available",
+        "id",
+        "name",
+        "parentName",
+        "status"
+      ],
+      "expected": [
+        "availabilityReason",
+        "available",
+        "id",
+        "name",
+        "parentName",
+        "status"
+      ],
+      "passed": true
+    },
+    {
+      "name": "source summary page",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/sources?docType=DESTINATION&keyword=KS_c6549aac&size=20&current=2",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "current": 2,
+            "pages": 2,
+            "records": [
+              {
+                "id": 97,
+                "name": "KS_c6549aac分页04",
+                "status": 0,
+                "available": false,
+                "parentName": null,
+                "availabilityReason": "UNPUBLISHED"
+              },
+              {
+                "id": 96,
+                "name": "KS_c6549aac分页03",
+                "status": 1,
+                "available": true,
+                "parentName": null,
+                "availabilityReason": "AVAILABLE"
+              },
+              {
+                "id": 95,
+                "name": "KS_c6549aac分页02",
+                "status": 0,
+                "available": false,
+                "parentName": null,
+                "availabilityReason": "UNPUBLISHED"
+              },
+              {
+                "id": 94,
+                "name": "KS_c6549aac分页01",
+                "status": 1,
+                "available": true,
+                "parentName": null,
+                "availabilityReason": "AVAILABLE"
+              },
+              {
+                "id": 93,
+                "name": "KS_c6549aac分页00",
+                "status": 0,
+                "available": false,
+                "parentName": null,
+                "availabilityReason": "UNPUBLISHED"
+              },
+              {
+                "id": 91,
+                "name": "KS_c6549aac未公开",
+                "status": 0,
+                "available": false,
+                "parentName": null,
+                "availabilityReason": "UNPUBLISHED"
+              },
+              {
+                "id": 90,
+                "name": "KS_c6549aac公开",
+                "status": 1,
+                "available": true,
+                "parentName": null,
+                "availabilityReason": "AVAILABLE"
+              }
+            ],
+            "size": 20,
+            "total": 27
+          },
+          "timestamp": 1791000397933
+        }
+      }
+    },
+    {
+      "name": "paging complete and disjoint",
+      "actual": 27,
+      "expected": 27,
+      "passed": true
+    },
+    {
+      "name": "source summary page",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/sources?docType=DESTINATION&keyword=KS_c6549aac%E5%AD%97%E9%9D%A2%25_%3D",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "current": 1,
+            "pages": 1,
+            "records": [
+              {
+                "id": 115,
+                "name": "KS_c6549aac字面%_=",
+                "status": 1,
+                "available": true,
+                "parentName": null,
+                "availabilityReason": "AVAILABLE"
+              }
+            ],
+            "size": 20,
+            "total": 1
+          },
+          "timestamp": 1791000397953
+        }
+      }
+    },
+    {
+      "name": "literal wildcard query escaped",
+      "actual": [
+        115
+      ],
+      "expected": [
+        115
+      ],
+      "passed": true
+    },
+    {
+      "name": "source summary page",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/sources?docType=DESTINATION&keyword=KS_c6549aac%E5%90%8C%E5%90%8D",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "current": 1,
+            "pages": 1,
+            "records": [
+              {
+                "id": 117,
+                "name": "KS_c6549aac同名",
+                "status": 1,
+                "available": true,
+                "parentName": null,
+                "availabilityReason": "AVAILABLE"
+              },
+              {
+                "id": 116,
+                "name": "KS_c6549aac同名",
+                "status": 1,
+                "available": true,
+                "parentName": null,
+                "availabilityReason": "AVAILABLE"
+              }
+            ],
+            "size": 20,
+            "total": 2
+          },
+          "timestamp": 1791000397969
+        }
+      }
+    },
+    {
+      "name": "duplicate names remain identifiable",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "source summary page",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/sources?docType=DESTINATION&sourceId=91",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "current": 1,
+            "pages": 1,
+            "records": [
+              {
+                "id": 91,
+                "name": "KS_c6549aac未公开",
+                "status": 0,
+                "available": false,
+                "parentName": null,
+                "availabilityReason": "UNPUBLISHED"
+              }
+            ],
+            "size": 20,
+            "total": 1
+          },
+          "timestamp": 1791000397983
+        }
+      }
+    },
+    {
+      "name": "source summary page",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/sources?docType=DESTINATION&sourceId=91",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "current": 1,
+            "pages": 1,
+            "records": [
+              {
+                "id": 91,
+                "name": "KS_c6549aac未公开",
+                "status": 0,
+                "available": false,
+                "parentName": null,
+                "availabilityReason": "UNPUBLISHED"
+              }
+            ],
+            "size": 20,
+            "total": 1
+          },
+          "timestamp": 1791000397998
+        }
+      }
+    },
+    {
+      "name": "hidden selected resolved",
+      "actual": [
+        false,
+        "UNPUBLISHED"
+      ],
+      "expected": [
+        false,
+        "UNPUBLISHED"
+      ],
+      "passed": true
+    },
+    {
+      "name": "source summary page",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/sources?docType=DESTINATION&sourceId=92",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "current": 1,
+            "pages": 0,
+            "records": [],
+            "size": 20,
+            "total": 0
+          },
+          "timestamp": 1791000398022
+        }
+      }
+    },
+    {
+      "name": "deleted selected omitted",
+      "actual": [],
+      "expected": [],
+      "passed": true
+    },
+    {
+      "name": "source summary page",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/sources?docType=ROUTE&keyword=KS_c6549aac",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "current": 1,
+            "pages": 1,
+            "records": [
+              {
+                "id": 375,
+                "name": "KS_c6549aac父级隐藏",
+                "status": 1,
+                "available": false,
+                "parentName": "KS_c6549aac未公开",
+                "availabilityReason": "PARENT_UNAVAILABLE"
+              },
+              {
+                "id": 374,
+                "name": "KS_c6549aac未公开路线",
+                "status": 0,
+                "available": false,
+                "parentName": "KS_c6549aac公开",
+                "availabilityReason": "UNPUBLISHED"
+              },
+              {
+                "id": 373,
+                "name": "KS_c6549aac公开路线",
+                "status": 1,
+                "available": true,
+                "parentName": "KS_c6549aac公开",
+                "availabilityReason": "AVAILABLE"
+              }
+            ],
+            "size": 20,
+            "total": 3
+          },
+          "timestamp": 1791000398051
+        }
+      }
+    },
+    {
+      "name": "deleted route/parent omitted",
+      "actual": [
+        373,
+        374,
+        375
+      ],
+      "expected": [
+        373,
+        374,
+        375
+      ],
+      "passed": true
+    },
+    {
+      "name": "hidden parent distinguished",
+      "actual": "PARENT_UNAVAILABLE",
+      "expected": "PARENT_UNAVAILABLE",
+      "passed": true
+    },
+    {
+      "name": "source summary page",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/sources?docType=GUIDE",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "来源类型或分页参数不正确",
+          "data": null,
+          "timestamp": 1791000398077
+        }
+      }
+    },
+    {
+      "name": "source summary page",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/sources?docType=BAD",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "来源类型或分页参数不正确",
+          "data": null,
+          "timestamp": 1791000398092
+        }
+      }
+    },
+    {
+      "name": "source summary page",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/sources?docType=DESTINATION&current=0",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "来源类型或分页参数不正确",
+          "data": null,
+          "timestamp": 1791000398099
+        }
+      }
+    },
+    {
+      "name": "source summary page",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/sources?docType=DESTINATION&current=1000001",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "来源类型或分页参数不正确",
+          "data": null,
+          "timestamp": 1791000398107
+        }
+      }
+    },
+    {
+      "name": "source summary page",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/sources?docType=DESTINATION&size=0",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "来源类型或分页参数不正确",
+          "data": null,
+          "timestamp": 1791000398107
+        }
+      }
+    },
+    {
+      "name": "source summary page",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/sources?docType=DESTINATION&size=51",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "来源类型或分页参数不正确",
+          "data": null,
+          "timestamp": 1791000398131
+        }
+      }
+    },
+    {
+      "name": "source summary page",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/sources?docType=DESTINATION&sourceId=0",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "来源类型或分页参数不正确",
+          "data": null,
+          "timestamp": 1791000398163
+        }
+      }
+    },
+    {
+      "name": "source summary page",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/sources?docType=DESTINATION&sourceId=x",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求参数缺失或格式不正确",
+          "data": null,
+          "timestamp": 1791000398183
+        }
+      }
+    },
+    {
+      "name": "source summary page",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/sources?docType=DESTINATION&keyword=%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2%E7%94%B2",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "来源关键字须为1—100个字符",
+          "data": null,
+          "timestamp": 1791000398198
+        }
+      }
+    },
+    {
+      "name": "source summary page",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/sources?docType=DESTINATION&keyword=bad%00text",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "来源关键字含不支持的控制字符或无效Unicode",
+          "data": null,
+          "timestamp": 1791000398229
+        }
+      }
+    },
+    {
+      "name": "source summary page",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/sources?docType=DESTINATION&keyword=KS_c6549aac&current=1000000",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "current": 1000000,
+            "pages": 2,
+            "records": [],
+            "size": 20,
+            "total": 27
+          },
+          "timestamp": 1791000398250
+        }
+      }
+    },
+    {
+      "name": "empty large page",
+      "actual": [],
+      "expected": [],
+      "passed": true
+    },
+    {
+      "name": "create owned knowledge",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/ai/knowledge",
+        "body": {
+          "title": "KS_c6549aac正文保持",
+          "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。",
+          "docType": "GUIDE",
+          "sourceId": null,
+          "status": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 97,
+            "title": "KS_c6549aac正文保持",
+            "docType": "GUIDE",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 1,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 2,
+            "vectorStatus": 0,
+            "updateTime": "2026-10-03T12:06:38",
+            "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。"
+          },
+          "timestamp": 1791000398296
+        }
+      }
+    },
+    {
+      "name": "current knowledge",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/97",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 97,
+            "title": "KS_c6549aac正文保持",
+            "docType": "GUIDE",
+            "sourceType": "FILE",
+            "sourceId": null,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 1,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 2,
+            "vectorStatus": 0,
+            "updateTime": "2026-10-03T12:06:38",
+            "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。"
+          },
+          "timestamp": 1791000398340
+        }
+      }
+    },
+    {
+      "name": "private session",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/session",
+        "body": {}
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 317,
+            "title": "新资料会话",
+            "mode": "LOCAL_SEARCH",
+            "revision": 1,
+            "messageCount": 0,
+            "lastMessageTime": null,
+            "createTime": "2026-10-03T12:06:38",
+            "updateTime": "2026-10-03T12:06:38"
+          },
+          "timestamp": 1791000398437
+        }
+      }
+    },
+    {
+      "name": "save original reference",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/chat/search",
+        "body": {
+          "sessionId": 317,
+          "query": "澄屿来源核验",
+          "topK": 1,
+          "requestId": "285286bd-e047-44b5-98e4-050315b2a334"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "session": {
+              "id": 317,
+              "title": "澄屿来源核验",
+              "mode": "LOCAL_SEARCH",
+              "revision": 2,
+              "messageCount": 2,
+              "lastMessageTime": "2026-10-03T12:06:38",
+              "createTime": "2026-10-03T12:06:38",
+              "updateTime": "2026-10-03T12:06:38"
+            },
+            "requestId": "285286bd-e047-44b5-98e4-050315b2a334",
+            "replayed": false,
+            "messages": [
+              {
+                "id": 1308,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "澄屿来源核验",
+                "requestId": "285286bd-e047-44b5-98e4-050315b2a334",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-03T12:06:38",
+                "result": null
+              },
+              {
+                "id": 1309,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "285286bd-e047-44b5-98e4-050315b2a334",
+                "tokensUsed": 0,
+                "costMs": 15,
+                "createTime": "2026-10-03T12:06:38",
+                "result": {
+                  "query": "澄屿来源核验",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "以下为资料原文片段，请结合来源与更新时间核实",
+                  "references": [
+                    {
+                      "docId": 97,
+                      "chunkId": 366,
+                      "chunkIndex": 1,
+                      "title": "KS_c6549aac正文保持",
+                      "excerpt": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正",
+                      "keywordCoverage": 1.0,
+                      "documentPath": "/knowledge/97",
+                      "sourcePath": null
+                    }
+                  ],
+                  "unavailableReferenceCount": 0
+                }
+              }
+            ]
+          },
+          "timestamp": 1791000398477
+        }
+      }
+    },
+    {
+      "name": "source-only update",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/97/source",
+        "body": {
+          "docType": "ROUTE",
+          "sourceId": 373,
+          "expectedRevision": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "outcome": "UPDATED",
+            "document": {
+              "id": 97,
+              "title": "KS_c6549aac正文保持",
+              "docType": "ROUTE",
+              "sourceType": "FILE",
+              "sourceId": 373,
+              "status": 1,
+              "revision": 2,
+              "indexedRevision": 2,
+              "indexMethod": "LOCAL_NGRAM",
+              "chunkCount": 2,
+              "vectorStatus": 0,
+              "updateTime": "2026-10-03T12:06:38",
+              "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。"
+            }
+          },
+          "timestamp": 1791000398520
+        }
+      }
+    },
+    {
+      "name": "source change outcome",
+      "actual": "UPDATED",
+      "expected": "UPDATED",
+      "passed": true
+    },
+    {
+      "name": "source-only preserves title",
+      "actual": "KS_c6549aac正文保持",
+      "expected": "KS_c6549aac正文保持",
+      "passed": true
+    },
+    {
+      "name": "source-only preserves content",
+      "actual": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。",
+      "expected": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。",
+      "passed": true
+    },
+    {
+      "name": "source-only preserves status",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "source-only preserves sourceType",
+      "actual": "FILE",
+      "expected": "FILE",
+      "passed": true
+    },
+    {
+      "name": "source-only preserves chunkCount",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "source-only preserves indexMethod",
+      "actual": "LOCAL_NGRAM",
+      "expected": "LOCAL_NGRAM",
+      "passed": true
+    },
+    {
+      "name": "source-only preserves vectorStatus",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "revision moves exactly once",
+      "actual": [
+        2,
+        2
+      ],
+      "expected": [
+        2,
+        2
+      ],
+      "passed": true
+    },
+    {
+      "name": "chunks and tokens preserved",
+      "actual": [
+        "7529559ab7a6be838ce95f099b31366239ffda857572cb0f360bfb3de4258f3a",
+        "366\tc6549aac\n366\tks\n366\t保持\n366\t屿来\n366\t文保\n366\t来源\n366\t核验\n366\t正文\n366\t源核\n366\t澄屿\n367\tc6549aac\n367\tks\n367\t保持\n367\t文保\n367\t正文"
+      ],
+      "expected": [
+        "7529559ab7a6be838ce95f099b31366239ffda857572cb0f360bfb3de4258f3a",
+        "366\tc6549aac\n366\tks\n366\t保持\n366\t屿来\n366\t文保\n366\t来源\n366\t核验\n366\t正文\n366\t源核\n366\t澄屿\n367\tc6549aac\n367\tks\n367\t保持\n367\t文保\n367\t正文"
+      ],
+      "passed": true
+    },
+    {
+      "name": "public search",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/knowledge/search",
+        "body": {
+          "query": "澄屿来源核验",
+          "topK": 5
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "query": "澄屿来源核验",
+            "mode": "LOCAL_NGRAM",
+            "matched": true,
+            "message": "以下为资料原文片段，请结合来源与更新时间核实",
+            "references": [
+              {
+                "docId": 97,
+                "chunkId": 366,
+                "chunkIndex": 1,
+                "title": "KS_c6549aac正文保持",
+                "excerpt": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正",
+                "keywordCoverage": 1.0,
+                "documentPath": "/knowledge/97",
+                "sourcePath": "/route/373"
+              }
+            ]
+          },
+          "timestamp": 1791000398638
+        }
+      }
+    },
+    {
+      "name": "public current source path",
+      "actual": "/route/373",
+      "expected": "/route/373",
+      "passed": true
+    },
+    {
+      "name": "refresh private history",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=317",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "records": [
+              {
+                "id": 1308,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "澄屿来源核验",
+                "requestId": "285286bd-e047-44b5-98e4-050315b2a334",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-03T12:06:38",
+                "result": null
+              },
+              {
+                "id": 1309,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "285286bd-e047-44b5-98e4-050315b2a334",
+                "tokensUsed": 0,
+                "costMs": 15,
+                "createTime": "2026-10-03T12:06:38",
+                "result": {
+                  "query": "澄屿来源核验",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "以下为资料原文片段，请结合来源与更新时间核实",
+                  "references": [
+                    {
+                      "docId": 97,
+                      "chunkId": 366,
+                      "chunkIndex": 1,
+                      "title": "KS_c6549aac正文保持",
+                      "excerpt": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正",
+                      "keywordCoverage": 1.0,
+                      "documentPath": "/knowledge/97",
+                      "sourcePath": "/route/373"
+                    }
+                  ],
+                  "unavailableReferenceCount": 0
+                }
+              }
+            ],
+            "hasMore": false,
+            "nextBeforeId": null
+          },
+          "timestamp": 1791000398650
+        }
+      }
+    },
+    {
+      "name": "history uses updated source path",
+      "actual": "/route/373",
+      "expected": "/route/373",
+      "passed": true
+    },
+    {
+      "name": "source-only update",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/97/source",
+        "body": {
+          "docType": "ROUTE",
+          "sourceId": 373,
+          "expectedRevision": 2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "outcome": "UNCHANGED",
+            "document": {
+              "id": 97,
+              "title": "KS_c6549aac正文保持",
+              "docType": "ROUTE",
+              "sourceType": "FILE",
+              "sourceId": 373,
+              "status": 1,
+              "revision": 2,
+              "indexedRevision": 2,
+              "indexMethod": "LOCAL_NGRAM",
+              "chunkCount": 2,
+              "vectorStatus": 0,
+              "updateTime": "2026-10-03T12:06:38",
+              "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。"
+            }
+          },
+          "timestamp": 1791000398666
+        }
+      }
+    },
+    {
+      "name": "unchanged skips version",
+      "actual": [
+        "UNCHANGED",
+        2
+      ],
+      "expected": [
+        "UNCHANGED",
+        2
+      ],
+      "passed": true
+    },
+    {
+      "name": "source-only update",
+      "actual": [
+        200,
+        409
+      ],
+      "expected": [
+        200,
+        409
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/97/source",
+        "body": {
+          "docType": "ROUTE",
+          "sourceId": 373,
+          "expectedRevision": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 409,
+          "message": "资料已被更新，请刷新后重新操作",
+          "data": null,
+          "timestamp": 1791000398686
+        }
+      }
+    },
+    {
+      "name": "source-only update",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/97/source",
+        "body": {
+          "docType": "GUIDE",
+          "sourceId": 90,
+          "expectedRevision": 2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "独立攻略无需关联ID",
+          "data": null,
+          "timestamp": 1791000398707
+        }
+      }
+    },
+    {
+      "name": "source-only update",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/97/source",
+        "body": {
+          "docType": "DESTINATION",
+          "sourceId": null,
+          "expectedRevision": 2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "目的地或路线资料须选择关联ID",
+          "data": null,
+          "timestamp": 1791000398733
+        }
+      }
+    },
+    {
+      "name": "source-only update",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/97/source",
+        "body": {
+          "docType": "DESTINATION",
+          "sourceId": 92,
+          "expectedRevision": 2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "关联内容不存在或未公开，请先恢复内容或将资料停用",
+          "data": null,
+          "timestamp": 1791000398741
+        }
+      }
+    },
+    {
+      "name": "source-only update",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/97/source",
+        "body": {
+          "docType": "ROUTE",
+          "sourceId": 376,
+          "expectedRevision": 2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "关联内容不存在或未公开，请先恢复内容或将资料停用",
+          "data": null,
+          "timestamp": 1791000398761
+        }
+      }
+    },
+    {
+      "name": "source-only update",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/97/source",
+        "body": {
+          "docType": "ROUTE",
+          "sourceId": 377,
+          "expectedRevision": 2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "关联内容不存在或未公开，请先恢复内容或将资料停用",
+          "data": null,
+          "timestamp": 1791000398783
+        }
+      }
+    },
+    {
+      "name": "source-only update",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/97/source",
+        "body": {
+          "docType": "DESTINATION",
+          "sourceId": 91,
+          "expectedRevision": 2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "关联内容不存在或未公开，请先恢复内容或将资料停用",
+          "data": null,
+          "timestamp": 1791000398799
+        }
+      }
+    },
+    {
+      "name": "strict source payload",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/97/source",
+        "body": {
+          "docType": "DESTINATION",
+          "sourceId": 90,
+          "expectedRevision": null
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "expectedRevision 不能为null",
+          "data": null,
+          "timestamp": 1791000398844
+        }
+      }
+    },
+    {
+      "name": "strict source payload",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/97/source",
+        "body": {
+          "docType": "DESTINATION",
+          "sourceId": 90,
+          "expectedRevision": "2"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求体格式错误",
+          "data": null,
+          "timestamp": 1791000398870
+        }
+      }
+    },
+    {
+      "name": "strict source payload",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/97/source",
+        "body": {
+          "docType": "DESTINATION",
+          "sourceId": 90,
+          "expectedRevision": 0
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "expectedRevision 必须是正数",
+          "data": null,
+          "timestamp": 1791000398877
+        }
+      }
+    },
+    {
+      "name": "strict source payload",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/97/source",
+        "body": {
+          "docType": "DESTINATION",
+          "sourceId": "1",
+          "expectedRevision": 2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求体格式错误",
+          "data": null,
+          "timestamp": 1791000398887
+        }
+      }
+    },
+    {
+      "name": "strict source payload",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/97/source",
+        "body": {
+          "docType": "DESTINATION",
+          "sourceId": 1.5,
+          "expectedRevision": 2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求体格式错误",
+          "data": null,
+          "timestamp": 1791000398904
+        }
+      }
+    },
+    {
+      "name": "strict source payload",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/97/source",
+        "body": {
+          "docType": "DESTINATION",
+          "sourceId": 0,
+          "expectedRevision": 2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "sourceId 必须是正数",
+          "data": null,
+          "timestamp": 1791000398930
+        }
+      }
+    },
+    {
+      "name": "strict source payload",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/97/source",
+        "body": {
+          "docType": "DESTINATION",
+          "sourceId": 36893488147419103232,
+          "expectedRevision": 2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求体格式错误",
+          "data": null,
+          "timestamp": 1791000398961
+        }
+      }
+    },
+    {
+      "name": "strict source payload",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/97/source",
+        "body": {
+          "docType": 2,
+          "sourceId": 90,
+          "expectedRevision": 2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求体格式错误",
+          "data": null,
+          "timestamp": 1791000398967
+        }
+      }
+    },
+    {
+      "name": "strict source payload",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/97/source",
+        "body": {
+          "docType": "OTHER",
+          "sourceId": 90,
+          "expectedRevision": 2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "docType 需要匹配正则表达式\"GUIDE|DESTINATION|ROUTE\"",
+          "data": null,
+          "timestamp": 1791000398991
+        }
+      }
+    },
+    {
+      "name": "missing document",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/999999999/source",
+        "body": {
+          "docType": "GUIDE",
+          "expectedRevision": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "资料不存在或已删除",
+          "data": null,
+          "timestamp": 1791000399011
+        }
+      }
+    },
+    {
+      "name": "current knowledge",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/97",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 97,
+            "title": "KS_c6549aac正文保持",
+            "docType": "ROUTE",
+            "sourceType": "FILE",
+            "sourceId": 373,
+            "status": 1,
+            "revision": 2,
+            "indexedRevision": 2,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 2,
+            "vectorStatus": 0,
+            "updateTime": "2026-10-03T12:06:38",
+            "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。"
+          },
+          "timestamp": 1791000399032
+        }
+      }
+    },
+    {
+      "name": "failed writes leave revision",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "public search",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/knowledge/search",
+        "body": {
+          "query": "澄屿来源核验",
+          "topK": 5
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "query": "澄屿来源核验",
+            "mode": "LOCAL_NGRAM",
+            "matched": false,
+            "message": "当前资料中未找到相关片段，请换用具体地点或关键字；不会编造资料之外的回答",
+            "references": []
+          },
+          "timestamp": 1791000399076
+        }
+      }
+    },
+    {
+      "name": "parent down hides search",
+      "actual": [],
+      "expected": [],
+      "passed": true
+    },
+    {
+      "name": "public knowledge",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/knowledge/documents/97",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "资料未公开、已过期或不存在",
+          "data": null,
+          "timestamp": 1791000399099
+        }
+      }
+    },
+    {
+      "name": "refresh private history",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=317",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "records": [
+              {
+                "id": 1308,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "澄屿来源核验",
+                "requestId": "285286bd-e047-44b5-98e4-050315b2a334",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-03T12:06:38",
+                "result": null
+              },
+              {
+                "id": 1309,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "285286bd-e047-44b5-98e4-050315b2a334",
+                "tokensUsed": 0,
+                "costMs": 15,
+                "createTime": "2026-10-03T12:06:38",
+                "result": {
+                  "query": "澄屿来源核验",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "部分历史引用已更新或不再公开，已隐藏旧片段，请重新检索",
+                  "references": [],
+                  "unavailableReferenceCount": 1
+                }
+              }
+            ],
+            "hasMore": false,
+            "nextBeforeId": null
+          },
+          "timestamp": 1791000399119
+        }
+      }
+    },
+    {
+      "name": "refresh private history",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=317",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "records": [
+              {
+                "id": 1308,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "澄屿来源核验",
+                "requestId": "285286bd-e047-44b5-98e4-050315b2a334",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-03T12:06:38",
+                "result": null
+              },
+              {
+                "id": 1309,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "285286bd-e047-44b5-98e4-050315b2a334",
+                "tokensUsed": 0,
+                "costMs": 15,
+                "createTime": "2026-10-03T12:06:38",
+                "result": {
+                  "query": "澄屿来源核验",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "部分历史引用已更新或不再公开，已隐藏旧片段，请重新检索",
+                  "references": [],
+                  "unavailableReferenceCount": 1
+                }
+              }
+            ],
+            "hasMore": false,
+            "nextBeforeId": null
+          },
+          "timestamp": 1791000399146
+        }
+      }
+    },
+    {
+      "name": "parent down hides history",
+      "actual": [
+        [],
+        1
+      ],
+      "expected": [
+        [],
+        1
+      ],
+      "passed": true
+    },
+    {
+      "name": "refresh private history",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=317",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "records": [
+              {
+                "id": 1308,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "澄屿来源核验",
+                "requestId": "285286bd-e047-44b5-98e4-050315b2a334",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-03T12:06:38",
+                "result": null
+              },
+              {
+                "id": 1309,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "285286bd-e047-44b5-98e4-050315b2a334",
+                "tokensUsed": 0,
+                "costMs": 15,
+                "createTime": "2026-10-03T12:06:38",
+                "result": {
+                  "query": "澄屿来源核验",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "以下为资料原文片段，请结合来源与更新时间核实",
+                  "references": [
+                    {
+                      "docId": 97,
+                      "chunkId": 366,
+                      "chunkIndex": 1,
+                      "title": "KS_c6549aac正文保持",
+                      "excerpt": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正",
+                      "keywordCoverage": 1.0,
+                      "documentPath": "/knowledge/97",
+                      "sourcePath": "/route/373"
+                    }
+                  ],
+                  "unavailableReferenceCount": 0
+                }
+              }
+            ],
+            "hasMore": false,
+            "nextBeforeId": null
+          },
+          "timestamp": 1791000399211
+        }
+      }
+    },
+    {
+      "name": "parent restore history returns preserved chunk",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "public knowledge",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/knowledge/documents/97",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "资料未公开、已过期或不存在",
+          "data": null,
+          "timestamp": 1791000399267
+        }
+      }
+    },
+    {
+      "name": "refresh private history",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=317",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "records": [
+              {
+                "id": 1308,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "澄屿来源核验",
+                "requestId": "285286bd-e047-44b5-98e4-050315b2a334",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-03T12:06:38",
+                "result": null
+              },
+              {
+                "id": 1309,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "285286bd-e047-44b5-98e4-050315b2a334",
+                "tokensUsed": 0,
+                "costMs": 15,
+                "createTime": "2026-10-03T12:06:38",
+                "result": {
+                  "query": "澄屿来源核验",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "部分历史引用已更新或不再公开，已隐藏旧片段，请重新检索",
+                  "references": [],
+                  "unavailableReferenceCount": 1
+                }
+              }
+            ],
+            "hasMore": false,
+            "nextBeforeId": null
+          },
+          "timestamp": 1791000399276
+        }
+      }
+    },
+    {
+      "name": "deleted source hides history",
+      "actual": [],
+      "expected": [],
+      "passed": true
+    },
+    {
+      "name": "source-only update",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/97/source",
+        "body": {
+          "docType": "GUIDE",
+          "sourceId": null,
+          "expectedRevision": 2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "outcome": "UPDATED",
+            "document": {
+              "id": 97,
+              "title": "KS_c6549aac正文保持",
+              "docType": "GUIDE",
+              "sourceType": "FILE",
+              "sourceId": null,
+              "status": 1,
+              "revision": 3,
+              "indexedRevision": 3,
+              "indexMethod": "LOCAL_NGRAM",
+              "chunkCount": 2,
+              "vectorStatus": 0,
+              "updateTime": "2026-10-03T12:06:39",
+              "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。"
+            }
+          },
+          "timestamp": 1791000399333
+        }
+      }
+    },
+    {
+      "name": "explicit independent clears link",
+      "actual": [
+        "GUIDE",
+        null
+      ],
+      "expected": [
+        "GUIDE",
+        null
+      ],
+      "passed": true
+    },
+    {
+      "name": "refresh private history",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/chat/message/page?sessionId=317",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "records": [
+              {
+                "id": 1308,
+                "role": "user",
+                "messageType": "LOCAL_QUERY",
+                "content": "澄屿来源核验",
+                "requestId": "285286bd-e047-44b5-98e4-050315b2a334",
+                "tokensUsed": 0,
+                "costMs": 0,
+                "createTime": "2026-10-03T12:06:38",
+                "result": null
+              },
+              {
+                "id": 1309,
+                "role": "assistant",
+                "messageType": "LOCAL_RESULT",
+                "content": "本地资料检索结果",
+                "requestId": "285286bd-e047-44b5-98e4-050315b2a334",
+                "tokensUsed": 0,
+                "costMs": 15,
+                "createTime": "2026-10-03T12:06:38",
+                "result": {
+                  "query": "澄屿来源核验",
+                  "mode": "LOCAL_NGRAM",
+                  "matchedAtSearch": true,
+                  "message": "以下为资料原文片段，请结合来源与更新时间核实",
+                  "references": [
+                    {
+                      "docId": 97,
+                      "chunkId": 366,
+                      "chunkIndex": 1,
+                      "title": "KS_c6549aac正文保持",
+                      "excerpt": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正",
+                      "keywordCoverage": 1.0,
+                      "documentPath": "/knowledge/97",
+                      "sourcePath": null
+                    }
+                  ],
+                  "unavailableReferenceCount": 0
+                }
+              }
+            ],
+            "hasMore": false,
+            "nextBeforeId": null
+          },
+          "timestamp": 1791000399346
+        }
+      }
+    },
+    {
+      "name": "independent history source null",
+      "actual": null,
+      "expected": null,
+      "passed": true
+    },
+    {
+      "name": "create owned knowledge",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/ai/knowledge",
+        "body": {
+          "title": "KS_c6549aac停用草稿",
+          "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。",
+          "docType": "GUIDE",
+          "sourceId": null,
+          "status": 0
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 98,
+            "title": "KS_c6549aac停用草稿",
+            "docType": "GUIDE",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 0,
+            "revision": 1,
+            "indexedRevision": 1,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 2,
+            "vectorStatus": 0,
+            "updateTime": "2026-10-03T12:06:39",
+            "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。"
+          },
+          "timestamp": 1791000399363
+        }
+      }
+    },
+    {
+      "name": "source-only update",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/98/source",
+        "body": {
+          "docType": "ROUTE",
+          "sourceId": 375,
+          "expectedRevision": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "outcome": "UPDATED",
+            "document": {
+              "id": 98,
+              "title": "KS_c6549aac停用草稿",
+              "docType": "ROUTE",
+              "sourceType": "MANUAL",
+              "sourceId": 375,
+              "status": 0,
+              "revision": 2,
+              "indexedRevision": 2,
+              "indexMethod": "LOCAL_NGRAM",
+              "chunkCount": 2,
+              "vectorStatus": 0,
+              "updateTime": "2026-10-03T12:06:39",
+              "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。"
+            }
+          },
+          "timestamp": 1791000399391
+        }
+      }
+    },
+    {
+      "name": "draft accepts hidden parent",
+      "actual": [
+        0,
+        375
+      ],
+      "expected": [
+        0,
+        375
+      ],
+      "passed": true
+    },
+    {
+      "name": "public knowledge",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/ai/knowledge/documents/98",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "资料未公开、已过期或不存在",
+          "data": null,
+          "timestamp": 1791000399410
+        }
+      }
+    },
+    {
+      "name": "hidden linked draft cannot enable",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/98/status",
+        "body": {
+          "status": 1,
+          "expectedRevision": 2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "关联内容不存在或未公开，请先恢复内容或将资料停用",
+          "data": null,
+          "timestamp": 1791000399423
+        }
+      }
+    },
+    {
+      "name": "create owned knowledge",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/ai/knowledge",
+        "body": {
+          "title": "KS_c6549aac旧待关联",
+          "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。",
+          "docType": "GUIDE",
+          "sourceId": null,
+          "status": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 99,
+            "title": "KS_c6549aac旧待关联",
+            "docType": "GUIDE",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 1,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 2,
+            "vectorStatus": 0,
+            "updateTime": "2026-10-03T12:06:39",
+            "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。"
+          },
+          "timestamp": 1791000399440
+        }
+      }
+    },
+    {
+      "name": "current knowledge",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/99",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 99,
+            "title": "KS_c6549aac旧待关联",
+            "docType": "DESTINATION",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 1,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 2,
+            "vectorStatus": 0,
+            "updateTime": "2026-10-03T12:06:39",
+            "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。"
+          },
+          "timestamp": 1791000399504
+        }
+      }
+    },
+    {
+      "name": "source-only update",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/99/source",
+        "body": {
+          "docType": "DESTINATION",
+          "sourceId": 90,
+          "expectedRevision": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "outcome": "UPDATED",
+            "document": {
+              "id": 99,
+              "title": "KS_c6549aac旧待关联",
+              "docType": "DESTINATION",
+              "sourceType": "MANUAL",
+              "sourceId": 90,
+              "status": 1,
+              "revision": 2,
+              "indexedRevision": 2,
+              "indexMethod": "LOCAL_NGRAM",
+              "chunkCount": 2,
+              "vectorStatus": 0,
+              "updateTime": "2026-10-03T12:06:39",
+              "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。"
+            }
+          },
+          "timestamp": 1791000399602
+        }
+      }
+    },
+    {
+      "name": "legacy source explicit and IDs retained",
+      "actual": [
+        90,
+        true
+      ],
+      "expected": [
+        90,
+        true
+      ],
+      "passed": true
+    },
+    {
+      "name": "create owned knowledge",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/ai/knowledge",
+        "body": {
+          "title": "KS_c6549aac异常3",
+          "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。",
+          "docType": "GUIDE",
+          "sourceId": null,
+          "status": 0
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 100,
+            "title": "KS_c6549aac异常3",
+            "docType": "GUIDE",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 0,
+            "revision": 1,
+            "indexedRevision": 1,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 2,
+            "vectorStatus": 0,
+            "updateTime": "2026-10-03T12:06:39",
+            "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。"
+          },
+          "timestamp": 1791000399727
+        }
+      }
+    },
+    {
+      "name": "current knowledge",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/100",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 100,
+            "title": "KS_c6549aac异常3",
+            "docType": "GUIDE",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 0,
+            "revision": 1,
+            "indexedRevision": 2,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 2,
+            "vectorStatus": 0,
+            "updateTime": "2026-10-03T12:06:39",
+            "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。"
+          },
+          "timestamp": 1791000399785
+        }
+      }
+    },
+    {
+      "name": "source-only update",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/100/source",
+        "body": {
+          "docType": "DESTINATION",
+          "sourceId": 90,
+          "expectedRevision": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "outcome": "UPDATED",
+            "document": {
+              "id": 100,
+              "title": "KS_c6549aac异常3",
+              "docType": "DESTINATION",
+              "sourceType": "MANUAL",
+              "sourceId": 90,
+              "status": 0,
+              "revision": 2,
+              "indexedRevision": 0,
+              "indexMethod": "LOCAL_NGRAM",
+              "chunkCount": 2,
+              "vectorStatus": 0,
+              "updateTime": "2026-10-03T12:06:39",
+              "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。"
+            }
+          },
+          "timestamp": 1791000399810
+        }
+      }
+    },
+    {
+      "name": "damaged source edit invalidates index indexed_revision=revision+1",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "create owned knowledge",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/ai/knowledge",
+        "body": {
+          "title": "KS_c6549aac异常4",
+          "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。",
+          "docType": "GUIDE",
+          "sourceId": null,
+          "status": 0
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 101,
+            "title": "KS_c6549aac异常4",
+            "docType": "GUIDE",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 0,
+            "revision": 1,
+            "indexedRevision": 1,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 2,
+            "vectorStatus": 0,
+            "updateTime": "2026-10-03T12:06:39",
+            "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。"
+          },
+          "timestamp": 1791000399836
+        }
+      }
+    },
+    {
+      "name": "current knowledge",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/101",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 101,
+            "title": "KS_c6549aac异常4",
+            "docType": "GUIDE",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 0,
+            "revision": 1,
+            "indexedRevision": 1,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 3,
+            "vectorStatus": 0,
+            "updateTime": "2026-10-03T12:06:39",
+            "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。"
+          },
+          "timestamp": 1791000399880
+        }
+      }
+    },
+    {
+      "name": "source-only update",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/101/source",
+        "body": {
+          "docType": "DESTINATION",
+          "sourceId": 90,
+          "expectedRevision": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "outcome": "UPDATED",
+            "document": {
+              "id": 101,
+              "title": "KS_c6549aac异常4",
+              "docType": "DESTINATION",
+              "sourceType": "MANUAL",
+              "sourceId": 90,
+              "status": 0,
+              "revision": 2,
+              "indexedRevision": 0,
+              "indexMethod": "LOCAL_NGRAM",
+              "chunkCount": 3,
+              "vectorStatus": 0,
+              "updateTime": "2026-10-03T12:06:39",
+              "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。"
+            }
+          },
+          "timestamp": 1791000399905
+        }
+      }
+    },
+    {
+      "name": "damaged source edit invalidates index chunk_count=chunk_count+1",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "create owned knowledge",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/ai/knowledge",
+        "body": {
+          "title": "KS_c6549aac错代次",
+          "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。",
+          "docType": "GUIDE",
+          "sourceId": null,
+          "status": 0
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 102,
+            "title": "KS_c6549aac错代次",
+            "docType": "GUIDE",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 0,
+            "revision": 1,
+            "indexedRevision": 1,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 2,
+            "vectorStatus": 0,
+            "updateTime": "2026-10-03T12:06:39",
+            "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。"
+          },
+          "timestamp": 1791000399936
+        }
+      }
+    },
+    {
+      "name": "source-only update",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/102/source",
+        "body": {
+          "docType": "DESTINATION",
+          "sourceId": 90,
+          "expectedRevision": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "outcome": "UPDATED",
+            "document": {
+              "id": 102,
+              "title": "KS_c6549aac错代次",
+              "docType": "DESTINATION",
+              "sourceType": "MANUAL",
+              "sourceId": 90,
+              "status": 0,
+              "revision": 2,
+              "indexedRevision": 0,
+              "indexMethod": "LOCAL_NGRAM",
+              "chunkCount": 2,
+              "vectorStatus": 0,
+              "updateTime": "2026-10-03T12:06:39",
+              "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。"
+            }
+          },
+          "timestamp": 1791000399994
+        }
+      }
+    },
+    {
+      "name": "future chunks do not heal",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "damaged item repair",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/ai/knowledge/repair",
+        "body": {
+          "documents": [
+            {
+              "id": 102,
+              "expectedRevision": 2
+            }
+          ]
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "total": 1,
+            "succeeded": 1,
+            "unchanged": 0,
+            "failed": 0,
+            "results": [
+              {
+                "id": 102,
+                "code": 200,
+                "outcome": "REPAIRED",
+                "message": "本地索引已修复",
+                "revision": 2,
+                "chunkCount": 2
+              }
+            ]
+          },
+          "timestamp": 1791000400040
+        }
+      }
+    },
+    {
+      "name": "damaged still explicitly repairable",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "create owned knowledge",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/ai/knowledge",
+        "body": {
+          "title": "KS_c6549aac并发",
+          "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。",
+          "docType": "GUIDE",
+          "sourceId": null,
+          "status": 0
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 103,
+            "title": "KS_c6549aac并发",
+            "docType": "GUIDE",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 0,
+            "revision": 1,
+            "indexedRevision": 1,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 2,
+            "vectorStatus": 0,
+            "updateTime": "2026-10-03T12:06:40",
+            "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。"
+          },
+          "timestamp": 1791000400079
+        }
+      }
+    },
+    {
+      "name": "concurrent CAS one success one conflict",
+      "actual": [
+        200,
+        409
+      ],
+      "expected": [
+        200,
+        409
+      ],
+      "passed": true,
+      "responses": [
+        {
+          "status": 200,
+          "body": {
+            "code": 409,
+            "message": "资料已被更新，请刷新后重新操作",
+            "data": null,
+            "timestamp": 1791000400108
+          }
+        },
+        {
+          "status": 200,
+          "body": {
+            "code": 200,
+            "message": "success",
+            "data": {
+              "outcome": "UPDATED",
+              "document": {
+                "id": 103,
+                "title": "KS_c6549aac并发",
+                "docType": "DESTINATION",
+                "sourceType": "MANUAL",
+                "sourceId": 91,
+                "status": 0,
+                "revision": 2,
+                "indexedRevision": 2,
+                "indexMethod": "LOCAL_NGRAM",
+                "chunkCount": 2,
+                "vectorStatus": 0,
+                "updateTime": "2026-10-03T12:06:40",
+                "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。"
+              }
+            },
+            "timestamp": 1791000400108
+          }
+        }
+      ]
+    },
+    {
+      "name": "current knowledge",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/ai/knowledge/103",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 103,
+            "title": "KS_c6549aac并发",
+            "docType": "DESTINATION",
+            "sourceType": "MANUAL",
+            "sourceId": 91,
+            "status": 0,
+            "revision": 2,
+            "indexedRevision": 2,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 2,
+            "vectorStatus": 0,
+            "updateTime": "2026-10-03T12:06:40",
+            "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。"
+          },
+          "timestamp": 1791000400126
+        }
+      }
+    },
+    {
+      "name": "CAS advances once",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "create owned knowledge",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/admin/ai/knowledge",
+        "body": {
+          "title": "KS_c6549aac已删",
+          "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。",
+          "docType": "GUIDE",
+          "sourceId": null,
+          "status": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "id": 104,
+            "title": "KS_c6549aac已删",
+            "docType": "GUIDE",
+            "sourceType": "MANUAL",
+            "sourceId": null,
+            "status": 1,
+            "revision": 1,
+            "indexedRevision": 1,
+            "indexMethod": "LOCAL_NGRAM",
+            "chunkCount": 2,
+            "vectorStatus": 0,
+            "updateTime": "2026-10-03T12:06:40",
+            "content": "澄屿来源核验。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。正文保持😀。"
+          },
+          "timestamp": 1791000400166
+        }
+      }
+    },
+    {
+      "name": "delete owned document",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "DELETE",
+        "path": "/admin/ai/knowledge/104?expectedRevision=1",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": null,
+          "timestamp": 1791000400201
+        }
+      }
+    },
+    {
+      "name": "source-only update",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "PUT",
+        "path": "/admin/ai/knowledge/104/source",
+        "body": {
+          "docType": "DESTINATION",
+          "sourceId": 90,
+          "expectedRevision": 1
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "资料不存在或已删除",
+          "data": null,
+          "timestamp": 1791000400210
+        }
+      }
+    },
+    {
+      "name": "owned cleanup knowledge_doc",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "owned cleanup destination",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "owned cleanup route",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    }
+  ],
+  "phase": "COMPLETE",
+  "fixtures": [
+    {
+      "destinationId": 90,
+      "name": "KS_c6549aac公开"
+    },
+    {
+      "destinationId": 91,
+      "name": "KS_c6549aac未公开"
+    },
+    {
+      "destinationId": 92,
+      "name": "KS_c6549aac已删除"
+    },
+    {
+      "destinationId": 93,
+      "name": "KS_c6549aac分页00"
+    },
+    {
+      "destinationId": 94,
+      "name": "KS_c6549aac分页01"
+    },
+    {
+      "destinationId": 95,
+      "name": "KS_c6549aac分页02"
+    },
+    {
+      "destinationId": 96,
+      "name": "KS_c6549aac分页03"
+    },
+    {
+      "destinationId": 97,
+      "name": "KS_c6549aac分页04"
+    },
+    {
+      "destinationId": 98,
+      "name": "KS_c6549aac分页05"
+    },
+    {
+      "destinationId": 99,
+      "name": "KS_c6549aac分页06"
+    },
+    {
+      "destinationId": 100,
+      "name": "KS_c6549aac分页07"
+    },
+    {
+      "destinationId": 101,
+      "name": "KS_c6549aac分页08"
+    },
+    {
+      "destinationId": 102,
+      "name": "KS_c6549aac分页09"
+    },
+    {
+      "destinationId": 103,
+      "name": "KS_c6549aac分页10"
+    },
+    {
+      "destinationId": 104,
+      "name": "KS_c6549aac分页11"
+    },
+    {
+      "destinationId": 105,
+      "name": "KS_c6549aac分页12"
+    },
+    {
+      "destinationId": 106,
+      "name": "KS_c6549aac分页13"
+    },
+    {
+      "destinationId": 107,
+      "name": "KS_c6549aac分页14"
+    },
+    {
+      "destinationId": 108,
+      "name": "KS_c6549aac分页15"
+    },
+    {
+      "destinationId": 109,
+      "name": "KS_c6549aac分页16"
+    },
+    {
+      "destinationId": 110,
+      "name": "KS_c6549aac分页17"
+    },
+    {
+      "destinationId": 111,
+      "name": "KS_c6549aac分页18"
+    },
+    {
+      "destinationId": 112,
+      "name": "KS_c6549aac分页19"
+    },
+    {
+      "destinationId": 113,
+      "name": "KS_c6549aac分页20"
+    },
+    {
+      "destinationId": 114,
+      "name": "KS_c6549aac分页21"
+    },
+    {
+      "destinationId": 115,
+      "name": "KS_c6549aac字面%_="
+    },
+    {
+      "destinationId": 116,
+      "name": "KS_c6549aac同名"
+    },
+    {
+      "routeIds": [
+        373,
+        374,
+        375,
+        376,
+        377
+      ]
+    },
+    {
+      "docId": 97
+    },
+    {
+      "docId": 98
+    },
+    {
+      "docId": 99
+    },
+    {
+      "docId": 100
+    },
+    {
+      "docId": 101
+    },
+    {
+      "docId": 102
+    },
+    {
+      "docId": 103
+    },
+    {
+      "docId": 104
+    }
+  ],
+  "summary": {
+    "total": 124,
+    "passed": 124,
+    "failed": 0
+  }
+}

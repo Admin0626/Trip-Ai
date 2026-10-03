@@ -1,0 +1,199 @@
+{
+  "mode": "REAL_EDGE_KNOWLEDGE_SOURCE_MAINTENANCE_NO_LLM",
+  "phase": "COMPLETE",
+  "checks": [
+    {
+      "name": "fixture register admin",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "fixture register reader",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real doc create 旧资料",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real doc create 草稿",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real UI login",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "source search actual total",
+      "actual": 34,
+      "expected": 24,
+      "passed": false
+    },
+    {
+      "name": "source page beyond first 20",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "browser run completed",
+      "actual": "locator.getAttribute: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('option', { name: 'KSUI_f02f5d隐藏 · ID 119 · 未公开', exact: true })\u001b[22m\n",
+      "expected": "no error",
+      "passed": false
+    },
+    {
+      "name": "owned cleanup knowledge_doc",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "owned cleanup destination",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "owned cleanup route",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "accounts": [
+    {
+      "id": 10352,
+      "username": "KSUI_f02f5d_admin",
+      "role": "admin"
+    },
+    {
+      "id": 10353,
+      "username": "KSUI_f02f5d_reader",
+      "role": "reader"
+    }
+  ],
+  "fixtures": [
+    {
+      "destinationId": 118,
+      "name": "KSUI_f02f5d公开"
+    },
+    {
+      "destinationId": 119,
+      "name": "KSUI_f02f5d隐藏"
+    },
+    {
+      "destinationId": 120,
+      "name": "KSUI_f02f5d分页0"
+    },
+    {
+      "destinationId": 121,
+      "name": "KSUI_f02f5d分页1"
+    },
+    {
+      "destinationId": 122,
+      "name": "KSUI_f02f5d分页2"
+    },
+    {
+      "destinationId": 123,
+      "name": "KSUI_f02f5d分页3"
+    },
+    {
+      "destinationId": 124,
+      "name": "KSUI_f02f5d分页4"
+    },
+    {
+      "destinationId": 125,
+      "name": "KSUI_f02f5d分页5"
+    },
+    {
+      "destinationId": 126,
+      "name": "KSUI_f02f5d分页6"
+    },
+    {
+      "destinationId": 127,
+      "name": "KSUI_f02f5d分页7"
+    },
+    {
+      "destinationId": 128,
+      "name": "KSUI_f02f5d分页8"
+    },
+    {
+      "destinationId": 129,
+      "name": "KSUI_f02f5d分页9"
+    },
+    {
+      "destinationId": 130,
+      "name": "KSUI_f02f5d分页10"
+    },
+    {
+      "destinationId": 131,
+      "name": "KSUI_f02f5d分页11"
+    },
+    {
+      "destinationId": 132,
+      "name": "KSUI_f02f5d分页12"
+    },
+    {
+      "destinationId": 133,
+      "name": "KSUI_f02f5d分页13"
+    },
+    {
+      "destinationId": 134,
+      "name": "KSUI_f02f5d分页14"
+    },
+    {
+      "destinationId": 135,
+      "name": "KSUI_f02f5d分页15"
+    },
+    {
+      "destinationId": 136,
+      "name": "KSUI_f02f5d分页16"
+    },
+    {
+      "destinationId": 137,
+      "name": "KSUI_f02f5d分页17"
+    },
+    {
+      "destinationId": 138,
+      "name": "KSUI_f02f5d分页18"
+    },
+    {
+      "destinationId": 139,
+      "name": "KSUI_f02f5d分页19"
+    },
+    {
+      "destinationId": 140,
+      "name": "KSUI_f02f5d分页20"
+    },
+    {
+      "destinationId": 141,
+      "name": "KSUI_f02f5d分页21"
+    },
+    {
+      "routeId": 378
+    },
+    {
+      "docId": 105,
+      "title": "KSUI_f02f5d旧资料"
+    },
+    {
+      "docId": 106,
+      "title": "KSUI_f02f5d草稿"
+    }
+  ],
+  "summary": {
+    "total": 11,
+    "passed": 9,
+    "failed": 2
+  }
+}

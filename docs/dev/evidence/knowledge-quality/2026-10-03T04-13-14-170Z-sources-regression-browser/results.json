@@ -1,0 +1,206 @@
+{
+  "mode": "REAL_EDGE_KNOWLEDGE_MAINTENANCE_NO_LLM",
+  "phase": "COMPLETE",
+  "checks": [
+    {
+      "name": "real fixture register admin",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real fixture register reader",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real owned doc create 缺片",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real owned doc create 停用过期",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real owned doc create 健康",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "real admin UI login",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "UI own docs filtered",
+      "actual": 3,
+      "expected": 3,
+      "passed": true
+    },
+    {
+      "name": "missing chunks reason shown",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "health count matches actual",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "UI selects damaged only",
+      "actual": [
+        132,
+        133
+      ],
+      "expected": [
+        132,
+        133
+      ],
+      "passed": true
+    },
+    {
+      "name": "confirmation mentions historical references",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "UI partial repair actual codes",
+      "actual": [
+        [
+          132,
+          200
+        ],
+        [
+          133,
+          409
+        ]
+      ],
+      "expected": [
+        [
+          132,
+          200
+        ],
+        [
+          133,
+          409
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "name": "partial failure visible",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "fresh revision repair succeeds",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "SQL repaired metadata",
+      "actual": "1",
+      "expected": "1",
+      "passed": true
+    },
+    {
+      "name": "disabled doc remains disabled",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "healthy selected unchanged",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "healthy history chunk IDs unchanged",
+      "actual": "492",
+      "expected": "492",
+      "passed": true
+    },
+    {
+      "name": "guide is not missing source",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "responsive no page overflow 375",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "responsive no page overflow 768",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "reader admin health denied",
+      "actual": 403,
+      "expected": 403,
+      "passed": true
+    },
+    {
+      "name": "no page errors",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "owned doc cleanup",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "accounts": [
+    {
+      "id": 10370,
+      "username": "KQUI_6520d8_admin",
+      "role": "admin"
+    },
+    {
+      "id": 10371,
+      "username": "KQUI_6520d8_reader",
+      "role": "reader"
+    }
+  ],
+  "fixtures": [
+    {
+      "docId": 132,
+      "title": "KQUI_6520d8缺片"
+    },
+    {
+      "docId": 133,
+      "title": "KQUI_6520d8停用过期"
+    },
+    {
+      "docId": 134,
+      "title": "KQUI_6520d8健康"
+    }
+  ],
+  "summary": {
+    "total": 24,
+    "passed": 24,
+    "failed": 0
+  }
+}

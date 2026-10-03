@@ -1,0 +1,31 @@
+{
+  "recordedAt": "2026-10-03",
+  "repository": "Admin0626/Trip-Ai",
+  "branch": "codex/knowledge-sources",
+  "featureCommit": "0f73eec7d8f32fcd98645f0c61bc458c2c8946ac",
+  "baseCommit": "596065e6bb070a1cafe26f91f98c0879a446a8b9",
+  "remoteHead": "0f73eec7d8f32fcd98645f0c61bc458c2c8946ac",
+  "mainAtPublication": "596065e6bb070a1cafe26f91f98c0879a446a8b9",
+  "pullRequest": {
+    "number": 6,
+    "url": "https://github.com/Admin0626/Trip-Ai/pull/6",
+    "state": "open",
+    "merged": false,
+    "head": "0f73eec7d8f32fcd98645f0c61bc458c2c8946ac",
+    "base": "main"
+  },
+  "previousPullRequest": {
+    "number": 5,
+    "merged": true,
+    "mergeCommit": "596065e6bb070a1cafe26f91f98c0879a446a8b9"
+  },
+  "baselineTag": {
+    "object": "f347ba5c2a8db4b4a88f47b070614d64b9fe72b1",
+    "commit": "ceec9a2789410f3f404cbc2268cb07ada2dffb9f"
+  },
+  "ci": {
+    "checkRuns": 0,
+    "statuses": 0
+  },
+  "note": "Records feature commit; a subsequent documentation commit records publication. Verify final local/remote/PR head using git log and GitHub. New PR remains open."
+}

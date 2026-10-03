@@ -1,0 +1,14 @@
+<script setup lang="ts">
+import {onBeforeUnmount,ref} from 'vue'
+import {ElMessage,ElMessageBox} from 'element-plus'
+import {knowledgeDetail,changeKnowledgeSource,type KnowledgeDoc} from '@/api/modules/knowledge'
+import KnowledgeSourcePicker from './KnowledgeSourcePicker.vue'
+const props=defineProps<{busy:boolean}>(),emit=defineEmits<{'update:busy':[boolean];changed:[]}>()
+const visible=ref(false),doc=ref<KnowledgeDoc>(),docType=ref<KnowledgeDoc['docType']>('GUIDE'),sourceId=ref<number|null>(null),error=ref('')
+let mounted=true
+onBeforeUnmount(()=>{mounted=false})
+async function open(row:KnowledgeDoc){if(props.busy)return;emit('update:busy',true);try{const d=await knowledgeDetail(row.id);if(!mounted)return;doc.value=d;docType.value=d.docType;sourceId.value=d.sourceId;error.value='';visible.value=true}catch(e){if(mounted)ElMessage.error(e instanceof Error?e.message:'无法加载资料')}finally{emit('update:busy',false)}}
+async function save(){if(props.busy||!doc.value)return;if(docType.value!=='GUIDE'&&!sourceId.value){ElMessage.warning('请选择关联来源');return}emit('update:busy',true);try{await ElMessageBox.confirm('将按当前资料状态检查来源。正文、标题及启用状态保持原样；历史引用刷新后将使用当前来源。转为独立攻略会解除目录公开状态的限制，请确认资料适合独立展示。','确认调整来源',{type:'warning'})}catch{emit('update:busy',false);return}if(!mounted||!visible.value){emit('update:busy',false);return}error.value='';try{const r=await changeKnowledgeSource(doc.value,docType.value,docType.value==='GUIDE'?null:sourceId.value);if(!mounted)return;visible.value=false;emit('changed');ElMessage.success(r.outcome==='UNCHANGED'?'来源保持原样':'来源已调整，正文分片保留')}catch(e){if(mounted)error.value=(e as {code?:number}).code===409?'资料版本已变化，选择已保留。请关闭并刷新列表后重新打开。':e instanceof Error?e.message:'调整来源失败'}finally{emit('update:busy',false)}}
+defineExpose({open})
+</script>
+<template><el-dialog v-model="visible" title="调整资料来源" width="min(700px, calc(100vw - 24px))" class="admin-dialog" :close-on-click-modal="!busy" :close-on-press-escape="!busy" :show-close="!busy"><template v-if="doc"><p>{{doc.title}} · 版本{{doc.revision}} · {{doc.status?'启用':'停用'}}</p><el-alert v-if="error" :title="error" type="error" :closable="false"/><el-form label-position="top" :disabled="busy"><el-form-item label="来源类型"><el-select v-model="docType" aria-label="来源类型" @change="sourceId=null"><el-option label="独立攻略" value="GUIDE"/><el-option label="目的地" value="DESTINATION"/><el-option label="路线" value="ROUTE"/></el-select></el-form-item><el-form-item v-if="docType!=='GUIDE'" label="关联来源"><KnowledgeSourcePicker :key="doc.id+'-'+doc.revision" v-model="sourceId" :doc-type="docType" :status="doc.status" :disabled="busy"/></el-form-item></el-form><p class="admin-note">仅调整来源，不自动启用资料或重建索引。索引异常需另行修复；已保存的历史引用在刷新时核验当前来源。</p></template><template #footer><el-button :disabled="busy" @click="visible=false">取消</el-button><el-button type="primary" :loading="busy" @click="save">保存来源</el-button></template></el-dialog></template>

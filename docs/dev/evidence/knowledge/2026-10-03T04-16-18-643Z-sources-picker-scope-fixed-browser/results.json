@@ -1,0 +1,327 @@
+{
+  "mode": "REAL_EDGE_LOCAL_KNOWLEDGE_NO_LLM",
+  "label": "sources-picker-scope-fixed",
+  "phase": "COMPLETE",
+  "checks": [
+    {
+      "name": "register ADMIN",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "register USER",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "ADMIN browser login",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "USER browser login",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "knowledge admin navigation",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "new document defaults private",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "UI save real response",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "saved durable chunks",
+      "actual": 3,
+      "expected": 3,
+      "passed": true
+    },
+    {
+      "name": "private source unavailable",
+      "actual": 404,
+      "expected": 404,
+      "passed": true
+    },
+    {
+      "name": "UI enable actual response",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "UI search matched actual references",
+      "actual": [
+        200,
+        "LOCAL_NGRAM",
+        true
+      ],
+      "expected": [
+        200,
+        "LOCAL_NGRAM",
+        true
+      ],
+      "passed": true
+    },
+    {
+      "name": "literal markup remains text",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "no injected image element",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "no script execution",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "source route real doc",
+      "actual": "/knowledge/141",
+      "expected": "/knowledge/141",
+      "passed": true
+    },
+    {
+      "name": "full original source",
+      "actual": "霁澜原文清晨步行。<img src=x onerror=\"window.knowledgeXss=1\">\n甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸",
+      "expected": "霁澜原文清晨步行。<img src=x onerror=\"window.knowledgeXss=1\">\n甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸",
+      "passed": true
+    },
+    {
+      "name": "updated/revision visible",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "mobile full source no overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "mobile search no overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "mobile travel materials link usable",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "navigation no overflow 390",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "navigation no overflow 768",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "other editor actual save",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "stale UI save conflict",
+      "actual": 409,
+      "expected": 409,
+      "passed": true
+    },
+    {
+      "name": "conflict preserves input",
+      "actual": "霁澜原文我的待保存内容",
+      "expected": "霁澜原文我的待保存内容",
+      "passed": true
+    },
+    {
+      "name": "reopen fetches fresh version",
+      "actual": "霁澜原文另一位管理员内容",
+      "expected": "霁澜原文另一位管理员内容",
+      "passed": true
+    },
+    {
+      "name": "UI rebuild current document",
+      "actual": [
+        200,
+        3
+      ],
+      "expected": [
+        200,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "name": "mobile admin no page overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "mobile upload dialog no overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "UI multipart actual UTF8 normalization",
+      "actual": [
+        200,
+        "FILE",
+        "晴岚导入\n导入正文"
+      ],
+      "expected": [
+        200,
+        "FILE",
+        "晴岚导入\n导入正文"
+      ],
+      "passed": true
+    },
+    {
+      "name": "UI selected published source",
+      "actual": 244,
+      "expected": 244,
+      "passed": true
+    },
+    {
+      "name": "verified destination reference",
+      "actual": "/destination/244",
+      "expected": "/destination/244",
+      "passed": true
+    },
+    {
+      "name": "actual catalog link resolves",
+      "actual": "/destination/244",
+      "expected": "/destination/244",
+      "passed": true
+    },
+    {
+      "name": "UI disable real response",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "disabled excluded actual query",
+      "actual": [
+        200,
+        false,
+        []
+      ],
+      "expected": [
+        200,
+        false,
+        []
+      ],
+      "passed": true
+    },
+    {
+      "name": "hidden source clears content",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "reader frontend admin guard",
+      "actual": "/",
+      "expected": "/",
+      "passed": true
+    },
+    {
+      "name": "outside corpus no generated answer",
+      "actual": [
+        false,
+        []
+      ],
+      "expected": [
+        false,
+        []
+      ],
+      "passed": true
+    },
+    {
+      "name": "UI confirmed logical delete",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "deleted chunks removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "no uncaught browser errors",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "owned documents cleaned",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "owned user cleaned ADMIN",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "owned user cleaned USER",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "fixtures": [
+    {
+      "docId": 141,
+      "title": "KUI_64e11e81d1霁澜原文"
+    },
+    {
+      "docId": 142,
+      "title": "KUI_64e11e81d1晴岚导入"
+    },
+    {
+      "docId": 143,
+      "title": "KUI_64e11e81d1澄岳来源"
+    }
+  ],
+  "summary": {
+    "total": 44,
+    "passed": 44,
+    "failed": 0
+  }
+}
