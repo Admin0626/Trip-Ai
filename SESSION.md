@@ -2,12 +2,12 @@
 
 更新：2026-10-03。用户要求先调用 Figma 绘制样式图，再落地前端；已选择个人团队。设计文件 https://www.figma.com/design/KpiEIIPPgKqGBQ6fbx2ZjA，首页/旅行助手/路线详情/我的规划各桌面与手机，共八个原生可编辑画板。先取得四页设计上下文，再适配现有 Vue/SCSS，运行时直接复用 Figma 导出 SVG。
 
-- `codex/nature-design` 从当前 `codex/home-layout` 延续，保留未合并 PR #8 的两笔提交；本批统一森林绿/米白、共享组件和关键页面布局。原业务 API、模型及保存流程保留。
+- `codex/nature-design` 从当前 `codex/home-layout` 延续；发布核对确认 PR #8 已合并到 main=e8c60cd，并同步该合并提交，无文件冲突。本批统一森林绿/米白、共享组件和关键页面布局。原业务 API、模型及保存流程保留。
 - 最终 vue-tsc/Vite 构建通过，原大包警告仍存在。四页 1440/1024/390/320px 无横向溢出；导航菜单、首页 CTA、模式切换保留需求/清 Key、缺 Key 提示、预约弹窗取消、新建规划入口实际验证通过。未执行真实模型调用或数据写入。
 - Figma Starter 额度限制阻止最后细调：空状态和路线插画实例仍有裁切差异。前端已正确复用矢量资源；不宣称全部画板最终像素验收。实际规划列表有两条数据，空状态未通过清空真实数据测试。
 - [设计实现、验证与限制](docs/design/README.md)、[浏览器证据](docs/design/qa/browser-checks.json)、[设计规范](DESIGN.md)。原 docs/README.md、实训报告和答辩材料保留，不纳入本批提交。
 
-本批按仓库既有约定提交并推送独立分支、创建目标 main 的 PR；不自动合并。最终分支 head 和 PR 链接以 Git / GitHub 为准。本机服务继续用于预览。
+实现提交 5d97918 已推送 origin/codex/nature-design；[PR #9](https://github.com/Admin0626/Trip-Ai/pull/9) 已创建并附到任务，目标 main，保持 open、未合并。本段及发布核对由后续文档提交补充，最终 head 以 Git / GitHub 为准。本机服务继续用于预览。
 
 ---
 
