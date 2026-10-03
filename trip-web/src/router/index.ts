@@ -6,6 +6,7 @@ import UserLayout from '@/layouts/UserLayout.vue'
  * 第 2 批范围：Home / RouteList / RouteDetail / DestinationList / PlanList / PlanEditor / Favorites / Bookings / Login / Register
  */
 export const userRoutes: RouteRecordRaw[] = [
+  { path: '/workbench', name: 'Workbench', component: () => import('@/views/workbench/Workbench.vue'), meta: { title: '项目学习工作台', public: true } },
   {
     path: '/',
     component: UserLayout,

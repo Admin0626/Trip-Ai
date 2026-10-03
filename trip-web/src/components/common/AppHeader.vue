@@ -55,6 +55,7 @@ function handleCommand(cmd: string): void {
         <router-link to="/travel-assistant" class="nav-link" :class="{ 'router-link-active': assistantActive }">旅行助手</router-link>
         <router-link to="/knowledge" class="nav-link">旅行资料</router-link>
         <router-link to="/plan" class="nav-link">我的规划</router-link>
+        <router-link to="/workbench" class="nav-link">学习工作台</router-link>
       </nav>
 
       <div class="app-header__user">

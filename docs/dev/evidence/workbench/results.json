@@ -1,0 +1,456 @@
+{
+  "mode": "REAL_EDGE_LOCAL_EDUCATIONAL_UI",
+  "checks": [
+    {
+      "name": "public entry without login",
+      "actual": "/workbench",
+      "expected": "/workbench",
+      "passed": true
+    },
+    {
+      "name": "node inspector follows selection",
+      "actual": "Mapper / JDBC",
+      "expected": "Mapper / JDBC",
+      "passed": true
+    },
+    {
+      "name": "mapper code can be read",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "guide export contains architecture and boundary",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "missing Bean diagnosis",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "ambiguous Bean remedy",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "constructor lesson",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "保存规划 final step reached",
+      "actual": "STEP 06",
+      "expected": "STEP 06",
+      "passed": true
+    },
+    {
+      "name": "保存规划 replay resets",
+      "actual": "STEP 01",
+      "expected": "STEP 01",
+      "passed": true
+    },
+    {
+      "name": "AI 定制行程 final step reached",
+      "actual": "STEP 06",
+      "expected": "STEP 06",
+      "passed": true
+    },
+    {
+      "name": "AI 定制行程 replay resets",
+      "actual": "STEP 01",
+      "expected": "STEP 01",
+      "passed": true
+    },
+    {
+      "name": "本地资料检索 final step reached",
+      "actual": "STEP 06",
+      "expected": "STEP 06",
+      "passed": true
+    },
+    {
+      "name": "本地资料检索 replay resets",
+      "actual": "STEP 01",
+      "expected": "STEP 01",
+      "passed": true
+    },
+    {
+      "name": "浏览路线 final step reached",
+      "actual": "STEP 06",
+      "expected": "STEP 06",
+      "passed": true
+    },
+    {
+      "name": "浏览路线 replay resets",
+      "actual": "STEP 01",
+      "expected": "STEP 01",
+      "passed": true
+    },
+    {
+      "name": "frontend state loading",
+      "actual": "state-indicator loading",
+      "expected": "state-indicator loading",
+      "passed": true
+    },
+    {
+      "name": "frontend state empty",
+      "actual": "state-indicator empty",
+      "expected": "state-indicator empty",
+      "passed": true
+    },
+    {
+      "name": "frontend state error",
+      "actual": "state-indicator error",
+      "expected": "state-indicator error",
+      "passed": true
+    },
+    {
+      "name": "frontend state success",
+      "actual": "state-indicator success",
+      "expected": "state-indicator success",
+      "passed": true
+    },
+    {
+      "name": "route size capped to 100",
+      "actual": 100,
+      "expected": 100,
+      "passed": true
+    },
+    {
+      "name": "changing params clears stale result",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "empty result",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "unauthenticated plan rejected",
+      "actual": 401,
+      "expected": 401,
+      "passed": true
+    },
+    {
+      "name": "invalid plan rejected",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "valid simulated plan",
+      "actual": 1001,
+      "expected": 1001,
+      "passed": true
+    },
+    {
+      "name": "admin URL matches controller",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "non admin rejected",
+      "actual": 403,
+      "expected": 403,
+      "passed": true
+    },
+    {
+      "name": "admin allowed",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "transaction rollback explained",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "transaction commit explained",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "quiz correct answer visible",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "next question resets feedback",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "selected view survives reload",
+      "actual": "数据关系",
+      "expected": "数据关系",
+      "passed": true
+    },
+    {
+      "name": "overview no horizontal overflow at 1440",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "spring no horizontal overflow at 1440",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "request no horizontal overflow at 1440",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "frontend no horizontal overflow at 1440",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "api no horizontal overflow at 1440",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "data no horizontal overflow at 1440",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "overview no horizontal overflow at 1024",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "spring no horizontal overflow at 1024",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "request no horizontal overflow at 1024",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "frontend no horizontal overflow at 1024",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "api no horizontal overflow at 1024",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "data no horizontal overflow at 1024",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "overview no horizontal overflow at 768",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "spring no horizontal overflow at 768",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "request no horizontal overflow at 768",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "frontend no horizontal overflow at 768",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "api no horizontal overflow at 768",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "data no horizontal overflow at 768",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "overview no horizontal overflow at 390",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "spring no horizontal overflow at 390",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "request no horizontal overflow at 390",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "frontend no horizontal overflow at 390",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "api no horizontal overflow at 390",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "data no horizontal overflow at 390",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "overview no horizontal overflow at 320",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "spring no horizontal overflow at 320",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "request no horizontal overflow at 320",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "frontend no horizontal overflow at 320",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "api no horizontal overflow at 320",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "data no horizontal overflow at 320",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "mobile shows explicit dependency relations",
+      "actual": 3,
+      "expected": 3,
+      "passed": true
+    },
+    {
+      "name": "no business API calls",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "shared navigation has one workbench entry",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "existing route page header fits at 1440",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "existing route page header fits at 1024",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "existing route page header fits at 768",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "existing route page header fits at 390",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "existing route page header fits at 320",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "mobile navigation exposes workbench",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "shared navigation opens workbench",
+      "actual": "/workbench",
+      "expected": "/workbench",
+      "passed": true
+    },
+    {
+      "name": "no unhandled browser errors",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "apiCalls": [],
+  "summary": {
+    "total": 74,
+    "passed": 74,
+    "failed": 0
+  }
+}
