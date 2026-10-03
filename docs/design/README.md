@@ -41,4 +41,4 @@
 
 前端截图：`qa/home-desktop.jpg`、`qa/assistant-desktop.jpg`、`qa/route-desktop.jpg`、`qa/plans-desktop.jpg`，以及对应 `*-mobile.jpg`。
 
-分支 `codex/nature-design` 从首页留白分支继续。发布核对确认 PR #8 已合并到 main=e8c60cd，因此同步该 main 合并提交，无文件冲突或新增代码差异。[设计 PR #9](https://github.com/Admin0626/Trip-Ai/pull/9) 目标 main，保持 open、未合并；比较差异仅包含本批设计实现和文档。用户原有 docs/README.md、实训报告和答辩材料不纳入设计提交。
+分支 `codex/nature-design` 从首页留白分支继续，已同步PR #8的main=e8c60cd。后续按用户要求加入取消每日调用限制，最终[PR #9](https://github.com/Admin0626/Trip-Ai/pull/9)已于2026-10-03按用户授权合并main，合并提交49870f0；交付、验证和接续状态见根目录SESSION.md。用户原有docs/README.md、实训报告和答辩材料未纳入。
