@@ -32,7 +32,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div>
+  <div class="home-page page-wrapper">
     <!-- 轮播英雄区 -->
     <section class="hero">
       <div class="hero__inner container">
@@ -97,7 +97,8 @@ onMounted(async () => {
 .hero {
   background: linear-gradient(135deg, #2f7bff 0%, #6aa5ff 100%);
   color: #fff;
-  padding: 64px 0;
+  padding: 48px 32px;
+  border-radius: 12px;
 
   &__title {
     margin: 0 0 12px;
@@ -114,7 +115,7 @@ onMounted(async () => {
     gap: 12px;
   }
 }
-.hero__actions{flex-wrap:wrap}.banner-slide{position:relative;display:block;height:100%;color:white}.banner-slide img{width:100%;height:100%;object-fit:cover}.banner-slide span{position:absolute;bottom:0;left:0;right:0;padding:24px;background:linear-gradient(transparent,rgba(0,0,0,.7));font-size:22px}.home-banners :deep(.el-carousel){border-radius:12px}@media(max-width:600px){.hero{padding:36px 0}.hero__title{font-size:26px}.banner-slide span{font-size:18px;padding:18px}.home-banners :deep(.el-carousel__container){height:200px!important}}
+.hero__actions{flex-wrap:wrap}.banner-slide{position:relative;display:block;height:100%;color:white}.banner-slide img{width:100%;height:100%;object-fit:cover}.banner-slide span{position:absolute;bottom:0;left:0;right:0;padding:24px;background:linear-gradient(transparent,rgba(0,0,0,.7));font-size:22px}.home-banners :deep(.el-carousel){border-radius:12px}@media(max-width:600px){.hero{padding:36px 20px}.hero__title{font-size:26px}.banner-slide span{font-size:18px;padding:18px}.home-banners :deep(.el-carousel__container){height:200px!important}}
 
 .section {
   padding-top: 32px;

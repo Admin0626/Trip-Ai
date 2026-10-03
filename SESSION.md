@@ -1,3 +1,15 @@
+# Session：首页左右留白修复完成
+
+更新：2026-10-03（北京时间）。旅行助手PR #7已按用户授权合并，main=ab1ad991871c782709bf40e48615cab103a95127。本批用户要求首页不要左右铺满，从main建立codex/home-layout。
+
+- 首页Home.vue复用page-wrapper，最大1200px居中、左右16px内边距；英雄区随容器收窄并增加圆角/内边距，全部首页内容同宽。
+- 修复前1440px内容铺满，scrollWidth1448；修复后1440/1024/390px实际Edge均留白且无横向溢出；vue-tsc/Vite通过。仅前端样式，无后端/模型/SQL变更；原外部图片未显示与大包警告没有在本批修复。
+- [修复原因与验证](docs/dev/首页布局修复记录.md)，真实页面几何和三种宽度截图已保存。原docs/README.md、实训报告与答辩材料保留，不加入提交。
+
+待在codex/home-layout提交推送并创建修复PR，按既有约定新改动先独立分支，本批不自动合并。下一批先读本段及git status，再按用户指令融合或继续功能。
+
+---
+
 # Session：统一旅行助手完成，PR #7集成与接续记录
 
 更新：2026-10-03（北京时间）。用户要标准API密钥配置、模型回答，并确认“旅行建议文字＋可保存的每日行程”。已核对PR #6精确head010f61a、mergeable/clean，无评论/检查，按既有工作流合并；同步main=aabcffed8dfc041f897a5d3fe2f5c941541ac98e，再创建codex/travel-assistant。固定基线v0.1.0-baseline未移动。
