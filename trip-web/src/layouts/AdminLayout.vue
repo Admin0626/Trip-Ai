@@ -5,7 +5,7 @@ import { ElMessageBox } from 'element-plus'
 import { useUserStore } from '@/store/user'
 const router=useRouter(),user=useUserStore(),leaving=ref(false)
 async function logout(){if(leaving.value)return;try{await ElMessageBox.confirm('确定退出管理后台吗？','退出登录');leaving.value=true;await user.logout();await router.replace('/login')}catch{}finally{leaving.value=false}}
-const links=[['/admin','概览与反馈'],['/admin/destinations','目的地与景点'],['/admin/routes','路线与行程'],['/admin/banners','首页轮播'],['/admin/bookings','预约管理'],['/admin/comments','评论管理'],['/admin/users','用户管理'],['/admin/logs','AI调用日志'],['/admin/ai/knowledge','知识资料'],['/admin/workbench','项目学习工作台']]
+const links=[['/admin','概览与反馈'],['/admin/destinations','目的地与景点'],['/admin/routes','路线与行程'],['/admin/banners','首页轮播'],['/admin/bookings','预约管理'],['/admin/comments','评论管理'],['/admin/users','用户管理'],['/admin/logs','AI调用日志'],['/admin/ai/knowledge','知识资料']]
 </script>
 <template>
   <div class="admin-layout">
