@@ -1,4 +1,4 @@
-# Session：知识来源维护实现与实测完成，准备独立分支发布
+# Session：知识来源维护实现与实测完成，独立分支已发布
 
 更新：2026-10-03（北京时间）。用户继续后续功能；核对远程PR #5已合并，同步main=596065e6bb070a1cafe26f91f98c0879a446a8b9后创建codex/knowledge-sources。不接真实模型，固定v0.1.0-baseline不移动。既有docs/README.md、实训报告与docs/答辩材料/保留，不混入本批。
 
@@ -15,7 +15,7 @@
 
 ## 发布与接续
 
-代码、实测与文档完成，待文档链接/敏感字段检查、提交推送codex/knowledge-sources并创建目标main的新PR，本批不立即合并。随后补发布SHA/URL。若中断先核对git status、最新证据与远程head，仅继续发布，不重做功能或重复测试。MySQL3306、Redis6379、后端8080/api(chat=none)、Vite5173运行供验收；入口/admin/ai/knowledge，无本批迁移。
+代码、实测与文档检查完成，功能提交`0f73eec7d8f32fcd98645f0c61bc458c2c8946ac`已推送origin/codex/knowledge-sources；[PR #6](https://github.com/Admin0626/Trip-Ai/pull/6)目标main，保持open/未合并。[Git交付核对](docs/dev/evidence/knowledge-sources/git-delivery.json)记录功能head、main、PR #5合并及基线；本段由后续文档提交补充，最终head以git log -1/远程/PR核对。若中断，仅继续未完成的文档提交推送与最终核对，不重做功能或重复测试。MySQL3306、Redis6379、后端8080/api(chat=none)、Vite5173运行供验收；入口/admin/ai/knowledge，无本批迁移。
 
 下一批先审核融合，再从最新main另建功能分支。倒排词内容一致性、大样本检索、来源审计、账号注销及真实模型/向量/生成式问答等尚未完成。本批历史来源随当前关系刷新，不是来源变更审计日志；已展示内容需刷新，无实时下架推送。
 

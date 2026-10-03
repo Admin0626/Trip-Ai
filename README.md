@@ -15,7 +15,7 @@
 第2批互动/自主规划/用户端页面及基础后台操作闭环已完成；2026-09-28补完用户个人统计、保存偏好参与基础推荐、跨标签页刷新协调及用户模型故障熔断恢复。管理员可维护目录/行程/轮播、处理互动与反馈、启停普通用户及查看脱敏AI日志。项目整体仍有后续任务，保存的测试结果不代表每次打开项目都会重新执行。
 
 - [本次 Session](SESSION.md)：本次提交范围、验证结果、已知问题与下一步。
-- [知识来源维护实测](docs/dev/知识来源维护接口与页面实测.md)：来源摘要/分页与单独关联，停用资料可选隐藏目录，正文分片与历史引用保留；124项接口、31项Edge及回归通过。[开发答辩](docs/dev/知识来源维护开发与答辩复盘.md)、[进度](docs/dev/知识来源维护进度.md)，独立codex/knowledge-sources，发布见SESSION。
+- [知识来源维护实测](docs/dev/知识来源维护接口与页面实测.md)：来源摘要/分页与单独关联，停用资料可选隐藏目录，正文分片与历史引用保留；124项接口、31项Edge及回归通过。[开发答辩](docs/dev/知识来源维护开发与答辩复盘.md)、[进度](docs/dev/知识来源维护进度.md)，独立codex/knowledge-sources已推送，[PR #6](https://github.com/Admin0626/Trip-Ai/pull/6)待审/未合并，发布见SESSION。
 - [本地知识维护实测](docs/dev/本地知识维护接口与页面实测.md)：健康统计、异常/来源筛选、最多10篇逐项修复、正文命中及来源多样性；86项接口/SQL/Redis、24项Edge及回归通过。[开发答辩](docs/dev/本地知识维护开发与答辩复盘.md)、[进度](docs/dev/本地知识维护进度.md)。codex/knowledge-quality独立分支已推送，[PR #5](https://github.com/Admin0626/Trip-Ai/pull/5)已合并main596065e，发布记录见SESSION。
 - 邮箱验证/绑定与找回密码已随[PR #4](https://github.com/Admin0626/Trip-Ai/pull/4)合并；[使用与部署](docs/dev/邮箱验证与找回密码使用与开发文档.md)、[原实测](docs/dev/邮箱验证与找回密码实测.md)。SMTP默认关闭，真实供应商尚未配置。
 - [资料检索会话实测](docs/dev/资料检索会话接口与页面实测.md)：私人会话/历史、游标分页、版本冲突、UUID重试与历史引用核验；146项真实接口、55项Edge和回归通过。[开发与答辩复盘](docs/dev/资料检索会话开发与答辩复盘.md)、[进度](docs/dev/资料检索会话进度.md)。已推送独立`codex/knowledge-sessions`，[PR #3](https://github.com/Admin0626/Trip-Ai/pull/3)已合并main=29f0bb8；入口`/ai/chat`，不接真实模型。
