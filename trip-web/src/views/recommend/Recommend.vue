@@ -4,7 +4,11 @@ import { ElMessage } from 'element-plus'
 import { parseIntent, matchRoutes, preferenceOptions, type TravelIntent, type MatchResponse } from '@/api/modules/recommend'
 import { preferenceApi,type UserPreference } from '@/api/modules/user'
 
-const query = ref('')
+const props=defineProps<{embedded?:boolean;sharedQuery?:string}>()
+const emit=defineEmits<{'update:sharedQuery':[string]}>()
+const query = ref(props.sharedQuery||'')
+watch(query,value=>emit('update:sharedQuery',value))
+watch(()=>props.sharedQuery,value=>{if(value!==undefined&&value!==query.value)query.value=value})
 const intent = ref<TravelIntent | null>(null)
 const destinationText = ref('')
 const results = ref<MatchResponse | null>(null)
@@ -79,8 +83,8 @@ onMounted(loadPreference)
 </script>
 
 <template>
-  <main class="recommend-page">
-    <header class="intro">
+  <main class="recommend-page" :class="{embedded}">
+    <header v-if="!embedded" class="intro">
       <p class="eyebrow">从一个想法，找到下一站</p>
       <h1>旅行推荐</h1>
       <p>描述需求，确认条件，再挑选适合你的路线。</p>
@@ -155,6 +159,7 @@ onMounted(loadPreference)
 
 <style scoped lang="scss">
 .recommend-page { max-width: 1000px; margin: 0 auto; padding: 32px 20px 60px; }
+.recommend-page.embedded { max-width:none;padding:0; }
 .intro { margin-bottom: 28px; h1 { font-size: 32px; margin: 8px 0; } p { color: #64748b; } }
 .eyebrow { color: #2563eb !important; font-size: 14px; }
 .panel { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px; margin-bottom: 24px; h2 { font-size: 20px; margin: 0 0 18px; } }

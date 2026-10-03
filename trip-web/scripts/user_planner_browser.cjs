@@ -89,8 +89,8 @@ async function clickRequest(name, endpoint) {
     check('authentication failure shown', failed.code, 3004);
     check('upstream response secret not displayed', (await page.locator('body').innerText()).includes('fixture-key-not-a-real-secret'), false);
     await login(users[1]);
-    check('second user does not inherit endpoint', await page.getByRole('textbox', { name: 'API基础地址', exact: true }).inputValue(), '');
-    check('second user does not inherit model', await page.getByRole('textbox', { name: '模型名称', exact: true }).inputValue(), '');
+    check('second user starts with public default endpoint', await page.getByRole('textbox', { name: 'API基础地址', exact: true }).inputValue(), 'https://api.deepseek.com');
+    check('second user starts with default model', await page.getByRole('textbox', { name: '模型名称', exact: true }).inputValue(), 'deepseek-flash');
     check('no unhandled page errors', errors.length, 0);
   } catch (e) { check('browser completed', e.message, 'no error'); process.exitCode = 1; }
   finally {

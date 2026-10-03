@@ -1,0 +1,48 @@
+{
+  "mode": "REAL_APP_HTTP_MYSQL_REDIS_REAL_DEEPSEEK",
+  "label": "travel-assistant",
+  "startedAt": "2026-10-03T13:05:44.141007+08:00",
+  "checks": [
+    {
+      "name": "register assistant",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": false,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_be18b3ae90assistant",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "username 用户名长度 4-20 位",
+          "data": null,
+          "timestamp": 1791003944174
+        }
+      }
+    },
+    {
+      "name": "acceptance completed",
+      "actual": "RuntimeError",
+      "expected": "no exception",
+      "passed": false
+    }
+  ],
+  "phase": "FAILED",
+  "summary": {
+    "total": 2,
+    "passed": 0,
+    "failed": 2
+  }
+}

@@ -1,0 +1,607 @@
+{
+  "mode": "REAL_APP_HTTP_MYSQL_REDIS_REAL_DEEPSEEK",
+  "label": "travel-assistant",
+  "startedAt": "2026-10-03T13:06:19.521354+08:00",
+  "checks": [
+    {
+      "name": "register asst",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_f77e24f8feasst",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "emailVerified": false,
+            "id": 10383,
+            "nickname": "pw_f77e24f8feasst",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_f77e24f8feasst"
+          },
+          "timestamp": 1791003979606
+        }
+      }
+    },
+    {
+      "name": "login own fixture",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_f77e24f8feasst",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-10-03T13:06:19",
+              "email": null,
+              "emailVerified": false,
+              "id": 10383,
+              "nickname": "pw_f77e24f8feasst",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_f77e24f8feasst"
+            }
+          },
+          "timestamp": 1791003979737
+        }
+      }
+    },
+    {
+      "name": "public key required before model call",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "https://api.deepseek.com",
+            "model": "deepseek-flash",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请填写模型服务的API Key",
+          "data": null,
+          "timestamp": 1791003979756
+        }
+      }
+    },
+    {
+      "name": "missing key does not consume quota",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "actual connection reply",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/test",
+        "body": {
+          "connection": {
+            "baseUrl": "https://api.deepseek.com",
+            "model": "deepseek-flash",
+            "apiKey": "<redacted>"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "connected": true,
+            "reply": "OK",
+            "model": "deepseek-flash"
+          },
+          "timestamp": 1791003980390
+        }
+      }
+    },
+    {
+      "name": "connection gives actual final text",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "actual model suggestions and itinerary",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/ai/planner/generate",
+        "body": {
+          "connection": {
+            "baseUrl": "https://api.deepseek.com",
+            "model": "deepseek-flash",
+            "apiKey": "<redacted>"
+          },
+          "query": "杭州一日游，喜欢西湖散步和本地美食，请安排轻松行程并说明建议。",
+          "days": 1,
+          "budget": 600,
+          "peopleNum": 1,
+          "startDate": "2026-10-03"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "draft": {
+              "title": "杭州一日游：西湖漫步与本地美食轻松行程",
+              "dayList": [
+                {
+                  "dayIndex": 1,
+                  "items": [
+                    {
+                      "activity": "从断桥出发，沿白堤步行至平湖秋月，欣赏西湖晨景，全程约1小时，节奏缓慢，适合散步拍照。",
+                      "attractionId": 0,
+                      "cost": 20,
+                      "durationMin": null,
+                      "hotel": "当天往返无需住宿；如需过夜可选西湖周边经济型酒店，但会占用较多预算。",
+                      "meal": "出发前在附近早餐店吃片儿川或小笼包，约20元。",
+                      "sortNo": 1,
+                      "timePoint": "08:30",
+                      "tips": "国庆期间断桥人流量大，建议8:30前到达；穿舒适步行鞋，自带水。",
+                      "title": "白堤与断桥晨间漫步",
+                      "transport": "地铁1号线至凤起路站，步行约15分钟到断桥；或公交至断桥残雪站。"
+                    },
+                    {
+                      "activity": "沿白堤进入孤山，参观浙江省博物馆（免费），了解浙江历史与艺术，馆内可休息。",
+                      "attractionId": 0,
+                      "cost": 0,
+                      "durationMin": null,
+                      "hotel": null,
+                      "meal": "馆内或附近有简餐，可留到午餐。",
+                      "sortNo": 2,
+                      "timePoint": "10:00",
+                      "tips": "博物馆通常周一闭馆，国庆期间开放时间以官方公告为准；提前预约更稳妥。",
+                      "title": "孤山与浙江省博物馆",
+                      "transport": "步行即可，从平湖秋月沿孤山路步行约10分钟。"
+                    },
+                    {
+                      "activity": "在孤山附近选择楼外楼或知味观，品尝西湖醋鱼、东坡肉、龙井虾仁等杭帮菜，单人建议点1-2道菜加米饭。",
+                      "attractionId": 0,
+                      "cost": 100,
+                      "durationMin": null,
+                      "hotel": null,
+                      "meal": "推荐西湖醋鱼或东坡肉配米饭，约80-120元；选择知味观小吃更省。",
+                      "sortNo": 3,
+                      "timePoint": "12:00",
+                      "tips": "国庆排队可能较长，可错峰11:30前到；注意预算，避免点过多。",
+                      "title": "楼外楼或知味观午餐",
+                      "transport": "步行可达，位于孤山附近或湖滨区域。"
+                    },
+                    {
+                      "activity": "从孤山附近乘公交或步行至苏堤，沿苏堤南段散步至花港观鱼，欣赏湖景和红鱼池，途中可在长椅休息。",
+                      "attractionId": 0,
+                      "cost": 20,
+                      "durationMin": null,
+                      "hotel": null,
+                      "meal": "途中可买一瓶龙井茶或小吃，约20元。",
+                      "sortNo": 4,
+                      "timePoint": "14:00",
+                      "tips": "苏堤较长，走南段即可；国庆人多，注意随身物品。",
+                      "title": "苏堤与花港观鱼",
+                      "transport": "公交WE1314路或步行约30分钟；也可乘西湖游船单程。"
+                    },
+                    {
+                      "activity": "乘公交或地铁至河坊街，逛南宋御街，品尝定胜糕、葱包桧、吴山烤禽等本地小吃，感受市井文化。",
+                      "attractionId": 0,
+                      "cost": 50,
+                      "durationMin": null,
+                      "hotel": null,
+                      "meal": "小吃为主，定胜糕、葱包桧、臭豆腐等约50元。",
+                      "sortNo": 5,
+                      "timePoint": "16:30",
+                      "tips": "河坊街游客多，注意比较价格；适量品尝，避免肠胃不适。",
+                      "title": "河坊街与南宋御街美食探索",
+                      "transport": "地铁1号线定安路站或公交至吴山广场站。"
+                    },
+                    {
+                      "activity": "返回湖滨步行街，欣赏西湖夜景和音乐喷泉（如开放），随后结束行程。",
+                      "attractionId": 0,
+                      "cost": 30,
+                      "durationMin": null,
+                      "hotel": null,
+                      "meal": "如需要可吃一碗片儿川或甜品，约30元。",
+                      "sortNo": 6,
+                      "timePoint": "19:00",
+                      "tips": "音乐喷泉时间以官方公告为准；晚上气温下降，带薄外套。",
+                      "title": "湖滨夜景与音乐喷泉",
+                      "transport": "步行或公交至湖滨；地铁1号线龙翔桥站返程。"
+                    }
+                  ],
+                  "summary": "单人预算600元，安排轻松西湖环湖散步与本地餐饮。避开高强度景点，以步行、公交和地铁为主，预留休息时间。国庆期间人流较大，建议早出发并提前查看交通管制。餐饮选择本地小吃和杭帮菜，控制预算在合理范围。",
+                  "title": "西湖漫步与杭帮美食"
+                }
+              ],
+              "answer": "这份杭州一日游安排以轻松散步和本地美食为核心，适合单人、预算600元。总花费约220元餐饮加20元交通和少量小吃，远低于预算，可灵活增加游船或打车。行程从断桥晨间散步开始，沿白堤、孤山、苏堤、花港观鱼，基本覆盖西湖精华且不走回头路，下午转河坊街品尝定胜糕、葱包桧等小吃，晚上湖滨看夜景。注意：2026年10月3日正值国庆假期，西湖景区人流密集，可能实施交通管制，建议优先地铁和公交，早出门；浙江省博物馆和音乐喷泉的开放情况请以官方实时公告为准，不要轻信非官方信息。餐饮上，楼外楼价格较高，若想控制预算可选知味观或小吃店。全天步行较多，穿舒适鞋，带水，注意防晒和休息。如果体力有限，可把苏堤段改为游船或观光车，但会增加费用。住宿方面，当天往返无需住宿，若需过夜，建议选择地铁沿线经济型酒店，并提前预订。整体安排留有余量，可根据当天人流和天气灵活调整。"
+            },
+            "source": "USER_MODEL",
+            "model": "deepseek-flash",
+            "attempts": 1
+          },
+          "timestamp": 1791003987231
+        }
+      }
+    },
+    {
+      "name": "model answer exists",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "daily itinerary validated",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "generation does not auto save",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "explicitly save daily draft",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/plan",
+        "body": {
+          "title": "杭州一日游：西湖漫步与本地美食轻松行程",
+          "dayList": [
+            {
+              "dayIndex": 1,
+              "items": [
+                {
+                  "activity": "从断桥出发，沿白堤步行至平湖秋月，欣赏西湖晨景，全程约1小时，节奏缓慢，适合散步拍照。",
+                  "attractionId": 0,
+                  "cost": 20,
+                  "durationMin": null,
+                  "hotel": "当天往返无需住宿；如需过夜可选西湖周边经济型酒店，但会占用较多预算。",
+                  "meal": "出发前在附近早餐店吃片儿川或小笼包，约20元。",
+                  "sortNo": 1,
+                  "timePoint": "08:30",
+                  "tips": "国庆期间断桥人流量大，建议8:30前到达；穿舒适步行鞋，自带水。",
+                  "title": "白堤与断桥晨间漫步",
+                  "transport": "地铁1号线至凤起路站，步行约15分钟到断桥；或公交至断桥残雪站。"
+                },
+                {
+                  "activity": "沿白堤进入孤山，参观浙江省博物馆（免费），了解浙江历史与艺术，馆内可休息。",
+                  "attractionId": 0,
+                  "cost": 0,
+                  "durationMin": null,
+                  "hotel": null,
+                  "meal": "馆内或附近有简餐，可留到午餐。",
+                  "sortNo": 2,
+                  "timePoint": "10:00",
+                  "tips": "博物馆通常周一闭馆，国庆期间开放时间以官方公告为准；提前预约更稳妥。",
+                  "title": "孤山与浙江省博物馆",
+                  "transport": "步行即可，从平湖秋月沿孤山路步行约10分钟。"
+                },
+                {
+                  "activity": "在孤山附近选择楼外楼或知味观，品尝西湖醋鱼、东坡肉、龙井虾仁等杭帮菜，单人建议点1-2道菜加米饭。",
+                  "attractionId": 0,
+                  "cost": 100,
+                  "durationMin": null,
+                  "hotel": null,
+                  "meal": "推荐西湖醋鱼或东坡肉配米饭，约80-120元；选择知味观小吃更省。",
+                  "sortNo": 3,
+                  "timePoint": "12:00",
+                  "tips": "国庆排队可能较长，可错峰11:30前到；注意预算，避免点过多。",
+                  "title": "楼外楼或知味观午餐",
+                  "transport": "步行可达，位于孤山附近或湖滨区域。"
+                },
+                {
+                  "activity": "从孤山附近乘公交或步行至苏堤，沿苏堤南段散步至花港观鱼，欣赏湖景和红鱼池，途中可在长椅休息。",
+                  "attractionId": 0,
+                  "cost": 20,
+                  "durationMin": null,
+                  "hotel": null,
+                  "meal": "途中可买一瓶龙井茶或小吃，约20元。",
+                  "sortNo": 4,
+                  "timePoint": "14:00",
+                  "tips": "苏堤较长，走南段即可；国庆人多，注意随身物品。",
+                  "title": "苏堤与花港观鱼",
+                  "transport": "公交WE1314路或步行约30分钟；也可乘西湖游船单程。"
+                },
+                {
+                  "activity": "乘公交或地铁至河坊街，逛南宋御街，品尝定胜糕、葱包桧、吴山烤禽等本地小吃，感受市井文化。",
+                  "attractionId": 0,
+                  "cost": 50,
+                  "durationMin": null,
+                  "hotel": null,
+                  "meal": "小吃为主，定胜糕、葱包桧、臭豆腐等约50元。",
+                  "sortNo": 5,
+                  "timePoint": "16:30",
+                  "tips": "河坊街游客多，注意比较价格；适量品尝，避免肠胃不适。",
+                  "title": "河坊街与南宋御街美食探索",
+                  "transport": "地铁1号线定安路站或公交至吴山广场站。"
+                },
+                {
+                  "activity": "返回湖滨步行街，欣赏西湖夜景和音乐喷泉（如开放），随后结束行程。",
+                  "attractionId": 0,
+                  "cost": 30,
+                  "durationMin": null,
+                  "hotel": null,
+                  "meal": "如需要可吃一碗片儿川或甜品，约30元。",
+                  "sortNo": 6,
+                  "timePoint": "19:00",
+                  "tips": "音乐喷泉时间以官方公告为准；晚上气温下降，带薄外套。",
+                  "title": "湖滨夜景与音乐喷泉",
+                  "transport": "步行或公交至湖滨；地铁1号线龙翔桥站返程。"
+                }
+              ],
+              "summary": "单人预算600元，安排轻松西湖环湖散步与本地餐饮。避开高强度景点，以步行、公交和地铁为主，预留休息时间。国庆期间人流较大，建议早出发并提前查看交通管制。餐饮选择本地小吃和杭帮菜，控制预算在合理范围。",
+              "title": "西湖漫步与杭帮美食"
+            }
+          ],
+          "answer": "这份杭州一日游安排以轻松散步和本地美食为核心，适合单人、预算600元。总花费约220元餐饮加20元交通和少量小吃，远低于预算，可灵活增加游船或打车。行程从断桥晨间散步开始，沿白堤、孤山、苏堤、花港观鱼，基本覆盖西湖精华且不走回头路，下午转河坊街品尝定胜糕、葱包桧等小吃，晚上湖滨看夜景。注意：2026年10月3日正值国庆假期，西湖景区人流密集，可能实施交通管制，建议优先地铁和公交，早出门；浙江省博物馆和音乐喷泉的开放情况请以官方实时公告为准，不要轻信非官方信息。餐饮上，楼外楼价格较高，若想控制预算可选知味观或小吃店。全天步行较多，穿舒适鞋，带水，注意防晒和休息。如果体力有限，可把苏堤段改为游船或观光车，但会增加费用。住宿方面，当天往返无需住宿，若需过夜，建议选择地铁沿线经济型酒店，并提前预订。整体安排留有余量，可根据当天人流和天气灵活调整。",
+          "days": 1,
+          "destinationIds": [],
+          "startDate": "2026-10-03",
+          "budget": 600,
+          "peopleNum": 1,
+          "status": 0
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": 367,
+          "timestamp": 1791003987287
+        }
+      }
+    },
+    {
+      "name": "read saved itinerary",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/plan/367",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "budget": 600.0,
+            "createTime": "2026-10-03 13:06:27",
+            "dayCount": null,
+            "dayList": [
+              {
+                "dayIndex": 1,
+                "id": 296,
+                "items": [
+                  {
+                    "activity": "从断桥出发，沿白堤步行至平湖秋月，欣赏西湖晨景，全程约1小时，节奏缓慢，适合散步拍照。",
+                    "attractionId": 0,
+                    "cost": 20.0,
+                    "durationMin": 0,
+                    "hotel": "当天往返无需住宿；如需过夜可选西湖周边经济型酒店，但会占用较多预算。",
+                    "id": 482,
+                    "meal": "出发前在附近早餐店吃片儿川或小笼包，约20元。",
+                    "sortNo": 1,
+                    "timePoint": "08:30",
+                    "tips": "国庆期间断桥人流量大，建议8:30前到达；穿舒适步行鞋，自带水。",
+                    "title": "白堤与断桥晨间漫步",
+                    "transport": "地铁1号线至凤起路站，步行约15分钟到断桥；或公交至断桥残雪站。"
+                  },
+                  {
+                    "activity": "沿白堤进入孤山，参观浙江省博物馆（免费），了解浙江历史与艺术，馆内可休息。",
+                    "attractionId": 0,
+                    "cost": 0.0,
+                    "durationMin": 0,
+                    "hotel": "",
+                    "id": 483,
+                    "meal": "馆内或附近有简餐，可留到午餐。",
+                    "sortNo": 2,
+                    "timePoint": "10:00",
+                    "tips": "博物馆通常周一闭馆，国庆期间开放时间以官方公告为准；提前预约更稳妥。",
+                    "title": "孤山与浙江省博物馆",
+                    "transport": "步行即可，从平湖秋月沿孤山路步行约10分钟。"
+                  },
+                  {
+                    "activity": "在孤山附近选择楼外楼或知味观，品尝西湖醋鱼、东坡肉、龙井虾仁等杭帮菜，单人建议点1-2道菜加米饭。",
+                    "attractionId": 0,
+                    "cost": 100.0,
+                    "durationMin": 0,
+                    "hotel": "",
+                    "id": 484,
+                    "meal": "推荐西湖醋鱼或东坡肉配米饭，约80-120元；选择知味观小吃更省。",
+                    "sortNo": 3,
+                    "timePoint": "12:00",
+                    "tips": "国庆排队可能较长，可错峰11:30前到；注意预算，避免点过多。",
+                    "title": "楼外楼或知味观午餐",
+                    "transport": "步行可达，位于孤山附近或湖滨区域。"
+                  },
+                  {
+                    "activity": "从孤山附近乘公交或步行至苏堤，沿苏堤南段散步至花港观鱼，欣赏湖景和红鱼池，途中可在长椅休息。",
+                    "attractionId": 0,
+                    "cost": 20.0,
+                    "durationMin": 0,
+                    "hotel": "",
+                    "id": 485,
+                    "meal": "途中可买一瓶龙井茶或小吃，约20元。",
+                    "sortNo": 4,
+                    "timePoint": "14:00",
+                    "tips": "苏堤较长，走南段即可；国庆人多，注意随身物品。",
+                    "title": "苏堤与花港观鱼",
+                    "transport": "公交WE1314路或步行约30分钟；也可乘西湖游船单程。"
+                  },
+                  {
+                    "activity": "乘公交或地铁至河坊街，逛南宋御街，品尝定胜糕、葱包桧、吴山烤禽等本地小吃，感受市井文化。",
+                    "attractionId": 0,
+                    "cost": 50.0,
+                    "durationMin": 0,
+                    "hotel": "",
+                    "id": 486,
+                    "meal": "小吃为主，定胜糕、葱包桧、臭豆腐等约50元。",
+                    "sortNo": 5,
+                    "timePoint": "16:30",
+                    "tips": "河坊街游客多，注意比较价格；适量品尝，避免肠胃不适。",
+                    "title": "河坊街与南宋御街美食探索",
+                    "transport": "地铁1号线定安路站或公交至吴山广场站。"
+                  },
+                  {
+                    "activity": "返回湖滨步行街，欣赏西湖夜景和音乐喷泉（如开放），随后结束行程。",
+                    "attractionId": 0,
+                    "cost": 30.0,
+                    "durationMin": 0,
+                    "hotel": "",
+                    "id": 487,
+                    "meal": "如需要可吃一碗片儿川或甜品，约30元。",
+                    "sortNo": 6,
+                    "timePoint": "19:00",
+                    "tips": "音乐喷泉时间以官方公告为准；晚上气温下降，带薄外套。",
+                    "title": "湖滨夜景与音乐喷泉",
+                    "transport": "步行或公交至湖滨；地铁1号线龙翔桥站返程。"
+                  }
+                ],
+                "summary": "单人预算600元，安排轻松西湖环湖散步与本地餐饮。避开高强度景点，以步行、公交和地铁为主，预留休息时间。国庆期间人流较大，建议早出发并提前查看交通管制。餐饮选择本地小吃和杭帮菜，控制预算在合理范围。",
+                "title": "西湖漫步与杭帮美食"
+              }
+            ],
+            "days": 1,
+            "destinationIds": [],
+            "id": 367,
+            "peopleNum": 1,
+            "sourceRouteId": 0,
+            "startDate": "2026-10-03",
+            "status": 0,
+            "title": "杭州一日游：西湖漫步与本地美食轻松行程",
+            "updateTime": "2026-10-03 13:06:27"
+          },
+          "timestamp": 1791003987308
+        }
+      }
+    },
+    {
+      "name": "saved daily title",
+      "actual": "西湖漫步与杭帮美食",
+      "expected": "西湖漫步与杭帮美食",
+      "passed": true
+    },
+    {
+      "name": "database contains one draft",
+      "actual": "1",
+      "expected": "1",
+      "passed": true
+    },
+    {
+      "name": "audit stores no key or prompt",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "own fixtures removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ],
+  "phase": "COMPLETED",
+  "summary": {
+    "total": 16,
+    "passed": 16,
+    "failed": 0
+  }
+}
