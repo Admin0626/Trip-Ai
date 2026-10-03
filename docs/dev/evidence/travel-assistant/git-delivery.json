@@ -23,5 +23,18 @@
   },
   "ci": "No GitHub checks configured; local acceptance only",
   "secretsInStaged46Files": 0,
-  "publicationNote": "This record is added in a follow-up documentation commit; final feature head is available through Git/PR. No recursive self-commit assertion."
+  "publicationNote": "This record is added in a follow-up documentation commit; final feature head is available through Git/PR. No recursive self-commit assertion.",
+  "mergeAuthorization": {
+    "date": "2026-10-03 Asia/Shanghai",
+    "requestedByUser": true,
+    "reviewedHead": "81731b5d435f24b901994e31c7803a4c16c18827",
+    "mergeable": true,
+    "mergeableState": "clean",
+    "reviews": 0,
+    "comments": 0,
+    "inlineComments": 0,
+    "checkRuns": 0,
+    "statuses": 0,
+    "note": "Merge the latest pushed head after this documentation commit; authoritative final merge SHA is on PR #7. Original publication fields above are historical snapshots."
+  }
 }

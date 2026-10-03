@@ -14,7 +14,7 @@
 
 第2批互动/自主规划/用户端页面及基础后台操作闭环已完成；2026-09-28补完用户个人统计、保存偏好参与基础推荐、跨标签页刷新协调及用户模型故障熔断恢复。管理员可维护目录/行程/轮播、处理互动与反馈、启停普通用户及查看脱敏AI日志。项目整体仍有后续任务，保存的测试结果不代表每次打开项目都会重新执行。
 
-- [统一旅行助手实测](docs/dev/统一旅行助手接口与页面实测.md)：统一查路线与AI入口，标准API配置，修复DeepSeek空最终回复；实际返回中文建议＋可保存每日行程。真实模型16项、受控HTTP18项、Edge28项及回归通过。[使用与答辩](docs/dev/统一旅行助手开发与答辩复盘.md)、[进度](docs/dev/统一旅行助手进度.md)。独立codex/travel-assistant已推送，[PR #7](https://github.com/Admin0626/Trip-Ai/pull/7)待合并，发布见SESSION；建议全文目前仅当次预览，不自动持久化。
+- [统一旅行助手实测](docs/dev/统一旅行助手接口与页面实测.md)：统一查路线与AI入口，标准API配置，修复DeepSeek空最终回复；实际返回中文建议＋可保存每日行程。真实模型16项、受控HTTP18项、Edge28项及回归通过。[使用与答辩](docs/dev/统一旅行助手开发与答辩复盘.md)、[进度](docs/dev/统一旅行助手进度.md)。独立codex/travel-assistant已推送，[PR #7](https://github.com/Admin0626/Trip-Ai/pull/7)集成记录，发布见SESSION；建议全文目前仅当次预览，不自动持久化。
 - [本次 Session](SESSION.md)：本次提交范围、验证结果、已知问题与下一步。
 - [知识来源维护实测](docs/dev/知识来源维护接口与页面实测.md)：来源摘要/分页与单独关联，停用资料可选隐藏目录，正文分片与历史引用保留；124项接口、31项Edge及回归通过。[开发答辩](docs/dev/知识来源维护开发与答辩复盘.md)、[进度](docs/dev/知识来源维护进度.md)，独立codex/knowledge-sources已推送，[PR #6](https://github.com/Admin0626/Trip-Ai/pull/6)已合并main=aabcffe，发布见SESSION。
 - [本地知识维护实测](docs/dev/本地知识维护接口与页面实测.md)：健康统计、异常/来源筛选、最多10篇逐项修复、正文命中及来源多样性；86项接口/SQL/Redis、24项Edge及回归通过。[开发答辩](docs/dev/本地知识维护开发与答辩复盘.md)、[进度](docs/dev/本地知识维护进度.md)。codex/knowledge-quality独立分支已推送，[PR #5](https://github.com/Admin0626/Trip-Ai/pull/5)已合并main596065e，发布记录见SESSION。
