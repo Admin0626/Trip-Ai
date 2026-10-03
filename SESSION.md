@@ -1,3 +1,26 @@
+# Session：统一旅行助手完成，PR #7集成与接续记录
+
+更新：2026-10-03（北京时间）。用户要标准API密钥配置、模型回答，并确认“旅行建议文字＋可保存的每日行程”。已核对PR #6精确head010f61a、mergeable/clean，无评论/检查，按既有工作流合并；同步main=aabcffed8dfc041f897a5d3fe2f5c941541ac98e，再创建codex/travel-assistant。固定基线v0.1.0-baseline未移动。
+
+## 本批完成
+
+- 导航与首页统一为旅行助手，查已有发布路线/用户模型生成两种方式；旧/recommend和/ai-planner兼容，共享需求文字，切换清Key，忙碌时禁用切换。
+- DeepSeek地址/当前可用模型预填，用户自行提供自己的Key；Bearer粘贴兼容、公网空Key提前拒绝、本机无鉴权可空。测试返回并显示实际reply。
+- 根据真实默认思考16token空最终回复定位根因，仅DeepSeek关闭thinking并为结构生成配置JSON格式，length截断明确报错。没有输出/存储reasoning_content。
+- draft.answer中文建议文本，保留每日行程预览、确认保存与编辑器；answer可选兼容旧模型，纯文本显示。建议全文只在当次预览，保存每日草稿，不新增聊天历史表。
+- Maven44/44，原模型HTTP52/52、新受控HTTP18/18、真实DeepSeek HTTP16/16、统一入口Edge28/28、原规划Edge26/26、SSE HTTP116/116；vue-tsc/Vite通过，主包1129.27kB警告保留。截图顶部采集复验27/27，修复首页误高亮后最终28/28。真实模型仅一个test和一个一日游generate、attempts1；临时账号/草稿/日志/本人Redis状态已清理，不重置全站额度。
+- 验收账号名超长两次、Edge无法读取已结束SSE响应体、DPAPI尾换行，以及原功能问题均记录原因/处理；失败原件没有覆盖。真实Key/JWT/认证头/思考文本不写入证据。
+
+文档：[实测](docs/dev/统一旅行助手接口与页面实测.md)、[答辩开发](docs/dev/统一旅行助手开发与答辩复盘.md)、[进度](docs/dev/统一旅行助手进度.md)。README、总览、交接、第3批与API合同同步；原docs/README.md修改、实训报告、docs/答辩材料/是用户未提交材料，保持原样且不纳入本批。
+
+## 发布与接续
+
+实现、实测及文档已随de8e2addf5f0c5ce6d82481fddafb513804720bf推送origin/codex/travel-assistant；[PR #7](https://github.com/Admin0626/Trip-Ai/pull/7)已创建并附到任务，目标main=aabcffe。2026-10-03用户明确要求push并合并当前分支；已核对远程head=81731b5、mergeable/clean，无评论或检查。此前待合并约定由本次用户指令更新；合并采用最新推送的精确HEAD，最终merge状态/SHA以PR #7和远程main为准。发布记录见[Git证据](docs/dev/evidence/travel-assistant/git-delivery.json)。本段由后续文档提交补充；最终feature head按git log与PR远程核对，不能把实现提交当成文档补充后的最新head。本机3306/6379/8080/api/5173服务保持运行；临时受控模型服务在验收后关闭。若额度中断，先读取本SESSION/进度/git diff，继续发布核对，不重建数据库或重复真实付费调用。
+
+本次推送完成后按用户指令合并PR #7并同步本地main；下一批从已同步的最新main建codex/*分支。可以推进已有行程AI修改预览/差异确认；生成式RAG依据与引用、向量、多路重排、评论情感、生产验收等仍未完成。真实模型当前一日游链路通过，不能说全部需求质量已验证；GitHub没有CI检查。
+
+---
+
 # Session：知识来源维护实现与实测完成，独立分支已发布
 
 更新：2026-10-03（北京时间）。用户继续后续功能；核对远程PR #5已合并，同步main=596065e6bb070a1cafe26f91f98c0879a446a8b9后创建codex/knowledge-sources。不接真实模型，固定v0.1.0-baseline不移动。既有docs/README.md、实训报告与docs/答辩材料/保留，不混入本批。

@@ -26,10 +26,7 @@ public class CompatiblePlannerClient {
     }
     public String call(URI uri, PlannerConnection config, String system, String user, boolean structured,PlannerExecution execution) {
         execution.check();
-        var body = new LinkedHashMap<String, Object>();
-        body.put("model", config.model()); body.put("stream", false);
-        body.put("messages", List.of(Map.of("role", "system", "content", system), Map.of("role", "user", "content", user)));
-        body.put("max_tokens", structured ? 6000 : 16);
+        var body = requestBody(uri, config, system, user, structured);
         var request = HttpRequest.newBuilder(uri).timeout(Duration.ofSeconds(timeout)).header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(json.writeValueAsString(body)));
         if (config.apiKey() != null && !config.apiKey().isBlank()) request.header("Authorization", "Bearer " + config.apiKey().strip());
@@ -47,6 +44,8 @@ public class CompatiblePlannerClient {
             if (status == 429) throw new BizException(3004, "模型服务限流或额度不足，请稍后重试");
             if (status < 200 || status >= 300) throw new BizException(3004, "模型服务请求失败（HTTP " + status + "），请检查API地址与模型名称");
             var root = json.readTree(response.body());
+            if ("length".equals(root.path("choices").path(0).path("finish_reason").asString()))
+                throw new BizException(3004, "模型输出达到长度上限，未得到完整回答，请减少行程天数或换用非思考模型");
             var content = root.path("choices").path(0).path("message").path("content");
             if (!content.isString() || content.asString().isBlank()) throw new BizException(3004, "模型服务没有返回有效文本");
             return content.asString();
@@ -56,6 +55,20 @@ public class CompatiblePlannerClient {
         catch (TimeoutException e) { throw new BizException(3004, "模型请求超时，请稍后重试或减少行程天数"); }
         catch (Exception e) { execution.check(); throw new BizException(3004, "无法读取模型响应，请检查服务连接、响应大小与兼容协议"); }
         finally { execution.detach(future); if (!future.isDone()) future.cancel(true); }
+    }
+
+    static Map<String,Object> requestBody(URI uri,PlannerConnection config,String system,String user,boolean structured) {
+        var body=new LinkedHashMap<String,Object>();
+        body.put("model",config.model());body.put("stream",false);
+        body.put("messages",List.of(Map.of("role","system","content",system),Map.of("role","user","content",user)));
+        body.put("max_tokens",structured?6000:16);
+        // DeepSeek's default reasoning can exhaust a short probe before final content exists.
+        // Keep vendor-specific extensions away from other compatible providers.
+        if("api.deepseek.com".equalsIgnoreCase(uri.getHost())) {
+            body.put("thinking",Map.of("type","disabled"));
+            if(structured)body.put("response_format",Map.of("type","json_object"));
+        }
+        return body;
     }
 
     /** Limit buffering to 1 MiB even for chunked responses without Content-Length. */

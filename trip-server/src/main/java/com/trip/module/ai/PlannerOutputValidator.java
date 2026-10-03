@@ -12,7 +12,7 @@ import java.util.*;
 @RequiredArgsConstructor
 public class PlannerOutputValidator {
     private final ObjectMapper json;
-    public record Draft(String title, List<PlanSaveDTO.DayDTO> dayList) {}
+    public record Draft(String title, List<PlanSaveDTO.DayDTO> dayList,String answer) {}
     public Draft validate(String content, int days) {
         try {
             String clean = content.strip();
@@ -49,7 +49,7 @@ public class PlannerOutputValidator {
                 }
                 day.setItems(list); result.add(day);
             }
-            return new Draft(title, result);
+            return new Draft(title, result,text(root,"answer",4000,false));
         } catch (Exception e) { throw invalid(); }
     }
     private String text(JsonNode object, String name, int max, boolean required) {

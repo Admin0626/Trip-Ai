@@ -1,0 +1,174 @@
+{
+  "mode": "REAL_EDGE_APP_MYSQL_REDIS_CONTROLLED_PROVIDER",
+  "phase": "COMPLETED",
+  "checks": [
+    {
+      "name": "one navigation entry",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "old separate navigation removed",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "default public endpoint",
+      "actual": "https://api.deepseek.com",
+      "expected": "https://api.deepseek.com",
+      "passed": true
+    },
+    {
+      "name": "default model",
+      "actual": "deepseek-flash",
+      "expected": "deepseek-flash",
+      "passed": true
+    },
+    {
+      "name": "key starts empty",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "missing public key stays in UI",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "actual provider final reply",
+      "actual": "OK",
+      "expected": "OK",
+      "passed": true
+    },
+    {
+      "name": "reply displayed",
+      "actual": "模型回复：OK",
+      "expected": "模型回复：OK",
+      "passed": true
+    },
+    {
+      "name": "Bearer key not persisted",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "shared demand goes to route mode",
+      "actual": "杭州一日游，喜欢美食",
+      "expected": "杭州一日游，喜欢美食",
+      "passed": true
+    },
+    {
+      "name": "route mode needs no key",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "demand retained on return",
+      "actual": "杭州一日游，喜欢美食",
+      "expected": "杭州一日游，喜欢美食",
+      "passed": true
+    },
+    {
+      "name": "key erased on mode switch",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "actual SSE response type",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "model text is shown",
+      "actual": "这是受控模型的建议：上午散步，下午休息。<script>window.fixtureXss=true</script>",
+      "expected": "这是受控模型的建议：上午散步，下午休息。<script>window.fixtureXss=true</script>",
+      "passed": true
+    },
+    {
+      "name": "answer HTML is escaped",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "one daily itinerary",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "not auto saved",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "mobile no horizontal overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "save requires confirmation",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "daily itinerary saved",
+      "actual": "1",
+      "expected": "1",
+      "passed": true
+    },
+    {
+      "name": "old recommendation URL chooses route mode",
+      "actual": "true",
+      "expected": "true",
+      "passed": true
+    },
+    {
+      "name": "legacy URL marks unified nav active",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "old AI URL chooses AI mode",
+      "actual": "true",
+      "expected": "true",
+      "passed": true
+    },
+    {
+      "name": "no key after leaving saved plan",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "no unhandled browser errors",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "own fixtures removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "summary": {
+    "total": 27,
+    "passed": 27,
+    "failed": 0
+  }
+}

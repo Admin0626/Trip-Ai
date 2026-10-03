@@ -1,0 +1,37 @@
+{
+  "observedDate": "2026-10-03",
+  "mode": "PRIOR_REAL_DEEPSEEK_DIRECT_PROBE",
+  "scope": "Original screenshot diagnosis, not a new application generation replay",
+  "model": "deepseek-flash",
+  "probes": [
+    {
+      "thinking": "default",
+      "maxTokens": 16,
+      "httpStatus": 200,
+      "finishReason": "length",
+      "contentLength": 0,
+      "reasoningPresent": true,
+      "usage": {
+        "prompt_tokens": 37,
+        "completion_tokens": 16,
+        "total_tokens": 53,
+        "reasoning_tokens": 16
+      }
+    },
+    {
+      "thinking": "disabled",
+      "maxTokens": 16,
+      "httpStatus": 200,
+      "finishReason": "stop",
+      "contentLength": 2,
+      "reply": "OK",
+      "reasoningPresent": false,
+      "usage": {
+        "prompt_tokens": 12,
+        "completion_tokens": 1,
+        "total_tokens": 13
+      }
+    }
+  ],
+  "privacy": "No key, Authorization header or reasoning text recorded"
+}

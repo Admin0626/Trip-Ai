@@ -12,7 +12,8 @@
 | `codex/rag-knowledge` | 从9d58768建立，本地知识管理/分片/检索；[PR #2](https://github.com/Admin0626/Trip-Ai/pull/2)已审核合并，main集成d63cb66 |
 | `codex/knowledge-sessions` | 从d63cb66建立，本人本地检索会话/历史；146项接口/55项Edge通过，[PR #3](https://github.com/Admin0626/Trip-Ai/pull/3)已合并main29f0bb8 |
 | `codex/knowledge-quality` | 从29f0bb8建立，知识健康/异常修复与检索质量；86项HTTP/24项Edge通过，[PR #5](https://github.com/Admin0626/Trip-Ai/pull/5)已合并main596065e，发布见SESSION |
-| `codex/knowledge-sources` | 从596065e建立，来源摘要分页/单独关联与引用保留；124项HTTP/31项Edge及回归通过，[PR #6](https://github.com/Admin0626/Trip-Ai/pull/6)待审/未合并，发布见SESSION |
+| `codex/knowledge-sources` | 从596065e建立，来源摘要分页/单独关联与引用保留；124项HTTP/31项Edge及回归通过，[PR #6](https://github.com/Admin0626/Trip-Ai/pull/6)已合并main=aabcffe，发布见SESSION |
+| `codex/travel-assistant` | 从aabcffe建立，统一入口/标准Key/模型建议＋每日行程；真实DeepSeek16、Edge28及回归通过，[PR #7](https://github.com/Admin0626/Trip-Ai/pull/7)用户已授权合并，见SESSION |
 | `codex/<feature>` | 其他新功能各建独立分支，例如`codex/rag-chat`；从当时最新main起步 |
 
 这是协作工作约定。本次没有配置GitHub服务器分支保护或强制检查，不能宣称GitHub已经从技术上阻止直接push main。
@@ -40,6 +41,6 @@ git commit -m "feat: describe the completed change"
 git push -u origin codex/feature-name
 ```
 
-当前知识来源维护使用`codex/knowledge-sources`，不混入已合并的SSE或知识分支。PR可使用GitHub网页的Compare & pull request；CLI可用时也可从文件提交PR正文。GitHub尚未配置CI检查，审核依据本地实测证据，不把没有检查称为CI通过。旧基线不移动。
+当前统一旅行助手使用`codex/travel-assistant`，不混入已合并的SSE或知识分支。PR可使用GitHub网页的Compare & pull request；CLI可用时也可从文件提交PR正文。GitHub尚未配置CI检查，审核依据本地实测证据，不把没有检查称为CI通过。旧基线不移动。
 
 查看固定基线可用GitHub标签页面；本地临时查看可`git switch --detach v0.1.0-baseline`，这不恢复本机数据库。继续开发时切回对应功能分支。

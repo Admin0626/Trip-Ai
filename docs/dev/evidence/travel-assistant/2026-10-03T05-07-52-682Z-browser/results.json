@@ -1,0 +1,102 @@
+{
+  "mode": "REAL_EDGE_APP_MYSQL_REDIS_CONTROLLED_PROVIDER",
+  "phase": "FAILED",
+  "checks": [
+    {
+      "name": "one navigation entry",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "old separate navigation removed",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "default public endpoint",
+      "actual": "https://api.deepseek.com",
+      "expected": "https://api.deepseek.com",
+      "passed": true
+    },
+    {
+      "name": "default model",
+      "actual": "deepseek-flash",
+      "expected": "deepseek-flash",
+      "passed": true
+    },
+    {
+      "name": "key starts empty",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "missing public key stays in UI",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "actual provider final reply",
+      "actual": "OK",
+      "expected": "OK",
+      "passed": true
+    },
+    {
+      "name": "reply displayed",
+      "actual": "模型回复：OK",
+      "expected": "模型回复：OK",
+      "passed": true
+    },
+    {
+      "name": "Bearer key not persisted",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "shared demand goes to route mode",
+      "actual": "杭州一日游，喜欢美食",
+      "expected": "杭州一日游，喜欢美食",
+      "passed": true
+    },
+    {
+      "name": "route mode needs no key",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "demand retained on return",
+      "actual": "杭州一日游，喜欢美食",
+      "expected": "杭州一日游，喜欢美食",
+      "passed": true
+    },
+    {
+      "name": "key erased on mode switch",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "browser completed",
+      "actual": "response.text: Protocol error (Network.getResponseBody): No data found for resource with given identifier\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+      "expected": "no error",
+      "passed": false
+    },
+    {
+      "name": "own fixtures removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "summary": {
+    "total": 15,
+    "passed": 14,
+    "failed": 1
+  }
+}

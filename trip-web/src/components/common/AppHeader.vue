@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { ElMessageBox } from 'element-plus'
 import { ArrowDown } from '@element-plus/icons-vue'
 import { useUserStore } from '@/store/user'
 
 const router = useRouter()
+const route = useRoute()
+const assistantActive = computed(() => ['/travel-assistant', '/recommend', '/ai-planner'].includes(route.path))
 const userStore = useUserStore()
 
 const nickname = computed(() => userStore.userInfo?.nickname ?? '未登录')
@@ -45,11 +47,10 @@ function handleCommand(cmd: string): void {
       </div>
 
       <nav class="app-header__nav">
-        <router-link to="/" class="nav-link">首页</router-link>
+        <router-link to="/" class="nav-link" active-class="" exact-active-class="router-link-active">首页</router-link>
         <router-link to="/routes" class="nav-link">路线</router-link>
         <router-link to="/destinations" class="nav-link">目的地</router-link>
-        <router-link to="/recommend" class="nav-link">旅行推荐</router-link>
-        <router-link to="/ai-planner" class="nav-link">AI规划</router-link>
+        <router-link to="/travel-assistant" class="nav-link" :class="{ 'router-link-active': assistantActive }">旅行助手</router-link>
         <router-link to="/knowledge" class="nav-link">旅行资料</router-link>
       </nav>
 

@@ -15,6 +15,37 @@ class UserPlannerTest {
     private String draft(String item) {
         return "{\"title\":\"大理旅行\",\"dayList\":[{\"title\":\"古城\",\"items\":[" + item + "]}]}";
     }
+    @Test void deepseekProbeDisablesReasoningAndStructuredCallRequestsJson() {
+        var config=new PlannerConnection("https://api.deepseek.com","deepseek-flash","not-a-real-key");
+        var probe=CompatiblePlannerClient.requestBody(URI.create("https://api.DeepSeek.com/chat/completions"),config,"system","user",false);
+        assertEquals(Map.of("type","disabled"),probe.get("thinking"));assertFalse(probe.containsKey("response_format"));
+        var structured=CompatiblePlannerClient.requestBody(URI.create("https://api.deepseek.com/v1/chat/completions"),config,"JSON required","user",true);
+        assertEquals(Map.of("type","json_object"),structured.get("response_format"));
+        for(String host:List.of("api.openai.com","127.0.0.1","api.deepseek.com.example.org")) {
+            var other=CompatiblePlannerClient.requestBody(URI.create("https://"+host+"/v1/chat/completions"),config,"system","user",true);
+            assertFalse(other.containsKey("thinking"));assertFalse(other.containsKey("response_format"));
+        }
+    }
+    @Test void acceptsStandardBearerPasteWithoutLeakingItInToString() {
+        var config=new PlannerConnection("base","model","  Bearer fixture-not-a-secret  ");
+        assertEquals("fixture-not-a-secret",config.apiKey());assertFalse(config.toString().contains(config.apiKey()));
+        assertNull(new PlannerConnection("base","model",null).apiKey());
+    }
+    @Test void validatesOptionalModelAnswerWhileKeepingLegacyItineraries() {
+        String body=draft("{\"title\":\"散步\"}");
+        assertNull(validator.validate(body,1).answer());
+        assertEquals("建议慢游",validator.validate(body.substring(0,body.length()-1)+",\"answer\":\"建议慢游\"}",1).answer());
+        for(String answer:List.of("3","\""+"a".repeat(4001)+"\""))assertThrows(IllegalArgumentException.class,()->validator.validate(body.substring(0,body.length()-1)+",\"answer\":"+answer+"}",1));
+    }
+    @Test void rejectsTruncatedFinalContentEvenWhenNonEmpty() throws Exception {
+        var server=HttpServer.create(new InetSocketAddress("127.0.0.1",0),0);
+        server.createContext("/chat/completions",exchange->{
+            byte[] body="{\"choices\":[{\"finish_reason\":\"length\",\"message\":{\"content\":\"partial answer\",\"reasoning_content\":\"do not expose reasoning\"}}]}".getBytes(StandardCharsets.UTF_8);
+            exchange.sendResponseHeaders(200,body.length);exchange.getResponseBody().write(body);exchange.close();
+        });server.start();
+        try {var error=assertThrows(BizException.class,()->new CompatiblePlannerClient(json,2).call(URI.create("http://127.0.0.1:"+server.getAddress().getPort()+"/chat/completions"),new PlannerConnection("","test",""),"system","user",false));assertTrue(error.getMessage().contains("长度上限"));assertFalse(error.getMessage().contains("reasoning"));}
+        finally{server.stop(0);}
+    }
     @Test void rejectsUnsafeDestinationsWithoutCallingThem() {
         var policy = new PlannerEndpointPolicy("api.deepseek.com", true);
         for (String url : List.of("http://169.254.169.254/latest", "http://192.168.1.1:8080/v1", "https://untrusted.example/v1",

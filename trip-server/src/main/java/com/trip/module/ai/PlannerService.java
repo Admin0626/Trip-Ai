@@ -31,6 +31,8 @@ public class PlannerService {
     }
     public Slot reserve(long userId,PlannerConnection connection) {
         var endpoint=policy.endpoint(connection.baseUrl());
+        if(!Set.of("localhost","127.0.0.1").contains(endpoint.getHost()) && (connection.apiKey()==null||connection.apiKey().isBlank()))
+            throw new BizException(400,"请填写模型服务的API Key");
         if (!running.add(userId)) throw new BizException(429, "你已有一个AI请求正在处理，请稍后再试");
         if (!capacity.tryAcquire()) { running.remove(userId); throw new BizException(429, "AI服务繁忙，请稍后再试"); }
         return new Slot(userId,endpoint);
@@ -51,15 +53,17 @@ public class PlannerService {
                 var permit=circuit.acquire(userId,endpoint,request.connection());
                 try { quota.acquire(userId); } catch(RuntimeException e) { circuit.abandon(permit); throw e; }
                 attempted = true;
-                try { client.call(endpoint, request.connection(), "Reply with OK only.", "Connection test", false); }
+                String reply;
+                try { reply=client.call(endpoint, request.connection(), "Reply with OK only.", "Connection test", false); }
                 catch(RuntimeException e) { circuit.complete(permit,false); throw e; }
                 circuit.complete(permit,true);
                 success = true;
-                return Map.of("connected", true, "model", request.connection().model());
+                return Map.of("connected", true, "model", request.connection().model(),"reply",reply);
             }
             var templates = jdbc.queryForList("SELECT content FROM prompt_template WHERE code='USER_PLANNER' AND status=1 ORDER BY version DESC LIMIT 1", String.class);
             if (templates.isEmpty()) throw new BizException(3004, "AI规划模板尚未启用，请联系部署者完成初始化");
-            String prompt = templates.get(0).replace("{{days}}", String.valueOf(request.days()));
+            String prompt = templates.get(0).replace("{{days}}", String.valueOf(request.days()))
+                    + "\n输出完整JSON。在原有title/dayList之外，添加answer字段：用中文直接回答用户的旅行需求，说明安排理由与注意事项，最多4000字符；不要输出思考过程。";
             String user = json.writeValueAsString(Map.of("query", request.query().strip(), "days", request.days(), "budget", request.budget(), "peopleNum", request.peopleNum(),
                     "startDate", request.startDate() == null ? java.time.LocalDate.now().toString() : request.startDate()));
             for (int attempt = 1; attempt <= 2; attempt++) {

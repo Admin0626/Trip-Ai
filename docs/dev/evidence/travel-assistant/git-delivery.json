@@ -1,0 +1,40 @@
+{
+  "verifiedAt": "2026-10-03T13:17:43.283706+08:00",
+  "branch": "codex/travel-assistant",
+  "implementationCommit": "de8e2addf5f0c5ce6d82481fddafb513804720bf",
+  "remoteFeatureHeadAtPublication": "de8e2addf5f0c5ce6d82481fddafb513804720bf",
+  "mainBase": "aabcffed8dfc041f897a5d3fe2f5c941541ac98e",
+  "previousPr": {
+    "number": 6,
+    "state": "MERGED"
+  },
+  "pullRequest": {
+    "number": 7,
+    "url": "https://github.com/Admin0626/Trip-Ai/pull/7",
+    "state": "open",
+    "headAtPublication": "de8e2addf5f0c5ce6d82481fddafb513804720bf",
+    "baseAtPublication": "aabcffed8dfc041f897a5d3fe2f5c941541ac98e"
+  },
+  "baseline": {
+    "tag": "v0.1.0-baseline",
+    "tagObject": "f347ba5c2a8db4b4a88f47b070614d64b9fe72b1",
+    "commit": "ceec9a2789410f3f404cbc2268cb07ada2dffb9f",
+    "unchanged": true
+  },
+  "ci": "No GitHub checks configured; local acceptance only",
+  "secretsInStaged46Files": 0,
+  "publicationNote": "This record is added in a follow-up documentation commit; final feature head is available through Git/PR. No recursive self-commit assertion.",
+  "mergeAuthorization": {
+    "date": "2026-10-03 Asia/Shanghai",
+    "requestedByUser": true,
+    "reviewedHead": "81731b5d435f24b901994e31c7803a4c16c18827",
+    "mergeable": true,
+    "mergeableState": "clean",
+    "reviews": 0,
+    "comments": 0,
+    "inlineComments": 0,
+    "checkRuns": 0,
+    "statuses": 0,
+    "note": "Merge the latest pushed head after this documentation commit; authoritative final merge SHA is on PR #7. Original publication fields above are historical snapshots."
+  }
+}

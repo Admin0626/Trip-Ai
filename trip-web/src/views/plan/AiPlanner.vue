@@ -9,13 +9,16 @@ import { destinationListApi } from '@/api/modules/destination'
 import { plannerOptions, plannerUsage, plannerCircuit, testModel, generatePlan, generatePlanStream, cancelPlannerRequest, type PlannerCircuit, type PlannerPreview, type PlannerUsage } from '@/api/modules/planner'
 
 const router = useRouter(), user = useUserStore()
+const props=defineProps<{embedded?:boolean;sharedQuery?:string}>()
+const emit=defineEmits<{'update:sharedQuery':[string];busy:[boolean]}>()
 const connection = reactive({ baseUrl: '', model: '', apiKey: '' })
-const form = reactive({ query: '', days: 3, budget: 3000, peopleNum: 2, startDate: today(), destinationIds: [] as number[] })
+const form = reactive({ query: props.sharedQuery||'', days: 3, budget: 3000, peopleNum: 2, startDate: today(), destinationIds: [] as number[] })
 const destinations = ref<DestinationVO[]>([])
 const options = ref<{ allowedHosts: string[]; allowLoopback: boolean }>({ allowedHosts: [], allowLoopback: false })
 const busy = ref('')
 const error = ref('')
 const connected = ref(false)
+const connectionReply=ref('')
 const preview = ref<PlannerPreview | null>(null)
 const title = ref('')
 const acknowledged = ref(false)
@@ -36,33 +39,38 @@ const storageKey = computed(() => `trip_ai_connection_${user.userInfo?.id ?? 'no
 let revision = 0
 function invalidate() { revision++; preview.value = null; acknowledged.value = false; error.value = '' }
 watch(connection, () => {
-  invalidate(); connected.value = false; circuitRevision++; circuit.value = null
+  invalidate(); connected.value = false;connectionReply.value=''; circuitRevision++; circuit.value = null
   circuitError.value = false; refreshingCircuit.value = false; circuitDeadline = 0
 }, { deep: true, flush: 'sync' })
 watch(form, invalidate, { deep: true, flush: 'sync' })
+watch(()=>form.query,value=>emit('update:sharedQuery',value))
+watch(()=>props.sharedQuery,value=>{if(value!==undefined&&value!==form.query)form.query=value})
+watch(busy,value=>emit('busy',!!value),{flush:'sync'})
 watch(showProgress,invalidate)
 watch(storageKey, () => { connection.apiKey = ''; usage.value = null; loadSettings(); void refreshUsage() })
-onBeforeUnmount(() => { mounted = false; revision++; circuitRevision++; streamController?.abort(); window.clearInterval(ticker); connection.apiKey = '' })
+onBeforeUnmount(() => { mounted = false; revision++; circuitRevision++; streamController?.abort(); window.clearInterval(ticker); connection.apiKey = '';emit('busy',false) })
 
 function loadSettings() {
-  connection.baseUrl = ''; connection.model = ''; connection.apiKey = ''
+  connection.baseUrl = 'https://api.deepseek.com'; connection.model = 'deepseek-flash'; connection.apiKey = ''
   try {
     const saved = JSON.parse(localStorage.getItem(storageKey.value) || '{}')
-    connection.baseUrl = typeof saved.baseUrl === 'string' ? saved.baseUrl : ''
-    connection.model = typeof saved.model === 'string' ? saved.model : ''
+    connection.baseUrl = typeof saved.baseUrl === 'string' ? saved.baseUrl : 'https://api.deepseek.com'
+    connection.model = typeof saved.model === 'string' ? saved.model : 'deepseek-flash'
   } catch { /* Corrupt browser settings are ignored. */ }
 }
-function validConnection() {
+function deepseekDefaults(){connection.baseUrl='https://api.deepseek.com';connection.model='deepseek-flash'}
+function validConnection(requireKey=true) {
   if (!connection.baseUrl.trim() || !connection.model.trim()) { ElMessage.warning('请填写API基础地址和模型名称'); return false }
   try {
     const url = new URL(connection.baseUrl.trim())
     if (!['http:', 'https:'].includes(url.protocol) || url.username || url.password || url.search || url.hash
       || url.pathname.replace(/\/+$/, '').endsWith('/chat/completions')) throw new Error()
+    if(requireKey&&!['localhost','127.0.0.1'].includes(url.hostname)&&!connection.apiKey.trim().replace(/^Bearer\s+/i,'').trim()){ElMessage.warning('请填写模型服务的API Key');return false}
   } catch { ElMessage.warning('请填写不含账号、查询参数或/chat/completions的API基础地址'); return false }
   return true
 }
 function saveSettings() {
-  if (!validConnection()) return
+  if (!validConnection(false)) return
   try {
     localStorage.setItem(storageKey.value, JSON.stringify({ baseUrl: connection.baseUrl.trim(), model: connection.model.trim() }))
     ElMessage.success('已记住当前账号的地址和模型，API Key未保存')
@@ -72,7 +80,7 @@ function clearSettings() {
   try { localStorage.removeItem(storageKey.value) } catch { ElMessage.warning('浏览器无法移除设置，请手动清理站点数据') }
   connection.baseUrl = ''; connection.model = ''; connection.apiKey = ''
 }
-function config() { return { baseUrl: connection.baseUrl.trim(), model: connection.model.trim(), apiKey: connection.apiKey.trim() } }
+function config() { return { baseUrl: connection.baseUrl.trim(), model: connection.model.trim(), apiKey: connection.apiKey.trim().replace(/^Bearer\s+/i,'').trim() } }
 async function refreshCircuit() {
   if (!mounted || !connection.baseUrl.trim() || !connection.model.trim()) return
   const version = ++circuitRevision
@@ -98,9 +106,9 @@ async function refreshUsage() {
 function resetTime(value: string) { return new Date(value).toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai', hour12: false }) }
 async function test() {
   if (!validConnection()) return
-  busy.value = 'test'; error.value = ''; connected.value = false
+  busy.value = 'test'; error.value = ''; connected.value = false;connectionReply.value=''
   const version = revision
-  try { await testModel(config()); if (version === revision) connected.value = true }
+  try { const result=await testModel(config()); if (version === revision) {connected.value = true;connectionReply.value=result.reply} }
   catch (e) { if (version === revision) error.value = e instanceof Error ? e.message : '连接测试失败' }
   finally { await Promise.allSettled([refreshUsage(), refreshCircuit()]); busy.value = '' }
 }
@@ -159,8 +167,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <main class="ai-planner">
-    <h1>让 AI 帮你规划旅程</h1>
+  <main class="ai-planner" :class="{embedded}">
+    <h1 v-if="!embedded">让 AI 帮你规划旅程</h1>
     <p class="hint">连接自己的模型服务，生成行程预览，确认后保存并继续编辑。</p>
     <section class="panel quota-panel" data-testid="ai-usage" aria-live="polite">
       <div class="usage-heading"><h2>我的AI额度</h2><el-button :loading="refreshingUsage" :disabled="!!busy" @click="refreshUsage">刷新额度</el-button></div>
@@ -179,7 +187,9 @@ onMounted(async () => {
     </section>
     <el-form label-position="top" :disabled="!!busy">
       <section class="panel">
-        <h2>1. 你的模型服务</h2>
+        <h2>1. 标准 API 配置</h2>
+        <p class="hint">填写API地址、模型名称与API Key即可使用自己的模型。DeepSeek已预填地址与模型，密钥由你自行填写。</p>
+        <el-button :disabled="!!busy" @click="deepseekDefaults">填入DeepSeek地址与模型</el-button>
         <el-form-item label="API基础地址（可包含端口）">
           <el-input v-model="connection.baseUrl" maxlength="500" aria-label="API基础地址" placeholder="https://api.deepseek.com/v1 或 http://localhost:11434/v1" />
         </el-form-item>
@@ -209,6 +219,7 @@ onMounted(async () => {
           <p v-else class="hint">点击刷新可查看当前连接的故障状态，不调用模型、不消耗AI额度。</p>
         </div>
         <el-alert v-if="connected" title="连接成功，模型返回了有效响应" type="success" :closable="false" />
+        <p v-if="connected" class="model-answer" data-testid="model-test-reply">模型回复：{{connectionReply}}</p>
       </section>
       <section class="panel">
         <h2>2. 你的旅行需求</h2>
@@ -238,8 +249,10 @@ onMounted(async () => {
     <el-alert v-if="cancelled" title="已停止本次生成等待，未保存行程。已准入的调用不退额度。" type="info" :closable="false" data-testid="planner-cancelled" />
     <el-alert v-if="error" :title="error" type="error" :closable="false" role="alert" />
     <section v-if="preview" class="panel preview" data-testid="ai-preview">
-      <h2>3. 检查AI生成的行程</h2>
+      <h2>3. 模型回答与每日行程</h2>
       <p class="hint">由你配置的 {{ preview.model }} 生成。地点、交通和费用需自行核实；未提供费用的项目不是免费。保存后可逐项编辑。</p>
+      <div v-if="preview.draft.answer" class="model-answer" data-testid="model-answer">{{preview.draft.answer}}</div>
+      <p v-else class="hint">模型未单独提供文字建议，以下为它生成的每日行程。</p>
       <el-input v-model="title" maxlength="200" aria-label="AI规划标题" :disabled="!!busy" />
       <article v-for="(day, index) in preview.draft.dayList" :key="index" class="day">
         <h3>第{{ index + 1 }}天 · {{ day.title }}</h3><p>{{ day.summary }}</p>
@@ -259,6 +272,7 @@ onMounted(async () => {
 
 <style scoped>
 .ai-planner { max-width: 960px; margin: auto; padding: 30px 20px 60px; }
+.ai-planner.embedded{max-width:none;padding:0}.model-answer{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.8;background:#f0f7ff;border-radius:10px;padding:16px;margin:16px 0}
 h1 { font-size: 30px; } h2 { margin: 0 0 20px; font-size: 20px; }
 .panel { background: white; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px; margin: 24px 0; }
 .hint { color: #64748b; font-size: 14px; line-height: 1.7; }
