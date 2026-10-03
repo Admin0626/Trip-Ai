@@ -6,7 +6,7 @@
 - 修复前1440px内容铺满，scrollWidth1448；修复后1440/1024/390px实际Edge均留白且无横向溢出；vue-tsc/Vite通过。仅前端样式，无后端/模型/SQL变更；原外部图片未显示与大包警告没有在本批修复。
 - [修复原因与验证](docs/dev/首页布局修复记录.md)，真实页面几何和三种宽度截图已保存。原docs/README.md、实训报告与答辩材料保留，不加入提交。
 
-待在codex/home-layout提交推送并创建修复PR，按既有约定新改动先独立分支，本批不自动合并。下一批先读本段及git status，再按用户指令融合或继续功能。
+修复及验证记录已随c39aefe3da3815393b701068677eb61416e0a2ef推送origin/codex/home-layout；[PR #8](https://github.com/Admin0626/Trip-Ai/pull/8)已创建/附到任务，目标main，保留open未合并。本段由后续文档提交补充，最新HEAD以Git/PR为准。按既有约定新改动先独立分支，本批不自动合并。下一批先读本段及git status，再按用户指令融合或继续功能。
 
 ---
 
