@@ -5,6 +5,9 @@ import com.trip.common.result.PageResult;
 import com.trip.common.result.R;
 import com.trip.module.catalog.CatalogSaveDTO;
 import com.trip.security.AuthSessionService;
+import com.trip.module.user.service.UserExportService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.MediaType;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -20,6 +23,14 @@ import java.util.*;
 public class AdminUserController {
     private final JdbcTemplate jdbc;
     private final AuthSessionService sessions;
+    private final UserExportService exporter;
+
+    @GetMapping("/export")
+    public ResponseEntity<byte[]> export(@RequestParam(required=false) String keyword,@RequestParam(required=false) Integer status) {
+        return ResponseEntity.ok().contentType(MediaType.parseMediaType("text/csv;charset=UTF-8"))
+                .header("Content-Disposition","attachment; filename=users-"+java.time.LocalDate.now()+".csv")
+                .header("Cache-Control","no-store").body(exporter.export(keyword,status));
+    }
 
     @GetMapping("/page")
     public R<PageResult<Map<String,Object>>> page(@RequestParam(defaultValue="1") long current,
