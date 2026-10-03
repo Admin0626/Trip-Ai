@@ -13,23 +13,45 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
 class AiQuotaTest {
-    @Test void shanghaiMidnightChangesAllWindowsAndUsersShareOnlyGlobalKey() {
+    @Test void shanghaiMidnightResetsHourAndUsersHaveSeparateCounters() {
         var before = AiQuotaService.windows(1, "test", Instant.parse("2026-09-27T15:59:59Z"));
         var after = AiQuotaService.windows(1, "test", Instant.parse("2026-09-27T16:00:00Z"));
         var other = AiQuotaService.windows(2, "test", Instant.parse("2026-09-27T16:00:00Z"));
-        assertEquals("2026-09-28T00:00+08:00[Asia/Shanghai]", before.dayReset().toString());
-        assertEquals(before.dayReset(), before.hourReset());
-        for (int i=0;i<3;i++) assertNotEquals(before.keys().get(i), after.keys().get(i));
+        assertEquals("2026-09-28T00:00+08:00[Asia/Shanghai]", before.hourReset().toString());
+        assertEquals(1, after.keys().size());
+        assertNotEquals(before.keys(), after.keys());
         assertNotEquals(after.keys().get(0), other.keys().get(0));
-        assertNotEquals(after.keys().get(1), other.keys().get(1));
-        assertEquals(after.keys().get(2), other.keys().get(2));
         assertTrue(after.keys().stream().allMatch(k -> k.contains("{ai-quota}")));
     }
-    @Test void hourlyBoundaryKeepsDailyUsage() {
+    @Test void hourlyBoundaryStartsANewCounter() {
         var before = AiQuotaService.windows(1, "test", Instant.parse("2026-09-27T09:59:59Z"));
         var after = AiQuotaService.windows(1, "test", Instant.parse("2026-09-27T10:00:00Z"));
         assertNotEquals(before.keys().get(0), after.keys().get(0));
-        assertEquals(before.keys().subList(1,3), after.keys().subList(1,3));
+        assertEquals(1, after.keys().size());
+    }
+    @Test void retiredDailyConfigurationCannotRejectCalls() {
+        var redis=mock(StringRedisTemplate.class, invocation -> {
+            if (invocation.getMethod().getName().equals("execute")) {
+                List<?> keys = invocation.getArgument(1);
+                assertEquals(1, keys.size());
+                assertTrue(keys.get(0).toString().contains(":hour:"));
+                return List.of(1L, 1L);
+            }
+            return RETURNS_DEFAULTS.answer(invocation);
+        });
+        var jdbc=mock(JdbcTemplate.class);
+        when(jdbc.queryForList(anyString())).thenReturn(List.of(
+            Map.of("config_key","llm.quota.user.daily","config_value","0"),
+            Map.of("config_key","llm.daily.quota","config_value","invalid")));
+        assertDoesNotThrow(() -> new AiQuotaService(redis,jdbc,"test").acquire(1));
+        verify(jdbc).queryForList(argThat(sql -> !sql.contains("llm.quota.user.daily") && !sql.contains("llm.daily.quota")));
+    }
+    @Test void exhaustedHourlyLimitStillRejects() {
+        var redis=mock(StringRedisTemplate.class, invocation -> invocation.getMethod().getName().equals("execute")
+            ? List.of(0L, 20L) : RETURNS_DEFAULTS.answer(invocation));
+        var jdbc=mock(JdbcTemplate.class); when(jdbc.queryForList(anyString())).thenReturn(List.of());
+        var error=assertThrows(BizException.class,()->new AiQuotaService(redis,jdbc,"test").acquire(1));
+        assertEquals(429,error.getCode()); assertTrue(error.getMessage().contains("本小时"));
     }
     @Test void invalidConfigurationFailsBeforeRedis() {
         var redis=mock(StringRedisTemplate.class); var jdbc=mock(JdbcTemplate.class);

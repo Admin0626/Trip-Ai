@@ -93,7 +93,7 @@ public class PlannerStreamService {
                 Object preview=planner.executeReserved(slot,input,false,execution);
                 terminal("done",preview,"SUCCEEDED");
             } catch(PlannerExecution.Stopped e) {
-                if(e.code()==499)terminal("cancelled",Map.of("code",499,"message","已取消生成；已准入的调用不退额度"),"CANCELLED");
+                if(e.code()==499)terminal("cancelled",Map.of("code",499,"message","已取消生成；已准入的调用仍计入本小时次数"),"CANCELLED");
                 else terminal("error",Map.of("code",e.code(),"message",switch(e.code()) {
                     case 401 -> "登录已变更或过期，请重新操作";
                     case 408 -> "生成等待超时，请稍后重试或使用普通生成";

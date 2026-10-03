@@ -17,8 +17,8 @@ function currentKeys() {
 }
 async function refresh() {
   const response = page.waitForResponse(r => r.url().endsWith('/ai/planner/usage'));
-  await page.getByRole('button', { name: '刷新额度', exact: true }).click();
-  const data = (await response).json(); await page.getByRole('button', { name: '刷新额度', exact: true }).isEnabled(); return (await data).data;
+  await page.getByRole('button', { name: '刷新状态', exact: true }).click();
+  const data = (await response).json(); await page.getByRole('button', { name: '刷新状态', exact: true }).isEnabled(); return (await data).data;
 }
 (async () => {
   try {
@@ -30,11 +30,11 @@ async function refresh() {
     browser = await chromium.launch({ channel: 'msedge', headless: true });
     page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
     page.on('pageerror', e => { errors.push(e.message); save(); });
-    await page.goto(base + '/login?redirect=/ai-planner');
+    await page.goto(base + '/login?redirect=/travel-assistant');
     await page.getByPlaceholder('user1001').fill(username);
     await page.getByPlaceholder('123456', { exact: true }).fill(password);
     await page.getByRole('button', { name: '登 录', exact: true }).click();
-    await page.waitForURL(url => url.pathname === '/ai-planner');
+    await page.waitForURL(url => url.pathname === '/travel-assistant');
     await page.getByTestId('hourly-remaining').waitFor();
     check('initial remaining 20', await page.getByTestId('hourly-remaining').locator('strong').innerText(), '20');
     await page.getByRole('textbox', { name: 'API基础地址', exact: true }).fill('http://localhost:11435/v1');
@@ -46,7 +46,7 @@ async function refresh() {
     check('page shows success count', (await page.getByTestId('ai-usage').innerText()).includes('成功 1'), true);
     // Simulate only this temporary user's exhausted hour; never mutate shared global key.
     redis('SET', currentKeys()[0], 20, 'EX', 300); await refresh();
-    await page.getByText('AI额度已用尽。到重置时间后点击刷新额度，可继续使用基础旅行推荐。', { exact: true }).waitFor();
+    await page.getByText('本小时调用次数已达上限。窗口重置后刷新状态即可继续，也可使用基础旅行推荐。', { exact: true }).waitFor();
     check('exhausted connection disabled', await page.getByRole('button', { name: '测试连接', exact: true }).isDisabled(), true);
     check('exhausted generation disabled', await page.getByRole('button', { name: '生成AI行程', exact: true }).isDisabled(), true);
     check('exhaustion still links basic recommendations', await page.getByRole('link', { name: '使用基础旅行推荐', exact: true }).isVisible(), true);
@@ -57,7 +57,8 @@ async function refresh() {
     redis('DEL', currentKeys()[0]); await refresh();
     await page.waitForFunction(() => document.querySelector('[data-testid="hourly-remaining"] strong')?.textContent === '20');
     check('refresh after simulated reset enables generation', await page.getByRole('button', { name: '生成AI行程', exact: true }).isEnabled(), true);
-    check('daily use retained through simulated hourly reset', await page.getByTestId('daily-remaining').locator('strong').innerText(), '199');
+    check('daily balance no longer shown', await page.getByTestId('daily-remaining').count(), 0);
+    check('page explains no daily cap', (await page.getByTestId('ai-usage').innerText()).includes('不设置个人或全站每日调用上限'), true);
     check('no browser errors', errors.length, 0);
   } catch (e) { check('browser completed', e.message, 'no error'); process.exitCode = 1; }
   finally {

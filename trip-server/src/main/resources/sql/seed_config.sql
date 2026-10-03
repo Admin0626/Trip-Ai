@@ -23,14 +23,12 @@ INSERT INTO recommend_config (config_group, config_key, config_value, value_type
 ('llm',    'llm.rerank.candidateSize','50',    'NUMBER',  '重排候选集大小（10-100）', 6),
 ('llm',    'llm.model',               'deepseek-chat', 'STRING', 'LLM 模型', 7),
 ('llm',    'llm.temperature',         '0.7',   'NUMBER',  'LLM 温度（0-1.5）',    8),
-('llm',    'llm.daily.quota',         '2000',  'NUMBER',  '全局每日 AI 调用配额', 9),
 ('llm',    'llm.connect.timeout',     '5000',  'NUMBER',  '连接超时（毫秒）',     10),
 ('llm',    'llm.read.timeout',        '60000', 'NUMBER',  '读取超时（毫秒）',     11),
 ('llm',    'llm.sse.timeout',         '120000','NUMBER',  'SSE 超时（毫秒）',     12),
 ('llm',    'llm.retry.times',         '1',     'NUMBER',  '调用失败重试次数',     13),
 -- 配额与熔断
 ('quota',  'llm.quota.user.hourly',   '20',    'NUMBER',  '单用户每小时配额',     14),
-('quota',  'llm.quota.user.daily',    '200',   'NUMBER',  '单用户每日配额',       15),
 ('quota',  'llm.circuit.failureRate', '0.3',   'NUMBER',  '熔断失败率阈值(5分钟窗口)', 16),
 ('quota',  'llm.circuit.openMinutes', '10',    'NUMBER',  '熔断持续时间（分钟）', 17),
 -- RAG 检索参数

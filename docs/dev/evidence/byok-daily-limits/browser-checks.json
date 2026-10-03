@@ -1,0 +1,15 @@
+[
+  {
+    "width": 1440,
+    "dailyBalanceRemoved": true,
+    "explainsNoDailyCap": true,
+    "noOverflow": true,
+    "statusTitle": "调用状态"
+  },
+  {
+    "width": 390,
+    "dailyBalanceRemoved": true,
+    "explainsNoDailyCap": true,
+    "noOverflow": true
+  }
+]
