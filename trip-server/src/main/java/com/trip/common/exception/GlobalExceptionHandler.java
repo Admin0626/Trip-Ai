@@ -20,7 +20,12 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler({org.springframework.web.multipart.MaxUploadSizeExceededException.class,
             org.springframework.web.multipart.support.MissingServletRequestPartException.class})
-    public R<Void> handleUpload(Exception e) { return R.fail(400, "请选择PNG/JPEG图片，单张不超过5MB"); }
+    public R<Void> handleUpload(Exception e, jakarta.servlet.http.HttpServletRequest request) {
+        String message = request.getRequestURI().contains("/admin/catalog/import/")
+                ? "请提供file字段中的JSON文件，单批不超过1MiB"
+                : "请选择PNG/JPEG图片，单张不超过5MB";
+        return R.fail(400, message);
+    }
 
     @ExceptionHandler({org.springframework.web.bind.MissingServletRequestParameterException.class,
             org.springframework.web.method.annotation.MethodArgumentTypeMismatchException.class,

@@ -6,6 +6,8 @@ import com.trip.module.user.entity.SysUser;
 import com.trip.module.user.mapper.SysUserMapper;
 import com.trip.module.user.vo.LoginVO;
 import com.trip.module.user.vo.UserVO;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import org.springframework.transaction.annotation.Transactional;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import lombok.RequiredArgsConstructor;
@@ -51,9 +53,10 @@ public class AuthSessionService {
         return user;
     }
 
+    @Transactional
     public LoginVO refresh(String token) {
         Claims claims = claims(token, "refresh");
-        SysUser user = activeUser(Long.valueOf(claims.getSubject()));
+        SysUser user = activeUser(Long.valueOf(claims.getSubject()),true);
         String version = UUID.randomUUID().toString();
         Long rotated;
         try {
@@ -82,8 +85,11 @@ public class AuthSessionService {
     }
 
     private SysUser activeUser(Long id) {
+        return activeUser(id,false);
+    }
+    private SysUser activeUser(Long id,boolean lock) {
         SysUser user;
-        try { user = users.selectById(id); }
+        try { user = lock?users.selectOne(new LambdaQueryWrapper<SysUser>().eq(SysUser::getId,id).last("FOR UPDATE")):users.selectById(id); }
         catch (Exception e) { throw unavailable(); }
         if (user == null || !Integer.valueOf(1).equals(user.getStatus()) || Integer.valueOf(1).equals(user.getDeleted())) throw unauthorized();
         return user;

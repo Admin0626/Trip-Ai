@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-03",
+  "mode": "ACTUAL_LOCAL_BUILD_LOG_EXTRACT",
+  "checks": {
+    "maven48": true,
+    "typecheckAndBuild": true,
+    "primaryBundleWarning": true
+  },
+  "mavenCommand": "JAVA_HOME=JDK21 mvn test",
+  "frontendCommand": "npm run build (vue-tsc + vite)",
+  "mavenSummary": "Tests run: 48, Failures: 0, Errors: 0, Skipped: 0; BUILD SUCCESS",
+  "frontendSummary": "built in 1.10s; index 1130.09 kB; existing 500 kB warning",
+  "initialBuildErrors": [
+    "src/api/modules/operations.ts(11,40): error TS2339: Property 'includes' does not exist on type 'string | number | boolean | string[] | AxiosHeaders'."
+  ],
+  "boundary": "Extract only; raw runtime/build logs are ignored."
+}

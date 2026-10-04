@@ -38,6 +38,7 @@ export const userRoutes: RouteRecordRaw[] = [
       { path: 'destinations', component: () => import('@/views/admin/Destinations.vue'), meta: { title: '目的地与景点' } },
       { path: 'routes', component: () => import('@/views/admin/Routes.vue'), meta: { title: '路线与行程' } },
       { path: 'banners', component: () => import('@/views/admin/Banners.vue'), meta: { title: '首页轮播' } },
+      { path: 'import', component: () => import('@/views/admin/CatalogImport.vue'), meta: { title: '内容批量导入' } },
       { path: 'ai/knowledge', component: () => import('@/views/admin/Knowledge.vue'), meta: { title: '知识资料' } },
       ...(['bookings','comments','users','logs'] as const).map(kind=>({path:kind,component:()=>import('@/views/admin/Operations.vue'),props:{kind},meta:{title:{bookings:'预约管理',comments:'评论管理',users:'用户管理',logs:'AI调用日志'}[kind]}})),
     ],
