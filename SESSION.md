@@ -1,4 +1,4 @@
-# Session：后台数据与可视化已实现并验收，发布中
+# Session：后台数据与可视化已验收推送，PR #13待融合
 
 更新：2026-10-04（北京时间）。用户要求后台柱状图、散点图等。从origin/main=482e2b4建立codex/admin-analytics；上一批动效PR #12仍open，本批不依赖、不代为合并。
 
@@ -7,7 +7,7 @@
 - 最终真实HTTP/MySQL/Redis55/55、Edge44/44、Maven53/53、vue-tsc/Vite构建通过；手机390/320无页面溢出、轴字体可读、0宽柱、请求取消/版本保护。修复与所有失败证据保留。主包1130.30kB，原大包提示保留；Analytics独立懒加载12.85kB。
 - Figma调用遭Starter额度限制，未建新画板，使用现有自然主题。原生SVG/ResizeObserver，无新依赖、后端模型调用、SMTP或SQL迁移。页面故障/延迟仅控制网络，统计为实际响应；无大规模压测、AI洞察或全屏大屏交付。
 - 专属测试账号、预约/路线/目的地/日志及本人Redis会话已清理；本机MySQL3306/Redis6379/Vite5173/后端8080正常，后端以本机缓存离线/chat=none重启，不重跑schema/data或重置额度。
-- [实现/实测/全部问题/答辩](docs/dev/后台数据可视化实现与验收.md)、[进度/目标/问题](docs/dev/后台数据可视化进度.md)；API实际合同和部署说明同步，未来analysis设计功能明确未实现。即将提交推送独立分支并创建PR，精确提交与链接后补。
+- [实现/实测/全部问题/答辩](docs/dev/后台数据可视化实现与验收.md)、[进度/目标/问题](docs/dev/后台数据可视化进度.md)；API实际合同和部署说明同步，未来analysis设计功能明确未实现。实现提交1c7413aed1d7a35ea45df210a5b0f9f4e3af5ad8已推送origin/codex/admin-analytics；[PR #13](https://github.com/Admin0626/Trip-Ai/pull/13)已创建并附到任务，目标main，open、未合并。35个暂存文件凭据/JWT模式扫描0命中，未纳入用户原材料。此发布记录另行提交推送，最终本地/远程/PR HEAD核对。
 - 原docs/README.md修改、实训报告、答辩材料和仓库外学习工作台不纳入。main、v0.1.0-baseline及动效分支保持原值；下一步审核本批PR，再由用户决定合并或后续功能。
 
 ---
