@@ -14,7 +14,7 @@
 
 第2批互动/自主规划/用户端页面及基础后台操作闭环已完成；2026-09-28补完用户个人统计、保存偏好参与基础推荐、跨标签页刷新协调及用户模型故障熔断恢复。管理员可维护目录/行程/轮播、处理互动与反馈、启停普通用户及查看脱敏AI日志。项目整体仍有后续任务，保存的测试结果不代表每次打开项目都会重新执行。
 
-- 2026-10-03基础数据工具已交付于codex/basic-data-tools：/admin/users筛选CSV导出、/admin/import目的地/景点/含每日行程路线JSON预览与原子导入、/user/profile本人注销及所有会话失效。[114项实际接口与28项页面实测](docs/dev/基础数据工具接口与页面实测.md)、[开发与答辩](docs/dev/基础数据工具开发与答辩复盘.md)、[进度](docs/dev/基础数据工具与注销进度.md)。集成状态见SESSION；已有库先运行upgrade_basic_data_tools.sql，只增幂等结果表。
+- 2026-10-03基础数据工具完成，2026-10-04 [PR #11](https://github.com/Admin0626/Trip-Ai/pull/11)已按用户授权合并main：/admin/users筛选CSV导出、/admin/import目的地/景点/含每日行程路线JSON预览与原子导入、/user/profile本人注销及所有会话失效。[114项实际接口与28项页面实测](docs/dev/基础数据工具接口与页面实测.md)、[开发与答辩](docs/dev/基础数据工具开发与答辩复盘.md)、[进度](docs/dev/基础数据工具与注销进度.md)。集成状态见SESSION；已有库先运行upgrade_basic_data_tools.sql，只增幂等结果表。
 
 - [统一旅行助手实测](docs/dev/统一旅行助手接口与页面实测.md)：统一查路线与AI入口，标准API配置，修复DeepSeek空最终回复；实际返回中文建议＋可保存每日行程。真实模型16项、受控HTTP18项、Edge28项及回归通过。[使用与答辩](docs/dev/统一旅行助手开发与答辩复盘.md)、[进度](docs/dev/统一旅行助手进度.md)。独立codex/travel-assistant已推送，[PR #7](https://github.com/Admin0626/Trip-Ai/pull/7)集成记录，发布见SESSION；建议全文目前仅当次预览，不自动持久化。
 - [本次 Session](SESSION.md)：本次提交范围、验证结果、已知问题与下一步。

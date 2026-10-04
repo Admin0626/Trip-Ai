@@ -1,3 +1,17 @@
+# Session：基础数据工具与账号注销已合并 main
+
+更新：2026-10-04（北京时间）。用户明确要求“将这个分支合并”，授权将此前待审核的PR #11融合main。
+
+- [PR #11](https://github.com/Admin0626/Trip-Ai/pull/11)已采用merge方式合并。锁定精确功能HEAD ad5316ac8b8e4e3361a8c0af6a0356888e5ea022，GitHub返回合并提交2b7b5e383b1893e39a9d1bd0b7b2b70b519f75ec；复核PR为closed/merged且merge SHA一致。
+- 合并前PR为open、非draft、mergeable=true，本地/远程功能HEAD一致，main仍为eb0ace2；无评论、评审或未解决线程。该HEAD无commit status、check run或PR工作流；本次依据已提交本机验收证据，不称GitHub CI通过。
+- 已切回main并fast-forward同步合并提交。代码与精确功能HEAD相同，无新增实现或冲突，不重复接口/浏览器/模型测试。原114项HTTP/SQL/Redis、28项Edge、75/140项回归、48项Maven与前端构建的日期和边界见下方及实测文档。
+- 用户原docs/README.md、实训报告、答辩材料保持原样且不纳入提交；功能分支保留追溯，固定v0.1.0-baseline不移动。新增表本机上一批已增量迁移，不重跑schema/data。
+- 本段、进度和总览补充为main的文档提交并推送；最终main HEAD以Git和origin/main一致性核对为准。后续新功能从同步后的main另建codex/*分支。
+
+---
+
+# 以下为合并前记录，当前集成状态以上方为准
+
 # Session：基础数据工具与账号注销已验收并推送，PR #11待融合
 
 更新：2026-10-03（北京时间）。用户要求先做用户导出、内容批量导入、账号注销。已从origin/main=eb0ace2建立codex/basic-data-tools；本批新PR保持open，不自动融合main。上一批自然主题已合并，不重复实现。
