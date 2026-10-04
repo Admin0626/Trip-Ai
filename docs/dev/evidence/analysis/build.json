@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-04",
+  "mode": "LOCAL_BUILD_LOG_EXTRACT",
+  "frontend": {
+    "command": "npm run build",
+    "passed": true,
+    "mainBundleKB": 1130.3,
+    "baselineMainBundleKB": 1130.09,
+    "analyticsLazyJSKB": 12.85,
+    "analyticsGzipKB": 5.11,
+    "existingLargeChunkWarning": true
+  },
+  "backend": {
+    "command": "mvn -o test",
+    "passed": true,
+    "tests": 53,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "newDateWindowTests": 5
+  },
+  "boundary": "No model/SMTP calls, no large-scale performance or new Figma canvas acceptance."
+}
