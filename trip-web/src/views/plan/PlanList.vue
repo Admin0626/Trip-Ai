@@ -82,7 +82,7 @@ onMounted(load)
 
     <div v-loading="loading">
       <template v-if="list.length">
-        <div v-for="p in list" :key="p.id" class="plan-card card">
+        <div v-for="(p,index) in list" v-reveal="index" :key="p.id" class="plan-card card trip-interactive-card">
           <div class="plan-card__main" role="link" tabindex="0" @click="edit(p)" @keydown.enter="edit(p)">
             <h3 class="plan-card__title">{{ p.title }}</h3>
             <div class="plan-card__meta">

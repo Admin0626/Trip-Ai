@@ -1,0 +1,20 @@
+{
+  "mode": "REAL_EDGE_APP_CATALOG_MYSQL_REDIS_WITH_SSE_UI_FIXTURES",
+  "phase": "FAILED",
+  "checks": [
+    {
+      "name": "browser completed",
+      "actual": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('heading', { name: '下一段旅程，从这里开始' }) to be visible\u001b[22m\n",
+      "expected": "no error",
+      "passed": false
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "modelRequests": [],
+  "summary": {
+    "total": 1,
+    "passed": 0,
+    "failed": 1
+  }
+}

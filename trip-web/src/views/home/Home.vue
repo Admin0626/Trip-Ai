@@ -36,20 +36,20 @@ onMounted(() => { void load() })
   <main class="home-page page-wrapper">
     <section class="hero" aria-labelledby="home-title">
       <div class="hero__copy">
-        <p class="eyebrow">为下一次出发，留一点期待</p>
-        <h1 id="home-title">下一段旅程，<br />从这里开始</h1>
-        <p class="hero__subtitle">发现目的地，挑选路线，<br />安排适合自己的行程。</p>
-        <el-button type="primary" @click="router.push('/travel-assistant')">开始规划</el-button>
+        <p v-reveal="0" class="eyebrow">为下一次出发，留一点期待</p>
+        <h1 v-reveal="1" id="home-title">下一段旅程，<br />从这里开始</h1>
+        <p v-reveal="2" class="hero__subtitle">发现目的地，挑选路线，<br />安排适合自己的行程。</p>
+        <el-button v-reveal="3" type="primary" @click="router.push('/travel-assistant')">开始规划</el-button>
         <p class="hero__note">自然风光 · 城市漫步 · 轻松规划</p>
       </div>
-      <div class="hero__landscape"><img src="/figma-landscape.svg" width="640" height="480" alt="" fetchpriority="high" /></div>
+      <div v-reveal="2" class="hero__landscape"><img src="/figma-landscape.svg" width="640" height="480" alt="" fetchpriority="high" /></div>
     </section>
     <div v-if="loadError" class="load-error" role="status">部分内容暂时无法加载。<el-button text type="primary" @click="load">重新加载</el-button></div>
     <section class="section" aria-labelledby="destinations-title">
       <div class="section__heading"><h2 id="destinations-title">热门目的地</h2><router-link to="/destinations">全部目的地</router-link></div>
       <el-skeleton v-if="loading" :rows="3" animated />
       <div v-else-if="hotDests.length" class="content-grid">
-        <router-link v-for="d in hotDests" :key="d.id" :to="`/destination/${d.id}`" class="dest-card card">
+        <router-link v-for="(d,index) in hotDests" v-reveal="index" :key="d.id" :to="`/destination/${d.id}`" class="dest-card card trip-interactive-card">
           <CatalogCover :src="d.coverImg" :alt="d.name" compact />
           <div class="dest-card__body"><h3>{{ d.name }}</h3><p>{{ d.province }} · {{ d.city }}</p><span>查看目的地</span></div>
         </router-link>
@@ -59,13 +59,13 @@ onMounted(() => { void load() })
     <section class="section" aria-labelledby="recommended-title">
       <div class="section__heading"><h2 id="recommended-title">精选路线</h2><router-link to="/routes">全部路线</router-link></div>
       <el-skeleton v-if="loading" :rows="3" animated />
-      <div v-else-if="recommendRoutes.length" class="content-grid"><RouteCard v-for="r in recommendRoutes" :key="r.id" :route="r" /></div>
+      <div v-else-if="recommendRoutes.length" class="content-grid"><RouteCard v-for="(r,index) in recommendRoutes" v-reveal="index" :key="r.id" :route="r" /></div>
       <EmptyState v-else text="暂时没有精选路线" />
     </section>
     <section class="section" aria-labelledby="hot-title">
       <div class="section__heading"><h2 id="hot-title">热门路线</h2><span class="text-secondary">当前热门 Top 5</span></div>
       <el-skeleton v-if="loading" :rows="3" animated />
-      <div v-else-if="hotRoutes.length" class="content-grid"><RouteCard v-for="r in hotRoutes" :key="r.id" :route="r" /></div>
+      <div v-else-if="hotRoutes.length" class="content-grid"><RouteCard v-for="(r,index) in hotRoutes" v-reveal="index" :key="r.id" :route="r" /></div>
       <EmptyState v-else text="暂时没有热门路线" />
     </section>
     <section v-if="banners.length" class="section home-banners" aria-label="旅行精选轮播">
@@ -97,8 +97,7 @@ onMounted(() => { void load() })
 .section__heading h2 { margin: 0; font-size: 28px; font-weight: 600; }
 .section__heading a, .section__heading > span { font-size: 14px; }
 .content-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-.dest-card { display: block; min-width: 0; color: $color-text; overflow: hidden; box-shadow: none; transition: transform .2s; }
-.dest-card:hover { transform: translateY(-2px); }
+.dest-card { display: block; min-width: 0; color: $color-text; overflow: hidden; box-shadow: none; }
 .dest-card__body { padding: 24px; display: grid; gap: 16px; }
 .dest-card h3 { margin: 0; font-size: 24px; font-weight: 600; }
 .dest-card p { margin: 0; font-size: 14px; color: $color-text-secondary; }

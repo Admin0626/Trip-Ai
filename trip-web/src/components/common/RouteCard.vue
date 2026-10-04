@@ -12,7 +12,7 @@ const tags = computed(() => (props.route.tags ?? []).slice(0, 3))
 </script>
 
 <template>
-  <article class="route-card card" role="link" tabindex="0" :aria-label="route.title" @click="router.push(`/route/${route.id}`)" @keydown.enter="router.push(`/route/${route.id}`)">
+  <article class="route-card card trip-interactive-card" role="link" tabindex="0" :aria-label="route.title" @click="router.push(`/route/${route.id}`)" @keydown.enter="router.push(`/route/${route.id}`)">
     <div class="route-card__cover">
       <CatalogCover :src="route.coverImg" :alt="route.title" compact />
     </div>
@@ -45,12 +45,6 @@ const tags = computed(() => (props.route.tags ?? []).slice(0, 3))
   min-width: 0;
   box-shadow: none;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(31, 41, 55, 0.12);
-  }
 
   &__cover {
     position: relative;

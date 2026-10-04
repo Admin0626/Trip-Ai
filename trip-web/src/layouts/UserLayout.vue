@@ -6,7 +6,7 @@ import AppFooter from '@/components/common/AppFooter.vue'
 <template>
   <div class="user-layout">
     <AppHeader />
-    <div class="user-layout__main">
+    <div v-page-enter="$route.path" class="user-layout__main">
       <router-view />
     </div>
     <AppFooter />

@@ -15,7 +15,7 @@ function choose(value:'routes'|'ai'){if(!busy.value&&value!==mode.value)void rou
       <button id="assistant-routes-tab" type="button" role="tab" :aria-selected="mode==='routes'" aria-controls="assistant-panel" :disabled="busy" @click="choose('routes')">查找已有路线</button>
     </div>
     <p class="mode-note">{{mode === 'ai' ? '模型回答旅行建议，并生成可保存的每日行程。' : '筛选系统已发布路线，查看详情与预约，无需密钥。'}}两种方式沿用需求文字；已有路线按人均参考价筛选，AI按总预算规划。切换后需重新填写密钥。</p>
-    <section id="assistant-panel" role="tabpanel" :aria-labelledby="mode==='ai'?'assistant-ai-tab':'assistant-routes-tab'">
+    <section v-page-enter="mode" id="assistant-panel" role="tabpanel" :aria-labelledby="mode==='ai'?'assistant-ai-tab':'assistant-routes-tab'">
       <AiPlanner v-if="mode==='ai'" embedded v-model:shared-query="sharedQuery" @busy="busy=$event" />
       <Recommend v-else embedded v-model:shared-query="sharedQuery" />
     </section>

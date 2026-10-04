@@ -60,8 +60,8 @@ onMounted(load)
 
     <div v-loading="loading">
       <el-row v-if="list.length" :gutter="16">
-        <el-col v-for="r in list" :key="r.id" :xs="12" :sm="8" :md="6">
-          <RouteCard :route="r" />
+        <el-col v-for="(r,index) in list" :key="r.id" :xs="12" :sm="8" :md="6">
+          <RouteCard v-reveal="index" :route="r" />
         </el-col>
       </el-row>
       <EmptyState v-else-if="!loading" icon="🧭" text="没有找到符合条件的路线" />

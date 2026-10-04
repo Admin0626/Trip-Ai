@@ -1,0 +1,194 @@
+{
+  "mode": "REAL_EDGE_HTTP_MYSQL_REDIS_NO_MODEL",
+  "phase": "COMPLETED",
+  "checks": [
+    {
+      "name": "actual user CSV download filename",
+      "actual": "users.csv",
+      "expected": "users.csv",
+      "passed": true
+    },
+    {
+      "name": "CSV contains filtered fixture",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "CSV excludes unrelated fixture",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "CSV no password field",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "CSV has UTF8 BOM",
+      "actual": 65279,
+      "expected": 65279,
+      "passed": true
+    },
+    {
+      "name": "template is valid bounded format",
+      "actual": [
+        1,
+        "DESTINATION",
+        0
+      ],
+      "expected": [
+        1,
+        "DESTINATION",
+        0
+      ],
+      "passed": true
+    },
+    {
+      "name": "invalid file shown",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "invalid preview disables commit",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "invalid preview writes nothing",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "valid preview shown",
+      "actual": [
+        true,
+        2
+      ],
+      "expected": [
+        true,
+        2
+      ],
+      "passed": true
+    },
+    {
+      "name": "valid preview also writes nothing",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "cancelled import confirmation writes nothing",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "import mobile no overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "real commit succeeds",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "SQL has exactly two offline records",
+      "actual": "2:0",
+      "expected": "2:0",
+      "passed": true
+    },
+    {
+      "name": "finished import disables repeat click",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "admin closure control hidden",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "closure starts disabled until acknowledged",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "cancelled closure keeps active user",
+      "actual": "0:1",
+      "expected": "0:1",
+      "passed": true
+    },
+    {
+      "name": "wrong password rejected",
+      "actual": 400,
+      "expected": 400,
+      "passed": true
+    },
+    {
+      "name": "validation error preserves page",
+      "actual": "/user/profile",
+      "expected": "/user/profile",
+      "passed": true
+    },
+    {
+      "name": "closure mobile no overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "own closure succeeds",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "SQL logically closed account",
+      "actual": "1:0",
+      "expected": "1:0",
+      "passed": true
+    },
+    {
+      "name": "local auth removed",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "no browser errors",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "owned fixture removed 10434",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "owned fixture removed 10435",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "summary": {
+    "total": 28,
+    "passed": 28,
+    "failed": 0
+  }
+}
