@@ -1,3 +1,18 @@
+# Session：后台数据与可视化已合并 main
+
+更新：2026-10-08（北京时间）。用户明确回复“可以合并”，本次合并上一条交付的数据可视化PR #13。
+
+- [PR #13](https://github.com/Admin0626/Trip-Ai/pull/13)采用merge方式合并。锁定功能分支精确HEAD 1a62510054f15fe00c77238b584af7be28f3a752，GitHub返回合并提交5a8d23d43e64397d0e719b3b0c19018234eed33d；复核closed/merged且merge SHA一致。
+- 合并前本地/远程/PR HEAD一致，main仍为482e2b4，PR非draft、mergeable=true；无评论、评审或未解决线程。该HEAD无commit status、check run或PR工作流，不称GitHub CI通过。
+- 本地已切回main并fast-forward同步合并提交；合并后文件树与已验收功能HEAD完全一致，无新增实现或冲突。本次不重复运行接口、模型、浏览器或构建，沿用2026-10-04保存的HTTP/SQL/Redis55/55、Edge44/44、Maven53/53及前端构建证据与边界。
+- 数据页/admin/analytics：7/30/90日、目的地筛选、实际趋势/柱状/散点、状态结果及明细，ADMIN接口/admin/analysis/dashboard。无新SQL迁移、新依赖、真实模型或SMTP调用；Figma额度、统计口径及未实现高级统计见[开发与验收](docs/dev/后台数据可视化实现与验收.md)。本次不启动或重新验收服务，历史“本机正常”是10-04的快照。
+- 用户原docs/README.md修改、实训报告、答辩材料共50个文件在切换/更新前后逐文件核对SHA256，保持原样且不纳入提交；仓库外学习工作台不变。功能分支保留追溯，固定v0.1.0-baseline不移动，动效PR #12不纳入本次合并。
+- 本集成记录、进度、README和总览另行作为main文档提交并推送；最终main HEAD以本地、origin/main及远程核对为准。后续新功能从同步后的main另建codex/*分支。
+
+---
+
+# 以下为合并前记录，当前集成状态以上方为准
+
 # Session：后台数据与可视化已验收推送，PR #13待融合
 
 更新：2026-10-04（北京时间）。用户要求后台柱状图、散点图等。从origin/main=482e2b4建立codex/admin-analytics；上一批动效PR #12仍open，本批不依赖、不代为合并。
