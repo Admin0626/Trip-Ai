@@ -1,0 +1,138 @@
+{
+  "mode": "REAL_EDGE_ANALYTICS_WITH_OWN_SQL_FIXTURES",
+  "boundary": "Live stats; controlled network error and delayed real response only; no model calls.",
+  "phase": "FAILED",
+  "checks": [
+    {
+      "name": "anonymous admin page redirects to login",
+      "actual": "/login",
+      "expected": "/login",
+      "passed": true
+    },
+    {
+      "name": "navigation has selected visualisation entry",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "five real chart figures",
+      "actual": 5,
+      "expected": 5,
+      "passed": true
+    },
+    {
+      "name": "all SVG drawn",
+      "actual": 5,
+      "expected": 5,
+      "passed": true
+    },
+    {
+      "name": "Chinese scope visible",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "thirty dates in initial trend",
+      "actual": 30,
+      "expected": 30,
+      "passed": true
+    },
+    {
+      "name": "selected actual booking count",
+      "actual": "4",
+      "expected": "4",
+      "passed": true
+    },
+    {
+      "name": "filtered real route total",
+      "actual": "2",
+      "expected": "2",
+      "passed": true
+    },
+    {
+      "name": "two plotted points for two actual routes",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "keyboard reveals exact zero price and actual bookings",
+      "actual": "零价统计路线：人均参考价（元） 0，预约单数 3",
+      "expected": "零价统计路线：人均参考价（元） 0，预约单数 3",
+      "passed": true
+    },
+    {
+      "name": "hover reads second exact point",
+      "actual": "五百元统计路线：人均参考价（元） 500，预约单数 1",
+      "expected": "五百元统计路线：人均参考价（元） 500，预约单数 1",
+      "passed": true
+    },
+    {
+      "name": "reference price not revenue label",
+      "actual": 0,
+      "expected": 1,
+      "passed": false
+    },
+    {
+      "name": "one actual heat bar",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "keyboard reads actual heat value",
+      "actual": "aui1791103308554测试目的地：4",
+      "expected": "aui1791103308554测试目的地：4",
+      "passed": true
+    },
+    {
+      "name": "scatter detail table includes both names",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "browser completed",
+      "actual": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('combobox', { name: '统计窗口', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <input readonly value=\"\" type=\"text\" tabindex=\"0\" role=\"combobox\" aria-label=\"统计窗口\" autocomplete=\"off\" spellcheck=\"false\" id=\"el-id-9084-15\" aria-expanded=\"false\" aria-haspopup=\"listbox\" class=\"el-select__input\" aria-activedescendant=\"\" aria-autocomplete=\"none\" aria-controls=\"el-id-9084-8\"/>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"el-select__selected-item el-select__placeholder\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"el-select__selected-item el-select__placeholder\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    58 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <div class=\"el-select__selected-item el-select__placeholder\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "expected": "no error",
+      "passed": false
+    },
+    {
+      "name": "owned routes removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "owned destinations removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "owned user removed 10448",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "owned user removed 10449",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "requests": [
+    "/api/admin/analysis/dashboard?days=30",
+    "/api/admin/analysis/dashboard?days=30&destinationId=276"
+  ],
+  "summary": {
+    "total": 20,
+    "passed": 18,
+    "failed": 2
+  }
+}

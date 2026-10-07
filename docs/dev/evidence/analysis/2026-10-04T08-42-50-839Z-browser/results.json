@@ -1,0 +1,266 @@
+{
+  "mode": "REAL_EDGE_ANALYTICS_WITH_OWN_SQL_FIXTURES",
+  "boundary": "Live stats; controlled network error and delayed real response only; no model calls.",
+  "phase": "COMPLETED",
+  "checks": [
+    {
+      "name": "anonymous admin page redirects to login",
+      "actual": "/login",
+      "expected": "/login",
+      "passed": true
+    },
+    {
+      "name": "navigation has selected visualisation entry",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "five real chart figures",
+      "actual": 5,
+      "expected": 5,
+      "passed": true
+    },
+    {
+      "name": "all SVG drawn",
+      "actual": 5,
+      "expected": 5,
+      "passed": true
+    },
+    {
+      "name": "Chinese scope visible",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "thirty dates in initial trend",
+      "actual": 30,
+      "expected": 30,
+      "passed": true
+    },
+    {
+      "name": "selected actual booking count",
+      "actual": "4",
+      "expected": "4",
+      "passed": true
+    },
+    {
+      "name": "filtered real route total",
+      "actual": "2",
+      "expected": "2",
+      "passed": true
+    },
+    {
+      "name": "two plotted points for two actual routes",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "keyboard reveals exact zero price and actual bookings",
+      "actual": "零价统计路线：人均参考价（元） 0，预约单数 3",
+      "expected": "零价统计路线：人均参考价（元） 0，预约单数 3",
+      "passed": true
+    },
+    {
+      "name": "hover reads second exact point",
+      "actual": "五百元统计路线：人均参考价（元） 500，预约单数 1",
+      "expected": "五百元统计路线：人均参考价（元） 500，预约单数 1",
+      "passed": true
+    },
+    {
+      "name": "reference price not revenue label",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "one actual heat bar",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "keyboard reads actual heat value",
+      "actual": "aui1791103370839测试目的地：4",
+      "expected": "aui1791103370839测试目的地：4",
+      "passed": true
+    },
+    {
+      "name": "scatter detail table includes both names",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "seven daily points",
+      "actual": 7,
+      "expected": 7,
+      "passed": true
+    },
+    {
+      "name": "ninety daily points",
+      "actual": 90,
+      "expected": 90,
+      "passed": true
+    },
+    {
+      "name": "daily data table has ninety records",
+      "actual": 90,
+      "expected": 90,
+      "passed": true
+    },
+    {
+      "name": "trend indicator does not refetch",
+      "actual": 4,
+      "expected": 4,
+      "passed": true
+    },
+    {
+      "name": "model trend title explicit global",
+      "actual": "模型调用记录趋势（全站）",
+      "expected": "模型调用记录趋势（全站）",
+      "passed": true
+    },
+    {
+      "name": "global users trend drawn",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "desktop no horizontal overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "mobile no page overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "empty scope displays zero metric",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "empty scope graphs explicitly empty",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "empty table message present",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "empty scope has zero state labels",
+      "actual": 4,
+      "expected": 4,
+      "passed": true
+    },
+    {
+      "name": "error replaces charts and old snapshot",
+      "actual": [
+        0,
+        0
+      ],
+      "expected": [
+        0,
+        0
+      ],
+      "passed": true
+    },
+    {
+      "name": "error has retry",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "real retry restores data",
+      "actual": 5,
+      "expected": 5,
+      "passed": true
+    },
+    {
+      "name": "delayed old filter does not replace latest data",
+      "actual": 90,
+      "expected": 90,
+      "passed": true
+    },
+    {
+      "name": "race finishes without canceled request error",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "normal user cannot open analytics page",
+      "actual": "/",
+      "expected": "/",
+      "passed": true
+    },
+    {
+      "name": "no Vue warnings",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "no browser exceptions",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "owned routes removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "owned destinations removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "owned user removed 10450",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "owned user removed 10451",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "requests": [
+    "/api/admin/analysis/dashboard?days=30",
+    "/api/admin/analysis/dashboard?days=30&destinationId=278",
+    "/api/admin/analysis/dashboard?days=7&destinationId=278",
+    "/api/admin/analysis/dashboard?days=90&destinationId=278",
+    "/api/admin/analysis/dashboard?days=30&destinationId=278",
+    "/api/admin/analysis/dashboard?days=30&destinationId=279",
+    "/api/admin/analysis/dashboard?days=30&destinationId=279",
+    "/api/admin/analysis/dashboard?days=30&destinationId=279",
+    "/api/admin/analysis/dashboard?days=7&destinationId=279",
+    "/api/admin/analysis/dashboard?days=90&destinationId=279"
+  ],
+  "summary": {
+    "total": 39,
+    "passed": 39,
+    "failed": 0
+  }
+}

@@ -1,0 +1,575 @@
+{
+  "mode": "REAL_LOCAL_ANALYTICS_HTTP_MYSQL_REDIS_WITH_OWN_SQL_FIXTURES",
+  "label": "final",
+  "startedAt": "2026-10-04T16:38:03.917619+08:00",
+  "checks": [
+    {
+      "name": "anonymous analytics denied",
+      "actual": [
+        401,
+        401
+      ],
+      "expected": [
+        401,
+        401
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/analysis/dashboard",
+        "body": null
+      },
+      "response": {
+        "status": 401,
+        "body": {
+          "code": 401,
+          "message": "请先登录",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "register u",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_c66bf79ce2u",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "emailVerified": false,
+            "id": 10440,
+            "nickname": "pw_c66bf79ce2u",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_c66bf79ce2u"
+          },
+          "timestamp": 1791103084151
+        }
+      }
+    },
+    {
+      "name": "register a",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/register",
+        "body": {
+          "username": "pw_a4932dd3cca",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "avatar": null,
+            "city": "",
+            "createTime": null,
+            "email": null,
+            "emailVerified": false,
+            "id": 10441,
+            "nickname": "pw_a4932dd3cca",
+            "phone": null,
+            "role": "USER",
+            "username": "pw_a4932dd3cca"
+          },
+          "timestamp": 1791103084382
+        }
+      }
+    },
+    {
+      "name": "normal login",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_c66bf79ce2u",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-10-04T16:38:04",
+              "email": null,
+              "emailVerified": false,
+              "id": 10440,
+              "nickname": "pw_c66bf79ce2u",
+              "phone": null,
+              "role": "USER",
+              "username": "pw_c66bf79ce2u"
+            }
+          },
+          "timestamp": 1791103084603
+        }
+      }
+    },
+    {
+      "name": "admin login",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true,
+      "request": {
+        "method": "POST",
+        "path": "/auth/login",
+        "body": {
+          "username": "pw_a4932dd3cca",
+          "password": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 200,
+          "message": "success",
+          "data": {
+            "accessToken": "<redacted>",
+            "expiresIn": 7200,
+            "refreshToken": "<redacted>",
+            "userInfo": {
+              "avatar": "",
+              "city": "",
+              "createTime": "2026-10-04T16:38:04",
+              "email": null,
+              "emailVerified": false,
+              "id": 10441,
+              "nickname": "pw_a4932dd3cca",
+              "phone": null,
+              "role": "ADMIN",
+              "username": "pw_a4932dd3cca"
+            }
+          },
+          "timestamp": 1791103084691
+        }
+      }
+    },
+    {
+      "name": "ordinary user denied",
+      "actual": [
+        403,
+        403
+      ],
+      "expected": [
+        403,
+        403
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/analysis/dashboard",
+        "body": null
+      },
+      "response": {
+        "status": 403,
+        "body": {
+          "code": 403,
+          "message": "无权访问",
+          "data": null
+        }
+      }
+    },
+    {
+      "name": "invalid days=0",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/analysis/dashboard?days=0",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "统计天数只能为7、30或90",
+          "data": null,
+          "timestamp": 1791103084776
+        }
+      }
+    },
+    {
+      "name": "invalid days=-1",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/analysis/dashboard?days=-1",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "统计天数只能为7、30或90",
+          "data": null,
+          "timestamp": 1791103084792
+        }
+      }
+    },
+    {
+      "name": "invalid days=8",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/analysis/dashboard?days=8",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "统计天数只能为7、30或90",
+          "data": null,
+          "timestamp": 1791103084816
+        }
+      }
+    },
+    {
+      "name": "invalid days=365",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/analysis/dashboard?days=365",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "统计天数只能为7、30或90",
+          "data": null,
+          "timestamp": 1791103084831
+        }
+      }
+    },
+    {
+      "name": "invalid days=abc",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/analysis/dashboard?days=abc",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求参数缺失或格式不正确",
+          "data": null,
+          "timestamp": 1791103084867
+        }
+      }
+    },
+    {
+      "name": "invalid days=7.5",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/analysis/dashboard?days=7.5",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求参数缺失或格式不正确",
+          "data": null,
+          "timestamp": 1791103084879
+        }
+      }
+    },
+    {
+      "name": "invalid days=2147483648",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/analysis/dashboard?days=2147483648",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求参数缺失或格式不正确",
+          "data": null,
+          "timestamp": 1791103084906
+        }
+      }
+    },
+    {
+      "name": "invalid destinationId=0",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/analysis/dashboard?destinationId=0",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "目的地ID须为有效正整数",
+          "data": null,
+          "timestamp": 1791103084921
+        }
+      }
+    },
+    {
+      "name": "invalid destinationId=-1",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/analysis/dashboard?destinationId=-1",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "目的地ID须为有效正整数",
+          "data": null,
+          "timestamp": 1791103084934
+        }
+      }
+    },
+    {
+      "name": "invalid destinationId=abc",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/analysis/dashboard?destinationId=abc",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "请求参数缺失或格式不正确",
+          "data": null,
+          "timestamp": 1791103084949
+        }
+      }
+    },
+    {
+      "name": "invalid destinationId=9007199254740992",
+      "actual": [
+        200,
+        400
+      ],
+      "expected": [
+        200,
+        400
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/analysis/dashboard?destinationId=9007199254740992",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 400,
+          "message": "目的地ID须为有效正整数",
+          "data": null,
+          "timestamp": 1791103084958
+        }
+      }
+    },
+    {
+      "name": "missing destination",
+      "actual": [
+        200,
+        404
+      ],
+      "expected": [
+        200,
+        404
+      ],
+      "passed": true,
+      "request": {
+        "method": "GET",
+        "path": "/admin/analysis/dashboard?destinationId=9007199254740991",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "code": 404,
+          "message": "目的地不存在或已删除",
+          "data": null,
+          "timestamp": 1791103084989
+        }
+      }
+    },
+    {
+      "name": "execution completed",
+      "actual": "CalledProcessError: Command '['mysql', '-u', 'root', '-N', '-B', 'trip_llm', '-e', \"INSERT INTO destination(name,province,city,deleted,status) VALUES('an_b4b197bbdfeaactive','验收省','验收市',0,0);SELECT LAST_INSERT_ID()\"]' returned non-zero exit status 1.",
+      "expected": "no error",
+      "passed": false
+    },
+    {
+      "name": "owned account/session removed 10440",
+      "actual": [
+        "0",
+        []
+      ],
+      "expected": [
+        "0",
+        []
+      ],
+      "passed": true
+    },
+    {
+      "name": "owned account/session removed 10441",
+      "actual": [
+        "0",
+        []
+      ],
+      "expected": [
+        "0",
+        []
+      ],
+      "passed": true
+    }
+  ],
+  "summary": {
+    "total": 21,
+    "passed": 20,
+    "failed": 1
+  },
+  "phase": "FAILED"
+}
