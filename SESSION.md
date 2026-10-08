@@ -1,3 +1,18 @@
+# Session：PR #14后台环形图已合并main
+
+更新：2026-10-08（北京时间）。用户明确要求“把PR14合并了”。
+
+- [PR #14](https://github.com/Admin0626/Trip-Ai/pull/14)已按merge方式合并，锁定HEAD `45f16d882c513c6f17e89a14f1b9bbb1a6748229`，merge SHA `cc4bb7d5a6d0addf73fca08ac2cbbb4c2a869545`；GitHub复核closed/merged且SHA一致。本地main已fast-forward同步，合并文件树与已验收功能分支完全一致，无冲突或新增实现改动。
+- 合并前本地/远程/PR HEAD一致，main为abe4564；PR非draft、mergeable=true，无评论、评审、未解决线程，该HEAD无commit status或check run。不能将无检查称为GitHub CI通过。
+- 保存的只读HTTP/MySQL31/31、浏览器32/32、vue-tsc/Vite通过证据已核对；功能提交后只有文档更新。本次合并不重复运行验收、构建或模型调用；全站模型0日志、完整旧脚本回归、Figma新画板仍未验证/完成，既有主包警告保留。
+- 环形图已集成到main的/admin/analytics；接口和统计口径不变，无SQL迁移。Figma旧画布覆盖授权继续有效，但最近调用仍被额度限制拒绝；本次没有删除或覆盖Figma旧画板。
+- 用户原docs/README.md、实训报告及答辩材料共50文件已逐一核对SHA256不变，不纳入提交。v0.1.0-baseline不移动，codex/analytics-donut保留；动效PR #12不纳入本次合并。
+- SESSION、README、进度和总览发布记录另作main文档提交并推送。后续新功能从同步main建立codex/*分支；本批实现/问题/答辩见[环形图复盘](docs/dev/后台环形图实测与开发复盘.md)，合并核对见[证据](docs/dev/evidence/analytics-donut/merge.json)。
+
+---
+
+# 以下为合并前记录，以本节最新集成状态为准
+
 # Session：后台环形图已验收推送，PR #14待融合
 
 更新：2026-10-08（北京时间）。用户希望饼图或图片中的环形图。从已合并main=abe4564创建codex/analytics-donut。

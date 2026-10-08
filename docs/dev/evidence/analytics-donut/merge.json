@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-08",
+  "pr": 14,
+  "sourceHead": "45f16d882c513c6f17e89a14f1b9bbb1a6748229",
+  "baseBefore": "abe45642f35d9da196c3fe998360ab3f9b852efa",
+  "mergeSha": "cc4bb7d5a6d0addf73fca08ac2cbbb4c2a869545",
+  "method": "merge",
+  "state": "closed",
+  "merged": true,
+  "comments": 0,
+  "reviews": 0,
+  "unresolvedThreads": 0,
+  "commitStatuses": 0,
+  "checkRuns": 0,
+  "localFastForward": true,
+  "treeMatchesSource": true,
+  "protectedFilesUnchanged": 50,
+  "testsRerunForMerge": false,
+  "priorEvidence": {
+    "httpSql": "31/31",
+    "browser": "32/32",
+    "build": "passed"
+  },
+  "figmaReplacement": "authorized but not completed; latest tool attempt quota blocked"
+}
