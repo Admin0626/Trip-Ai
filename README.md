@@ -16,6 +16,10 @@
 
 - 2026-10-04前端轻量动效已完成：页面/模式淡入上移、列表错峰、卡片与按钮反馈、导航/手机菜单、生成状态点及系统减少动态支持。Edge动效49/49、基础工具页面回归28/28与前端构建通过；AI状态仅页面夹具，无真实模型调用。[实现/验收/答辩](docs/dev/前端轻量动效实现与验收.md)、[进度](docs/dev/前端轻量动效进度.md)。独立codex/frontend-motion，发布状态见SESSION。
 
+- 2026-10-08后台环形图（[PR #14](https://github.com/Admin0626/Trip-Ai/pull/14)已合并main）：预约状态/模型结果显示数量与占比、中心总数、图例和键盘操作；只读HTTP/MySQL31项、真实浏览器32项及前端构建通过。[实测与答辩](docs/dev/后台环形图实测与开发复盘.md)、[进度](docs/dev/后台环形图进度.md)。
+
+- 2026-10-04后台数据与可视化：`/admin/analytics`提供7/30/90日、目的地筛选、真实趋势/柱状/散点图和明细；HTTP/SQL55项、Edge44项、Maven53项及前端构建通过。[实现/实测/答辩](docs/dev/后台数据可视化实现与验收.md)、[进度](docs/dev/后台数据可视化进度.md)。2026-10-08 [PR #13](https://github.com/Admin0626/Trip-Ai/pull/13)已按用户授权合并main，集成状态见SESSION；无统计种子、真实模型调用或新SQL迁移。
+
 - 2026-10-03基础数据工具完成，2026-10-04 [PR #11](https://github.com/Admin0626/Trip-Ai/pull/11)已按用户授权合并main：/admin/users筛选CSV导出、/admin/import目的地/景点/含每日行程路线JSON预览与原子导入、/user/profile本人注销及所有会话失效。[114项实际接口与28项页面实测](docs/dev/基础数据工具接口与页面实测.md)、[开发与答辩](docs/dev/基础数据工具开发与答辩复盘.md)、[进度](docs/dev/基础数据工具与注销进度.md)。集成状态见SESSION；已有库先运行upgrade_basic_data_tools.sql，只增幂等结果表。
 
 - [统一旅行助手实测](docs/dev/统一旅行助手接口与页面实测.md)：统一查路线与AI入口，标准API配置，修复DeepSeek空最终回复；实际返回中文建议＋可保存每日行程。真实模型16项、受控HTTP18项、Edge28项及回归通过。[使用与答辩](docs/dev/统一旅行助手开发与答辩复盘.md)、[进度](docs/dev/统一旅行助手进度.md)。独立codex/travel-assistant已推送，[PR #7](https://github.com/Admin0626/Trip-Ai/pull/7)集成记录，发布见SESSION；建议全文目前仅当次预览，不自动持久化。

@@ -1,3 +1,73 @@
+# Session：PR #12动效与最新统计功能集成验收通过，准备合并
+
+更新：2026-10-08。用户要求“PR12有合并么，没有就合并”。GitHub确认原PR仍open/unmerged、mergeable=false；已在codex/frontend-motion合入origin/main=c4855fb。
+
+- 冲突仅README与SESSION，保留动效、统计/环形图功能说明及两边历史记录；AdminLayout自动保留统计导航并加入页面入场。统计页面、柱图/散点组件、环形图组件与main文本一致，无新增后端差异。
+- 本次集成树vue-tsc/Vite构建通过，后台浏览器9/9通过（图表数量、真实40/8总数、图例键盘操作、路由往返与动画结束可见性）。既有49/49动效、28/28基础回归为历史证据，未重跑；无真实模型调用/数据库重建。主包1131.57kB警告仍存在。
+- GitHub原HEAD无评论/评审/未解决线程、无status/check run，不称为CI通过。推送集成提交后将锁定新HEAD合并，并另记录最终merge SHA。
+- 用户原50份文档SHA256未变，不纳入提交；v0.1.0-baseline不移动。见[集成证据](docs/dev/evidence/frontend-motion/merge-20261008/integration.json)与[浏览器结果](docs/dev/evidence/frontend-motion/merge-20261008/browser.json)。
+
+---
+
+# 以下为此前记录，以顶部最新状态为准
+
+# Session：PR #14后台环形图已合并main
+
+更新：2026-10-08（北京时间）。用户明确要求“把PR14合并了”。
+
+- [PR #14](https://github.com/Admin0626/Trip-Ai/pull/14)已按merge方式合并，锁定HEAD `45f16d882c513c6f17e89a14f1b9bbb1a6748229`，merge SHA `cc4bb7d5a6d0addf73fca08ac2cbbb4c2a869545`；GitHub复核closed/merged且SHA一致。本地main已fast-forward同步，合并文件树与已验收功能分支完全一致，无冲突或新增实现改动。
+- 合并前本地/远程/PR HEAD一致，main为abe4564；PR非draft、mergeable=true，无评论、评审、未解决线程，该HEAD无commit status或check run。不能将无检查称为GitHub CI通过。
+- 保存的只读HTTP/MySQL31/31、浏览器32/32、vue-tsc/Vite通过证据已核对；功能提交后只有文档更新。本次合并不重复运行验收、构建或模型调用；全站模型0日志、完整旧脚本回归、Figma新画板仍未验证/完成，既有主包警告保留。
+- 环形图已集成到main的/admin/analytics；接口和统计口径不变，无SQL迁移。Figma旧画布覆盖授权继续有效，但最近调用仍被额度限制拒绝；本次没有删除或覆盖Figma旧画板。
+- 用户原docs/README.md、实训报告及答辩材料共50文件已逐一核对SHA256不变，不纳入提交。v0.1.0-baseline不移动，codex/analytics-donut保留；动效PR #12不纳入本次合并。
+- SESSION、README、进度和总览发布记录另作main文档提交并推送。后续新功能从同步main建立codex/*分支；本批实现/问题/答辩见[环形图复盘](docs/dev/后台环形图实测与开发复盘.md)，合并核对见[证据](docs/dev/evidence/analytics-donut/merge.json)。
+
+---
+
+# 以下为合并前记录，以本节最新集成状态为准
+
+# Session：后台环形图已验收推送，PR #14待融合
+
+更新：2026-10-08（北京时间）。用户希望饼图或图片中的环形图。从已合并main=abe4564创建codex/analytics-donut。
+
+- 预约当前状态、模型调用结果改为真实环形图；中心总数、比例引导线、数量/占比图例、键盘操作与零值/100%状态。趋势、目的地柱图、价格散点和明细保留；统计接口及后端不改。
+- 只读HTTP/MySQL31/31、真实Codex浏览器32/32，最后vue-tsc/Vite通过。修正手机标注留白；SVG读取、DOM工具限制和7/90日测试假设错误全部记录。未删业务数据、未调用模型或SMTP，额外只读验收会话已退出。
+- Figma读取现有字体/组件/变量成功，搜索环形组件遇Starter MCP工具额度限制；本次没有写新Figma画板。全站模型无日志、完整旧脚本回归和GitHub CI未在本次验证；旧主包1130.30kB警告保留。
+- 后续用户已授权删除之前Figma画布以覆盖新设计。本次重试读取仍被Starter工具调用额度拒绝，未删除/覆盖旧画板；删除画布无法恢复调用额度。授权、目标与接续步骤已写入[进度](docs/dev/后台环形图进度.md)，工具可用后实时核对旧节点、完成可编辑新设计并验证，再替换旧页面画板，无需再次询问同一授权。
+- [实测与开发复盘](docs/dev/后台环形图实测与开发复盘.md)、[进度](docs/dev/后台环形图进度.md)、[实际响应/截图](docs/dev/evidence/analytics-donut)。已启动MySQL/Redis/后端/前端并保留/admin/analytics页面供用户查看；前端当前预览为新分支工作区。
+- 功能提交60ce0cd9d89134dcccf5efae3421fb8913b653ae已推送origin/codex/analytics-donut，[PR #14](https://github.com/Admin0626/Trip-Ai/pull/14)已创建并附到本任务，保持open/未合并。本段发布记录另作后续文档提交；最终HEAD以git/远程/PR核对为准。main及动效PR #12保持原状态；用户docs/README.md、实训报告与答辩材料不纳入。
+
+---
+
+# Session：后台数据与可视化已合并 main
+
+更新：2026-10-08（北京时间）。用户明确回复“可以合并”，本次合并上一条交付的数据可视化PR #13。
+
+- [PR #13](https://github.com/Admin0626/Trip-Ai/pull/13)采用merge方式合并。锁定功能分支精确HEAD 1a62510054f15fe00c77238b584af7be28f3a752，GitHub返回合并提交5a8d23d43e64397d0e719b3b0c19018234eed33d；复核closed/merged且merge SHA一致。
+- 合并前本地/远程/PR HEAD一致，main仍为482e2b4，PR非draft、mergeable=true；无评论、评审或未解决线程。该HEAD无commit status、check run或PR工作流，不称GitHub CI通过。
+- 本地已切回main并fast-forward同步合并提交；合并后文件树与已验收功能HEAD完全一致，无新增实现或冲突。本次不重复运行接口、模型、浏览器或构建，沿用2026-10-04保存的HTTP/SQL/Redis55/55、Edge44/44、Maven53/53及前端构建证据与边界。
+- 数据页/admin/analytics：7/30/90日、目的地筛选、实际趋势/柱状/散点、状态结果及明细，ADMIN接口/admin/analysis/dashboard。无新SQL迁移、新依赖、真实模型或SMTP调用；Figma额度、统计口径及未实现高级统计见[开发与验收](docs/dev/后台数据可视化实现与验收.md)。本次不启动或重新验收服务，历史“本机正常”是10-04的快照。
+- 用户原docs/README.md修改、实训报告、答辩材料共50个文件在切换/更新前后逐文件核对SHA256，保持原样且不纳入提交；仓库外学习工作台不变。功能分支保留追溯，固定v0.1.0-baseline不移动，动效PR #12不纳入本次合并。
+- 本集成记录、进度、README和总览另行作为main文档提交并推送；最终main HEAD以本地、origin/main及远程核对为准。后续新功能从同步后的main另建codex/*分支。
+
+---
+
+# 以下为合并前记录，当前集成状态以上方为准
+
+# Session：后台数据与可视化已验收推送，PR #13待融合
+
+更新：2026-10-04（北京时间）。用户要求后台柱状图、散点图等。从origin/main=482e2b4建立codex/admin-analytics；上一批动效PR #12仍open，本批不依赖、不代为合并。
+
+- 新增ADMIN GET /admin/analysis/dashboard；前端/admin/analytics与导航接通。近7/30/90日、目的地筛选、四项指标、预约/用户/模型趋势、目的地Top10柱图、路线参考价/预约散点、预约状态/模型结果柱图、路线和每日明细、刷新/失败重试/空状态。
+- 真正读取现有业务表，预约分组后JOIN，不读booking_count缓存或stat_daily种子。北京时间创建窗口，取消为当前状态；用户/模型全站，目的地筛选只影响目录/预约。散点最多100条、目的地选项最多1000，有总数/截断说明。
+- 最终真实HTTP/MySQL/Redis55/55、Edge44/44、Maven53/53、vue-tsc/Vite构建通过；手机390/320无页面溢出、轴字体可读、0宽柱、请求取消/版本保护。修复与所有失败证据保留。主包1130.30kB，原大包提示保留；Analytics独立懒加载12.85kB。
+- Figma调用遭Starter额度限制，未建新画板，使用现有自然主题。原生SVG/ResizeObserver，无新依赖、后端模型调用、SMTP或SQL迁移。页面故障/延迟仅控制网络，统计为实际响应；无大规模压测、AI洞察或全屏大屏交付。
+- 专属测试账号、预约/路线/目的地/日志及本人Redis会话已清理；本机MySQL3306/Redis6379/Vite5173/后端8080正常，后端以本机缓存离线/chat=none重启，不重跑schema/data或重置额度。
+- [实现/实测/全部问题/答辩](docs/dev/后台数据可视化实现与验收.md)、[进度/目标/问题](docs/dev/后台数据可视化进度.md)；API实际合同和部署说明同步，未来analysis设计功能明确未实现。实现提交1c7413aed1d7a35ea45df210a5b0f9f4e3af5ad8已推送origin/codex/admin-analytics；[PR #13](https://github.com/Admin0626/Trip-Ai/pull/13)已创建并附到任务，目标main，open、未合并。35个暂存文件凭据/JWT模式扫描0命中，未纳入用户原材料。此发布记录另行提交推送，最终本地/远程/PR HEAD核对。
+- 原docs/README.md修改、实训报告、答辩材料和仓库外学习工作台不纳入。main、v0.1.0-baseline及动效分支保持原值；下一步审核本批PR，再由用户决定合并或后续功能。
+
+---
+
 # Session：前端轻量动效已验收并推送，PR #12待融合
 
 更新：2026-10-04（北京时间）。用户要求前端增加动画并选择“轻盈自然”。从main=482e2b4建立codex/frontend-motion，沿用自然主题；本批不自动合并。

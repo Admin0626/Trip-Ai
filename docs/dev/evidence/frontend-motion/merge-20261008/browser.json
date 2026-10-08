@@ -1,0 +1,57 @@
+{
+  "testedAt": "2026-10-08T10:50:27.530Z",
+  "status": "PASSED",
+  "checks": [
+    {
+      "name": "admin visible after animation",
+      "pass": true
+    },
+    {
+      "name": "two donuts retained",
+      "pass": true
+    },
+    {
+      "name": "five charts retained",
+      "pass": true
+    },
+    {
+      "name": "analytics navigation retained",
+      "pass": true
+    },
+    {
+      "name": "donut keyboard selection",
+      "pass": true
+    },
+    {
+      "name": "booking total 40",
+      "pass": true
+    },
+    {
+      "name": "model total 8",
+      "pass": true
+    },
+    {
+      "name": "overview navigation and visibility",
+      "pass": true
+    },
+    {
+      "name": "return analytics and visibility",
+      "pass": true
+    }
+  ],
+  "initial": {
+    "charts": 5,
+    "donuts": 2,
+    "nav": true,
+    "opacity": "1",
+    "svgText": [
+      "待确认：6单，占比 15.0%已确认：21单，占比 52.5%已取消：6单，占比 15.0%已完成：7单，占比 17.5%15.0%52.5%15.0%17.5%40合计（单）",
+      "成功：2条，占比 25.0%失败：6条，占比 75.0%25.0%75.0%8合计（条）"
+    ],
+    "transform": "none"
+  },
+  "notes": [
+    "Initial role locator matched circle and legend; narrowed to observed button selector. No product failure.",
+    "Historical 49/49 motion and 28/28 basics evidence were inspected, not rerun."
+  ]
+}

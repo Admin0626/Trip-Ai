@@ -1,0 +1,265 @@
+{
+  "mode": "REAL_CUA_BROWSER_WITH_CURRENT_DATA_NO_FIXTURES",
+  "boundary": "Actual page and live database; 1440/390/320px. No mocked responses, no model calls. Zero booking ring tested; globally zero model logs not exercised.",
+  "checks": [
+    {
+      "name": "two donut charts",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "five charts retained",
+      "actual": 5,
+      "expected": 5,
+      "passed": true
+    },
+    {
+      "name": "booking legend from SQL counts",
+      "actual": [
+        "待确认6单15.0%",
+        "已确认21单52.5%",
+        "已取消6单15.0%",
+        "已完成7单17.5%"
+      ],
+      "expected": [
+        "待确认6单15.0%",
+        "已确认21单52.5%",
+        "已取消6单15.0%",
+        "已完成7单17.5%"
+      ],
+      "passed": true
+    },
+    {
+      "name": "model legend from SQL counts",
+      "actual": [
+        "成功2条25.0%",
+        "失败6条75.0%"
+      ],
+      "expected": [
+        "成功2条25.0%",
+        "失败6条75.0%"
+      ],
+      "passed": true
+    },
+    {
+      "name": "legend selection displays exact count and ratio",
+      "actual": "已确认：21单，占比 52.5%",
+      "expected": "已确认：21单，占比 52.5%",
+      "passed": true
+    },
+    {
+      "name": "keyboard sector accessible",
+      "actual": "已取消：6单，占比 15.0%",
+      "expected": "已取消：6单，占比 15.0%",
+      "passed": true
+    },
+    {
+      "name": "desktop no overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "SVG booking total textContent",
+      "actual": "40",
+      "expected": "40",
+      "passed": true
+    },
+    {
+      "name": "SVG model total textContent",
+      "actual": "8",
+      "expected": "8",
+      "passed": true
+    },
+    {
+      "name": "actual single-category total",
+      "actual": "1",
+      "expected": "1",
+      "passed": true
+    },
+    {
+      "name": "one actual sector for 100 percent",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "single category 100 percent legend",
+      "actual": [
+        "待确认0单0.0%",
+        "已确认0单0.0%",
+        "已取消0单0.0%",
+        "已完成1单100.0%"
+      ],
+      "expected": [
+        "待确认0单0.0%",
+        "已确认0单0.0%",
+        "已取消0单0.0%",
+        "已完成1单100.0%"
+      ],
+      "passed": true
+    },
+    {
+      "name": "destination leaves global model ratio unchanged",
+      "actual": [
+        "成功2条25.0%",
+        "失败6条75.0%"
+      ],
+      "expected": [
+        "成功2条25.0%",
+        "失败6条75.0%"
+      ],
+      "passed": true
+    },
+    {
+      "name": "actual zero scope total",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "zero scope no sectors",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "zero scope all ratios unavailable",
+      "actual": [
+        "—",
+        "—",
+        "—",
+        "—"
+      ],
+      "expected": [
+        "—",
+        "—",
+        "—",
+        "—"
+      ],
+      "passed": true
+    },
+    {
+      "name": "zero scope accessible explanation",
+      "actual": "暂无记录，暂不计算占比",
+      "expected": "暂无记录，暂不计算占比",
+      "passed": true
+    },
+    {
+      "name": "zero category keyboard/legend detail",
+      "actual": "待确认：0单，暂无记录，占比不适用",
+      "expected": "待确认：0单，暂无记录，占比不适用",
+      "passed": true
+    },
+    {
+      "name": "390px no overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "390px stacked ring and legend",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "320px no overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "320px no legend clipping",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "320px percentages legible",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "fixed 320px labels retain readable size",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "seven-day no booking records",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "seven-day booking no invented arcs",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "seven-day trend retained",
+      "actual": 7,
+      "expected": 7,
+      "passed": true
+    },
+    {
+      "name": "ninety-day trend retained",
+      "actual": 90,
+      "expected": 90,
+      "passed": true
+    },
+    {
+      "name": "return to 30-day filter preserves correct total",
+      "actual": "5",
+      "expected": "5",
+      "passed": true
+    },
+    {
+      "name": "final 390px no overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "clear destination restores actual global booking total",
+      "actual": "40",
+      "expected": "40",
+      "passed": true
+    },
+    {
+      "name": "final desktop no overflow after label spacing fix",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    }
+  ],
+  "initialFailures": [
+    {
+      "name": "SQL verified booking total",
+      "actual": "",
+      "expected": "40",
+      "passed": false
+    },
+    {
+      "name": "SQL verified model total",
+      "actual": "",
+      "expected": "8",
+      "passed": false
+    }
+  ],
+  "harnessErrors": [
+    "parseFloat unavailable in read-only DOM evaluator; used numeric coercion",
+    "getScreenCTM unavailable; used SVG bounds/viewBox scale",
+    "Seven-day model assumed empty but actual data has eight Oct 3 records; no logs deleted",
+    "Ninety-day Yunnan assumed five but actual count is nine; no seeds modified"
+  ],
+  "summary": {
+    "total": 32,
+    "passed": 32,
+    "failed": 0
+  }
+}

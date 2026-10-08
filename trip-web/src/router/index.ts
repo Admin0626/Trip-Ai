@@ -35,6 +35,7 @@ export const userRoutes: RouteRecordRaw[] = [
     path: '/admin', component: () => import('@/layouts/AdminLayout.vue'), meta: { admin: true },
     children: [
       { path: '', name: 'Admin', component: () => import('@/views/Admin.vue'), meta: { title: '概览与反馈' } },
+      { path: 'analytics', component: () => import('@/views/admin/Analytics.vue'), meta: { title: '数据与可视化' } },
       { path: 'destinations', component: () => import('@/views/admin/Destinations.vue'), meta: { title: '目的地与景点' } },
       { path: 'routes', component: () => import('@/views/admin/Routes.vue'), meta: { title: '路线与行程' } },
       { path: 'banners', component: () => import('@/views/admin/Banners.vue'), meta: { title: '首页轮播' } },

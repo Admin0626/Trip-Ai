@@ -1,0 +1,87 @@
+{
+  "boundary": "Actual current page with SQL verified 30-day counts; initial two failures are SVG innerText locator errors.",
+  "checks": [
+    {
+      "name": "two donut charts",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "five charts retained",
+      "actual": 5,
+      "expected": 5,
+      "passed": true
+    },
+    {
+      "name": "SQL verified booking total",
+      "actual": "",
+      "expected": "40",
+      "passed": false
+    },
+    {
+      "name": "SQL verified model total",
+      "actual": "",
+      "expected": "8",
+      "passed": false
+    },
+    {
+      "name": "booking legend from SQL counts",
+      "actual": [
+        "待确认6单15.0%",
+        "已确认21单52.5%",
+        "已取消6单15.0%",
+        "已完成7单17.5%"
+      ],
+      "expected": [
+        "待确认6单15.0%",
+        "已确认21单52.5%",
+        "已取消6单15.0%",
+        "已完成7单17.5%"
+      ],
+      "passed": true
+    },
+    {
+      "name": "model legend from SQL counts",
+      "actual": [
+        "成功2条25.0%",
+        "失败6条75.0%"
+      ],
+      "expected": [
+        "成功2条25.0%",
+        "失败6条75.0%"
+      ],
+      "passed": true
+    },
+    {
+      "name": "legend selection displays exact count and ratio",
+      "actual": "已确认：21单，占比 52.5%",
+      "expected": "已确认：21单，占比 52.5%",
+      "passed": true
+    },
+    {
+      "name": "keyboard sector accessible",
+      "actual": "已取消：6单，占比 15.0%",
+      "expected": "已取消：6单，占比 15.0%",
+      "passed": true
+    },
+    {
+      "name": "desktop no overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "SVG booking total textContent",
+      "actual": "40",
+      "expected": "40",
+      "passed": true
+    },
+    {
+      "name": "SVG model total textContent",
+      "actual": "8",
+      "expected": "8",
+      "passed": true
+    }
+  ]
+}

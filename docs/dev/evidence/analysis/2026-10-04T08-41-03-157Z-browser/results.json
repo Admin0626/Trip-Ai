@@ -1,0 +1,51 @@
+{
+  "mode": "REAL_EDGE_ANALYTICS_WITH_OWN_SQL_FIXTURES",
+  "boundary": "Live stats; controlled network error and delayed real response only; no model calls.",
+  "phase": "FAILED",
+  "checks": [
+    {
+      "name": "anonymous admin page redirects to login",
+      "actual": "/login",
+      "expected": "/login",
+      "passed": true
+    },
+    {
+      "name": "browser completed",
+      "actual": "locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByPlaceholder('请输入用户名')\u001b[22m\n",
+      "expected": "no error",
+      "passed": false
+    },
+    {
+      "name": "owned routes removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "owned destinations removed",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "owned user removed 10446",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    },
+    {
+      "name": "owned user removed 10447",
+      "actual": "0",
+      "expected": "0",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "requests": [],
+  "summary": {
+    "total": 6,
+    "passed": 5,
+    "failed": 1
+  }
+}
