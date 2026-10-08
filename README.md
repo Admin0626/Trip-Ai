@@ -1,5 +1,7 @@
 # Trip-AI
 
+2026-10-08：前端轻量动效[PR #12](https://github.com/Admin0626/Trip-Ai/pull/12)已合并main，保留已集成统计与环形图；本次构建及集成浏览器9/9通过。交接见[SESSION](SESSION.md)。
+
 基于 LLM 的旅行行程推荐系统。统一仓库包含 Spring Boot 后端、Vue 前端和设计/验收文档。
 
 | 目录 | 内容 |

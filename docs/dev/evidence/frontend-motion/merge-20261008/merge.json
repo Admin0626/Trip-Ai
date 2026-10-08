@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-08",
+  "pr": 12,
+  "url": "https://github.com/Admin0626/Trip-Ai/pull/12",
+  "state": "closed",
+  "merged": true,
+  "headSha": "785b43a843ddf3d27472268a2b847e2a71fdfc0e",
+  "mergeSha": "bb1b835baf1fac045fe8d7c492329dc38f9443d3",
+  "method": "merge",
+  "updatedHeadMergeable": true,
+  "mergeableState": "clean",
+  "commitStatuses": [],
+  "checkRuns": 0,
+  "ciNote": "No CI records; not a CI pass claim.",
+  "localMainFastForward": true,
+  "mergedTreeMatchesTestedHead": true,
+  "protectedUserFiles": 50,
+  "protectedHashesUnchanged": true,
+  "baselinePeeledSha": "ceec9a2789410f3f404cbc2268cb07ada2dffb9f",
+  "validation": {
+    "build": "passed",
+    "currentBrowser": "9/9 passed",
+    "historicalMotion": "49/49 inspected, not rerun",
+    "historicalBasics": "28/28 inspected, not rerun"
+  }
+}

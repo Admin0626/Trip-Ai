@@ -1,3 +1,17 @@
+# Session：PR #12前端轻量动效已合并main
+
+更新：2026-10-08。用户要求“PR12有合并么，没有就合并”。原PR未合并且文档冲突，已同步最新main并保留全部统计、柱图、散点及环形图功能。
+
+- [PR #12](https://github.com/Admin0626/Trip-Ai/pull/12)按merge方式合并，锁定HEAD `785b43a843ddf3d27472268a2b847e2a71fdfc0e`，merge SHA `bb1b835baf1fac045fe8d7c492329dc38f9443d3`。GitHub已复核closed/merged；本地main已fast-forward同步，合并文件树与本次验收树一致。
+- 本次vue-tsc/Vite构建与浏览器集成9/9通过；既有动效49/49、基础回归28/28仅核对历史证据，未重跑。无后端改动/SQL迁移/真实模型调用，主包1131.57kB警告保留。更新HEAD无status/check run，不能称为CI通过。
+- 用户原50份文档SHA256不变且未提交；v0.1.0-baseline不移动，功能分支保留。SESSION、README、进度、总览和最终合并证据另作main文档提交并推送。
+- 动效、后台统计及环形图现在均在main。后续新功能继续从最新main创建codex/*分支；统计导出仍为后续建议，本次未开发。Figma画板替换仍受额度限制，没有删除旧画布。
+- [当前集成验证](docs/dev/evidence/frontend-motion/merge-20261008/integration.json)；[最终合并证据](docs/dev/evidence/frontend-motion/merge-20261008/merge.json)；[开发与答辩](docs/dev/前端轻量动效实现与验收.md)。
+
+---
+
+# 以下为此前记录，以顶部最新状态为准
+
 # Session：PR #12动效与最新统计功能集成验收通过，准备合并
 
 更新：2026-10-08。用户要求“PR12有合并么，没有就合并”。GitHub确认原PR仍open/unmerged、mergeable=false；已在codex/frontend-motion合入origin/main=c4855fb。
