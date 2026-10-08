@@ -1,4 +1,4 @@
-# Session：后台环形图已验收，独立分支待提交
+# Session：后台环形图已验收推送，PR #14待融合
 
 更新：2026-10-08（北京时间）。用户希望饼图或图片中的环形图。从已合并main=abe4564创建codex/analytics-donut。
 
@@ -6,7 +6,7 @@
 - 只读HTTP/MySQL31/31、真实Codex浏览器32/32，最后vue-tsc/Vite通过。修正手机标注留白；SVG读取、DOM工具限制和7/90日测试假设错误全部记录。未删业务数据、未调用模型或SMTP，额外只读验收会话已退出。
 - Figma读取现有字体/组件/变量成功，搜索环形组件遇Starter MCP工具额度限制；本次没有写新Figma画板。全站模型无日志、完整旧脚本回归和GitHub CI未在本次验证；旧主包1130.30kB警告保留。
 - [实测与开发复盘](docs/dev/后台环形图实测与开发复盘.md)、[进度](docs/dev/后台环形图进度.md)、[实际响应/截图](docs/dev/evidence/analytics-donut)。已启动MySQL/Redis/后端/前端并保留/admin/analytics页面供用户查看；前端当前预览为新分支工作区。
-- 本批提交推送与PR待收尾；不自动合并。main及动效PR #12保持原状态；用户docs/README.md、实训报告与答辩材料不纳入。
+- 功能提交60ce0cd9d89134dcccf5efae3421fb8913b653ae已推送origin/codex/analytics-donut，[PR #14](https://github.com/Admin0626/Trip-Ai/pull/14)已创建并附到本任务，保持open/未合并。本段发布记录另作后续文档提交；最终HEAD以git/远程/PR核对为准。main及动效PR #12保持原状态；用户docs/README.md、实训报告与答辩材料不纳入。
 
 ---
 
