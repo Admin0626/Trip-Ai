@@ -1,0 +1,3106 @@
+{
+  "mode": "REAL_READONLY_HTTP_MYSQL_NO_FIXTURES",
+  "boundary": "Existing local admin login, read-only analytics and SQL. No model calls. Own session logout.",
+  "checks": [
+    {
+      "name": "/admin/analysis/dashboard?days=30 HTTP/code",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=30 bookingStatuses agrees SQL",
+      "actual": [
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          21
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          7
+        ]
+      ],
+      "expected": [
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          21
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          7
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=30 bookingStatuses reconciles total",
+      "actual": 40,
+      "expected": 40,
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=30 aiStatuses agrees SQL",
+      "actual": [
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=30 aiStatuses reconciles total",
+      "actual": 8,
+      "expected": 8,
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=30 trend window",
+      "actual": 30,
+      "expected": 30,
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=7 HTTP/code",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=7 bookingStatuses agrees SQL",
+      "actual": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "expected": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=7 bookingStatuses reconciles total",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=7 aiStatuses agrees SQL",
+      "actual": [
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=7 aiStatuses reconciles total",
+      "actual": 8,
+      "expected": 8,
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=7 trend window",
+      "actual": 7,
+      "expected": 7,
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=90 HTTP/code",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=90 bookingStatuses agrees SQL",
+      "actual": [
+        [
+          0,
+          10
+        ],
+        [
+          1,
+          42
+        ],
+        [
+          2,
+          17
+        ],
+        [
+          3,
+          16
+        ]
+      ],
+      "expected": [
+        [
+          0,
+          10
+        ],
+        [
+          1,
+          42
+        ],
+        [
+          2,
+          17
+        ],
+        [
+          3,
+          16
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=90 bookingStatuses reconciles total",
+      "actual": 85,
+      "expected": 85,
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=90 aiStatuses agrees SQL",
+      "actual": [
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=90 aiStatuses reconciles total",
+      "actual": 8,
+      "expected": 8,
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=90 trend window",
+      "actual": 90,
+      "expected": 90,
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=30&destinationId=2 HTTP/code",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=30&destinationId=2 bookingStatuses agrees SQL",
+      "actual": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "expected": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=30&destinationId=2 bookingStatuses reconciles total",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=30&destinationId=2 aiStatuses agrees SQL",
+      "actual": [
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=30&destinationId=2 aiStatuses reconciles total",
+      "actual": 8,
+      "expected": 8,
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=30&destinationId=2 trend window",
+      "actual": 30,
+      "expected": 30,
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=30&destinationId=9 HTTP/code",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=30&destinationId=9 bookingStatuses agrees SQL",
+      "actual": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "expected": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=30&destinationId=9 bookingStatuses reconciles total",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=30&destinationId=9 aiStatuses agrees SQL",
+      "actual": [
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=30&destinationId=9 aiStatuses reconciles total",
+      "actual": 8,
+      "expected": 8,
+      "passed": true
+    },
+    {
+      "name": "/admin/analysis/dashboard?days=30&destinationId=9 trend window",
+      "actual": 30,
+      "expected": 30,
+      "passed": true
+    },
+    {
+      "name": "Only this read-only verification session logged out",
+      "actual": [
+        200,
+        200
+      ],
+      "expected": [
+        200,
+        200
+      ],
+      "passed": true
+    }
+  ],
+  "responses": [
+    {
+      "endpoint": "/admin/analysis/dashboard?days=30",
+      "httpStatus": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "generatedAt": "2026-10-08T08:09:46.238831500+08:00",
+          "timezone": "Asia/Shanghai",
+          "days": 30,
+          "startDate": "2026-09-09",
+          "endDate": "2026-10-08",
+          "destinationId": null,
+          "summary": {
+            "users": 22,
+            "newUsers": 1,
+            "routes": 20,
+            "bookings": 40,
+            "cancelled": 6,
+            "aiCalls": 8,
+            "aiSucceeded": 2,
+            "aiAverageMs": 1753.125
+          },
+          "trend": [
+            {
+              "date": "2026-09-09",
+              "bookings": 4,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-10",
+              "bookings": 7,
+              "cancelled": 1,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-11",
+              "bookings": 1,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-12",
+              "bookings": 3,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-13",
+              "bookings": 3,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-14",
+              "bookings": 4,
+              "cancelled": 1,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-15",
+              "bookings": 4,
+              "cancelled": 1,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-16",
+              "bookings": 3,
+              "cancelled": 1,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-17",
+              "bookings": 2,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-18",
+              "bookings": 3,
+              "cancelled": 1,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-19",
+              "bookings": 3,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-20",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-21",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-22",
+              "bookings": 3,
+              "cancelled": 1,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-23",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-24",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-25",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-26",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-27",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 1,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-28",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-29",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-30",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-01",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-02",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-03",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 8
+            },
+            {
+              "date": "2026-10-04",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-05",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-06",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-07",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-08",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            }
+          ],
+          "destinationHeat": [
+            {
+              "id": 3,
+              "name": "丽江",
+              "bookings": 8
+            },
+            {
+              "id": 10,
+              "name": "厦门",
+              "bookings": 7
+            },
+            {
+              "id": 1,
+              "name": "云南",
+              "bookings": 5
+            },
+            {
+              "id": 4,
+              "name": "香格里拉",
+              "bookings": 4
+            },
+            {
+              "id": 5,
+              "name": "三亚",
+              "bookings": 4
+            },
+            {
+              "id": 6,
+              "name": "张家界",
+              "bookings": 4
+            },
+            {
+              "id": 7,
+              "name": "桂林",
+              "bookings": 4
+            },
+            {
+              "id": 8,
+              "name": "成都",
+              "bookings": 3
+            },
+            {
+              "id": 9,
+              "name": "西安",
+              "bookings": 1
+            }
+          ],
+          "routeScatter": [
+            {
+              "id": 219,
+              "title": "厦门鼓浪屿 4 日文艺之旅",
+              "destinationId": 10,
+              "destination": "厦门",
+              "price": 2780.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 5
+            },
+            {
+              "id": 205,
+              "title": "丽江古城玉龙雪山 4 日",
+              "destinationId": 3,
+              "destination": "丽江",
+              "price": 2980.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 4
+            },
+            {
+              "id": 206,
+              "title": "丽江泸沽湖 3 日环湖之旅",
+              "destinationId": 3,
+              "destination": "丽江",
+              "price": 2380.0,
+              "days": 3,
+              "status": 1,
+              "bookings": 4
+            },
+            {
+              "id": 207,
+              "title": "香格里拉 4 日藏地秘境",
+              "destinationId": 4,
+              "destination": "香格里拉",
+              "price": 3280.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 4
+            },
+            {
+              "id": 202,
+              "title": "云南西双版纳 4 日雨林探秘",
+              "destinationId": 1,
+              "destination": "云南",
+              "price": 2680.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 3
+            },
+            {
+              "id": 210,
+              "title": "三亚 4 日浪漫海岛游",
+              "destinationId": 5,
+              "destination": "三亚",
+              "price": 4280.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 3
+            },
+            {
+              "id": 212,
+              "title": "张家界大峡谷 4 日全景游",
+              "destinationId": 6,
+              "destination": "张家界",
+              "price": 2580.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 3
+            },
+            {
+              "id": 213,
+              "title": "桂林漓江阳朔 4 日山水游",
+              "destinationId": 7,
+              "destination": "桂林",
+              "price": 2680.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 3
+            },
+            {
+              "id": 201,
+              "title": "云南大理丽江香格里拉 5 日纯玩",
+              "destinationId": 1,
+              "destination": "云南",
+              "price": 2980.0,
+              "days": 5,
+              "status": 1,
+              "bookings": 2
+            },
+            {
+              "id": 215,
+              "title": "成都美食文化 5 日深度游",
+              "destinationId": 8,
+              "destination": "成都",
+              "price": 2980.0,
+              "days": 5,
+              "status": 1,
+              "bookings": 2
+            },
+            {
+              "id": 220,
+              "title": "厦门 4 日海岛慢生活",
+              "destinationId": 10,
+              "destination": "厦门",
+              "price": 3180.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 2
+            },
+            {
+              "id": 209,
+              "title": "三亚亚龙湾 4 日亲子度假",
+              "destinationId": 5,
+              "destination": "三亚",
+              "price": 3880.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 1
+            },
+            {
+              "id": 211,
+              "title": "张家界武陵源 3 日奇峰之旅",
+              "destinationId": 6,
+              "destination": "张家界",
+              "price": 1980.0,
+              "days": 3,
+              "status": 1,
+              "bookings": 1
+            },
+            {
+              "id": 214,
+              "title": "桂林阳朔 3 日轻度假",
+              "destinationId": 7,
+              "destination": "桂林",
+              "price": 1880.0,
+              "days": 3,
+              "status": 1,
+              "bookings": 1
+            },
+            {
+              "id": 216,
+              "title": "成都青城山 4 日休闲之旅",
+              "destinationId": 8,
+              "destination": "成都",
+              "price": 2280.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 1
+            },
+            {
+              "id": 217,
+              "title": "西安古都 4 日历史文化之旅",
+              "destinationId": 9,
+              "destination": "西安",
+              "price": 2680.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 1
+            },
+            {
+              "id": 203,
+              "title": "大理洱海环湖 3 日慢行",
+              "destinationId": 2,
+              "destination": "大理",
+              "price": 1680.0,
+              "days": 3,
+              "status": 1,
+              "bookings": 0
+            },
+            {
+              "id": 204,
+              "title": "大理苍山洱海 6 日深度游",
+              "destinationId": 2,
+              "destination": "大理",
+              "price": 3980.0,
+              "days": 6,
+              "status": 1,
+              "bookings": 0
+            },
+            {
+              "id": 208,
+              "title": "香格里拉梅里雪山 4 日朝圣",
+              "destinationId": 4,
+              "destination": "香格里拉",
+              "price": 4580.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 0
+            },
+            {
+              "id": 218,
+              "title": "西安回民街 3 日美食之旅",
+              "destinationId": 9,
+              "destination": "西安",
+              "price": 1980.0,
+              "days": 3,
+              "status": 1,
+              "bookings": 0
+            }
+          ],
+          "matchingRoutes": 20,
+          "scatterLimit": 100,
+          "bookingStatuses": [
+            {
+              "status": 0,
+              "label": "待确认",
+              "count": 6
+            },
+            {
+              "status": 1,
+              "label": "已确认",
+              "count": 21
+            },
+            {
+              "status": 2,
+              "label": "已取消",
+              "count": 6
+            },
+            {
+              "status": 3,
+              "label": "已完成",
+              "count": 7
+            }
+          ],
+          "aiStatuses": [
+            {
+              "status": 1,
+              "label": "成功",
+              "count": 2
+            },
+            {
+              "status": 0,
+              "label": "失败",
+              "count": 6
+            }
+          ],
+          "destinations": [
+            {
+              "id": 5,
+              "name": "三亚"
+            },
+            {
+              "id": 3,
+              "name": "丽江"
+            },
+            {
+              "id": 1,
+              "name": "云南"
+            },
+            {
+              "id": 10,
+              "name": "厦门"
+            },
+            {
+              "id": 2,
+              "name": "大理"
+            },
+            {
+              "id": 6,
+              "name": "张家界"
+            },
+            {
+              "id": 8,
+              "name": "成都"
+            },
+            {
+              "id": 7,
+              "name": "桂林"
+            },
+            {
+              "id": 9,
+              "name": "西安"
+            },
+            {
+              "id": 4,
+              "name": "香格里拉"
+            }
+          ],
+          "destinationTotal": 10,
+          "destinationLimit": 1000
+        },
+        "timestamp": 1791418186239
+      }
+    },
+    {
+      "endpoint": "/admin/analysis/dashboard?days=7",
+      "httpStatus": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "generatedAt": "2026-10-08T08:09:46.350815800+08:00",
+          "timezone": "Asia/Shanghai",
+          "days": 7,
+          "startDate": "2026-10-02",
+          "endDate": "2026-10-08",
+          "destinationId": null,
+          "summary": {
+            "users": 22,
+            "newUsers": 0,
+            "routes": 20,
+            "bookings": 0,
+            "cancelled": 0,
+            "aiCalls": 8,
+            "aiSucceeded": 2,
+            "aiAverageMs": 1753.125
+          },
+          "trend": [
+            {
+              "date": "2026-10-02",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-03",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 8
+            },
+            {
+              "date": "2026-10-04",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-05",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-06",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-07",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-08",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            }
+          ],
+          "destinationHeat": [],
+          "routeScatter": [
+            {
+              "id": 201,
+              "title": "云南大理丽江香格里拉 5 日纯玩",
+              "destinationId": 1,
+              "destination": "云南",
+              "price": 2980.0,
+              "days": 5,
+              "status": 1,
+              "bookings": 0
+            },
+            {
+              "id": 202,
+              "title": "云南西双版纳 4 日雨林探秘",
+              "destinationId": 1,
+              "destination": "云南",
+              "price": 2680.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 0
+            },
+            {
+              "id": 203,
+              "title": "大理洱海环湖 3 日慢行",
+              "destinationId": 2,
+              "destination": "大理",
+              "price": 1680.0,
+              "days": 3,
+              "status": 1,
+              "bookings": 0
+            },
+            {
+              "id": 204,
+              "title": "大理苍山洱海 6 日深度游",
+              "destinationId": 2,
+              "destination": "大理",
+              "price": 3980.0,
+              "days": 6,
+              "status": 1,
+              "bookings": 0
+            },
+            {
+              "id": 205,
+              "title": "丽江古城玉龙雪山 4 日",
+              "destinationId": 3,
+              "destination": "丽江",
+              "price": 2980.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 0
+            },
+            {
+              "id": 206,
+              "title": "丽江泸沽湖 3 日环湖之旅",
+              "destinationId": 3,
+              "destination": "丽江",
+              "price": 2380.0,
+              "days": 3,
+              "status": 1,
+              "bookings": 0
+            },
+            {
+              "id": 207,
+              "title": "香格里拉 4 日藏地秘境",
+              "destinationId": 4,
+              "destination": "香格里拉",
+              "price": 3280.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 0
+            },
+            {
+              "id": 208,
+              "title": "香格里拉梅里雪山 4 日朝圣",
+              "destinationId": 4,
+              "destination": "香格里拉",
+              "price": 4580.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 0
+            },
+            {
+              "id": 209,
+              "title": "三亚亚龙湾 4 日亲子度假",
+              "destinationId": 5,
+              "destination": "三亚",
+              "price": 3880.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 0
+            },
+            {
+              "id": 210,
+              "title": "三亚 4 日浪漫海岛游",
+              "destinationId": 5,
+              "destination": "三亚",
+              "price": 4280.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 0
+            },
+            {
+              "id": 211,
+              "title": "张家界武陵源 3 日奇峰之旅",
+              "destinationId": 6,
+              "destination": "张家界",
+              "price": 1980.0,
+              "days": 3,
+              "status": 1,
+              "bookings": 0
+            },
+            {
+              "id": 212,
+              "title": "张家界大峡谷 4 日全景游",
+              "destinationId": 6,
+              "destination": "张家界",
+              "price": 2580.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 0
+            },
+            {
+              "id": 213,
+              "title": "桂林漓江阳朔 4 日山水游",
+              "destinationId": 7,
+              "destination": "桂林",
+              "price": 2680.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 0
+            },
+            {
+              "id": 214,
+              "title": "桂林阳朔 3 日轻度假",
+              "destinationId": 7,
+              "destination": "桂林",
+              "price": 1880.0,
+              "days": 3,
+              "status": 1,
+              "bookings": 0
+            },
+            {
+              "id": 215,
+              "title": "成都美食文化 5 日深度游",
+              "destinationId": 8,
+              "destination": "成都",
+              "price": 2980.0,
+              "days": 5,
+              "status": 1,
+              "bookings": 0
+            },
+            {
+              "id": 216,
+              "title": "成都青城山 4 日休闲之旅",
+              "destinationId": 8,
+              "destination": "成都",
+              "price": 2280.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 0
+            },
+            {
+              "id": 217,
+              "title": "西安古都 4 日历史文化之旅",
+              "destinationId": 9,
+              "destination": "西安",
+              "price": 2680.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 0
+            },
+            {
+              "id": 218,
+              "title": "西安回民街 3 日美食之旅",
+              "destinationId": 9,
+              "destination": "西安",
+              "price": 1980.0,
+              "days": 3,
+              "status": 1,
+              "bookings": 0
+            },
+            {
+              "id": 219,
+              "title": "厦门鼓浪屿 4 日文艺之旅",
+              "destinationId": 10,
+              "destination": "厦门",
+              "price": 2780.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 0
+            },
+            {
+              "id": 220,
+              "title": "厦门 4 日海岛慢生活",
+              "destinationId": 10,
+              "destination": "厦门",
+              "price": 3180.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 0
+            }
+          ],
+          "matchingRoutes": 20,
+          "scatterLimit": 100,
+          "bookingStatuses": [
+            {
+              "status": 0,
+              "label": "待确认",
+              "count": 0
+            },
+            {
+              "status": 1,
+              "label": "已确认",
+              "count": 0
+            },
+            {
+              "status": 2,
+              "label": "已取消",
+              "count": 0
+            },
+            {
+              "status": 3,
+              "label": "已完成",
+              "count": 0
+            }
+          ],
+          "aiStatuses": [
+            {
+              "status": 1,
+              "label": "成功",
+              "count": 2
+            },
+            {
+              "status": 0,
+              "label": "失败",
+              "count": 6
+            }
+          ],
+          "destinations": [
+            {
+              "id": 5,
+              "name": "三亚"
+            },
+            {
+              "id": 3,
+              "name": "丽江"
+            },
+            {
+              "id": 1,
+              "name": "云南"
+            },
+            {
+              "id": 10,
+              "name": "厦门"
+            },
+            {
+              "id": 2,
+              "name": "大理"
+            },
+            {
+              "id": 6,
+              "name": "张家界"
+            },
+            {
+              "id": 8,
+              "name": "成都"
+            },
+            {
+              "id": 7,
+              "name": "桂林"
+            },
+            {
+              "id": 9,
+              "name": "西安"
+            },
+            {
+              "id": 4,
+              "name": "香格里拉"
+            }
+          ],
+          "destinationTotal": 10,
+          "destinationLimit": 1000
+        },
+        "timestamp": 1791418186351
+      }
+    },
+    {
+      "endpoint": "/admin/analysis/dashboard?days=90",
+      "httpStatus": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "generatedAt": "2026-10-08T08:09:46.469510400+08:00",
+          "timezone": "Asia/Shanghai",
+          "days": 90,
+          "startDate": "2026-07-11",
+          "endDate": "2026-10-08",
+          "destinationId": null,
+          "summary": {
+            "users": 22,
+            "newUsers": 22,
+            "routes": 20,
+            "bookings": 85,
+            "cancelled": 17,
+            "aiCalls": 8,
+            "aiSucceeded": 2,
+            "aiAverageMs": 1753.125
+          },
+          "trend": [
+            {
+              "date": "2026-07-11",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-07-12",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-07-13",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-07-14",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-07-15",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-07-16",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-07-17",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-07-18",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-07-19",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-07-20",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-07-21",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-07-22",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-07-23",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-07-24",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-07-25",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-07-26",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 2,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-07-27",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 1,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-07-28",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-07-29",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-07-30",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 1,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-07-31",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-01",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 1,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-02",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-03",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 1,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-04",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-05",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-06",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-07",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-08",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-09",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 1,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-10",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 2,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-11",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-12",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-13",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-14",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 1,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-15",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-16",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 1,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-17",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-18",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-19",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-20",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 1,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-21",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-22",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 1,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-23",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-24",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 2,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-25",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 1,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-26",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-27",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 1,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-28",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-29",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 2,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-30",
+              "bookings": 4,
+              "cancelled": 3,
+              "newUsers": 2,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-08-31",
+              "bookings": 5,
+              "cancelled": 1,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-01",
+              "bookings": 8,
+              "cancelled": 2,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-02",
+              "bookings": 2,
+              "cancelled": 1,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-03",
+              "bookings": 7,
+              "cancelled": 1,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-04",
+              "bookings": 4,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-05",
+              "bookings": 4,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-06",
+              "bookings": 5,
+              "cancelled": 1,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-07",
+              "bookings": 3,
+              "cancelled": 1,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-08",
+              "bookings": 3,
+              "cancelled": 1,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-09",
+              "bookings": 4,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-10",
+              "bookings": 7,
+              "cancelled": 1,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-11",
+              "bookings": 1,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-12",
+              "bookings": 3,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-13",
+              "bookings": 3,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-14",
+              "bookings": 4,
+              "cancelled": 1,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-15",
+              "bookings": 4,
+              "cancelled": 1,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-16",
+              "bookings": 3,
+              "cancelled": 1,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-17",
+              "bookings": 2,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-18",
+              "bookings": 3,
+              "cancelled": 1,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-19",
+              "bookings": 3,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-20",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-21",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-22",
+              "bookings": 3,
+              "cancelled": 1,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-23",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-24",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-25",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-26",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-27",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 1,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-28",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-29",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-30",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-01",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-02",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-03",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 8
+            },
+            {
+              "date": "2026-10-04",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-05",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-06",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-07",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-08",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            }
+          ],
+          "destinationHeat": [
+            {
+              "id": 10,
+              "name": "厦门",
+              "bookings": 15
+            },
+            {
+              "id": 3,
+              "name": "丽江",
+              "bookings": 13
+            },
+            {
+              "id": 1,
+              "name": "云南",
+              "bookings": 9
+            },
+            {
+              "id": 6,
+              "name": "张家界",
+              "bookings": 9
+            },
+            {
+              "id": 8,
+              "name": "成都",
+              "bookings": 9
+            },
+            {
+              "id": 7,
+              "name": "桂林",
+              "bookings": 8
+            },
+            {
+              "id": 4,
+              "name": "香格里拉",
+              "bookings": 7
+            },
+            {
+              "id": 2,
+              "name": "大理",
+              "bookings": 6
+            },
+            {
+              "id": 5,
+              "name": "三亚",
+              "bookings": 5
+            },
+            {
+              "id": 9,
+              "name": "西安",
+              "bookings": 4
+            }
+          ],
+          "routeScatter": [
+            {
+              "id": 219,
+              "title": "厦门鼓浪屿 4 日文艺之旅",
+              "destinationId": 10,
+              "destination": "厦门",
+              "price": 2780.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 9
+            },
+            {
+              "id": 206,
+              "title": "丽江泸沽湖 3 日环湖之旅",
+              "destinationId": 3,
+              "destination": "丽江",
+              "price": 2380.0,
+              "days": 3,
+              "status": 1,
+              "bookings": 7
+            },
+            {
+              "id": 205,
+              "title": "丽江古城玉龙雪山 4 日",
+              "destinationId": 3,
+              "destination": "丽江",
+              "price": 2980.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 6
+            },
+            {
+              "id": 215,
+              "title": "成都美食文化 5 日深度游",
+              "destinationId": 8,
+              "destination": "成都",
+              "price": 2980.0,
+              "days": 5,
+              "status": 1,
+              "bookings": 6
+            },
+            {
+              "id": 220,
+              "title": "厦门 4 日海岛慢生活",
+              "destinationId": 10,
+              "destination": "厦门",
+              "price": 3180.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 6
+            },
+            {
+              "id": 202,
+              "title": "云南西双版纳 4 日雨林探秘",
+              "destinationId": 1,
+              "destination": "云南",
+              "price": 2680.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 5
+            },
+            {
+              "id": 207,
+              "title": "香格里拉 4 日藏地秘境",
+              "destinationId": 4,
+              "destination": "香格里拉",
+              "price": 3280.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 5
+            },
+            {
+              "id": 212,
+              "title": "张家界大峡谷 4 日全景游",
+              "destinationId": 6,
+              "destination": "张家界",
+              "price": 2580.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 5
+            },
+            {
+              "id": 214,
+              "title": "桂林阳朔 3 日轻度假",
+              "destinationId": 7,
+              "destination": "桂林",
+              "price": 1880.0,
+              "days": 3,
+              "status": 1,
+              "bookings": 5
+            },
+            {
+              "id": 201,
+              "title": "云南大理丽江香格里拉 5 日纯玩",
+              "destinationId": 1,
+              "destination": "云南",
+              "price": 2980.0,
+              "days": 5,
+              "status": 1,
+              "bookings": 4
+            },
+            {
+              "id": 203,
+              "title": "大理洱海环湖 3 日慢行",
+              "destinationId": 2,
+              "destination": "大理",
+              "price": 1680.0,
+              "days": 3,
+              "status": 1,
+              "bookings": 4
+            },
+            {
+              "id": 211,
+              "title": "张家界武陵源 3 日奇峰之旅",
+              "destinationId": 6,
+              "destination": "张家界",
+              "price": 1980.0,
+              "days": 3,
+              "status": 1,
+              "bookings": 4
+            },
+            {
+              "id": 210,
+              "title": "三亚 4 日浪漫海岛游",
+              "destinationId": 5,
+              "destination": "三亚",
+              "price": 4280.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 3
+            },
+            {
+              "id": 213,
+              "title": "桂林漓江阳朔 4 日山水游",
+              "destinationId": 7,
+              "destination": "桂林",
+              "price": 2680.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 3
+            },
+            {
+              "id": 216,
+              "title": "成都青城山 4 日休闲之旅",
+              "destinationId": 8,
+              "destination": "成都",
+              "price": 2280.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 3
+            },
+            {
+              "id": 217,
+              "title": "西安古都 4 日历史文化之旅",
+              "destinationId": 9,
+              "destination": "西安",
+              "price": 2680.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 3
+            },
+            {
+              "id": 204,
+              "title": "大理苍山洱海 6 日深度游",
+              "destinationId": 2,
+              "destination": "大理",
+              "price": 3980.0,
+              "days": 6,
+              "status": 1,
+              "bookings": 2
+            },
+            {
+              "id": 208,
+              "title": "香格里拉梅里雪山 4 日朝圣",
+              "destinationId": 4,
+              "destination": "香格里拉",
+              "price": 4580.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 2
+            },
+            {
+              "id": 209,
+              "title": "三亚亚龙湾 4 日亲子度假",
+              "destinationId": 5,
+              "destination": "三亚",
+              "price": 3880.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 2
+            },
+            {
+              "id": 218,
+              "title": "西安回民街 3 日美食之旅",
+              "destinationId": 9,
+              "destination": "西安",
+              "price": 1980.0,
+              "days": 3,
+              "status": 1,
+              "bookings": 1
+            }
+          ],
+          "matchingRoutes": 20,
+          "scatterLimit": 100,
+          "bookingStatuses": [
+            {
+              "status": 0,
+              "label": "待确认",
+              "count": 10
+            },
+            {
+              "status": 1,
+              "label": "已确认",
+              "count": 42
+            },
+            {
+              "status": 2,
+              "label": "已取消",
+              "count": 17
+            },
+            {
+              "status": 3,
+              "label": "已完成",
+              "count": 16
+            }
+          ],
+          "aiStatuses": [
+            {
+              "status": 1,
+              "label": "成功",
+              "count": 2
+            },
+            {
+              "status": 0,
+              "label": "失败",
+              "count": 6
+            }
+          ],
+          "destinations": [
+            {
+              "id": 5,
+              "name": "三亚"
+            },
+            {
+              "id": 3,
+              "name": "丽江"
+            },
+            {
+              "id": 1,
+              "name": "云南"
+            },
+            {
+              "id": 10,
+              "name": "厦门"
+            },
+            {
+              "id": 2,
+              "name": "大理"
+            },
+            {
+              "id": 6,
+              "name": "张家界"
+            },
+            {
+              "id": 8,
+              "name": "成都"
+            },
+            {
+              "id": 7,
+              "name": "桂林"
+            },
+            {
+              "id": 9,
+              "name": "西安"
+            },
+            {
+              "id": 4,
+              "name": "香格里拉"
+            }
+          ],
+          "destinationTotal": 10,
+          "destinationLimit": 1000
+        },
+        "timestamp": 1791418186470
+      }
+    },
+    {
+      "endpoint": "/admin/analysis/dashboard?days=30&destinationId=2",
+      "httpStatus": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "generatedAt": "2026-10-08T08:09:46.581870900+08:00",
+          "timezone": "Asia/Shanghai",
+          "days": 30,
+          "startDate": "2026-09-09",
+          "endDate": "2026-10-08",
+          "destinationId": 2,
+          "summary": {
+            "users": 22,
+            "newUsers": 1,
+            "routes": 2,
+            "bookings": 0,
+            "cancelled": 0,
+            "aiCalls": 8,
+            "aiSucceeded": 2,
+            "aiAverageMs": 1753.125
+          },
+          "trend": [
+            {
+              "date": "2026-09-09",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-10",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-11",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-12",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-13",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-14",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-15",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-16",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-17",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-18",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-19",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-20",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-21",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-22",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-23",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-24",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-25",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-26",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-27",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 1,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-28",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-29",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-30",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-01",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-02",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-03",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 8
+            },
+            {
+              "date": "2026-10-04",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-05",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-06",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-07",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-08",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            }
+          ],
+          "destinationHeat": [],
+          "routeScatter": [
+            {
+              "id": 203,
+              "title": "大理洱海环湖 3 日慢行",
+              "destinationId": 2,
+              "destination": "大理",
+              "price": 1680.0,
+              "days": 3,
+              "status": 1,
+              "bookings": 0
+            },
+            {
+              "id": 204,
+              "title": "大理苍山洱海 6 日深度游",
+              "destinationId": 2,
+              "destination": "大理",
+              "price": 3980.0,
+              "days": 6,
+              "status": 1,
+              "bookings": 0
+            }
+          ],
+          "matchingRoutes": 2,
+          "scatterLimit": 100,
+          "bookingStatuses": [
+            {
+              "status": 0,
+              "label": "待确认",
+              "count": 0
+            },
+            {
+              "status": 1,
+              "label": "已确认",
+              "count": 0
+            },
+            {
+              "status": 2,
+              "label": "已取消",
+              "count": 0
+            },
+            {
+              "status": 3,
+              "label": "已完成",
+              "count": 0
+            }
+          ],
+          "aiStatuses": [
+            {
+              "status": 1,
+              "label": "成功",
+              "count": 2
+            },
+            {
+              "status": 0,
+              "label": "失败",
+              "count": 6
+            }
+          ],
+          "destinations": [
+            {
+              "id": 5,
+              "name": "三亚"
+            },
+            {
+              "id": 3,
+              "name": "丽江"
+            },
+            {
+              "id": 1,
+              "name": "云南"
+            },
+            {
+              "id": 10,
+              "name": "厦门"
+            },
+            {
+              "id": 2,
+              "name": "大理"
+            },
+            {
+              "id": 6,
+              "name": "张家界"
+            },
+            {
+              "id": 8,
+              "name": "成都"
+            },
+            {
+              "id": 7,
+              "name": "桂林"
+            },
+            {
+              "id": 9,
+              "name": "西安"
+            },
+            {
+              "id": 4,
+              "name": "香格里拉"
+            }
+          ],
+          "destinationTotal": 10,
+          "destinationLimit": 1000
+        },
+        "timestamp": 1791418186582
+      }
+    },
+    {
+      "endpoint": "/admin/analysis/dashboard?days=30&destinationId=9",
+      "httpStatus": 200,
+      "body": {
+        "code": 200,
+        "message": "success",
+        "data": {
+          "generatedAt": "2026-10-08T08:09:46.689605+08:00",
+          "timezone": "Asia/Shanghai",
+          "days": 30,
+          "startDate": "2026-09-09",
+          "endDate": "2026-10-08",
+          "destinationId": 9,
+          "summary": {
+            "users": 22,
+            "newUsers": 1,
+            "routes": 2,
+            "bookings": 1,
+            "cancelled": 0,
+            "aiCalls": 8,
+            "aiSucceeded": 2,
+            "aiAverageMs": 1753.125
+          },
+          "trend": [
+            {
+              "date": "2026-09-09",
+              "bookings": 1,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-10",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-11",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-12",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-13",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-14",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-15",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-16",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-17",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-18",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-19",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-20",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-21",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-22",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-23",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-24",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-25",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-26",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-27",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 1,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-28",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-29",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-09-30",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-01",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-02",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-03",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 8
+            },
+            {
+              "date": "2026-10-04",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-05",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-06",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-07",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            },
+            {
+              "date": "2026-10-08",
+              "bookings": 0,
+              "cancelled": 0,
+              "newUsers": 0,
+              "aiCalls": 0
+            }
+          ],
+          "destinationHeat": [
+            {
+              "id": 9,
+              "name": "西安",
+              "bookings": 1
+            }
+          ],
+          "routeScatter": [
+            {
+              "id": 217,
+              "title": "西安古都 4 日历史文化之旅",
+              "destinationId": 9,
+              "destination": "西安",
+              "price": 2680.0,
+              "days": 4,
+              "status": 1,
+              "bookings": 1
+            },
+            {
+              "id": 218,
+              "title": "西安回民街 3 日美食之旅",
+              "destinationId": 9,
+              "destination": "西安",
+              "price": 1980.0,
+              "days": 3,
+              "status": 1,
+              "bookings": 0
+            }
+          ],
+          "matchingRoutes": 2,
+          "scatterLimit": 100,
+          "bookingStatuses": [
+            {
+              "status": 0,
+              "label": "待确认",
+              "count": 0
+            },
+            {
+              "status": 1,
+              "label": "已确认",
+              "count": 0
+            },
+            {
+              "status": 2,
+              "label": "已取消",
+              "count": 0
+            },
+            {
+              "status": 3,
+              "label": "已完成",
+              "count": 1
+            }
+          ],
+          "aiStatuses": [
+            {
+              "status": 1,
+              "label": "成功",
+              "count": 2
+            },
+            {
+              "status": 0,
+              "label": "失败",
+              "count": 6
+            }
+          ],
+          "destinations": [
+            {
+              "id": 5,
+              "name": "三亚"
+            },
+            {
+              "id": 3,
+              "name": "丽江"
+            },
+            {
+              "id": 1,
+              "name": "云南"
+            },
+            {
+              "id": 10,
+              "name": "厦门"
+            },
+            {
+              "id": 2,
+              "name": "大理"
+            },
+            {
+              "id": 6,
+              "name": "张家界"
+            },
+            {
+              "id": 8,
+              "name": "成都"
+            },
+            {
+              "id": 7,
+              "name": "桂林"
+            },
+            {
+              "id": 9,
+              "name": "西安"
+            },
+            {
+              "id": 4,
+              "name": "香格里拉"
+            }
+          ],
+          "destinationTotal": 10,
+          "destinationLimit": 1000
+        },
+        "timestamp": 1791418186689
+      }
+    }
+  ],
+  "summary": {
+    "passed": 31,
+    "total": 31
+  }
+}
