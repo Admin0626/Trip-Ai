@@ -1,0 +1,335 @@
+{
+  "mode": "REAL_EDGE_APP_CATALOG_MYSQL_REDIS_WITH_SSE_UI_FIXTURES",
+  "phase": "COMPLETED",
+  "checks": [
+    {
+      "name": "actual page entry and hero animation observed",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "all actual imperative durations bounded",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "actual hero stagger uses 35ms steps",
+      "actual": [
+        0,
+        35,
+        70,
+        105
+      ],
+      "expected": [
+        0,
+        35,
+        70,
+        105
+      ],
+      "passed": true
+    },
+    {
+      "name": "no perpetual decoration animation",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "primary button soft hover",
+      "actual": -1,
+      "expected": -1,
+      "passed": true
+    },
+    {
+      "name": "primary button pressed feedback",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "card hover moves three pixels",
+      "actual": -3,
+      "expected": -3,
+      "passed": true
+    },
+    {
+      "name": "card keyboard focus also moves",
+      "actual": -3,
+      "expected": -3,
+      "passed": true
+    },
+    {
+      "name": "keyboard card opens live route",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "selected navigation underline fully visible",
+      "actual": "matrix(1, 0, 0, 1, 0, 0)",
+      "expected": "matrix(1, 0, 0, 1, 0, 0)",
+      "passed": true
+    },
+    {
+      "name": "after first six items no stagger delay",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "search empty state visible after animation",
+      "actual": "1",
+      "expected": "1",
+      "passed": true
+    },
+    {
+      "name": "query survives mode animation",
+      "actual": "杭州三天自然风光，慢节奏散步",
+      "expected": "杭州三天自然风光，慢节奏散步",
+      "passed": true
+    },
+    {
+      "name": "mode does not remount assistant root",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "query returns to AI mode",
+      "actual": "杭州三天自然风光，慢节奏散步",
+      "expected": "杭州三天自然风光，慢节奏散步",
+      "passed": true
+    },
+    {
+      "name": "mode still clears key as designed",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "name": "busy progress dot actually loops",
+      "actual": "infinite",
+      "expected": "infinite",
+      "passed": true
+    },
+    {
+      "name": "busy disables mode switch",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "completed generation removes progress dot",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "preview stays visible",
+      "actual": "1",
+      "expected": "1",
+      "passed": true
+    },
+    {
+      "name": "preview still requires save acknowledgement",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "cancelled stops progress loop",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "error stops progress loop",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "owned plan fixture created through HTTP",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "plan keyboard interaction motion",
+      "actual": -3,
+      "expected": -3,
+      "passed": true
+    },
+    {
+      "name": "live editor detail loaded",
+      "actual": 200,
+      "expected": 200,
+      "passed": true
+    },
+    {
+      "name": "plan field remains editable",
+      "actual": "动画不应清除未保存的规划",
+      "expected": "动画不应清除未保存的规划",
+      "passed": true
+    },
+    {
+      "name": "mobile navigation opens with CSS animation",
+      "actual": "trip-soft-enter",
+      "expected": "trip-soft-enter",
+      "passed": true
+    },
+    {
+      "name": "mobile navigation closes on route change",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "mobile destination no horizontal overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "mobile hero fully visible after entry",
+      "actual": "1",
+      "expected": "1",
+      "passed": true
+    },
+    {
+      "name": "mobile home no horizontal overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "preference change cancels running JS entry",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "reduced motion has no hover movement",
+      "actual": "none",
+      "expected": "none",
+      "passed": true
+    },
+    {
+      "name": "reduced navigation starts no JS motion",
+      "actual": 6,
+      "expected": 6,
+      "passed": true
+    },
+    {
+      "name": "reduced progress retains status without pulse",
+      "actual": "none",
+      "expected": "none",
+      "passed": true
+    },
+    {
+      "name": "reduced preview visible",
+      "actual": "1",
+      "expected": "1",
+      "passed": true
+    },
+    {
+      "name": "restored preference enables entry again",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "admin page has entry motion",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "desktop hero fully visible after entry",
+      "actual": "1",
+      "expected": "1",
+      "passed": true
+    },
+    {
+      "name": "desktop home no horizontal overflow",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "missing browser APIs leave hero visible",
+      "actual": "1",
+      "expected": "1",
+      "passed": true
+    },
+    {
+      "name": "missing APIs leave catalog visible",
+      "actual": "1",
+      "expected": "1",
+      "passed": true
+    },
+    {
+      "name": "unmounted nodes retain no active animation",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "no real model test/generation request",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "motion has no Vue warnings",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "no browser exceptions",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "owned fixtures removed 10438",
+      "actual": [
+        "0",
+        "0"
+      ],
+      "expected": [
+        "0",
+        "0"
+      ],
+      "passed": true
+    },
+    {
+      "name": "owned fixtures removed 10439",
+      "actual": [
+        "0",
+        "0"
+      ],
+      "expected": [
+        "0",
+        "0"
+      ],
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "modelRequests": [
+    "intercepted SSE UI fixture",
+    "intercepted SSE UI fixture",
+    "intercepted SSE UI fixture",
+    "intercepted SSE UI fixture"
+  ],
+  "summary": {
+    "total": 49,
+    "passed": 49,
+    "failed": 0
+  }
+}

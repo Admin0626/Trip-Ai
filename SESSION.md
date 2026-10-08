@@ -1,3 +1,16 @@
+# Session：PR #12动效与最新统计功能集成验收通过，准备合并
+
+更新：2026-10-08。用户要求“PR12有合并么，没有就合并”。GitHub确认原PR仍open/unmerged、mergeable=false；已在codex/frontend-motion合入origin/main=c4855fb。
+
+- 冲突仅README与SESSION，保留动效、统计/环形图功能说明及两边历史记录；AdminLayout自动保留统计导航并加入页面入场。统计页面、柱图/散点组件、环形图组件与main文本一致，无新增后端差异。
+- 本次集成树vue-tsc/Vite构建通过，后台浏览器9/9通过（图表数量、真实40/8总数、图例键盘操作、路由往返与动画结束可见性）。既有49/49动效、28/28基础回归为历史证据，未重跑；无真实模型调用/数据库重建。主包1131.57kB警告仍存在。
+- GitHub原HEAD无评论/评审/未解决线程、无status/check run，不称为CI通过。推送集成提交后将锁定新HEAD合并，并另记录最终merge SHA。
+- 用户原50份文档SHA256未变，不纳入提交；v0.1.0-baseline不移动。见[集成证据](docs/dev/evidence/frontend-motion/merge-20261008/integration.json)与[浏览器结果](docs/dev/evidence/frontend-motion/merge-20261008/browser.json)。
+
+---
+
+# 以下为此前记录，以顶部最新状态为准
+
 # Session：PR #14后台环形图已合并main
 
 更新：2026-10-08（北京时间）。用户明确要求“把PR14合并了”。
@@ -52,6 +65,20 @@
 - 专属测试账号、预约/路线/目的地/日志及本人Redis会话已清理；本机MySQL3306/Redis6379/Vite5173/后端8080正常，后端以本机缓存离线/chat=none重启，不重跑schema/data或重置额度。
 - [实现/实测/全部问题/答辩](docs/dev/后台数据可视化实现与验收.md)、[进度/目标/问题](docs/dev/后台数据可视化进度.md)；API实际合同和部署说明同步，未来analysis设计功能明确未实现。实现提交1c7413aed1d7a35ea45df210a5b0f9f4e3af5ad8已推送origin/codex/admin-analytics；[PR #13](https://github.com/Admin0626/Trip-Ai/pull/13)已创建并附到任务，目标main，open、未合并。35个暂存文件凭据/JWT模式扫描0命中，未纳入用户原材料。此发布记录另行提交推送，最终本地/远程/PR HEAD核对。
 - 原docs/README.md修改、实训报告、答辩材料和仓库外学习工作台不纳入。main、v0.1.0-baseline及动效分支保持原值；下一步审核本批PR，再由用户决定合并或后续功能。
+
+---
+
+# Session：前端轻量动效已验收并推送，PR #12待融合
+
+更新：2026-10-04（北京时间）。用户要求前端增加动画并选择“轻盈自然”。从main=482e2b4建立codex/frontend-motion，沿用自然主题；本批不自动合并。
+
+- 页面/旅行助手模式220ms淡入上移8px；首页/目录/规划卡片进入视口280ms，前6项错开35ms、最多175ms；卡片悬停/焦点轻抬3px、按钮悬停/按压、导航细线、手机菜单、空状态及实际生成busy状态点。
+- CSS和浏览器Animation/IntersectionObserver，无新依赖。系统减少动态偏好立即取消活动/等待动画、内容默认可见、卸载清理；原RouterView不加key，未保存输入和共享需求保留，原切模式清Key行为保留。
+- 最终Edge动效49/49、已有基础工具页面28/28、vue-tsc/Vite构建通过；主包1131.36kB（原1130.09kB），既有大包提示保留。各轮失败、CSS优先级修复与最终桌面/手机截图保留。
+- AI进度测试为明确的SSE页面夹具，仅验证动画完成/取消/失败；没有真实模型调用、后端/API/SQL修改或新Maven测试。实际本机登录、目录、规划与基础工具请求已走服务；专属账号/草稿及本人Redis数据已清理。
+- 本机前端5173、后端8080与Redis6379已恢复，MySQL保留原数据。Maven在线启动遇证书链错误，改已有缓存离线启动；不重跑schema/data，不清共享Redis。
+- [实现、实际验收、问题和答辩](docs/dev/前端轻量动效实现与验收.md)、[进度/目标/问题](docs/dev/前端轻量动效进度.md)。实现提交2ea6f23c7695be7742f8428141dcacd22c30dda9已推送origin/codex/frontend-motion；[PR #12](https://github.com/Admin0626/Trip-Ai/pull/12)已创建并附到任务，目标main，保持open、未合并。45个暂存文件凭据/JWT模式扫描0命中。本文发布记录另行提交并推送，最终HEAD由本地、远程和PR核对。
+- 用户原docs/README.md修改、实训报告与答辩材料保留且不纳入；仓库外学习工作台不变。main和固定v0.1.0-baseline不移动。后续审核PR再决定合并；外部图片及主包拆分另批处理。
 
 ---
 

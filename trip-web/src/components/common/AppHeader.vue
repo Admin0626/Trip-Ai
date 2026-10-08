@@ -131,7 +131,6 @@ function handleCommand(cmd: string): void {
       border-radius: 8px;
       color: $color-text;
       font-size: 14px;
-      transition: all 0.2s;
 
       &.router-link-active {
         color: $color-primary;

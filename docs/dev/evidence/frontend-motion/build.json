@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-04",
+  "mode": "LOCAL_BUILD_LOG_EXTRACT",
+  "command": "npm run build (vue-tsc -b && vite build)",
+  "passed": true,
+  "buildTime": "1.09s",
+  "mainBundleKB": 1131.36,
+  "baselineBundleKB": 1130.09,
+  "existingLargeChunkWarning": true,
+  "boundary": "Frontend only; no new backend compile or model quality verification."
+}

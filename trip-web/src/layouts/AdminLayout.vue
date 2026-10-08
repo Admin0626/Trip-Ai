@@ -10,7 +10,7 @@ const links=[['/admin','概览与反馈'],['/admin/analytics','数据与可视�
 <template>
   <div class="admin-layout">
     <header class="admin-header"><router-link to="/admin">智游 · 管理后台</router-link><div class="admin-account"><router-link to="/">返回前台</router-link><el-button :loading="leaving" @click="logout">退出登录</el-button></div></header>
-    <div class="admin-shell"><nav aria-label="后台导航"><router-link v-for="link in links" :key="link[0]" :to="link[0]!" :class="{active:$route.path===link[0]}">{{ link[1] }}</router-link></nav><div class="admin-content"><router-view/></div></div>
+    <div class="admin-shell"><nav aria-label="后台导航"><router-link v-for="link in links" :key="link[0]" :to="link[0]!" :class="{active:$route.path===link[0]}">{{ link[1] }}</router-link></nav><div v-page-enter="$route.path" class="admin-content"><router-view/></div></div>
   </div>
 </template>
 <style>

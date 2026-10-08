@@ -7,6 +7,7 @@ import 'element-plus/dist/index.css'
 import App from './App.vue'
 import router from './router'
 import { setupGuard } from './router/guard'
+import { setupMotion } from './directives/motion'
 
 import '@/assets/styles/index.scss'
 
@@ -17,5 +18,6 @@ app.use(router)
 app.use(ElementPlus, { locale: zhCn })
 
 setupGuard(router)
+setupMotion(app)
 
 app.mount('#app')

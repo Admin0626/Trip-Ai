@@ -1,0 +1,75 @@
+:root {
+  --trip-motion-fast: 180ms;
+  --trip-motion-ease: cubic-bezier(.22, 1, .36, 1);
+}
+
+.trip-interactive-card {
+  transition: transform var(--trip-motion-fast) var(--trip-motion-ease);
+}
+.trip-interactive-card.card:focus-visible,
+.trip-interactive-card.card:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(39, 39, 42, .06);
+}
+@media (hover: hover) and (pointer: fine) {
+  .trip-interactive-card.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(39, 39, 42, .06);
+  }
+  .assistant-modes button:not(:disabled):hover,
+  .el-button:where(:not(.is-disabled):not(.is-loading):not(.is-text):not(.is-link)):hover,
+  .menu-toggle:hover {
+    transform: translateY(-1px);
+  }
+}
+
+.assistant-modes button, .menu-toggle {
+  transition: transform var(--trip-motion-fast) var(--trip-motion-ease);
+}
+.assistant-modes button:not(:disabled):active, .menu-toggle:active {
+  transform: translateY(1px);
+}
+
+.app-header__nav .nav-link { position: relative; }
+.app-header__nav .nav-link::after {
+  content: '';
+  position: absolute;
+  inset: auto 10px 5px;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--trip-motion-fast) var(--trip-motion-ease);
+}
+.app-header__nav .nav-link:is(:hover, :focus-visible, .router-link-active)::after { transform: scaleX(1); }
+
+.trip-progress-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 10px;
+  vertical-align: middle;
+  border-radius: 50%;
+  background: var(--trip-forest);
+  animation: trip-progress 1.2s ease-in-out infinite;
+}
+@keyframes trip-progress {
+  0%, 100% { opacity: .45; transform: scale(.85); }
+  50% { opacity: 1; transform: scale(1); }
+}
+@keyframes trip-soft-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.auth-card { animation: trip-soft-enter 280ms var(--trip-motion-ease); }
+.empty-state { animation: trip-soft-enter 220ms var(--trip-motion-ease); }
+@media (max-width: 767px) {
+  .app-header__nav.is-open { animation: trip-soft-enter 180ms var(--trip-motion-ease); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .trip-interactive-card,
+  .el-button,
+  .assistant-modes button,
+  .menu-toggle { transform: none !important; }
+  .auth-card, .empty-state, .trip-progress-dot, .app-header__nav.is-open { animation: none !important; }
+}

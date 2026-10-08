@@ -241,13 +241,13 @@ onMounted(async () => {
       </section>
     </el-form>
     <section v-if="busy === 'generate' && showProgress" class="panel" data-testid="planner-progress" aria-live="polite">
-      <h2>{{ stageText }}</h2><p>第{{ attempt }}次尝试 · 已等待{{ elapsed }}秒</p>
+      <h2><span class="trip-progress-dot" aria-hidden="true" />{{ stageText }}</h2><p>第{{ attempt }}次尝试 · 已等待{{ elapsed }}秒</p>
       <p class="hint">取消会停止后台等待；已准入的调用仍计入本小时次数，模型服务可能已经计费。离开页面也会停止等待。</p>
       <el-button type="warning" :loading="cancelling" @click="cancelGeneration">取消生成</el-button>
     </section>
     <el-alert v-if="cancelled" title="已停止本次生成等待，未保存行程。已准入的调用仍计入本小时次数。" type="info" :closable="false" data-testid="planner-cancelled" />
     <el-alert v-if="error" :title="error" type="error" :closable="false" role="alert" />
-    <section v-if="preview" class="panel preview" data-testid="ai-preview">
+    <section v-if="preview" v-reveal class="panel preview" data-testid="ai-preview">
       <h2>3. 模型回答与每日行程</h2>
       <p class="hint">由你配置的 {{ preview.model }} 生成。地点、交通和费用需自行核实；未提供费用的项目不是免费。保存后可逐项编辑。</p>
       <div v-if="preview.draft.answer" class="model-answer" data-testid="model-answer">{{preview.draft.answer}}</div>

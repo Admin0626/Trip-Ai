@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-08",
+  "featureHeadBeforeSync": "8a33f8b07d9f2f026ecdacbc47e52feb7df31099",
+  "mainIntegrated": "c4855fb9a8e90ec3502a973c17cd112d3dc8d58c",
+  "conflicts": [
+    "README.md",
+    "SESSION.md"
+  ],
+  "resolution": "Preserved motion and analytics documentation; retained both session histories. AdminLayout automatically combines analytics navigation with page-enter directive.",
+  "build": {
+    "command": "npm.cmd run build",
+    "vueTsc": "PASSED",
+    "vite": "PASSED",
+    "mainJsKb": 1131.57,
+    "mainGzipKb": 371.84,
+    "analyticsJsKb": 17.31,
+    "warning": "Existing chunk over 500 kB"
+  },
+  "browser": "9/9 passed on current integrated tree",
+  "historicalEvidence": "49/49 motion and 28/28 basics inspected, not rerun",
+  "analyticsSource": "Analytics.vue, AnalyticsChart.vue and AnalyticsDonut.vue text match origin/main after normalizing CRLF",
+  "backendDiffFromMain": [],
+  "protectedUserFiles": 50,
+  "protectedHashesUnchanged": true,
+  "toolIssues": [
+    "SVG innerText does not represent its text nodes; used textContent.",
+    "Git LF vs Windows CRLF byte check replaced with normalized text comparison.",
+    "Role button matched sector and legend; used explicit observed legend button selector."
+  ],
+  "productFailures": []
+}
